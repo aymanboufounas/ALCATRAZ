@@ -1,0 +1,530 @@
+{
+  "scenes": [
+    {
+      "id": "intro",
+      "lines": [
+        {
+          "id": "intro_01",
+          "speaker": "ELIAS",
+          "text": "B-four. Same walls, same lock. If I want answers, I need people on my side.",
+          "seconds": 3.41
+        },
+        {
+          "id": "intro_02",
+          "speaker": "GUARD",
+          "text": "Vale! Yard is open. Stay out of trouble.",
+          "seconds": 1.82
+        }
+      ]
+    },
+    {
+      "id": "reader",
+      "lines": [
+        {
+          "id": "reader_01",
+          "speaker": "TOMAS",
+          "text": "You are the new man in B-four. Tomas. Sit for a minute. Nobody survives this place alone.",
+          "seconds": 4.05
+        },
+        {
+          "id": "reader_02",
+          "speaker": "ELIAS",
+          "text": "Elias. I could use a friend. Or at least someone honest.",
+          "seconds": 2.55
+        },
+        {
+          "id": "reader_03",
+          "speaker": "TOMAS",
+          "text": "Try Niko. Blue Meridian. Malik runs his crew. The Rooks stay across the yard. Do not wander into their business.",
+          "seconds": 5.09
+        }
+      ]
+    },
+    {
+      "id": "cook",
+      "lines": [
+        {
+          "id": "cook_01",
+          "speaker": "SAMIR",
+          "text": "Oi, new guy. Grab that end. These trays weigh a ton.",
+          "seconds": 2.36
+        },
+        {
+          "id": "cook_02",
+          "speaker": "ELIAS",
+          "text": "Got it. Where do you want them?",
+          "seconds": 1.8
+        },
+        {
+          "id": "cook_03",
+          "speaker": "SAMIR",
+          "text": "Right here. Thanks. Samir. You need a hot meal, come find me.",
+          "seconds": 2.77
+        }
+      ]
+    },
+    {
+      "id": "fixer",
+      "lines": [
+        {
+          "id": "fixer_01",
+          "speaker": "WORKSHOP CONTACT",
+          "text": "Jonah. I fix whatever the guards break. Which is just about everything.",
+          "seconds": 3.23
+        },
+        {
+          "id": "fixer_02",
+          "speaker": "ELIAS",
+          "text": "Tell me the routine. Searches, roll call... the things I should know.",
+          "seconds": 3.14
+        },
+        {
+          "id": "fixer_03",
+          "speaker": "WORKSHOP CONTACT",
+          "text": "Whistle means count. Yard stays open till then. Play a hand, talk to people. And keep your eyes on Harrow.",
+          "seconds": 4.82
+        }
+      ]
+    },
+    {
+      "id": "conceal",
+      "lines": [
+        {
+          "id": "conceal_01",
+          "speaker": "GUARD",
+          "text": "Enough! Back away. Both of you!",
+          "seconds": 1.8
+        },
+        {
+          "id": "conceal_02",
+          "speaker": "NIKO",
+          "text": "Just a disagreement, officer. It is over.",
+          "seconds": 1.86
+        },
+        {
+          "id": "conceal_03",
+          "speaker": "ELIAS",
+          "text": "Keep walking. I have it.",
+          "seconds": 1.8
+        }
+      ]
+    },
+    {
+      "id": "thanks",
+      "lines": [
+        {
+          "id": "thanks_01",
+          "speaker": "NIKO",
+          "text": "Harrow finds that blade, I disappear into isolation. You just saved me.",
+          "seconds": 3.23
+        },
+        {
+          "id": "thanks_02",
+          "speaker": "ELIAS",
+          "text": "Nobody saw. Let us keep it that way.",
+          "seconds": 1.8
+        },
+        {
+          "id": "thanks_03",
+          "speaker": "NIKO",
+          "text": "You had no reason to help. I will remember that. Come on. Malik should meet you.",
+          "seconds": 3.64
+        }
+      ]
+    },
+    {
+      "id": "gang_oath",
+      "lines": [
+        {
+          "id": "gang_oath_01",
+          "speaker": "MALIK",
+          "text": "Niko does not owe favors lightly. What do you want, Vale?",
+          "seconds": 2.59
+        },
+        {
+          "id": "gang_oath_02",
+          "speaker": "ELIAS",
+          "text": "A place to stand. People I can trust.",
+          "seconds": 1.8
+        },
+        {
+          "id": "gang_oath_03",
+          "speaker": "MALIK",
+          "text": "Then stand with us. Blue Meridian. We protect our own. But trust goes both ways.",
+          "seconds": 3.64
+        },
+        {
+          "id": "gang_oath_04",
+          "speaker": "ELIAS",
+          "text": "Understood. I am with you.",
+          "seconds": 1.8
+        },
+        {
+          "id": "gang_oath_05",
+          "speaker": "MALIK",
+          "text": "Rafi gives you our mark. After that, get the blade off the yard. Keep it in your cell.",
+          "seconds": 3.91
+        }
+      ]
+    },
+    {
+      "id": "tattoo",
+      "lines": [
+        {
+          "id": "tattoo_01",
+          "speaker": "RAFI",
+          "text": "Give me your arm. First mark always stings. Do not move.",
+          "seconds": 2.55
+        },
+        {
+          "id": "tattoo_02",
+          "speaker": "ELIAS",
+          "text": "I can take it.",
+          "seconds": 1.8
+        },
+        {
+          "id": "tattoo_03",
+          "speaker": "RAFI",
+          "text": "There. Blue Meridian. Go hide that knife before Harrow changes his mind.",
+          "seconds": 3.27
+        }
+      ]
+    },
+    {
+      "id": "stash",
+      "lines": [
+        {
+          "id": "stash_01",
+          "speaker": "ELIAS",
+          "text": "Under the mattress. Out of sight. Nobody touches it but me.",
+          "seconds": 2.68
+        }
+      ]
+    },
+    {
+      "id": "phone_gift",
+      "lines": [
+        {
+          "id": "phone_gift_01",
+          "speaker": "NIKO",
+          "text": "You did what Malik asked. Here. He wants you to have this.",
+          "seconds": 2.64
+        },
+        {
+          "id": "phone_gift_02",
+          "speaker": "ELIAS",
+          "text": "A phone? How did you get it in?",
+          "seconds": 1.8
+        },
+        {
+          "id": "phone_gift_03",
+          "speaker": "NIKO",
+          "text": "Less you know, better you sleep. Keep it quiet. Malik will call.",
+          "seconds": 2.91
+        }
+      ]
+    },
+    {
+      "id": "phone_call",
+      "lines": [
+        {
+          "id": "phone_call_01",
+          "speaker": "MALIK",
+          "text": "Vale. Signal is good. Keep this number to yourself.",
+          "seconds": 2.32
+        },
+        {
+          "id": "phone_call_02",
+          "speaker": "ELIAS",
+          "text": "I am listening.",
+          "seconds": 1.8
+        },
+        {
+          "id": "phone_call_03",
+          "speaker": "MALIK",
+          "text": "Rooks are leaning on our people again. Speak to their man in the yard. Leave the blade in your cell.",
+          "seconds": 4.55
+        }
+      ]
+    },
+    {
+      "id": "rival",
+      "lines": [
+        {
+          "id": "rival_01",
+          "speaker": "IRON ROOKS",
+          "text": "Meridian gave you a new shirt and now you think you own the yard?",
+          "seconds": 2.95
+        },
+        {
+          "id": "rival_02",
+          "speaker": "ELIAS",
+          "text": "Nobody owns it. Leave our people alone.",
+          "seconds": 1.8
+        },
+        {
+          "id": "rival_03",
+          "speaker": "IRON ROOKS",
+          "text": "Come over here and say that.",
+          "seconds": 1.8
+        }
+      ]
+    },
+    {
+      "id": "arrest",
+      "lines": [
+        {
+          "id": "arrest_01",
+          "speaker": "GUARD",
+          "text": "Hands up! All of you. Fighting stops now!",
+          "seconds": 1.86
+        },
+        {
+          "id": "arrest_02",
+          "speaker": "GUARD",
+          "text": "Separate cells. Every one of you. Twenty-four hours in isolation.",
+          "seconds": 2.95
+        },
+        {
+          "id": "arrest_03",
+          "speaker": "ELIAS",
+          "text": "All right. Easy. I am coming.",
+          "seconds": 1.8
+        }
+      ]
+    },
+    {
+      "id": "isolation",
+      "lines": [
+        {
+          "id": "isolation_01",
+          "speaker": "ELIAS",
+          "text": "Twenty-four hours. Nothing to do but close my eyes.",
+          "seconds": 2.32
+        }
+      ]
+    },
+    {
+      "id": "wake",
+      "lines": [
+        {
+          "id": "wake_01",
+          "speaker": "GUARD",
+          "text": "Vale! Get up. Your time is done. You have a visitor.",
+          "seconds": 2.36
+        }
+      ]
+    },
+    {
+      "id": "guard_visit",
+      "lines": [
+        {
+          "id": "guard_visit_01",
+          "speaker": "GUARD",
+          "text": "Your brother is waiting. Come out. Walk with me.",
+          "seconds": 2.18
+        },
+        {
+          "id": "guard_visit_02",
+          "speaker": "ELIAS",
+          "text": "Theo? He never comes here. What happened?",
+          "seconds": 1.86
+        }
+      ]
+    },
+    {
+      "id": "brother_visit",
+      "lines": [
+        {
+          "id": "brother_visit_01",
+          "speaker": "THEO",
+          "text": "Elias... I am sorry. I did not know where else to go.",
+          "seconds": 2.41
+        },
+        {
+          "id": "brother_visit_02",
+          "speaker": "ELIAS",
+          "text": "Hey. Breathe. Tell me what happened.",
+          "seconds": 1.8
+        },
+        {
+          "id": "brother_visit_03",
+          "speaker": "THEO",
+          "text": "They took Dad. The Cinder Syndicate. The same men who put you in here.",
+          "seconds": 3.18
+        },
+        {
+          "id": "brother_visit_04",
+          "speaker": "ELIAS",
+          "text": "Look at me. Was he alive when you last saw him?",
+          "seconds": 2.14
+        },
+        {
+          "id": "brother_visit_05",
+          "speaker": "THEO",
+          "text": "Yes. But they said next week... if we do not pay, they will kill him.",
+          "seconds": 3.14
+        },
+        {
+          "id": "brother_visit_06",
+          "speaker": "ELIAS",
+          "text": "Find somewhere safe. Stay off your phone. I am bringing him home.",
+          "seconds": 2.95
+        },
+        {
+          "id": "brother_visit_07",
+          "speaker": "THEO",
+          "text": "Please. I cannot lose you both.",
+          "seconds": 1.8
+        }
+      ]
+    },
+    {
+      "id": "reflection",
+      "lines": [
+        {
+          "id": "reflection_01",
+          "speaker": "ELIAS",
+          "text": "They framed me. Locked me away. Now they have my father.",
+          "seconds": 2.55
+        },
+        {
+          "id": "reflection_02",
+          "speaker": "ELIAS",
+          "text": "Six days. I need a way out. Then I find him. Then we settle this.",
+          "seconds": 2.95
+        }
+      ]
+    },
+    {
+      "id": "escape_plan",
+      "lines": [
+        {
+          "id": "escape_plan_01",
+          "speaker": "ELIAS",
+          "text": "Malik. The men who framed me took my father. I have six days. I need to get out.",
+          "seconds": 3.64
+        },
+        {
+          "id": "escape_plan_02",
+          "speaker": "MALIK",
+          "text": "Everyone here wants out. Wanting it does not open a door.",
+          "seconds": 2.59
+        },
+        {
+          "id": "escape_plan_03",
+          "speaker": "ELIAS",
+          "text": "Then help me build a way. Get enough people working with us. When I leave, you leave too.",
+          "seconds": 4.05
+        },
+        {
+          "id": "escape_plan_04",
+          "speaker": "MALIK",
+          "text": "Cooperation. Access. The right moment. Bring me enough of those, and you have a partner.",
+          "seconds": 4.0
+        },
+        {
+          "id": "escape_plan_05",
+          "speaker": "ELIAS",
+          "text": "We leave together. Before next week.",
+          "seconds": 1.8
+        },
+        {
+          "id": "escape_plan_06",
+          "speaker": "MALIK",
+          "text": "Sit down. Let us work out who we can trust.",
+          "seconds": 1.95
+        }
+      ]
+    },
+    {
+      "id": "yard_table",
+      "lines": [
+        {
+          "id": "yard_table_01",
+          "speaker": "TOMAS",
+          "text": "Pull up a seat. Card table is for passing time. This one is for listening.",
+          "seconds": 3.36
+        },
+        {
+          "id": "yard_table_02",
+          "speaker": "ELIAS",
+          "text": "What do the guards miss?",
+          "seconds": 1.8
+        },
+        {
+          "id": "yard_table_03",
+          "speaker": "TOMAS",
+          "text": "Things right in front of them. Who talks to who. Who owes who. Learn the people first.",
+          "seconds": 3.91
+        }
+      ]
+    },
+    {
+      "id": "poker_welcome",
+      "lines": [
+        {
+          "id": "poker_welcome_01",
+          "speaker": "SAMIR",
+          "text": "A friendly hand? Five-card draw. Keep what you like. We play for bragging rights.",
+          "seconds": 3.68
+        }
+      ]
+    },
+    {
+      "id": "ambient_tomas",
+      "lines": [
+        {
+          "id": "ambient_tomas_01",
+          "speaker": "TOMAS",
+          "text": "Counts in ten minutes. Plenty of time for another hand.",
+          "seconds": 2.5
+        }
+      ]
+    },
+    {
+      "id": "ambient_samir",
+      "lines": [
+        {
+          "id": "ambient_samir_01",
+          "speaker": "SAMIR",
+          "text": "My cooking is better than my cards. That is not saying much.",
+          "seconds": 2.73
+        }
+      ]
+    },
+    {
+      "id": "ambient_jonah",
+      "lines": [
+        {
+          "id": "ambient_jonah_01",
+          "speaker": "WORKSHOP CONTACT",
+          "text": "Work detail at the next whistle. Do not be late.",
+          "seconds": 2.18
+        }
+      ]
+    },
+    {
+      "id": "ambient_niko",
+      "lines": [
+        {
+          "id": "ambient_niko_01",
+          "speaker": "NIKO",
+          "text": "Keep your voice down. Harrow hears more than you think.",
+          "seconds": 2.5
+        }
+      ]
+    },
+    {
+      "id": "ambient_malik",
+      "lines": [
+        {
+          "id": "ambient_malik_01",
+          "speaker": "MALIK",
+          "text": "Every favor gets remembered. Good and bad.",
+          "seconds": 1.91
+        }
+      ]
+    }
+  ]
+}
