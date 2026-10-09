@@ -1,0 +1,404 @@
+{
+  "revision": "07",
+  "actors": [
+    {
+      "actorName": "Elias Vale",
+      "model": "Male_Adult_16",
+      "role": "prisoner",
+      "height": 1.78,
+      "build": 1.0,
+      "walkSpeed": 0.9,
+      "idlePhase": 0.0
+    },
+    {
+      "actorName": "Niko Serrin",
+      "model": "Male_Adult_07",
+      "role": "inmate",
+      "height": 1.82,
+      "build": 1.0,
+      "walkSpeed": 0.97,
+      "idlePhase": 0.38197
+    },
+    {
+      "actorName": "Malik Reed",
+      "model": "Male_Adult_12",
+      "role": "inmate",
+      "height": 1.88,
+      "build": 1.0,
+      "walkSpeed": 1.04,
+      "idlePhase": 0.76393
+    },
+    {
+      "actorName": "Iron Rooks rival",
+      "model": "Male_Adult_20",
+      "role": "inmate",
+      "height": 1.84,
+      "build": 1.0,
+      "walkSpeed": 1.11,
+      "idlePhase": 0.1459
+    },
+    {
+      "actorName": "Officer Harrow",
+      "model": "Male_Adult_07",
+      "role": "guard",
+      "height": 1.85,
+      "build": 1.0,
+      "walkSpeed": 1.18,
+      "idlePhase": 0.52786
+    },
+    {
+      "actorName": "Theo Vale",
+      "model": "Male_Adult_20",
+      "role": "visitor",
+      "height": 1.73,
+      "build": 1.0,
+      "walkSpeed": 1.25,
+      "idlePhase": 0.90983
+    },
+    {
+      "actorName": "Rafi",
+      "model": "Male_Adult_20",
+      "role": "inmate",
+      "height": 1.7,
+      "build": 1.0,
+      "walkSpeed": 0.9,
+      "idlePhase": 0.2918
+    },
+    {
+      "actorName": "Tomas",
+      "model": "Male_Adult_20",
+      "role": "inmate",
+      "height": 1.81,
+      "build": 1.0,
+      "walkSpeed": 0.97,
+      "idlePhase": 0.67376
+    },
+    {
+      "actorName": "Samir",
+      "model": "Male_Adult_17",
+      "role": "inmate",
+      "height": 1.76,
+      "build": 1.0,
+      "walkSpeed": 1.04,
+      "idlePhase": 0.05573
+    },
+    {
+      "actorName": "Workshop contact",
+      "model": "Male_Adult_20",
+      "role": "inmate",
+      "height": 1.83,
+      "build": 1.0,
+      "walkSpeed": 1.11,
+      "idlePhase": 0.43769
+    },
+    {
+      "actorName": "Luis",
+      "model": "Male_Adult_20",
+      "role": "inmate",
+      "height": 1.72,
+      "build": 0.94,
+      "walkSpeed": 1.18,
+      "idlePhase": 0.81966
+    },
+    {
+      "actorName": "Andre",
+      "model": "Male_Adult_12",
+      "role": "inmate",
+      "height": 1.87,
+      "build": 1.0,
+      "walkSpeed": 1.25,
+      "idlePhase": 0.20163
+    },
+    {
+      "actorName": "Benny",
+      "model": "Male_Adult_20",
+      "role": "inmate",
+      "height": 1.77,
+      "build": 1.18,
+      "walkSpeed": 0.9,
+      "idlePhase": 0.58359
+    },
+    {
+      "actorName": "Yusef",
+      "model": "Male_Adult_17",
+      "role": "inmate",
+      "height": 1.8,
+      "build": 1.0,
+      "walkSpeed": 0.97,
+      "idlePhase": 0.96556
+    },
+    {
+      "actorName": "Leon",
+      "model": "Male_Adult_20",
+      "role": "inmate",
+      "height": 1.86,
+      "build": 1.0,
+      "walkSpeed": 1.04,
+      "idlePhase": 0.34752
+    },
+    {
+      "actorName": "Dario",
+      "model": "Male_Adult_20",
+      "role": "inmate",
+      "height": 1.74,
+      "build": 1.0,
+      "walkSpeed": 1.11,
+      "idlePhase": 0.72949
+    },
+    {
+      "actorName": "Samir table friend",
+      "model": "Male_Adult_17",
+      "role": "inmate",
+      "height": 1.76,
+      "build": 1.0,
+      "walkSpeed": 1.18,
+      "idlePhase": 0.11146
+    },
+    {
+      "actorName": "Moses",
+      "model": "Male_Adult_12",
+      "role": "inmate",
+      "height": 1.84,
+      "build": 1.0,
+      "walkSpeed": 1.25,
+      "idlePhase": 0.49342
+    },
+    {
+      "actorName": "Owen",
+      "model": "Male_Adult_20",
+      "role": "inmate",
+      "height": 1.79,
+      "build": 1.18,
+      "walkSpeed": 0.9,
+      "idlePhase": 0.87539
+    },
+    {
+      "actorName": "Eddie",
+      "model": "Male_Adult_20",
+      "role": "inmate",
+      "height": 1.71,
+      "build": 0.94,
+      "walkSpeed": 0.97,
+      "idlePhase": 0.25735
+    },
+    {
+      "actorName": "Jamal",
+      "model": "Male_Adult_12",
+      "role": "inmate",
+      "height": 1.9,
+      "build": 1.0,
+      "walkSpeed": 1.04,
+      "idlePhase": 0.63932
+    },
+    {
+      "actorName": "Peter",
+      "model": "Male_Adult_20",
+      "role": "inmate",
+      "height": 1.75,
+      "build": 1.18,
+      "walkSpeed": 1.11,
+      "idlePhase": 0.02129
+    },
+    {
+      "actorName": "Officer Mercer",
+      "model": "Male_Adult_07",
+      "role": "guard",
+      "height": 1.89,
+      "build": 1.06,
+      "walkSpeed": 0.97,
+      "idlePhase": 0.18,
+      "ambient": true,
+      "position": {
+        "x": 0,
+        "y": 30.025,
+        "z": -37
+      },
+      "yaw": 0,
+      "route": [
+        {
+          "x": 0,
+          "y": 30.025,
+          "z": -37
+        },
+        {
+          "x": 0,
+          "y": 30.025,
+          "z": 22
+        }
+      ]
+    },
+    {
+      "actorName": "Officer Shaw",
+      "model": "Male_Adult_07",
+      "role": "guard",
+      "height": 1.8,
+      "build": 0.99,
+      "walkSpeed": 0.995,
+      "idlePhase": 0.451,
+      "ambient": true,
+      "position": {
+        "x": 94,
+        "y": 5.045,
+        "z": -65
+      },
+      "yaw": 0,
+      "route": [
+        {
+          "x": 94,
+          "y": 5.045,
+          "z": -65
+        },
+        {
+          "x": 101,
+          "y": 5.045,
+          "z": -65
+        },
+        {
+          "x": 101,
+          "y": 5.045,
+          "z": -60
+        },
+        {
+          "x": 94,
+          "y": 5.045,
+          "z": -60
+        }
+      ]
+    },
+    {
+      "actorName": "Laundry orderly",
+      "model": "Male_Adult_20",
+      "role": "inmate",
+      "height": 1.74,
+      "build": 1.1,
+      "walkSpeed": 1.02,
+      "idlePhase": 0.722,
+      "ambient": true,
+      "position": {
+        "x": -38,
+        "y": 9.34,
+        "z": 112
+      },
+      "yaw": 0,
+      "route": [
+        {
+          "x": -38,
+          "y": 9.34,
+          "z": 112
+        },
+        {
+          "x": -38,
+          "y": 9.34,
+          "z": 137
+        }
+      ]
+    },
+    {
+      "actorName": "Dining orderly",
+      "model": "Male_Adult_12",
+      "role": "inmate",
+      "height": 1.84,
+      "build": 1.03,
+      "walkSpeed": 1.045,
+      "idlePhase": 0.993,
+      "ambient": true,
+      "position": {
+        "x": -3,
+        "y": 30.03,
+        "z": 49
+      },
+      "yaw": 0,
+      "route": [
+        {
+          "x": -3,
+          "y": 30.03,
+          "z": 49
+        },
+        {
+          "x": -3,
+          "y": 30.03,
+          "z": 61
+        }
+      ]
+    },
+    {
+      "actorName": "Workshop machinist",
+      "model": "Male_Adult_17",
+      "role": "inmate",
+      "height": 1.77,
+      "build": 1.04,
+      "walkSpeed": 1.07,
+      "idlePhase": 0.264,
+      "ambient": true,
+      "position": {
+        "x": -45.8,
+        "y": 9.33,
+        "z": 120.65
+      },
+      "yaw": 0,
+      "route": []
+    },
+    {
+      "actorName": "Laundry attendant",
+      "model": "Male_Adult_12",
+      "role": "inmate",
+      "height": 1.86,
+      "build": 0.98,
+      "walkSpeed": 1.095,
+      "idlePhase": 0.535,
+      "ambient": true,
+      "position": {
+        "x": -27.8,
+        "y": 9.33,
+        "z": 131.65
+      },
+      "yaw": 0,
+      "route": []
+    },
+    {
+      "actorName": "Storekeeper",
+      "model": "Male_Adult_20",
+      "role": "inmate",
+      "height": 1.73,
+      "build": 1.14,
+      "walkSpeed": 1.12,
+      "idlePhase": 0.806,
+      "ambient": true,
+      "position": {
+        "x": 70,
+        "y": 5.025,
+        "z": -42
+      },
+      "yaw": 0,
+      "route": [
+        {
+          "x": 70,
+          "y": 5.025,
+          "z": -42
+        },
+        {
+          "x": 70,
+          "y": 5.025,
+          "z": -17
+        }
+      ]
+    },
+    {
+      "actorName": "Dock orderly",
+      "model": "Male_Adult_17",
+      "role": "inmate",
+      "height": 1.81,
+      "build": 0.95,
+      "walkSpeed": 1.145,
+      "idlePhase": 0.077,
+      "ambient": true,
+      "position": {
+        "x": 111,
+        "y": 4.96,
+        "z": -64
+      },
+      "yaw": 270,
+      "route": []
+    }
+  ]
+}
