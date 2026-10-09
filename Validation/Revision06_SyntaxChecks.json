@@ -1,0 +1,6 @@
+{
+  "status": "PASS",
+  "source_files": 50,
+  "scope": "Portable Mono with temporary Unity API scaffolds; syntax/type consistency only, not Unity assemblies or Editor import.",
+  "exit_code": 0
+}

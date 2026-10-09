@@ -1,0 +1,21 @@
+{
+  "status": "PASS",
+  "checks": [
+    {
+      "suite": "Weapons",
+      "exit_code": 0,
+      "result": "PASS: 254 ammunition, cooldown, reload, interruption and pause assertions."
+    },
+    {
+      "suite": "Story",
+      "exit_code": 0,
+      "result": "PASS: 84 story gate, failure, timing and reward assertions."
+    },
+    {
+      "suite": "Poker",
+      "exit_code": 0,
+      "result": "PASS: 1171 assertions against shipping PrisonPokerRules.cs."
+    }
+  ],
+  "scope": "Actual Unity-independent shipping classes compiled and executed with Mono. Unity import and Play Mode are unverified."
+}

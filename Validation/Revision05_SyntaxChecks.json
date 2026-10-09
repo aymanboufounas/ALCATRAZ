@@ -1,0 +1,6 @@
+{
+  "status": "PASS",
+  "source_files": 48,
+  "warnings": "",
+  "scope": "Type/syntax check against temporary Unity API scaffolds. Not Unity assembly compilation, Editor import or Play Mode."
+}

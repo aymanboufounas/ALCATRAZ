@@ -1,0 +1,142 @@
+[
+  {
+    "file": "concrete_floor_worn_001_Diffuse.jpg",
+    "source": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/2k/concrete_floor_worn_001/concrete_floor_worn_001_diff_2k.jpg",
+    "md5": "6a3645f19f2ac4b7f60f43419c5d09ec"
+  },
+  {
+    "file": "concrete_floor_worn_001_nor_gl.jpg",
+    "source": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/2k/concrete_floor_worn_001/concrete_floor_worn_001_nor_gl_2k.jpg",
+    "md5": "210fbc9fe40492177e79fdb4afda268e"
+  },
+  {
+    "file": "concrete_floor_worn_001_Rough.jpg",
+    "source": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/2k/concrete_floor_worn_001/concrete_floor_worn_001_rough_2k.jpg",
+    "md5": "169cac76d6499d7d70d1dbb237fcc976"
+  },
+  {
+    "file": "concrete_floor_worn_001_AO.jpg",
+    "source": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/2k/concrete_floor_worn_001/concrete_floor_worn_001_ao_2k.jpg",
+    "md5": "2515023779ca2c7a1e55721001859ecf"
+  },
+  {
+    "file": "brushed_concrete_Diffuse.jpg",
+    "source": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/2k/brushed_concrete/brushed_concrete_diff_2k.jpg",
+    "md5": "341c593c794bf18b0a49c542f6e381b7"
+  },
+  {
+    "file": "brushed_concrete_nor_gl.jpg",
+    "source": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/2k/brushed_concrete/brushed_concrete_nor_gl_2k.jpg",
+    "md5": "ca0204e32c2f2afad5f4bbe8c6b436ed"
+  },
+  {
+    "file": "brushed_concrete_Rough.jpg",
+    "source": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/2k/brushed_concrete/brushed_concrete_rough_2k.jpg",
+    "md5": "7d9994bceb82c437a753cedfba55c434"
+  },
+  {
+    "file": "brushed_concrete_AO.jpg",
+    "source": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/2k/brushed_concrete/brushed_concrete_ao_2k.jpg",
+    "md5": "46bb4144797a33b65f250749cdf899eb"
+  },
+  {
+    "file": "forest_floor_Diffuse.jpg",
+    "source": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/2k/forest_floor/forest_floor_diff_2k.jpg",
+    "md5": "a93f845fca105e6cabc82853161ff7b6"
+  },
+  {
+    "file": "forest_floor_nor_gl.jpg",
+    "source": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/2k/forest_floor/forest_floor_nor_gl_2k.jpg",
+    "md5": "41e49ec58f74a749e325f59290266e9d"
+  },
+  {
+    "file": "forest_floor_Rough.jpg",
+    "source": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/2k/forest_floor/forest_floor_rough_2k.jpg",
+    "md5": "4d8070c33b0daf195fd2a054faa2a491"
+  },
+  {
+    "file": "forest_floor_AO.jpg",
+    "source": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/2k/forest_floor/forest_floor_ao_2k.jpg",
+    "md5": "387e168f68b204dd627df124c048b196"
+  },
+  {
+    "file": "wood_planks_Diffuse.jpg",
+    "source": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/2k/wood_planks/wood_planks_diff_2k.jpg",
+    "md5": "29f2d08d585433fb54034a0e8fa79adc"
+  },
+  {
+    "file": "wood_planks_nor_gl.jpg",
+    "source": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/2k/wood_planks/wood_planks_nor_gl_2k.jpg",
+    "md5": "61c0a752deaa8fda789a31e4fc1427d8"
+  },
+  {
+    "file": "wood_planks_Rough.jpg",
+    "source": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/2k/wood_planks/wood_planks_rough_2k.jpg",
+    "md5": "461754cb0181e562be384e2acc2fc8d2"
+  },
+  {
+    "file": "wood_planks_AO.jpg",
+    "source": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/2k/wood_planks/wood_planks_ao_2k.jpg",
+    "md5": "c507273c6dbf85892125043746bb2c1e"
+  },
+  {
+    "file": "seaside_rock_Diffuse.jpg",
+    "source": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/2k/seaside_rock/seaside_rock_diff_2k.jpg",
+    "md5": "f70bd6084c9b634daaea40b0cee34c20"
+  },
+  {
+    "file": "seaside_rock_nor_gl.jpg",
+    "source": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/2k/seaside_rock/seaside_rock_nor_gl_2k.jpg",
+    "md5": "28f8bd7b913f55b92d333217d02e8d1a"
+  },
+  {
+    "file": "seaside_rock_Rough.jpg",
+    "source": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/2k/seaside_rock/seaside_rock_rough_2k.jpg",
+    "md5": "08323a44503ccc4c1b922396455881cc"
+  },
+  {
+    "file": "seaside_rock_AO.jpg",
+    "source": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/2k/seaside_rock/seaside_rock_ao_2k.jpg",
+    "md5": "010422a775bd3ca24e3f419e58d772b8"
+  },
+  {
+    "file": "brick_wall_001_Diffuse.jpg",
+    "source": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/2k/brick_wall_001/brick_wall_001_diffuse_2k.jpg",
+    "md5": "0f478f67d252a1fa7b351460a19965bd"
+  },
+  {
+    "file": "brick_wall_001_nor_gl.jpg",
+    "source": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/2k/brick_wall_001/brick_wall_001_nor_gl_2k.jpg",
+    "md5": "b3c77c1e0dbbe0788d11b993296bb822"
+  },
+  {
+    "file": "brick_wall_001_Rough.jpg",
+    "source": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/2k/brick_wall_001/brick_wall_001_rough_2k.jpg",
+    "md5": "3218b14608165fb4903dcca0e127c005"
+  },
+  {
+    "file": "brick_wall_001_AO.jpg",
+    "source": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/2k/brick_wall_001/brick_wall_001_ao_2k.jpg",
+    "md5": "bde8859a1e9febee40b6316bf641181b"
+  },
+  {
+    "file": "african-male-young.target",
+    "source": "https://raw.githubusercontent.com/makehumancommunity/makehuman/master/makehuman/data/targets/macrodetails/african-male-young.target",
+    "md5": null
+  },
+  {
+    "file": "asian-male-young.target",
+    "source": "https://raw.githubusercontent.com/makehumancommunity/makehuman/master/makehuman/data/targets/macrodetails/asian-male-young.target",
+    "md5": null
+  },
+  {
+    "file": "caucasian-male-young.target",
+    "source": "https://raw.githubusercontent.com/makehumancommunity/makehuman/master/makehuman/data/targets/macrodetails/caucasian-male-young.target",
+    "md5": null
+  },
+  {
+    "file": "skins02_cc0.zip",
+    "source": "https://files.makehumancommunity.org/asset_packs/skins02/skins02_cc0.zip",
+    "md5": null
+  }
+]

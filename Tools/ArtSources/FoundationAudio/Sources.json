@@ -1,0 +1,26 @@
+[
+  {
+    "name": "Gunshots.zip",
+    "url": "https://opengameart.org/sites/default/files/sounds.zip",
+    "sha256": "5b3960083a94e18ee47bc84376615a476debc884b18f25b93ea4b6ab3f278e4f",
+    "size": 5504243
+  },
+  {
+    "name": "KenneyImpact.zip",
+    "url": "https://kenney.nl/media/pages/assets/impact-sounds/87b4ddecda-1677589768/kenney_impact-sounds.zip",
+    "sha256": "029d734af1582474edf3a694d1b0cebc97c1c152f2f39fa34d4c2bafc5de77f8",
+    "size": 800850
+  },
+  {
+    "name": "PistolReload.wav",
+    "url": "https://opengameart.org/sites/default/files/gunreload1.wav",
+    "sha256": "685cac6a184e3cc3ec09a25b6ddb1d6feffd86d469778f339aa423d384035c50",
+    "size": 278572
+  },
+  {
+    "name": "RifleReload.wav",
+    "url": "https://opengameart.org/sites/default/files/assaultriflereload1_0.wav",
+    "sha256": "efb2d724d634eabe6ba8d3065686abca848bb7497d4d43a5e4aed5e5ea23016f",
+    "size": 274476
+  }
+]

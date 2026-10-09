@@ -1,0 +1,6 @@
+{
+  "status": "PASS",
+  "files_parsed": 51,
+  "errors": [],
+  "scope": "C# grammar parsing with tree-sitter; not Unity compilation or type checking."
+}

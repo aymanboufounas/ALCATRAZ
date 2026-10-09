@@ -1,0 +1,37 @@
+ALCATRAZ ESCAPE — MAP & CHARACTERS / REVISION 08 / 0.8.0
+
+1. Download and extract the repository ZIP, or clone the repository.
+2. Unity Hub > Add project from disk > select the folder containing Assets,
+   Packages and ProjectSettings.
+3. Open with Unity 6000.0.62f1 and allow package resolution and FBX import.
+4. Unity menu > Alcatraz > Open Island.
+5. Press Play, then use the title menu to enter exploration.
+6. For the story: Alcatraz > Open Chapter 01 > Play > New game.
+
+If the character controller has not generated, use Alcatraz > Prepare Characters.
+Main scenes:
+  Assets/Game/Scenes/SC_AlcatrazIsland.unity
+  Assets/Game/Scenes/SC_AlcatrazChapter01.unity
+
+WASD: move. Mouse: camera. Shift: run. Alt: slow walk.
+Ctrl: crouch. Space: jump. E: interact. Q: switch shoulder.
+Hold M: island map. Esc: pause.
+Chapter dialogue / poker / mission controls: README_Chapter01_Revision04.md
+
+New: coastal service trail, pale rock shoreline, coastal scrub, facade details,
+marine sky and water, Elias's dark hair and faded uniform, and Harrow's graying
+hair and navy uniform. Existing chapter missions and varied NPCs are retained.
+The main player remains Elias Vale, a prisoner. Guards are separate NPCs.
+
+This is a Unity SOURCE PROJECT, not a Windows executable.
+Unity import, C# type resolution, shader compilation and Play Mode have not
+been run here. Build through Alcatraz > Build Windows x64 after installing
+Windows Build Support and completing the included Play Mode checklist.
+The approved concept is a visual target; this is a prototype adaptation using
+existing rigs and original geometry. Source previews are offline renders.
+Map dimensions and interiors are adapted for gameplay.
+The chapter ends at the escape agreement; the escape itself is not finished.
+
+Updated notes: Documentation/Revision08_ApprovedConcept.md
+Validation: Validation/Revision08_Release.json
+Unity checks to run: Validation/Revision08_PlayMode_Checklist.md

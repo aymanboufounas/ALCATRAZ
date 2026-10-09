@@ -1,0 +1,34 @@
+PASS: 84 story gate, failure, timing and reward assertions.
+PASS: 1171 assertions against shipping PrisonPokerRules.cs.
+PASS: 33 runtime/editor C# files compile with temporary Unity API stubs.
+
+PASS: native project integrity and all chapter local references.
+PASS: 38 chapter asset/story binding and coarse navigation checks.
+PASS: 244 revision asset/binding/audio/image checks.
+Every packaged asset PNG and the 13 final geometry previews decodes fully.
+All 68 neural voices match production hashes and validated PCM lengths/levels.
+22 actor rigs bind 23 bones; five walking routes, six seated actors, both tables.
+
+Revision 04 / 0.4.1 makes Elias visibly a prisoner and expands the connected
+prison with 32 cells, two upper galleries, 21 stairs, canteen, showers and workshop.
+PASS: 33 prisoner/layout/static-route/preservation checks.
+104 approved anatomy, movement, footsteps, dialogue and story files retain
+the SHA256 hashes of the supplied Revision 03 archive.
+Five static routes through upper galleries and facility entrances are clear
+of the authored box colliders in a conservative capsule/AABB approximation.
+See Revision04_PrisonChecks.json and Revision04_PreservedFiles.json.
+
+PASS: 516 art checks covering source checksums, import settings, collar fit
+and 405 serialized box-collider dimensions. These are static checks.
+Detailed faces/hands, 2K skin/scanned surfaces, 68 cliff outcrops, 34 trees,
+the service courtyard and sky/water shaders remain included.
+See Revision03_ArtChecks.json, regenerated for the current archive.
+
+Temporary Unity API stubs are syntax/type scaffolding only and are not packaged.
+Standalone tests run the actual shipping PrisonStoryState.cs and PrisonPokerRules.cs.
+They do not execute MonoBehaviours or reproduce Unity physics or rendering.
+
+NOT RUN: Unity Editor import, compilation against Unity assemblies, Play Mode,
+URP shader compilation, live skin deformation/collision/audio/input, Windows
+player build, lightmap/occlusion bake or performance measurement.
+Use Chapter01_PlayMode_Checklist.md for these checks in Unity.

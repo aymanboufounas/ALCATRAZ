@@ -1,0 +1,21 @@
+{
+  "revision": "08",
+  "version": "0.8.0",
+  "unity": "6000.0.62f1",
+  "repository": "https://github.com/aymanboufounas/ALCATRAZ",
+  "checks": {
+    "Revision08_AlcatrazChecks.json": "PASS",
+    "Revision08_SyntaxChecks.json": "PASS",
+    "OfflineValidation.json": "PASS"
+  },
+  "map_checks": 209,
+  "csharp_files_parsed": 52,
+  "unverified": [
+    "Unity import and C# type resolution",
+    "URP shader compilation",
+    "Play Mode",
+    "Windows executable",
+    "Performance"
+  ],
+  "preview_scope": "Offline geometry and texture renders; concept board is a separate visual target"
+}

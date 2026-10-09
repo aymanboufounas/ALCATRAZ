@@ -1,0 +1,20 @@
+DESERT SHIFT — ASSET PROVENANCE
+
+Original work authored for this project:
+- Python geometry authoring source and native Unity mesh data.
+- Scene arrangement, props, original fictional vehicle and architecture.
+- Procedural character, weights, pose data and controller.
+- C# gameplay, camera integration and editor utilities.
+- Procedural material textures and fictional sign designs.
+- Synthesized sound effects and ambience.
+
+The project requests official Unity packages via Package Manager. Those
+packages and the Unity Editor retain their respective licenses and are not
+bundled into this ZIP.
+
+Signs use rendered DejaVu Sans lettering; font binaries are not bundled.
+The reference text supplied by the user was used as the project specification.
+No external RV reference image was present in this attachment set.
+
+Previews are geometry QA renders from a separate OpenGL renderer. They must
+not be presented as verified Unity captures or proof of game performance.

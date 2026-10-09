@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!129 &1
+PlayerSettings:
+  m_ObjectHideFlags: 0
+  serializedVersion: 28
+  companyName: Desert Shift Studio
+  productName: The Silent Blueprint - Alcatraz Escape
+  bundleVersion: 0.8.0
+  defaultScreenWidth: 1920
+  defaultScreenHeight: 1080
+  defaultIsNativeResolution: 1
+  runInBackground: 0
+  resizableWindow: 1
+  fullscreenMode: 3
+  usePlayerLog: 1
+  colorSpace: 1
+  activeInputHandler: 1
+  applicationIdentifier:
+    Standalone: com.desertshift.game
+  scriptingBackend:
+    Standalone: 0
+  apiCompatibilityLevelPerPlatform:
+    Standalone: 6
+  managedStrippingLevel:
+    Standalone: 1
+  allowUnsafeCode: 0
+  stripEngineCode: 1
+  useDeterministicCompilation: 1

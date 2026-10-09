@@ -1,0 +1,104 @@
+using UnityEngine;
+using UnityEngine.InputSystem;
+using DesertShift.Player;
+using Blackstone.Story;
+
+namespace Blackstone.Alcatraz
+{
+    // A single world coordinate system is used by map art, routes and checkpoints.
+    [DefaultExecutionOrder(-600)]
+    public sealed class AlcatrazMap : MonoBehaviour
+    {
+        public float baseElevation=30;
+        PlayerMovement player;
+        PrisonStoryDirector story;
+        Texture2D image;
+        GUIStyle label, heading;
+        Vector3 safePosition;
+        bool validSafePosition;
+        public const string CheckpointFile="alcatraz-chapter01.json";
+        static readonly string[] Names={"Cellhouse","Recreation Yard","Water Tower","Lighthouse",
+            "Warden's House","New Industries","Model Industries","Power House","Storehouse",
+            "Barracks","Parade Ground","Sally Port","Dock"};
+        static readonly Vector2[] Places={new Vector2(0,1),new Vector2(-48,46),new Vector2(-57,80),
+            new Vector2(3,-72),new Vector2(26,-69),new Vector2(-38,122),new Vector2(-16,157),
+            new Vector2(62,113),new Vector2(70,-30),new Vector2(65,-91),new Vector2(-6,-123),
+            new Vector2(50,-100),new Vector2(105,-63)};
+        void Start()
+        {
+            player=FindFirstObjectByType<PlayerMovement>();story=FindFirstObjectByType<PrisonStoryDirector>();
+            image=Resources.Load<Texture2D>("Alcatraz/IslandMap");
+            if(player!=null){safePosition=player.transform.position;validSafePosition=true;}
+        }
+        void LateUpdate()
+        {
+            if(player==null||Time.deltaTime<=0)return;
+            if(player.Grounded&&player.transform.position.y>3)
+            {safePosition=player.transform.position;validSafePosition=true;}
+            // The current chapter has no swimming. Water does not silently trap the player.
+            if(player.transform.position.y<1.2f&&validSafePosition)player.Teleport(safePosition);
+        }
+        void Styles()
+        {
+            if(label!=null)return;
+            label=new GUIStyle(GUI.skin.label){fontSize=13,alignment=TextAnchor.MiddleCenter,wordWrap=true};
+            heading=new GUIStyle(label){fontSize=18,fontStyle=FontStyle.Bold};
+        }
+        public static Vector2 Project(Rect bounds,Vector3 position)
+        {
+            return new Vector2(bounds.x+Mathf.InverseLerp(-130,130,position.x)*bounds.width,
+                bounds.y+(1-Mathf.InverseLerp(-200,190,position.z))*bounds.height);
+        }
+        static void Panel(Rect rect,Color color)
+        {var before=GUI.color;GUI.color=color;GUI.DrawTexture(rect,Texture2D.whiteTexture);GUI.color=before;}
+        public bool IsInterior(Vector3 position)
+        {
+            return Room(position,0,30,0,53,11,87)||Room(position,0,30,55.5f,44,7,21)
+                ||Room(position,12,30,-51,20,5,11)||Room(position,-38,9.3f,122,29,9,42)
+                ||Room(position,-16,9.3f,157,28,10,18)||Room(position,62,7.3f,113,28,9,34)
+                ||Room(position,70,5,-30,28,7,39)||Room(position,65,5,-91,32,12,39);
+        }
+        static bool Room(Vector3 p,float x,float y,float z,float width,float height,float depth)
+        {return Mathf.Abs(p.x-x)<width/2&&Mathf.Abs(p.z-z)<depth/2&&p.y>y-.3f&&p.y<y+height;}
+        public void DrawMap(Rect bounds,Vector3 position,Transform objective,bool names)
+        {
+            Styles();Panel(bounds,new Color(.06f,.11f,.13f,.94f));
+            if(image!=null)GUI.DrawTexture(bounds,image);
+            if(names)
+            {
+                for(int i=0;i<Names.Length;i++)
+                {
+                    var p=Project(bounds,new Vector3(Places[i].x,0,Places[i].y));
+                    Panel(new Rect(p.x-49,p.y-10,98,20),new Color(.02f,.03f,.04f,.87f));
+                    GUI.Label(new Rect(p.x-49,p.y-10,98,20),Names[i],label);
+                }
+            }
+            Dot(bounds,position,Color.white,7);
+            if(objective!=null)Dot(bounds,objective.position,new Color(.97f,.77f,.37f),9);
+            GUI.Label(new Rect(bounds.x+8,bounds.y+5,22,25),"N",heading);
+        }
+        static void Dot(Rect bounds,Vector3 point,Color color,float size)
+        {var p=Project(bounds,point);Panel(new Rect(p.x-size/2,p.y-size/2,size,size),color);}
+        void OnGUI()
+        {
+            if(player==null)return;
+            var input=player.GetComponent<PlayerInputHandler>();
+            if(input==null||!input.IsCaptured||input.GameplayBlocked)return;
+            Styles();var before=GUI.matrix;
+            GUI.matrix=Matrix4x4.TRS(Vector3.zero,Quaternion.identity,new Vector3(Screen.width/1600f,Screen.height/900f,1));
+            bool large=Keyboard.current!=null&&Keyboard.current.mKey.isPressed;
+            if(large)
+            {
+                Panel(new Rect(0,0,1600,900),new Color(.015f,.024f,.03f,.94f));
+                GUI.Label(new Rect(595,24,410,36),"ALCATRAZ ISLAND",heading);
+                DrawMap(new Rect(533,74,534,780),player.transform.position,story!=null?story.ObjectiveTarget:null,true);
+            }
+            else if(story==null||!story.enabled)
+            {
+                DrawMap(new Rect(26,590,172,258),player.transform.position,null,false);
+                GUI.Label(new Rect(25,850,215,28),"ALCATRAZ  ·  HOLD M FOR MAP",label);
+            }
+            GUI.matrix=before;
+        }
+    }
+}
