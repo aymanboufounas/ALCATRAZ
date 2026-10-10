@@ -1,6 +1,5 @@
 using System;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using DesertShift.Player;
 using Blackstone.Foundation;
 
@@ -14,6 +13,9 @@ namespace Blackstone.Supplied
         public Transform ChapterGate { get; private set; }
         public Transform Helipad { get; private set; }
         public Transform CoastalHouse { get; private set; }
+        public bool InsidePrison { get; private set; }
+        public Transform Objective=>InsidePrison?interior.Exit:ChapterGate;
+        SuppliedPrisonInterior interior;
         public const float MapRootX=-63,MapRootY=45,MapRootZ=12;
         public static readonly Vector3 SpawnXZ=new Vector3(-147,0,6);
         public static readonly Vector3 HelipadXZ=new Vector3(-151,0,-5);
@@ -27,12 +29,14 @@ namespace Blackstone.Supplied
             {
                 var island=SuppliedModel.Create("Island",transform);island.transform.localPosition=new Vector3(MapRootX,MapRootY,MapRootZ);
                 var shader=Shader.Find("Universal Render Pipeline/Lit");if(shader==null)throw new InvalidOperationException("URP Lit shader is unavailable.");
-                water=new Material(shader){color=new Color(.065f,.20f,.25f)};water.SetFloat("_Smoothness",.78f);water.SetFloat("_Metallic",.1f);
+                var bayWater=Resources.Load<Material>("AlcatrazSupplied/Island/CoastalWater");
+                if(bayWater==null)throw new InvalidOperationException("The coastal water material is missing from the updated project.");
+                water=new Material(bayWater);
                 deck=new Material(shader){color=new Color(.48f,.43f,.34f)};deck.SetFloat("_Smoothness",.12f);
                 Cube("Pacific Ocean",new Vector3(0,-.65f,0),new Vector3(4000,1,4000),water,false);
                 Physics.SyncTransforms();
                 Vector3 gate=Ground(new Vector3(-113.33f,0,22.5f));
-                ChapterGate=new GameObject("Cellhouse entrance / Chapter 01").transform;ChapterGate.SetParent(transform);ChapterGate.position=gate;
+                ChapterGate=new GameObject("Cellhouse entrance").transform;ChapterGate.SetParent(transform);ChapterGate.position=gate;
                 Vector3 guardPosition=Ground(new Vector3(-118,0,21));
                 var guard=SuppliedModel.Create("Police",transform);guard.transform.rotation=Quaternion.Euler(0,180,0);SuppliedModel.SizeAndGround(guard,1.82f,guardPosition);
                 var guardBounds=SuppliedModel.Bounds(guard);
@@ -66,6 +70,7 @@ namespace Blackstone.Supplied
                 CoastalHouse=new GameObject("Coastal house dock").transform;CoastalHouse.SetParent(transform);CoastalHouse.position=new Vector3(-184,2.08f,148);
                 Cube("House dock platform",new Vector3(-165,1.85f,162),new Vector3(42,.3f,34),deck,true);
                 Vector3 shore=Ground(new Vector3(-173,0,80));BuildPier(shore+Vector3.up*.15f,new Vector3(-165,2,147));
+                interior=gameObject.AddComponent<SuppliedPrisonInterior>();interior.Create();Physics.SyncTransforms();
                 Status="Ready";Ready=true;
             }
             catch(Exception e){Status=e.Message;Debug.LogError("Alcatraz supplied world: "+Status);}
@@ -84,11 +89,13 @@ namespace Blackstone.Supplied
             return hit.point;
         }
         public void VisitCellhouse()
-        {Travel(Ground(new Vector3(-107,0,23))+Vector3.up*.12f,250);}
+        {InsidePrison=false;Travel(Ground(new Vector3(-107,0,23))+Vector3.up*.12f,250);}
         public void VisitHelipad()
-        {Travel(safe,200);}
+        {InsidePrison=false;Travel(safe,200);}
         public void VisitCoastalHouse()
-        {Travel(CoastalHouse.position,0);}
+        {InsidePrison=false;Travel(CoastalHouse.position,0);}
+        public void EnterCellhouse()
+        {if(!Ready)return;InsidePrison=true;Travel(SuppliedPrisonInterior.Offset+SuppliedPrisonInterior.EntryLocal,0);}
         void Travel(Vector3 position,float yaw)
         {
             if(!Ready||player==null)return;
@@ -99,8 +106,15 @@ namespace Blackstone.Supplied
         {
             if(!Ready||player==null||input==null||!input.CanControl)return;
             // AlcatrazMap owns ledge protection and recovery for both island layouts.
-            if(ChapterGate!=null&&Vector3.Distance(player.transform.position,ChapterGate.position)<3.4f&&input.InteractPressed)
-            {Time.timeScale=1;SceneManager.LoadScene("SC_AlcatrazChapter01");}
+            if(InsidePrison)
+            {
+                // Walking across the exit returns safely, too.
+                Vector3 local=SuppliedPrisonInterior.Local(player.transform.position);
+                if(local.z < -42.8f || (Vector3.Distance(player.transform.position,interior.Exit.position)<3.4f&&input.InteractPressed))
+                    VisitCellhouse();
+            }
+            else if(ChapterGate!=null&&Vector3.Distance(player.transform.position,ChapterGate.position)<3.4f&&input.InteractPressed)
+                EnterCellhouse();
         }
         static Transform Anchor(string name,Transform parent,Vector3 position)
         {var node=new GameObject(name).transform;node.SetParent(parent);node.localRotation=Quaternion.identity;node.position=position;return node;}

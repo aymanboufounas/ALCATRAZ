@@ -14,6 +14,9 @@ namespace Blackstone.Alcatraz
         PlayerMovement player;
         PrisonStoryDirector story;
         Texture2D image;
+        Texture2D prisonImage;
+        Blackstone.Supplied.SuppliedIslandWorld suppliedWorld;
+        public bool SuppliedExterior=>suppliedLayout&&(suppliedWorld==null||!suppliedWorld.InsidePrison);
         GUIStyle label, heading;
         Vector3 safePosition;
         bool validSafePosition;
@@ -35,6 +38,8 @@ namespace Blackstone.Alcatraz
         {
             player=FindFirstObjectByType<PlayerMovement>();story=FindFirstObjectByType<PrisonStoryDirector>();
             image=Resources.Load<Texture2D>(suppliedLayout?"AlcatrazSupplied/Island/Minimap":"Alcatraz/IslandMap");
+            suppliedWorld=GetComponent<Blackstone.Supplied.SuppliedIslandWorld>();
+            prisonImage=Resources.Load<Texture2D>("AlcatrazSupplied/Cellhouse/Floorplan");
             if(player!=null)
             {
                 safePosition=player.transform.position;validSafePosition=true;
@@ -48,8 +53,10 @@ namespace Blackstone.Alcatraz
             if(player.Grounded&&position.y>1.5f&&SafeFooting(position))
             {safePosition=position;validSafePosition=true;}
             if(!validSafePosition)return;
-            bool outside=Mathf.Abs(position.x)>(suppliedLayout?350:135)
-                ||Mathf.Abs(position.z)>(suppliedLayout?225:220);
+            bool prison=suppliedWorld!=null&&suppliedWorld.InsidePrison;
+            Vector3 local=prison?Blackstone.Supplied.SuppliedPrisonInterior.Local(position):position;
+            bool outside=prison?(Mathf.Abs(local.x)>27.4f||local.z>66.8f||local.z<-43.4f||local.y<29.6f)
+                :Mathf.Abs(position.x)>(suppliedLayout?350:135)||Mathf.Abs(position.z)>(suppliedLayout?225:220);
             // Recover before the falling camera reaches the underside of the island.
             // Ordinary jumps, stairs and drops onto a nearby floor remain available.
             bool unsupportedFall=player.VerticalSpeed < -3 && position.y<safePosition.y-1.25f
@@ -85,7 +92,7 @@ namespace Blackstone.Alcatraz
         {var before=GUI.color;GUI.color=color;GUI.DrawTexture(rect,Texture2D.whiteTexture);GUI.color=before;}
         public bool IsInterior(Vector3 position)
         {
-            if(suppliedLayout)return false;
+            if(suppliedLayout)return suppliedWorld!=null&&suppliedWorld.InsidePrison;
             return Room(position,0,30,0,53,11,87)||Room(position,0,30,55.5f,44,7,21)
                 ||Room(position,12,30,-51,20,5,11)||Room(position,-38,9.3f,122,29,9,42)
                 ||Room(position,-16,9.3f,157,28,10,18)||Room(position,62,7.3f,113,28,9,34)
@@ -96,7 +103,8 @@ namespace Blackstone.Alcatraz
         public void DrawMap(Rect bounds,Vector3 position,Transform objective,bool names)
         {
             Styles();Panel(bounds,new Color(.06f,.11f,.13f,.94f));
-            if(image!=null)GUI.DrawTexture(bounds,image);
+            var art=suppliedWorld!=null&&suppliedWorld.InsidePrison?prisonImage:image;
+            if(art!=null)GUI.DrawTexture(bounds,art);
             if(names&&!suppliedLayout)
             {
                 for(int i=0;i<Names.Length;i++)
@@ -108,7 +116,7 @@ namespace Blackstone.Alcatraz
             }
             Dot(bounds,position,Color.white,7);
             if(objective!=null)Dot(bounds,objective.position,new Color(.97f,.77f,.37f),9);
-            if(suppliedLayout)
+            if(SuppliedExterior)
             {
                 var world=GetComponent<Blackstone.Supplied.SuppliedIslandWorld>();
                 if(world!=null)
@@ -134,6 +142,12 @@ namespace Blackstone.Alcatraz
         Vector2 Locate(Rect bounds,Vector3 point)
         {
             if(!suppliedLayout)return Project(bounds,point);
+            if(suppliedWorld!=null&&suppliedWorld.InsidePrison)
+            {
+                Vector3 local=Blackstone.Supplied.SuppliedPrisonInterior.Local(point);
+                return new Vector2(bounds.x+Mathf.InverseLerp(-28,28,local.x)*bounds.width,
+                    bounds.y+(1-Mathf.InverseLerp(-45,68,local.z))*bounds.height);
+            }
             // The top-down source image has the glTF X axis to the right.
             return new Vector2(bounds.x+(1-Mathf.InverseLerp(-340,340,point.x))*bounds.width,
                 bounds.y+Mathf.InverseLerp(-225,225,point.z)*bounds.height);
@@ -152,12 +166,13 @@ namespace Blackstone.Alcatraz
             {
                 Panel(new Rect(0,0,1600,900),new Color(.015f,.024f,.03f,.94f));
                 GUI.Label(new Rect(595,24,410,36),"ALCATRAZ ISLAND",heading);
-                DrawMap(suppliedLayout?new Rect(310,115,975,650):new Rect(533,74,534,780),player.transform.position,story!=null?story.ObjectiveTarget:null,true);
+                DrawMap(SuppliedExterior?new Rect(310,115,975,650):new Rect(533,74,534,780),player.transform.position,
+                    suppliedWorld!=null?suppliedWorld.Objective:story!=null?story.ObjectiveTarget:null,true);
             }
             else if(story==null||!story.enabled)
             {
                 var world=FindFirstObjectByType<Blackstone.Supplied.SuppliedIslandWorld>();
-                DrawMap(suppliedLayout?new Rect(26,690,240,160):new Rect(26,590,172,258),player.transform.position,world!=null?world.ChapterGate:null,false);
+                DrawMap(SuppliedExterior?new Rect(26,690,240,160):new Rect(26,590,172,258),player.transform.position,world!=null?world.Objective:null,false);
                 GUI.Label(new Rect(25,850,215,28),"ALCATRAZ  ·  HOLD M FOR MAP",label);
             }
             GUI.matrix=before;

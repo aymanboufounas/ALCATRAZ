@@ -1,0 +1,143 @@
+{
+  "status": "PASS",
+  "checks": 59,
+  "errors": [],
+  "routes": {
+    "Entry to Broadway": {
+      "samples": 534,
+      "unsupported": 0,
+      "obstructions": []
+    },
+    "B04 cell entrance": {
+      "samples": 36,
+      "unsupported": 0,
+      "obstructions": []
+    },
+    "Dining hall": {
+      "samples": 268,
+      "unsupported": 0,
+      "obstructions": []
+    },
+    "First stair": {
+      "samples": 51,
+      "unsupported": 0,
+      "obstructions": []
+    },
+    "Second stair": {
+      "samples": 51,
+      "unsupported": 0,
+      "obstructions": []
+    },
+    "Guard patrol": {
+      "samples": 417,
+      "unsupported": 0,
+      "obstructions": []
+    },
+    "Samir patrol": {
+      "samples": 267,
+      "unsupported": 0,
+      "obstructions": []
+    },
+    "Malik patrol": {
+      "samples": 142,
+      "unsupported": 0,
+      "obstructions": []
+    },
+    "Tomas station": {
+      "samples": 2,
+      "unsupported": 0,
+      "obstructions": []
+    },
+    "Dining orderly station": {
+      "samples": 2,
+      "unsupported": 0,
+      "obstructions": []
+    },
+    "Luis station": {
+      "samples": 2,
+      "unsupported": 0,
+      "obstructions": []
+    },
+    "Tier 2 gallery -22.04": {
+      "samples": 729,
+      "unsupported": 0,
+      "obstructions": []
+    },
+    "Tier 2 gallery -13.96": {
+      "samples": 662,
+      "unsupported": 0,
+      "obstructions": []
+    },
+    "Tier 2 gallery -10.04": {
+      "samples": 629,
+      "unsupported": 0,
+      "obstructions": []
+    },
+    "Tier 2 gallery -1.96": {
+      "samples": 562,
+      "unsupported": 0,
+      "obstructions": []
+    },
+    "Tier 2 gallery 1.96": {
+      "samples": 562,
+      "unsupported": 0,
+      "obstructions": []
+    },
+    "Tier 2 gallery 10.04": {
+      "samples": 629,
+      "unsupported": 0,
+      "obstructions": []
+    },
+    "Tier 2 gallery 13.96": {
+      "samples": 662,
+      "unsupported": 0,
+      "obstructions": []
+    },
+    "Tier 2 gallery 22.04": {
+      "samples": 729,
+      "unsupported": 0,
+      "obstructions": []
+    },
+    "Tier 3 gallery -22.04": {
+      "samples": 788,
+      "unsupported": 0,
+      "obstructions": []
+    },
+    "Tier 3 gallery -13.96": {
+      "samples": 721,
+      "unsupported": 0,
+      "obstructions": []
+    },
+    "Tier 3 gallery -10.04": {
+      "samples": 688,
+      "unsupported": 0,
+      "obstructions": []
+    },
+    "Tier 3 gallery -1.96": {
+      "samples": 621,
+      "unsupported": 0,
+      "obstructions": []
+    },
+    "Tier 3 gallery 1.96": {
+      "samples": 621,
+      "unsupported": 0,
+      "obstructions": []
+    },
+    "Tier 3 gallery 10.04": {
+      "samples": 688,
+      "unsupported": 0,
+      "obstructions": []
+    },
+    "Tier 3 gallery 13.96": {
+      "samples": 721,
+      "unsupported": 0,
+      "obstructions": []
+    },
+    "Tier 3 gallery 22.04": {
+      "samples": 788,
+      "unsupported": 0,
+      "obstructions": []
+    }
+  },
+  "scope": "Native prefab bindings, retained geometry, native mesh/box floor support and discrete static box clearance; Unity import and swept physics unverified"
+}

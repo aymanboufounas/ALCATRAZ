@@ -77,7 +77,7 @@ namespace Blackstone.Foundation
             Panel(new Rect(x,y,640,720),new Color(.025f,.045f,.055f,.94f));
             GUI.Label(new Rect(x+40,y+28,550,40),"THE SILENT BLUEPRINT",heading);
             GUI.Label(new Rect(x+35,y+85,570,155),title?worldTitle:"PAUSED",large);
-            GUI.Label(new Rect(x+40,y+249,550,30),suppliedWorld!=null?"Alcatraz exterior":"Playable prison island",small);
+            GUI.Label(new Rect(x+40,y+249,550,30),suppliedWorld!=null?(suppliedWorld.InsidePrison?"Alcatraz cellhouse":"Supplied Alcatraz island"):"Playable prison island",small);
             GUI.Label(new Rect(x+40,y+294,550,62),"Elias Vale · Inmate B-04\nA prisoner with a reason to escape.",text);
             if(foundation.Status!="Ready")
                 GUI.Label(new Rect(x+40,y+379,550,175),foundation.Status??"Preparing characters...",text);
@@ -85,7 +85,7 @@ namespace Blackstone.Foundation
             {
                 if(GUI.Button(new Rect(x+40,y+380,550,58),title?"Explore  [Enter / A]":"Resume  [Esc / A]",button))
                 {if(title)Enter();else foundation.Input.Capture(true);}
-                if(Application.CanStreamedLevelBeLoaded(storyScene)&&GUI.Button(new Rect(x+40,y+450,550,48),"Play Chapter 01",button))
+                if(Application.CanStreamedLevelBeLoaded(storyScene)&&GUI.Button(new Rect(x+40,y+450,550,48),"Play Chapter 01 · story scene",button))
                 {Time.timeScale=1;SceneManager.LoadScene(storyScene);}
                 if(suppliedWorld==null&&Application.CanStreamedLevelBeLoaded("SC_AlcatrazSuppliedIsland")
                     &&Resources.Load<GameObject>("AlcatrazSupplied/Prepared/Island")!=null
@@ -111,7 +111,7 @@ namespace Blackstone.Foundation
             if(suppliedWorld!=null&&suppliedWorld.Ready)
             {
                 GUI.Label(new Rect(x+760,y+535,550,28),"ISLAND LOCATIONS",small);
-                if(GUI.Button(new Rect(x+760,y+575,175,44),"Cellhouse",button)){suppliedWorld.VisitCellhouse();Enter();}
+                if(GUI.Button(new Rect(x+760,y+575,175,44),"Cellhouse",button)){suppliedWorld.EnterCellhouse();Enter();}
                 if(GUI.Button(new Rect(x+947,y+575,175,44),"Helipad",button)){suppliedWorld.VisitHelipad();Enter();}
                 if(GUI.Button(new Rect(x+1134,y+575,205,44),"Coastal house",button)){suppliedWorld.VisitCoastalHouse();Enter();}
             }
@@ -120,16 +120,16 @@ namespace Blackstone.Foundation
         {
             Panel(new Rect(25,22,555,114),new Color(.015f,.03f,.035f,.88f));
             GUI.Label(new Rect(43,33,522,34),"GOAL: ESCAPE THE PRISON",heading);
-            GUI.Label(new Rect(43,75,522,30),suppliedWorld!=null?"Find the cellhouse entrance":"Explore the prison",text);
-            GUI.Label(new Rect(43,109,522,23),"Prepare your route · Chapter 01 in the pause menu",small);
+            GUI.Label(new Rect(43,75,522,30),suppliedWorld!=null?(suppliedWorld.InsidePrison?"Explore the cells and galleries":"Find the cellhouse entrance"):"Explore the prison",text);
+            GUI.Label(new Rect(43,109,522,23),suppliedWorld!=null?"Esc · Cellhouse / Helipad / Coastal house":"Prepare your route · Chapter 01 in the pause menu",small);
             float right=viewport.Width-341;
             Panel(new Rect(right,22,316,74),new Color(.015f,.03f,.035f,.88f));
             GUI.Label(new Rect(right+15,31,286,26),"INMATE ELIAS VALE  /  B-04",small);
-            GUI.Label(new Rect(right+15,60,286,30),suppliedWorld!=null?"ALCATRAZ EXTERIOR":"ALCATRAZ PRISON",heading);
+            GUI.Label(new Rect(right+15,60,286,30),suppliedWorld!=null&&!suppliedWorld.InsidePrison?"ALCATRAZ EXTERIOR":"ALCATRAZ CELLHOUSE",heading);
             if(island!=null&&foundation.Player!=null)
             {
-                Rect map=viewport.Map(island.suppliedLayout);
-                island.DrawMap(map,foundation.Player.transform.position,suppliedWorld!=null?suppliedWorld.ChapterGate:null,false);
+                Rect map=viewport.Map(island.SuppliedExterior);
+                island.DrawMap(map,foundation.Player.transform.position,suppliedWorld!=null?suppliedWorld.Objective:null,false);
                 GUI.Label(new Rect(map.x,map.yMax+5,280,25),"M / View  ·  Island map",small);
             }
             var equipment=foundation.PlayerEquipment;
@@ -151,9 +151,9 @@ namespace Blackstone.Foundation
             float center=viewport.Width/2;
             string prompt=null;
             if(island!=null&&Time.unscaledTime<island.RecoveryMessageUntil)prompt="Returned to safe ground";
-            else if(suppliedWorld!=null&&suppliedWorld.ChapterGate!=null&&foundation.Player!=null
-                &&Vector3.Distance(foundation.Player.transform.position,suppliedWorld.ChapterGate.position)<3.4f)
-                prompt="E / X   ENTER CELLHOUSE · CHAPTER 01";
+            else if(suppliedWorld!=null&&suppliedWorld.Objective!=null&&foundation.Player!=null
+                &&Vector3.Distance(foundation.Player.transform.position,suppliedWorld.Objective.position)<3.4f)
+                prompt=suppliedWorld.InsidePrison?"E / X   RETURN TO ALCATRAZ ISLAND":"E / X   ENTER CELLHOUSE";
             else if(interactor!=null)prompt=interactor.CurrentPrompt;
             if(!string.IsNullOrEmpty(prompt))
             {
@@ -171,13 +171,13 @@ namespace Blackstone.Foundation
         void FullMap(FoundationViewport viewport)
         {
             Panel(new Rect(0,0,viewport.Width,viewport.Height),new Color(.015f,.024f,.03f,.97f));
-            GUI.Label(new Rect(viewport.Width/2-170,28,340,40),"ALCATRAZ ISLAND",heading);
-            float aspect=island.suppliedLayout?1.5f:2f/3;
+            GUI.Label(new Rect(viewport.Width/2-170,28,340,40),suppliedWorld!=null&&suppliedWorld.InsidePrison?"ALCATRAZ CELLHOUSE":"ALCATRAZ ISLAND",heading);
+            float aspect=island.SuppliedExterior?1.5f:2f/3;
             float height=Mathf.Min(viewport.Height-180,760);
             height=Mathf.Min(height,(viewport.Width-100)/aspect);
             Rect bounds=new Rect((viewport.Width-height*aspect)/2,(viewport.Height-height)/2,height*aspect,height);
-            island.DrawMap(bounds,foundation.Player.transform.position,suppliedWorld!=null?suppliedWorld.ChapterGate:null,true);
-            GUI.Label(new Rect(viewport.Width/2-235,viewport.Height-46,470,30),"Release M / View to return · White: Elias · Gold: entrance",small);
+            island.DrawMap(bounds,foundation.Player.transform.position,suppliedWorld!=null?suppliedWorld.Objective:null,true);
+            GUI.Label(new Rect(viewport.Width/2-235,viewport.Height-46,470,30),"Release M / View to return · White: Elias · Gold: door",small);
         }
         static void Panel(Rect rect,Color color)
         {Color old=GUI.color;GUI.color=color;GUI.DrawTexture(rect,Texture2D.whiteTexture);GUI.color=old;}

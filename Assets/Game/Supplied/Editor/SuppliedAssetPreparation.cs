@@ -17,7 +17,7 @@ namespace Blackstone.Supplied.Editor
     {
         const string Root="Assets/Game/Supplied/";
         const string Generated="Assets/GeneratedSupplied/Resources/AlcatrazSupplied/";
-        const string Revision="supplied-09.4";
+        const string Revision="supplied-11.0";
         static readonly string[] Names={"Island","Pistol10mm","Revolver","Police","Dog","Helmet","Vest","Helicopter","House"};
         static bool preparing,scheduled;
         [Serializable] sealed class HouseParts { public string destination,sha256; public string[] parts; public int bytes; }
@@ -45,6 +45,10 @@ namespace Blackstone.Supplied.Editor
             if(preparing)return;preparing=true;
             try
             {
+                string interiorPath=Root+"Resources/AlcatrazSupplied/Cellhouse/Interior.prefab";
+                var interior=AssetDatabase.LoadAssetAtPath<GameObject>(interiorPath);
+                if(interior==null||interior.GetComponentsInChildren<MeshFilter>(true).Any(f=>f.sharedMesh==null))
+                    throw new InvalidOperationException("The native cellhouse interior or a required mesh is missing. Download the complete updated repository ZIP.");
                 string stamp=Generated+"PreparedRevision.txt";
                 string signature=Signature();
                 if(File.Exists(stamp)&&File.ReadAllText(stamp)==signature&&Names.All(name=>AssetDatabase.LoadAssetAtPath<GameObject>(Generated+"Prepared/"+name+".prefab")!=null))return;

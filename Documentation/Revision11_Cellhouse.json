@@ -1,0 +1,8 @@
+{
+  "source": "SC_AlcatrazIsland native interior only",
+  "prefab": "Assets/Game/Supplied/Resources/AlcatrazSupplied/Cellhouse/Interior.prefab",
+  "game_objects": 2965,
+  "mixed_meshes_cropped": 1,
+  "bytes": 5163325,
+  "legacy_exterior_included": false
+}

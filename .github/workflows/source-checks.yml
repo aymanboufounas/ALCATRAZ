@@ -27,3 +27,5 @@ jobs:
         run: python Tools/validate_project.py
       - name: Check supplied asset dependencies and island floor samples
         run: python Tools/validate_supplied_assets.py
+      - name: Check connected prison interior and supported routes
+        run: python Tools/validate_supplied_prison.py

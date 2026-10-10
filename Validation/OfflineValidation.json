@@ -1,13 +1,13 @@
 {
   "offline_integrity": "PASS",
   "counts": {
-    "native_files": 1963,
-    "yaml_documents": 75378,
-    "asset_guids": 2640,
-    "mesh_vertices": 4954073,
-    "mesh_triangles": 1708180,
+    "native_files": 1967,
+    "yaml_documents": 85406,
+    "asset_guids": 2650,
+    "mesh_vertices": 4982129,
+    "mesh_triangles": 1717532,
     "weighted_meshes": 266,
-    "csharp_files": 62,
+    "csharp_files": 65,
     "animation_clips": 14
   },
   "errors": [],

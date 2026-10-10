@@ -37,7 +37,13 @@ namespace Blackstone.Alcatraz.Editor
         static void BeforePlay(PlayModeStateChange state)
         {
             if(state!=PlayModeStateChange.ExitingEditMode||SessionState.GetBool(CurrentSceneKey,false))return;
-            try{FoundationPreparation.Prepare();SuppliedAssetPreparation.Prepare();}
+            try
+            {
+                var scene=AssetDatabase.LoadAssetAtPath<SceneAsset>(AlcatrazPreparation.Supplied);
+                if(scene==null)throw new InvalidOperationException("The supplied island scene is missing.");
+                EditorSceneManager.playModeStartScene=scene;
+                FoundationPreparation.Prepare();SuppliedAssetPreparation.Prepare();
+            }
             catch(Exception error)
             {EditorApplication.isPlaying=false;Debug.LogError("Alcatraz cannot start until asset preparation succeeds: "+error.Message);}
         }

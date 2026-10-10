@@ -1,6 +1,6 @@
 {
   "status": "PASS",
-  "checks": 211,
+  "checks": 213,
   "errors": [],
   "passed_checks": [
     "Native Alcatraz island root replaces the older map",
@@ -211,7 +211,9 @@
     "MonoImporter metadata: AlcatrazPresentation.cs",
     "MonoImporter metadata: HudLayoutChecks.cs",
     "MonoImporter metadata: AlcatrazPreparation.cs",
+    "MonoImporter metadata: SuppliedGameplayChecks.cs",
     "MonoImporter metadata: GameplayRegressionChecks.cs",
+    "MonoImporter metadata: AlcatrazPlayStartup.cs",
     "Separate Alcatraz checkpoint identity and expanded elevation bounds",
     "Runtime island map image is packaged"
   ],
