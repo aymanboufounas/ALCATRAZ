@@ -16,7 +16,7 @@ namespace Blackstone.Supplied.Editor
     {
         const string Root="Assets/Game/Supplied/";
         const string Generated="Assets/GeneratedSupplied/Resources/AlcatrazSupplied/";
-        const string Revision="supplied-09.2";
+        const string Revision="supplied-09.3";
         static bool preparing,scheduled;
         [Serializable] sealed class HouseParts { public string destination,sha256; public string[] parts; public int bytes; }
         [Serializable] sealed class Coastline { public Point[] points; }
@@ -61,7 +61,7 @@ namespace Blackstone.Supplied.Editor
                         if(name=="House")
                         {
                             foreach(var renderer in model.GetComponentsInChildren<Renderer>(true))
-                                if(renderer.sharedMaterials.Any(m=>m!=null&&ExcludedHouseMaterial(m.name)))renderer.gameObject.SetActive(false);
+                                if(renderer.name=="TreeBranches.001"||renderer.name=="WindowLightRefl"||renderer.sharedMaterials.Any(m=>m!=null&&ExcludedHouseMaterial(m.name)))renderer.gameObject.SetActive(false);
                         }
                         if(name=="Island")PrepareIsland(model,coastline);
                         else if(name=="House")

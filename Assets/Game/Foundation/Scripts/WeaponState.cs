@@ -2,22 +2,24 @@ using System;
 
 namespace Blackstone.Foundation
 {
-    public enum Equipment { Unarmed, Knife, Pistol, Rifle }
+    public enum Equipment { Unarmed, Knife, Pistol, Rifle, Revolver }
 
     // Independent of Unity: finite ammunition, cooldowns and interruptible reloads.
     public sealed class WeaponState
     {
-        readonly int[] loaded = { 0, 0, 12, 24 };
-        readonly int[] reserve = { 0, 0, 60, 96 };
+        readonly int[] loaded = { 0, 0, 15, 30, 6 };
+        readonly int[] reserve = { 0, 0, 75, 120, 36 };
         float cooldown, reloadRemaining;
         public Equipment Equipped { get; private set; }
         public bool Reloading { get; private set; }
         public int Magazine => loaded[(int)Equipped];
         public int Reserve => reserve[(int)Equipped];
-        public int Capacity => Equipped == Equipment.Pistol ? 12 : Equipped == Equipment.Rifle ? 24 : 0;
-        public float ReloadSeconds => Equipped == Equipment.Pistol ? 1.7f : 2.2f;
+        public int Capacity => Equipped == Equipment.Pistol ? 15 : Equipped == Equipment.Rifle ? 30 : Equipped == Equipment.Revolver ? 6 : 0;
+        public float ReloadSeconds => Equipped == Equipment.Pistol ? 1.7f : Equipped == Equipment.Revolver ? 2.7f : 2.2f;
         public float ReloadProgress => Reloading ? 1f - reloadRemaining / ReloadSeconds : 0;
-        public bool IsFirearm => Equipped == Equipment.Pistol || Equipped == Equipment.Rifle;
+        public bool IsFirearm => Equipped == Equipment.Pistol || Equipped == Equipment.Rifle || Equipped == Equipment.Revolver;
+        public int LoadedFor(Equipment value) => Enum.IsDefined(typeof(Equipment),value)?loaded[(int)value]:0;
+        public int ReserveFor(Equipment value) => Enum.IsDefined(typeof(Equipment),value)?reserve[(int)value]:0;
 
         public bool Equip(Equipment value)
         {
@@ -49,7 +51,7 @@ namespace Blackstone.Foundation
             {
                 if (Magazine == 0) return false;
                 loaded[(int)Equipped]--;
-                cooldown = Equipped == Equipment.Rifle ? .13f : .26f;
+                cooldown = Equipped == Equipment.Rifle ? .13f : Equipped == Equipment.Revolver ? .40f : .26f;
             }
             else cooldown = Equipped == Equipment.Knife ? .58f : .65f;
             return true;

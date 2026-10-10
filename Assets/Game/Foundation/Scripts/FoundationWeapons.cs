@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 using DesertShift.Player;
+using Blackstone.Supplied;
 
 namespace Blackstone.Foundation
 {
@@ -42,10 +43,11 @@ namespace Blackstone.Foundation
                 if(key.digit2Key.wasPressedThisFrame)Equip(Equipment.Knife);
                 if(key.digit3Key.wasPressedThisFrame)Equip(Equipment.Pistol);
                 if(key.digit4Key.wasPressedThisFrame)Equip(Equipment.Rifle);
+                if(key.digit5Key.wasPressedThisFrame)Equip(Equipment.Revolver);
             }
-            if(pad!=null&&pad.dpad.left.wasPressedThisFrame)Equip((Equipment)(((int)State.Equipped+1)%4));
+            if(pad!=null&&pad.dpad.left.wasPressedThisFrame)Equip((Equipment)(((int)State.Equipped+1)%5));
             bool reload=key!=null&&key.rKey.wasPressedThisFrame||pad!=null&&pad.buttonNorth.wasPressedThisFrame;
-            if(reload&&State.TryReload())Sound(State.Equipped==Equipment.Pistol?"ReloadPistol":"ReloadRifle");
+            if(reload&&State.TryReload())Sound(State.Equipped==Equipment.Rifle?"ReloadRifle":"ReloadPistol");
             bool heldTrigger=Mouse.current!=null&&Mouse.current.leftButton.isPressed||pad!=null&&pad.rightTrigger.isPressed;
             bool pressed=input.AttackPressed;
             if((State.Equipped==Equipment.Rifle?heldTrigger:pressed)&&State.TryUse())
@@ -55,14 +57,41 @@ namespace Blackstone.Foundation
         }
         void Equip(Equipment value)
         {
+            if(value==Equipment.Pistol||value==Equipment.Revolver)
+            {
+                string suppliedName=value==Equipment.Pistol?"Pistol10mm":"Revolver";
+                if(Resources.Load<GameObject>("AlcatrazSupplied/Prepared/"+suppliedName)==null)
+                {Debug.LogError("Prepare the supplied assets before equipping "+suppliedName);return;}
+            }
             if(!State.Equip(value))return;
             if(held!=null)Destroy(held.gameObject);held=null;muzzle=null;
             if(value!=Equipment.Unarmed&&avatar.rightHand!=null)
             {
-                var asset=Resources.Load<GameObject>("BlackstoneFoundation/Weapons/"+value);
-                if(asset!=null){held=Instantiate(asset,avatar.rightHand,false).transform;muzzle=held.Find("Muzzle");}
+                if(value==Equipment.Pistol||value==Equipment.Revolver)EquipSupplied(value);
+                else
+                {
+                    var asset=Resources.Load<GameObject>("BlackstoneFoundation/Weapons/"+value);
+                    if(asset!=null){held=Instantiate(asset,avatar.rightHand,false).transform;muzzle=held.Find("Muzzle");}
+                }
             }
             Sound("Draw");
+        }
+        void EquipSupplied(Equipment value)
+        {
+            held=new GameObject("Equipped "+value).transform;held.SetParent(avatar.rightHand,false);held.rotation=Quaternion.identity;
+            var model=SuppliedModel.Create(value==Equipment.Pistol?"Pistol10mm":"Revolver",held);
+            var bounds=SuppliedModel.Bounds(model);Vector3 axis=bounds.size.z>=bounds.size.x?Vector3.forward:Vector3.right;
+            Renderer barrel=null;
+            foreach(var renderer in model.GetComponentsInChildren<Renderer>())
+                if(renderer.name.ToLowerInvariant().Contains("barrel")||renderer.name=="Slide"){barrel=renderer;break;}
+            if(barrel!=null&&Vector3.Dot(barrel.bounds.center-bounds.center,axis)<0)axis=-axis;
+            model.transform.rotation=Quaternion.FromToRotation(axis,Vector3.forward);
+            bounds=SuppliedModel.Bounds(model);model.transform.localScale*=(value==Equipment.Pistol?.23f:.32f)/Mathf.Max(.001f,bounds.size.z);
+            bounds=SuppliedModel.Bounds(model);
+            Vector3 grip=new Vector3(bounds.center.x,bounds.min.y+bounds.size.y*.40f,bounds.min.z+bounds.size.z*.25f);
+            model.transform.position+=held.position-grip;
+            bounds=SuppliedModel.Bounds(model);muzzle=new GameObject("Muzzle").transform;muzzle.SetParent(held);
+            muzzle.position=new Vector3(bounds.center.x,bounds.max.y-bounds.size.y*.15f,bounds.max.z);
         }
         void Sound(string name)
         {if(FoundationAudio.Instance!=null)FoundationAudio.Instance.Named("Handling",name,transform.position+Vector3.up*1.2f,.6f);}
@@ -82,8 +111,8 @@ namespace Blackstone.Foundation
                 if(struck)end=hit.point;
             }
             if(struck)Impact(hit);
-            if(FoundationAudio.Instance!=null)FoundationAudio.Instance.Variation(State.Equipped==Equipment.Pistol?"Pistol":"Rifle",origin,.8f);
-            if(cameraRig!=null)cameraRig.Recoil(State.Equipped==Equipment.Pistol?1.8f:.7f);
+            if(FoundationAudio.Instance!=null)FoundationAudio.Instance.Variation(State.Equipped==Equipment.Rifle?"Rifle":"Pistol",origin,.8f);
+            if(cameraRig!=null)cameraRig.Recoil(State.Equipped==Equipment.Revolver?2.3f:State.Equipped==Equipment.Pistol?1.8f:.7f);
             if(flash!=null)flash.transform.position=origin;
             flashUntil=Time.time+.04f;
             if(tracer!=null){tracer.SetPosition(0,origin);tracer.SetPosition(1,end);}

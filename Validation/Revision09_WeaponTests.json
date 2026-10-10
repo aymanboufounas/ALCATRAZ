@@ -1,0 +1,7 @@
+{
+  "status": "PASS",
+  "assertions": 468,
+  "runtime": ".NET SDK 8.0.413",
+  "result": "PASS: 468 ammunition, cooldown, reload, interruption and pause assertions.",
+  "scope": "Executed WeaponState C# only, including pistol/rifle/revolver ammunition, cooldowns, reload interruption, pause and inventory readouts; Unity model import and gameplay unverified"
+}
