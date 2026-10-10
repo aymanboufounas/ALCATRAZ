@@ -12,7 +12,7 @@ world.script('Assets/Game/Foundation/Scripts/FoundationBootstrap.cs','  storyMod
 world.script('Assets/Game/Foundation/Scripts/FoundationHUD.cs','  worldTitle: "ALCATRAZ\\nISLAND"\n  storyScene: SC_AlcatrazChapter01\n')
 world.script('Assets/Game/Alcatraz/Scripts/AlcatrazMap.cs','  suppliedLayout: 1\n')
 world.script('Assets/Game/Alcatraz/Scripts/AlcatrazPresentation.cs')
-player=u.Node('Player',pos=(-107,49.3,23),rot=(0,250,0),layer=8,static=False)
+player=u.Node('Player',pos=(-147,31.8,6),rot=(0,200,0),layer=8,static=False)
 target=u.Node('CameraTarget',player,pos=(0,1.45,0),static=False)
 def body(id):
  return blocks[id].split('  m_GameObject: ',1)[1].split('\n',1)[1]
@@ -21,7 +21,7 @@ player.script('Assets/_DesertShift/Scripts/Player/PlayerInputHandler.cs')
 player.script('Assets/_DesertShift/Scripts/Player/PlayerMovement.cs',f'  cameraTarget: {{fileID: {target.tid}}}\n')
 player.script('Assets/_DesertShift/Scripts/Interaction/PlayerInteractor.cs')
 player.script('Assets/Game/Scripts/AI/PrisonActor.cs','  displayName: Elias Vale\n  driveLocomotion: 0\n')
-camera=u.Node('Main Camera',pos=(-105,51,25),static=False)
+camera=u.Node('Main Camera',pos=(-146,34,9),static=False)
 camera.component(20,body(47222))
 # Retain the camera's URP settings and the existing sunlight/volume settings.
 if 47223 in blocks:camera.component(114,body(47223))
@@ -39,5 +39,6 @@ entry=f'  - enabled: 1\n    path: {path}\n    guid: {u.guid(path)}\n'
 if path not in data:build.write_text(data.replace('  m_Scenes:\n','  m_Scenes:\n'+entry))
 for p in (root/'Assets/Game/Supplied/Scripts').rglob('*'):
  if p.suffix=='.cs':u.meta(str(p.relative_to(root)),'MonoImporter')
-u.meta('Assets/Game/Supplied/Scripts','DefaultImporter')
+if not (root/'Assets/Game/Supplied/Scripts.meta').exists():
+ u.meta('Assets/Game/Supplied/Scripts','DefaultImporter')
 print('Created compact supplied island scene:',len(text),'bytes')

@@ -12,6 +12,11 @@ namespace Blackstone.Supplied
         public bool Ready { get; private set; }
         public string Status { get; private set; }
         public Transform ChapterGate { get; private set; }
+        public Transform Helipad { get; private set; }
+        public Transform CoastalHouse { get; private set; }
+        public const float MapRootX=-63,MapRootY=45,MapRootZ=12;
+        public static readonly Vector3 SpawnXZ=new Vector3(-147,0,6);
+        public static readonly Vector3 HelipadXZ=new Vector3(-151,0,-5);
         PlayerMovement player;
         PlayerInputHandler input;
         Vector3 safe;
@@ -20,7 +25,7 @@ namespace Blackstone.Supplied
         {
             try
             {
-                var island=SuppliedModel.Create("Island",transform);island.transform.localPosition=new Vector3(-63,45,12);
+                var island=SuppliedModel.Create("Island",transform);island.transform.localPosition=new Vector3(MapRootX,MapRootY,MapRootZ);
                 var shader=Shader.Find("Universal Render Pipeline/Lit");if(shader==null)throw new InvalidOperationException("URP Lit shader is unavailable.");
                 water=new Material(shader){color=new Color(.065f,.20f,.25f)};water.SetFloat("_Smoothness",.78f);water.SetFloat("_Metallic",.1f);
                 deck=new Material(shader){color=new Color(.48f,.43f,.34f)};deck.SetFloat("_Smoothness",.12f);
@@ -40,16 +45,25 @@ namespace Blackstone.Supplied
                 var dog=SuppliedModel.Create("Dog",dogRoot.transform);SuppliedModel.SizeAndGround(dog,.82f,dogPosition);
                 var patrol=dogRoot.AddComponent<SuppliedDogPatrol>();patrol.world=this;
                 patrol.route=new[]{Ground(new Vector3(-105,0,25)),Ground(new Vector3(-112,0,25))};
-                var helicopter=SuppliedModel.Create("Helicopter",transform);Vector3 landing=Ground(new Vector3(-170,0,-90));
+                var helicopter=SuppliedModel.Create("Helicopter",transform);
+                Vector3 landing=Ground(HelipadXZ);
+                // Level the pad above every sampled corner, avoiding buried skids.
+                for(int x=-5;x<=5;x+=5)for(int z=-5;z<=5;z+=5)
+                    landing.y=Mathf.Max(landing.y,Ground(HelipadXZ+new Vector3(x,0,z)).y);
+                landing.y+=.08f;
+                Helipad=new GameObject("Little Bird helipad").transform;Helipad.SetParent(transform);Helipad.position=landing;
                 Cube("Helicopter landing deck",landing-Vector3.up*.16f,new Vector3(12,.3f,12),deck,true);
                 for(int i=0;i<3;i++)
                     Cube("Dock practice target "+(i+1),landing+new Vector3(-3+i*3,1.35f,-4),new Vector3(.7f,1.1f,.12f),deck,true).AddComponent<FoundationTarget>();
                 helicopter.transform.rotation=Quaternion.Euler(0,110,0);SuppliedModel.SizeAndGround(helicopter,2.8f,landing+Vector3.up*.02f);
-                var aircraftCollider=helicopter.AddComponent<BoxCollider>();var aircraftBounds=SuppliedModel.Bounds(helicopter);
-                aircraftCollider.center=helicopter.transform.InverseTransformPoint(aircraftBounds.center);
-                aircraftCollider.size=new Vector3(aircraftBounds.size.x/helicopter.transform.lossyScale.x,aircraftBounds.size.y/helicopter.transform.lossyScale.y,aircraftBounds.size.z/helicopter.transform.lossyScale.z);
+                // Bounds are world-aligned. Keep this collider on an unrotated
+                // object instead of rotating the bounds a second time.
+                var aircraftBounds=SuppliedModel.Bounds(helicopter);
+                var aircraftBody=new GameObject("Little Bird collision");aircraftBody.transform.SetParent(transform);
+                aircraftBody.transform.position=aircraftBounds.center;aircraftBody.AddComponent<BoxCollider>().size=aircraftBounds.size;
                 var house=SuppliedModel.Create("House",transform);Vector3 housePosition=new Vector3(-165,2,162);
                 SuppliedModel.SizeAndGround(house,14,housePosition);
+                CoastalHouse=new GameObject("Coastal house dock").transform;CoastalHouse.SetParent(transform);CoastalHouse.position=new Vector3(-184,2.08f,148);
                 Cube("House dock platform",new Vector3(-165,1.85f,162),new Vector3(42,.3f,34),deck,true);
                 Vector3 shore=Ground(new Vector3(-173,0,80));BuildPier(shore+Vector3.up*.15f,new Vector3(-165,2,147));
                 Status="Ready";Ready=true;
@@ -60,7 +74,7 @@ namespace Blackstone.Supplied
         {
             player=FindFirstObjectByType<PlayerMovement>();input=player!=null?player.GetComponent<PlayerInputHandler>():null;
             if(!Ready||player==null)return;
-            safe=Ground(new Vector3(-107,0,23))+Vector3.up*.12f;player.Teleport(safe);player.transform.rotation=Quaternion.Euler(0,250,0);
+            safe=Ground(SpawnXZ)+Vector3.up*.12f;player.Teleport(safe);player.transform.rotation=Quaternion.Euler(0,200,0);
             // AlcatrazPresentation applies the shared daylight after world setup.
         }
         public Vector3 Ground(Vector3 point)
@@ -68,6 +82,18 @@ namespace Blackstone.Supplied
             if(!Physics.Raycast(new Vector3(point.x,140,point.z),Vector3.down,out var hit,200,1,QueryTriggerInteraction.Ignore))
                 throw new InvalidOperationException("No island floor at "+point+". Prepare the supplied coastline mesh.");
             return hit.point;
+        }
+        public void VisitCellhouse()
+        {Travel(Ground(new Vector3(-107,0,23))+Vector3.up*.12f,250);}
+        public void VisitHelipad()
+        {Travel(safe,200);}
+        public void VisitCoastalHouse()
+        {Travel(CoastalHouse.position,0);}
+        void Travel(Vector3 position,float yaw)
+        {
+            if(!Ready||player==null)return;
+            player.Teleport(position);player.transform.rotation=Quaternion.Euler(0,yaw,0);
+            var map=GetComponent<Blackstone.Alcatraz.AlcatrazMap>();if(map!=null)map.SetSafePosition(position);
         }
         void Update()
         {

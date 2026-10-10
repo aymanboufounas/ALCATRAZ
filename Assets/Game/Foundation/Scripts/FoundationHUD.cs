@@ -107,7 +107,14 @@ namespace Blackstone.Foundation
             }
             Panel(new Rect(x+720,y+150,660,470),new Color(.025f,.045f,.055f,.85f));
             GUI.Label(new Rect(x+760,y+178,550,45),"PRISON ROUTINE",heading);
-            GUI.Label(new Rect(x+760,y+242,550,355),"WASD / Left stick   Move\nShift / L3   Run     ·     Alt   Slow walk\nCtrl / B   Crouch     ·     Space / A   Jump\nMouse / Right stick   Camera\nE / X   Doors     ·     Q / RB   Shoulder\n1–5 / D-pad left   Equipment\nHold Tab / LB   Inventory     ·     M / View   Map\nRMB / LT   Aim     ·     LMB / RT   Use\nR / Y   Reload     ·     Esc / Start   Pause",text);
+            GUI.Label(new Rect(x+760,y+242,550,270),"WASD / Left stick   Move\nShift / L3   Run     ·     Alt   Slow walk\nCtrl / B   Crouch     ·     Space / A   Jump\nMouse / Right stick   Camera\nE / X   Doors     ·     Q / RB   Shoulder\n1–5 / D-pad left   Equipment\nHold Tab / LB   Inventory     ·     M / View   Map\nRMB / LT   Aim     ·     LMB / RT   Use\nR / Y   Reload     ·     Esc / Start   Pause",text);
+            if(suppliedWorld!=null&&suppliedWorld.Ready)
+            {
+                GUI.Label(new Rect(x+760,y+535,550,28),"ISLAND LOCATIONS",small);
+                if(GUI.Button(new Rect(x+760,y+575,175,44),"Cellhouse",button)){suppliedWorld.VisitCellhouse();Enter();}
+                if(GUI.Button(new Rect(x+947,y+575,175,44),"Helipad",button)){suppliedWorld.VisitHelipad();Enter();}
+                if(GUI.Button(new Rect(x+1134,y+575,205,44),"Coastal house",button)){suppliedWorld.VisitCoastalHouse();Enter();}
+            }
         }
         void Gameplay(FoundationViewport viewport)
         {

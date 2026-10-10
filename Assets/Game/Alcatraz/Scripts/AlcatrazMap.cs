@@ -21,6 +21,8 @@ namespace Blackstone.Alcatraz
             Vector3.forward*.22f,Vector3.back*.22f};
         public float RecoveryMessageUntil { get; private set; }
         public bool ExplorationHudOwnsMap { get; set; }
+        public void SetSafePosition(Vector3 position)
+        {safePosition=position;validSafePosition=true;}
         public const string CheckpointFile="alcatraz-chapter01.json";
         static readonly string[] Names={"Cellhouse","Recreation Yard","Water Tower","Lighthouse",
             "Warden's House","New Industries","Model Industries","Power House","Storehouse",
@@ -106,7 +108,28 @@ namespace Blackstone.Alcatraz
             }
             Dot(bounds,position,Color.white,7);
             if(objective!=null)Dot(bounds,objective.position,new Color(.97f,.77f,.37f),9);
+            if(suppliedLayout)
+            {
+                var world=GetComponent<Blackstone.Supplied.SuppliedIslandWorld>();
+                if(world!=null)
+                {
+                    Marker(bounds,world.Helipad,"H",new Color(.35f,.9f,1));
+                    Marker(bounds,world.CoastalHouse,"D",new Color(.6f,1,.65f));
+                    if(names)
+                    {
+                        var legend=new Rect(bounds.x+35,bounds.y+12,180,78);
+                        Panel(legend,new Color(.02f,.04f,.05f,.95f));
+                        GUI.Label(legend,"Gold: cellhouse\nH: Little Bird helipad\nD: coastal house",label);
+                    }
+                }
+            }
             GUI.Label(new Rect(bounds.x+8,bounds.y+5,22,25),"N",heading);
+        }
+        void Marker(Rect bounds,Transform place,string name,Color color)
+        {
+            if(place==null)return;var p=Locate(bounds,place.position);
+            Panel(new Rect(p.x-10,p.y-10,20,20),new Color(.02f,.04f,.05f,.95f));
+            var before=GUI.color;GUI.color=color;GUI.Label(new Rect(p.x-10,p.y-11,20,22),name,label);GUI.color=before;
         }
         Vector2 Locate(Rect bounds,Vector3 point)
         {

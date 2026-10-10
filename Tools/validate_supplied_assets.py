@@ -61,8 +61,12 @@ def main():
   if not len(ok):return None
   index=ok[np.argmax(y[ok])];return float(y[index]),float(np.degrees(np.arccos(np.clip(normal[index,1],-1,1))))
  floors={}
- for name,(x,z) in {'player':(-107,23),'chapter entrance':(-113.33,22.5),'police':(-118,21),'dog':(-105,25),'helipad':(-170,-90),'pier shore':(-173,80)}.items():
+ for name,(x,z) in {'player':(-147,6),'cellhouse visit':(-107,23),'chapter entrance':(-113.33,22.5),'police':(-118,21),'dog':(-105,25),'helipad':(-151,-5),'pier shore':(-173,80)}.items():
   h=hit(x,z);floors[name]=h;check(h is not None and h[0]>1 and h[1]<46,'Grounded walkable placement: '+name)
+ pad=[hit(-151+x,-5+z) for x in [-5,0,5] for z in [-5,0,5]]
+ check(all(h is not None and h[1]<46 for h in pad),'Helipad has nine supported corners/edge/center samples')
+ check(max(h[0] for h in pad)-min(h[0] for h in pad)<.3,'Helipad levels less than 30 cm of terrain variation')
+ check(np.linalg.norm(np.array([-147,6])-np.array([-151,-5]))<13,'Helicopter is beside the starting area')
  route=[hit(x,25) for x in np.linspace(-112,-105,61)]
  check(all(h is not None and h[1]<46 for h in route),'Dog route has sampled walkable floor')
  check(max(abs(a[0]-b[0]) for a,b in zip(route[:-1],route[1:]))<.3,'Dog route avoids abrupt floor jumps')

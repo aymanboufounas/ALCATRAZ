@@ -20,16 +20,16 @@ namespace Blackstone.Alcatraz.Editor
         public static void OpenIsland()
         {
             if(!EditorSceneManager.SaveCurrentModifiedScenesIfUserWantsTo())return;
-            Prepare();EditorSceneManager.OpenScene(Supplied);
+            Prepare();AlcatrazPlayStartup.UseSuppliedIsland();EditorSceneManager.OpenScene(Supplied);
         }
         [MenuItem("Alcatraz/Open Original Playable Island",priority=2)]
         public static void OpenOriginal()
-        {if(EditorSceneManager.SaveCurrentModifiedScenesIfUserWantsTo()){FoundationPreparation.Prepare();EditorSceneManager.OpenScene(Island);}}
+        {if(EditorSceneManager.SaveCurrentModifiedScenesIfUserWantsTo()){FoundationPreparation.Prepare();AlcatrazPlayStartup.UseCurrentScene();EditorSceneManager.OpenScene(Island);}}
         [MenuItem("Alcatraz/Open Chapter 01",priority=1)]
         public static void OpenChapter()
         {
             if(!EditorSceneManager.SaveCurrentModifiedScenesIfUserWantsTo())return;
-            FoundationPreparation.Prepare();EditorSceneManager.OpenScene(Chapter);
+            FoundationPreparation.Prepare();AlcatrazPlayStartup.UseCurrentScene();EditorSceneManager.OpenScene(Chapter);
         }
         [MenuItem("Alcatraz/Prepare Characters",priority=5)]
         public static void Prepare(){FoundationPreparation.Prepare();Blackstone.Supplied.Editor.SuppliedAssetPreparation.Prepare();}
