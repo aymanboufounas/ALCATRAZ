@@ -1,0 +1,332 @@
+[
+  {
+    "id": 8740,
+    "name": "Elias Vale",
+    "position": [
+      -4.25,
+      30.11,
+      -24.91
+    ],
+    "yaw": 90.0,
+    "pose": 0
+  },
+  {
+    "id": 9660,
+    "name": "Niko Serrin",
+    "position": [
+      -42.0,
+      27.3,
+      43.0
+    ],
+    "yaw": 185.0,
+    "pose": 0
+  },
+  {
+    "id": 10500,
+    "name": "Malik Reed",
+    "position": [
+      -58.0,
+      27.3,
+      46.5
+    ],
+    "yaw": 160.0,
+    "pose": 0
+  },
+  {
+    "id": 11320,
+    "name": "Iron Rooks rival",
+    "position": [
+      -40.3,
+      27.3,
+      43.5
+    ],
+    "yaw": 225.0,
+    "pose": 0
+  },
+  {
+    "id": 12140,
+    "name": "Officer Harrow",
+    "position": [
+      -30.5,
+      27.3,
+      49
+    ],
+    "yaw": 180.0,
+    "pose": 0
+  },
+  {
+    "id": 13020,
+    "name": "Theo Vale",
+    "position": [
+      22.25,
+      30.03,
+      -38
+    ],
+    "yaw": 270.0,
+    "pose": 0
+  },
+  {
+    "id": 13840,
+    "name": "Rafi",
+    "position": [
+      -60.0,
+      27.3,
+      32.0
+    ],
+    "yaw": 155.0,
+    "pose": 0
+  },
+  {
+    "id": 14660,
+    "name": "Tomas",
+    "position": [
+      -56.0,
+      27.3,
+      34.0
+    ],
+    "yaw": 150.0,
+    "pose": 0
+  },
+  {
+    "id": 15480,
+    "name": "Samir",
+    "position": [
+      -36.0,
+      27.3,
+      31.0
+    ],
+    "yaw": 210.0,
+    "pose": 0
+  },
+  {
+    "id": 16280,
+    "name": "Workshop contact",
+    "position": [
+      -35.0,
+      27.3,
+      54.0
+    ],
+    "yaw": 225.0,
+    "pose": 0
+  },
+  {
+    "id": 17100,
+    "name": "Luis",
+    "position": [
+      -63.0,
+      27.3,
+      49.0
+    ],
+    "yaw": 180.0,
+    "pose": 0
+  },
+  {
+    "id": 17920,
+    "name": "Andre",
+    "position": [
+      -45.0,
+      27.3,
+      34.0
+    ],
+    "yaw": 20.0,
+    "pose": 0
+  },
+  {
+    "id": 18740,
+    "name": "Benny",
+    "position": [
+      -35.0,
+      27.3,
+      47.0
+    ],
+    "yaw": 90.0,
+    "pose": 0
+  },
+  {
+    "id": 19540,
+    "name": "Yusef",
+    "position": [
+      -51.0,
+      27.3,
+      58.0
+    ],
+    "yaw": 95.0,
+    "pose": 0
+  },
+  {
+    "id": 20360,
+    "name": "Leon",
+    "position": [
+      -60.0,
+      27.3,
+      54.0
+    ],
+    "yaw": 170.0,
+    "pose": 11
+  },
+  {
+    "id": 21180,
+    "name": "Dario",
+    "position": [
+      -35.0,
+      27.3,
+      51.0
+    ],
+    "yaw": 265.0,
+    "pose": 0
+  },
+  {
+    "id": 24020,
+    "name": "Samir table friend",
+    "position": [
+      -54.59,
+      27.3,
+      40.93
+    ],
+    "yaw": 0.0,
+    "pose": 9
+  },
+  {
+    "id": 24820,
+    "name": "Moses",
+    "position": [
+      -53.41,
+      27.3,
+      43.07
+    ],
+    "yaw": 180.0,
+    "pose": 9
+  },
+  {
+    "id": 25640,
+    "name": "Owen",
+    "position": [
+      -54.59,
+      27.3,
+      43.07
+    ],
+    "yaw": 180.0,
+    "pose": 9
+  },
+  {
+    "id": 26500,
+    "name": "Eddie",
+    "position": [
+      -55.519999999999996,
+      27.3,
+      37.41
+    ],
+    "yaw": 180.0,
+    "pose": 8
+  },
+  {
+    "id": 27320,
+    "name": "Jamal",
+    "position": [
+      -54.480000000000004,
+      27.3,
+      37.41
+    ],
+    "yaw": 180.0,
+    "pose": 8
+  },
+  {
+    "id": 28140,
+    "name": "Peter",
+    "position": [
+      -55.519999999999996,
+      27.3,
+      35.59
+    ],
+    "yaw": 0.0,
+    "pose": 10
+  },
+  {
+    "id": 30072360,
+    "name": "Officer Mercer",
+    "position": [
+      0,
+      30.025,
+      -37
+    ],
+    "yaw": 0,
+    "pose": 0
+  },
+  {
+    "id": 30072380,
+    "name": "Officer Shaw",
+    "position": [
+      94,
+      5.045,
+      -65
+    ],
+    "yaw": 0,
+    "pose": 0
+  },
+  {
+    "id": 30072400,
+    "name": "Laundry orderly",
+    "position": [
+      -38,
+      9.34,
+      112
+    ],
+    "yaw": 0,
+    "pose": 0
+  },
+  {
+    "id": 30072420,
+    "name": "Dining orderly",
+    "position": [
+      -3,
+      30.03,
+      49
+    ],
+    "yaw": 0,
+    "pose": 0
+  },
+  {
+    "id": 30072440,
+    "name": "Workshop machinist",
+    "position": [
+      -45.8,
+      9.33,
+      120.65
+    ],
+    "yaw": 0,
+    "pose": 0
+  },
+  {
+    "id": 30072460,
+    "name": "Laundry attendant",
+    "position": [
+      -27.8,
+      9.33,
+      131.65
+    ],
+    "yaw": 0,
+    "pose": 0
+  },
+  {
+    "id": 30072480,
+    "name": "Storekeeper",
+    "position": [
+      70,
+      5.025,
+      -42
+    ],
+    "yaw": 0,
+    "pose": 0
+  },
+  {
+    "id": 30072500,
+    "name": "Dock orderly",
+    "position": [
+      111,
+      4.96,
+      -64
+    ],
+    "yaw": 270,
+    "pose": 0
+  }
+]

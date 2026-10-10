@@ -1,0 +1,14 @@
+{
+  "scene_objects": 2670,
+  "unique_meshes": 595,
+  "materials": 57,
+  "mesh_triangles": 862313,
+  "render_instances": 2516,
+  "animation_clips": 14,
+  "skinned_character": true,
+  "world_size_m": [
+    600,
+    600
+  ],
+  "unity_editor_available": false
+}

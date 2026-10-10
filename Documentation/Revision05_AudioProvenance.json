@@ -1,0 +1,253 @@
+{
+  "new_clips": 44,
+  "license": "CC0 / original Foley",
+  "sources": [
+    {
+      "name": "Gunshots.zip",
+      "url": "https://opengameart.org/sites/default/files/sounds.zip",
+      "sha256": "5b3960083a94e18ee47bc84376615a476debc884b18f25b93ea4b6ab3f278e4f",
+      "size": 5504243
+    },
+    {
+      "name": "KenneyImpact.zip",
+      "url": "https://kenney.nl/media/pages/assets/impact-sounds/87b4ddecda-1677589768/kenney_impact-sounds.zip",
+      "sha256": "029d734af1582474edf3a694d1b0cebc97c1c152f2f39fa34d4c2bafc5de77f8",
+      "size": 800850
+    },
+    {
+      "name": "PistolReload.wav",
+      "url": "https://opengameart.org/sites/default/files/gunreload1.wav",
+      "sha256": "685cac6a184e3cc3ec09a25b6ddb1d6feffd86d469778f339aa423d384035c50",
+      "size": 278572
+    },
+    {
+      "name": "RifleReload.wav",
+      "url": "https://opengameart.org/sites/default/files/assaultriflereload1_0.wav",
+      "sha256": "efb2d724d634eabe6ba8d3065686abca848bb7497d4d43a5e4aed5e5ea23016f",
+      "size": 274476
+    }
+  ],
+  "files": [
+    {
+      "path": "Assets/Game/Resources/BlackstoneFoundation/Audio/Concrete/Concrete0.wav",
+      "sha256": "bb07f990e2c20165ac52dcfde8e92b6f6aff4285eac3ab1e45330c03c6c6fc9f",
+      "seconds": 0.10302083333333334
+    },
+    {
+      "path": "Assets/Game/Resources/BlackstoneFoundation/Audio/Concrete/Concrete1.wav",
+      "sha256": "30252a49d771fee5a8131c91f48bd002ce695e473a78fdf8f3d37478640a3f9e",
+      "seconds": 0.10475
+    },
+    {
+      "path": "Assets/Game/Resources/BlackstoneFoundation/Audio/Concrete/Concrete2.wav",
+      "sha256": "73953af85215d6b2cea16a359bbd0df26a09f33339cf150978ea488a151e4535",
+      "seconds": 0.10989583333333333
+    },
+    {
+      "path": "Assets/Game/Resources/BlackstoneFoundation/Audio/Concrete/Concrete3.wav",
+      "sha256": "7285dea77e81cb47e10ae746d63b0da00b8ef0d982a92d0cea73a3c87f074be7",
+      "seconds": 0.10760416666666667
+    },
+    {
+      "path": "Assets/Game/Resources/BlackstoneFoundation/Audio/Concrete/Concrete4.wav",
+      "sha256": "15f127494fdf3e83a8dd6145b0ca6e0ec8870c399096c323db4b900fc604dd5a",
+      "seconds": 0.11145833333333334
+    },
+    {
+      "path": "Assets/Game/Resources/BlackstoneFoundation/Audio/Wood/Wood0.wav",
+      "sha256": "57c0dc41c063e072a1ac17f502b0fb3178544a688c767432ca7817e5b545dd07",
+      "seconds": 0.27139583333333334
+    },
+    {
+      "path": "Assets/Game/Resources/BlackstoneFoundation/Audio/Wood/Wood1.wav",
+      "sha256": "7ab64a1a81d1aaf289cf1b91e7913b75ba010cbf2ed95e031adf39cc7b002747",
+      "seconds": 0.24866666666666667
+    },
+    {
+      "path": "Assets/Game/Resources/BlackstoneFoundation/Audio/Wood/Wood2.wav",
+      "sha256": "19f3fb1367254cc00a5afa2e47efe43f27ad0e907ee0004935a0a14d12ebe703",
+      "seconds": 0.2485
+    },
+    {
+      "path": "Assets/Game/Resources/BlackstoneFoundation/Audio/Wood/Wood3.wav",
+      "sha256": "907327176d1728d8cef4d05b7fcb96eade75d432213533e190184e5a979631dc",
+      "seconds": 0.248625
+    },
+    {
+      "path": "Assets/Game/Resources/BlackstoneFoundation/Audio/Wood/Wood4.wav",
+      "sha256": "fc36a3094962470a17c3ab7a63acddb92719cb9473b252cc7a7826e8930753d5",
+      "seconds": 0.24502083333333333
+    },
+    {
+      "path": "Assets/Game/Resources/BlackstoneFoundation/Audio/Grass/Grass0.wav",
+      "sha256": "7156eaddacebf236b7ef121615bdbb817fd2eea43eda6eedabcb36e9308c4103",
+      "seconds": 0.7746875
+    },
+    {
+      "path": "Assets/Game/Resources/BlackstoneFoundation/Audio/Grass/Grass1.wav",
+      "sha256": "c63a59c7d242130deda6bf07e6eff58ea1d5c64050262dbed32e2bb79bee0ceb",
+      "seconds": 0.6707083333333334
+    },
+    {
+      "path": "Assets/Game/Resources/BlackstoneFoundation/Audio/Grass/Grass2.wav",
+      "sha256": "6958c3674c044ab37e17ca5929c0beacb0f2d1ded308d6d4aa5fe055972a7189",
+      "seconds": 0.6895625
+    },
+    {
+      "path": "Assets/Game/Resources/BlackstoneFoundation/Audio/Grass/Grass3.wav",
+      "sha256": "e7342171caf3e9d57edc4edfab9b463234ce78af1599938351f6733e1de839b9",
+      "seconds": 0.6664375
+    },
+    {
+      "path": "Assets/Game/Resources/BlackstoneFoundation/Audio/Grass/Grass4.wav",
+      "sha256": "84a26977065959f9fe6e8f66d1da9dcff90440e66d4191c657d0bfccab3d5ad8",
+      "seconds": 0.5873333333333334
+    },
+    {
+      "path": "Assets/Game/Resources/BlackstoneFoundation/Audio/Impact/Impact0.wav",
+      "sha256": "84a544691503977773d176cb55ebed721039373a4911e575ce5739af517ecfd9",
+      "seconds": 0.37297916666666664
+    },
+    {
+      "path": "Assets/Game/Resources/BlackstoneFoundation/Audio/Impact/Impact1.wav",
+      "sha256": "b78c5986076690f1368575d8337a0fbde2d7fb439f75060ab54294dfd0c69081",
+      "seconds": 0.2489375
+    },
+    {
+      "path": "Assets/Game/Resources/BlackstoneFoundation/Audio/Impact/Impact2.wav",
+      "sha256": "c392b878e5c57680bf0ce0f807e43a658d5d78d1c2f542444fe862613db6e191",
+      "seconds": 0.23289583333333333
+    },
+    {
+      "path": "Assets/Game/Resources/BlackstoneFoundation/Audio/Impact/Impact3.wav",
+      "sha256": "450477ad3200b0ee6deb443c0adb3fd78b000aee219abf185251824a5137fa57",
+      "seconds": 0.48204166666666665
+    },
+    {
+      "path": "Assets/Game/Resources/BlackstoneFoundation/Audio/Impact/Impact4.wav",
+      "sha256": "d1334cdc72eeca479f5e18d712577ffa32571e066cb17d946a982fce9e14b882",
+      "seconds": 0.2105
+    },
+    {
+      "path": "Assets/Game/Resources/BlackstoneFoundation/Audio/Punch/Punch0.wav",
+      "sha256": "856f0a644cee3d4b4bc07defab67daf2832adaf5c0f556e40d0fdc75a126aca7",
+      "seconds": 0.4305625
+    },
+    {
+      "path": "Assets/Game/Resources/BlackstoneFoundation/Audio/Punch/Punch1.wav",
+      "sha256": "ff758f986d0a25b973e8d26cfcc2cee19505fb080a4a846bff5b5802e1914274",
+      "seconds": 0.40170833333333333
+    },
+    {
+      "path": "Assets/Game/Resources/BlackstoneFoundation/Audio/Punch/Punch2.wav",
+      "sha256": "0b79609c105a781686dab1e03e20fd4a522357c5d47477aa33b3fc21a449a58b",
+      "seconds": 0.5414166666666667
+    },
+    {
+      "path": "Assets/Game/Resources/BlackstoneFoundation/Audio/Punch/Punch3.wav",
+      "sha256": "0f1361bd04c3eb3eda241640b5041e3aa4a1ef045638dc0e2d22863633e4a5c9",
+      "seconds": 0.45527083333333335
+    },
+    {
+      "path": "Assets/Game/Resources/BlackstoneFoundation/Audio/Punch/Punch4.wav",
+      "sha256": "a14b3a607d1a0360be173d6106c08e1122edbb6298d1cc1b39477b22a2613b56",
+      "seconds": 0.5429375
+    },
+    {
+      "path": "Assets/Game/Resources/BlackstoneFoundation/Audio/Metal/Metal0.wav",
+      "sha256": "0c4dff7e875b7bdb08824690a0ed293b46b92a28e592ee7c0cabb968b858a489",
+      "seconds": 0.5424375
+    },
+    {
+      "path": "Assets/Game/Resources/BlackstoneFoundation/Audio/Metal/Metal1.wav",
+      "sha256": "32914a4afffd95d70277fbf4c3baff3fc9e15bf01325e5addafd7b04e6cc77a2",
+      "seconds": 0.6546875
+    },
+    {
+      "path": "Assets/Game/Resources/BlackstoneFoundation/Audio/Metal/Metal2.wav",
+      "sha256": "ebf47b10efac6185f7875e9bce1c2f5c511367cf21bc4ea07c44856c76aafeb2",
+      "seconds": 0.48883333333333334
+    },
+    {
+      "path": "Assets/Game/Resources/BlackstoneFoundation/Audio/Metal/Metal3.wav",
+      "sha256": "00e2c194c565ccca50b3d4e4c81bb29c68df0a505bd4003f667926c2c735bd80",
+      "seconds": 0.5276041666666667
+    },
+    {
+      "path": "Assets/Game/Resources/BlackstoneFoundation/Audio/Metal/Metal4.wav",
+      "sha256": "a6fb2ee3716ebd66bf1fda32202af7ed1799b0aab4986bdbf344f05344189b3e",
+      "seconds": 0.6566041666666667
+    },
+    {
+      "path": "Assets/Game/Resources/BlackstoneFoundation/Audio/Pistol/Pistol0.wav",
+      "sha256": "68570a67bd2ade3104624727af5744f9b8090d3b8d7ab6a3fb02a28762856a75",
+      "seconds": 0.7125
+    },
+    {
+      "path": "Assets/Game/Resources/BlackstoneFoundation/Audio/Pistol/Pistol1.wav",
+      "sha256": "5d6ee629a45120665b98c8c2042b19c5359133b1fb331c8b3d03f8238f146241",
+      "seconds": 0.7125
+    },
+    {
+      "path": "Assets/Game/Resources/BlackstoneFoundation/Audio/Pistol/Pistol2.wav",
+      "sha256": "9d0f94abb489316075324277c0cbc4a30c709d7a536ec31d7c3d8623556269f7",
+      "seconds": 0.7125
+    },
+    {
+      "path": "Assets/Game/Resources/BlackstoneFoundation/Audio/Pistol/Pistol3.wav",
+      "sha256": "29a8fe1d90ded8e5fc8a04280e0cd0399c6db2efcdcf794dde5a532aaa58e3b5",
+      "seconds": 0.7125
+    },
+    {
+      "path": "Assets/Game/Resources/BlackstoneFoundation/Audio/Pistol/Pistol4.wav",
+      "sha256": "453442d22e02990cdc6c381149f9d5199c40a1536765252b89e1dbd756b8a5c8",
+      "seconds": 0.6883958333333333
+    },
+    {
+      "path": "Assets/Game/Resources/BlackstoneFoundation/Audio/Rifle/Rifle0.wav",
+      "sha256": "c720c27b3d0659c267e49821f4e94ba5d4fd4d68ec0ed8f86317ceaedf8a8e51",
+      "seconds": 0.7125
+    },
+    {
+      "path": "Assets/Game/Resources/BlackstoneFoundation/Audio/Rifle/Rifle1.wav",
+      "sha256": "069e8ef13dfeea1795894ed9b00d18f1c711611988518e49ab2431e695d5dfdf",
+      "seconds": 0.7125
+    },
+    {
+      "path": "Assets/Game/Resources/BlackstoneFoundation/Audio/Rifle/Rifle2.wav",
+      "sha256": "0d73c617227185df182585c88a08499f0004211dc53baa94ed9770180c9a4400",
+      "seconds": 0.7125
+    },
+    {
+      "path": "Assets/Game/Resources/BlackstoneFoundation/Audio/Rifle/Rifle3.wav",
+      "sha256": "b5c2476cb0475c00704ed4973c156c3dbfb6d2c6ea355c6e05c1999052ccef57",
+      "seconds": 0.7125
+    },
+    {
+      "path": "Assets/Game/Resources/BlackstoneFoundation/Audio/Handling/ReloadPistol.wav",
+      "sha256": "441318309b8279da806ef47f56860b0d92839905caf6a4ad53ff4625335b68bc",
+      "seconds": 1.5789583333333332
+    },
+    {
+      "path": "Assets/Game/Resources/BlackstoneFoundation/Audio/Handling/ReloadRifle.wav",
+      "sha256": "2efcde0866144d5ce59d9cc989243fbd53b09eda7b2237ddfd3e5b3a37ad1a9d",
+      "seconds": 1.55575
+    },
+    {
+      "path": "Assets/Game/Resources/BlackstoneFoundation/Audio/Handling/Empty.wav",
+      "sha256": "db9f5f1687845ceb61f5ab7513440ca4f7d3b1b185d453bd9ddb02ac3de1a959",
+      "seconds": 0.12997916666666667
+    },
+    {
+      "path": "Assets/Game/Resources/BlackstoneFoundation/Audio/Handling/Draw.wav",
+      "sha256": "257b523855422743c168be2a41dbc9a156dd99767cd63d135b12d94cc9e52c7f",
+      "seconds": 0.62
+    },
+    {
+      "path": "Assets/Game/Resources/BlackstoneFoundation/Audio/Handling/Swing.wav",
+      "sha256": "4018c5a3300d48a2e5668d4fbaa952af6706e5911ae143bab0d724385be1eb53",
+      "seconds": 0.24
+    }
+  ],
+  "notes": "Metal footsteps combine CC0 concrete and plate recordings. Gunshots are trimmed, filtered and denoised CC0 recordings. Pistol4 is a small pitch variation of one of four recorded pistol shots. These are prototype sounds."
+}

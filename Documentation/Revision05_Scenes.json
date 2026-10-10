@@ -1,0 +1,11 @@
+{
+  "original_scene": "Assets/Game/Scenes/SC_BlackstoneIsland.unity",
+  "original_scene_sha256": "56a4ea40a164111644069ead8d41dbda5f23526b5cd87cc0bd0a1b6d3b996196",
+  "default_scene": "SC_BlackstoneFoundation",
+  "story_scene": "SC_BlackstoneStory_Upgraded",
+  "models": 5,
+  "source_animation_clips": 12,
+  "targets": 3,
+  "footstep_pads": 3,
+  "status": "Source-authored; Unity import and Play Mode verification required."
+}

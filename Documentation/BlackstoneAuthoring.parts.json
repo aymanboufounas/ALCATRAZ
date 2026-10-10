@@ -1,0 +1,12 @@
+{
+  "status": "PASS",
+  "archive": "BlackstoneAuthoring.json.gz",
+  "parts": [
+    "BlackstoneAuthoring.json.gz.part001",
+    "BlackstoneAuthoring.json.gz.part002",
+    "BlackstoneAuthoring.json.gz.part003"
+  ],
+  "bytes": 19391202,
+  "sha256": "c346ea7d4042d62ebd03268ed887babb47a7823f5a31bdf87f558e4155338091",
+  "scope": "Parts concatenate byte-for-byte to the original gzip archive"
+}

@@ -1,0 +1,74 @@
+{
+  "revision": "08",
+  "approved_concept": "Documentation/ApprovedConcept/Alcatraz_MapCharacters.png",
+  "coastal_trail": [
+    [
+      -63,
+      8.5,
+      -109
+    ],
+    [
+      -65.5,
+      9,
+      -93
+    ],
+    [
+      -68.5,
+      10,
+      -69
+    ],
+    [
+      -72,
+      10.8,
+      -45
+    ],
+    [
+      -75,
+      11.7,
+      -20
+    ],
+    [
+      -79,
+      12.6,
+      5
+    ],
+    [
+      -80,
+      13.2,
+      27
+    ],
+    [
+      -80.2,
+      14.4,
+      48
+    ],
+    [
+      -76.5,
+      16.5,
+      70
+    ],
+    [
+      -71.5,
+      19,
+      89
+    ],
+    [
+      -61,
+      21,
+      116
+    ],
+    [
+      -60,
+      21,
+      116
+    ]
+  ],
+  "trail_width_metres": 2.3,
+  "visual_target": "Reference-video island footprint and approved marine-daylight concept",
+  "character_rigs": "Existing MIT Rocketbox rigs; new head albedo and per-character materials",
+  "limitations": [
+    "Concept is an art target, not a Unity capture",
+    "No imported photogrammetry island or bespoke sculpted faces",
+    "Unity import, Play Mode and performance require local verification"
+  ]
+}

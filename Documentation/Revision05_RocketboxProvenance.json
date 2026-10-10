@@ -1,0 +1,438 @@
+{
+  "repository_commit": "0943055db6ec570bcef9f2c8b41c9e5467c808f9",
+  "license": "MIT",
+  "files": [
+    {
+      "source": "Assets/Animations/all_animations_max_motextr_static/m_crouch_idle.max.fbx",
+      "source_url": "https://raw.githubusercontent.com/microsoft/Microsoft-Rocketbox/master/Assets/Animations/all_animations_max_motextr_static/m_crouch_idle.max.fbx",
+      "git_blob_sha1": "cded1a52cd9e0683a3fdcda768ac70617a78d88f",
+      "path": "Assets/Game/Foundation/Animations/Rocketbox/Crouch.fbx",
+      "sha256": "d3704294853eda39d566cb31b0e6a6c50bd3cc3c1bda9102c1156c1537c12eeb",
+      "size": 2106496
+    },
+    {
+      "source": "Assets/Animations/all_animations_max_motextr_static/m_idle_neutral_01.max.fbx",
+      "source_url": "https://raw.githubusercontent.com/microsoft/Microsoft-Rocketbox/master/Assets/Animations/all_animations_max_motextr_static/m_idle_neutral_01.max.fbx",
+      "git_blob_sha1": "a2d92c3326a9c503af677c9fa6082387f060d6c4",
+      "path": "Assets/Game/Foundation/Animations/Rocketbox/Idle.fbx",
+      "sha256": "818cc185af21390575f7fbfdeb3012ba2ce5969fbcb220ea725a2617b339a6e2",
+      "size": 2418544
+    },
+    {
+      "source": "Assets/Animations/all_animations_max_motextr_xy/m_run_neutral_01.max.fbx",
+      "source_url": "https://raw.githubusercontent.com/microsoft/Microsoft-Rocketbox/master/Assets/Animations/all_animations_max_motextr_xy/m_run_neutral_01.max.fbx",
+      "git_blob_sha1": "409f02a546e6746f385e70a353b30c639fa3a99b",
+      "path": "Assets/Game/Foundation/Animations/Rocketbox/Run.fbx",
+      "sha256": "5a22052ea750805ea7e097310f36cd448c838e7c88bc842a78632d9606869fa8",
+      "size": 868752
+    },
+    {
+      "source": "Assets/Animations/all_animations_max_motextr_xy/m_run_fast_01.max.fbx",
+      "source_url": "https://raw.githubusercontent.com/microsoft/Microsoft-Rocketbox/master/Assets/Animations/all_animations_max_motextr_xy/m_run_fast_01.max.fbx",
+      "git_blob_sha1": "3c07e032de09173b6d9e0ffd6218943bc6ebcefd",
+      "path": "Assets/Game/Foundation/Animations/Rocketbox/RunFast.fbx",
+      "sha256": "81d096f62465ae038149e7726485133264e4a47d105d236370b00dc18c650526",
+      "size": 833040
+    },
+    {
+      "source": "Assets/Animations/all_animations_max_motextr_static/m_sit_chair_idle_neutral_01.max.fbx",
+      "source_url": "https://raw.githubusercontent.com/microsoft/Microsoft-Rocketbox/master/Assets/Animations/all_animations_max_motextr_static/m_sit_chair_idle_neutral_01.max.fbx",
+      "git_blob_sha1": "49c0a4e4d666e8d6582486b570a90cc18fd65167",
+      "path": "Assets/Game/Foundation/Animations/Rocketbox/Seated.fbx",
+      "sha256": "c5aeab85a7daa50770f70644b1651ff7811594500a702e8b454e7386566e1df2",
+      "size": 5868640
+    },
+    {
+      "source": "Assets/Animations/all_animations_max_motextr_xy/m_walk_start.max.fbx",
+      "source_url": "https://raw.githubusercontent.com/microsoft/Microsoft-Rocketbox/master/Assets/Animations/all_animations_max_motextr_xy/m_walk_start.max.fbx",
+      "git_blob_sha1": "ea49c0c4972ad1bf4d0124ea8ecb3d1f451698e9",
+      "path": "Assets/Game/Foundation/Animations/Rocketbox/Start.fbx",
+      "sha256": "05243edcc6712bbd526ac2d7022e6a8bd49debaadf012f96d4b81795fb169817",
+      "size": 931792
+    },
+    {
+      "source": "Assets/Animations/all_animations_max_motextr_xy/m_walk_stop.max.fbx",
+      "source_url": "https://raw.githubusercontent.com/microsoft/Microsoft-Rocketbox/master/Assets/Animations/all_animations_max_motextr_xy/m_walk_stop.max.fbx",
+      "git_blob_sha1": "ce2f2359034c5df29f03cd4d645356af3da20881",
+      "path": "Assets/Game/Foundation/Animations/Rocketbox/Stop.fbx",
+      "sha256": "808f112c37c0db60fd1855fb2785749557ecdb9107e8028cd3f28b11aa9c62b1",
+      "size": 1209760
+    },
+    {
+      "source": "Assets/Animations/all_animations_max_motextr_xyz/m_turn_left_90.max.fbx",
+      "source_url": "https://raw.githubusercontent.com/microsoft/Microsoft-Rocketbox/master/Assets/Animations/all_animations_max_motextr_xyz/m_turn_left_90.max.fbx",
+      "git_blob_sha1": "20cc2e386451461657cef25cb385e5267b096316",
+      "path": "Assets/Game/Foundation/Animations/Rocketbox/TurnLeft.fbx",
+      "sha256": "da138838ea930b29c9996c6633e588b5352fe1f4d74f5cfa5c7acb22798dc97f",
+      "size": 1299184
+    },
+    {
+      "source": "Assets/Animations/all_animations_max_motextr_xyz/m_turn_right_90.max.fbx",
+      "source_url": "https://raw.githubusercontent.com/microsoft/Microsoft-Rocketbox/master/Assets/Animations/all_animations_max_motextr_xyz/m_turn_right_90.max.fbx",
+      "git_blob_sha1": "948d02d7f32111cd5a363992fcf357e4e87a9e8c",
+      "path": "Assets/Game/Foundation/Animations/Rocketbox/TurnRight.fbx",
+      "sha256": "721ac18eb4cc5278b479734e185423fe05a4bf6b2ae95514e02d049b4ce70b3a",
+      "size": 1254448
+    },
+    {
+      "source": "Assets/Animations/all_animations_max_motextr_xy/m_walk_neutral_01.max.fbx",
+      "source_url": "https://raw.githubusercontent.com/microsoft/Microsoft-Rocketbox/master/Assets/Animations/all_animations_max_motextr_xy/m_walk_neutral_01.max.fbx",
+      "git_blob_sha1": "33955a38a7db608935477e7a0fd605dee5230c0c",
+      "path": "Assets/Game/Foundation/Animations/Rocketbox/Walk.fbx",
+      "sha256": "e6805ae6b6b49fe10f06c1b17b14ddde90d09b9fea689ac34793df252f44dcd0",
+      "size": 994336
+    },
+    {
+      "source": "Assets/Animations/all_animations_max_motextr_xy/m_walk_fast_01.max.fbx",
+      "source_url": "https://raw.githubusercontent.com/microsoft/Microsoft-Rocketbox/master/Assets/Animations/all_animations_max_motextr_xy/m_walk_fast_01.max.fbx",
+      "git_blob_sha1": "c1c691e1b654565282bd15cf49df81af0b18626f",
+      "path": "Assets/Game/Foundation/Animations/Rocketbox/WalkFast.fbx",
+      "sha256": "a8b7962c7dd016b1e9781a6c0983efbac62ad069feb2884d2b2e5686ffe90053",
+      "size": 957776
+    },
+    {
+      "source": "Assets/Animations/all_animations_max_motextr_xy/m_walk_slow_01.max.fbx",
+      "source_url": "https://raw.githubusercontent.com/microsoft/Microsoft-Rocketbox/master/Assets/Animations/all_animations_max_motextr_xy/m_walk_slow_01.max.fbx",
+      "git_blob_sha1": "45e516056396f2be70a533689c45ce8b144209a4",
+      "path": "Assets/Game/Foundation/Animations/Rocketbox/WalkSlow.fbx",
+      "sha256": "8c5e5ed18be9e1062a26d230677d2801a679c70fd67f8aa8de14ff37f6d20577",
+      "size": 1066224
+    },
+    {
+      "source": "Assets/Avatars/Adults/Male_Adult_07/Export/Male_Adult_07_facial.fbx",
+      "source_url": "https://raw.githubusercontent.com/microsoft/Microsoft-Rocketbox/master/Assets/Avatars/Adults/Male_Adult_07/Export/Male_Adult_07_facial.fbx",
+      "git_blob_sha1": "85a95cfc17b5e390aaa33a3cdbbe6f1a8c6e0fa4",
+      "path": "Assets/Game/Resources/BlackstoneFoundation/Characters/Male_Adult_07/Male_Adult_07.fbx",
+      "sha256": "6fbd1cd44b6145fce3caf18fdd22ccbd00fad2a019b3bf489be7e9c031269b0f",
+      "size": 1881520
+    },
+    {
+      "source": "Assets/Avatars/Adults/Male_Adult_07/Male_Adult_07.png",
+      "source_url": "https://raw.githubusercontent.com/microsoft/Microsoft-Rocketbox/master/Assets/Avatars/Adults/Male_Adult_07/Male_Adult_07.png",
+      "git_blob_sha1": "6188b7d7f60c6b8a6a6b7c2078eac6eefb62bbf9",
+      "path": "Assets/Game/Resources/BlackstoneFoundation/Characters/Male_Adult_07/Portrait.png",
+      "sha256": "f83499d67142c505bb7a93c37e1f04a77649a8eaa791321cb5f8b668df09cf39",
+      "size": 482710
+    },
+    {
+      "source": "Assets/Avatars/Adults/Male_Adult_07/Textures/m013_body_color.tga",
+      "source_url": "https://raw.githubusercontent.com/microsoft/Microsoft-Rocketbox/master/Assets/Avatars/Adults/Male_Adult_07/Textures/m013_body_color.tga",
+      "git_blob_sha1": "cc86e5dd5fd1247fc15b6965c7e95876ae4074ac",
+      "path": "Assets/Game/Resources/BlackstoneFoundation/Characters/Male_Adult_07/m013_body_color.png",
+      "sha256": "1f89a41941021e22b697bef4499a25493625b7da92fca51fabf97c0fa3a21649",
+      "size": 6844368
+    },
+    {
+      "source": "Assets/Avatars/Adults/Male_Adult_07/Textures/m013_body_normal.tga",
+      "source_url": "https://raw.githubusercontent.com/microsoft/Microsoft-Rocketbox/master/Assets/Avatars/Adults/Male_Adult_07/Textures/m013_body_normal.tga",
+      "git_blob_sha1": "24ad96a084439b9ef03170727d2fbf845a0a1c5c",
+      "path": "Assets/Game/Resources/BlackstoneFoundation/Characters/Male_Adult_07/m013_body_normal.png",
+      "sha256": "6eae3b72847908854928fab44c1358f3c206415c721cec39a35d4086ae73d044",
+      "size": 6422315
+    },
+    {
+      "source": "Assets/Avatars/Adults/Male_Adult_07/Textures/m013_body_specular.tga",
+      "source_url": "https://raw.githubusercontent.com/microsoft/Microsoft-Rocketbox/master/Assets/Avatars/Adults/Male_Adult_07/Textures/m013_body_specular.tga",
+      "git_blob_sha1": "2ae13de2342cb50dc84e495cde9a2ba75499ad58",
+      "path": "Assets/Game/Resources/BlackstoneFoundation/Characters/Male_Adult_07/m013_body_specular.png",
+      "sha256": "3cabac7f9bdc99f526a0b5cca65157fbfff84644cf2e0e384526ce9773953ec6",
+      "size": 2049904
+    },
+    {
+      "source": "Assets/Avatars/Adults/Male_Adult_07/Textures/m013_head_color.tga",
+      "source_url": "https://raw.githubusercontent.com/microsoft/Microsoft-Rocketbox/master/Assets/Avatars/Adults/Male_Adult_07/Textures/m013_head_color.tga",
+      "git_blob_sha1": "3a4039e40d02b39fe4de0321d597b3cea42d7556",
+      "path": "Assets/Game/Resources/BlackstoneFoundation/Characters/Male_Adult_07/m013_head_color.png",
+      "sha256": "0a0cbe4049a3f1df3f4e92febe47cb6bb812738806915bf3f216c0b4503b6456",
+      "size": 4688728
+    },
+    {
+      "source": "Assets/Avatars/Adults/Male_Adult_07/Textures/m013_head_normal.tga",
+      "source_url": "https://raw.githubusercontent.com/microsoft/Microsoft-Rocketbox/master/Assets/Avatars/Adults/Male_Adult_07/Textures/m013_head_normal.tga",
+      "git_blob_sha1": "1448c90183f81d45beb1e973f0690f5d19a7a459",
+      "path": "Assets/Game/Resources/BlackstoneFoundation/Characters/Male_Adult_07/m013_head_normal.png",
+      "sha256": "14f15af20e515da8cb1f466fd7b41b4e101b5d3c4f92d783e353f4ffe613236b",
+      "size": 4486100
+    },
+    {
+      "source": "Assets/Avatars/Adults/Male_Adult_07/Textures/m013_head_specular.tga",
+      "source_url": "https://raw.githubusercontent.com/microsoft/Microsoft-Rocketbox/master/Assets/Avatars/Adults/Male_Adult_07/Textures/m013_head_specular.tga",
+      "git_blob_sha1": "1679def9ca25cad1c2196701fee08111ed5bdfc3",
+      "path": "Assets/Game/Resources/BlackstoneFoundation/Characters/Male_Adult_07/m013_head_specular.png",
+      "sha256": "d5db029fd279d06460676f8f8a9b723274fc5e83a2fd977a34da08aae0145dca",
+      "size": 2089414
+    },
+    {
+      "source": "Assets/Avatars/Adults/Male_Adult_07/Textures/m013_opacity_color.tga",
+      "source_url": "https://raw.githubusercontent.com/microsoft/Microsoft-Rocketbox/master/Assets/Avatars/Adults/Male_Adult_07/Textures/m013_opacity_color.tga",
+      "git_blob_sha1": "5885f9f683f682ab666290503b3503010fbab8aa",
+      "path": "Assets/Game/Resources/BlackstoneFoundation/Characters/Male_Adult_07/m013_opacity_color.png",
+      "sha256": "445dd64d57771539189f75c9b0f235f86c4ae90b12f86a570f449ec4ea5c0918",
+      "size": 2556439
+    },
+    {
+      "source": "Assets/Avatars/Adults/Male_Adult_12/Export/Male_Adult_12_facial.fbx",
+      "source_url": "https://raw.githubusercontent.com/microsoft/Microsoft-Rocketbox/master/Assets/Avatars/Adults/Male_Adult_12/Export/Male_Adult_12_facial.fbx",
+      "git_blob_sha1": "2a78471b6a2770562746092aea079580bcd6642f",
+      "path": "Assets/Game/Resources/BlackstoneFoundation/Characters/Male_Adult_12/Male_Adult_12.fbx",
+      "sha256": "ef4d15accbff3e557af369bd8b6a7227ff808ab996b5c350388f081a287cbd63",
+      "size": 1772832
+    },
+    {
+      "source": "Assets/Avatars/Adults/Male_Adult_12/Male_Adult_12.png",
+      "source_url": "https://raw.githubusercontent.com/microsoft/Microsoft-Rocketbox/master/Assets/Avatars/Adults/Male_Adult_12/Male_Adult_12.png",
+      "git_blob_sha1": "2b4e07161df2786c8cde85952403bc71eaabc031",
+      "path": "Assets/Game/Resources/BlackstoneFoundation/Characters/Male_Adult_12/Portrait.png",
+      "sha256": "d680a0a9b094981f7383a47ec21cc8a5fdd8dccb5941e73e85abb3793b03a2e6",
+      "size": 506050
+    },
+    {
+      "source": "Assets/Avatars/Adults/Male_Adult_12/Textures/m007_body_color.tga",
+      "source_url": "https://raw.githubusercontent.com/microsoft/Microsoft-Rocketbox/master/Assets/Avatars/Adults/Male_Adult_12/Textures/m007_body_color.tga",
+      "git_blob_sha1": "1757150789a5fdcf733394ff21a60512530b4f1a",
+      "path": "Assets/Game/Resources/BlackstoneFoundation/Characters/Male_Adult_12/m007_body_color.png",
+      "sha256": "0ef2dad69e02530941652277a7195642bcee7d186c17043ba3f2f58b243fa693",
+      "size": 6926155
+    },
+    {
+      "source": "Assets/Avatars/Adults/Male_Adult_12/Textures/m007_body_normal.tga",
+      "source_url": "https://raw.githubusercontent.com/microsoft/Microsoft-Rocketbox/master/Assets/Avatars/Adults/Male_Adult_12/Textures/m007_body_normal.tga",
+      "git_blob_sha1": "5bc8f98e588d55964e2b6a2d0029778f4a9db9e6",
+      "path": "Assets/Game/Resources/BlackstoneFoundation/Characters/Male_Adult_12/m007_body_normal.png",
+      "sha256": "db6b7e48b51bc9cdd64aa381caa5fa3591797b3ffd9b32429e5861bf64d88f7d",
+      "size": 5175535
+    },
+    {
+      "source": "Assets/Avatars/Adults/Male_Adult_12/Textures/m007_body_specular.tga",
+      "source_url": "https://raw.githubusercontent.com/microsoft/Microsoft-Rocketbox/master/Assets/Avatars/Adults/Male_Adult_12/Textures/m007_body_specular.tga",
+      "git_blob_sha1": "611bbd149179a52c6fbded07375904d462e49c19",
+      "path": "Assets/Game/Resources/BlackstoneFoundation/Characters/Male_Adult_12/m007_body_specular.png",
+      "sha256": "8a24c6729bf404909699f2501b7eb333c3c8095c0589ef7e6cfe8633c6f22279",
+      "size": 2331243
+    },
+    {
+      "source": "Assets/Avatars/Adults/Male_Adult_12/Textures/m007_head_color.tga",
+      "source_url": "https://raw.githubusercontent.com/microsoft/Microsoft-Rocketbox/master/Assets/Avatars/Adults/Male_Adult_12/Textures/m007_head_color.tga",
+      "git_blob_sha1": "e5b23c4f55e499893c2a92ec7e52d0252bee2ae3",
+      "path": "Assets/Game/Resources/BlackstoneFoundation/Characters/Male_Adult_12/m007_head_color.png",
+      "sha256": "df66dbf6984d7b680bc6b17e6faebef5d45f2fa1208b2ee40266d4fefa2e375d",
+      "size": 4878380
+    },
+    {
+      "source": "Assets/Avatars/Adults/Male_Adult_12/Textures/m007_head_normal.tga",
+      "source_url": "https://raw.githubusercontent.com/microsoft/Microsoft-Rocketbox/master/Assets/Avatars/Adults/Male_Adult_12/Textures/m007_head_normal.tga",
+      "git_blob_sha1": "0a99ce9aa6014e94c3385555f66a14da7599b757",
+      "path": "Assets/Game/Resources/BlackstoneFoundation/Characters/Male_Adult_12/m007_head_normal.png",
+      "sha256": "912f4318b9cdee09fac0eace9bae500d710176687b6b0d85f7063b92794bf68e",
+      "size": 3169891
+    },
+    {
+      "source": "Assets/Avatars/Adults/Male_Adult_12/Textures/m007_head_specular.tga",
+      "source_url": "https://raw.githubusercontent.com/microsoft/Microsoft-Rocketbox/master/Assets/Avatars/Adults/Male_Adult_12/Textures/m007_head_specular.tga",
+      "git_blob_sha1": "81fe377939cf8eaedd5d14dfb5261650de86bf1e",
+      "path": "Assets/Game/Resources/BlackstoneFoundation/Characters/Male_Adult_12/m007_head_specular.png",
+      "sha256": "27945456b04f645d290f93e9a819e864b6d07671d1d17bc29b45e73f08e4ef1b",
+      "size": 2723002
+    },
+    {
+      "source": "Assets/Avatars/Adults/Male_Adult_16/Export/Male_Adult_16_facial.fbx",
+      "source_url": "https://raw.githubusercontent.com/microsoft/Microsoft-Rocketbox/master/Assets/Avatars/Adults/Male_Adult_16/Export/Male_Adult_16_facial.fbx",
+      "git_blob_sha1": "bd48aeaab21b7874d478e6fcf4692be553c6aa01",
+      "path": "Assets/Game/Resources/BlackstoneFoundation/Characters/Male_Adult_16/Male_Adult_16.fbx",
+      "sha256": "5aa9bce9a7a0ebbcae86d7c11cf32a72cae845e60cbcec32bd27136db3668b04",
+      "size": 1853952
+    },
+    {
+      "source": "Assets/Avatars/Adults/Male_Adult_16/Male_Adult_16.png",
+      "source_url": "https://raw.githubusercontent.com/microsoft/Microsoft-Rocketbox/master/Assets/Avatars/Adults/Male_Adult_16/Male_Adult_16.png",
+      "git_blob_sha1": "7995dbcda7efa2ee8af57621612046de1f435007",
+      "path": "Assets/Game/Resources/BlackstoneFoundation/Characters/Male_Adult_16/Portrait.png",
+      "sha256": "e5819dee79c529993a564a0d0af126111f5883da40c88d35817d367dffe4cffc",
+      "size": 462484
+    },
+    {
+      "source": "Assets/Avatars/Adults/Male_Adult_16/Textures/m019_body_color.tga",
+      "source_url": "https://raw.githubusercontent.com/microsoft/Microsoft-Rocketbox/master/Assets/Avatars/Adults/Male_Adult_16/Textures/m019_body_color.tga",
+      "git_blob_sha1": "459b042cc353d69bb4d2f1a1186f28e9f5e6b4e7",
+      "path": "Assets/Game/Resources/BlackstoneFoundation/Characters/Male_Adult_16/m019_body_color.png",
+      "sha256": "f46b5f6d62114ac665f10e9e7dd76e81097091d210df537cbeb4649ad11fceeb",
+      "size": 5875695
+    },
+    {
+      "source": "Assets/Avatars/Adults/Male_Adult_16/Textures/m019_body_normal.tga",
+      "source_url": "https://raw.githubusercontent.com/microsoft/Microsoft-Rocketbox/master/Assets/Avatars/Adults/Male_Adult_16/Textures/m019_body_normal.tga",
+      "git_blob_sha1": "2f6251830be034a8e16555542e8235f5b6c6c7ca",
+      "path": "Assets/Game/Resources/BlackstoneFoundation/Characters/Male_Adult_16/m019_body_normal.png",
+      "sha256": "5dc79950b462e0b60e28f5521ae9f11d99829892c77ad5a5d64d9fa6cd64fe78",
+      "size": 3986776
+    },
+    {
+      "source": "Assets/Avatars/Adults/Male_Adult_16/Textures/m019_body_specular.tga",
+      "source_url": "https://raw.githubusercontent.com/microsoft/Microsoft-Rocketbox/master/Assets/Avatars/Adults/Male_Adult_16/Textures/m019_body_specular.tga",
+      "git_blob_sha1": "d971137f834c2d9e3157f76e16986942734633b5",
+      "path": "Assets/Game/Resources/BlackstoneFoundation/Characters/Male_Adult_16/m019_body_specular.png",
+      "sha256": "305d31b38db0497be07fbcac1c0507ca968111073e2d0c009be41451279b4100",
+      "size": 1061762
+    },
+    {
+      "source": "Assets/Avatars/Adults/Male_Adult_16/Textures/m019_head_color.tga",
+      "source_url": "https://raw.githubusercontent.com/microsoft/Microsoft-Rocketbox/master/Assets/Avatars/Adults/Male_Adult_16/Textures/m019_head_color.tga",
+      "git_blob_sha1": "a7bc5e6aa018e5ddcc96fa2303cf395ac1bbe863",
+      "path": "Assets/Game/Resources/BlackstoneFoundation/Characters/Male_Adult_16/m019_head_color.png",
+      "sha256": "7d66bb9a9a7919853d8502ce3a83521f864ec5fb8fc485745b30d6eee2a959fb",
+      "size": 4765109
+    },
+    {
+      "source": "Assets/Avatars/Adults/Male_Adult_16/Textures/m019_head_normal.tga",
+      "source_url": "https://raw.githubusercontent.com/microsoft/Microsoft-Rocketbox/master/Assets/Avatars/Adults/Male_Adult_16/Textures/m019_head_normal.tga",
+      "git_blob_sha1": "b4e53d4654bb7cb40ff8a6f151433f72b059b858",
+      "path": "Assets/Game/Resources/BlackstoneFoundation/Characters/Male_Adult_16/m019_head_normal.png",
+      "sha256": "250d3984a56d23566c0601c2cfba289a2fae110d122aeb477a256fa692c54b4a",
+      "size": 3706853
+    },
+    {
+      "source": "Assets/Avatars/Adults/Male_Adult_16/Textures/m019_head_specular.tga",
+      "source_url": "https://raw.githubusercontent.com/microsoft/Microsoft-Rocketbox/master/Assets/Avatars/Adults/Male_Adult_16/Textures/m019_head_specular.tga",
+      "git_blob_sha1": "bb9b2afff4de7842cd937cdd42a6f8d4b2306396",
+      "path": "Assets/Game/Resources/BlackstoneFoundation/Characters/Male_Adult_16/m019_head_specular.png",
+      "sha256": "e68ebe95a07cfa3a64b8e506a8d2c43248277551759e3dac7713409b1592692b",
+      "size": 2429565
+    },
+    {
+      "source": "Assets/Avatars/Adults/Male_Adult_17/Export/Male_Adult_17_facial.fbx",
+      "source_url": "https://raw.githubusercontent.com/microsoft/Microsoft-Rocketbox/master/Assets/Avatars/Adults/Male_Adult_17/Export/Male_Adult_17_facial.fbx",
+      "git_blob_sha1": "876979cb15d65d7478efc9750f4ff2348712ec02",
+      "path": "Assets/Game/Resources/BlackstoneFoundation/Characters/Male_Adult_17/Male_Adult_17.fbx",
+      "sha256": "e779639155a145c027c54f7f6d91a2a82ad4be862bebee64337ef08245cb86b2",
+      "size": 1821648
+    },
+    {
+      "source": "Assets/Avatars/Adults/Male_Adult_17/Male_Adult_17.png",
+      "source_url": "https://raw.githubusercontent.com/microsoft/Microsoft-Rocketbox/master/Assets/Avatars/Adults/Male_Adult_17/Male_Adult_17.png",
+      "git_blob_sha1": "16202b90a02310b1ddabf3ee31218933e984ccc2",
+      "path": "Assets/Game/Resources/BlackstoneFoundation/Characters/Male_Adult_17/Portrait.png",
+      "sha256": "0cf8b8634eb4c7577dc2e49267c7d820e6a2b5242c60308654fa3fdf5696deee",
+      "size": 483358
+    },
+    {
+      "source": "Assets/Avatars/Adults/Male_Adult_17/Textures/m022_body_color.tga",
+      "source_url": "https://raw.githubusercontent.com/microsoft/Microsoft-Rocketbox/master/Assets/Avatars/Adults/Male_Adult_17/Textures/m022_body_color.tga",
+      "git_blob_sha1": "b3ddf7e662510eff72bc06603b53bef6f67c01e2",
+      "path": "Assets/Game/Resources/BlackstoneFoundation/Characters/Male_Adult_17/m022_body_color.png",
+      "sha256": "8cef6ad50f0186711975569dfc8b63d7e20d1f484d2be52596a841748d06e304",
+      "size": 5323644
+    },
+    {
+      "source": "Assets/Avatars/Adults/Male_Adult_17/Textures/m022_body_normal.tga",
+      "source_url": "https://raw.githubusercontent.com/microsoft/Microsoft-Rocketbox/master/Assets/Avatars/Adults/Male_Adult_17/Textures/m022_body_normal.tga",
+      "git_blob_sha1": "d80124dd5b4c6d78adae7f1b13e7e3a7235269fd",
+      "path": "Assets/Game/Resources/BlackstoneFoundation/Characters/Male_Adult_17/m022_body_normal.png",
+      "sha256": "6c05f3976c7df1685fb6efd4b9d2befa31443753c54ddf191229101fb7d08de1",
+      "size": 4545635
+    },
+    {
+      "source": "Assets/Avatars/Adults/Male_Adult_17/Textures/m022_body_specular.tga",
+      "source_url": "https://raw.githubusercontent.com/microsoft/Microsoft-Rocketbox/master/Assets/Avatars/Adults/Male_Adult_17/Textures/m022_body_specular.tga",
+      "git_blob_sha1": "9d10b0f25ee599c36bf2711e50b997939f233b59",
+      "path": "Assets/Game/Resources/BlackstoneFoundation/Characters/Male_Adult_17/m022_body_specular.png",
+      "sha256": "7c80012df9c21bfdc1df3f74c3ce9ac44793d5676b996247f04d0c50a11e2f18",
+      "size": 1633282
+    },
+    {
+      "source": "Assets/Avatars/Adults/Male_Adult_17/Textures/m022_head_color.tga",
+      "source_url": "https://raw.githubusercontent.com/microsoft/Microsoft-Rocketbox/master/Assets/Avatars/Adults/Male_Adult_17/Textures/m022_head_color.tga",
+      "git_blob_sha1": "625d89815c5f74ea80a7718849393f7182906e71",
+      "path": "Assets/Game/Resources/BlackstoneFoundation/Characters/Male_Adult_17/m022_head_color.png",
+      "sha256": "ae604e34bfcc091dbb831a97f630a2401686ab9034bb94575d6f7f7857da49b1",
+      "size": 4998824
+    },
+    {
+      "source": "Assets/Avatars/Adults/Male_Adult_17/Textures/m022_head_normal.tga",
+      "source_url": "https://raw.githubusercontent.com/microsoft/Microsoft-Rocketbox/master/Assets/Avatars/Adults/Male_Adult_17/Textures/m022_head_normal.tga",
+      "git_blob_sha1": "aff7efc9d167a78dba3c66c67ae2aa095b7f49bd",
+      "path": "Assets/Game/Resources/BlackstoneFoundation/Characters/Male_Adult_17/m022_head_normal.png",
+      "sha256": "fb95ba4c42c0162138dcb2dbfd6e5ade75ece67f0c8920bfd12b4d8f9fdb30fd",
+      "size": 5429319
+    },
+    {
+      "source": "Assets/Avatars/Adults/Male_Adult_17/Textures/m022_head_specular.tga",
+      "source_url": "https://raw.githubusercontent.com/microsoft/Microsoft-Rocketbox/master/Assets/Avatars/Adults/Male_Adult_17/Textures/m022_head_specular.tga",
+      "git_blob_sha1": "b1acef56a4c3d76f7d441c8d0210f0faf3f1d928",
+      "path": "Assets/Game/Resources/BlackstoneFoundation/Characters/Male_Adult_17/m022_head_specular.png",
+      "sha256": "945dd1f46315933836b6cc45b0e8fca3df35af67ca1a3571070cada8d539aea7",
+      "size": 2304865
+    },
+    {
+      "source": "Assets/Avatars/Adults/Male_Adult_20/Export/Male_Adult_20_facial.fbx",
+      "source_url": "https://raw.githubusercontent.com/microsoft/Microsoft-Rocketbox/master/Assets/Avatars/Adults/Male_Adult_20/Export/Male_Adult_20_facial.fbx",
+      "git_blob_sha1": "32354a2f90d2e0876672fa0e003c738bb2100e23",
+      "path": "Assets/Game/Resources/BlackstoneFoundation/Characters/Male_Adult_20/Male_Adult_20.fbx",
+      "sha256": "127a8cf9ed93a530ecb24ebc06a3ed226ec460051d5090f174db2ed4096b9f82",
+      "size": 1840944
+    },
+    {
+      "source": "Assets/Avatars/Adults/Male_Adult_20/Male_Adult_20.png",
+      "source_url": "https://raw.githubusercontent.com/microsoft/Microsoft-Rocketbox/master/Assets/Avatars/Adults/Male_Adult_20/Male_Adult_20.png",
+      "git_blob_sha1": "d7b2b435627fdc3bfb832858fa4e999a59e86216",
+      "path": "Assets/Game/Resources/BlackstoneFoundation/Characters/Male_Adult_20/Portrait.png",
+      "sha256": "a5ac430a38df99b23f0e9a7251257694230d62c5f92e4efcfa1e09f6eb75532e",
+      "size": 463415
+    },
+    {
+      "source": "Assets/Avatars/Adults/Male_Adult_20/Textures/m027_body_color.tga",
+      "source_url": "https://raw.githubusercontent.com/microsoft/Microsoft-Rocketbox/master/Assets/Avatars/Adults/Male_Adult_20/Textures/m027_body_color.tga",
+      "git_blob_sha1": "7258cf12c5bd20635df1fd443dc21eef27037dad",
+      "path": "Assets/Game/Resources/BlackstoneFoundation/Characters/Male_Adult_20/m027_body_color.png",
+      "sha256": "034678893ab7eda7cc12e292488f184153ffc0ddfcdaa883483ceb137a2e0c20",
+      "size": 5187629
+    },
+    {
+      "source": "Assets/Avatars/Adults/Male_Adult_20/Textures/m027_body_normal.tga",
+      "source_url": "https://raw.githubusercontent.com/microsoft/Microsoft-Rocketbox/master/Assets/Avatars/Adults/Male_Adult_20/Textures/m027_body_normal.tga",
+      "git_blob_sha1": "c1160d4c29b556b7407aa9a2794c296dfe393c88",
+      "path": "Assets/Game/Resources/BlackstoneFoundation/Characters/Male_Adult_20/m027_body_normal.png",
+      "sha256": "7eba4d2ad250865f9fa246afa9b183c6e9eac661c4fcf15c341ef19709346c66",
+      "size": 5179560
+    },
+    {
+      "source": "Assets/Avatars/Adults/Male_Adult_20/Textures/m027_body_specular.tga",
+      "source_url": "https://raw.githubusercontent.com/microsoft/Microsoft-Rocketbox/master/Assets/Avatars/Adults/Male_Adult_20/Textures/m027_body_specular.tga",
+      "git_blob_sha1": "b6021dc762e2c32bb85bd12dd6b54583b6dd2068",
+      "path": "Assets/Game/Resources/BlackstoneFoundation/Characters/Male_Adult_20/m027_body_specular.png",
+      "sha256": "9627c221a0f4e91bd2ab86936d6ac489b24f3abdb4dd6a63c41f38c7276882dc",
+      "size": 3050511
+    },
+    {
+      "source": "Assets/Avatars/Adults/Male_Adult_20/Textures/m027_head_color.tga",
+      "source_url": "https://raw.githubusercontent.com/microsoft/Microsoft-Rocketbox/master/Assets/Avatars/Adults/Male_Adult_20/Textures/m027_head_color.tga",
+      "git_blob_sha1": "9efe471b09ab2b10bb79c75bfb98d2467e6dcb78",
+      "path": "Assets/Game/Resources/BlackstoneFoundation/Characters/Male_Adult_20/m027_head_color.png",
+      "sha256": "db1b00079c91a234c1d0bb38fe950311d6653d37c9cc05a1ccbf455f50b1a1f9",
+      "size": 4651507
+    },
+    {
+      "source": "Assets/Avatars/Adults/Male_Adult_20/Textures/m027_head_normal.tga",
+      "source_url": "https://raw.githubusercontent.com/microsoft/Microsoft-Rocketbox/master/Assets/Avatars/Adults/Male_Adult_20/Textures/m027_head_normal.tga",
+      "git_blob_sha1": "cc18e65f638589c02dda8d4f129e0b305af5d94f",
+      "path": "Assets/Game/Resources/BlackstoneFoundation/Characters/Male_Adult_20/m027_head_normal.png",
+      "sha256": "7932856646b0e8ddf38229d004fe2d82a2f841076ee922e6008a6c1a72ff4fe4",
+      "size": 3959154
+    },
+    {
+      "source": "Assets/Avatars/Adults/Male_Adult_20/Textures/m027_head_specular.tga",
+      "source_url": "https://raw.githubusercontent.com/microsoft/Microsoft-Rocketbox/master/Assets/Avatars/Adults/Male_Adult_20/Textures/m027_head_specular.tga",
+      "git_blob_sha1": "5fe67d01e0e8d3ea83c40138ed04f6116e663c9e",
+      "path": "Assets/Game/Resources/BlackstoneFoundation/Characters/Male_Adult_20/m027_head_specular.png",
+      "sha256": "a8e4795edbf6f36ef791a1112353f051841f642f7daa3742ea75655817036fe5",
+      "size": 1579726
+    },
+    {
+      "source": "LICENSE.md",
+      "source_url": "https://raw.githubusercontent.com/microsoft/Microsoft-Rocketbox/master/LICENSE.md",
+      "git_blob_sha1": "9bcfb3ece5301a55d3a41bbd00a029ab27d61d13",
+      "path": "Documentation/Licenses/Microsoft_Rocketbox_MIT.md",
+      "sha256": "17474e386e0b9e1a700cc3d06b2b0882a2c376d9c6b49c7f8274409b8f8d2352",
+      "size": 1066
+    }
+  ]
+}

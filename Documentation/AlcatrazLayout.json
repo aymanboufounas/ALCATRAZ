@@ -1,0 +1,7141 @@
+{
+  "revision": "08",
+  "coordinates": "Unity metres; north +Z; game adaptation, not measured restoration",
+  "source_urls": [
+    "https://www.nps.gov/goga/planyourvisit/upload/Alcatraz-map-Access-508.pdf",
+    "https://discussions.unity.com/t/alcatraz-breakout-concept-wip/606269"
+  ],
+  "outline": [
+    [
+      -13,
+      -180
+    ],
+    [
+      19,
+      -176
+    ],
+    [
+      38,
+      -166
+    ],
+    [
+      56,
+      -149
+    ],
+    [
+      71,
+      -120
+    ],
+    [
+      82,
+      -83
+    ],
+    [
+      88,
+      -48
+    ],
+    [
+      91,
+      -7
+    ],
+    [
+      88,
+      27
+    ],
+    [
+      83,
+      62
+    ],
+    [
+      86,
+      93
+    ],
+    [
+      75,
+      121
+    ],
+    [
+      58,
+      143
+    ],
+    [
+      34,
+      163
+    ],
+    [
+      6,
+      172
+    ],
+    [
+      -27,
+      174
+    ],
+    [
+      -46,
+      162
+    ],
+    [
+      -59,
+      139
+    ],
+    [
+      -66,
+      108
+    ],
+    [
+      -73,
+      77
+    ],
+    [
+      -77,
+      42
+    ],
+    [
+      -76,
+      4
+    ],
+    [
+      -70,
+      -28
+    ],
+    [
+      -68,
+      -59
+    ],
+    [
+      -67,
+      -94
+    ],
+    [
+      -56,
+      -124
+    ],
+    [
+      -39,
+      -154
+    ]
+  ],
+  "landmarks": [
+    {
+      "name": "Cellhouse",
+      "position": [
+        0,
+        30.0,
+        1
+      ],
+      "size": [
+        55,
+        12,
+        93
+      ]
+    },
+    {
+      "name": "Recreation Yard",
+      "position": [
+        -48,
+        27.28,
+        46
+      ],
+      "size": [
+        44,
+        5,
+        50
+      ]
+    },
+    {
+      "name": "Dining Hall",
+      "position": [
+        0,
+        30.0,
+        55.5
+      ],
+      "size": [
+        44,
+        6.8,
+        21
+      ]
+    },
+    {
+      "name": "Shower Room",
+      "position": [
+        12,
+        30,
+        -51
+      ],
+      "size": [
+        20,
+        4.8,
+        11
+      ]
+    },
+    {
+      "name": "New Industries",
+      "position": [
+        -38,
+        9.3,
+        122
+      ],
+      "size": [
+        29,
+        9,
+        42
+      ]
+    },
+    {
+      "name": "Model Industries",
+      "position": [
+        -16,
+        9.3,
+        157
+      ],
+      "size": [
+        28,
+        10,
+        18
+      ]
+    },
+    {
+      "name": "Power House",
+      "position": [
+        62,
+        7.3,
+        113
+      ],
+      "size": [
+        28,
+        9,
+        34
+      ]
+    },
+    {
+      "name": "Storehouse",
+      "position": [
+        70,
+        5,
+        -30
+      ],
+      "size": [
+        28,
+        7,
+        39
+      ]
+    },
+    {
+      "name": "Building 64 - Barracks",
+      "position": [
+        65,
+        5,
+        -91
+      ],
+      "size": [
+        32,
+        12,
+        39
+      ]
+    },
+    {
+      "name": "Officers Club",
+      "position": [
+        64,
+        7.3,
+        58
+      ],
+      "size": [
+        22,
+        6,
+        19
+      ]
+    },
+    {
+      "name": "Wardens House",
+      "position": [
+        26,
+        30.0,
+        -69
+      ],
+      "size": [
+        16,
+        8,
+        19
+      ]
+    },
+    {
+      "name": "Lighthouse",
+      "position": [
+        3,
+        30.0,
+        -72
+      ],
+      "size": [
+        7,
+        26,
+        7
+      ]
+    },
+    {
+      "name": "Lighthouse Keeper",
+      "position": [
+        3,
+        30.0,
+        -72
+      ],
+      "size": [
+        13,
+        4.2,
+        12
+      ]
+    },
+    {
+      "name": "Water Tower",
+      "position": [
+        -57,
+        27.28,
+        80
+      ],
+      "size": [
+        12,
+        25,
+        12
+      ]
+    },
+    {
+      "name": "Guardhouse - Sally Port",
+      "position": [
+        50,
+        16.2,
+        -100
+      ],
+      "size": [
+        14,
+        7,
+        15
+      ]
+    },
+    {
+      "name": "Parade Ground",
+      "position": [
+        -6,
+        15.8,
+        -123
+      ],
+      "size": [
+        83,
+        0.3,
+        52
+      ]
+    },
+    {
+      "name": "Dock",
+      "position": [
+        105,
+        5.0,
+        -63
+      ],
+      "size": [
+        43,
+        1,
+        15
+      ]
+    }
+  ],
+  "roads": [
+    {
+      "name": "First gallery stair",
+      "points": [
+        [
+          0.0,
+          30.0,
+          29.1
+        ],
+        [
+          0.0,
+          32.75,
+          34.5
+        ]
+      ],
+      "width": 1.75,
+      "steps": 17,
+      "rise": 0.16176470588235295
+    },
+    {
+      "name": "Second gallery stair",
+      "points": [
+        [
+          0.0,
+          32.75,
+          35.8
+        ],
+        [
+          0.0,
+          35.5,
+          41.2
+        ]
+      ],
+      "width": 1.75,
+      "steps": 17,
+      "rise": 0.16176470588235295
+    },
+    {
+      "name": "Yard to cellhouse steps",
+      "points": [
+        [
+          -29.6,
+          27.28,
+          33.0
+        ],
+        [
+          -26.5,
+          30.0,
+          33.0
+        ]
+      ],
+      "width": 3.2,
+      "steps": 16,
+      "rise": 0.16999999999999993
+    },
+    {
+      "name": "Dining Hall threshold",
+      "points": [
+        [
+          0.0,
+          30.01,
+          42.0
+        ],
+        [
+          0.0,
+          30.01,
+          46.0
+        ]
+      ],
+      "width": 4.5
+    },
+    {
+      "name": "Shower entry threshold",
+      "points": [
+        [
+          0.0,
+          30.03,
+          -43.0
+        ],
+        [
+          0.0,
+          30.03,
+          -60.0
+        ],
+        [
+          12.0,
+          30.03,
+          -60.0
+        ],
+        [
+          12.0,
+          30.03,
+          -56.0
+        ]
+      ],
+      "width": 3
+    },
+    {
+      "name": "East shore road",
+      "points": [
+        [
+          85.0,
+          5.01,
+          -117.0
+        ],
+        [
+          90.0,
+          5.01,
+          -60.0
+        ],
+        [
+          85.0,
+          5.01,
+          -12.0
+        ],
+        [
+          82.0,
+          5.01,
+          31.0
+        ],
+        [
+          80.0,
+          7.31,
+          70.0
+        ],
+        [
+          80.0,
+          7.31,
+          130.0
+        ],
+        [
+          69.0,
+          7.31,
+          140.0
+        ],
+        [
+          44.0,
+          9.31,
+          144.0
+        ]
+      ],
+      "width": 5.8
+    },
+    {
+      "name": "Dock connection",
+      "points": [
+        [
+          85.0,
+          5.02,
+          -62.0
+        ],
+        [
+          103.0,
+          5.02,
+          -62.0
+        ],
+        [
+          107.0,
+          5.02,
+          -62.0
+        ]
+      ],
+      "width": 6
+    },
+    {
+      "name": "Cellhouse switchback road",
+      "points": [
+        [
+          84.0,
+          5.03,
+          -117.0
+        ],
+        [
+          65.0,
+          8.5,
+          -133.0
+        ],
+        [
+          40.0,
+          13.0,
+          -124.0
+        ],
+        [
+          40.0,
+          16.2,
+          -90.0
+        ],
+        [
+          58.0,
+          21.0,
+          -86.0
+        ],
+        [
+          45.0,
+          25.2,
+          -91.0
+        ],
+        [
+          18.0,
+          30.03,
+          -87.0
+        ],
+        [
+          -9.0,
+          30.03,
+          -87.0
+        ],
+        [
+          -12.0,
+          30.03,
+          -60.0
+        ],
+        [
+          -4.0,
+          30.03,
+          -59.0
+        ],
+        [
+          0.0,
+          30.03,
+          -43.0
+        ]
+      ],
+      "width": 5.5
+    },
+    {
+      "name": "West road",
+      "points": [
+        [
+          30.0,
+          15.86,
+          -122.0
+        ],
+        [
+          -27.0,
+          15.86,
+          -122.0
+        ],
+        [
+          -58.0,
+          18.4,
+          -99.0
+        ],
+        [
+          -65.0,
+          22.8,
+          -61.0
+        ],
+        [
+          -66.0,
+          26.2,
+          -15.0
+        ],
+        [
+          -74.0,
+          27.42,
+          18.0
+        ],
+        [
+          -74.0,
+          27.42,
+          48.0
+        ],
+        [
+          -72.0,
+          27.42,
+          76.0
+        ],
+        [
+          -66.0,
+          27.42,
+          91.0
+        ],
+        [
+          -58.0,
+          27.42,
+          97.0
+        ],
+        [
+          -60.0,
+          21.0,
+          116.0
+        ],
+        [
+          -58.0,
+          15.4,
+          131.0
+        ],
+        [
+          -55.0,
+          9.4,
+          145.5
+        ]
+      ],
+      "width": 5.0
+    },
+    {
+      "name": "North industries road",
+      "points": [
+        [
+          -57.0,
+          9.4,
+          145.5
+        ],
+        [
+          -40.0,
+          9.4,
+          145.5
+        ],
+        [
+          -13.0,
+          9.4,
+          145.5
+        ],
+        [
+          18.0,
+          9.4,
+          145.5
+        ],
+        [
+          44.0,
+          9.4,
+          144.0
+        ]
+      ],
+      "width": 3.0
+    },
+    {
+      "name": "New Industries entrance",
+      "points": [
+        [
+          -56.0,
+          9.4,
+          97.0
+        ],
+        [
+          -38.0,
+          9.4,
+          97.0
+        ],
+        [
+          -38.0,
+          9.4,
+          105.0
+        ]
+      ],
+      "width": 4.0
+    },
+    {
+      "name": "Cellhouse east walk",
+      "points": [
+        [
+          29.0,
+          30.04,
+          -57.0
+        ],
+        [
+          30.0,
+          30.04,
+          -32.0
+        ],
+        [
+          30.0,
+          30.04,
+          0.0
+        ],
+        [
+          30.0,
+          30.04,
+          47.0
+        ],
+        [
+          24.0,
+          30.04,
+          47.0
+        ]
+      ],
+      "width": 3.5
+    },
+    {
+      "name": "Lighthouse terrace path",
+      "points": [
+        [
+          -12.0,
+          30.03,
+          -80.0
+        ],
+        [
+          -8.0,
+          30.03,
+          -80.0
+        ],
+        [
+          -8.0,
+          30.03,
+          -60.0
+        ],
+        [
+          -2.0,
+          30.03,
+          -44.0
+        ]
+      ],
+      "width": 3.0
+    },
+    {
+      "name": "Warden entry path",
+      "points": [
+        [
+          18.0,
+          30.03,
+          -87.0
+        ],
+        [
+          26.0,
+          30.03,
+          -87.0
+        ],
+        [
+          26.0,
+          30.03,
+          -77.0
+        ]
+      ],
+      "width": 3.0
+    },
+    {
+      "name": "Lighthouse keeper entry",
+      "points": [
+        [
+          -8.0,
+          30.03,
+          -80.0
+        ],
+        [
+          3.0,
+          30.03,
+          -81.0
+        ],
+        [
+          3.0,
+          30.03,
+          -76.0
+        ]
+      ],
+      "width": 3.0
+    },
+    {
+      "name": "Water tower service path",
+      "points": [
+        [
+          -65.0,
+          27.42,
+          76.0
+        ],
+        [
+          -57.0,
+          27.42,
+          80.0
+        ]
+      ],
+      "width": 3
+    },
+    {
+      "name": "Agave trail",
+      "points": [
+        [
+          -30.0,
+          15.9,
+          -144.0
+        ],
+        [
+          -30.0,
+          15.9,
+          -152.0
+        ],
+        [
+          -40.0,
+          15.9,
+          -157.0
+        ],
+        [
+          -47.0,
+          13.5,
+          -152.0
+        ],
+        [
+          -57.0,
+          10.2,
+          -133.0
+        ],
+        [
+          -63.0,
+          8.5,
+          -109.0
+        ]
+      ],
+      "width": 1.8
+    },
+    {
+      "name": "Parade east connection",
+      "points": [
+        [
+          33.0,
+          15.87,
+          -120.0
+        ],
+        [
+          40.0,
+          16.2,
+          -119.0
+        ]
+      ],
+      "width": 4
+    },
+    {
+      "name": "West coastal service trail",
+      "points": [
+        [
+          -63.0,
+          8.5,
+          -109.0
+        ],
+        [
+          -65.5,
+          9.0,
+          -93.0
+        ],
+        [
+          -68.5,
+          10.0,
+          -69.0
+        ],
+        [
+          -72.0,
+          10.8,
+          -45.0
+        ],
+        [
+          -75.0,
+          11.7,
+          -20.0
+        ],
+        [
+          -79.0,
+          12.6,
+          5.0
+        ],
+        [
+          -80.0,
+          13.2,
+          27.0
+        ],
+        [
+          -80.2,
+          14.4,
+          48.0
+        ],
+        [
+          -76.5,
+          16.5,
+          70.0
+        ],
+        [
+          -71.5,
+          19.0,
+          89.0
+        ],
+        [
+          -61.0,
+          21.0,
+          116.0
+        ],
+        [
+          -60.0,
+          21.0,
+          116.0
+        ]
+      ],
+      "width": 2.3
+    }
+  ],
+  "cells": [
+    {
+      "block": "B",
+      "number": 1,
+      "tier": 1,
+      "front": [
+        -9.15,
+        30.0,
+        -31.0
+      ],
+      "main": false,
+      "label": "B-01W"
+    },
+    {
+      "block": "B",
+      "number": 2,
+      "tier": 1,
+      "front": [
+        -9.15,
+        30.0,
+        -28.97
+      ],
+      "main": false,
+      "label": "B-02W"
+    },
+    {
+      "block": "B",
+      "number": 3,
+      "tier": 1,
+      "front": [
+        -9.15,
+        30.0,
+        -26.94
+      ],
+      "main": false,
+      "label": "B-03W"
+    },
+    {
+      "block": "B",
+      "number": 4,
+      "tier": 1,
+      "front": [
+        -9.15,
+        30.0,
+        -24.91
+      ],
+      "main": false,
+      "label": "B-04W"
+    },
+    {
+      "block": "B",
+      "number": 5,
+      "tier": 1,
+      "front": [
+        -9.15,
+        30.0,
+        -22.880000000000003
+      ],
+      "main": false,
+      "label": "B-05W"
+    },
+    {
+      "block": "B",
+      "number": 6,
+      "tier": 1,
+      "front": [
+        -9.15,
+        30.0,
+        -20.85
+      ],
+      "main": false,
+      "label": "B-06W"
+    },
+    {
+      "block": "B",
+      "number": 7,
+      "tier": 1,
+      "front": [
+        -9.15,
+        30.0,
+        -18.82
+      ],
+      "main": false,
+      "label": "B-07W"
+    },
+    {
+      "block": "B",
+      "number": 8,
+      "tier": 1,
+      "front": [
+        -9.15,
+        30.0,
+        -16.79
+      ],
+      "main": false,
+      "label": "B-08W"
+    },
+    {
+      "block": "B",
+      "number": 9,
+      "tier": 1,
+      "front": [
+        -9.15,
+        30.0,
+        -14.760000000000002
+      ],
+      "main": false,
+      "label": "B-09W"
+    },
+    {
+      "block": "B",
+      "number": 10,
+      "tier": 1,
+      "front": [
+        -9.15,
+        30.0,
+        -12.73
+      ],
+      "main": false,
+      "label": "B-10W"
+    },
+    {
+      "block": "B",
+      "number": 11,
+      "tier": 1,
+      "front": [
+        -9.15,
+        30.0,
+        -10.700000000000003
+      ],
+      "main": false,
+      "label": "B-11W"
+    },
+    {
+      "block": "B",
+      "number": 12,
+      "tier": 1,
+      "front": [
+        -9.15,
+        30.0,
+        -8.670000000000002
+      ],
+      "main": false,
+      "label": "B-12W"
+    },
+    {
+      "block": "B",
+      "number": 13,
+      "tier": 1,
+      "front": [
+        -9.15,
+        30.0,
+        -6.640000000000001
+      ],
+      "main": false,
+      "label": "B-13W"
+    },
+    {
+      "block": "B",
+      "number": 14,
+      "tier": 1,
+      "front": [
+        -9.15,
+        30.0,
+        -4.610000000000003
+      ],
+      "main": false,
+      "label": "B-14W"
+    },
+    {
+      "block": "B",
+      "number": 15,
+      "tier": 1,
+      "front": [
+        -9.15,
+        30.0,
+        -2.580000000000002
+      ],
+      "main": false,
+      "label": "B-15W"
+    },
+    {
+      "block": "B",
+      "number": 16,
+      "tier": 1,
+      "front": [
+        -9.15,
+        30.0,
+        -0.5500000000000043
+      ],
+      "main": false,
+      "label": "B-16W"
+    },
+    {
+      "block": "B",
+      "number": 17,
+      "tier": 1,
+      "front": [
+        -9.15,
+        30.0,
+        1.4799999999999969
+      ],
+      "main": false,
+      "label": "B-17W"
+    },
+    {
+      "block": "B",
+      "number": 18,
+      "tier": 1,
+      "front": [
+        -9.15,
+        30.0,
+        3.509999999999998
+      ],
+      "main": false,
+      "label": "B-18W"
+    },
+    {
+      "block": "B",
+      "number": 19,
+      "tier": 1,
+      "front": [
+        -9.15,
+        30.0,
+        5.539999999999999
+      ],
+      "main": false,
+      "label": "B-19W"
+    },
+    {
+      "block": "B",
+      "number": 20,
+      "tier": 1,
+      "front": [
+        -9.15,
+        30.0,
+        7.569999999999993
+      ],
+      "main": false,
+      "label": "B-20W"
+    },
+    {
+      "block": "B",
+      "number": 21,
+      "tier": 1,
+      "front": [
+        -9.15,
+        30.0,
+        9.599999999999994
+      ],
+      "main": false,
+      "label": "B-21W"
+    },
+    {
+      "block": "B",
+      "number": 22,
+      "tier": 1,
+      "front": [
+        -9.15,
+        30.0,
+        11.629999999999995
+      ],
+      "main": false,
+      "label": "B-22W"
+    },
+    {
+      "block": "B",
+      "number": 23,
+      "tier": 1,
+      "front": [
+        -9.15,
+        30.0,
+        13.659999999999997
+      ],
+      "main": false,
+      "label": "B-23W"
+    },
+    {
+      "block": "B",
+      "number": 24,
+      "tier": 1,
+      "front": [
+        -9.15,
+        30.0,
+        15.689999999999998
+      ],
+      "main": false,
+      "label": "B-24W"
+    },
+    {
+      "block": "B",
+      "number": 25,
+      "tier": 1,
+      "front": [
+        -9.15,
+        30.0,
+        17.72
+      ],
+      "main": false,
+      "label": "B-25W"
+    },
+    {
+      "block": "B",
+      "number": 26,
+      "tier": 1,
+      "front": [
+        -9.15,
+        30.0,
+        19.749999999999993
+      ],
+      "main": false,
+      "label": "B-26W"
+    },
+    {
+      "block": "B",
+      "number": 27,
+      "tier": 1,
+      "front": [
+        -9.15,
+        30.0,
+        21.779999999999994
+      ],
+      "main": false,
+      "label": "B-27W"
+    },
+    {
+      "block": "B",
+      "number": 28,
+      "tier": 1,
+      "front": [
+        -9.15,
+        30.0,
+        23.809999999999995
+      ],
+      "main": false,
+      "label": "B-28W"
+    },
+    {
+      "block": "B",
+      "number": 1,
+      "tier": 1,
+      "front": [
+        -2.85,
+        30.0,
+        -31.0
+      ],
+      "main": false,
+      "label": "B-01E"
+    },
+    {
+      "block": "B",
+      "number": 2,
+      "tier": 1,
+      "front": [
+        -2.85,
+        30.0,
+        -28.97
+      ],
+      "main": false,
+      "label": "B-02E"
+    },
+    {
+      "block": "B",
+      "number": 3,
+      "tier": 1,
+      "front": [
+        -2.85,
+        30.0,
+        -26.94
+      ],
+      "main": false,
+      "label": "B-03E"
+    },
+    {
+      "block": "B",
+      "number": 4,
+      "tier": 1,
+      "front": [
+        -2.85,
+        30.0,
+        -24.91
+      ],
+      "main": true,
+      "label": "B-04E"
+    },
+    {
+      "block": "B",
+      "number": 5,
+      "tier": 1,
+      "front": [
+        -2.85,
+        30.0,
+        -22.880000000000003
+      ],
+      "main": false,
+      "label": "B-05E"
+    },
+    {
+      "block": "B",
+      "number": 6,
+      "tier": 1,
+      "front": [
+        -2.85,
+        30.0,
+        -20.85
+      ],
+      "main": false,
+      "label": "B-06E"
+    },
+    {
+      "block": "B",
+      "number": 7,
+      "tier": 1,
+      "front": [
+        -2.85,
+        30.0,
+        -18.82
+      ],
+      "main": false,
+      "label": "B-07E"
+    },
+    {
+      "block": "B",
+      "number": 8,
+      "tier": 1,
+      "front": [
+        -2.85,
+        30.0,
+        -16.79
+      ],
+      "main": false,
+      "label": "B-08E"
+    },
+    {
+      "block": "B",
+      "number": 9,
+      "tier": 1,
+      "front": [
+        -2.85,
+        30.0,
+        -14.760000000000002
+      ],
+      "main": false,
+      "label": "B-09E"
+    },
+    {
+      "block": "B",
+      "number": 10,
+      "tier": 1,
+      "front": [
+        -2.85,
+        30.0,
+        -12.73
+      ],
+      "main": false,
+      "label": "B-10E"
+    },
+    {
+      "block": "B",
+      "number": 11,
+      "tier": 1,
+      "front": [
+        -2.85,
+        30.0,
+        -10.700000000000003
+      ],
+      "main": false,
+      "label": "B-11E"
+    },
+    {
+      "block": "B",
+      "number": 12,
+      "tier": 1,
+      "front": [
+        -2.85,
+        30.0,
+        -8.670000000000002
+      ],
+      "main": false,
+      "label": "B-12E"
+    },
+    {
+      "block": "B",
+      "number": 13,
+      "tier": 1,
+      "front": [
+        -2.85,
+        30.0,
+        -6.640000000000001
+      ],
+      "main": false,
+      "label": "B-13E"
+    },
+    {
+      "block": "B",
+      "number": 14,
+      "tier": 1,
+      "front": [
+        -2.85,
+        30.0,
+        -4.610000000000003
+      ],
+      "main": false,
+      "label": "B-14E"
+    },
+    {
+      "block": "B",
+      "number": 15,
+      "tier": 1,
+      "front": [
+        -2.85,
+        30.0,
+        -2.580000000000002
+      ],
+      "main": false,
+      "label": "B-15E"
+    },
+    {
+      "block": "B",
+      "number": 16,
+      "tier": 1,
+      "front": [
+        -2.85,
+        30.0,
+        -0.5500000000000043
+      ],
+      "main": false,
+      "label": "B-16E"
+    },
+    {
+      "block": "B",
+      "number": 17,
+      "tier": 1,
+      "front": [
+        -2.85,
+        30.0,
+        1.4799999999999969
+      ],
+      "main": false,
+      "label": "B-17E"
+    },
+    {
+      "block": "B",
+      "number": 18,
+      "tier": 1,
+      "front": [
+        -2.85,
+        30.0,
+        3.509999999999998
+      ],
+      "main": false,
+      "label": "B-18E"
+    },
+    {
+      "block": "B",
+      "number": 19,
+      "tier": 1,
+      "front": [
+        -2.85,
+        30.0,
+        5.539999999999999
+      ],
+      "main": false,
+      "label": "B-19E"
+    },
+    {
+      "block": "B",
+      "number": 20,
+      "tier": 1,
+      "front": [
+        -2.85,
+        30.0,
+        7.569999999999993
+      ],
+      "main": false,
+      "label": "B-20E"
+    },
+    {
+      "block": "B",
+      "number": 21,
+      "tier": 1,
+      "front": [
+        -2.85,
+        30.0,
+        9.599999999999994
+      ],
+      "main": false,
+      "label": "B-21E"
+    },
+    {
+      "block": "B",
+      "number": 22,
+      "tier": 1,
+      "front": [
+        -2.85,
+        30.0,
+        11.629999999999995
+      ],
+      "main": false,
+      "label": "B-22E"
+    },
+    {
+      "block": "B",
+      "number": 23,
+      "tier": 1,
+      "front": [
+        -2.85,
+        30.0,
+        13.659999999999997
+      ],
+      "main": false,
+      "label": "B-23E"
+    },
+    {
+      "block": "B",
+      "number": 24,
+      "tier": 1,
+      "front": [
+        -2.85,
+        30.0,
+        15.689999999999998
+      ],
+      "main": false,
+      "label": "B-24E"
+    },
+    {
+      "block": "B",
+      "number": 25,
+      "tier": 1,
+      "front": [
+        -2.85,
+        30.0,
+        17.72
+      ],
+      "main": false,
+      "label": "B-25E"
+    },
+    {
+      "block": "B",
+      "number": 26,
+      "tier": 1,
+      "front": [
+        -2.85,
+        30.0,
+        19.749999999999993
+      ],
+      "main": false,
+      "label": "B-26E"
+    },
+    {
+      "block": "B",
+      "number": 27,
+      "tier": 1,
+      "front": [
+        -2.85,
+        30.0,
+        21.779999999999994
+      ],
+      "main": false,
+      "label": "B-27E"
+    },
+    {
+      "block": "B",
+      "number": 28,
+      "tier": 1,
+      "front": [
+        -2.85,
+        30.0,
+        23.809999999999995
+      ],
+      "main": false,
+      "label": "B-28E"
+    },
+    {
+      "block": "B",
+      "number": 29,
+      "tier": 2,
+      "front": [
+        -9.15,
+        32.75,
+        -31.0
+      ],
+      "main": false,
+      "label": "B-29W"
+    },
+    {
+      "block": "B",
+      "number": 30,
+      "tier": 2,
+      "front": [
+        -9.15,
+        32.75,
+        -28.97
+      ],
+      "main": false,
+      "label": "B-30W"
+    },
+    {
+      "block": "B",
+      "number": 31,
+      "tier": 2,
+      "front": [
+        -9.15,
+        32.75,
+        -26.94
+      ],
+      "main": false,
+      "label": "B-31W"
+    },
+    {
+      "block": "B",
+      "number": 32,
+      "tier": 2,
+      "front": [
+        -9.15,
+        32.75,
+        -24.91
+      ],
+      "main": false,
+      "label": "B-32W"
+    },
+    {
+      "block": "B",
+      "number": 33,
+      "tier": 2,
+      "front": [
+        -9.15,
+        32.75,
+        -22.880000000000003
+      ],
+      "main": false,
+      "label": "B-33W"
+    },
+    {
+      "block": "B",
+      "number": 34,
+      "tier": 2,
+      "front": [
+        -9.15,
+        32.75,
+        -20.85
+      ],
+      "main": false,
+      "label": "B-34W"
+    },
+    {
+      "block": "B",
+      "number": 35,
+      "tier": 2,
+      "front": [
+        -9.15,
+        32.75,
+        -18.82
+      ],
+      "main": false,
+      "label": "B-35W"
+    },
+    {
+      "block": "B",
+      "number": 36,
+      "tier": 2,
+      "front": [
+        -9.15,
+        32.75,
+        -16.79
+      ],
+      "main": false,
+      "label": "B-36W"
+    },
+    {
+      "block": "B",
+      "number": 37,
+      "tier": 2,
+      "front": [
+        -9.15,
+        32.75,
+        -14.760000000000002
+      ],
+      "main": false,
+      "label": "B-37W"
+    },
+    {
+      "block": "B",
+      "number": 38,
+      "tier": 2,
+      "front": [
+        -9.15,
+        32.75,
+        -12.73
+      ],
+      "main": false,
+      "label": "B-38W"
+    },
+    {
+      "block": "B",
+      "number": 39,
+      "tier": 2,
+      "front": [
+        -9.15,
+        32.75,
+        -10.700000000000003
+      ],
+      "main": false,
+      "label": "B-39W"
+    },
+    {
+      "block": "B",
+      "number": 40,
+      "tier": 2,
+      "front": [
+        -9.15,
+        32.75,
+        -8.670000000000002
+      ],
+      "main": false,
+      "label": "B-40W"
+    },
+    {
+      "block": "B",
+      "number": 41,
+      "tier": 2,
+      "front": [
+        -9.15,
+        32.75,
+        -6.640000000000001
+      ],
+      "main": false,
+      "label": "B-41W"
+    },
+    {
+      "block": "B",
+      "number": 42,
+      "tier": 2,
+      "front": [
+        -9.15,
+        32.75,
+        -4.610000000000003
+      ],
+      "main": false,
+      "label": "B-42W"
+    },
+    {
+      "block": "B",
+      "number": 43,
+      "tier": 2,
+      "front": [
+        -9.15,
+        32.75,
+        -2.580000000000002
+      ],
+      "main": false,
+      "label": "B-43W"
+    },
+    {
+      "block": "B",
+      "number": 44,
+      "tier": 2,
+      "front": [
+        -9.15,
+        32.75,
+        -0.5500000000000043
+      ],
+      "main": false,
+      "label": "B-44W"
+    },
+    {
+      "block": "B",
+      "number": 45,
+      "tier": 2,
+      "front": [
+        -9.15,
+        32.75,
+        1.4799999999999969
+      ],
+      "main": false,
+      "label": "B-45W"
+    },
+    {
+      "block": "B",
+      "number": 46,
+      "tier": 2,
+      "front": [
+        -9.15,
+        32.75,
+        3.509999999999998
+      ],
+      "main": false,
+      "label": "B-46W"
+    },
+    {
+      "block": "B",
+      "number": 47,
+      "tier": 2,
+      "front": [
+        -9.15,
+        32.75,
+        5.539999999999999
+      ],
+      "main": false,
+      "label": "B-47W"
+    },
+    {
+      "block": "B",
+      "number": 48,
+      "tier": 2,
+      "front": [
+        -9.15,
+        32.75,
+        7.569999999999993
+      ],
+      "main": false,
+      "label": "B-48W"
+    },
+    {
+      "block": "B",
+      "number": 49,
+      "tier": 2,
+      "front": [
+        -9.15,
+        32.75,
+        9.599999999999994
+      ],
+      "main": false,
+      "label": "B-49W"
+    },
+    {
+      "block": "B",
+      "number": 50,
+      "tier": 2,
+      "front": [
+        -9.15,
+        32.75,
+        11.629999999999995
+      ],
+      "main": false,
+      "label": "B-50W"
+    },
+    {
+      "block": "B",
+      "number": 51,
+      "tier": 2,
+      "front": [
+        -9.15,
+        32.75,
+        13.659999999999997
+      ],
+      "main": false,
+      "label": "B-51W"
+    },
+    {
+      "block": "B",
+      "number": 52,
+      "tier": 2,
+      "front": [
+        -9.15,
+        32.75,
+        15.689999999999998
+      ],
+      "main": false,
+      "label": "B-52W"
+    },
+    {
+      "block": "B",
+      "number": 53,
+      "tier": 2,
+      "front": [
+        -9.15,
+        32.75,
+        17.72
+      ],
+      "main": false,
+      "label": "B-53W"
+    },
+    {
+      "block": "B",
+      "number": 54,
+      "tier": 2,
+      "front": [
+        -9.15,
+        32.75,
+        19.749999999999993
+      ],
+      "main": false,
+      "label": "B-54W"
+    },
+    {
+      "block": "B",
+      "number": 55,
+      "tier": 2,
+      "front": [
+        -9.15,
+        32.75,
+        21.779999999999994
+      ],
+      "main": false,
+      "label": "B-55W"
+    },
+    {
+      "block": "B",
+      "number": 56,
+      "tier": 2,
+      "front": [
+        -9.15,
+        32.75,
+        23.809999999999995
+      ],
+      "main": false,
+      "label": "B-56W"
+    },
+    {
+      "block": "B",
+      "number": 29,
+      "tier": 2,
+      "front": [
+        -2.85,
+        32.75,
+        -31.0
+      ],
+      "main": false,
+      "label": "B-29E"
+    },
+    {
+      "block": "B",
+      "number": 30,
+      "tier": 2,
+      "front": [
+        -2.85,
+        32.75,
+        -28.97
+      ],
+      "main": false,
+      "label": "B-30E"
+    },
+    {
+      "block": "B",
+      "number": 31,
+      "tier": 2,
+      "front": [
+        -2.85,
+        32.75,
+        -26.94
+      ],
+      "main": false,
+      "label": "B-31E"
+    },
+    {
+      "block": "B",
+      "number": 32,
+      "tier": 2,
+      "front": [
+        -2.85,
+        32.75,
+        -24.91
+      ],
+      "main": false,
+      "label": "B-32E"
+    },
+    {
+      "block": "B",
+      "number": 33,
+      "tier": 2,
+      "front": [
+        -2.85,
+        32.75,
+        -22.880000000000003
+      ],
+      "main": false,
+      "label": "B-33E"
+    },
+    {
+      "block": "B",
+      "number": 34,
+      "tier": 2,
+      "front": [
+        -2.85,
+        32.75,
+        -20.85
+      ],
+      "main": false,
+      "label": "B-34E"
+    },
+    {
+      "block": "B",
+      "number": 35,
+      "tier": 2,
+      "front": [
+        -2.85,
+        32.75,
+        -18.82
+      ],
+      "main": false,
+      "label": "B-35E"
+    },
+    {
+      "block": "B",
+      "number": 36,
+      "tier": 2,
+      "front": [
+        -2.85,
+        32.75,
+        -16.79
+      ],
+      "main": false,
+      "label": "B-36E"
+    },
+    {
+      "block": "B",
+      "number": 37,
+      "tier": 2,
+      "front": [
+        -2.85,
+        32.75,
+        -14.760000000000002
+      ],
+      "main": false,
+      "label": "B-37E"
+    },
+    {
+      "block": "B",
+      "number": 38,
+      "tier": 2,
+      "front": [
+        -2.85,
+        32.75,
+        -12.73
+      ],
+      "main": false,
+      "label": "B-38E"
+    },
+    {
+      "block": "B",
+      "number": 39,
+      "tier": 2,
+      "front": [
+        -2.85,
+        32.75,
+        -10.700000000000003
+      ],
+      "main": false,
+      "label": "B-39E"
+    },
+    {
+      "block": "B",
+      "number": 40,
+      "tier": 2,
+      "front": [
+        -2.85,
+        32.75,
+        -8.670000000000002
+      ],
+      "main": false,
+      "label": "B-40E"
+    },
+    {
+      "block": "B",
+      "number": 41,
+      "tier": 2,
+      "front": [
+        -2.85,
+        32.75,
+        -6.640000000000001
+      ],
+      "main": false,
+      "label": "B-41E"
+    },
+    {
+      "block": "B",
+      "number": 42,
+      "tier": 2,
+      "front": [
+        -2.85,
+        32.75,
+        -4.610000000000003
+      ],
+      "main": false,
+      "label": "B-42E"
+    },
+    {
+      "block": "B",
+      "number": 43,
+      "tier": 2,
+      "front": [
+        -2.85,
+        32.75,
+        -2.580000000000002
+      ],
+      "main": false,
+      "label": "B-43E"
+    },
+    {
+      "block": "B",
+      "number": 44,
+      "tier": 2,
+      "front": [
+        -2.85,
+        32.75,
+        -0.5500000000000043
+      ],
+      "main": false,
+      "label": "B-44E"
+    },
+    {
+      "block": "B",
+      "number": 45,
+      "tier": 2,
+      "front": [
+        -2.85,
+        32.75,
+        1.4799999999999969
+      ],
+      "main": false,
+      "label": "B-45E"
+    },
+    {
+      "block": "B",
+      "number": 46,
+      "tier": 2,
+      "front": [
+        -2.85,
+        32.75,
+        3.509999999999998
+      ],
+      "main": false,
+      "label": "B-46E"
+    },
+    {
+      "block": "B",
+      "number": 47,
+      "tier": 2,
+      "front": [
+        -2.85,
+        32.75,
+        5.539999999999999
+      ],
+      "main": false,
+      "label": "B-47E"
+    },
+    {
+      "block": "B",
+      "number": 48,
+      "tier": 2,
+      "front": [
+        -2.85,
+        32.75,
+        7.569999999999993
+      ],
+      "main": false,
+      "label": "B-48E"
+    },
+    {
+      "block": "B",
+      "number": 49,
+      "tier": 2,
+      "front": [
+        -2.85,
+        32.75,
+        9.599999999999994
+      ],
+      "main": false,
+      "label": "B-49E"
+    },
+    {
+      "block": "B",
+      "number": 50,
+      "tier": 2,
+      "front": [
+        -2.85,
+        32.75,
+        11.629999999999995
+      ],
+      "main": false,
+      "label": "B-50E"
+    },
+    {
+      "block": "B",
+      "number": 51,
+      "tier": 2,
+      "front": [
+        -2.85,
+        32.75,
+        13.659999999999997
+      ],
+      "main": false,
+      "label": "B-51E"
+    },
+    {
+      "block": "B",
+      "number": 52,
+      "tier": 2,
+      "front": [
+        -2.85,
+        32.75,
+        15.689999999999998
+      ],
+      "main": false,
+      "label": "B-52E"
+    },
+    {
+      "block": "B",
+      "number": 53,
+      "tier": 2,
+      "front": [
+        -2.85,
+        32.75,
+        17.72
+      ],
+      "main": false,
+      "label": "B-53E"
+    },
+    {
+      "block": "B",
+      "number": 54,
+      "tier": 2,
+      "front": [
+        -2.85,
+        32.75,
+        19.749999999999993
+      ],
+      "main": false,
+      "label": "B-54E"
+    },
+    {
+      "block": "B",
+      "number": 55,
+      "tier": 2,
+      "front": [
+        -2.85,
+        32.75,
+        21.779999999999994
+      ],
+      "main": false,
+      "label": "B-55E"
+    },
+    {
+      "block": "B",
+      "number": 56,
+      "tier": 2,
+      "front": [
+        -2.85,
+        32.75,
+        23.809999999999995
+      ],
+      "main": false,
+      "label": "B-56E"
+    },
+    {
+      "block": "B",
+      "number": 57,
+      "tier": 3,
+      "front": [
+        -9.15,
+        35.5,
+        -31.0
+      ],
+      "main": false,
+      "label": "B-57W"
+    },
+    {
+      "block": "B",
+      "number": 58,
+      "tier": 3,
+      "front": [
+        -9.15,
+        35.5,
+        -28.97
+      ],
+      "main": false,
+      "label": "B-58W"
+    },
+    {
+      "block": "B",
+      "number": 59,
+      "tier": 3,
+      "front": [
+        -9.15,
+        35.5,
+        -26.94
+      ],
+      "main": false,
+      "label": "B-59W"
+    },
+    {
+      "block": "B",
+      "number": 60,
+      "tier": 3,
+      "front": [
+        -9.15,
+        35.5,
+        -24.91
+      ],
+      "main": false,
+      "label": "B-60W"
+    },
+    {
+      "block": "B",
+      "number": 61,
+      "tier": 3,
+      "front": [
+        -9.15,
+        35.5,
+        -22.880000000000003
+      ],
+      "main": false,
+      "label": "B-61W"
+    },
+    {
+      "block": "B",
+      "number": 62,
+      "tier": 3,
+      "front": [
+        -9.15,
+        35.5,
+        -20.85
+      ],
+      "main": false,
+      "label": "B-62W"
+    },
+    {
+      "block": "B",
+      "number": 63,
+      "tier": 3,
+      "front": [
+        -9.15,
+        35.5,
+        -18.82
+      ],
+      "main": false,
+      "label": "B-63W"
+    },
+    {
+      "block": "B",
+      "number": 64,
+      "tier": 3,
+      "front": [
+        -9.15,
+        35.5,
+        -16.79
+      ],
+      "main": false,
+      "label": "B-64W"
+    },
+    {
+      "block": "B",
+      "number": 65,
+      "tier": 3,
+      "front": [
+        -9.15,
+        35.5,
+        -14.760000000000002
+      ],
+      "main": false,
+      "label": "B-65W"
+    },
+    {
+      "block": "B",
+      "number": 66,
+      "tier": 3,
+      "front": [
+        -9.15,
+        35.5,
+        -12.73
+      ],
+      "main": false,
+      "label": "B-66W"
+    },
+    {
+      "block": "B",
+      "number": 67,
+      "tier": 3,
+      "front": [
+        -9.15,
+        35.5,
+        -10.700000000000003
+      ],
+      "main": false,
+      "label": "B-67W"
+    },
+    {
+      "block": "B",
+      "number": 68,
+      "tier": 3,
+      "front": [
+        -9.15,
+        35.5,
+        -8.670000000000002
+      ],
+      "main": false,
+      "label": "B-68W"
+    },
+    {
+      "block": "B",
+      "number": 69,
+      "tier": 3,
+      "front": [
+        -9.15,
+        35.5,
+        -6.640000000000001
+      ],
+      "main": false,
+      "label": "B-69W"
+    },
+    {
+      "block": "B",
+      "number": 70,
+      "tier": 3,
+      "front": [
+        -9.15,
+        35.5,
+        -4.610000000000003
+      ],
+      "main": false,
+      "label": "B-70W"
+    },
+    {
+      "block": "B",
+      "number": 71,
+      "tier": 3,
+      "front": [
+        -9.15,
+        35.5,
+        -2.580000000000002
+      ],
+      "main": false,
+      "label": "B-71W"
+    },
+    {
+      "block": "B",
+      "number": 72,
+      "tier": 3,
+      "front": [
+        -9.15,
+        35.5,
+        -0.5500000000000043
+      ],
+      "main": false,
+      "label": "B-72W"
+    },
+    {
+      "block": "B",
+      "number": 73,
+      "tier": 3,
+      "front": [
+        -9.15,
+        35.5,
+        1.4799999999999969
+      ],
+      "main": false,
+      "label": "B-73W"
+    },
+    {
+      "block": "B",
+      "number": 74,
+      "tier": 3,
+      "front": [
+        -9.15,
+        35.5,
+        3.509999999999998
+      ],
+      "main": false,
+      "label": "B-74W"
+    },
+    {
+      "block": "B",
+      "number": 75,
+      "tier": 3,
+      "front": [
+        -9.15,
+        35.5,
+        5.539999999999999
+      ],
+      "main": false,
+      "label": "B-75W"
+    },
+    {
+      "block": "B",
+      "number": 76,
+      "tier": 3,
+      "front": [
+        -9.15,
+        35.5,
+        7.569999999999993
+      ],
+      "main": false,
+      "label": "B-76W"
+    },
+    {
+      "block": "B",
+      "number": 77,
+      "tier": 3,
+      "front": [
+        -9.15,
+        35.5,
+        9.599999999999994
+      ],
+      "main": false,
+      "label": "B-77W"
+    },
+    {
+      "block": "B",
+      "number": 78,
+      "tier": 3,
+      "front": [
+        -9.15,
+        35.5,
+        11.629999999999995
+      ],
+      "main": false,
+      "label": "B-78W"
+    },
+    {
+      "block": "B",
+      "number": 79,
+      "tier": 3,
+      "front": [
+        -9.15,
+        35.5,
+        13.659999999999997
+      ],
+      "main": false,
+      "label": "B-79W"
+    },
+    {
+      "block": "B",
+      "number": 80,
+      "tier": 3,
+      "front": [
+        -9.15,
+        35.5,
+        15.689999999999998
+      ],
+      "main": false,
+      "label": "B-80W"
+    },
+    {
+      "block": "B",
+      "number": 81,
+      "tier": 3,
+      "front": [
+        -9.15,
+        35.5,
+        17.72
+      ],
+      "main": false,
+      "label": "B-81W"
+    },
+    {
+      "block": "B",
+      "number": 82,
+      "tier": 3,
+      "front": [
+        -9.15,
+        35.5,
+        19.749999999999993
+      ],
+      "main": false,
+      "label": "B-82W"
+    },
+    {
+      "block": "B",
+      "number": 83,
+      "tier": 3,
+      "front": [
+        -9.15,
+        35.5,
+        21.779999999999994
+      ],
+      "main": false,
+      "label": "B-83W"
+    },
+    {
+      "block": "B",
+      "number": 84,
+      "tier": 3,
+      "front": [
+        -9.15,
+        35.5,
+        23.809999999999995
+      ],
+      "main": false,
+      "label": "B-84W"
+    },
+    {
+      "block": "B",
+      "number": 57,
+      "tier": 3,
+      "front": [
+        -2.85,
+        35.5,
+        -31.0
+      ],
+      "main": false,
+      "label": "B-57E"
+    },
+    {
+      "block": "B",
+      "number": 58,
+      "tier": 3,
+      "front": [
+        -2.85,
+        35.5,
+        -28.97
+      ],
+      "main": false,
+      "label": "B-58E"
+    },
+    {
+      "block": "B",
+      "number": 59,
+      "tier": 3,
+      "front": [
+        -2.85,
+        35.5,
+        -26.94
+      ],
+      "main": false,
+      "label": "B-59E"
+    },
+    {
+      "block": "B",
+      "number": 60,
+      "tier": 3,
+      "front": [
+        -2.85,
+        35.5,
+        -24.91
+      ],
+      "main": false,
+      "label": "B-60E"
+    },
+    {
+      "block": "B",
+      "number": 61,
+      "tier": 3,
+      "front": [
+        -2.85,
+        35.5,
+        -22.880000000000003
+      ],
+      "main": false,
+      "label": "B-61E"
+    },
+    {
+      "block": "B",
+      "number": 62,
+      "tier": 3,
+      "front": [
+        -2.85,
+        35.5,
+        -20.85
+      ],
+      "main": false,
+      "label": "B-62E"
+    },
+    {
+      "block": "B",
+      "number": 63,
+      "tier": 3,
+      "front": [
+        -2.85,
+        35.5,
+        -18.82
+      ],
+      "main": false,
+      "label": "B-63E"
+    },
+    {
+      "block": "B",
+      "number": 64,
+      "tier": 3,
+      "front": [
+        -2.85,
+        35.5,
+        -16.79
+      ],
+      "main": false,
+      "label": "B-64E"
+    },
+    {
+      "block": "B",
+      "number": 65,
+      "tier": 3,
+      "front": [
+        -2.85,
+        35.5,
+        -14.760000000000002
+      ],
+      "main": false,
+      "label": "B-65E"
+    },
+    {
+      "block": "B",
+      "number": 66,
+      "tier": 3,
+      "front": [
+        -2.85,
+        35.5,
+        -12.73
+      ],
+      "main": false,
+      "label": "B-66E"
+    },
+    {
+      "block": "B",
+      "number": 67,
+      "tier": 3,
+      "front": [
+        -2.85,
+        35.5,
+        -10.700000000000003
+      ],
+      "main": false,
+      "label": "B-67E"
+    },
+    {
+      "block": "B",
+      "number": 68,
+      "tier": 3,
+      "front": [
+        -2.85,
+        35.5,
+        -8.670000000000002
+      ],
+      "main": false,
+      "label": "B-68E"
+    },
+    {
+      "block": "B",
+      "number": 69,
+      "tier": 3,
+      "front": [
+        -2.85,
+        35.5,
+        -6.640000000000001
+      ],
+      "main": false,
+      "label": "B-69E"
+    },
+    {
+      "block": "B",
+      "number": 70,
+      "tier": 3,
+      "front": [
+        -2.85,
+        35.5,
+        -4.610000000000003
+      ],
+      "main": false,
+      "label": "B-70E"
+    },
+    {
+      "block": "B",
+      "number": 71,
+      "tier": 3,
+      "front": [
+        -2.85,
+        35.5,
+        -2.580000000000002
+      ],
+      "main": false,
+      "label": "B-71E"
+    },
+    {
+      "block": "B",
+      "number": 72,
+      "tier": 3,
+      "front": [
+        -2.85,
+        35.5,
+        -0.5500000000000043
+      ],
+      "main": false,
+      "label": "B-72E"
+    },
+    {
+      "block": "B",
+      "number": 73,
+      "tier": 3,
+      "front": [
+        -2.85,
+        35.5,
+        1.4799999999999969
+      ],
+      "main": false,
+      "label": "B-73E"
+    },
+    {
+      "block": "B",
+      "number": 74,
+      "tier": 3,
+      "front": [
+        -2.85,
+        35.5,
+        3.509999999999998
+      ],
+      "main": false,
+      "label": "B-74E"
+    },
+    {
+      "block": "B",
+      "number": 75,
+      "tier": 3,
+      "front": [
+        -2.85,
+        35.5,
+        5.539999999999999
+      ],
+      "main": false,
+      "label": "B-75E"
+    },
+    {
+      "block": "B",
+      "number": 76,
+      "tier": 3,
+      "front": [
+        -2.85,
+        35.5,
+        7.569999999999993
+      ],
+      "main": false,
+      "label": "B-76E"
+    },
+    {
+      "block": "B",
+      "number": 77,
+      "tier": 3,
+      "front": [
+        -2.85,
+        35.5,
+        9.599999999999994
+      ],
+      "main": false,
+      "label": "B-77E"
+    },
+    {
+      "block": "B",
+      "number": 78,
+      "tier": 3,
+      "front": [
+        -2.85,
+        35.5,
+        11.629999999999995
+      ],
+      "main": false,
+      "label": "B-78E"
+    },
+    {
+      "block": "B",
+      "number": 79,
+      "tier": 3,
+      "front": [
+        -2.85,
+        35.5,
+        13.659999999999997
+      ],
+      "main": false,
+      "label": "B-79E"
+    },
+    {
+      "block": "B",
+      "number": 80,
+      "tier": 3,
+      "front": [
+        -2.85,
+        35.5,
+        15.689999999999998
+      ],
+      "main": false,
+      "label": "B-80E"
+    },
+    {
+      "block": "B",
+      "number": 81,
+      "tier": 3,
+      "front": [
+        -2.85,
+        35.5,
+        17.72
+      ],
+      "main": false,
+      "label": "B-81E"
+    },
+    {
+      "block": "B",
+      "number": 82,
+      "tier": 3,
+      "front": [
+        -2.85,
+        35.5,
+        19.749999999999993
+      ],
+      "main": false,
+      "label": "B-82E"
+    },
+    {
+      "block": "B",
+      "number": 83,
+      "tier": 3,
+      "front": [
+        -2.85,
+        35.5,
+        21.779999999999994
+      ],
+      "main": false,
+      "label": "B-83E"
+    },
+    {
+      "block": "B",
+      "number": 84,
+      "tier": 3,
+      "front": [
+        -2.85,
+        35.5,
+        23.809999999999995
+      ],
+      "main": false,
+      "label": "B-84E"
+    },
+    {
+      "block": "C",
+      "number": 1,
+      "tier": 1,
+      "front": [
+        2.85,
+        30.0,
+        -31.0
+      ],
+      "main": false,
+      "label": "C-01W"
+    },
+    {
+      "block": "C",
+      "number": 2,
+      "tier": 1,
+      "front": [
+        2.85,
+        30.0,
+        -28.97
+      ],
+      "main": false,
+      "label": "C-02W"
+    },
+    {
+      "block": "C",
+      "number": 3,
+      "tier": 1,
+      "front": [
+        2.85,
+        30.0,
+        -26.94
+      ],
+      "main": false,
+      "label": "C-03W"
+    },
+    {
+      "block": "C",
+      "number": 4,
+      "tier": 1,
+      "front": [
+        2.85,
+        30.0,
+        -24.91
+      ],
+      "main": false,
+      "label": "C-04W"
+    },
+    {
+      "block": "C",
+      "number": 5,
+      "tier": 1,
+      "front": [
+        2.85,
+        30.0,
+        -22.880000000000003
+      ],
+      "main": false,
+      "label": "C-05W"
+    },
+    {
+      "block": "C",
+      "number": 6,
+      "tier": 1,
+      "front": [
+        2.85,
+        30.0,
+        -20.85
+      ],
+      "main": false,
+      "label": "C-06W"
+    },
+    {
+      "block": "C",
+      "number": 7,
+      "tier": 1,
+      "front": [
+        2.85,
+        30.0,
+        -18.82
+      ],
+      "main": false,
+      "label": "C-07W"
+    },
+    {
+      "block": "C",
+      "number": 8,
+      "tier": 1,
+      "front": [
+        2.85,
+        30.0,
+        -16.79
+      ],
+      "main": false,
+      "label": "C-08W"
+    },
+    {
+      "block": "C",
+      "number": 9,
+      "tier": 1,
+      "front": [
+        2.85,
+        30.0,
+        -14.760000000000002
+      ],
+      "main": false,
+      "label": "C-09W"
+    },
+    {
+      "block": "C",
+      "number": 10,
+      "tier": 1,
+      "front": [
+        2.85,
+        30.0,
+        -12.73
+      ],
+      "main": false,
+      "label": "C-10W"
+    },
+    {
+      "block": "C",
+      "number": 11,
+      "tier": 1,
+      "front": [
+        2.85,
+        30.0,
+        -10.700000000000003
+      ],
+      "main": false,
+      "label": "C-11W"
+    },
+    {
+      "block": "C",
+      "number": 12,
+      "tier": 1,
+      "front": [
+        2.85,
+        30.0,
+        -8.670000000000002
+      ],
+      "main": false,
+      "label": "C-12W"
+    },
+    {
+      "block": "C",
+      "number": 13,
+      "tier": 1,
+      "front": [
+        2.85,
+        30.0,
+        -6.640000000000001
+      ],
+      "main": false,
+      "label": "C-13W"
+    },
+    {
+      "block": "C",
+      "number": 14,
+      "tier": 1,
+      "front": [
+        2.85,
+        30.0,
+        -4.610000000000003
+      ],
+      "main": false,
+      "label": "C-14W"
+    },
+    {
+      "block": "C",
+      "number": 15,
+      "tier": 1,
+      "front": [
+        2.85,
+        30.0,
+        -2.580000000000002
+      ],
+      "main": false,
+      "label": "C-15W"
+    },
+    {
+      "block": "C",
+      "number": 16,
+      "tier": 1,
+      "front": [
+        2.85,
+        30.0,
+        -0.5500000000000043
+      ],
+      "main": false,
+      "label": "C-16W"
+    },
+    {
+      "block": "C",
+      "number": 17,
+      "tier": 1,
+      "front": [
+        2.85,
+        30.0,
+        1.4799999999999969
+      ],
+      "main": false,
+      "label": "C-17W"
+    },
+    {
+      "block": "C",
+      "number": 18,
+      "tier": 1,
+      "front": [
+        2.85,
+        30.0,
+        3.509999999999998
+      ],
+      "main": false,
+      "label": "C-18W"
+    },
+    {
+      "block": "C",
+      "number": 19,
+      "tier": 1,
+      "front": [
+        2.85,
+        30.0,
+        5.539999999999999
+      ],
+      "main": false,
+      "label": "C-19W"
+    },
+    {
+      "block": "C",
+      "number": 20,
+      "tier": 1,
+      "front": [
+        2.85,
+        30.0,
+        7.569999999999993
+      ],
+      "main": false,
+      "label": "C-20W"
+    },
+    {
+      "block": "C",
+      "number": 21,
+      "tier": 1,
+      "front": [
+        2.85,
+        30.0,
+        9.599999999999994
+      ],
+      "main": false,
+      "label": "C-21W"
+    },
+    {
+      "block": "C",
+      "number": 22,
+      "tier": 1,
+      "front": [
+        2.85,
+        30.0,
+        11.629999999999995
+      ],
+      "main": false,
+      "label": "C-22W"
+    },
+    {
+      "block": "C",
+      "number": 23,
+      "tier": 1,
+      "front": [
+        2.85,
+        30.0,
+        13.659999999999997
+      ],
+      "main": false,
+      "label": "C-23W"
+    },
+    {
+      "block": "C",
+      "number": 24,
+      "tier": 1,
+      "front": [
+        2.85,
+        30.0,
+        15.689999999999998
+      ],
+      "main": false,
+      "label": "C-24W"
+    },
+    {
+      "block": "C",
+      "number": 25,
+      "tier": 1,
+      "front": [
+        2.85,
+        30.0,
+        17.72
+      ],
+      "main": false,
+      "label": "C-25W"
+    },
+    {
+      "block": "C",
+      "number": 26,
+      "tier": 1,
+      "front": [
+        2.85,
+        30.0,
+        19.749999999999993
+      ],
+      "main": false,
+      "label": "C-26W"
+    },
+    {
+      "block": "C",
+      "number": 27,
+      "tier": 1,
+      "front": [
+        2.85,
+        30.0,
+        21.779999999999994
+      ],
+      "main": false,
+      "label": "C-27W"
+    },
+    {
+      "block": "C",
+      "number": 28,
+      "tier": 1,
+      "front": [
+        2.85,
+        30.0,
+        23.809999999999995
+      ],
+      "main": false,
+      "label": "C-28W"
+    },
+    {
+      "block": "C",
+      "number": 1,
+      "tier": 1,
+      "front": [
+        9.15,
+        30.0,
+        -31.0
+      ],
+      "main": false,
+      "label": "C-01E"
+    },
+    {
+      "block": "C",
+      "number": 2,
+      "tier": 1,
+      "front": [
+        9.15,
+        30.0,
+        -28.97
+      ],
+      "main": false,
+      "label": "C-02E"
+    },
+    {
+      "block": "C",
+      "number": 3,
+      "tier": 1,
+      "front": [
+        9.15,
+        30.0,
+        -26.94
+      ],
+      "main": false,
+      "label": "C-03E"
+    },
+    {
+      "block": "C",
+      "number": 4,
+      "tier": 1,
+      "front": [
+        9.15,
+        30.0,
+        -24.91
+      ],
+      "main": false,
+      "label": "C-04E"
+    },
+    {
+      "block": "C",
+      "number": 5,
+      "tier": 1,
+      "front": [
+        9.15,
+        30.0,
+        -22.880000000000003
+      ],
+      "main": false,
+      "label": "C-05E"
+    },
+    {
+      "block": "C",
+      "number": 6,
+      "tier": 1,
+      "front": [
+        9.15,
+        30.0,
+        -20.85
+      ],
+      "main": false,
+      "label": "C-06E"
+    },
+    {
+      "block": "C",
+      "number": 7,
+      "tier": 1,
+      "front": [
+        9.15,
+        30.0,
+        -18.82
+      ],
+      "main": false,
+      "label": "C-07E"
+    },
+    {
+      "block": "C",
+      "number": 8,
+      "tier": 1,
+      "front": [
+        9.15,
+        30.0,
+        -16.79
+      ],
+      "main": false,
+      "label": "C-08E"
+    },
+    {
+      "block": "C",
+      "number": 9,
+      "tier": 1,
+      "front": [
+        9.15,
+        30.0,
+        -14.760000000000002
+      ],
+      "main": false,
+      "label": "C-09E"
+    },
+    {
+      "block": "C",
+      "number": 10,
+      "tier": 1,
+      "front": [
+        9.15,
+        30.0,
+        -12.73
+      ],
+      "main": false,
+      "label": "C-10E"
+    },
+    {
+      "block": "C",
+      "number": 11,
+      "tier": 1,
+      "front": [
+        9.15,
+        30.0,
+        -10.700000000000003
+      ],
+      "main": false,
+      "label": "C-11E"
+    },
+    {
+      "block": "C",
+      "number": 12,
+      "tier": 1,
+      "front": [
+        9.15,
+        30.0,
+        -8.670000000000002
+      ],
+      "main": false,
+      "label": "C-12E"
+    },
+    {
+      "block": "C",
+      "number": 13,
+      "tier": 1,
+      "front": [
+        9.15,
+        30.0,
+        -6.640000000000001
+      ],
+      "main": false,
+      "label": "C-13E"
+    },
+    {
+      "block": "C",
+      "number": 14,
+      "tier": 1,
+      "front": [
+        9.15,
+        30.0,
+        -4.610000000000003
+      ],
+      "main": false,
+      "label": "C-14E"
+    },
+    {
+      "block": "C",
+      "number": 15,
+      "tier": 1,
+      "front": [
+        9.15,
+        30.0,
+        -2.580000000000002
+      ],
+      "main": false,
+      "label": "C-15E"
+    },
+    {
+      "block": "C",
+      "number": 16,
+      "tier": 1,
+      "front": [
+        9.15,
+        30.0,
+        -0.5500000000000043
+      ],
+      "main": false,
+      "label": "C-16E"
+    },
+    {
+      "block": "C",
+      "number": 17,
+      "tier": 1,
+      "front": [
+        9.15,
+        30.0,
+        1.4799999999999969
+      ],
+      "main": false,
+      "label": "C-17E"
+    },
+    {
+      "block": "C",
+      "number": 18,
+      "tier": 1,
+      "front": [
+        9.15,
+        30.0,
+        3.509999999999998
+      ],
+      "main": false,
+      "label": "C-18E"
+    },
+    {
+      "block": "C",
+      "number": 19,
+      "tier": 1,
+      "front": [
+        9.15,
+        30.0,
+        5.539999999999999
+      ],
+      "main": false,
+      "label": "C-19E"
+    },
+    {
+      "block": "C",
+      "number": 20,
+      "tier": 1,
+      "front": [
+        9.15,
+        30.0,
+        7.569999999999993
+      ],
+      "main": false,
+      "label": "C-20E"
+    },
+    {
+      "block": "C",
+      "number": 21,
+      "tier": 1,
+      "front": [
+        9.15,
+        30.0,
+        9.599999999999994
+      ],
+      "main": false,
+      "label": "C-21E"
+    },
+    {
+      "block": "C",
+      "number": 22,
+      "tier": 1,
+      "front": [
+        9.15,
+        30.0,
+        11.629999999999995
+      ],
+      "main": false,
+      "label": "C-22E"
+    },
+    {
+      "block": "C",
+      "number": 23,
+      "tier": 1,
+      "front": [
+        9.15,
+        30.0,
+        13.659999999999997
+      ],
+      "main": false,
+      "label": "C-23E"
+    },
+    {
+      "block": "C",
+      "number": 24,
+      "tier": 1,
+      "front": [
+        9.15,
+        30.0,
+        15.689999999999998
+      ],
+      "main": false,
+      "label": "C-24E"
+    },
+    {
+      "block": "C",
+      "number": 25,
+      "tier": 1,
+      "front": [
+        9.15,
+        30.0,
+        17.72
+      ],
+      "main": false,
+      "label": "C-25E"
+    },
+    {
+      "block": "C",
+      "number": 26,
+      "tier": 1,
+      "front": [
+        9.15,
+        30.0,
+        19.749999999999993
+      ],
+      "main": false,
+      "label": "C-26E"
+    },
+    {
+      "block": "C",
+      "number": 27,
+      "tier": 1,
+      "front": [
+        9.15,
+        30.0,
+        21.779999999999994
+      ],
+      "main": false,
+      "label": "C-27E"
+    },
+    {
+      "block": "C",
+      "number": 28,
+      "tier": 1,
+      "front": [
+        9.15,
+        30.0,
+        23.809999999999995
+      ],
+      "main": false,
+      "label": "C-28E"
+    },
+    {
+      "block": "C",
+      "number": 29,
+      "tier": 2,
+      "front": [
+        2.85,
+        32.75,
+        -31.0
+      ],
+      "main": false,
+      "label": "C-29W"
+    },
+    {
+      "block": "C",
+      "number": 30,
+      "tier": 2,
+      "front": [
+        2.85,
+        32.75,
+        -28.97
+      ],
+      "main": false,
+      "label": "C-30W"
+    },
+    {
+      "block": "C",
+      "number": 31,
+      "tier": 2,
+      "front": [
+        2.85,
+        32.75,
+        -26.94
+      ],
+      "main": false,
+      "label": "C-31W"
+    },
+    {
+      "block": "C",
+      "number": 32,
+      "tier": 2,
+      "front": [
+        2.85,
+        32.75,
+        -24.91
+      ],
+      "main": false,
+      "label": "C-32W"
+    },
+    {
+      "block": "C",
+      "number": 33,
+      "tier": 2,
+      "front": [
+        2.85,
+        32.75,
+        -22.880000000000003
+      ],
+      "main": false,
+      "label": "C-33W"
+    },
+    {
+      "block": "C",
+      "number": 34,
+      "tier": 2,
+      "front": [
+        2.85,
+        32.75,
+        -20.85
+      ],
+      "main": false,
+      "label": "C-34W"
+    },
+    {
+      "block": "C",
+      "number": 35,
+      "tier": 2,
+      "front": [
+        2.85,
+        32.75,
+        -18.82
+      ],
+      "main": false,
+      "label": "C-35W"
+    },
+    {
+      "block": "C",
+      "number": 36,
+      "tier": 2,
+      "front": [
+        2.85,
+        32.75,
+        -16.79
+      ],
+      "main": false,
+      "label": "C-36W"
+    },
+    {
+      "block": "C",
+      "number": 37,
+      "tier": 2,
+      "front": [
+        2.85,
+        32.75,
+        -14.760000000000002
+      ],
+      "main": false,
+      "label": "C-37W"
+    },
+    {
+      "block": "C",
+      "number": 38,
+      "tier": 2,
+      "front": [
+        2.85,
+        32.75,
+        -12.73
+      ],
+      "main": false,
+      "label": "C-38W"
+    },
+    {
+      "block": "C",
+      "number": 39,
+      "tier": 2,
+      "front": [
+        2.85,
+        32.75,
+        -10.700000000000003
+      ],
+      "main": false,
+      "label": "C-39W"
+    },
+    {
+      "block": "C",
+      "number": 40,
+      "tier": 2,
+      "front": [
+        2.85,
+        32.75,
+        -8.670000000000002
+      ],
+      "main": false,
+      "label": "C-40W"
+    },
+    {
+      "block": "C",
+      "number": 41,
+      "tier": 2,
+      "front": [
+        2.85,
+        32.75,
+        -6.640000000000001
+      ],
+      "main": false,
+      "label": "C-41W"
+    },
+    {
+      "block": "C",
+      "number": 42,
+      "tier": 2,
+      "front": [
+        2.85,
+        32.75,
+        -4.610000000000003
+      ],
+      "main": false,
+      "label": "C-42W"
+    },
+    {
+      "block": "C",
+      "number": 43,
+      "tier": 2,
+      "front": [
+        2.85,
+        32.75,
+        -2.580000000000002
+      ],
+      "main": false,
+      "label": "C-43W"
+    },
+    {
+      "block": "C",
+      "number": 44,
+      "tier": 2,
+      "front": [
+        2.85,
+        32.75,
+        -0.5500000000000043
+      ],
+      "main": false,
+      "label": "C-44W"
+    },
+    {
+      "block": "C",
+      "number": 45,
+      "tier": 2,
+      "front": [
+        2.85,
+        32.75,
+        1.4799999999999969
+      ],
+      "main": false,
+      "label": "C-45W"
+    },
+    {
+      "block": "C",
+      "number": 46,
+      "tier": 2,
+      "front": [
+        2.85,
+        32.75,
+        3.509999999999998
+      ],
+      "main": false,
+      "label": "C-46W"
+    },
+    {
+      "block": "C",
+      "number": 47,
+      "tier": 2,
+      "front": [
+        2.85,
+        32.75,
+        5.539999999999999
+      ],
+      "main": false,
+      "label": "C-47W"
+    },
+    {
+      "block": "C",
+      "number": 48,
+      "tier": 2,
+      "front": [
+        2.85,
+        32.75,
+        7.569999999999993
+      ],
+      "main": false,
+      "label": "C-48W"
+    },
+    {
+      "block": "C",
+      "number": 49,
+      "tier": 2,
+      "front": [
+        2.85,
+        32.75,
+        9.599999999999994
+      ],
+      "main": false,
+      "label": "C-49W"
+    },
+    {
+      "block": "C",
+      "number": 50,
+      "tier": 2,
+      "front": [
+        2.85,
+        32.75,
+        11.629999999999995
+      ],
+      "main": false,
+      "label": "C-50W"
+    },
+    {
+      "block": "C",
+      "number": 51,
+      "tier": 2,
+      "front": [
+        2.85,
+        32.75,
+        13.659999999999997
+      ],
+      "main": false,
+      "label": "C-51W"
+    },
+    {
+      "block": "C",
+      "number": 52,
+      "tier": 2,
+      "front": [
+        2.85,
+        32.75,
+        15.689999999999998
+      ],
+      "main": false,
+      "label": "C-52W"
+    },
+    {
+      "block": "C",
+      "number": 53,
+      "tier": 2,
+      "front": [
+        2.85,
+        32.75,
+        17.72
+      ],
+      "main": false,
+      "label": "C-53W"
+    },
+    {
+      "block": "C",
+      "number": 54,
+      "tier": 2,
+      "front": [
+        2.85,
+        32.75,
+        19.749999999999993
+      ],
+      "main": false,
+      "label": "C-54W"
+    },
+    {
+      "block": "C",
+      "number": 55,
+      "tier": 2,
+      "front": [
+        2.85,
+        32.75,
+        21.779999999999994
+      ],
+      "main": false,
+      "label": "C-55W"
+    },
+    {
+      "block": "C",
+      "number": 56,
+      "tier": 2,
+      "front": [
+        2.85,
+        32.75,
+        23.809999999999995
+      ],
+      "main": false,
+      "label": "C-56W"
+    },
+    {
+      "block": "C",
+      "number": 29,
+      "tier": 2,
+      "front": [
+        9.15,
+        32.75,
+        -31.0
+      ],
+      "main": false,
+      "label": "C-29E"
+    },
+    {
+      "block": "C",
+      "number": 30,
+      "tier": 2,
+      "front": [
+        9.15,
+        32.75,
+        -28.97
+      ],
+      "main": false,
+      "label": "C-30E"
+    },
+    {
+      "block": "C",
+      "number": 31,
+      "tier": 2,
+      "front": [
+        9.15,
+        32.75,
+        -26.94
+      ],
+      "main": false,
+      "label": "C-31E"
+    },
+    {
+      "block": "C",
+      "number": 32,
+      "tier": 2,
+      "front": [
+        9.15,
+        32.75,
+        -24.91
+      ],
+      "main": false,
+      "label": "C-32E"
+    },
+    {
+      "block": "C",
+      "number": 33,
+      "tier": 2,
+      "front": [
+        9.15,
+        32.75,
+        -22.880000000000003
+      ],
+      "main": false,
+      "label": "C-33E"
+    },
+    {
+      "block": "C",
+      "number": 34,
+      "tier": 2,
+      "front": [
+        9.15,
+        32.75,
+        -20.85
+      ],
+      "main": false,
+      "label": "C-34E"
+    },
+    {
+      "block": "C",
+      "number": 35,
+      "tier": 2,
+      "front": [
+        9.15,
+        32.75,
+        -18.82
+      ],
+      "main": false,
+      "label": "C-35E"
+    },
+    {
+      "block": "C",
+      "number": 36,
+      "tier": 2,
+      "front": [
+        9.15,
+        32.75,
+        -16.79
+      ],
+      "main": false,
+      "label": "C-36E"
+    },
+    {
+      "block": "C",
+      "number": 37,
+      "tier": 2,
+      "front": [
+        9.15,
+        32.75,
+        -14.760000000000002
+      ],
+      "main": false,
+      "label": "C-37E"
+    },
+    {
+      "block": "C",
+      "number": 38,
+      "tier": 2,
+      "front": [
+        9.15,
+        32.75,
+        -12.73
+      ],
+      "main": false,
+      "label": "C-38E"
+    },
+    {
+      "block": "C",
+      "number": 39,
+      "tier": 2,
+      "front": [
+        9.15,
+        32.75,
+        -10.700000000000003
+      ],
+      "main": false,
+      "label": "C-39E"
+    },
+    {
+      "block": "C",
+      "number": 40,
+      "tier": 2,
+      "front": [
+        9.15,
+        32.75,
+        -8.670000000000002
+      ],
+      "main": false,
+      "label": "C-40E"
+    },
+    {
+      "block": "C",
+      "number": 41,
+      "tier": 2,
+      "front": [
+        9.15,
+        32.75,
+        -6.640000000000001
+      ],
+      "main": false,
+      "label": "C-41E"
+    },
+    {
+      "block": "C",
+      "number": 42,
+      "tier": 2,
+      "front": [
+        9.15,
+        32.75,
+        -4.610000000000003
+      ],
+      "main": false,
+      "label": "C-42E"
+    },
+    {
+      "block": "C",
+      "number": 43,
+      "tier": 2,
+      "front": [
+        9.15,
+        32.75,
+        -2.580000000000002
+      ],
+      "main": false,
+      "label": "C-43E"
+    },
+    {
+      "block": "C",
+      "number": 44,
+      "tier": 2,
+      "front": [
+        9.15,
+        32.75,
+        -0.5500000000000043
+      ],
+      "main": false,
+      "label": "C-44E"
+    },
+    {
+      "block": "C",
+      "number": 45,
+      "tier": 2,
+      "front": [
+        9.15,
+        32.75,
+        1.4799999999999969
+      ],
+      "main": false,
+      "label": "C-45E"
+    },
+    {
+      "block": "C",
+      "number": 46,
+      "tier": 2,
+      "front": [
+        9.15,
+        32.75,
+        3.509999999999998
+      ],
+      "main": false,
+      "label": "C-46E"
+    },
+    {
+      "block": "C",
+      "number": 47,
+      "tier": 2,
+      "front": [
+        9.15,
+        32.75,
+        5.539999999999999
+      ],
+      "main": false,
+      "label": "C-47E"
+    },
+    {
+      "block": "C",
+      "number": 48,
+      "tier": 2,
+      "front": [
+        9.15,
+        32.75,
+        7.569999999999993
+      ],
+      "main": false,
+      "label": "C-48E"
+    },
+    {
+      "block": "C",
+      "number": 49,
+      "tier": 2,
+      "front": [
+        9.15,
+        32.75,
+        9.599999999999994
+      ],
+      "main": false,
+      "label": "C-49E"
+    },
+    {
+      "block": "C",
+      "number": 50,
+      "tier": 2,
+      "front": [
+        9.15,
+        32.75,
+        11.629999999999995
+      ],
+      "main": false,
+      "label": "C-50E"
+    },
+    {
+      "block": "C",
+      "number": 51,
+      "tier": 2,
+      "front": [
+        9.15,
+        32.75,
+        13.659999999999997
+      ],
+      "main": false,
+      "label": "C-51E"
+    },
+    {
+      "block": "C",
+      "number": 52,
+      "tier": 2,
+      "front": [
+        9.15,
+        32.75,
+        15.689999999999998
+      ],
+      "main": false,
+      "label": "C-52E"
+    },
+    {
+      "block": "C",
+      "number": 53,
+      "tier": 2,
+      "front": [
+        9.15,
+        32.75,
+        17.72
+      ],
+      "main": false,
+      "label": "C-53E"
+    },
+    {
+      "block": "C",
+      "number": 54,
+      "tier": 2,
+      "front": [
+        9.15,
+        32.75,
+        19.749999999999993
+      ],
+      "main": false,
+      "label": "C-54E"
+    },
+    {
+      "block": "C",
+      "number": 55,
+      "tier": 2,
+      "front": [
+        9.15,
+        32.75,
+        21.779999999999994
+      ],
+      "main": false,
+      "label": "C-55E"
+    },
+    {
+      "block": "C",
+      "number": 56,
+      "tier": 2,
+      "front": [
+        9.15,
+        32.75,
+        23.809999999999995
+      ],
+      "main": false,
+      "label": "C-56E"
+    },
+    {
+      "block": "C",
+      "number": 57,
+      "tier": 3,
+      "front": [
+        2.85,
+        35.5,
+        -31.0
+      ],
+      "main": false,
+      "label": "C-57W"
+    },
+    {
+      "block": "C",
+      "number": 58,
+      "tier": 3,
+      "front": [
+        2.85,
+        35.5,
+        -28.97
+      ],
+      "main": false,
+      "label": "C-58W"
+    },
+    {
+      "block": "C",
+      "number": 59,
+      "tier": 3,
+      "front": [
+        2.85,
+        35.5,
+        -26.94
+      ],
+      "main": false,
+      "label": "C-59W"
+    },
+    {
+      "block": "C",
+      "number": 60,
+      "tier": 3,
+      "front": [
+        2.85,
+        35.5,
+        -24.91
+      ],
+      "main": false,
+      "label": "C-60W"
+    },
+    {
+      "block": "C",
+      "number": 61,
+      "tier": 3,
+      "front": [
+        2.85,
+        35.5,
+        -22.880000000000003
+      ],
+      "main": false,
+      "label": "C-61W"
+    },
+    {
+      "block": "C",
+      "number": 62,
+      "tier": 3,
+      "front": [
+        2.85,
+        35.5,
+        -20.85
+      ],
+      "main": false,
+      "label": "C-62W"
+    },
+    {
+      "block": "C",
+      "number": 63,
+      "tier": 3,
+      "front": [
+        2.85,
+        35.5,
+        -18.82
+      ],
+      "main": false,
+      "label": "C-63W"
+    },
+    {
+      "block": "C",
+      "number": 64,
+      "tier": 3,
+      "front": [
+        2.85,
+        35.5,
+        -16.79
+      ],
+      "main": false,
+      "label": "C-64W"
+    },
+    {
+      "block": "C",
+      "number": 65,
+      "tier": 3,
+      "front": [
+        2.85,
+        35.5,
+        -14.760000000000002
+      ],
+      "main": false,
+      "label": "C-65W"
+    },
+    {
+      "block": "C",
+      "number": 66,
+      "tier": 3,
+      "front": [
+        2.85,
+        35.5,
+        -12.73
+      ],
+      "main": false,
+      "label": "C-66W"
+    },
+    {
+      "block": "C",
+      "number": 67,
+      "tier": 3,
+      "front": [
+        2.85,
+        35.5,
+        -10.700000000000003
+      ],
+      "main": false,
+      "label": "C-67W"
+    },
+    {
+      "block": "C",
+      "number": 68,
+      "tier": 3,
+      "front": [
+        2.85,
+        35.5,
+        -8.670000000000002
+      ],
+      "main": false,
+      "label": "C-68W"
+    },
+    {
+      "block": "C",
+      "number": 69,
+      "tier": 3,
+      "front": [
+        2.85,
+        35.5,
+        -6.640000000000001
+      ],
+      "main": false,
+      "label": "C-69W"
+    },
+    {
+      "block": "C",
+      "number": 70,
+      "tier": 3,
+      "front": [
+        2.85,
+        35.5,
+        -4.610000000000003
+      ],
+      "main": false,
+      "label": "C-70W"
+    },
+    {
+      "block": "C",
+      "number": 71,
+      "tier": 3,
+      "front": [
+        2.85,
+        35.5,
+        -2.580000000000002
+      ],
+      "main": false,
+      "label": "C-71W"
+    },
+    {
+      "block": "C",
+      "number": 72,
+      "tier": 3,
+      "front": [
+        2.85,
+        35.5,
+        -0.5500000000000043
+      ],
+      "main": false,
+      "label": "C-72W"
+    },
+    {
+      "block": "C",
+      "number": 73,
+      "tier": 3,
+      "front": [
+        2.85,
+        35.5,
+        1.4799999999999969
+      ],
+      "main": false,
+      "label": "C-73W"
+    },
+    {
+      "block": "C",
+      "number": 74,
+      "tier": 3,
+      "front": [
+        2.85,
+        35.5,
+        3.509999999999998
+      ],
+      "main": false,
+      "label": "C-74W"
+    },
+    {
+      "block": "C",
+      "number": 75,
+      "tier": 3,
+      "front": [
+        2.85,
+        35.5,
+        5.539999999999999
+      ],
+      "main": false,
+      "label": "C-75W"
+    },
+    {
+      "block": "C",
+      "number": 76,
+      "tier": 3,
+      "front": [
+        2.85,
+        35.5,
+        7.569999999999993
+      ],
+      "main": false,
+      "label": "C-76W"
+    },
+    {
+      "block": "C",
+      "number": 77,
+      "tier": 3,
+      "front": [
+        2.85,
+        35.5,
+        9.599999999999994
+      ],
+      "main": false,
+      "label": "C-77W"
+    },
+    {
+      "block": "C",
+      "number": 78,
+      "tier": 3,
+      "front": [
+        2.85,
+        35.5,
+        11.629999999999995
+      ],
+      "main": false,
+      "label": "C-78W"
+    },
+    {
+      "block": "C",
+      "number": 79,
+      "tier": 3,
+      "front": [
+        2.85,
+        35.5,
+        13.659999999999997
+      ],
+      "main": false,
+      "label": "C-79W"
+    },
+    {
+      "block": "C",
+      "number": 80,
+      "tier": 3,
+      "front": [
+        2.85,
+        35.5,
+        15.689999999999998
+      ],
+      "main": false,
+      "label": "C-80W"
+    },
+    {
+      "block": "C",
+      "number": 81,
+      "tier": 3,
+      "front": [
+        2.85,
+        35.5,
+        17.72
+      ],
+      "main": false,
+      "label": "C-81W"
+    },
+    {
+      "block": "C",
+      "number": 82,
+      "tier": 3,
+      "front": [
+        2.85,
+        35.5,
+        19.749999999999993
+      ],
+      "main": false,
+      "label": "C-82W"
+    },
+    {
+      "block": "C",
+      "number": 83,
+      "tier": 3,
+      "front": [
+        2.85,
+        35.5,
+        21.779999999999994
+      ],
+      "main": false,
+      "label": "C-83W"
+    },
+    {
+      "block": "C",
+      "number": 84,
+      "tier": 3,
+      "front": [
+        2.85,
+        35.5,
+        23.809999999999995
+      ],
+      "main": false,
+      "label": "C-84W"
+    },
+    {
+      "block": "C",
+      "number": 57,
+      "tier": 3,
+      "front": [
+        9.15,
+        35.5,
+        -31.0
+      ],
+      "main": false,
+      "label": "C-57E"
+    },
+    {
+      "block": "C",
+      "number": 58,
+      "tier": 3,
+      "front": [
+        9.15,
+        35.5,
+        -28.97
+      ],
+      "main": false,
+      "label": "C-58E"
+    },
+    {
+      "block": "C",
+      "number": 59,
+      "tier": 3,
+      "front": [
+        9.15,
+        35.5,
+        -26.94
+      ],
+      "main": false,
+      "label": "C-59E"
+    },
+    {
+      "block": "C",
+      "number": 60,
+      "tier": 3,
+      "front": [
+        9.15,
+        35.5,
+        -24.91
+      ],
+      "main": false,
+      "label": "C-60E"
+    },
+    {
+      "block": "C",
+      "number": 61,
+      "tier": 3,
+      "front": [
+        9.15,
+        35.5,
+        -22.880000000000003
+      ],
+      "main": false,
+      "label": "C-61E"
+    },
+    {
+      "block": "C",
+      "number": 62,
+      "tier": 3,
+      "front": [
+        9.15,
+        35.5,
+        -20.85
+      ],
+      "main": false,
+      "label": "C-62E"
+    },
+    {
+      "block": "C",
+      "number": 63,
+      "tier": 3,
+      "front": [
+        9.15,
+        35.5,
+        -18.82
+      ],
+      "main": false,
+      "label": "C-63E"
+    },
+    {
+      "block": "C",
+      "number": 64,
+      "tier": 3,
+      "front": [
+        9.15,
+        35.5,
+        -16.79
+      ],
+      "main": false,
+      "label": "C-64E"
+    },
+    {
+      "block": "C",
+      "number": 65,
+      "tier": 3,
+      "front": [
+        9.15,
+        35.5,
+        -14.760000000000002
+      ],
+      "main": false,
+      "label": "C-65E"
+    },
+    {
+      "block": "C",
+      "number": 66,
+      "tier": 3,
+      "front": [
+        9.15,
+        35.5,
+        -12.73
+      ],
+      "main": false,
+      "label": "C-66E"
+    },
+    {
+      "block": "C",
+      "number": 67,
+      "tier": 3,
+      "front": [
+        9.15,
+        35.5,
+        -10.700000000000003
+      ],
+      "main": false,
+      "label": "C-67E"
+    },
+    {
+      "block": "C",
+      "number": 68,
+      "tier": 3,
+      "front": [
+        9.15,
+        35.5,
+        -8.670000000000002
+      ],
+      "main": false,
+      "label": "C-68E"
+    },
+    {
+      "block": "C",
+      "number": 69,
+      "tier": 3,
+      "front": [
+        9.15,
+        35.5,
+        -6.640000000000001
+      ],
+      "main": false,
+      "label": "C-69E"
+    },
+    {
+      "block": "C",
+      "number": 70,
+      "tier": 3,
+      "front": [
+        9.15,
+        35.5,
+        -4.610000000000003
+      ],
+      "main": false,
+      "label": "C-70E"
+    },
+    {
+      "block": "C",
+      "number": 71,
+      "tier": 3,
+      "front": [
+        9.15,
+        35.5,
+        -2.580000000000002
+      ],
+      "main": false,
+      "label": "C-71E"
+    },
+    {
+      "block": "C",
+      "number": 72,
+      "tier": 3,
+      "front": [
+        9.15,
+        35.5,
+        -0.5500000000000043
+      ],
+      "main": false,
+      "label": "C-72E"
+    },
+    {
+      "block": "C",
+      "number": 73,
+      "tier": 3,
+      "front": [
+        9.15,
+        35.5,
+        1.4799999999999969
+      ],
+      "main": false,
+      "label": "C-73E"
+    },
+    {
+      "block": "C",
+      "number": 74,
+      "tier": 3,
+      "front": [
+        9.15,
+        35.5,
+        3.509999999999998
+      ],
+      "main": false,
+      "label": "C-74E"
+    },
+    {
+      "block": "C",
+      "number": 75,
+      "tier": 3,
+      "front": [
+        9.15,
+        35.5,
+        5.539999999999999
+      ],
+      "main": false,
+      "label": "C-75E"
+    },
+    {
+      "block": "C",
+      "number": 76,
+      "tier": 3,
+      "front": [
+        9.15,
+        35.5,
+        7.569999999999993
+      ],
+      "main": false,
+      "label": "C-76E"
+    },
+    {
+      "block": "C",
+      "number": 77,
+      "tier": 3,
+      "front": [
+        9.15,
+        35.5,
+        9.599999999999994
+      ],
+      "main": false,
+      "label": "C-77E"
+    },
+    {
+      "block": "C",
+      "number": 78,
+      "tier": 3,
+      "front": [
+        9.15,
+        35.5,
+        11.629999999999995
+      ],
+      "main": false,
+      "label": "C-78E"
+    },
+    {
+      "block": "C",
+      "number": 79,
+      "tier": 3,
+      "front": [
+        9.15,
+        35.5,
+        13.659999999999997
+      ],
+      "main": false,
+      "label": "C-79E"
+    },
+    {
+      "block": "C",
+      "number": 80,
+      "tier": 3,
+      "front": [
+        9.15,
+        35.5,
+        15.689999999999998
+      ],
+      "main": false,
+      "label": "C-80E"
+    },
+    {
+      "block": "C",
+      "number": 81,
+      "tier": 3,
+      "front": [
+        9.15,
+        35.5,
+        17.72
+      ],
+      "main": false,
+      "label": "C-81E"
+    },
+    {
+      "block": "C",
+      "number": 82,
+      "tier": 3,
+      "front": [
+        9.15,
+        35.5,
+        19.749999999999993
+      ],
+      "main": false,
+      "label": "C-82E"
+    },
+    {
+      "block": "C",
+      "number": 83,
+      "tier": 3,
+      "front": [
+        9.15,
+        35.5,
+        21.779999999999994
+      ],
+      "main": false,
+      "label": "C-83E"
+    },
+    {
+      "block": "C",
+      "number": 84,
+      "tier": 3,
+      "front": [
+        9.15,
+        35.5,
+        23.809999999999995
+      ],
+      "main": false,
+      "label": "C-84E"
+    },
+    {
+      "block": "A",
+      "number": 1,
+      "tier": 1,
+      "front": [
+        14.85,
+        30.0,
+        -31.0
+      ],
+      "main": false,
+      "label": "A-01W"
+    },
+    {
+      "block": "A",
+      "number": 2,
+      "tier": 1,
+      "front": [
+        14.85,
+        30.0,
+        -27.5
+      ],
+      "main": false,
+      "label": "A-02W"
+    },
+    {
+      "block": "A",
+      "number": 3,
+      "tier": 1,
+      "front": [
+        14.85,
+        30.0,
+        -24.0
+      ],
+      "main": false,
+      "label": "A-03W"
+    },
+    {
+      "block": "A",
+      "number": 4,
+      "tier": 1,
+      "front": [
+        14.85,
+        30.0,
+        -20.5
+      ],
+      "main": false,
+      "label": "A-04W"
+    },
+    {
+      "block": "A",
+      "number": 5,
+      "tier": 1,
+      "front": [
+        14.85,
+        30.0,
+        -17.0
+      ],
+      "main": false,
+      "label": "A-05W"
+    },
+    {
+      "block": "A",
+      "number": 6,
+      "tier": 1,
+      "front": [
+        14.85,
+        30.0,
+        -13.5
+      ],
+      "main": false,
+      "label": "A-06W"
+    },
+    {
+      "block": "A",
+      "number": 7,
+      "tier": 1,
+      "front": [
+        14.85,
+        30.0,
+        -10.0
+      ],
+      "main": false,
+      "label": "A-07W"
+    },
+    {
+      "block": "A",
+      "number": 8,
+      "tier": 1,
+      "front": [
+        14.85,
+        30.0,
+        -6.5
+      ],
+      "main": false,
+      "label": "A-08W"
+    },
+    {
+      "block": "A",
+      "number": 9,
+      "tier": 1,
+      "front": [
+        14.85,
+        30.0,
+        -3.0
+      ],
+      "main": false,
+      "label": "A-09W"
+    },
+    {
+      "block": "A",
+      "number": 10,
+      "tier": 1,
+      "front": [
+        14.85,
+        30.0,
+        0.5
+      ],
+      "main": false,
+      "label": "A-10W"
+    },
+    {
+      "block": "A",
+      "number": 11,
+      "tier": 1,
+      "front": [
+        14.85,
+        30.0,
+        4.0
+      ],
+      "main": false,
+      "label": "A-11W"
+    },
+    {
+      "block": "A",
+      "number": 12,
+      "tier": 1,
+      "front": [
+        14.85,
+        30.0,
+        7.5
+      ],
+      "main": false,
+      "label": "A-12W"
+    },
+    {
+      "block": "A",
+      "number": 13,
+      "tier": 1,
+      "front": [
+        14.85,
+        30.0,
+        11.0
+      ],
+      "main": false,
+      "label": "A-13W"
+    },
+    {
+      "block": "A",
+      "number": 14,
+      "tier": 1,
+      "front": [
+        14.85,
+        30.0,
+        14.5
+      ],
+      "main": false,
+      "label": "A-14W"
+    },
+    {
+      "block": "A",
+      "number": 15,
+      "tier": 1,
+      "front": [
+        14.85,
+        30.0,
+        18.0
+      ],
+      "main": false,
+      "label": "A-15W"
+    },
+    {
+      "block": "A",
+      "number": 16,
+      "tier": 1,
+      "front": [
+        14.85,
+        30.0,
+        21.5
+      ],
+      "main": false,
+      "label": "A-16W"
+    },
+    {
+      "block": "A",
+      "number": 1,
+      "tier": 1,
+      "front": [
+        21.15,
+        30.0,
+        -31.0
+      ],
+      "main": false,
+      "label": "A-01E"
+    },
+    {
+      "block": "A",
+      "number": 2,
+      "tier": 1,
+      "front": [
+        21.15,
+        30.0,
+        -27.5
+      ],
+      "main": false,
+      "label": "A-02E"
+    },
+    {
+      "block": "A",
+      "number": 3,
+      "tier": 1,
+      "front": [
+        21.15,
+        30.0,
+        -24.0
+      ],
+      "main": false,
+      "label": "A-03E"
+    },
+    {
+      "block": "A",
+      "number": 4,
+      "tier": 1,
+      "front": [
+        21.15,
+        30.0,
+        -20.5
+      ],
+      "main": false,
+      "label": "A-04E"
+    },
+    {
+      "block": "A",
+      "number": 5,
+      "tier": 1,
+      "front": [
+        21.15,
+        30.0,
+        -17.0
+      ],
+      "main": false,
+      "label": "A-05E"
+    },
+    {
+      "block": "A",
+      "number": 6,
+      "tier": 1,
+      "front": [
+        21.15,
+        30.0,
+        -13.5
+      ],
+      "main": false,
+      "label": "A-06E"
+    },
+    {
+      "block": "A",
+      "number": 7,
+      "tier": 1,
+      "front": [
+        21.15,
+        30.0,
+        -10.0
+      ],
+      "main": false,
+      "label": "A-07E"
+    },
+    {
+      "block": "A",
+      "number": 8,
+      "tier": 1,
+      "front": [
+        21.15,
+        30.0,
+        -6.5
+      ],
+      "main": false,
+      "label": "A-08E"
+    },
+    {
+      "block": "A",
+      "number": 9,
+      "tier": 1,
+      "front": [
+        21.15,
+        30.0,
+        -3.0
+      ],
+      "main": false,
+      "label": "A-09E"
+    },
+    {
+      "block": "A",
+      "number": 10,
+      "tier": 1,
+      "front": [
+        21.15,
+        30.0,
+        0.5
+      ],
+      "main": false,
+      "label": "A-10E"
+    },
+    {
+      "block": "A",
+      "number": 11,
+      "tier": 1,
+      "front": [
+        21.15,
+        30.0,
+        4.0
+      ],
+      "main": false,
+      "label": "A-11E"
+    },
+    {
+      "block": "A",
+      "number": 12,
+      "tier": 1,
+      "front": [
+        21.15,
+        30.0,
+        7.5
+      ],
+      "main": false,
+      "label": "A-12E"
+    },
+    {
+      "block": "A",
+      "number": 13,
+      "tier": 1,
+      "front": [
+        21.15,
+        30.0,
+        11.0
+      ],
+      "main": false,
+      "label": "A-13E"
+    },
+    {
+      "block": "A",
+      "number": 14,
+      "tier": 1,
+      "front": [
+        21.15,
+        30.0,
+        14.5
+      ],
+      "main": false,
+      "label": "A-14E"
+    },
+    {
+      "block": "A",
+      "number": 15,
+      "tier": 1,
+      "front": [
+        21.15,
+        30.0,
+        18.0
+      ],
+      "main": false,
+      "label": "A-15E"
+    },
+    {
+      "block": "A",
+      "number": 16,
+      "tier": 1,
+      "front": [
+        21.15,
+        30.0,
+        21.5
+      ],
+      "main": false,
+      "label": "A-16E"
+    },
+    {
+      "block": "A",
+      "number": 29,
+      "tier": 2,
+      "front": [
+        14.85,
+        32.75,
+        -31.0
+      ],
+      "main": false,
+      "label": "A-29W"
+    },
+    {
+      "block": "A",
+      "number": 30,
+      "tier": 2,
+      "front": [
+        14.85,
+        32.75,
+        -27.5
+      ],
+      "main": false,
+      "label": "A-30W"
+    },
+    {
+      "block": "A",
+      "number": 31,
+      "tier": 2,
+      "front": [
+        14.85,
+        32.75,
+        -24.0
+      ],
+      "main": false,
+      "label": "A-31W"
+    },
+    {
+      "block": "A",
+      "number": 32,
+      "tier": 2,
+      "front": [
+        14.85,
+        32.75,
+        -20.5
+      ],
+      "main": false,
+      "label": "A-32W"
+    },
+    {
+      "block": "A",
+      "number": 33,
+      "tier": 2,
+      "front": [
+        14.85,
+        32.75,
+        -17.0
+      ],
+      "main": false,
+      "label": "A-33W"
+    },
+    {
+      "block": "A",
+      "number": 34,
+      "tier": 2,
+      "front": [
+        14.85,
+        32.75,
+        -13.5
+      ],
+      "main": false,
+      "label": "A-34W"
+    },
+    {
+      "block": "A",
+      "number": 35,
+      "tier": 2,
+      "front": [
+        14.85,
+        32.75,
+        -10.0
+      ],
+      "main": false,
+      "label": "A-35W"
+    },
+    {
+      "block": "A",
+      "number": 36,
+      "tier": 2,
+      "front": [
+        14.85,
+        32.75,
+        -6.5
+      ],
+      "main": false,
+      "label": "A-36W"
+    },
+    {
+      "block": "A",
+      "number": 37,
+      "tier": 2,
+      "front": [
+        14.85,
+        32.75,
+        -3.0
+      ],
+      "main": false,
+      "label": "A-37W"
+    },
+    {
+      "block": "A",
+      "number": 38,
+      "tier": 2,
+      "front": [
+        14.85,
+        32.75,
+        0.5
+      ],
+      "main": false,
+      "label": "A-38W"
+    },
+    {
+      "block": "A",
+      "number": 39,
+      "tier": 2,
+      "front": [
+        14.85,
+        32.75,
+        4.0
+      ],
+      "main": false,
+      "label": "A-39W"
+    },
+    {
+      "block": "A",
+      "number": 40,
+      "tier": 2,
+      "front": [
+        14.85,
+        32.75,
+        7.5
+      ],
+      "main": false,
+      "label": "A-40W"
+    },
+    {
+      "block": "A",
+      "number": 41,
+      "tier": 2,
+      "front": [
+        14.85,
+        32.75,
+        11.0
+      ],
+      "main": false,
+      "label": "A-41W"
+    },
+    {
+      "block": "A",
+      "number": 42,
+      "tier": 2,
+      "front": [
+        14.85,
+        32.75,
+        14.5
+      ],
+      "main": false,
+      "label": "A-42W"
+    },
+    {
+      "block": "A",
+      "number": 43,
+      "tier": 2,
+      "front": [
+        14.85,
+        32.75,
+        18.0
+      ],
+      "main": false,
+      "label": "A-43W"
+    },
+    {
+      "block": "A",
+      "number": 44,
+      "tier": 2,
+      "front": [
+        14.85,
+        32.75,
+        21.5
+      ],
+      "main": false,
+      "label": "A-44W"
+    },
+    {
+      "block": "A",
+      "number": 29,
+      "tier": 2,
+      "front": [
+        21.15,
+        32.75,
+        -31.0
+      ],
+      "main": false,
+      "label": "A-29E"
+    },
+    {
+      "block": "A",
+      "number": 30,
+      "tier": 2,
+      "front": [
+        21.15,
+        32.75,
+        -27.5
+      ],
+      "main": false,
+      "label": "A-30E"
+    },
+    {
+      "block": "A",
+      "number": 31,
+      "tier": 2,
+      "front": [
+        21.15,
+        32.75,
+        -24.0
+      ],
+      "main": false,
+      "label": "A-31E"
+    },
+    {
+      "block": "A",
+      "number": 32,
+      "tier": 2,
+      "front": [
+        21.15,
+        32.75,
+        -20.5
+      ],
+      "main": false,
+      "label": "A-32E"
+    },
+    {
+      "block": "A",
+      "number": 33,
+      "tier": 2,
+      "front": [
+        21.15,
+        32.75,
+        -17.0
+      ],
+      "main": false,
+      "label": "A-33E"
+    },
+    {
+      "block": "A",
+      "number": 34,
+      "tier": 2,
+      "front": [
+        21.15,
+        32.75,
+        -13.5
+      ],
+      "main": false,
+      "label": "A-34E"
+    },
+    {
+      "block": "A",
+      "number": 35,
+      "tier": 2,
+      "front": [
+        21.15,
+        32.75,
+        -10.0
+      ],
+      "main": false,
+      "label": "A-35E"
+    },
+    {
+      "block": "A",
+      "number": 36,
+      "tier": 2,
+      "front": [
+        21.15,
+        32.75,
+        -6.5
+      ],
+      "main": false,
+      "label": "A-36E"
+    },
+    {
+      "block": "A",
+      "number": 37,
+      "tier": 2,
+      "front": [
+        21.15,
+        32.75,
+        -3.0
+      ],
+      "main": false,
+      "label": "A-37E"
+    },
+    {
+      "block": "A",
+      "number": 38,
+      "tier": 2,
+      "front": [
+        21.15,
+        32.75,
+        0.5
+      ],
+      "main": false,
+      "label": "A-38E"
+    },
+    {
+      "block": "A",
+      "number": 39,
+      "tier": 2,
+      "front": [
+        21.15,
+        32.75,
+        4.0
+      ],
+      "main": false,
+      "label": "A-39E"
+    },
+    {
+      "block": "A",
+      "number": 40,
+      "tier": 2,
+      "front": [
+        21.15,
+        32.75,
+        7.5
+      ],
+      "main": false,
+      "label": "A-40E"
+    },
+    {
+      "block": "A",
+      "number": 41,
+      "tier": 2,
+      "front": [
+        21.15,
+        32.75,
+        11.0
+      ],
+      "main": false,
+      "label": "A-41E"
+    },
+    {
+      "block": "A",
+      "number": 42,
+      "tier": 2,
+      "front": [
+        21.15,
+        32.75,
+        14.5
+      ],
+      "main": false,
+      "label": "A-42E"
+    },
+    {
+      "block": "A",
+      "number": 43,
+      "tier": 2,
+      "front": [
+        21.15,
+        32.75,
+        18.0
+      ],
+      "main": false,
+      "label": "A-43E"
+    },
+    {
+      "block": "A",
+      "number": 44,
+      "tier": 2,
+      "front": [
+        21.15,
+        32.75,
+        21.5
+      ],
+      "main": false,
+      "label": "A-44E"
+    },
+    {
+      "block": "A",
+      "number": 57,
+      "tier": 3,
+      "front": [
+        14.85,
+        35.5,
+        -31.0
+      ],
+      "main": false,
+      "label": "A-57W"
+    },
+    {
+      "block": "A",
+      "number": 58,
+      "tier": 3,
+      "front": [
+        14.85,
+        35.5,
+        -27.5
+      ],
+      "main": false,
+      "label": "A-58W"
+    },
+    {
+      "block": "A",
+      "number": 59,
+      "tier": 3,
+      "front": [
+        14.85,
+        35.5,
+        -24.0
+      ],
+      "main": false,
+      "label": "A-59W"
+    },
+    {
+      "block": "A",
+      "number": 60,
+      "tier": 3,
+      "front": [
+        14.85,
+        35.5,
+        -20.5
+      ],
+      "main": false,
+      "label": "A-60W"
+    },
+    {
+      "block": "A",
+      "number": 61,
+      "tier": 3,
+      "front": [
+        14.85,
+        35.5,
+        -17.0
+      ],
+      "main": false,
+      "label": "A-61W"
+    },
+    {
+      "block": "A",
+      "number": 62,
+      "tier": 3,
+      "front": [
+        14.85,
+        35.5,
+        -13.5
+      ],
+      "main": false,
+      "label": "A-62W"
+    },
+    {
+      "block": "A",
+      "number": 63,
+      "tier": 3,
+      "front": [
+        14.85,
+        35.5,
+        -10.0
+      ],
+      "main": false,
+      "label": "A-63W"
+    },
+    {
+      "block": "A",
+      "number": 64,
+      "tier": 3,
+      "front": [
+        14.85,
+        35.5,
+        -6.5
+      ],
+      "main": false,
+      "label": "A-64W"
+    },
+    {
+      "block": "A",
+      "number": 65,
+      "tier": 3,
+      "front": [
+        14.85,
+        35.5,
+        -3.0
+      ],
+      "main": false,
+      "label": "A-65W"
+    },
+    {
+      "block": "A",
+      "number": 66,
+      "tier": 3,
+      "front": [
+        14.85,
+        35.5,
+        0.5
+      ],
+      "main": false,
+      "label": "A-66W"
+    },
+    {
+      "block": "A",
+      "number": 67,
+      "tier": 3,
+      "front": [
+        14.85,
+        35.5,
+        4.0
+      ],
+      "main": false,
+      "label": "A-67W"
+    },
+    {
+      "block": "A",
+      "number": 68,
+      "tier": 3,
+      "front": [
+        14.85,
+        35.5,
+        7.5
+      ],
+      "main": false,
+      "label": "A-68W"
+    },
+    {
+      "block": "A",
+      "number": 69,
+      "tier": 3,
+      "front": [
+        14.85,
+        35.5,
+        11.0
+      ],
+      "main": false,
+      "label": "A-69W"
+    },
+    {
+      "block": "A",
+      "number": 70,
+      "tier": 3,
+      "front": [
+        14.85,
+        35.5,
+        14.5
+      ],
+      "main": false,
+      "label": "A-70W"
+    },
+    {
+      "block": "A",
+      "number": 71,
+      "tier": 3,
+      "front": [
+        14.85,
+        35.5,
+        18.0
+      ],
+      "main": false,
+      "label": "A-71W"
+    },
+    {
+      "block": "A",
+      "number": 72,
+      "tier": 3,
+      "front": [
+        14.85,
+        35.5,
+        21.5
+      ],
+      "main": false,
+      "label": "A-72W"
+    },
+    {
+      "block": "A",
+      "number": 57,
+      "tier": 3,
+      "front": [
+        21.15,
+        35.5,
+        -31.0
+      ],
+      "main": false,
+      "label": "A-57E"
+    },
+    {
+      "block": "A",
+      "number": 58,
+      "tier": 3,
+      "front": [
+        21.15,
+        35.5,
+        -27.5
+      ],
+      "main": false,
+      "label": "A-58E"
+    },
+    {
+      "block": "A",
+      "number": 59,
+      "tier": 3,
+      "front": [
+        21.15,
+        35.5,
+        -24.0
+      ],
+      "main": false,
+      "label": "A-59E"
+    },
+    {
+      "block": "A",
+      "number": 60,
+      "tier": 3,
+      "front": [
+        21.15,
+        35.5,
+        -20.5
+      ],
+      "main": false,
+      "label": "A-60E"
+    },
+    {
+      "block": "A",
+      "number": 61,
+      "tier": 3,
+      "front": [
+        21.15,
+        35.5,
+        -17.0
+      ],
+      "main": false,
+      "label": "A-61E"
+    },
+    {
+      "block": "A",
+      "number": 62,
+      "tier": 3,
+      "front": [
+        21.15,
+        35.5,
+        -13.5
+      ],
+      "main": false,
+      "label": "A-62E"
+    },
+    {
+      "block": "A",
+      "number": 63,
+      "tier": 3,
+      "front": [
+        21.15,
+        35.5,
+        -10.0
+      ],
+      "main": false,
+      "label": "A-63E"
+    },
+    {
+      "block": "A",
+      "number": 64,
+      "tier": 3,
+      "front": [
+        21.15,
+        35.5,
+        -6.5
+      ],
+      "main": false,
+      "label": "A-64E"
+    },
+    {
+      "block": "A",
+      "number": 65,
+      "tier": 3,
+      "front": [
+        21.15,
+        35.5,
+        -3.0
+      ],
+      "main": false,
+      "label": "A-65E"
+    },
+    {
+      "block": "A",
+      "number": 66,
+      "tier": 3,
+      "front": [
+        21.15,
+        35.5,
+        0.5
+      ],
+      "main": false,
+      "label": "A-66E"
+    },
+    {
+      "block": "A",
+      "number": 67,
+      "tier": 3,
+      "front": [
+        21.15,
+        35.5,
+        4.0
+      ],
+      "main": false,
+      "label": "A-67E"
+    },
+    {
+      "block": "A",
+      "number": 68,
+      "tier": 3,
+      "front": [
+        21.15,
+        35.5,
+        7.5
+      ],
+      "main": false,
+      "label": "A-68E"
+    },
+    {
+      "block": "A",
+      "number": 69,
+      "tier": 3,
+      "front": [
+        21.15,
+        35.5,
+        11.0
+      ],
+      "main": false,
+      "label": "A-69E"
+    },
+    {
+      "block": "A",
+      "number": 70,
+      "tier": 3,
+      "front": [
+        21.15,
+        35.5,
+        14.5
+      ],
+      "main": false,
+      "label": "A-70E"
+    },
+    {
+      "block": "A",
+      "number": 71,
+      "tier": 3,
+      "front": [
+        21.15,
+        35.5,
+        18.0
+      ],
+      "main": false,
+      "label": "A-71E"
+    },
+    {
+      "block": "A",
+      "number": 72,
+      "tier": 3,
+      "front": [
+        21.15,
+        35.5,
+        21.5
+      ],
+      "main": false,
+      "label": "A-72E"
+    },
+    {
+      "block": "D",
+      "number": 9,
+      "tier": 1,
+      "front": [
+        -21.15,
+        30.0,
+        -3.0
+      ],
+      "main": false,
+      "label": "D-09W"
+    },
+    {
+      "block": "D",
+      "number": 10,
+      "tier": 1,
+      "front": [
+        -21.15,
+        30.0,
+        0.5
+      ],
+      "main": false,
+      "label": "D-10W"
+    },
+    {
+      "block": "D",
+      "number": 11,
+      "tier": 1,
+      "front": [
+        -21.15,
+        30.0,
+        4.0
+      ],
+      "main": false,
+      "label": "D-11W"
+    },
+    {
+      "block": "D",
+      "number": 12,
+      "tier": 1,
+      "front": [
+        -21.15,
+        30.0,
+        7.5
+      ],
+      "main": false,
+      "label": "D-12W"
+    },
+    {
+      "block": "D",
+      "number": 13,
+      "tier": 1,
+      "front": [
+        -21.15,
+        30.0,
+        11.0
+      ],
+      "main": false,
+      "label": "D-13W"
+    },
+    {
+      "block": "D",
+      "number": 14,
+      "tier": 1,
+      "front": [
+        -21.15,
+        30.0,
+        14.5
+      ],
+      "main": false,
+      "label": "D-14W"
+    },
+    {
+      "block": "D",
+      "number": 15,
+      "tier": 1,
+      "front": [
+        -21.15,
+        30.0,
+        18.0
+      ],
+      "main": false,
+      "label": "D-15W"
+    },
+    {
+      "block": "D",
+      "number": 16,
+      "tier": 1,
+      "front": [
+        -21.15,
+        30.0,
+        21.5
+      ],
+      "main": false,
+      "label": "D-16W"
+    },
+    {
+      "block": "D",
+      "number": 9,
+      "tier": 1,
+      "front": [
+        -14.85,
+        30.0,
+        -3.0
+      ],
+      "main": false,
+      "label": "D-09E"
+    },
+    {
+      "block": "D",
+      "number": 10,
+      "tier": 1,
+      "front": [
+        -14.85,
+        30.0,
+        0.5
+      ],
+      "main": false,
+      "label": "D-10E"
+    },
+    {
+      "block": "D",
+      "number": 11,
+      "tier": 1,
+      "front": [
+        -14.85,
+        30.0,
+        4.0
+      ],
+      "main": false,
+      "label": "D-11E"
+    },
+    {
+      "block": "D",
+      "number": 12,
+      "tier": 1,
+      "front": [
+        -14.85,
+        30.0,
+        7.5
+      ],
+      "main": false,
+      "label": "D-12E"
+    },
+    {
+      "block": "D",
+      "number": 13,
+      "tier": 1,
+      "front": [
+        -14.85,
+        30.0,
+        11.0
+      ],
+      "main": false,
+      "label": "D-13E"
+    },
+    {
+      "block": "D",
+      "number": 14,
+      "tier": 1,
+      "front": [
+        -14.85,
+        30.0,
+        14.5
+      ],
+      "main": false,
+      "label": "D-14E"
+    },
+    {
+      "block": "D",
+      "number": 15,
+      "tier": 1,
+      "front": [
+        -14.85,
+        30.0,
+        18.0
+      ],
+      "main": false,
+      "label": "D-15E"
+    },
+    {
+      "block": "D",
+      "number": 16,
+      "tier": 1,
+      "front": [
+        -14.85,
+        30.0,
+        21.5
+      ],
+      "main": false,
+      "label": "D-16E"
+    },
+    {
+      "block": "D",
+      "number": 29,
+      "tier": 2,
+      "front": [
+        -21.15,
+        32.75,
+        -31.0
+      ],
+      "main": false,
+      "label": "D-29W"
+    },
+    {
+      "block": "D",
+      "number": 30,
+      "tier": 2,
+      "front": [
+        -21.15,
+        32.75,
+        -27.5
+      ],
+      "main": false,
+      "label": "D-30W"
+    },
+    {
+      "block": "D",
+      "number": 31,
+      "tier": 2,
+      "front": [
+        -21.15,
+        32.75,
+        -24.0
+      ],
+      "main": false,
+      "label": "D-31W"
+    },
+    {
+      "block": "D",
+      "number": 32,
+      "tier": 2,
+      "front": [
+        -21.15,
+        32.75,
+        -20.5
+      ],
+      "main": false,
+      "label": "D-32W"
+    },
+    {
+      "block": "D",
+      "number": 33,
+      "tier": 2,
+      "front": [
+        -21.15,
+        32.75,
+        -17.0
+      ],
+      "main": false,
+      "label": "D-33W"
+    },
+    {
+      "block": "D",
+      "number": 34,
+      "tier": 2,
+      "front": [
+        -21.15,
+        32.75,
+        -13.5
+      ],
+      "main": false,
+      "label": "D-34W"
+    },
+    {
+      "block": "D",
+      "number": 35,
+      "tier": 2,
+      "front": [
+        -21.15,
+        32.75,
+        -10.0
+      ],
+      "main": false,
+      "label": "D-35W"
+    },
+    {
+      "block": "D",
+      "number": 36,
+      "tier": 2,
+      "front": [
+        -21.15,
+        32.75,
+        -6.5
+      ],
+      "main": false,
+      "label": "D-36W"
+    },
+    {
+      "block": "D",
+      "number": 37,
+      "tier": 2,
+      "front": [
+        -21.15,
+        32.75,
+        -3.0
+      ],
+      "main": false,
+      "label": "D-37W"
+    },
+    {
+      "block": "D",
+      "number": 38,
+      "tier": 2,
+      "front": [
+        -21.15,
+        32.75,
+        0.5
+      ],
+      "main": false,
+      "label": "D-38W"
+    },
+    {
+      "block": "D",
+      "number": 39,
+      "tier": 2,
+      "front": [
+        -21.15,
+        32.75,
+        4.0
+      ],
+      "main": false,
+      "label": "D-39W"
+    },
+    {
+      "block": "D",
+      "number": 40,
+      "tier": 2,
+      "front": [
+        -21.15,
+        32.75,
+        7.5
+      ],
+      "main": false,
+      "label": "D-40W"
+    },
+    {
+      "block": "D",
+      "number": 41,
+      "tier": 2,
+      "front": [
+        -21.15,
+        32.75,
+        11.0
+      ],
+      "main": false,
+      "label": "D-41W"
+    },
+    {
+      "block": "D",
+      "number": 42,
+      "tier": 2,
+      "front": [
+        -21.15,
+        32.75,
+        14.5
+      ],
+      "main": false,
+      "label": "D-42W"
+    },
+    {
+      "block": "D",
+      "number": 43,
+      "tier": 2,
+      "front": [
+        -21.15,
+        32.75,
+        18.0
+      ],
+      "main": false,
+      "label": "D-43W"
+    },
+    {
+      "block": "D",
+      "number": 44,
+      "tier": 2,
+      "front": [
+        -21.15,
+        32.75,
+        21.5
+      ],
+      "main": false,
+      "label": "D-44W"
+    },
+    {
+      "block": "D",
+      "number": 29,
+      "tier": 2,
+      "front": [
+        -14.85,
+        32.75,
+        -31.0
+      ],
+      "main": false,
+      "label": "D-29E"
+    },
+    {
+      "block": "D",
+      "number": 30,
+      "tier": 2,
+      "front": [
+        -14.85,
+        32.75,
+        -27.5
+      ],
+      "main": false,
+      "label": "D-30E"
+    },
+    {
+      "block": "D",
+      "number": 31,
+      "tier": 2,
+      "front": [
+        -14.85,
+        32.75,
+        -24.0
+      ],
+      "main": false,
+      "label": "D-31E"
+    },
+    {
+      "block": "D",
+      "number": 32,
+      "tier": 2,
+      "front": [
+        -14.85,
+        32.75,
+        -20.5
+      ],
+      "main": false,
+      "label": "D-32E"
+    },
+    {
+      "block": "D",
+      "number": 33,
+      "tier": 2,
+      "front": [
+        -14.85,
+        32.75,
+        -17.0
+      ],
+      "main": false,
+      "label": "D-33E"
+    },
+    {
+      "block": "D",
+      "number": 34,
+      "tier": 2,
+      "front": [
+        -14.85,
+        32.75,
+        -13.5
+      ],
+      "main": false,
+      "label": "D-34E"
+    },
+    {
+      "block": "D",
+      "number": 35,
+      "tier": 2,
+      "front": [
+        -14.85,
+        32.75,
+        -10.0
+      ],
+      "main": false,
+      "label": "D-35E"
+    },
+    {
+      "block": "D",
+      "number": 36,
+      "tier": 2,
+      "front": [
+        -14.85,
+        32.75,
+        -6.5
+      ],
+      "main": false,
+      "label": "D-36E"
+    },
+    {
+      "block": "D",
+      "number": 37,
+      "tier": 2,
+      "front": [
+        -14.85,
+        32.75,
+        -3.0
+      ],
+      "main": false,
+      "label": "D-37E"
+    },
+    {
+      "block": "D",
+      "number": 38,
+      "tier": 2,
+      "front": [
+        -14.85,
+        32.75,
+        0.5
+      ],
+      "main": false,
+      "label": "D-38E"
+    },
+    {
+      "block": "D",
+      "number": 39,
+      "tier": 2,
+      "front": [
+        -14.85,
+        32.75,
+        4.0
+      ],
+      "main": false,
+      "label": "D-39E"
+    },
+    {
+      "block": "D",
+      "number": 40,
+      "tier": 2,
+      "front": [
+        -14.85,
+        32.75,
+        7.5
+      ],
+      "main": false,
+      "label": "D-40E"
+    },
+    {
+      "block": "D",
+      "number": 41,
+      "tier": 2,
+      "front": [
+        -14.85,
+        32.75,
+        11.0
+      ],
+      "main": false,
+      "label": "D-41E"
+    },
+    {
+      "block": "D",
+      "number": 42,
+      "tier": 2,
+      "front": [
+        -14.85,
+        32.75,
+        14.5
+      ],
+      "main": false,
+      "label": "D-42E"
+    },
+    {
+      "block": "D",
+      "number": 43,
+      "tier": 2,
+      "front": [
+        -14.85,
+        32.75,
+        18.0
+      ],
+      "main": false,
+      "label": "D-43E"
+    },
+    {
+      "block": "D",
+      "number": 44,
+      "tier": 2,
+      "front": [
+        -14.85,
+        32.75,
+        21.5
+      ],
+      "main": false,
+      "label": "D-44E"
+    },
+    {
+      "block": "D",
+      "number": 57,
+      "tier": 3,
+      "front": [
+        -21.15,
+        35.5,
+        -31.0
+      ],
+      "main": false,
+      "label": "D-57W"
+    },
+    {
+      "block": "D",
+      "number": 58,
+      "tier": 3,
+      "front": [
+        -21.15,
+        35.5,
+        -27.5
+      ],
+      "main": false,
+      "label": "D-58W"
+    },
+    {
+      "block": "D",
+      "number": 59,
+      "tier": 3,
+      "front": [
+        -21.15,
+        35.5,
+        -24.0
+      ],
+      "main": false,
+      "label": "D-59W"
+    },
+    {
+      "block": "D",
+      "number": 60,
+      "tier": 3,
+      "front": [
+        -21.15,
+        35.5,
+        -20.5
+      ],
+      "main": false,
+      "label": "D-60W"
+    },
+    {
+      "block": "D",
+      "number": 61,
+      "tier": 3,
+      "front": [
+        -21.15,
+        35.5,
+        -17.0
+      ],
+      "main": false,
+      "label": "D-61W"
+    },
+    {
+      "block": "D",
+      "number": 62,
+      "tier": 3,
+      "front": [
+        -21.15,
+        35.5,
+        -13.5
+      ],
+      "main": false,
+      "label": "D-62W"
+    },
+    {
+      "block": "D",
+      "number": 63,
+      "tier": 3,
+      "front": [
+        -21.15,
+        35.5,
+        -10.0
+      ],
+      "main": false,
+      "label": "D-63W"
+    },
+    {
+      "block": "D",
+      "number": 64,
+      "tier": 3,
+      "front": [
+        -21.15,
+        35.5,
+        -6.5
+      ],
+      "main": false,
+      "label": "D-64W"
+    },
+    {
+      "block": "D",
+      "number": 65,
+      "tier": 3,
+      "front": [
+        -21.15,
+        35.5,
+        -3.0
+      ],
+      "main": false,
+      "label": "D-65W"
+    },
+    {
+      "block": "D",
+      "number": 66,
+      "tier": 3,
+      "front": [
+        -21.15,
+        35.5,
+        0.5
+      ],
+      "main": false,
+      "label": "D-66W"
+    },
+    {
+      "block": "D",
+      "number": 67,
+      "tier": 3,
+      "front": [
+        -21.15,
+        35.5,
+        4.0
+      ],
+      "main": false,
+      "label": "D-67W"
+    },
+    {
+      "block": "D",
+      "number": 68,
+      "tier": 3,
+      "front": [
+        -21.15,
+        35.5,
+        7.5
+      ],
+      "main": false,
+      "label": "D-68W"
+    },
+    {
+      "block": "D",
+      "number": 69,
+      "tier": 3,
+      "front": [
+        -21.15,
+        35.5,
+        11.0
+      ],
+      "main": false,
+      "label": "D-69W"
+    },
+    {
+      "block": "D",
+      "number": 70,
+      "tier": 3,
+      "front": [
+        -21.15,
+        35.5,
+        14.5
+      ],
+      "main": false,
+      "label": "D-70W"
+    },
+    {
+      "block": "D",
+      "number": 71,
+      "tier": 3,
+      "front": [
+        -21.15,
+        35.5,
+        18.0
+      ],
+      "main": false,
+      "label": "D-71W"
+    },
+    {
+      "block": "D",
+      "number": 72,
+      "tier": 3,
+      "front": [
+        -21.15,
+        35.5,
+        21.5
+      ],
+      "main": false,
+      "label": "D-72W"
+    },
+    {
+      "block": "D",
+      "number": 57,
+      "tier": 3,
+      "front": [
+        -14.85,
+        35.5,
+        -31.0
+      ],
+      "main": false,
+      "label": "D-57E"
+    },
+    {
+      "block": "D",
+      "number": 58,
+      "tier": 3,
+      "front": [
+        -14.85,
+        35.5,
+        -27.5
+      ],
+      "main": false,
+      "label": "D-58E"
+    },
+    {
+      "block": "D",
+      "number": 59,
+      "tier": 3,
+      "front": [
+        -14.85,
+        35.5,
+        -24.0
+      ],
+      "main": false,
+      "label": "D-59E"
+    },
+    {
+      "block": "D",
+      "number": 60,
+      "tier": 3,
+      "front": [
+        -14.85,
+        35.5,
+        -20.5
+      ],
+      "main": false,
+      "label": "D-60E"
+    },
+    {
+      "block": "D",
+      "number": 61,
+      "tier": 3,
+      "front": [
+        -14.85,
+        35.5,
+        -17.0
+      ],
+      "main": false,
+      "label": "D-61E"
+    },
+    {
+      "block": "D",
+      "number": 62,
+      "tier": 3,
+      "front": [
+        -14.85,
+        35.5,
+        -13.5
+      ],
+      "main": false,
+      "label": "D-62E"
+    },
+    {
+      "block": "D",
+      "number": 63,
+      "tier": 3,
+      "front": [
+        -14.85,
+        35.5,
+        -10.0
+      ],
+      "main": false,
+      "label": "D-63E"
+    },
+    {
+      "block": "D",
+      "number": 64,
+      "tier": 3,
+      "front": [
+        -14.85,
+        35.5,
+        -6.5
+      ],
+      "main": false,
+      "label": "D-64E"
+    },
+    {
+      "block": "D",
+      "number": 65,
+      "tier": 3,
+      "front": [
+        -14.85,
+        35.5,
+        -3.0
+      ],
+      "main": false,
+      "label": "D-65E"
+    },
+    {
+      "block": "D",
+      "number": 66,
+      "tier": 3,
+      "front": [
+        -14.85,
+        35.5,
+        0.5
+      ],
+      "main": false,
+      "label": "D-66E"
+    },
+    {
+      "block": "D",
+      "number": 67,
+      "tier": 3,
+      "front": [
+        -14.85,
+        35.5,
+        4.0
+      ],
+      "main": false,
+      "label": "D-67E"
+    },
+    {
+      "block": "D",
+      "number": 68,
+      "tier": 3,
+      "front": [
+        -14.85,
+        35.5,
+        7.5
+      ],
+      "main": false,
+      "label": "D-68E"
+    },
+    {
+      "block": "D",
+      "number": 69,
+      "tier": 3,
+      "front": [
+        -14.85,
+        35.5,
+        11.0
+      ],
+      "main": false,
+      "label": "D-69E"
+    },
+    {
+      "block": "D",
+      "number": 70,
+      "tier": 3,
+      "front": [
+        -14.85,
+        35.5,
+        14.5
+      ],
+      "main": false,
+      "label": "D-70E"
+    },
+    {
+      "block": "D",
+      "number": 71,
+      "tier": 3,
+      "front": [
+        -14.85,
+        35.5,
+        18.0
+      ],
+      "main": false,
+      "label": "D-71E"
+    },
+    {
+      "block": "D",
+      "number": 72,
+      "tier": 3,
+      "front": [
+        -14.85,
+        35.5,
+        21.5
+      ],
+      "main": false,
+      "label": "D-72E"
+    }
+  ],
+  "chapter_points": {
+    "cellSpawn": [
+      -4.25,
+      30.11,
+      -24.91
+    ],
+    "yardSpawn": [
+      -43,
+      27.32,
+      40
+    ],
+    "solitarySpawn": [
+      -17.2,
+      30.08,
+      -24.91
+    ],
+    "sleepPosition": [
+      -18.1,
+      30.05,
+      -25.11
+    ],
+    "visitSpawn": [
+      19,
+      30.11,
+      -38
+    ],
+    "guardIncident": [
+      -42,
+      27.3,
+      54
+    ],
+    "guardIsolation": [
+      -13.3,
+      30.04,
+      -24.91
+    ],
+    "rivalIsolation": [
+      -17.2,
+      30.03,
+      -20.85
+    ],
+    "cellStash": [
+      -5.04,
+      30.57,
+      -25.06
+    ],
+    "reflection": [
+      -3.7,
+      30.65,
+      -24.34
+    ],
+    "brother": [
+      22.25,
+      30.03,
+      -38
+    ],
+    "knife": [
+      -41.75,
+      27.305,
+      42
+    ],
+    "phone": [
+      -42.5,
+      28.22,
+      43
+    ]
+  },
+  "scene_paths": [
+    "Assets/Game/Scenes/SC_AlcatrazIsland.unity",
+    "Assets/Game/Scenes/SC_AlcatrazChapter01.unity"
+  ],
+  "original_scene_sha256": "56a4ea40a164111644069ead8d41dbda5f23526b5cd87cc0bd0a1b6d3b996196"
+}

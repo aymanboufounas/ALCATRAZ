@@ -1,0 +1,491 @@
+{
+  "provider": "Piper local neural TTS",
+  "voice_model": "en_US-libritts_r-medium",
+  "sample_rate": 22050,
+  "model_sha256": "10bb85e071d616fcf4071f369f1799d0491492ab3c5d552ec19fb548fac13195",
+  "distinct_speakers": 5,
+  "clips": [
+    {
+      "id": "intro_01",
+      "speaker": "ELIAS",
+      "model_speaker_id": 7,
+      "duration": 5.631,
+      "sha256": "6ceae3f0c62cc8c8f2cd7d7ce24c3cee8f2348167e2d1e5829335847d99eef8c"
+    },
+    {
+      "id": "intro_02",
+      "speaker": "GUARD",
+      "model_speaker_id": 5,
+      "duration": 1.939,
+      "sha256": "498e2af08a3f794a2571b1efba6a889dff19f21e06de64b007c32a7f18465459"
+    },
+    {
+      "id": "reader_01",
+      "speaker": "TOMAS",
+      "model_speaker_id": 7,
+      "duration": 5.584,
+      "sha256": "09b1c9e9276ec4d093f4600c05e82ea4eb0385f42e6df5b6417214432c5c3578"
+    },
+    {
+      "id": "reader_02",
+      "speaker": "ELIAS",
+      "model_speaker_id": 7,
+      "duration": 3.773,
+      "sha256": "5a03a9086d39b9b56aa35d0685362905c0c7f5819aab60ca4d597ae7c2dae4c5"
+    },
+    {
+      "id": "reader_03",
+      "speaker": "TOMAS",
+      "model_speaker_id": 7,
+      "duration": 7.14,
+      "sha256": "006f3c06a91b21458baff68da075de12bbe43a18bd057d0bb7bdbc051a486f05"
+    },
+    {
+      "id": "cook_01",
+      "speaker": "SAMIR",
+      "model_speaker_id": 3,
+      "duration": 3.158,
+      "sha256": "a3a83e1fdca01087a6f51626aa7e4093ab181583be6eefb9e2d7b061ae31a76e"
+    },
+    {
+      "id": "cook_02",
+      "speaker": "ELIAS",
+      "model_speaker_id": 7,
+      "duration": 1.265,
+      "sha256": "55cf9d1528249e0c928e7041a329bc547a7aa9ff6b7599c6387901d303dba43b"
+    },
+    {
+      "id": "cook_03",
+      "speaker": "SAMIR",
+      "model_speaker_id": 3,
+      "duration": 3.448,
+      "sha256": "19353bb53a029f426f8350c9688e7d010fc42d7dee6753f30939466d349ac243"
+    },
+    {
+      "id": "fixer_01",
+      "speaker": "WORKSHOP CONTACT",
+      "model_speaker_id": 8,
+      "duration": 3.309,
+      "sha256": "340091203ecf1e96e2db4fbd32c01c8128049e63c1ff88a68fad98ac5e3ae6b3"
+    },
+    {
+      "id": "fixer_02",
+      "speaker": "ELIAS",
+      "model_speaker_id": 7,
+      "duration": 3.576,
+      "sha256": "c213df5ca491ab2ce51b61a31ec1febf84734b2afef6418e0189986b20fc0350"
+    },
+    {
+      "id": "fixer_03",
+      "speaker": "WORKSHOP CONTACT",
+      "model_speaker_id": 8,
+      "duration": 4.876,
+      "sha256": "bacb0ebef698853f0626f861515916c0f8a252e0fcaa3c08c99227ba7420995c"
+    },
+    {
+      "id": "conceal_01",
+      "speaker": "GUARD",
+      "model_speaker_id": 5,
+      "duration": 1.858,
+      "sha256": "ed68c2f0436c557e4f3036570cce6c3ed83bafea1f5535d99eb69c0a7e30b9ed"
+    },
+    {
+      "id": "conceal_02",
+      "speaker": "NIKO",
+      "model_speaker_id": 8,
+      "duration": 2.171,
+      "sha256": "3b9d5742b8d66234310ab4b25f9325fefdd22b21b818d770584d551c856e0cef"
+    },
+    {
+      "id": "conceal_03",
+      "speaker": "ELIAS",
+      "model_speaker_id": 7,
+      "duration": 1.254,
+      "sha256": "b091187b9359fa4ffe0440534f9c7efc535b5f88eacbf96176c32e1450524b95"
+    },
+    {
+      "id": "thanks_01",
+      "speaker": "NIKO",
+      "model_speaker_id": 8,
+      "duration": 3.622,
+      "sha256": "ec16f297933b30018ff2bf2a1693f865cfb991b3af61a563975c3de2568514cd"
+    },
+    {
+      "id": "thanks_02",
+      "speaker": "ELIAS",
+      "model_speaker_id": 7,
+      "duration": 2.055,
+      "sha256": "ee230d558f41a0d7eea70f6aaf8b12f315e2a24ab86ce5176e34fef94ac71014"
+    },
+    {
+      "id": "thanks_03",
+      "speaker": "NIKO",
+      "model_speaker_id": 8,
+      "duration": 3.866,
+      "sha256": "dc08c85c6e57ffa3a7afbca6c4efc7a06887b5ea115232d598f229a2504f3ced"
+    },
+    {
+      "id": "gang_oath_01",
+      "speaker": "MALIK",
+      "model_speaker_id": 3,
+      "duration": 2.531,
+      "sha256": "3caaf9956c68fd454dc4608856b6d3f46986a529d89174c6108386c730d0e367"
+    },
+    {
+      "id": "gang_oath_02",
+      "speaker": "ELIAS",
+      "model_speaker_id": 7,
+      "duration": 2.148,
+      "sha256": "e5b5f3bc60c958cda848fa03133fa65dd92676aff7ef728b8be7c4b2c697d74f"
+    },
+    {
+      "id": "gang_oath_03",
+      "speaker": "MALIK",
+      "model_speaker_id": 3,
+      "duration": 4.365,
+      "sha256": "3b7fe4b04e721b88334b2d86afd0835f69f910f5ee5a4f47de398827f06e7896"
+    },
+    {
+      "id": "gang_oath_04",
+      "speaker": "ELIAS",
+      "model_speaker_id": 7,
+      "duration": 1.521,
+      "sha256": "78798db26926e87a6299fe4844d0c236b01efe7e51580d8dd748644464fedd40"
+    },
+    {
+      "id": "gang_oath_05",
+      "speaker": "MALIK",
+      "model_speaker_id": 3,
+      "duration": 4.11,
+      "sha256": "082d2ec1007649210eddad8b586474dc1c809c52a8a6649a37e64a4e2a29ff4a"
+    },
+    {
+      "id": "tattoo_01",
+      "speaker": "RAFI",
+      "model_speaker_id": 5,
+      "duration": 2.682,
+      "sha256": "d764931afe022d4bfc488b74220865630cf8a12654a82f73c775951560a8538f"
+    },
+    {
+      "id": "tattoo_02",
+      "speaker": "ELIAS",
+      "model_speaker_id": 7,
+      "duration": 0.848,
+      "sha256": "79eff6d1a9b7a466cb959685d956ccaadb105e87d6f9ff1f3ad32f69c5df6254"
+    },
+    {
+      "id": "tattoo_03",
+      "speaker": "RAFI",
+      "model_speaker_id": 5,
+      "duration": 3.959,
+      "sha256": "41e17612bdb66359604976413f109ce40dfe87211e31ca9aeafce7581374540a"
+    },
+    {
+      "id": "stash_01",
+      "speaker": "ELIAS",
+      "model_speaker_id": 7,
+      "duration": 3.251,
+      "sha256": "41984296fa02c68c4dffe81aca32f044d84db9116cef2813bfd921874865d9b5"
+    },
+    {
+      "id": "phone_gift_01",
+      "speaker": "NIKO",
+      "model_speaker_id": 8,
+      "duration": 2.798,
+      "sha256": "9724063a00d5ff52105a380b8880d293ccfea4d862869a859506f45af0c1b3f1"
+    },
+    {
+      "id": "phone_gift_02",
+      "speaker": "ELIAS",
+      "model_speaker_id": 7,
+      "duration": 1.718,
+      "sha256": "b32847f0fdeaaf6833fb2ca9a671ea157d48afe71ecde62a217f1142027fc5f1"
+    },
+    {
+      "id": "phone_gift_03",
+      "speaker": "NIKO",
+      "model_speaker_id": 8,
+      "duration": 2.856,
+      "sha256": "b9b30feb58e8e1fd6bd74a42f7587f6e788f2d1db4292429153917a00aa7c5b8"
+    },
+    {
+      "id": "phone_call_01",
+      "speaker": "MALIK",
+      "model_speaker_id": 3,
+      "duration": 2.821,
+      "sha256": "6fe074b10c03283dceb141c50c87dbc331d77c71315ecd212d19d8875e8063f7"
+    },
+    {
+      "id": "phone_call_02",
+      "speaker": "ELIAS",
+      "model_speaker_id": 7,
+      "duration": 0.766,
+      "sha256": "ddc8a77bf998f022c4ae3cbba1f749a9141abd8da16ca33aa3a40bfaf844decd"
+    },
+    {
+      "id": "phone_call_03",
+      "speaker": "MALIK",
+      "model_speaker_id": 3,
+      "duration": 4.148,
+      "sha256": "433e12f2fba0aafb09ddb3e2106998c915e196b183fcb8439b617ee4ff297559"
+    },
+    {
+      "id": "rival_01",
+      "speaker": "IRON ROOKS",
+      "model_speaker_id": 5,
+      "duration": 2.705,
+      "sha256": "1e0eb891f2c36fe1552b3f61541f0710d3cf619d0c347c9ef0890c80e0c69d97"
+    },
+    {
+      "id": "rival_02",
+      "speaker": "ELIAS",
+      "model_speaker_id": 7,
+      "duration": 2.113,
+      "sha256": "63873b6b81af53523277ae2582f1fb86c455271af567a720a711e650c1b565dc"
+    },
+    {
+      "id": "rival_03",
+      "speaker": "IRON ROOKS",
+      "model_speaker_id": 5,
+      "duration": 1.231,
+      "sha256": "a7a594b21a66c0f421843b612654bcb4fe29b65fbb8aed4de6ef1800a6a0873a"
+    },
+    {
+      "id": "arrest_01",
+      "speaker": "GUARD",
+      "model_speaker_id": 5,
+      "duration": 2.299,
+      "sha256": "3a7e0c003adddb563cc06699973baf4436ed6a05d31dcda0303b0bf18318933d"
+    },
+    {
+      "id": "arrest_02",
+      "speaker": "GUARD",
+      "model_speaker_id": 5,
+      "duration": 3.622,
+      "sha256": "6b764b24edb807f500b6a86b08ac2d9cd237e06bf9a722ae53832cadb0925c99"
+    },
+    {
+      "id": "arrest_03",
+      "speaker": "ELIAS",
+      "model_speaker_id": 7,
+      "duration": 1.985,
+      "sha256": "c9ab88f023288b079a75b563cbfc008e1cacf9431724f9b402541a79a31e21b0"
+    },
+    {
+      "id": "isolation_01",
+      "speaker": "ELIAS",
+      "model_speaker_id": 7,
+      "duration": 3.518,
+      "sha256": "41cda7e2ace3a76331afa3bfd2a0a53e1c3b5fad8fd205484ad0298f4dc299db"
+    },
+    {
+      "id": "wake_01",
+      "speaker": "GUARD",
+      "model_speaker_id": 5,
+      "duration": 2.624,
+      "sha256": "926e59e98d1632452f88eb7ba8c803765f23c0193b4d8cdb5cd6767b7780d8bd"
+    },
+    {
+      "id": "guard_visit_01",
+      "speaker": "GUARD",
+      "model_speaker_id": 5,
+      "duration": 2.194,
+      "sha256": "99f6427d9a988b480b2a5c105c71cedc117799b2524f44e1575286bd54cef69c"
+    },
+    {
+      "id": "guard_visit_02",
+      "speaker": "ELIAS",
+      "model_speaker_id": 7,
+      "duration": 2.159,
+      "sha256": "54a606dce4549990ece0899967ff4280d6e73b6a0404f1f7d148922838c2373c"
+    },
+    {
+      "id": "brother_visit_01",
+      "speaker": "THEO",
+      "model_speaker_id": 102,
+      "duration": 2.879,
+      "sha256": "d854996bc861d58da29b90da12e34d2c525b10825c9a86e729ff34b794c20f84"
+    },
+    {
+      "id": "brother_visit_02",
+      "speaker": "ELIAS",
+      "model_speaker_id": 7,
+      "duration": 1.8,
+      "sha256": "d78e6221de5be95232bd173e89a0f87ee8e3c587eea0fd0f5c42960047d5ff3d"
+    },
+    {
+      "id": "brother_visit_03",
+      "speaker": "THEO",
+      "model_speaker_id": 102,
+      "duration": 3.622,
+      "sha256": "43f3481349d7f4baeb0c09a0a4bc7b0e03b88a8ec51c5c3abadfa5db2d84462e"
+    },
+    {
+      "id": "brother_visit_04",
+      "speaker": "ELIAS",
+      "model_speaker_id": 7,
+      "duration": 3.019,
+      "sha256": "f69d94a77635c86b8de4bf1560fae64f4740c0dc0b6001fb59114a21d6b20440"
+    },
+    {
+      "id": "brother_visit_05",
+      "speaker": "THEO",
+      "model_speaker_id": 102,
+      "duration": 3.622,
+      "sha256": "6a21112d4c8353aa24786396622b32dbfabe72e020c252afb47e106add8da92b"
+    },
+    {
+      "id": "brother_visit_06",
+      "speaker": "ELIAS",
+      "model_speaker_id": 7,
+      "duration": 3.193,
+      "sha256": "098613a1d4894442a7d6df9fd8907b6bfbd4fd52511572c497a5ce86c694512c"
+    },
+    {
+      "id": "brother_visit_07",
+      "speaker": "THEO",
+      "model_speaker_id": 102,
+      "duration": 1.602,
+      "sha256": "3d41700696132d62cda006d124bbd32525c1fb63d903b6690675abc286531f3c"
+    },
+    {
+      "id": "reflection_01",
+      "speaker": "ELIAS",
+      "model_speaker_id": 7,
+      "duration": 3.228,
+      "sha256": "2179f5953fd27336523f0a098ec8050ceb893be59bf67476ff6763383904bf3c"
+    },
+    {
+      "id": "reflection_02",
+      "speaker": "ELIAS",
+      "model_speaker_id": 7,
+      "duration": 3.68,
+      "sha256": "fac9d2e2986626c98823778fd2c892dbcd394413ee8b323d11bf0c093cdc8b9e"
+    },
+    {
+      "id": "escape_plan_01",
+      "speaker": "ELIAS",
+      "model_speaker_id": 7,
+      "duration": 4.435,
+      "sha256": "2c48815b19e7ebf2456d21e94fc79c0ba24946798b0ab0eea8f6e976c2e2d237"
+    },
+    {
+      "id": "escape_plan_02",
+      "speaker": "MALIK",
+      "model_speaker_id": 3,
+      "duration": 2.844,
+      "sha256": "f54b5f4ba948a86656999f705852878ab7704d01ed3e1a4f8e77c3183f0fec80"
+    },
+    {
+      "id": "escape_plan_03",
+      "speaker": "ELIAS",
+      "model_speaker_id": 7,
+      "duration": 4.296,
+      "sha256": "a7c26b79e78adddd93c7b81470f0ed39f7b3c6c606475f2362164fb14ff1132d"
+    },
+    {
+      "id": "escape_plan_04",
+      "speaker": "MALIK",
+      "model_speaker_id": 3,
+      "duration": 4.296,
+      "sha256": "46720ac25babb8a97f0c469d5826900e745d4d9082a147087252d1a3a71c641c"
+    },
+    {
+      "id": "escape_plan_05",
+      "speaker": "ELIAS",
+      "model_speaker_id": 7,
+      "duration": 1.718,
+      "sha256": "2de5c0b42763ec4f5c0740d85dc064c02e67a25c1e3bf50508b5bcbbdc3b1fb6"
+    },
+    {
+      "id": "escape_plan_06",
+      "speaker": "MALIK",
+      "model_speaker_id": 3,
+      "duration": 2.206,
+      "sha256": "b3728897089a481ce9009cc7f92fdab2109e7d7d0ef75e2cf03fa7472e940a4d"
+    },
+    {
+      "id": "yard_table_01",
+      "speaker": "TOMAS",
+      "model_speaker_id": 7,
+      "duration": 4.133,
+      "sha256": "d82ee6fb253e27cd3bf026f1831a95b9c06efab29c41c4dbb743413ad2da27cb"
+    },
+    {
+      "id": "yard_table_02",
+      "speaker": "ELIAS",
+      "model_speaker_id": 7,
+      "duration": 1.184,
+      "sha256": "0a3cf006d3659375e5a80efbe8e0a70d19ce359413521aef5c520c973e268d09"
+    },
+    {
+      "id": "yard_table_03",
+      "speaker": "TOMAS",
+      "model_speaker_id": 7,
+      "duration": 4.783,
+      "sha256": "69ac6bcd27fa29222bf8e19a0312e731d1e0c9b69ac759339507cceb2933c0d8"
+    },
+    {
+      "id": "poker_welcome_01",
+      "speaker": "SAMIR",
+      "model_speaker_id": 3,
+      "duration": 4.514,
+      "sha256": "52ca2619622da8af83c206afc30ad8312adfce166676b2f1190f2a2fcafd7bd6"
+    },
+    {
+      "id": "ambient_tomas_01",
+      "speaker": "TOMAS",
+      "model_speaker_id": 7,
+      "duration": 3.042,
+      "sha256": "67d66dab180753cd1c5ed97fd8a024ad6c0b42ed43843f6375eb157188bca810"
+    },
+    {
+      "id": "ambient_samir_01",
+      "speaker": "SAMIR",
+      "model_speaker_id": 3,
+      "duration": 2.937,
+      "sha256": "e894079fee3f03e5b5d395f69c801b1f9e75cf562f362aeb3cc1ce08df7fee51"
+    },
+    {
+      "id": "ambient_jonah_01",
+      "speaker": "WORKSHOP CONTACT",
+      "model_speaker_id": 8,
+      "duration": 2.322,
+      "sha256": "c16990e7aa39cd57155991daf3ed9f8342e8396cf2439ff15f7150669ab8f7d6"
+    },
+    {
+      "id": "ambient_niko_01",
+      "speaker": "NIKO",
+      "model_speaker_id": 8,
+      "duration": 2.31,
+      "sha256": "704ec61481a6e4bef717ce7a40edf13cd465964ad68d8e640d7a4f277e047fa6"
+    },
+    {
+      "id": "ambient_malik_01",
+      "speaker": "MALIK",
+      "model_speaker_id": 3,
+      "duration": 2.194,
+      "sha256": "23b5d4e5d2a4ce042823c85ae6b7b9028beb27affff2fa9986d74d9acf964a07"
+    },
+    {
+      "id": "incident_niko",
+      "speaker": "NIKO",
+      "model_speaker_id": 8,
+      "duration": 1.846,
+      "sha256": "431164f21c52509ab151b9dd36948f008370959e8a11e34885b3bc972faf4a0f"
+    },
+    {
+      "id": "incident_guard",
+      "speaker": "GUARD",
+      "model_speaker_id": 5,
+      "duration": 1.8,
+      "sha256": "f1cfc641a54ecfd8f52d80e80bf80db3c34a479e32c60010422493f95f5c567f"
+    }
+  ],
+  "source": "https://huggingface.co/rhasspy/piper-voices/tree/main/en/en_US/libritts_r/medium",
+  "dataset": "https://www.openslr.org/141/",
+  "dataset_license": "CC BY 4.0",
+  "engine": "https://github.com/OHF-Voice/piper1-gpl",
+  "engine_packaged": false,
+  "model_packaged": false
+}

@@ -1,0 +1,16 @@
+# Revision 07 texture edits
+
+Generated with the built-in imagegen tool on 2026-10-09, using the existing MIT-licensed Rocketbox-derived diffuse atlases as edit targets. The original FBX meshes, rigs, source textures and license notices remain included. Atlas outputs are approximate visual edits and need inspection after Unity import; they are not new high-resolution 3D meshes. The tool returned 1254 × 1254 outputs despite the requested 2048 × 2048 size. Generated outputs are copied into the project and referenced by native materials.
+
+## Elias
+
+Path: Assets/Game/Resources/BlackstoneFoundation/Characters/Male_Adult_16/m019_body_alcatraz.png
+
+Use case: precise-object-edit. Asset type: production 2048x2048 UV diffuse texture atlas for an existing rigged 3D male prison character. Edit the supplied atlas, preserving EVERY UV island boundary, scale, position, cutout, padding, skin area, hand, shoe, and wristwatch EXACTLY. Do not draw a person or render. Only repaint the fabric on the two trouser islands at top left and top right, the central front/back T-shirt islands, and the small sleeve islands as a coherent washed burnt-orange inmate uniform, realistic plain woven cotton with subtle seams and natural existing folds. Remove the repeated decorative logo on the lower central shirt. Replace that logo with small flat dark stencil text 'B-04' on the upper chest below the collar, not a large graphic. All formerly blue remnants within the clothing UV pieces and padding become matching orange including collar and trouser hems, but keep black background, bare skin and shoes unchanged. The upper central back-shirt rectangle gets small faded dark stencil text 'ALCATRAZ'. Maintain atlas edges perfectly, clothing topology and existing spatial layout exactly. No extra objects, no watermark, no new logos, no frames. The output must be just the edited square flat UV atlas at 2048x2048.
+
+## Officer Harrow
+
+Path: Assets/Game/Resources/BlackstoneFoundation/Characters/Male_Adult_07/m013_body_harrow.png
+
+Use case: precise-object-edit. Asset type: diffuse UV texture atlas for an EXISTING rigged male prison officer. This is a technical texture edit, NOT a character drawing. Keep the image square and preserve all UV island positions, shapes, scale, pixel locations, seams, black background, bare hands and topology EXACTLY as in reference. Do not move or repack any piece. Repaint fabric only: the dark jacket and trousers become coherent faded charcoal navy prison guard uniform; the central brown buttoned shirt becomes light desaturated blue. Keep all lapels, buttons, pockets, folds and pants seams in the same positions. Add a small faded brass shield sewn badge on the upper left chest (right side of the lower-central jacket panel in the atlas), and a small narrow sewn name strip 'HARROW' on opposite chest; neither touches the seam. Repaint shoes and waist belt dark charcoal leather in the exact existing islands. Preserve skin hands precisely unchanged. Neutral diffuse lighting for PBR, subtle woven cloth texture. No photoreal person, no montage, no border, no watermark, no new objects or texture islands. Critical: identical UV placement to reference, 2048 by 2048 flat square atlas.
+
