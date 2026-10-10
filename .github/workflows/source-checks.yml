@@ -19,6 +19,8 @@ jobs:
       - run: pip install -r Tools/requirements.txt
       - name: Check C# grammar
         run: python Tools/check_csharp_syntax.py
+      - name: Check character forward axis and source gait
+        run: python Tools/validate_character_forward.py
       - name: Check scene bindings and supported routes
         run: python Tools/validate_alcatraz.py
       - name: Check native asset integrity

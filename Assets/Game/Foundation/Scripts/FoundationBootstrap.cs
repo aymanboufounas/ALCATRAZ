@@ -49,8 +49,13 @@ namespace Blackstone.Foundation
                 if(identity!=null&&!string.IsNullOrEmpty(identity.model))profile=identity.model;
                 var prefab=Resources.Load<GameObject>("BlackstoneFoundation/Characters/"+profile+"/"+profile);
                 if(prefab==null){Status="Missing character: "+profile;continue;}
-                Transform model=Instantiate(prefab,parent,false).transform;model.name="Imported "+actor.displayName;
+                // Keep the orientation correction outside the animated FBX root.
+                // FBX axis conversion can leave the visible character facing -Z.
+                Transform model=new GameObject("Imported "+actor.displayName).transform;
+                model.SetParent(parent,false);
+                Transform rig=Instantiate(prefab,model,false).transform;
                 Normalize(model);
+                FoundationAvatar.AlignForward(model,actor.transform.forward);
                 if(identity!=null)
                 {
                     float height=Mathf.Clamp(identity.height,1.55f,2.05f)/1.78f;
@@ -65,7 +70,7 @@ namespace Blackstone.Foundation
                 }
                 if(guard)GuardMaterial(model,profile,name=="Officer Harrow");
                 if(isPlayer)PrisonerMaterial(model,profile);
-                var animator=model.GetComponent<Animator>();if(animator==null)animator=model.gameObject.AddComponent<Animator>();
+                var animator=rig.GetComponent<Animator>();if(animator==null)animator=rig.gameObject.AddComponent<Animator>();
                 animator.enabled=true;animator.runtimeAnimatorController=controller;
                 var avatar=actor.gameObject.AddComponent<FoundationAvatar>();avatar.model=model;avatar.animator=animator;
                 avatar.movement=isPlayer?Player:null;

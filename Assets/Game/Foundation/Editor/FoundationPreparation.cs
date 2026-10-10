@@ -16,7 +16,7 @@ namespace Blackstone.Foundation.Editor
         public const string Controller="Assets/Game/Resources/BlackstoneFoundation/Locomotion.controller";
         public const string Scene="Assets/Game/Scenes/SC_BlackstoneFoundation.unity";
         public const string StoryScene="Assets/Game/Scenes/SC_BlackstoneStory_Upgraded.unity";
-        const string Revision="foundation-09.1";
+        const string Revision="foundation-11.0";
         static bool preparing;
         static bool scheduled;
         [Serializable] sealed class GaitData { public float[] thresholds=new float[0]; }

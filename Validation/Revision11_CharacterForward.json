@@ -1,0 +1,32 @@
+{
+  "status": "PASS",
+  "checks": 650,
+  "clips": [
+    {
+      "clip": "WalkSlow",
+      "forward_travel_cm": 120.40625,
+      "median_stance_z_cm_s": -76.14292423779406
+    },
+    {
+      "clip": "Walk",
+      "forward_travel_cm": 121.40404510498047,
+      "median_stance_z_cm_s": -95.87985519412987
+    },
+    {
+      "clip": "WalkFast",
+      "forward_travel_cm": 159.50897216796875,
+      "median_stance_z_cm_s": -137.32542909546527
+    },
+    {
+      "clip": "Run",
+      "forward_travel_cm": 211.17979431152344,
+      "median_stance_z_cm_s": -235.30942275791145
+    },
+    {
+      "clip": "RunFast",
+      "forward_travel_cm": 350.36920166015625,
+      "median_stance_z_cm_s": -399.7558159010541
+    }
+  ],
+  "scope": "FBX source anatomy, forward gait, and orientation math under both reflection conventions; Unity playback unverified"
+}

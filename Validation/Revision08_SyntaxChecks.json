@@ -1,6 +1,6 @@
 {
   "status": "PASS",
-  "files": 61,
+  "files": 62,
   "errors": [],
   "scope": "C# syntax grammar only; Unity API/type resolution and shader compilation are unverified"
 }

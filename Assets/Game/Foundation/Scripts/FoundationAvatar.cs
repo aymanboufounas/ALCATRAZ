@@ -20,6 +20,32 @@ namespace Blackstone.Foundation
         Quaternion modelRotation;
         Vector3 previousPosition;
 
+        // Calibrate from anatomical forward in the imported bind pose, before
+        // the Animator starts. Do not use the FBX root's transform.forward: it
+        // can disagree with the visible mesh after Unity's axis conversion.
+        public static Vector3 AnatomicalForward(Transform root)
+        {
+            Transform lf=null,lt=null,rf=null,rt=null;
+            foreach(var bone in root.GetComponentsInChildren<Transform>(true))
+            {
+                if(bone.name=="Bip01 L Foot")lf=bone;
+                else if(bone.name=="Bip01 L Toe0")lt=bone;
+                else if(bone.name=="Bip01 R Foot")rf=bone;
+                else if(bone.name=="Bip01 R Toe0")rt=bone;
+            }
+            if(lf==null||lt==null||rf==null||rt==null)return Vector3.zero;
+            Vector3 forward=Vector3.ProjectOnPlane((lt.position-lf.position)+(rt.position-rf.position),Vector3.up);
+            return forward.sqrMagnitude>.00001f?forward.normalized:Vector3.zero;
+        }
+        public static void AlignForward(Transform model,Vector3 target)
+        {
+            Vector3 forward=AnatomicalForward(model);
+            target=Vector3.ProjectOnPlane(target,Vector3.up).normalized;
+            if(forward.sqrMagnitude<.5f||target.sqrMagnitude<.5f)
+                throw new System.InvalidOperationException("The character's foot/toe bones are missing; cannot align locomotion.");
+            model.rotation=Quaternion.AngleAxis(Vector3.SignedAngle(forward,target,Vector3.up),Vector3.up)*model.rotation;
+        }
+
         public void Bind()
         {
             modelRotation = model.localRotation; previousYaw = transform.eulerAngles.y; previousPosition = transform.position;
