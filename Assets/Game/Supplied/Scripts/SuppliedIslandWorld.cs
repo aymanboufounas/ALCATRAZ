@@ -42,6 +42,8 @@ namespace Blackstone.Supplied
                 patrol.route=new[]{Ground(new Vector3(-105,0,25)),Ground(new Vector3(-112,0,25))};
                 var helicopter=SuppliedModel.Create("Helicopter",transform);Vector3 landing=Ground(new Vector3(-170,0,-90));
                 Cube("Helicopter landing deck",landing-Vector3.up*.16f,new Vector3(12,.3f,12),deck,true);
+                for(int i=0;i<3;i++)
+                    Cube("Dock practice target "+(i+1),landing+new Vector3(-3+i*3,1.35f,-4),new Vector3(.7f,1.1f,.12f),deck,true).AddComponent<FoundationTarget>();
                 helicopter.transform.rotation=Quaternion.Euler(0,110,0);SuppliedModel.SizeAndGround(helicopter,2.8f,landing+Vector3.up*.02f);
                 var aircraftCollider=helicopter.AddComponent<BoxCollider>();var aircraftBounds=SuppliedModel.Bounds(helicopter);
                 aircraftCollider.center=helicopter.transform.InverseTransformPoint(aircraftBounds.center);

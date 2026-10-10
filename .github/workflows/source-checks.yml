@@ -23,3 +23,5 @@ jobs:
         run: python Tools/validate_alcatraz.py
       - name: Check native asset integrity
         run: python Tools/validate_project.py
+      - name: Check supplied asset dependencies and island floor samples
+        run: python Tools/validate_supplied_assets.py

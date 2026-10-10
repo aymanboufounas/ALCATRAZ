@@ -24,6 +24,8 @@ def write(path,data):
     p=ROOT/path;p.parent.mkdir(parents=True,exist_ok=True);p.write_bytes(data)
     return path
 def metadata(path,kind='DefaultImporter',body=''):
+    if 'folderAsset:' in body:
+        write(str(path)+'.meta',('fileFormatVersion: 2\nguid: '+uw.guid(path)+'\nfolderAsset: yes\nDefaultImporter:\n  externalObjects: {}\n  userData: \n  assetBundleName: \n  assetBundleVariant: \n').encode());return
     uw.meta(path,kind,body)
 def texture(path,image,normal=False,max_size=2048,linear=False):
     image=image.copy();image.thumbnail((max_size,max_size),Image.Resampling.LANCZOS)
@@ -124,8 +126,9 @@ def rewrite_gltf(document,binary,directory,name,island=False):
       '    generateMipMaps: 1\n    texturesReadable: 0\n    anisotropicFilterLevel: 4\n'
       '  instantiationSettings:\n    mask: -1\n    layer: 0\n    skinUpdateWhenOffscreen: 0\n    lightIntensityFactor: 1\n    sceneObjectCreation: 1\n')
     # Prove every non-image source view survived the repack byte-for-byte.
+    packed_buffers=[(ROOT/RES/name/b['uri']).read_bytes() for b in buffers]
     for index,view in enumerate(views):
-        b=buffers[view['buffer']];payload=(ROOT/RES/name/b['uri']).read_bytes()
+        payload=packed_buffers[view['buffer']]
         start=view['byteOffset'];assert sha(payload[start:start+view['byteLength']])==checks[index]
     return {'resource':f'AlcatrazSupplied/{name}/{name}','format':'gltf',
             'source_views_preserved':len(checks),'geometry_rig_animation_bytes':'PASS',
@@ -217,12 +220,18 @@ def main():
             connected=objects.get(connection.props[1])
             if connected is None or connected.name!='Texture':continue
             filename=connected.child('RelativeFilename')
-            if filename and connection.props[3] in ['DiffuseColor','Diffuse']:
+            if filename and connection.props[3] in ['DiffuseColor','Diffuse','TransparencyFactor']:
                 key=Path(str(filename.props[0]).replace('\\','/')).stem
                 base=texture_sources.get(key)
+                if key=='Pack02' and name in ['WindowGlassShdr','WindowLightGlow','Debris']:
+                    base=texture_sources.get('Pack02_Alpha',base)
         if base is None:
-            base=texture_sources.get('VegetHH_SD' if 'Shrub' in name or 'Grass' in name else 'Bush01' if 'Bush' in name else 'Pack01_House')
-        path=BASE+'/Materials/House_'+name+'.mat';material(path,base,transparent='Glass' in name)
+            base=texture_sources.get('VegetHH_SD' if 'Shrub' in name or 'Grass' in name or name=='Branch' else 'Bush01' if 'Bush' in name else '')
+        values=node.child('Properties70');color=(1,1,1,1)
+        if base is None and values:
+            diffuse=next((p for p in values.children if p.props[0]=='DiffuseColor'),None)
+            if diffuse:color=tuple(diffuse.props[-3:])+(1,)
+        path=BASE+'/Materials/House_'+name+'.mat';material(path,base,color=color,transparent='Glass' in name)
         catalog['materials'][name]=path
     manifest=ROOT/'Packages/manifest.json';data=json.loads(manifest.read_text())
     data['dependencies']['com.unity.cloud.gltfast']='6.14.1';manifest.write_text(json.dumps(data,indent=2)+'\n')

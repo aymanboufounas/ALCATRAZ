@@ -1,17 +1,36 @@
 # Alcatraz Escape — Unity source project
 
-**Revision 08 · version 0.8.0 · Unity 6000.0.62f1 · URP**
+**Revision 09 · version 0.9.0 · Unity 6000.0.62f1 · URP**
 
-The playable character is **Elias Vale, a prisoner in orange**, with an escape story. The two default scenes now use an original Alcatraz island adaptation. They retain the five rigged character models, walking animations, footsteps, equipment, NPCs, poker/conversation tables and requested first chapter.
+The playable character is **Elias Vale, a prisoner in orange**. The default exploration scene now uses the **supplied scanned Alcatraz island**, police, animated dog, tactical helmet/vest, Little Bird, coastal house, 10mm pistol and revolver. Chapter 01 retains its playable prison interior, original rigged cast and mission progression.
 
 ## Open and play
 
-1. Clone this repository, or choose **Code > Download ZIP** and extract it. In Unity Hub, choose **Add project from disk** and select the repository folder containing **Assets**, **Packages** and **ProjectSettings**.
-2. Open with **Unity 6000.0.62f1**. Wait for package resolution and FBX import to finish.
-3. Choose **Alcatraz > Open Island**, press **Play**, then enter the prison. This is exploration mode with movement, audio and equipment practice.
-4. Choose **Play Chapter 01** on the exploration title/pause menu, or **Alcatraz > Open Chapter 01** in the editor, to play the story.
+1. Download the repository ZIP and extract it, or clone this repository. In Unity Hub, choose **Add project from disk** and select the folder containing **Assets**, **Packages** and **ProjectSettings**.
+2. Open with **Unity 6000.0.62f1**. Wait for package resolution, model import and automatic asset preparation to finish. The official glTFast package is pinned to **6.14.1**.
+3. Choose **Alcatraz > Open Island**, press **Play**, then **Enter**. This opens the supplied island exterior with movement, sound, equipment and the reference-style HUD.
+4. Walk to the cellhouse marker and press **E / X**, choose **Play Chapter 01** in the title/pause menu, or choose **Alcatraz > Open Chapter 01** in the editor to enter the playable story interior.
 
-The editor generates the locomotion controller from the included clips after import. If setup is incomplete, choose **Alcatraz > Prepare Characters** and inspect the Console. Assets are included; Unity's declared packages require normal internet access during first resolution.
+If preparation is incomplete, choose **Alcatraz > Prepare Characters** and **Alcatraz > Prepare Supplied Assets**, then inspect the Console. The editor reconstructs the house's byte-verified FBX and prepares the supplied prefabs before Play/build. First import requires internet access to resolve the declared Unity packages. **Alcatraz > Build Windows x64** includes the supplied exterior, Chapter 01 and the original exploration scene. **Alcatraz > Open Original Playable Island** opens the earlier authored map.
+
+Equipment: **1** unarmed, **2** knife, **3** supplied 10mm pistol, **4** service rifle, **5** supplied revolver. RMB / LT aims, LMB / RT uses, R / Y reloads, and D-pad left cycles. Use the three dock practice targets to check hits. M opens the map. Pause stops reload/cooldown time.
+
+## New in Revision 09
+
+- Free running follows actual travel, with corrected turn handling, start-animation interruption and foot contact. The close-wall camera hides the model when pressed into it and resets after large teleports.
+- All nine supplied asset archives are packaged with original archive hashes and native import preparation.
+- Coastline crop removes scanned water from render/collision geometry; player, police, dog route, helipad and pier have sampled ground support.
+- Equipped stationary police, a dog using the supplied walk/idle/bark clips, parked helicopter and a reachable house dock.
+- Usable supplied pistol and revolver, finite ammo/reloads, real source-model thumbnails and live inventory cards.
+- Executed weapon-state tests: **468 assertions passed**. Native source and glTF dependency checks passed; CI includes the new supplied-asset checks.
+
+Read [running changes](Documentation/Revision09_RunningFix.md), [asset imports](Documentation/Revision09_SuppliedAssets.md), [island integration](Documentation/Revision09_IslandIntegration.md) and [weapons/HUD](Documentation/Revision09_WeaponsAndHUD.md).
+
+**Unity Editor is unavailable in the authoring environment. Unity import, API compilation, shader rendering, Play Mode and a Windows executable build remain unverified.** The images below are labelled offline source previews, not Unity screenshots.
+
+![Supplied island source preview](Documentation/Revision09Previews/Island.png)
+![Supplied police, tactical gear and dog](Documentation/Revision09Previews/Characters.png)
+![Source gameplay/HUD layout](Documentation/Revision09Previews/GameplayLayout.png)
 
 ## New in Revision 08
 
@@ -62,7 +81,7 @@ The project is a source prototype with older rigged character assets. It does no
 | Left Alt / Left Shift | Slow walk / run |
 | Left Ctrl / Space | Crouch / jump |
 | E / Q | Interact / switch shoulder |
-| 1 / 2 / 3 / 4 | Unarmed / knife / pistol / rifle in exploration |
+| 1 / 2 / 3 / 4 / 5 | Unarmed / knife / 10mm pistol / service rifle / revolver |
 | RMB / LMB / R | Aim / use equipment / reload in exploration |
 | Hold M / Esc | Island map / pause |
 
@@ -76,11 +95,11 @@ The fight trigger remains four minutes into the opening, designed around the req
 
 ## Build and verification
 
-Install Windows Build Support in Unity Hub, check Play Mode, then choose **Alcatraz > Build Windows x64**. Both scenes build to Builds/Windows/AlcatrazEscape.exe. The batch alternative is Tools/BuildAlcatrazWindows.ps1.
+Install Windows Build Support in Unity Hub, check Play Mode, then choose **Alcatraz > Build Windows x64**. The three enabled scenes build to Builds/Windows/AlcatrazEscape.exe. The batch alternative is Tools/BuildAlcatrazWindows.ps1.
 
-Current offline checks cover native references, static routes, floor support, roster bindings and C# grammar. GitHub Actions repeats source checks; it does not perform a Unity build. The unchanged story, poker and ammunition logic retains the earlier reports; those historical suites were not rerun in Revision 07.
+Current offline checks cover native references, static routes, floor support, roster bindings and C# grammar. GitHub Actions repeats source checks; it does not perform a Unity build. Story and poker retain their earlier reports. The ammunition suite was executed again in Revision 09, including the new revolver and live inventory readouts.
 
-**Unity Editor is unavailable here. Real Unity compilation/import, Play Mode, swept physics, live camera/audio/IK, URP output, performance and a Windows build remain unverified. No executable is included.** Follow [the current Play Mode checklist](Validation/Revision08_PlayMode_Checklist.md) before distributing a build.
+**Unity Editor is unavailable here. Real Unity compilation/import, Play Mode, swept physics, live camera/audio/IK, URP output, performance and a Windows build remain unverified. No executable is included.** Follow [the current Play Mode checklist](Validation/Revision09_PlayMode_Checklist.md) before distributing a build.
 
 ## Previews, source and credits
 
@@ -92,4 +111,4 @@ Current offline checks cover native references, static routes, floor support, ro
 
 Previews are labelled offline source renders, **not Unity captures or gameplay**. `Documentation/BlackstoneAuthoring.json.gz.part001` through `part003`, and `Documentation/AlcatrazAuthoring.json.gz`, contain the compressed inventories used by the current Python authoring and preview tools. `authoring_io.py` joins archive parts automatically; their original-byte checksum is in `BlackstoneAuthoring.parts.json`. Large Alcatraz render batches are partitioned into normal native Unity meshes with the same triangles, normals and UVs. This keeps individual publication requests small. See `Tools/requirements.txt`. Offline authoring uses Linux with DejaVu fonts; offline previews also require Mesa EGL/OpenGL. Run `python Tools/build_alcatraz.py` to regenerate both Alcatraz scenes, or `python Tools/render_alcatraz_preview.py A01_Island A15_CoastalPath A16_PrisonerPortrait` for labelled source renders. Opening/building in Unity uses the included native assets and does not require Python.
 
-Earlier Blackstone scenes and reports are retained for history. The two enabled scenes and Revision 08 reports describe the current project. Older reports are historical. Rocketbox's MIT notice and existing MakeHuman, Poly Haven, audio and voice credits are included. Scanned surfaces are **Powered by Poly Haven**. No Unity WIP or Sketchfab mesh is redistributed.
+Earlier Blackstone scenes and reports are retained for history. The three enabled scenes and Revision 09 reports describe the current project. Older reports are historical. Rocketbox's MIT notice and existing MakeHuman, Poly Haven, audio and voice credits are included. Scanned surfaces are **Powered by Poly Haven**. Revision 09 also includes the nine user-supplied archives described in `Assets/Game/Supplied/Resources/AlcatrazSupplied/Catalog.json`; their provenance is recorded without claiming authorship or adding a new license.
