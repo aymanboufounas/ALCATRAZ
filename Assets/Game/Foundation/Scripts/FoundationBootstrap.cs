@@ -19,6 +19,8 @@ namespace Blackstone.Foundation
         // Disabling a behaviour does not suppress Awake on an active GameObject.
         void Start()
         {
+            var supplied=GetComponent<Blackstone.Supplied.SuppliedIslandWorld>();
+            if(supplied!=null&&!supplied.Ready){Status=supplied.Status??"Prepare the supplied Alcatraz assets before Play.";return;}
             Player=FindFirstObjectByType<PlayerMovement>();Input=FindFirstObjectByType<PlayerInputHandler>();
             var controller=Resources.Load<RuntimeAnimatorController>("BlackstoneFoundation/Locomotion");
             if(Player==null||Input==null||controller==null)

@@ -203,11 +203,11 @@
     "Native floor support: Road Agave trail / 625 samples, 0 unsupported, 0 inside terrain",
     "Native floor support: Road Parade east connection / 59 samples, 0 unsupported, 0 inside terrain",
     "Native floor support: Road West coastal service trail / 1927 samples, 0 unsupported, 0 inside terrain",
-    "Protected baseline changes are limited to map-specific director and ambience integration",
+    "Protected baseline changes are limited to the map integrations and requested player movement correction",
     "Classic source scene remains unchanged",
     "All 44 foundation sound recordings unchanged",
-    "MonoImporter metadata: AlcatrazCharacterRoster.cs",
     "MonoImporter metadata: AlcatrazMap.cs",
+    "MonoImporter metadata: AlcatrazCharacterRoster.cs",
     "MonoImporter metadata: AlcatrazPresentation.cs",
     "MonoImporter metadata: AlcatrazPreparation.cs",
     "Separate Alcatraz checkpoint identity and expanded elevation bounds",
@@ -220,7 +220,7 @@
     "actors": 30,
     "static_routes": 53,
     "static_boxes_checked": 3024,
-    "unchanged_protected_files": 102
+    "unchanged_protected_files": 101
   },
   "scope": "Native YAML bindings, file hashes, route dimensions, discrete stationary obstacle samples and native mesh/box floor support only. Operable mission doors are assumed open on exit routes; stair treads and dynamic actor colliders are excluded from obstacle samples. Swept physics, NPC avoidance, Unity import, Play Mode and a player build are unverified."
 }

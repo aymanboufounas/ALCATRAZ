@@ -1,0 +1,33 @@
+{
+  "status": "PASS",
+  "checks": 42962,
+  "errors": [],
+  "island_triangles_kept": 205423,
+  "floor_samples": {
+    "player": [
+      49.324341435835436,
+      12.955001831054688
+    ],
+    "chapter entrance": [
+      49.038674647222564,
+      3.8711042404174805
+    ],
+    "police": [
+      49.366009087866004,
+      3.8711042404174805
+    ],
+    "dog": [
+      49.19891950900491,
+      19.94681167602539
+    ],
+    "helipad": [
+      13.150352544837023,
+      3.2452197074890137
+    ],
+    "pier shore": [
+      27.176705129332742,
+      41.91791534423828
+    ]
+  },
+  "scope": "Native source references, glTF dependencies, byte hashes and static triangle floor samples; Unity import, physics and Play Mode unverified"
+}

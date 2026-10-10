@@ -14,13 +14,17 @@ namespace Blackstone.Alcatraz.Editor
     {
         public const string Island="Assets/Game/Scenes/SC_AlcatrazIsland.unity";
         public const string Chapter="Assets/Game/Scenes/SC_AlcatrazChapter01.unity";
+        public const string Supplied="Assets/Game/Scenes/SC_AlcatrazSuppliedIsland.unity";
         public int callbackOrder=>1;
         [MenuItem("Alcatraz/Open Island",priority=0)]
         public static void OpenIsland()
         {
             if(!EditorSceneManager.SaveCurrentModifiedScenesIfUserWantsTo())return;
-            FoundationPreparation.Prepare();EditorSceneManager.OpenScene(Island);
+            Prepare();EditorSceneManager.OpenScene(Supplied);
         }
+        [MenuItem("Alcatraz/Open Original Playable Island",priority=2)]
+        public static void OpenOriginal()
+        {if(EditorSceneManager.SaveCurrentModifiedScenesIfUserWantsTo()){FoundationPreparation.Prepare();EditorSceneManager.OpenScene(Island);}}
         [MenuItem("Alcatraz/Open Chapter 01",priority=1)]
         public static void OpenChapter()
         {
@@ -28,17 +32,17 @@ namespace Blackstone.Alcatraz.Editor
             FoundationPreparation.Prepare();EditorSceneManager.OpenScene(Chapter);
         }
         [MenuItem("Alcatraz/Prepare Characters",priority=5)]
-        public static void Prepare(){FoundationPreparation.Prepare();}
+        public static void Prepare(){FoundationPreparation.Prepare();Blackstone.Supplied.Editor.SuppliedAssetPreparation.Prepare();}
         [MenuItem("Alcatraz/Build Windows x64",priority=30)]
         public static void Build()
         {
             Prepare();Directory.CreateDirectory("Builds/Windows");
-            var report=BuildPipeline.BuildPlayer(new BuildPlayerOptions{scenes=new[]{Island,Chapter},
+            var report=BuildPipeline.BuildPlayer(new BuildPlayerOptions{scenes=new[]{Supplied,Chapter,Island},
                 locationPathName="Builds/Windows/AlcatrazEscape.exe",target=BuildTarget.StandaloneWindows64,options=BuildOptions.None});
             if(report.summary.result!=BuildResult.Succeeded)throw new InvalidOperationException("Alcatraz build failed.");
         }
         public void OnPreprocessBuild(BuildReport report)
-        {if(EditorBuildSettings.scenes.Any(s=>s.enabled&&(s.path==Island||s.path==Chapter)))Prepare();}
+        {if(EditorBuildSettings.scenes.Any(s=>s.enabled&&(s.path==Island||s.path==Chapter||s.path==Supplied)))Prepare();}
     }
 }
 #endif

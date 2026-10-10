@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Game/Scenes/SC_AlcatrazSuppliedIsland.unity
+    guid: 08e4d99de32ec94c98debe0551fec7a4
+  - enabled: 1
     path: Assets/Game/Scenes/SC_AlcatrazIsland.unity
     guid: a043ec3822a743d5266d1cb3d4c4f2de
   - enabled: 1
