@@ -42,7 +42,10 @@ namespace Blackstone.Alcatraz.Editor
             if(report.summary.result!=BuildResult.Succeeded)throw new InvalidOperationException("Alcatraz build failed.");
         }
         public void OnPreprocessBuild(BuildReport report)
-        {if(EditorBuildSettings.scenes.Any(s=>s.enabled&&(s.path==Island||s.path==Chapter||s.path==Supplied)))Prepare();}
+        {
+            if(EditorBuildSettings.scenes.Any(s=>s.enabled&&s.path==Supplied))Prepare();
+            else if(EditorBuildSettings.scenes.Any(s=>s.enabled&&(s.path==Island||s.path==Chapter)))FoundationPreparation.Prepare();
+        }
     }
 }
 #endif

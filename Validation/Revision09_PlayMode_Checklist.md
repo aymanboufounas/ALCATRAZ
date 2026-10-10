@@ -2,7 +2,7 @@
 
 Use Unity 6000.0.62f1 with Windows Build Support. These checks have **not** been performed in the authoring environment.
 
-1. Finish Unity package/model import. Run **Alcatraz > Prepare Characters** and **Alcatraz > Prepare Supplied Assets**. Confirm no compilation or import errors, no missing source parts and no magenta materials. Preparation should generate nine prefabs under `Assets/GeneratedSupplied`.
+1. Finish Unity package/model import. Run **Alcatraz > Prepare Characters** and **Alcatraz > Prepare Supplied Assets**; if the previous dog import failed, use **Alcatraz > Repair Supplied Imports**. Confirm no compilation or import errors, no missing source parts and no magenta materials. Preparation should generate nine prefabs under `Assets/GeneratedSupplied`. Select `Dog.gltf`: it should have 200 skin joints and all 17 Legacy clips. Remove its generated prefab and run preparation again to check missing-output recovery.
 2. Open **Alcatraz > Open Island** and enter Play Mode. Elias should spawn on the road beside the cellhouse with the supplied island visible, an ocean around it and a matching minimap. Try M and the pause/title controls.
 3. Walk, run, stop, turn sharply, jump, crouch and aim-strafe. Check that running turns follow travel, the start clip yields after acceleration and swing feet are not pinned to the floor. In a tight corner, check camera collision and temporary close-range character hiding. Leave the corner and confirm the character reappears.
 4. Select 1–5, or cycle with D-pad left. Confirm the imported pistol and revolver face the aim direction, fit the hand, and place the flash/tracer at the muzzle. Fire the three dock targets; verify hit flashes and hit counts. Exhaust, reload, switch during reload and pause during reload; the right cards must match the real ammo state.
@@ -11,4 +11,6 @@ Use Unity 6000.0.62f1 with Windows Build Support. These checks have **not** been
 7. Walk to the cellhouse marker and press E / X. Confirm Chapter 01 loads and retains mission, poker, phone and save behavior. Test its running/camera fix in the cell rows. Chapter equipment remains controlled by mission progression.
 8. Build **Alcatraz > Build Windows x64** and repeat the scene switch, imports/materials, movement, equipment, audio and controller checks in the player. Measure performance on the intended machine; no FPS result is available here.
 
-Offline results: 57 C# files passed syntax grammar; native references and supplied static floor/dependency checks passed; actual .NET weapon-state execution passed 468 assertions. These results do not substitute for the Unity checks above.
+Offline results: 58 C# files passed syntax grammar; native references and supplied static floor/dependency checks passed; dog compaction preserved the visible mesh/animation and passed glTF validation. The earlier .NET weapon-state execution passed 468 assertions. These results do not substitute for the Unity checks above.
+
+Import regression checks: clear the local imported dog artifact by reimporting from a clean project; verify automatic preparation succeeds. Temporarily move one dog texture outside `Assets`, run Repair, and confirm the error identifies that missing file; restore the texture and rerun Repair. Open Chapter 01 and confirm the supplied-island import hook does not cancel its Play Mode.

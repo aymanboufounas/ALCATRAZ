@@ -95,6 +95,8 @@ The fight trigger remains four minutes into the opening, designed around the req
 
 ## Build and verification
 
+For the `Dog.gltf` Play Mode import error, update the complete project, let packages restore, and run **Alcatraz > Repair Supplied Imports** before **Alcatraz > Open Island**. The [dog import repair notes](Documentation/Revision09_DogImportFix.md) explain the compacted rig and recovery checks.
+
 Install Windows Build Support in Unity Hub, check Play Mode, then choose **Alcatraz > Build Windows x64**. The three enabled scenes build to Builds/Windows/AlcatrazEscape.exe. The batch alternative is Tools/BuildAlcatrazWindows.ps1.
 
 Current offline checks cover native references, static routes, floor support, roster bindings and C# grammar. GitHub Actions repeats source checks; it does not perform a Unity build. Story and poker retain their earlier reports. The ammunition suite was executed again in Revision 09, including the new revolver and live inventory readouts.

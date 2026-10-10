@@ -8,6 +8,7 @@ using UnityEngine;
 using UnityEditor;
 using UnityEditor.Build;
 using UnityEditor.Build.Reporting;
+using UnityEngine.SceneManagement;
 
 namespace Blackstone.Supplied.Editor
 {
@@ -16,7 +17,8 @@ namespace Blackstone.Supplied.Editor
     {
         const string Root="Assets/Game/Supplied/";
         const string Generated="Assets/GeneratedSupplied/Resources/AlcatrazSupplied/";
-        const string Revision="supplied-09.3";
+        const string Revision="supplied-09.4";
+        static readonly string[] Names={"Island","Pistol10mm","Revolver","Police","Dog","Helmet","Vest","Helicopter","House"};
         static bool preparing,scheduled;
         [Serializable] sealed class HouseParts { public string destination,sha256; public string[] parts; public int bytes; }
         [Serializable] sealed class Coastline { public Point[] points; }
@@ -34,7 +36,7 @@ namespace Blackstone.Supplied.Editor
         }
         static void BeforePlay(PlayModeStateChange state)
         {
-            if(state!=PlayModeStateChange.ExitingEditMode)return;
+            if(state!=PlayModeStateChange.ExitingEditMode||!SuppliedSceneIsOpen())return;
             try{Prepare();}catch(Exception e){EditorApplication.isPlaying=false;Debug.LogError("Cannot enter Play Mode: "+e.Message);}
         }
         [MenuItem("Alcatraz/Prepare Supplied Assets",priority=6)]
@@ -44,17 +46,16 @@ namespace Blackstone.Supplied.Editor
             try
             {
                 string stamp=Generated+"PreparedRevision.txt";
-                string signature=Revision+":"+Hash(File.ReadAllBytes(Root+"Resources/AlcatrazSupplied/Catalog.json"))+":"+Hash(File.ReadAllBytes(Root+"Resources/AlcatrazSupplied/Island/Coastline.json"));
-                if(File.Exists(stamp)&&File.ReadAllText(stamp)==signature&&File.Exists(Generated+"Prepared/Island.prefab")&&File.Exists(Generated+"Prepared/House.prefab"))return;
+                string signature=Signature();
+                if(File.Exists(stamp)&&File.ReadAllText(stamp)==signature&&Names.All(name=>AssetDatabase.LoadAssetAtPath<GameObject>(Generated+"Prepared/"+name+".prefab")!=null))return;
                 ReconstructHouse();Directory.CreateDirectory(Generated+"Prepared");AssetDatabase.Refresh(ImportAssetOptions.ForceSynchronousImport);
+                // Check every source before replacing any generated mesh or prefab.
+                var sources=Names.ToDictionary(name=>name,name=>SuppliedImportRecovery.Load(SourcePath(name),name));
+                AssetDatabase.DeleteAsset(stamp);
                 var coastline=JsonUtility.FromJson<Coastline>(File.ReadAllText(Root+"Resources/AlcatrazSupplied/Island/Coastline.json"));
-                foreach(string name in new[]{"Island","Pistol10mm","Revolver","Police","Dog","Helmet","Vest","Helicopter","House"})
+                foreach(string name in Names)
                 {
-                    string folder=name=="House"?Generated+"House/":Root+"Resources/AlcatrazSupplied/"+name+"/";
-                    string extension=name=="House"||name=="Pistol10mm"||name=="Revolver"?".fbx":name=="Police"?".obj":".gltf";
-                    var source=AssetDatabase.LoadAssetAtPath<GameObject>(folder+name+extension);
-                    if(source==null)throw new InvalidOperationException("Model has not imported: "+folder+name+extension);
-                    var model=UnityEngine.Object.Instantiate(source);model.name=name;
+                    var model=UnityEngine.Object.Instantiate(sources[name]);model.name=name;
                     try
                     {
                         foreach(var collider in model.GetComponentsInChildren<Collider>(true))UnityEngine.Object.DestroyImmediate(collider);
@@ -74,14 +75,49 @@ namespace Blackstone.Supplied.Editor
                             foreach(AnimationState clip in animation)clip.wrapMode=WrapMode.Loop;
                             animation.playAutomatically=false;
                         }
-                        PrefabUtility.SaveAsPrefabAsset(model,Generated+"Prepared/"+name+".prefab");
+                        PrefabUtility.SaveAsPrefabAsset(model,Generated+"Prepared/"+name+".prefab",out bool saved);
+                        if(!saved)throw new InvalidOperationException("Could not save the prepared "+name+" prefab.");
                     }
                     finally{UnityEngine.Object.DestroyImmediate(model);}
                 }
-                AssetDatabase.SaveAssets();File.WriteAllText(stamp,signature);AssetDatabase.Refresh();
+                AssetDatabase.SaveAssets();File.WriteAllText(stamp,Signature());AssetDatabase.Refresh();
                 Debug.Log("All nine supplied Alcatraz assets prepared, with a cropped island collision mesh.");
             }
             finally{preparing=false;}
+        }
+        [MenuItem("Alcatraz/Repair Supplied Imports",priority=7)]
+        public static void Repair()
+        {
+            if(preparing)return;preparing=true;
+            try
+            {
+                AssetDatabase.DeleteAsset(Generated+"PreparedRevision.txt");
+                ReconstructHouse();AssetDatabase.Refresh(ImportAssetOptions.ForceSynchronousImport);
+                foreach(string name in Names)SuppliedImportRecovery.Load(SourcePath(name),name,true);
+            }
+            finally{preparing=false;}
+            Prepare();
+        }
+        static string Signature()
+        {
+            return Revision+":"+Hash(File.ReadAllBytes(Root+"Resources/AlcatrazSupplied/Catalog.json"))+":"+
+                Hash(File.ReadAllBytes(Root+"Resources/AlcatrazSupplied/Island/Coastline.json"))+":"+
+                string.Join(":",Names.Select(name=>AssetDatabase.GetAssetDependencyHash(SourcePath(name)).ToString()));
+        }
+        static string SourcePath(string name)
+        {
+            string folder=name=="House"?Generated+"House/":Root+"Resources/AlcatrazSupplied/"+name+"/";
+            string extension=name=="House"||name=="Pistol10mm"||name=="Revolver"?".fbx":name=="Police"?".obj":".gltf";
+            return folder+name+extension;
+        }
+        static bool SuppliedSceneIsOpen()
+        {
+            for(int i=0;i<SceneManager.sceneCount;i++)
+            {
+                var scene=SceneManager.GetSceneAt(i);
+                if(scene.isLoaded&&scene.GetRootGameObjects().Any(root=>root.GetComponentInChildren<SuppliedIslandWorld>(true)!=null))return true;
+            }
+            return false;
         }
         static bool ExcludedHouseMaterial(string name)
         { return new[]{"Sea","Sky","Mist","Waves","ParticleDustShdr","ReflShdr","BushesRefl","ShrubsRefl","TreeTrunkRefl"}.Any(n=>name=="House_"+n||name==n); }
@@ -125,7 +161,8 @@ namespace Blackstone.Supplied.Editor
                 filter.sharedMesh=mesh;var collider=filter.gameObject.AddComponent<MeshCollider>();collider.sharedMesh=mesh;
             }
         }
-        public void OnPreprocessBuild(BuildReport report){Prepare();}
+        public void OnPreprocessBuild(BuildReport report)
+        { if(EditorBuildSettings.scenes.Any(s=>s.enabled&&s.path==Blackstone.Alcatraz.Editor.AlcatrazPreparation.Supplied))Prepare(); }
     }
 
     public sealed class SuppliedModelImporter : AssetPostprocessor

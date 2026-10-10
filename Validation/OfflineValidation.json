@@ -3,11 +3,11 @@
   "counts": {
     "native_files": 1963,
     "yaml_documents": 75377,
-    "asset_guids": 2635,
+    "asset_guids": 2636,
     "mesh_vertices": 4954073,
     "mesh_triangles": 1708180,
     "weighted_meshes": 266,
-    "csharp_files": 57,
+    "csharp_files": 58,
     "animation_clips": 14
   },
   "errors": [],
