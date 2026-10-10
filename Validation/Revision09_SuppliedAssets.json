@@ -1,0 +1,8 @@
+{
+  "status": "PASS",
+  "assets": 9,
+  "geometry_rig_animation_views_preserved": 42770,
+  "house_parts": "byte-exact",
+  "max_file_bytes": 9906258,
+  "scope": "Archive extraction, native file integrity and glTF buffer repacking; Unity import and rendering unverified"
+}

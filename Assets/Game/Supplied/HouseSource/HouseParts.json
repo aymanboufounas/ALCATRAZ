@@ -1,0 +1,9 @@
+{
+  "destination": "Assets/GeneratedSupplied/Resources/AlcatrazSupplied/House/House.fbx",
+  "parts": [
+    "Assets/Game/Supplied/HouseSource/House.part001.bytes",
+    "Assets/Game/Supplied/HouseSource/House.part002.bytes"
+  ],
+  "sha256": "3196f3a1ec043158090831e85bf0db1f997957b7595485158cafc9e93b15d548",
+  "bytes": 16255356
+}

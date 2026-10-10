@@ -1,0 +1,138 @@
+{
+  "revision": "09",
+  "importer": "com.unity.cloud.gltfast@6.14.1",
+  "assets": {
+    "alcatraz": {
+      "archive_sha256": "2e7393baa964337be850dd5ba754f7e80231b15aa8062385011dc7000da51e5c",
+      "uploaded_name": "alcatraz.zip",
+      "resource": "AlcatrazSupplied/Island/Island",
+      "format": "gltf",
+      "source_views_preserved": 4,
+      "geometry_rig_animation_bytes": "PASS",
+      "buffers": 3,
+      "animations": [],
+      "meshes": 1,
+      "model_sha256": "33748ef5498ec6be769e8445092049e644346220c9b3dfc477f516a3376afe19"
+    },
+    "gun-10mm": {
+      "archive_sha256": "89b0e71891ee5738c382e8e7cdab2cff625060d63831dbbc13effa68307e908a",
+      "uploaded_name": "gun-10mm.zip",
+      "resource": "AlcatrazSupplied/Pistol10mm/Pistol10mm",
+      "format": "fbx"
+    },
+    "high-poly-pbr-revolvergun": {
+      "archive_sha256": "52cde75b01b0c5d165a2da6216ef05dbde5ab1be87185ca7f91894d59dfcc7f0",
+      "uploaded_name": "high-poly-pbr-revolvergun.zip",
+      "resource": "AlcatrazSupplied/Revolver/Revolver",
+      "format": "fbx"
+    },
+    "tactical-helmet-with-headset-game-ready": {
+      "archive_sha256": "697127692c03aa32776880a8711db54a06b7b32d97599a6fb781fc6113a41974",
+      "uploaded_name": "tactical-helmet-with-headset-game-ready.zip",
+      "resource": "AlcatrazSupplied/Helmet/Helmet",
+      "format": "gltf",
+      "source_views_preserved": 4,
+      "geometry_rig_animation_bytes": "PASS",
+      "buffers": 1,
+      "animations": [],
+      "meshes": 1,
+      "model_sha256": "407ac9261198ee0e01dcd3571f9efe145c8427c0e23cdc6e83c2f2d631c1a1e7"
+    },
+    "tactical-plate-carrier-vest-game-ready": {
+      "archive_sha256": "fc8d3eaac769f8e247d9f2f1d0563b9718f75a238e6291d2801d5ee6175778ad",
+      "uploaded_name": "tactical-plate-carrier-vest-game-ready.zip",
+      "resource": "AlcatrazSupplied/Vest/Vest",
+      "format": "gltf",
+      "source_views_preserved": 4,
+      "geometry_rig_animation_bytes": "PASS",
+      "buffers": 1,
+      "animations": [],
+      "meshes": 1,
+      "model_sha256": "26c2cc529e4532a15d2e8d80b358428851c9a0f7c0123e2e033564784fdbd767"
+    },
+    "police": {
+      "archive_sha256": "1777d522f68c66c9bb2beb54bcdb63caa5fa9e7be99794ba60ca80e659fbd967",
+      "uploaded_name": "police.zip",
+      "resource": "AlcatrazSupplied/Police/Police",
+      "format": "obj"
+    },
+    "police-dog": {
+      "archive_sha256": "b487550eaf979a8e69f8a3f3508f7f8ea481dcf4d4956c7da6d414093ee34ef4",
+      "uploaded_name": "police-dog.zip",
+      "resource": "AlcatrazSupplied/Dog/Dog",
+      "format": "gltf",
+      "source_views_preserved": 42722,
+      "geometry_rig_animation_bytes": "PASS",
+      "buffers": 1,
+      "animations": [
+        " FP angry dog",
+        " runing dog pos",
+        "angry dog pos",
+        "Dog  idle 0_30",
+        "Dog Bark 0_52",
+        "Dog Fast walk 1_27",
+        "dog idle pos",
+        "Dog run 1_18",
+        "Dog sleep 1_120",
+        "Dog Sneaking 1_64",
+        "Dog Walk 1_55",
+        "FP dog close eye ",
+        "FP dog smile",
+        "Happy dog  stand  pos",
+        "happy dog pos",
+        "hard stand dog pos",
+        "sleep pos"
+      ],
+      "meshes": 2,
+      "model_sha256": "c6abdb59e6a996c7f5259410e1fa1347d28c3a59fff623dc250ad4750a37fafc"
+    },
+    "helicopters-mh-6-little-bird": {
+      "archive_sha256": "02f6914fc1d04ecfd5c3e0191049a0cdb362946b759c11aedd27e7c77458d15a",
+      "uploaded_name": "helicopters-mh-6-little-bird.zip",
+      "resource": "AlcatrazSupplied/Helicopter/Helicopter",
+      "format": "gltf",
+      "source_views_preserved": 36,
+      "geometry_rig_animation_bytes": "PASS",
+      "buffers": 1,
+      "animations": [],
+      "meshes": 4
+    },
+    "the-house-lost-at-sea": {
+      "archive_sha256": "2a3ef21bdedcaff579a2b25a5ea3ec1feb52cdf21b41990fe232d3d83470d0c3",
+      "uploaded_name": "the-house-lost-at-sea.zip",
+      "resource": "AlcatrazSupplied/House/House",
+      "format": "fbx-parts",
+      "reconstruction": "PASS"
+    }
+  },
+  "materials": {
+    "Gun": "Assets/Game/Supplied/Materials/Pistol10mm.mat",
+    "Material.002": "Assets/Game/Supplied/Materials/Revolver.mat",
+    "policeman_head": "Assets/Game/Supplied/Materials/Police_policeman_head.mat",
+    "policeman_body": "Assets/Game/Supplied/Materials/Police_policeman_body.mat",
+    "policeman_gun": "Assets/Game/Supplied/Materials/Police_policeman_gun.mat",
+    "HouseShdr": "Assets/Game/Supplied/Materials/House_HouseShdr.mat",
+    "WindowGlassShdr": "Assets/Game/Supplied/Materials/House_WindowGlassShdr.mat",
+    "HouseSerreLinesShdr": "Assets/Game/Supplied/Materials/House_HouseSerreLinesShdr.mat",
+    "WindowsInsideShdr": "Assets/Game/Supplied/Materials/House_WindowsInsideShdr.mat",
+    "WindowDarkInsideShdr": "Assets/Game/Supplied/Materials/House_WindowDarkInsideShdr.mat",
+    "WindowLight": "Assets/Game/Supplied/Materials/House_WindowLight.mat",
+    "WindowLightGlow": "Assets/Game/Supplied/Materials/House_WindowLightGlow.mat",
+    "Ground": "Assets/Game/Supplied/Materials/House_Ground.mat",
+    "Shrubs": "Assets/Game/Supplied/Materials/House_Shrubs.mat",
+    "Bushes": "Assets/Game/Supplied/Materials/House_Bushes.mat",
+    "Debris": "Assets/Game/Supplied/Materials/House_Debris.mat",
+    "Sea": "Assets/Game/Supplied/Materials/House_Sea.mat",
+    "Sky": "Assets/Game/Supplied/Materials/House_Sky.mat",
+    "Mist": "Assets/Game/Supplied/Materials/House_Mist.mat",
+    "BushesRefl": "Assets/Game/Supplied/Materials/House_BushesRefl.mat",
+    "ShrubsRefl": "Assets/Game/Supplied/Materials/House_ShrubsRefl.mat",
+    "ReflShdr": "Assets/Game/Supplied/Materials/House_ReflShdr.mat",
+    "TreeTrunkRefl": "Assets/Game/Supplied/Materials/House_TreeTrunkRefl.mat",
+    "Branch": "Assets/Game/Supplied/Materials/House_Branch.mat",
+    "TreeTrunk": "Assets/Game/Supplied/Materials/House_TreeTrunk.mat",
+    "Grass": "Assets/Game/Supplied/Materials/House_Grass.mat",
+    "Waves": "Assets/Game/Supplied/Materials/House_Waves.mat",
+    "ParticleDustShdr": "Assets/Game/Supplied/Materials/House_ParticleDustShdr.mat"
+  }
+}

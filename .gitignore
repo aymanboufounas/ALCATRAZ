@@ -25,3 +25,6 @@ __pycache__/
 Documentation/*Authoring.json
 Documentation/BlackstoneAuthoring.json.gz
 SourceAssets/
+
+Assets/GeneratedSupplied/
+Assets/GeneratedSupplied.meta
