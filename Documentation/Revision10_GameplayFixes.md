@@ -17,7 +17,7 @@ goal is truncated, and four weapon panels cover a large part of the view.
 - Camera collision resolves existing sphere overlaps as well as sweeping toward
   the desired position. Obstructions contract the camera immediately; return to
   open space is smoothed.
-- A Unity menu, **Alcatraz > Validate Movement and Camera (Play Mode)**, runs ten
+- A Unity menu, **Alcatraz > Validate Movement and Camera (Play Mode)**, runs eleven
   assertions against actual Unity colliders, including an overlapping wall,
   floor clipping, a cliff edge and a short teleport. This harness is provided but
   has not been executed in the authoring environment.
@@ -36,3 +36,33 @@ lighting, it supplies an explicit ambient spherical-harmonic probe, refreshed
 reflections, softer shadows, lower contrast and less bloom. Walls in shadow
 receive diffuse environment light instead of depending on a stale editor cache.
 The exact appearance still requires a Unity render check.
+
+## Step 3: HUD and scene selection
+
+The goal uses a wider, single-line label. UI scaling is uniform; panels anchor
+to the actual screen edges at 16:9, 4:3 and ultrawide sizes. Exploration draws
+its own persistent minimap and full-map overlay, preventing competing map/UI
+draw order. M / controller View holds the full map.
+
+Only equipped weapon information is shown during normal gameplay. Hold Tab /
+left shoulder to see all four inventory cards. Their dark weapon thumbnails
+have a light background, ammo remains driven by the real equipment state, and
+reloads show a label and progress bar. Interaction/recovery prompts share one
+position, separate from subtitles. Unarmed movement has no unnecessary reticle.
+
+The title/pause menu identifies the current island layout and offers the
+supplied exterior from the original island when the prepared exterior is
+available. **Alcatraz > Open Island** remains the editor entry point for the
+supplied assets.
+
+**Alcatraz > Validate HUD Layout** checks the actual viewport calculation and
+Unity font measurements at seven resolutions. This editor harness is supplied
+but has not been executed here. The runtime movement/camera harness is likewise
+unexecuted. Existing source/geometry/dependency checks remain the available
+verification; they do not certify Play Mode or a Windows build.
+
+Final camera review also keeps grounded orbit views above the player's floor
+at exposed cliffs, even when there is no collider underneath the camera itself.
+The movement/camera harness now includes this case (eleven assertions). Camera
+smoothing remains active in open space; immediate contraction applies only
+when the desired camera position is obstructed.

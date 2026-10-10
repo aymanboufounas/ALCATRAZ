@@ -20,6 +20,7 @@ namespace Blackstone.Alcatraz
         static readonly Vector3[] Footprint={Vector3.zero,Vector3.right*.22f,Vector3.left*.22f,
             Vector3.forward*.22f,Vector3.back*.22f};
         public float RecoveryMessageUntil { get; private set; }
+        public bool ExplorationHudOwnsMap { get; set; }
         public const string CheckpointFile="alcatraz-chapter01.json";
         static readonly string[] Names={"Cellhouse","Recreation Yard","Water Tower","Lighthouse",
             "Warden's House","New Industries","Model Industries","Power House","Storehouse",
@@ -49,7 +50,7 @@ namespace Blackstone.Alcatraz
                 ||Mathf.Abs(position.z)>(suppliedLayout?225:220);
             // Recover before the falling camera reaches the underside of the island.
             // Ordinary jumps, stairs and drops onto a nearby floor remain available.
-            bool unsupportedFall=player.VerticalSpeed < -3 && position.y<safePosition.y-2.5f
+            bool unsupportedFall=player.VerticalSpeed < -3 && position.y<safePosition.y-1.25f
                 &&!Physics.Raycast(position+Vector3.up*.3f,Vector3.down,8,~(1<<8),QueryTriggerInteraction.Ignore);
             if(position.y<1.2f||outside||unsupportedFall)
             {
@@ -70,6 +71,7 @@ namespace Blackstone.Alcatraz
         {
             if(label!=null)return;
             label=new GUIStyle(GUI.skin.label){fontSize=13,alignment=TextAnchor.MiddleCenter,wordWrap=true};
+            label.normal.textColor=Color.white;
             heading=new GUIStyle(label){fontSize=18,fontStyle=FontStyle.Bold};
         }
         public static Vector2 Project(Rect bounds,Vector3 position)
@@ -117,7 +119,7 @@ namespace Blackstone.Alcatraz
         {var p=Locate(bounds,point);Panel(new Rect(p.x-size/2,p.y-size/2,size,size),color);}
         void OnGUI()
         {
-            if(player==null)return;
+            if(player==null||ExplorationHudOwnsMap)return;
             var input=player.GetComponent<PlayerInputHandler>();
             if(input==null||!input.IsCaptured||input.GameplayBlocked)return;
             Styles();var before=GUI.matrix;

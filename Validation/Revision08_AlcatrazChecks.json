@@ -1,6 +1,6 @@
 {
   "status": "PASS",
-  "checks": 210,
+  "checks": 211,
   "errors": [],
   "passed_checks": [
     "Native Alcatraz island root replaces the older map",
@@ -208,6 +208,7 @@
     "All 44 foundation sound recordings unchanged",
     "MonoImporter metadata: AlcatrazPreparation.cs",
     "MonoImporter metadata: GameplayRegressionChecks.cs",
+    "MonoImporter metadata: HudLayoutChecks.cs",
     "MonoImporter metadata: AlcatrazCharacterRoster.cs",
     "MonoImporter metadata: AlcatrazMap.cs",
     "MonoImporter metadata: AlcatrazPresentation.cs",

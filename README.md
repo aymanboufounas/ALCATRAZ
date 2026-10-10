@@ -1,6 +1,6 @@
 # Alcatraz Escape — Unity source project
 
-**Revision 09 · version 0.9.0 · Unity 6000.0.62f1 · URP**
+**Revision 10 · version 0.10.0 · Unity 6000.0.62f1 · URP**
 
 The playable character is **Elias Vale, a prisoner in orange**. The default exploration scene now uses the **supplied scanned Alcatraz island**, police, animated dog, tactical helmet/vest, Little Bird, coastal house, 10mm pistol and revolver. Chapter 01 retains its playable prison interior, original rigged cast and mission progression.
 
@@ -8,12 +8,22 @@ The playable character is **Elias Vale, a prisoner in orange**. The default expl
 
 1. Download the repository ZIP and extract it, or clone this repository. In Unity Hub, choose **Add project from disk** and select the folder containing **Assets**, **Packages** and **ProjectSettings**.
 2. Open with **Unity 6000.0.62f1**. Wait for package resolution, model import and automatic asset preparation to finish. The official glTFast package is pinned to **6.14.1**.
-3. Choose **Alcatraz > Open Island**, press **Play**, then **Enter**. This opens the supplied island exterior with movement, sound, equipment and the reference-style HUD.
+3. Choose **Alcatraz > Open Island**, press **Play**, then **Enter**. This opens the supplied island exterior with movement, sound, equipment and the compact exploration HUD. The older playable prison island is a separate scene.
 4. Walk to the cellhouse marker and press **E / X**, choose **Play Chapter 01** in the title/pause menu, or choose **Alcatraz > Open Chapter 01** in the editor to enter the playable story interior.
 
 If preparation is incomplete, choose **Alcatraz > Prepare Characters** and **Alcatraz > Prepare Supplied Assets**, then inspect the Console. The editor reconstructs the house's byte-verified FBX and prepares the supplied prefabs before Play/build. First import requires internet access to resolve the declared Unity packages. **Alcatraz > Build Windows x64** includes the supplied exterior, Chapter 01 and the original exploration scene. **Alcatraz > Open Original Playable Island** opens the earlier authored map.
 
-Equipment: **1** unarmed, **2** knife, **3** supplied 10mm pistol, **4** service rifle, **5** supplied revolver. RMB / LT aims, LMB / RT uses, R / Y reloads, and D-pad left cycles. Use the three dock practice targets to check hits. M opens the map. Pause stops reload/cooldown time.
+Equipment: **1** unarmed, **2** knife, **3** supplied 10mm pistol, **4** service rifle, **5** supplied revolver. RMB / LT aims, LMB / RT uses, R / Y reloads, and D-pad left cycles. Hold **Tab / LB** for inventory and **M / View** for the map. Use the three dock practice targets to check hits. Pause stops reload/cooldown time.
+
+## New in Revision 10
+
+- Ledge checks and earlier supported-position recovery address the fall beneath the island shown in the gameplay recording.
+- Camera overlap resolution, grounded cliff-orbit protection and immediate resets after short teleports.
+- Shared daylight applied after older startup scripts, with explicit ambient lighting for shadowed walls.
+- Full goal text, persistent minimap, uniform UI scaling, and weapon inventory shown on demand.
+- Unity validation menus for movement/camera physics and HUD layout. These editor checks are supplied but have not been run here.
+
+See [recording fixes and verification limits](Documentation/Revision10_GameplayFixes.md). Source checks are available; Unity Play Mode and a Windows build remain unverified.
 
 ## New in Revision 09
 
@@ -30,7 +40,7 @@ Read [running changes](Documentation/Revision09_RunningFix.md), [asset imports](
 
 ![Supplied island source preview](Documentation/Revision09Previews/Island.png)
 ![Supplied police, tactical gear and dog](Documentation/Revision09Previews/Characters.png)
-![Source gameplay/HUD layout](Documentation/Revision09Previews/GameplayLayout.png)
+The [earlier Revision 09 HUD preview](Documentation/Revision09Previews/GameplayLayout.png) predates the compact Revision 10 HUD.
 
 ## New in Revision 08
 

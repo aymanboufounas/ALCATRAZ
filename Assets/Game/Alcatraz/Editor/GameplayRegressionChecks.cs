@@ -65,10 +65,13 @@ namespace Blackstone.Alcatraz.Editor
                 resolved = (Vector3)Invoke(camera, "Resolve", pivot, origin-Vector3.up);
                 Check(resolved.y >= .23f, "camera cannot cross floor while looking up");
                 Check((Vector3)Invoke(camera, "Resolve", pivot, pivot) == pivot, "zero-length camera movement");
+                typeof(PlayerMovement).GetProperty("Grounded").GetSetMethod(true).Invoke(movement, new object[]{true});
+                resolved = (Vector3)Invoke(camera, "Resolve", pivot, origin+new Vector3(6, -1, 0));
+                Check(resolved.y >= .25f, "camera orbit beside an exposed cliff stays above the player's floor");
                 int version = movement.TeleportVersion;
                 movement.Teleport(origin+Vector3.right*2);
                 Check(movement.TeleportVersion == version+1 && !movement.Grounded, "short teleport invalidates stale camera and ground state");
-                Debug.Log("Alcatraz movement/camera checks passed: 10 assertions using Unity physics. Full gameplay and visual review are still required.");
+                Debug.Log("Alcatraz movement/camera checks passed: 11 assertions using Unity physics. Full gameplay and visual review are still required.");
             }
             catch (TargetInvocationException error)
             { Debug.LogException(error.InnerException ?? error); throw; }

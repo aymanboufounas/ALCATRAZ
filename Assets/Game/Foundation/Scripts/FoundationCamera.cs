@@ -86,12 +86,13 @@ namespace Blackstone.Foundation
             pivot = Separate(pivot);
             Vector3 anchor = pivot + facing * new Vector3(.48f*shoulder, .08f, 0);
             anchor = Resolve(pivot, anchor);
-            Vector3 wanted = anchor - facing * Vector3.forward * (input.Aim ? 1.9f : 3.15f);
-            wanted = Resolve(anchor, wanted);
+            Vector3 desired = anchor - facing * Vector3.forward * (input.Aim ? 1.9f : 3.15f);
+            Vector3 wanted = Resolve(anchor, desired);
+            bool obstructed = (wanted-desired).sqrMagnitude > .0001f;
             float dt = Mathf.Max(.0001f, Time.deltaTime);
             Vector3 smooth = Vector3.SmoothDamp(transform.position, wanted, ref velocity, .07f, 100, dt);
             // Contract immediately at an obstruction, then ease back into open space.
-            if ((wanted-pivot).sqrMagnitude < (smooth-pivot).sqrMagnitude)
+            if (obstructed && (wanted-pivot).sqrMagnitude < (smooth-pivot).sqrMagnitude)
             { smooth = wanted; velocity = Vector3.zero; }
             transform.position = Resolve(pivot, smooth);
             transform.rotation = facing;
@@ -101,6 +102,10 @@ namespace Blackstone.Foundation
         }
         Vector3 Resolve(Vector3 origin, Vector3 target)
         {
+            // At an exposed edge there may be no terrain underneath the boom.
+            // Keep grounded orbit views above the player's floor even there.
+            if (player != null && player.Grounded)
+                target.y = Mathf.Max(target.y, player.transform.position.y + .25f);
             Vector3 result = Clear(origin, target, .23f);
             result = Separate(result);
             return Clear(origin, result, .23f);
