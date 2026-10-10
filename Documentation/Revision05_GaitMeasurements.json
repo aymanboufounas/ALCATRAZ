@@ -1,0 +1,43 @@
+{
+  "thresholds": [
+    0,
+    0.820952,
+    1.0117,
+    1.495397,
+    2.879724,
+    5.839487
+  ],
+  "measurements": [
+    {
+      "clip": "WalkSlow",
+      "seconds": 1.4666666666666666,
+      "source_root_travel_m": 1.2040625000000011,
+      "source_speed_m_s": 0.8209517045454554
+    },
+    {
+      "clip": "Walk",
+      "seconds": 1.2,
+      "source_root_travel_m": 1.214040451049806,
+      "source_speed_m_s": 1.0117003758748384
+    },
+    {
+      "clip": "WalkFast",
+      "seconds": 1.0666666666666667,
+      "source_root_travel_m": 1.5950897216796875,
+      "source_speed_m_s": 1.495396614074707
+    },
+    {
+      "clip": "Run",
+      "seconds": 0.7333333333333333,
+      "source_root_travel_m": 2.111797943115237,
+      "source_speed_m_s": 2.8797244678844147
+    },
+    {
+      "clip": "RunFast",
+      "seconds": 0.6,
+      "source_root_travel_m": 3.503692016601566,
+      "source_speed_m_s": 5.839486694335943
+    }
+  ],
+  "method": "Source Root X/Z travel in centimetres divided by duration. Animator Speed is divided by visual scale; imported horizontal root curves are anchored."
+}

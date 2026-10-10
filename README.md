@@ -1,5 +1,3 @@
-> **Upload in progress.** Assets are being published in parts. See [UPLOAD_STATUS.md](UPLOAD_STATUS.md); wait for completion before importing the project.
-
 # Alcatraz Escape — Unity source project
 
 **Revision 08 · version 0.8.0 · Unity 6000.0.62f1 · URP**
@@ -92,6 +90,6 @@ Current offline checks cover native references, static routes, floor support, ro
 - [Asset licenses/credits](Documentation/Revision05_AssetCredits.md)
 - [Earlier foundation guide](README_Revision05_Foundation.md)
 
-Previews are labelled offline source renders, **not Unity captures or gameplay**. Compressed `Documentation/BlackstoneAuthoring.json.gz` and `Documentation/AlcatrazAuthoring.json.gz` contain the inventories used by the current Python authoring and preview tools. See `Tools/requirements.txt`. Offline authoring uses Linux with DejaVu fonts; offline previews also require Mesa EGL/OpenGL. Run `python Tools/build_alcatraz.py` to regenerate both Alcatraz scenes, or `python Tools/render_alcatraz_preview.py A01_Island A15_CoastalPath A16_PrisonerPortrait` for labelled source renders. Opening/building in Unity uses the included native assets and does not require Python.
+Previews are labelled offline source renders, **not Unity captures or gameplay**. `Documentation/BlackstoneAuthoring.json.gz.part001` through `part003`, and `Documentation/AlcatrazAuthoring.json.gz`, contain the compressed inventories used by the current Python authoring and preview tools. `authoring_io.py` joins archive parts automatically; their original-byte checksum is in `BlackstoneAuthoring.parts.json`. Large Alcatraz render batches are partitioned into normal native Unity meshes with the same triangles, normals and UVs. This keeps individual publication requests small. See `Tools/requirements.txt`. Offline authoring uses Linux with DejaVu fonts; offline previews also require Mesa EGL/OpenGL. Run `python Tools/build_alcatraz.py` to regenerate both Alcatraz scenes, or `python Tools/render_alcatraz_preview.py A01_Island A15_CoastalPath A16_PrisonerPortrait` for labelled source renders. Opening/building in Unity uses the included native assets and does not require Python.
 
 Earlier Blackstone scenes and reports are retained for history. The two enabled scenes and Revision 08 reports describe the current project. Older reports are historical. Rocketbox's MIT notice and existing MakeHuman, Poly Haven, audio and voice credits are included. Scanned surfaces are **Powered by Poly Haven**. No Unity WIP or Sketchfab mesh is redistributed.
