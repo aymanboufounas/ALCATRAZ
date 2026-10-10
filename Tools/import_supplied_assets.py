@@ -12,6 +12,7 @@ import numpy as np
 from PIL import Image, ImageChops
 import libarchive
 import unity_writer as uw
+from prepare_dog_import import prepare as prepare_dog
 
 ROOT=Path(__file__).resolve().parents[1]
 BASE='Assets/Game/Supplied'
@@ -173,6 +174,16 @@ def main():
         entry=rewrite_gltf(document,binary,source.parent,name,island=name=='Island')
         entry['model_sha256']=sha(source.read_bytes());catalog['assets'][original].update(entry)
         print('Imported',name,entry['source_views_preserved'],'preserved views',flush=True)
+        if name=='Dog':
+            report=prepare_dog(ROOT/RES/name)
+            (ROOT/'Validation/Revision09_DogImportChecks.json').write_text(json.dumps(report,indent=2)+'\n')
+            catalog['assets'][original]['import_compatibility']={
+                'skin_joints':report['skin_joints_after'],'nodes':report['nodes_after'],
+                'clips':report['clips'],'weighted_deformation':'PASS',
+                'packaged_model_sha256':report['model_sha256']}
+            catalog['assets'][original]['source_views_preserved_before_rig_compaction']=entry['source_views_preserved']
+            del catalog['assets'][original]['source_views_preserved']
+            catalog['assets'][original]['geometry_rig_animation_bytes']='PASS: mesh and retained animation payloads unchanged; unused joints removed and skin indices remapped'
     source=next(extracted['helicopters-mh-6-little-bird'].rglob('*.gltf'))
     document=json.loads(source.read_text());binary=(source.parent/unquote(document['buffers'][0]['uri'])).read_bytes()
     catalog['assets']['helicopters-mh-6-little-bird'].update(rewrite_gltf(document,binary,source.parent,'Helicopter'))
@@ -242,8 +253,8 @@ def main():
         if p.is_dir():metadata(rel,'DefaultImporter','  folderAsset: yes\n')
         elif p.suffix!='.meta' and not Path(str(p)+'.meta').exists():metadata(rel)
     metadata(BASE,'DefaultImporter','  folderAsset: yes\n')
-    proof={'status':'PASS','assets':len(catalog['assets']),'geometry_rig_animation_views_preserved':
-      sum(e.get('source_views_preserved',0) for e in catalog['assets'].values()),
+    proof={'status':'PASS','assets':len(catalog['assets']),'geometry_rig_animation_views_preserved_before_compaction':
+      sum(e.get('source_views_preserved',e.get('source_views_preserved_before_rig_compaction',0)) for e in catalog['assets'].values()),
       'house_parts':'byte-exact','max_file_bytes':max(p.stat().st_size for p in (ROOT/BASE).rglob('*') if p.is_file()),
       'scope':'Archive extraction, native file integrity and glTF buffer repacking; Unity import and rendering unverified'}
     (ROOT/'Validation/Revision09_SuppliedAssets.json').write_text(json.dumps(proof,indent=2)+'\n')

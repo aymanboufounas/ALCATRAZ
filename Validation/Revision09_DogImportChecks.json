@@ -1,0 +1,22 @@
+{
+  "status": "PASS",
+  "clips": 17,
+  "skin_joints_before": 838,
+  "skin_joints_after": 200,
+  "nodes_before": 1152,
+  "nodes_after": 344,
+  "channels_before": 42687,
+  "channels_after": 17289,
+  "json_bytes_before": 9906258,
+  "json_bytes_after": 3958431,
+  "binary_bytes_after": 3609172,
+  "geometry_and_weighted_animation": "Byte-exact payloads and identical ancestor transforms verified",
+  "model_sha256": "fcd5f0f2b97002df74c4b5672d39d490808dbeea9a84beccd0673f0b2a5adfc0",
+  "scope": "Source equivalence; Unity import and Play Mode require Unity Editor",
+  "khronos_validator": {
+    "version": "2.0.0-dev.3.10",
+    "errors": 0,
+    "warnings": 5
+  },
+  "repeat_compaction": "Byte-exact idempotence: PASS"
+}

@@ -61,8 +61,7 @@
       "uploaded_name": "police-dog.zip",
       "resource": "AlcatrazSupplied/Dog/Dog",
       "format": "gltf",
-      "source_views_preserved": 42722,
-      "geometry_rig_animation_bytes": "PASS",
+      "geometry_rig_animation_bytes": "PASS: mesh and retained animation payloads unchanged; unused joints removed and skin indices remapped",
       "buffers": 1,
       "animations": [
         " FP angry dog",
@@ -84,7 +83,15 @@
         "sleep pos"
       ],
       "meshes": 2,
-      "model_sha256": "c6abdb59e6a996c7f5259410e1fa1347d28c3a59fff623dc250ad4750a37fafc"
+      "model_sha256": "c6abdb59e6a996c7f5259410e1fa1347d28c3a59fff623dc250ad4750a37fafc",
+      "import_compatibility": {
+        "skin_joints": 200,
+        "nodes": 344,
+        "clips": 17,
+        "weighted_deformation": "PASS",
+        "packaged_model_sha256": "fcd5f0f2b97002df74c4b5672d39d490808dbeea9a84beccd0673f0b2a5adfc0"
+      },
+      "source_views_preserved_before_rig_compaction": 42722
     },
     "helicopters-mh-6-little-bird": {
       "archive_sha256": "02f6914fc1d04ecfd5c3e0191049a0cdb362946b759c11aedd27e7c77458d15a",

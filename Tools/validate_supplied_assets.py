@@ -22,7 +22,17 @@ def main():
    check(all(0<=c['target']['node']<len(d['nodes']) and 0<=c['sampler']<len(animation['samplers']) for c in animation['channels']),name+' animation targets '+animation.get('name',''))
    check(all(0<=s['input']<len(d['accessors']) and 0<=s['output']<len(d['accessors']) for s in animation['samplers']),name+' animation accessors')
   meta=(folder/(name+'.gltf.meta')).read_text();check(meta.count('externalObjects:')==1,name+' importer metadata has unique keys')
-  if name=='Dog':check(len(d['animations'])==17 and 'animationMethod: 1' in meta,'Dog retains all 17 clips as Legacy animations')
+  if name=='Dog':
+   check(len(d['animations'])==17 and 'animationMethod: 1' in meta,'Dog retains all 17 clips as Legacy animations')
+   check(len(d['skins'])==1 and len(d['skins'][0]['joints'])==200,'Dog skin contains only the 200 weighted joints')
+   check(len(d['nodes'])==344,'Dog retains the mesh nodes and every weighted joint ancestor')
+   from prepare_dog_import import accessor_array
+   for mesh in d['meshes']:
+    for primitive in mesh['primitives']:
+     attrs=primitive['attributes'];joints=accessor_array(d,buffers,attrs['JOINTS_0']);weights=accessor_array(d,buffers,attrs['WEIGHTS_0'])
+     check(int(joints.max())<len(d['skins'][0]['joints']),'Dog remapped joint indices are in bounds')
+     check(np.isfinite(weights).all() and np.allclose(weights.sum(axis=1),1,atol=1e-5),'Dog skin weights are finite and normalized')
+   check(catalog['assets']['police-dog']['import_compatibility']['packaged_model_sha256']==sha(folder/'Dog.gltf'),'Dog optimized model matches the import catalog')
  for original,name in [('gun-10mm','Pistol10mm'),('high-poly-pbr-revolvergun','Revolver')]:
   p=RES/name/(name+'.fbx');check(p.read_bytes().startswith(b'Kaydara FBX Binary'),'Native FBX '+name)
  parts=json.loads((BASE/'HouseSource/HouseParts.json').read_text());data=b''.join((ROOT/p).read_bytes() for p in parts['parts'])
