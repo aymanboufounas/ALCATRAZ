@@ -23,4 +23,5 @@
 __pycache__/
 *.pyc
 Documentation/*Authoring.json
+Documentation/BlackstoneAuthoring.json.gz
 SourceAssets/

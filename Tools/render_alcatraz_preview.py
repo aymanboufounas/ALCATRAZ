@@ -7,6 +7,7 @@ import numpy as np
 from scipy.spatial.transform import Rotation
 from PIL import Image,ImageDraw,ImageFont
 from fbx_pose import Character,animation
+from authoring_io import read_authoring
 
 ROOT=Path(__file__).resolve().parents[1]
 code=(ROOT/'Tools/render_blackstone_preview.py').read_text().split('data=json.loads')[0]
@@ -22,7 +23,7 @@ G=backend['G'];U=backend['U'];PBR=backend['PBR'];DEPTH=backend['DEPTH'];SKY=back
 uniform=backend['uniform'];mat4=backend['mat4'];lookat=backend['lookat'];perspective=backend['perspective'];ortho=backend['ortho'];buffer=backend['buffer'];texture=backend['texture']
 W,H=1600,1000
 raw=ROOT/'Documentation/AlcatrazAuthoring.json'
-data=json.loads(raw.read_text() if raw.exists() else gzip.decompress(Path(str(raw)+'.gz').read_bytes()).decode())
+data=read_authoring(raw)
 actors=json.loads((ROOT/'Documentation/AlcatrazActors.json').read_text())
 roster={a['actorName']:a for a in json.loads((ROOT/'Assets/Game/Alcatraz/Resources/Alcatraz/CharacterRoster.json').read_text())['actors']}
 nodes={n['id']:n for n in data['nodes']};transforms={};flip=np.diag([1,1,-1,1])

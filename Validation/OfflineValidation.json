@@ -1,9 +1,9 @@
 {
   "offline_integrity": "PASS",
   "counts": {
-    "native_files": 1910,
-    "yaml_documents": 75104,
-    "asset_guids": 2502,
+    "native_files": 1934,
+    "yaml_documents": 75320,
+    "asset_guids": 2526,
     "mesh_vertices": 4954073,
     "mesh_triangles": 1708180,
     "weighted_meshes": 266,

@@ -12,6 +12,7 @@ from PIL import Image, ImageDraw, ImageFont
 from scipy.spatial.transform import Rotation
 import unity_writer as uw
 from geometry import Mesh, box, cylinder, tube, ellipsoid, plane, lathe
+from authoring_io import read_authoring
 from world import light
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -93,9 +94,45 @@ def b_box(group,mat,pos,size,bevel=.014,rot=(0,0,0)):
 
 def flush_batches(parent):
     for (group,mat),mesh in list(BATCHES.items()):
-        key='Alc_Batch_'+group+'_'+mat;uw.save_mesh(key,mesh,'Details')
-        node(group+' / '+mat,parent,(0,0,0),key,mat)
+        key='Alc_Batch_'+group+'_'+mat
+        if len(mesh.v) <= 100000:
+            uw.save_mesh(key,mesh,'Details')
+            node(group+' / '+mat,parent,(0,0,0),key,mat)
+            continue
+        # Preserve every triangle and attribute while keeping native assets small.
+        triangles = np.asarray(mesh.t).reshape(-1,3)
+        for first in range(0,len(triangles),8000):
+            indices, remapped = np.unique(triangles[first:first+8000].reshape(-1),return_inverse=True)
+            part=Mesh()
+            part.v=[mesh.v[i] for i in indices]
+            part.n=[mesh.n[i] for i in indices]
+            part.uv=[mesh.uv[i] for i in indices]
+            part.t=remapped.tolist()
+            suffix=f'_Part_{first//8000+1:03d}'
+            uw.save_mesh(key+suffix,part,'Details')
+            node(group+' / '+mat+suffix,parent,(0,0,0),key+suffix,mat)
+        old=ROOT/(BASE+'/Art/Details/'+key+'.asset')
+        for obsolete in [old,Path(str(old)+'.meta')]:
+            if obsolete.exists():obsolete.unlink()
     BATCHES.clear()
+
+def remove_superseded_batches():
+    """Remove unused whole batches after all scene and detail passes finish."""
+    details=ROOT/(BASE+'/Art/Details')
+    scenes=[(ROOT/path).read_text() for path in SCENES]
+    whole_names={name.rsplit('_Part_',1)[0] for name in uw.PREVIEW['meshes']
+                 if re.search(r'_Part_\d{3}$',name)}
+    for name in whole_names:
+        if name in uw.PREVIEW['meshes']:
+            continue
+        old=details/(name+'.asset')
+        metadata=Path(str(old)+'.meta')
+        if metadata.exists():
+            match=re.search(r'^guid: (\w+)$',metadata.read_text(),re.M)
+            if match and any(match[1] in scene for scene in scenes):
+                raise RuntimeError('Superseded batch is still referenced: '+name)
+        for obsolete in (old,metadata):
+            if obsolete.exists():obsolete.unlink()
 
 def sign(parent,name,pos,text,size=(2.5,.6),yaw=0):
     key='Alc_Sign_'+re.sub(r'[^a-zA-Z0-9]','_',name)
@@ -111,7 +148,7 @@ def sign(parent,name,pos,text,size=(2.5,.6),yaw=0):
 def materials():
     global OLD
     raw=ROOT/'Documentation/BlackstoneAuthoring.json'
-    OLD=json.loads(raw.read_text() if raw.exists() else gzip.decompress(Path(str(raw)+'.gz').read_bytes()).decode())
+    OLD=read_authoring(raw)
     for name,mat in OLD['materials'].items():
         uw.MATERIALS[name]='Assets/Game/Art/Materials/'+name+'.mat'
         uw.PREVIEW['materials'][name]=mat
@@ -879,6 +916,7 @@ def main():
     add_details(sys.modules[__name__],root,lights)
     concept_details(sys.modules[__name__],root,lights,height)
     map_texture();make_scenes();record_nodes()
+    remove_superseded_batches()
     uw.write('Documentation/AlcatrazAuthoring.json',json.dumps(uw.PREVIEW,separators=(',',':')))
     uw.write('Documentation/AlcatrazColliders.json',json.dumps(COLLIDERS,separators=(',',':')))
     setting=uw.HEAD+'--- !u!1045 &1\nEditorBuildSettings:\n  m_ObjectHideFlags: 0\n  serializedVersion: 2\n  m_Scenes:\n'

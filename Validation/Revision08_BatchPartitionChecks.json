@@ -1,0 +1,18 @@
+{
+  "status": "PASS",
+  "partitioned_batches": [
+    {
+      "mesh": "Alc_Batch_Cell bars_Alc_Iron",
+      "parts": 18,
+      "triangles": 140220,
+      "triangle_positions_normals_uvs": "byte-equivalent float32 attributes"
+    },
+    {
+      "mesh": "Alc_Batch_Cell plumbing_M_Ceramic",
+      "parts": 8,
+      "triangles": 63488,
+      "triangle_positions_normals_uvs": "byte-equivalent float32 attributes"
+    }
+  ],
+  "scope": "Triangle order and positions, normals and UVs preserved; render object grouping changes"
+}

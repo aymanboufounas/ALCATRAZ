@@ -6,7 +6,8 @@
   "checks": {
     "Revision08_AlcatrazChecks.json": "PASS",
     "Revision08_SyntaxChecks.json": "PASS",
-    "OfflineValidation.json": "PASS"
+    "OfflineValidation.json": "PASS",
+    "Revision08_BatchPartitionChecks.json": "PASS"
   },
   "map_checks": 209,
   "csharp_files_parsed": 52,
