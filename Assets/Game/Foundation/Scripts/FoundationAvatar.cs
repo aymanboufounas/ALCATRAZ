@@ -52,11 +52,12 @@ namespace Blackstone.Foundation
             animator.SetBool("Seated", seated);
             animator.SetBool("Crouch", crouch && MotionSpeed < .15f);
             animator.SetBool("Air", air);
-            float direction = movement != null && movement.LocalMotion.y < -.12f ? -1 : 1;
+            bool strafing = movement != null && movement.IsAiming;
+            float direction = strafing && movement.LocalMotion.y < -.12f ? -1 : 1;
             animator.SetFloat("Direction", direction);
             if (!seated && !crouch && !air)
             {
-                if (previousSpeed < .15f && MotionSpeed > .2f) animator.SetTrigger("Start");
+                if (previousSpeed < .15f && MotionSpeed > .2f && direction > 0) animator.SetTrigger("Start");
                 if (previousSpeed > .5f && MotionSpeed < .1f) animator.SetTrigger("Stop");
             }
             float turn = Mathf.DeltaAngle(previousYaw, transform.eulerAngles.y);
@@ -64,7 +65,7 @@ namespace Blackstone.Foundation
                 animator.SetTrigger(turn < 0 ? "TurnLeft" : "TurnRight");
             previousYaw = transform.eulerAngles.y; previousSpeed = MotionSpeed;
             float yaw = 0;
-            if (movement != null && movement.LocalMotion.sqrMagnitude > .05f)
+            if (strafing && movement.LocalMotion.sqrMagnitude > .05f)
                 yaw = Mathf.Clamp(Mathf.Atan2(movement.LocalMotion.x, Mathf.Abs(movement.LocalMotion.y)) * Mathf.Rad2Deg, -65, 65);
             model.localRotation = Quaternion.Slerp(model.localRotation, modelRotation * Quaternion.Euler(0, yaw, 0), 1 - Mathf.Exp(-9 * Time.deltaTime));
         }
@@ -91,9 +92,10 @@ namespace Blackstone.Foundation
             if (Physics.Raycast(foot.position + Vector3.up * .3f, Vector3.down, out var hit, .62f, 1, QueryTriggerInteraction.Ignore))
             {
                 float height = foot.position.y - hit.point.y;
-                if (height < .15f)
+                // Lift a penetrating ankle; never pull an animated swing foot down.
+                if (height < .055f && height > -.15f)
                 {
-                    var target = foot.position; target.y = hit.point.y + .08f;
+                    var target = foot.position; target.y = hit.point.y + .055f;
                     Solve(upper, middle, foot, target, transform.forward, .8f);
                 }
             }

@@ -16,7 +16,7 @@ namespace Blackstone.Foundation.Editor
         public const string Controller="Assets/Game/Resources/BlackstoneFoundation/Locomotion.controller";
         public const string Scene="Assets/Game/Scenes/SC_BlackstoneFoundation.unity";
         public const string StoryScene="Assets/Game/Scenes/SC_BlackstoneStory_Upgraded.unity";
-        const string Revision="foundation-05.5";
+        const string Revision="foundation-09.1";
         static bool preparing;
         static bool scheduled;
         [Serializable] sealed class GaitData { public float[] thresholds=new float[0]; }
@@ -110,6 +110,8 @@ namespace Blackstone.Foundation.Editor
                 var leave=state.AddTransition(ground);leave.hasExitTime=true;leave.exitTime=.85f;leave.duration=.15f;
                 if(name=="Stop")
                 {var interrupt=state.AddTransition(ground);interrupt.hasExitTime=false;interrupt.duration=.1f;interrupt.AddCondition(AnimatorConditionMode.Greater,.3f,"Speed");}
+                if(name=="Start")
+                {var interrupt=state.AddTransition(ground);interrupt.hasExitTime=false;interrupt.duration=.08f;interrupt.AddCondition(AnimatorConditionMode.Greater,thresholds[2],"Speed");}
             }
         }
         [MenuItem("Blackstone/Open Character Foundation",priority=-1)]

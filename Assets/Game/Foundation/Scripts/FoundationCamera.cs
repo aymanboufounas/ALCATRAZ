@@ -11,21 +11,56 @@ namespace Blackstone.Foundation
         public float sensitivity = .09f;
         public bool invertY;
         public Blackstone.Story.PrisonStoryDirector story;
+        public Transform characterVisual;
         float yaw, pitch = 12, shoulder = 1, kick;
         Vector3 velocity;
         Camera view;
         bool wasCinematic;
-        void Start() { view = GetComponent<Camera>(); yaw = player.transform.eulerAngles.y; }
+        Renderer[] characterRenderers;
+        bool[] originalRenderingOff;
+        Vector3 previousPlayer;
+        void Start()
+        {
+            view = GetComponent<Camera>();
+            if (player == null) { enabled = false; return; }
+            if (characterVisual != null)
+            {
+                characterRenderers = characterVisual.GetComponentsInChildren<Renderer>(true);
+                originalRenderingOff = new bool[characterRenderers.Length];
+                for (int i = 0; i < characterRenderers.Length; i++)
+                    originalRenderingOff[i] = characterRenderers[i].forceRenderingOff;
+            }
+            SnapToPlayer();
+        }
+        public void SnapToPlayer()
+        {
+            if (player == null) return;
+            yaw = player.transform.eulerAngles.y; pitch = 12; velocity = Vector3.zero;
+            previousPlayer = player.transform.position;
+            Quaternion facing = Quaternion.Euler(pitch, yaw, 0);
+            Vector3 pivot = player.cameraTarget != null ? player.cameraTarget.position : player.transform.position + Vector3.up * 1.45f;
+            transform.SetPositionAndRotation(Clear(pivot, pivot - facing * Vector3.forward * 3.15f, .2f), facing);
+        }
+        void Visibility(bool hidden)
+        {
+            if (characterRenderers == null) return;
+            for (int i = 0; i < characterRenderers.Length; i++)
+                if (characterRenderers[i] != null)
+                    characterRenderers[i].forceRenderingOff = originalRenderingOff[i] || hidden;
+        }
+        void OnDisable() { Visibility(false); }
         public void Recoil(float value) { kick = Mathf.Min(kick + value, 7); }
         void LateUpdate()
         {
             if (player == null || input == null || view == null) return;
             if (story != null)
             {
-                if (story.Letterbox) { wasCinematic = true; return; }
+                if (story.Letterbox) { Visibility(false); wasCinematic = true; return; }
                 if (wasCinematic) { yaw = player.transform.eulerAngles.y; pitch = 12; velocity = Vector3.zero; wasCinematic = false; }
                 if (story.cameraRig != null) { sensitivity = story.cameraRig.sensitivity; invertY = story.cameraRig.invertY; }
             }
+            if ((player.transform.position - previousPlayer).sqrMagnitude > 100) SnapToPlayer();
+            previousPlayer = player.transform.position;
             if (Time.deltaTime > 0 && input.CanControl)
             {
                 Vector2 look = input.Look;
@@ -44,6 +79,7 @@ namespace Blackstone.Foundation
             Vector3 smooth = Vector3.SmoothDamp(transform.position, wanted, ref velocity, .07f, 100, dt);
             transform.position = Clear(pivot, smooth, .2f);
             transform.rotation = facing;
+            Visibility((transform.position - pivot).sqrMagnitude < .68f * .68f);
             view.fieldOfView = Mathf.Lerp(view.fieldOfView, input.Aim ? 48 : 58, 1-Mathf.Exp(-10*dt));
             view.nearClipPlane = .08f;
         }

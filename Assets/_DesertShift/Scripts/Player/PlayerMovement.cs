@@ -20,6 +20,7 @@ namespace DesertShift.Player
         public Transform cameraTarget;
         public bool Grounded { get; private set; }
         public bool IsCrouching { get; private set; }
+        public bool IsAiming => input != null && input.Aim;
         public float Speed => input != null && !input.CanControl ? 0 :
             new Vector3(controller.velocity.x, 0, controller.velocity.z).magnitude;
         public float VerticalSpeed => velocityY;
@@ -58,7 +59,7 @@ namespace DesertShift.Player
             Vector2 axis = Vector2.ClampMagnitude(input.Move, 1);
             Quaternion heading = Quaternion.Euler(0, yaw, 0);
             Vector3 wantedDirection = heading * new Vector3(axis.x, 0, axis.y);
-            // Forward jog, measured backward/side steps, shift sprint.
+            // Free movement follows actual travel; aiming keeps camera-relative strafing.
             float maxSpeed = IsCrouching ? crouchSpeed : input.Aim || input.Walk ? walkSpeed
                 : input.Sprint ? sprintSpeed : jogSpeed;
             var targetVelocity = wantedDirection * maxSpeed;
@@ -66,9 +67,12 @@ namespace DesertShift.Player
                 (axis.sqrMagnitude > .001f ? acceleration : deceleration) * Time.deltaTime);
             float oldYaw = transform.eulerAngles.y;
             if (axis.sqrMagnitude > .001f || input.Aim)
+            {
+                Vector3 travel = velocity.sqrMagnitude > .04f ? velocity : wantedDirection;
                 transform.rotation = Quaternion.Slerp(transform.rotation,
-                    input.Aim ? heading : Quaternion.LookRotation(wantedDirection),
+                    input.Aim ? heading : Quaternion.LookRotation(travel),
                     1f - Mathf.Exp(-rotationSharpness * Time.deltaTime));
+            }
             TurnRate = Mathf.DeltaAngle(oldYaw, transform.eulerAngles.y) / Time.deltaTime;
             if (Grounded && velocityY < 0) velocityY = -3f;
             if (!IsCrouching && Time.time - lastJumpPressed < .12f && Time.time - lastGrounded < .12f)

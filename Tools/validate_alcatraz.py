@@ -219,9 +219,10 @@ for name,(gaps,buried,total) in floor_results.items():
 
 baseline=json.loads((ROOT/'Validation/Revision04_PreservedFiles.json').read_text())
 adapted={'Assets/Game/Scripts/Missions/PrisonStoryDirector.cs','Assets/Game/Scripts/Save/PrisonSave.cs',
-         'Assets/Game/Scripts/UI/PrisonHUD.cs','Assets/Game/Scripts/Audio/PrisonAudio.cs'}
+         'Assets/Game/Scripts/UI/PrisonHUD.cs','Assets/Game/Scripts/Audio/PrisonAudio.cs',
+         'Assets/_DesertShift/Scripts/Player/PlayerMovement.cs'}
 changed={p for p,h in baseline.items() if not (ROOT/p).is_file() or digest(ROOT/p)!=h}
-check(changed==(adapted&set(baseline)), 'Protected baseline changes are limited to map-specific director and ambience integration')
+check(changed==(adapted&set(baseline)), 'Protected baseline changes are limited to the map integrations and requested player movement correction')
 check(digest(ROOT/'Assets/Game/Scenes/SC_BlackstoneIsland.unity')==layout['original_scene_sha256'],'Classic source scene remains unchanged')
 audio=json.loads((ROOT/'Documentation/Revision05_AudioProvenance.json').read_text())
 check(all(digest(ROOT/r['path'])==r['sha256'] for r in audio['files']), 'All 44 foundation sound recordings unchanged')

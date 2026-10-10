@@ -97,6 +97,7 @@ namespace Blackstone.Foundation
             {
                 foreach(var b in camera.GetComponents<Behaviour>())if(b.GetType().Name=="CinemachineBrain")b.enabled=false;
                 CameraRig=camera.gameObject.AddComponent<FoundationCamera>();CameraRig.player=Player;CameraRig.input=Input;
+                CameraRig.characterVisual=hero.model;
                 CameraRig.story=storyMode?story:null;
             }
             if(!storyMode)
