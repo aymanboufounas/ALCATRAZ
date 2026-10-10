@@ -74,8 +74,7 @@ namespace Blackstone.Supplied
         void Update()
         {
             if(!Ready||player==null||input==null||!input.CanControl)return;
-            if(player.Grounded&&player.transform.position.y>1.5f)safe=player.transform.position;
-            if(player.transform.position.y<.6f||Mathf.Abs(player.transform.position.x)>350||Mathf.Abs(player.transform.position.z)>225)player.Teleport(safe);
+            // AlcatrazMap owns ledge protection and recovery for both island layouts.
             if(ChapterGate!=null&&Vector3.Distance(player.transform.position,ChapterGate.position)<3.4f&&input.InteractPressed)
             {Time.timeScale=1;SceneManager.LoadScene("SC_AlcatrazChapter01");}
         }

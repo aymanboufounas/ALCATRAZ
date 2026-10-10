@@ -21,6 +21,9 @@ namespace DesertShift.Player
         public bool Grounded { get; private set; }
         public bool IsCrouching { get; private set; }
         public bool IsAiming => input != null && input.Aim;
+        // Exploration worlds can protect exposed cliffs without changing story movement.
+        public bool GuardUnsafeLedges { get; set; }
+        public int TeleportVersion { get; private set; }
         public float Speed => input != null && !input.CanControl ? 0 :
             new Vector3(controller.velocity.x, 0, controller.velocity.z).magnitude;
         public float VerticalSpeed => velocityY;
@@ -90,6 +93,8 @@ namespace DesertShift.Player
                     horizontal = Vector3.ProjectOnPlane(horizontal, slope.normal);
                 else horizontal += Vector3.ProjectOnPlane(Vector3.down, slope.normal) * 4f;
             }
+            if (GuardUnsafeLedges && Grounded && velocityY <= 0)
+                horizontal = ProtectLedge(horizontal, Time.deltaTime);
             CollisionFlags flags = controller.Move((horizontal + Vector3.up * velocityY) * Time.deltaTime);
             if ((flags & CollisionFlags.Above) != 0 && velocityY > 0) velocityY = 0;
             var local = transform.InverseTransformDirection(new Vector3(controller.velocity.x, 0, controller.velocity.z));
@@ -101,6 +106,33 @@ namespace DesertShift.Player
                 cameraTarget.localPosition = p;
             }
             if (transform.position.y < -25) Teleport(start);
+        }
+        Vector3 ProtectLedge(Vector3 motion, float deltaTime)
+        {
+            if (motion.sqrMagnitude < .001f) return motion;
+            if (SupportedPath(motion, deltaTime)) return motion;
+            // Keep movement parallel to a ledge possible instead of stopping diagonal input.
+            Vector3 x = new Vector3(motion.x, 0, 0), z = new Vector3(0, 0, motion.z);
+            bool safeX = SupportedPath(x, deltaTime), safeZ = SupportedPath(z, deltaTime);
+            if (safeX && (!safeZ || x.sqrMagnitude >= z.sqrMagnitude)) return x;
+            return safeZ ? z : Vector3.zero;
+        }
+        bool SupportedPath(Vector3 motion, float deltaTime)
+        {
+            Vector3 flat = new Vector3(motion.x, 0, motion.z);
+            float length = flat.magnitude;
+            if (length < .01f) return false;
+            Vector3 direction = flat / length;
+            float distance = length * deltaTime + controller.radius + .08f;
+            int samples = Mathf.Max(1, Mathf.CeilToInt(distance / .2f));
+            for (int i = 1; i <= samples; i++)
+            {
+                Vector3 point = transform.position + direction * (distance * i / samples);
+                if (!Physics.Raycast(point + Vector3.up * .45f, Vector3.down, out var floor,
+                    2.45f, groundLayers, QueryTriggerInteraction.Ignore) || floor.normal.y < .35f)
+                    return false;
+            }
+            return true;
         }
         void UpdateCrouch()
         {
@@ -120,7 +152,10 @@ namespace DesertShift.Player
         public void Teleport(Vector3 position)
         {
             controller.enabled = false; transform.position = position;
-            velocity = Vector3.zero; velocityY = 0; controller.enabled = true;
+            velocity = Vector3.zero; velocityY = 0; LocalMotion = Vector2.zero; TurnRate = 0;
+            Grounded = JumpedThisFrame = LandedThisFrame = false;
+            lastGrounded = lastJumpPressed = -10;
+            controller.enabled = true; TeleportVersion++;
         }
     }
 }

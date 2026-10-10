@@ -19,10 +19,18 @@ namespace Blackstone.Foundation
         Renderer[] characterRenderers;
         bool[] originalRenderingOff;
         Vector3 previousPlayer;
+        int teleportVersion;
+        SphereCollider collisionProbe;
+        readonly Collider[] overlaps = new Collider[24];
+        const int ObstructionLayers = ~((1 << 8) | (1 << 2));
         void Start()
         {
             view = GetComponent<Camera>();
             if (player == null) { enabled = false; return; }
+            var probe = new GameObject("Camera collision probe");
+            probe.hideFlags = HideFlags.HideInHierarchy; probe.layer = 2;
+            collisionProbe = probe.AddComponent<SphereCollider>(); collisionProbe.radius = .23f;
+            collisionProbe.enabled = false;
             if (characterVisual != null)
             {
                 characterRenderers = characterVisual.GetComponentsInChildren<Renderer>(true);
@@ -37,9 +45,11 @@ namespace Blackstone.Foundation
             if (player == null) return;
             yaw = player.transform.eulerAngles.y; pitch = 12; velocity = Vector3.zero;
             previousPlayer = player.transform.position;
+            teleportVersion = player.TeleportVersion;
             Quaternion facing = Quaternion.Euler(pitch, yaw, 0);
             Vector3 pivot = player.cameraTarget != null ? player.cameraTarget.position : player.transform.position + Vector3.up * 1.45f;
-            transform.SetPositionAndRotation(Clear(pivot, pivot - facing * Vector3.forward * 3.15f, .2f), facing);
+            pivot = Separate(pivot);
+            transform.SetPositionAndRotation(Resolve(pivot, pivot - facing * Vector3.forward * 3.15f), facing);
         }
         void Visibility(bool hidden)
         {
@@ -49,6 +59,7 @@ namespace Blackstone.Foundation
                     characterRenderers[i].forceRenderingOff = originalRenderingOff[i] || hidden;
         }
         void OnDisable() { Visibility(false); }
+        void OnDestroy() { if (collisionProbe != null) Destroy(collisionProbe.gameObject); }
         public void Recoil(float value) { kick = Mathf.Min(kick + value, 7); }
         void LateUpdate()
         {
@@ -59,7 +70,8 @@ namespace Blackstone.Foundation
                 if (wasCinematic) { yaw = player.transform.eulerAngles.y; pitch = 12; velocity = Vector3.zero; wasCinematic = false; }
                 if (story.cameraRig != null) { sensitivity = story.cameraRig.sensitivity; invertY = story.cameraRig.invertY; }
             }
-            if ((player.transform.position - previousPlayer).sqrMagnitude > 100) SnapToPlayer();
+            if (player.TeleportVersion != teleportVersion
+                || (player.transform.position - previousPlayer).sqrMagnitude > 100) SnapToPlayer();
             previousPlayer = player.transform.position;
             if (Time.deltaTime > 0 && input.CanControl)
             {
@@ -71,23 +83,56 @@ namespace Blackstone.Foundation
             }
             Quaternion facing = Quaternion.Euler(pitch-kick, yaw, 0);
             Vector3 pivot = player.cameraTarget != null ? player.cameraTarget.position : player.transform.position + Vector3.up*1.45f;
+            pivot = Separate(pivot);
             Vector3 anchor = pivot + facing * new Vector3(.48f*shoulder, .08f, 0);
-            anchor = Clear(pivot, anchor, .19f);
+            anchor = Resolve(pivot, anchor);
             Vector3 wanted = anchor - facing * Vector3.forward * (input.Aim ? 1.9f : 3.15f);
-            wanted = Clear(anchor, wanted, .22f);
+            wanted = Resolve(anchor, wanted);
             float dt = Mathf.Max(.0001f, Time.deltaTime);
             Vector3 smooth = Vector3.SmoothDamp(transform.position, wanted, ref velocity, .07f, 100, dt);
-            transform.position = Clear(pivot, smooth, .2f);
+            // Contract immediately at an obstruction, then ease back into open space.
+            if ((wanted-pivot).sqrMagnitude < (smooth-pivot).sqrMagnitude)
+            { smooth = wanted; velocity = Vector3.zero; }
+            transform.position = Resolve(pivot, smooth);
             transform.rotation = facing;
             Visibility((transform.position - pivot).sqrMagnitude < .68f * .68f);
             view.fieldOfView = Mathf.Lerp(view.fieldOfView, input.Aim ? 48 : 58, 1-Mathf.Exp(-10*dt));
             view.nearClipPlane = .08f;
         }
+        Vector3 Resolve(Vector3 origin, Vector3 target)
+        {
+            Vector3 result = Clear(origin, target, .23f);
+            result = Separate(result);
+            return Clear(origin, result, .23f);
+        }
+        Vector3 Separate(Vector3 position)
+        {
+            if (collisionProbe == null) return position;
+            // Sweeps miss colliders already overlapping their starting sphere.
+            for (int pass = 0; pass < 4; pass++)
+            {
+                bool moved = false;
+                int count = Physics.OverlapSphereNonAlloc(position, .23f, overlaps,
+                    ObstructionLayers, QueryTriggerInteraction.Ignore);
+                for (int i = 0; i < count; i++)
+                {
+                    var other = overlaps[i];
+                    if (other == null || other == collisionProbe) continue;
+                    if (Physics.ComputePenetration(collisionProbe, position, Quaternion.identity,
+                        other, other.transform.position, other.transform.rotation, out var direction, out float depth))
+                    { position += direction * (depth + .02f); moved = true; }
+                }
+                if (!moved) break;
+            }
+            return position;
+        }
         static Vector3 Clear(Vector3 origin, Vector3 target, float radius)
         {
             Vector3 delta = target-origin;
-            if (Physics.SphereCast(origin, radius, delta.normalized, out var hit, delta.magnitude, ~(1<<8), QueryTriggerInteraction.Ignore))
-                return origin + delta.normalized * Mathf.Max(.08f, hit.distance-.04f);
+            if (delta.sqrMagnitude < .000001f) return origin;
+            if (Physics.SphereCast(origin, radius, delta.normalized, out var hit, delta.magnitude,
+                ObstructionLayers, QueryTriggerInteraction.Ignore))
+                return origin + delta.normalized * Mathf.Max(0, hit.distance-.04f);
             return target;
         }
     }

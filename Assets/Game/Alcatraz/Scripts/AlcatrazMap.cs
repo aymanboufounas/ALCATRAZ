@@ -17,6 +17,9 @@ namespace Blackstone.Alcatraz
         GUIStyle label, heading;
         Vector3 safePosition;
         bool validSafePosition;
+        static readonly Vector3[] Footprint={Vector3.zero,Vector3.right*.22f,Vector3.left*.22f,
+            Vector3.forward*.22f,Vector3.back*.22f};
+        public float RecoveryMessageUntil { get; private set; }
         public const string CheckpointFile="alcatraz-chapter01.json";
         static readonly string[] Names={"Cellhouse","Recreation Yard","Water Tower","Lighthouse",
             "Warden's House","New Industries","Model Industries","Power House","Storehouse",
@@ -29,15 +32,39 @@ namespace Blackstone.Alcatraz
         {
             player=FindFirstObjectByType<PlayerMovement>();story=FindFirstObjectByType<PrisonStoryDirector>();
             image=Resources.Load<Texture2D>(suppliedLayout?"AlcatrazSupplied/Island/Minimap":"Alcatraz/IslandMap");
-            if(player!=null){safePosition=player.transform.position;validSafePosition=true;}
+            if(player!=null)
+            {
+                safePosition=player.transform.position;validSafePosition=true;
+                player.GuardUnsafeLedges=story==null||!story.enabled;
+            }
         }
         void LateUpdate()
         {
             if(player==null||Time.deltaTime<=0)return;
-            if(player.Grounded&&player.transform.position.y>3)
-            {safePosition=player.transform.position;validSafePosition=true;}
-            // The current chapter has no swimming. Water does not silently trap the player.
-            if(player.transform.position.y<1.2f&&validSafePosition)player.Teleport(safePosition);
+            Vector3 position=player.transform.position;
+            if(player.Grounded&&position.y>1.5f&&SafeFooting(position))
+            {safePosition=position;validSafePosition=true;}
+            if(!validSafePosition)return;
+            bool outside=Mathf.Abs(position.x)>(suppliedLayout?350:135)
+                ||Mathf.Abs(position.z)>(suppliedLayout?225:220);
+            // Recover before the falling camera reaches the underside of the island.
+            // Ordinary jumps, stairs and drops onto a nearby floor remain available.
+            bool unsupportedFall=player.VerticalSpeed < -3 && position.y<safePosition.y-2.5f
+                &&!Physics.Raycast(position+Vector3.up*.3f,Vector3.down,8,~(1<<8),QueryTriggerInteraction.Ignore);
+            if(position.y<1.2f||outside||unsupportedFall)
+            {
+                player.Teleport(safePosition);RecoveryMessageUntil=Time.unscaledTime+3;
+            }
+        }
+        static bool SafeFooting(Vector3 position)
+        {
+            foreach(var offset in Footprint)
+            {
+                if(!Physics.Raycast(position+offset+Vector3.up*.4f,Vector3.down,out var hit,
+                    .65f,~(1<<8),QueryTriggerInteraction.Ignore)||hit.normal.y<.65f)return false;
+            }
+            return !Physics.CheckCapsule(position+Vector3.up*.35f,position+Vector3.up*1.5f,
+                .23f,~(1<<8),QueryTriggerInteraction.Ignore);
         }
         void Styles()
         {
