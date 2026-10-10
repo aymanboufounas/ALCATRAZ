@@ -11,6 +11,7 @@ world.script('Assets/Game/Supplied/Scripts/SuppliedIslandWorld.cs')
 world.script('Assets/Game/Foundation/Scripts/FoundationBootstrap.cs','  storyMode: 0\n')
 world.script('Assets/Game/Foundation/Scripts/FoundationHUD.cs','  worldTitle: "ALCATRAZ\\nISLAND"\n  storyScene: SC_AlcatrazChapter01\n')
 world.script('Assets/Game/Alcatraz/Scripts/AlcatrazMap.cs','  suppliedLayout: 1\n')
+world.script('Assets/Game/Alcatraz/Scripts/AlcatrazPresentation.cs')
 player=u.Node('Player',pos=(-107,49.3,23),rot=(0,250,0),layer=8,static=False)
 target=u.Node('CameraTarget',player,pos=(0,1.45,0),static=False)
 def body(id):
@@ -32,7 +33,7 @@ for goid in (47840,47860):
  text+=go+''.join(blocks[i] for i in ids);retained.append(ids[0])
 text+='--- !u!1660057539 &9223372036854775807\nSceneRoots:\n  m_ObjectHideFlags: 0\n  m_Roots:\n'
 for tid in [n.tid for n in u.Node.all if n.parent is None]+retained:text+=f'  - {{fileID: {tid}}}\n'
-path='Assets/Game/Scenes/SC_AlcatrazSuppliedIsland.unity';u.write(path,text);u.meta(path)
+path='Assets/Game/Scenes/SC_AlcatrazSuppliedIsland.unity';u.write(path,'\n'.join(line.rstrip() for line in text.splitlines())+'\n');u.meta(path)
 build=root/'ProjectSettings/EditorBuildSettings.asset';data=build.read_text()
 entry=f'  - enabled: 1\n    path: {path}\n    guid: {u.guid(path)}\n'
 if path not in data:build.write_text(data.replace('  m_Scenes:\n','  m_Scenes:\n'+entry))

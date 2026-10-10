@@ -26,3 +26,13 @@ Available verification: C# grammar, native scene bindings, existing sampled
 static route clearance/floor support, and native asset integrity. Unity Editor
 is unavailable here; Unity compilation, Play Mode and live lighting remain
 unverified.
+
+## Step 2: lighting
+
+The island presentation now starts after the legacy bootstrap, preventing the
+older lighting and sky settings from overwriting it. Both exploration layouts
+and the chapter share this presentation. Because these scenes have no baked
+lighting, it supplies an explicit ambient spherical-harmonic probe, refreshed
+reflections, softer shadows, lower contrast and less bloom. Walls in shadow
+receive diffuse environment light instead of depending on a stale editor cache.
+The exact appearance still requires a Unity render check.

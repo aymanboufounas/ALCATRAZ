@@ -67,6 +67,7 @@ GameObject:
   - component: {fileID: 41000003}
   - component: {fileID: 41000004}
   - component: {fileID: 41000005}
+  - component: {fileID: 41000006}
   m_Layer: 0
   m_Name: "Alcatraz supplied island"
   m_TagString: Untagged
@@ -99,8 +100,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e942d05ee65a1ca7d6d00eb52e1827ed, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
 --- !u!114 &41000003
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -111,8 +112,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 98d1eec3e2ffda5627711492dfc53bc7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   storyMode: 0
 --- !u!114 &41000004
 MonoBehaviour:
@@ -124,8 +125,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 597744bfa4ce0fc669cfcb353076179a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   worldTitle: "ALCATRAZ\nISLAND"
   storyScene: SC_AlcatrazChapter01
 --- !u!114 &41000005
@@ -138,9 +139,21 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5f55d07bfe0e4689e22c264d03fc6417, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   suppliedLayout: 1
+--- !u!114 &41000006
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 41000000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d9486cc926b760d6f932755f573511b, type: 3}
+  m_Name:
+  m_EditorClassIdentifier:
 --- !u!1 &41000020
 GameObject:
   m_ObjectHideFlags: 0
@@ -214,8 +227,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 253f1440901f7e8ec6c866ddd7a9ebb1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
 --- !u!114 &41000024
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -226,8 +239,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 44934e121c0d4cb21d3191de2c0606f4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   cameraTarget: {fileID: 41000041}
 --- !u!114 &41000025
 MonoBehaviour:
@@ -239,8 +252,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 37b02b62faff566689352c82ffe5f862, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
 --- !u!114 &41000026
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -251,8 +264,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4baa63d618dc992b0b08d36011127cb5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   displayName: Elias Vale
   driveLocomotion: 0
 --- !u!1 &41000040
@@ -514,8 +527,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4c656f40cd7f502131a519f32a80ef94, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   prisonNight: 1
 --- !u!1660057539 &9223372036854775807
 SceneRoots:

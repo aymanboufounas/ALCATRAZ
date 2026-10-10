@@ -61,9 +61,7 @@ namespace Blackstone.Supplied
             player=FindFirstObjectByType<PlayerMovement>();input=player!=null?player.GetComponent<PlayerInputHandler>():null;
             if(!Ready||player==null)return;
             safe=Ground(new Vector3(-107,0,23))+Vector3.up*.12f;player.Teleport(safe);player.transform.rotation=Quaternion.Euler(0,250,0);
-            RenderSettings.ambientMode=UnityEngine.Rendering.AmbientMode.Trilight;
-            RenderSettings.ambientSkyColor=new Color(.54f,.64f,.71f);RenderSettings.ambientEquatorColor=new Color(.47f,.47f,.41f);
-            RenderSettings.ambientGroundColor=new Color(.20f,.23f,.23f);RenderSettings.fog=true;RenderSettings.fogDensity=.0012f;RenderSettings.fogColor=new Color(.57f,.69f,.73f);
+            // AlcatrazPresentation applies the shared daylight after world setup.
         }
         public Vector3 Ground(Vector3 point)
         {
