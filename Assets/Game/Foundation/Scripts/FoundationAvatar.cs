@@ -61,7 +61,7 @@ namespace Blackstone.Foundation
         { foreach (var t in model.GetComponentsInChildren<Transform>(true)) if (t.name == name) return t; return null; }
         void Update()
         {
-            if (Time.deltaTime <= 0 || animator == null) return;
+            if (Time.deltaTime <= 0 || animator == null || !animator.enabled) return;
             if (storyActor != null)
             {
                 var pose = storyActor.pose;
@@ -97,7 +97,7 @@ namespace Blackstone.Foundation
         }
         void LateUpdate()
         {
-            if (Time.deltaTime <= 0 || animator == null || seated) return;
+            if (Time.deltaTime <= 0 || animator == null || !animator.enabled || seated) return;
             if (storyActor != null && storyActor.pose == Blackstone.Actors.ActorPose.Sleep) return;
             if (movement != null && movement.IsCrouching && MotionSpeed > .15f && pelvis != null)
             {

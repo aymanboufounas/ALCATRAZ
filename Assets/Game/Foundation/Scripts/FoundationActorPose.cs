@@ -20,6 +20,7 @@ namespace Blackstone.Foundation
         }
         void LateUpdate()
         {
+            var fall=GetComponent<FoundationFall>();if(fall!=null&&fall.Active)return;
             if(Time.deltaTime<=0||body==null||actor==null)return;
             float t=Time.time;
             if(actor.conversationPartner!=null&&body.head!=null)

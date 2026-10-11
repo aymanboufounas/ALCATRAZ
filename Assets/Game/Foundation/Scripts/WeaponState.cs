@@ -2,22 +2,24 @@ using System;
 
 namespace Blackstone.Foundation
 {
-    public enum Equipment { Unarmed, Knife, Pistol, Rifle, Revolver }
+    public enum Equipment { Unarmed, Knife, Pistol, Rifle, Revolver, Machete, M9A3, PX4, PMX, BRX1, ColtM5 }
 
     // Independent of Unity: finite ammunition, cooldowns and interruptible reloads.
     public sealed class WeaponState
     {
-        readonly int[] loaded = { 0, 0, 15, 30, 6 };
-        readonly int[] reserve = { 0, 0, 75, 120, 36 };
+        readonly int[] loaded = { 0, 0, 15, 30, 6, 0, 17, 17, 30, 10, 30 };
+        readonly int[] reserve = { 0, 0, 75, 120, 36, 0, 68, 68, 120, 40, 120 };
         float cooldown, reloadRemaining;
         public Equipment Equipped { get; private set; }
         public bool Reloading { get; private set; }
         public int Magazine => loaded[(int)Equipped];
         public int Reserve => reserve[(int)Equipped];
-        public int Capacity => Equipped == Equipment.Pistol ? 15 : Equipped == Equipment.Rifle ? 30 : Equipped == Equipment.Revolver ? 6 : 0;
-        public float ReloadSeconds => Equipped == Equipment.Pistol ? 1.7f : Equipped == Equipment.Revolver ? 2.7f : 2.2f;
+        static readonly int[] capacities={0,0,15,30,6,0,17,17,30,10,30};
+        public int Capacity=>capacities[(int)Equipped];
+        public float ReloadSeconds=>Equipped==Equipment.Revolver?2.7f:IsAutomatic?2.2f:1.7f;
         public float ReloadProgress => Reloading ? 1f - reloadRemaining / ReloadSeconds : 0;
-        public bool IsFirearm => Equipped == Equipment.Pistol || Equipped == Equipment.Rifle || Equipped == Equipment.Revolver;
+        public bool IsFirearm => (int)Equipped>=2&&Equipped!=Equipment.Machete;
+        public bool IsAutomatic=>Equipped==Equipment.Rifle||Equipped==Equipment.PMX||Equipped==Equipment.ColtM5;
         public int LoadedFor(Equipment value) => Enum.IsDefined(typeof(Equipment),value)?loaded[(int)value]:0;
         public int ReserveFor(Equipment value) => Enum.IsDefined(typeof(Equipment),value)?reserve[(int)value]:0;
 
@@ -51,9 +53,9 @@ namespace Blackstone.Foundation
             {
                 if (Magazine == 0) return false;
                 loaded[(int)Equipped]--;
-                cooldown = Equipped == Equipment.Rifle ? .13f : Equipped == Equipment.Revolver ? .40f : .26f;
+                cooldown = IsAutomatic ? .13f : Equipped == Equipment.Revolver ? .40f : .26f;
             }
-            else cooldown = Equipped == Equipment.Knife ? .58f : .65f;
+            else cooldown = Equipped == Equipment.Knife || Equipped==Equipment.Machete ? .58f : .65f;
             return true;
         }
     }

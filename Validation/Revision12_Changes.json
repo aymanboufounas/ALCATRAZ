@@ -1,0 +1,24 @@
+{
+  "version": "0.12.0",
+  "supplied_archives": 20,
+  "native_assets": "20 model prefabs with mesh colliders on static scenery; optimized textures and geometry",
+  "poker_weapon_execution": "PASS: 160041 checks (Mono, deterministic seeds, chip conservation, betting, all-ins, ranking and reload/cooldown checks)",
+  "native_validation": "PASS: 2,468 native files; 87,778 YAML documents; no unresolved native GUIDs, mesh/weight failures or image failures",
+  "limitations": [
+    "Unity 6000.0.62f1 Editor and Player are unavailable here",
+    "Play Mode, joint stability, swept collisions, URP rendering and Windows build need validation in Unity"
+  ],
+  "changes": [
+    "Native default assets bypass failed dependency reimport on Play",
+    "Jump anticipation, airborne limb poses, landing recovery and hard-impact ragdoll",
+    "Delayed recovery after sea/out-of-bounds falls",
+    "Timed boxing combos, guard, stamina, sparring and suspended punching bag",
+    "Rigid-body helicopter with rotating blades and safe boarding/exits",
+    "Original buoyant patrol boat with throttle/rudder and dock exits",
+    "Shared professional title/pause/settings menus",
+    "Four-player Texas Holdem with public-information AI, side pots and split payouts",
+    "All 20 new archives converted and accessible in recreation/workshop annex",
+    "Supplied machete and five firearms available via mouse wheel"
+  ],
+  "static_native_meshes": 182
+}

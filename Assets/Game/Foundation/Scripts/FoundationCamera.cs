@@ -10,6 +10,9 @@ namespace Blackstone.Foundation
         public PlayerInputHandler input;
         public float sensitivity = .09f;
         public bool invertY;
+        public Transform FollowOverride;
+        public float FollowDistance=3.15f;
+        public bool ActivityCamera;
         public Blackstone.Story.PrisonStoryDirector story;
         public Transform characterVisual;
         float yaw, pitch = 12, shoulder = 1, kick;
@@ -22,7 +25,7 @@ namespace Blackstone.Foundation
         int teleportVersion;
         SphereCollider collisionProbe;
         readonly Collider[] overlaps = new Collider[24];
-        const int ObstructionLayers = ~((1 << 8) | (1 << 2));
+        const int ObstructionLayers = ~((1 << 8) | (1 << 2) | (1 << 10) | (1 << 11));
         void Start()
         {
             view = GetComponent<Camera>();
@@ -47,7 +50,7 @@ namespace Blackstone.Foundation
             previousPlayer = player.transform.position;
             teleportVersion = player.TeleportVersion;
             Quaternion facing = Quaternion.Euler(pitch, yaw, 0);
-            Vector3 pivot = player.cameraTarget != null ? player.cameraTarget.position : player.transform.position + Vector3.up * 1.45f;
+            Vector3 pivot = FollowOverride != null ? FollowOverride.position : player.cameraTarget != null ? player.cameraTarget.position : player.transform.position + Vector3.up * 1.45f;
             pivot = Separate(pivot);
             transform.SetPositionAndRotation(Resolve(pivot, pivot - facing * Vector3.forward * 3.15f), facing);
         }
@@ -63,7 +66,7 @@ namespace Blackstone.Foundation
         public void Recoil(float value) { kick = Mathf.Min(kick + value, 7); }
         void LateUpdate()
         {
-            if (player == null || input == null || view == null) return;
+            if (player == null || input == null || view == null || ActivityCamera) return;
             if (story != null)
             {
                 if (story.Letterbox) { Visibility(false); wasCinematic = true; return; }
@@ -82,11 +85,11 @@ namespace Blackstone.Foundation
                 kick = Mathf.MoveTowards(kick, 0, 8 * Time.deltaTime);
             }
             Quaternion facing = Quaternion.Euler(pitch-kick, yaw, 0);
-            Vector3 pivot = player.cameraTarget != null ? player.cameraTarget.position : player.transform.position + Vector3.up*1.45f;
+            Vector3 pivot = FollowOverride != null ? FollowOverride.position : player.cameraTarget != null ? player.cameraTarget.position : player.transform.position + Vector3.up*1.45f;
             pivot = Separate(pivot);
             Vector3 anchor = pivot + facing * new Vector3(.48f*shoulder, .08f, 0);
             anchor = Resolve(pivot, anchor);
-            Vector3 desired = anchor - facing * Vector3.forward * (input.Aim ? 1.9f : 3.15f);
+            Vector3 desired = anchor - facing * Vector3.forward * (FollowOverride != null ? FollowDistance : input.Aim ? 1.9f : 3.15f);
             Vector3 wanted = Resolve(anchor, desired);
             bool obstructed = (wanted-desired).sqrMagnitude > .0001f;
             float dt = Mathf.Max(.0001f, Time.deltaTime);

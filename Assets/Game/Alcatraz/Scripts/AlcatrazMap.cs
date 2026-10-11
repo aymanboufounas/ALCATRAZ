@@ -43,25 +43,26 @@ namespace Blackstone.Alcatraz
             if(player!=null)
             {
                 safePosition=player.transform.position;validSafePosition=true;
-                player.GuardUnsafeLedges=story==null||!story.enabled;
+                player.GuardUnsafeLedges=false;
             }
         }
         void LateUpdate()
         {
-            if(player==null||Time.deltaTime<=0)return;
+            if(player==null||player.ExternalControl||Time.deltaTime<=0)return;
             Vector3 position=player.transform.position;
             if(player.Grounded&&position.y>1.5f&&SafeFooting(position))
             {safePosition=position;validSafePosition=true;}
             if(!validSafePosition)return;
+            var annex=GetComponent<Blackstone.Supplied.SuppliedExtrasWorld>();
+            if(annex!=null&&annex.Visiting){var p=position-Blackstone.Supplied.SuppliedExtrasWorld.Origin;if(Mathf.Abs(p.x)>49.5f||Mathf.Abs(p.z)>54.5f||p.y<-1)player.Teleport(safePosition);return;}
             bool prison=suppliedWorld!=null&&suppliedWorld.InsidePrison;
             Vector3 local=prison?Blackstone.Supplied.SuppliedPrisonInterior.Local(position):position;
             bool outside=prison?(Mathf.Abs(local.x)>27.4f||local.z>66.8f||local.z<-43.4f||local.y<29.6f)
                 :Mathf.Abs(position.x)>(suppliedLayout?350:135)||Mathf.Abs(position.z)>(suppliedLayout?225:220);
-            // Recover before the falling camera reaches the underside of the island.
-            // Ordinary jumps, stairs and drops onto a nearby floor remain available.
-            bool unsupportedFall=player.VerticalSpeed < -3 && position.y<safePosition.y-1.25f
-                &&!Physics.Raycast(position+Vector3.up*.3f,Vector3.down,8,~(1<<8),QueryTriggerInteraction.Ignore);
-            if(position.y<1.2f||outside||unsupportedFall)
+            // Let the full fall play. Only recover after entering the sea or leaving the world.
+            bool unsupportedFall=player.AirTime>3.5f && player.VerticalSpeed < -12
+                && !Physics.Raycast(position+Vector3.up*.3f,Vector3.down,8,~(1<<8),QueryTriggerInteraction.Ignore);
+            if(position.y<-.8f||outside||unsupportedFall)
             {
                 player.Teleport(safePosition);RecoveryMessageUntil=Time.unscaledTime+3;
             }

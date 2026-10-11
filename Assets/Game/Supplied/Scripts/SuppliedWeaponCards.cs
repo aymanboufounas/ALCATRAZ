@@ -30,9 +30,9 @@ namespace Blackstone.Supplied
             int slot=System.Array.IndexOf(slots,equipment.State.Equipped);
             if(slot>=0){DrawCard(equipment,bounds,slot);return;}
             Panel(bounds,new Color(.015f,.03f,.035f,.88f));
-            GUI.Label(new Rect(bounds.x+15,bounds.y+12,bounds.width-30,30),"UNARMED",nameStyle);
-            GUI.Label(new Rect(bounds.x+15,bounds.y+47,bounds.width-30,25),"1 Unarmed   ·   2–5 Equip   ·   R Reload",small);
-            GUI.Label(new Rect(bounds.x+15,bounds.y+78,bounds.width-30,22),"Hold Tab / LB for inventory",small);
+            GUI.Label(new Rect(bounds.x+15,bounds.y+12,bounds.width-30,30),equipment.State.Equipped.ToString().ToUpperInvariant(),nameStyle);
+            GUI.Label(new Rect(bounds.x+15,bounds.y+47,bounds.width-30,25),equipment.State.IsFirearm?equipment.State.Magazine+" / "+equipment.State.Reserve:"CLOSE COMBAT",small);
+            GUI.Label(new Rect(bounds.x+15,bounds.y+78,bounds.width-30,22),"Mouse wheel: equipment   ·   R: reload",small);
         }
         void DrawCard(FoundationWeapons equipment,Rect bounds,int index)
         {

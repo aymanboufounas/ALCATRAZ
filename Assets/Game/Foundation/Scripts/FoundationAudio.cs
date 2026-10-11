@@ -20,6 +20,7 @@ namespace Blackstone.Foundation
         readonly Dictionary<string, int> last = new Dictionary<string, int>();
         void Awake()
         {
+            master=PlayerPrefs.GetFloat("Blackstone.Master",1);effects=PlayerPrefs.GetFloat("Blackstone.Effects",1);
             Instance = this; pool = new AudioSource[24]; filters = new AudioLowPassFilter[24]; rooms = new AudioReverbFilter[24];gains=new float[24];
             for (int i=0;i<pool.Length;i++)
             {

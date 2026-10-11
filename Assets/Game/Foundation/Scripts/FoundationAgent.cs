@@ -20,7 +20,8 @@ namespace Blackstone.Foundation
         }
         void Update()
         {
-            if(avatar==null)return;
+            if(avatar==null||!avatar.animator.enabled)return;
+            var fall=GetComponent<FoundationFall>();if(fall!=null&&fall.Recovering)return;
             avatar.agentSpeed = 0;
             if (Time.deltaTime <= 0 || avatar.seated || (actor!=null&&(actor.Talking||actor.Suspended)) || route == null || route.Length == 0 || Time.time < wait) return;
             Vector3 delta = route[index] - transform.position; delta.y = 0;

@@ -22,7 +22,7 @@ namespace Blackstone.Supplied
         PlayerMovement player;
         PlayerInputHandler input;
         Vector3 safe;
-        Material water,deck;
+        Material water,deck,boatHullMaterial;Mesh boatHullMesh;
         void Awake()
         {
             try
@@ -60,17 +60,24 @@ namespace Blackstone.Supplied
                 for(int i=0;i<3;i++)
                     Cube("Dock practice target "+(i+1),landing+new Vector3(-3+i*3,1.35f,-4),new Vector3(.7f,1.1f,.12f),deck,true).AddComponent<FoundationTarget>();
                 helicopter.transform.rotation=Quaternion.Euler(0,110,0);SuppliedModel.SizeAndGround(helicopter,2.8f,landing+Vector3.up*.02f);
-                // Bounds are world-aligned. Keep this collider on an unrotated
-                // object instead of rotating the bounds a second time.
                 var aircraftBounds=SuppliedModel.Bounds(helicopter);
-                var aircraftBody=new GameObject("Little Bird collision");aircraftBody.transform.SetParent(transform);
-                aircraftBody.transform.position=aircraftBounds.center;aircraftBody.AddComponent<BoxCollider>().size=aircraftBounds.size;
+                var craft=new GameObject("Flyable Little Bird");craft.transform.SetParent(transform);craft.transform.position=new Vector3(aircraftBounds.center.x,aircraftBounds.min.y,aircraftBounds.center.z);craft.transform.rotation=helicopter.transform.rotation;
+                helicopter.transform.SetParent(craft.transform,true);
+                var aircraftBody=craft.AddComponent<BoxCollider>();aircraftBody.center=new Vector3(0,.85f,0);aircraftBody.size=new Vector3(1.7f,1.7f,3.4f);
+                var tail=craft.AddComponent<BoxCollider>();tail.center=new Vector3(0,1.25f,-2.5f);tail.size=new Vector3(.45f,.55f,2.8f);
+                craft.AddComponent<Rigidbody>();var flight=craft.AddComponent<FoundationVehicle>();flight.aircraft=true;
+                Renderer mainRotor=null,tailRotor=null;
+                foreach(var r in helicopter.GetComponentsInChildren<Renderer>())
+                {string n=r.name.ToLowerInvariant();if(!n.Contains("helice")&&!n.Contains("rotor"))continue;if(mainRotor==null||r.bounds.size.magnitude>mainRotor.bounds.size.magnitude){tailRotor=mainRotor;mainRotor=r;}else tailRotor=r;}
+                if(mainRotor!=null)flight.rotor=RotorPivot(mainRotor,helicopter.transform);
+                if(tailRotor!=null)flight.tailRotor=RotorPivot(tailRotor,helicopter.transform);
                 var house=SuppliedModel.Create("House",transform);Vector3 housePosition=new Vector3(-165,2,162);
                 SuppliedModel.SizeAndGround(house,14,housePosition);
                 CoastalHouse=new GameObject("Coastal house dock").transform;CoastalHouse.SetParent(transform);CoastalHouse.position=new Vector3(-184,2.08f,148);
                 Cube("House dock platform",new Vector3(-165,1.85f,162),new Vector3(42,.3f,34),deck,true);
                 Vector3 shore=Ground(new Vector3(-173,0,80));BuildPier(shore+Vector3.up*.15f,new Vector3(-165,2,147));
-                interior=gameObject.AddComponent<SuppliedPrisonInterior>();interior.Create();Physics.SyncTransforms();
+                BuildBoat(new Vector3(-184,.2f,142));
+                interior=gameObject.AddComponent<SuppliedPrisonInterior>();interior.Create();gameObject.AddComponent<SuppliedExtrasWorld>();Physics.SyncTransforms();
                 Status="Ready";Ready=true;
             }
             catch(Exception e){Status=e.Message;Debug.LogError("Alcatraz supplied world: "+Status);}
@@ -89,22 +96,25 @@ namespace Blackstone.Supplied
             return hit.point;
         }
         public void VisitCellhouse()
-        {InsidePrison=false;Travel(Ground(new Vector3(-107,0,23))+Vector3.up*.12f,250);}
+        {if(player==null||player.ExternalControl)return;InsidePrison=false;Travel(Ground(new Vector3(-107,0,23))+Vector3.up*.12f,250);}
         public void VisitHelipad()
-        {InsidePrison=false;Travel(safe,200);}
+        {if(player==null||player.ExternalControl)return;InsidePrison=false;Travel(safe,200);}
         public void VisitCoastalHouse()
-        {InsidePrison=false;Travel(CoastalHouse.position,0);}
+        {if(player==null||player.ExternalControl)return;InsidePrison=false;Travel(CoastalHouse.position,0);}
         public void EnterCellhouse()
-        {if(!Ready)return;InsidePrison=true;Travel(SuppliedPrisonInterior.Offset+SuppliedPrisonInterior.EntryLocal,0);}
+        {if(!Ready||player==null||player.ExternalControl)return;InsidePrison=true;Travel(SuppliedPrisonInterior.Offset+SuppliedPrisonInterior.EntryLocal,0);}
         void Travel(Vector3 position,float yaw)
         {
-            if(!Ready||player==null)return;
+            if(!Ready||player==null||player.ExternalControl)return;
+            if(Blackstone.Activities.PrisonPokerTable.Active!=null)Blackstone.Activities.PrisonPokerTable.Active.Close();
+            var annex=GetComponent<SuppliedExtrasWorld>();if(annex!=null)annex.EndVisit();
             player.Teleport(position);player.transform.rotation=Quaternion.Euler(0,yaw,0);
             var map=GetComponent<Blackstone.Alcatraz.AlcatrazMap>();if(map!=null)map.SetSafePosition(position);
         }
         void Update()
         {
-            if(!Ready||player==null||input==null||!input.CanControl)return;
+            if(GetComponent<SuppliedExtrasWorld>()!=null&&GetComponent<SuppliedExtrasWorld>().Visiting)return;
+            if(!Ready||player==null||player.ExternalControl||input==null||!input.CanControl)return;
             // AlcatrazMap owns ledge protection and recovery for both island layouts.
             if(InsidePrison)
             {
@@ -115,6 +125,35 @@ namespace Blackstone.Supplied
             }
             else if(ChapterGate!=null&&Vector3.Distance(player.transform.position,ChapterGate.position)<3.4f&&input.InteractPressed)
                 EnterCellhouse();
+        }
+        static Transform RotorPivot(Renderer blade,Transform model)
+        {var pivot=new GameObject("Rotor axle").transform;pivot.SetParent(model,true);pivot.position=blade.bounds.center;pivot.rotation=model.rotation;blade.transform.SetParent(pivot,true);return pivot;}
+        void BuildBoat(Vector3 position)
+        {
+            var root=new GameObject("Alcatraz coastal patrol boat");root.transform.SetParent(transform);root.transform.position=position;
+            var hull=boatHullMaterial=new Material(deck){color=new Color(.12f,.2f,.24f)};
+            var keel=BoatPart(root.transform,"Hull keel",new Vector3(0,-.15f,0),new Vector3(1.9f,.65f,4.6f),hull,true);keel.GetComponent<Renderer>().enabled=false;
+            boatHullMesh=BoatHull(root.transform,hull);
+            BoatPart(root.transform,"Port gunwale",new Vector3(-.92f,.36f,0),new Vector3(.14f,.45f,4.2f),deck,true);
+            BoatPart(root.transform,"Starboard gunwale",new Vector3(.92f,.36f,0),new Vector3(.14f,.45f,4.2f),deck,true);
+            BoatPart(root.transform,"Bow",new Vector3(0,.2f,2.05f),new Vector3(1.75f,.35f,.5f),deck,true);
+            BoatPart(root.transform,"Pilot console",new Vector3(0,.65f,.25f),new Vector3(.9f,.9f,.55f),deck,true);
+            BoatPart(root.transform,"Bench",new Vector3(0,.4f,-1.2f),new Vector3(1.6f,.25f,.6f),deck,true);
+            BoatPart(root.transform,"Outboard motor",new Vector3(0,.2f,-2.35f),new Vector3(.5f,.85f,.45f),hull,true);
+            root.AddComponent<Rigidbody>();var vessel=root.AddComponent<FoundationVehicle>();vessel.seat=new Vector3(0,.55f,-.45f);
+        }
+        GameObject BoatPart(Transform parent,string name,Vector3 p,Vector3 size,Material mat,bool collision)
+        {var go=Cube(name,Vector3.zero,size,mat,collision);go.transform.SetParent(parent,false);go.transform.localPosition=p;return go;}
+        static Mesh BoatHull(Transform root,Material material)
+        {
+            Vector2[] ring={new Vector2(-.85f,-2.2f),new Vector2(.85f,-2.2f),new Vector2(1,-1.2f),new Vector2(.85f,1.5f),new Vector2(.4f,2.3f),new Vector2(0,2.75f),new Vector2(-.4f,2.3f),new Vector2(-.85f,1.5f)};
+            var vertices=new System.Collections.Generic.List<Vector3>();var triangles=new System.Collections.Generic.List<int>();
+            for(int i=0;i<8;i++){var a=ring[i];vertices.Add(new Vector3(a.x,.35f,a.y));vertices.Add(new Vector3(a.x*.6f,-.45f,a.y*.82f));}
+            for(int i=0;i<8;i++){int j=(i+1)%8;triangles.AddRange(new[]{i*2,j*2,i*2+1,j*2,j*2+1,i*2+1});}
+            vertices.Add(new Vector3(0,.35f,0));vertices.Add(new Vector3(0,-.45f,0));
+            for(int i=0;i<8;i++){int j=(i+1)%8;triangles.AddRange(new[]{16,j*2,i*2,17,i*2+1,j*2+1});}
+            var mesh=new Mesh{name="Patrol boat hull"};mesh.SetVertices(vertices);mesh.SetTriangles(triangles,0);mesh.RecalculateNormals();mesh.RecalculateBounds();
+            var go=new GameObject("V hull");go.transform.SetParent(root,false);go.AddComponent<MeshFilter>().sharedMesh=mesh;go.AddComponent<MeshRenderer>().sharedMaterial=material;return mesh;
         }
         static Transform Anchor(string name,Transform parent,Vector3 position)
         {var node=new GameObject(name).transform;node.SetParent(parent);node.localRotation=Quaternion.identity;node.position=position;return node;}
@@ -133,6 +172,6 @@ namespace Blackstone.Supplied
             var go=GameObject.CreatePrimitive(PrimitiveType.Cube);go.name=name;go.transform.SetParent(transform);go.transform.position=position;go.transform.localScale=scale;
             go.GetComponent<Renderer>().sharedMaterial=material;go.GetComponent<Collider>().enabled=collision;return go;
         }
-        void OnDestroy(){if(water!=null)Destroy(water);if(deck!=null)Destroy(deck);}
+        void OnDestroy(){if(water!=null)Destroy(water);if(deck!=null)Destroy(deck);if(boatHullMaterial!=null)Destroy(boatHullMaterial);if(boatHullMesh!=null)Destroy(boatHullMesh);}
     }
 }

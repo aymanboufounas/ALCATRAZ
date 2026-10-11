@@ -13,7 +13,7 @@ namespace DesertShift.Player
         [SerializeField] float crouchSpeed = 1.15f;
         [SerializeField] float acceleration = 8.5f;
         [SerializeField] float deceleration = 12f;
-        [SerializeField] float gravity = -27f;
+        [SerializeField] float gravity = -19.6f;
         [SerializeField] float jumpHeight = 1.05f;
         [SerializeField] float rotationSharpness = 10f;
         [SerializeField] LayerMask groundLayers = ~(1 << 8);
@@ -24,9 +24,16 @@ namespace DesertShift.Player
         // Exploration worlds can protect exposed cliffs without changing story movement.
         public bool GuardUnsafeLedges { get; set; }
         public int TeleportVersion { get; private set; }
-        public float Speed => input != null && !input.CanControl ? 0 :
+        public float Speed => ExternalControl ? 0 : input != null && !input.CanControl ? 0 :
             new Vector3(controller.velocity.x, 0, controller.velocity.z).magnitude;
         public float VerticalSpeed => velocityY;
+        public bool ExternalControl { get; private set; }
+        public float AirTime { get; private set; }
+        public float LandingSpeed { get; private set; }
+        public float LandingRecovery { get; private set; }
+        public float JumpPreparation => jumpAt > 0 ? Mathf.Clamp01((jumpAt-Time.time)/.09f) : 0;
+        public Vector3 LastSupportedPosition { get; private set; }
+        float jumpAt;
         public Vector2 LocalMotion { get; private set; }
         public float TurnRate { get; private set; }
         public bool JumpedThisFrame { get; private set; }
@@ -42,32 +49,33 @@ namespace DesertShift.Player
         void Awake()
         {
             controller = GetComponent<CharacterController>(); input = GetComponent<PlayerInputHandler>();
-            standingHeight = controller.height; start = transform.position;
+            groundLayers &= ~(1 << 10);
+            standingHeight = controller.height; start = LastSupportedPosition = transform.position;
         }
         void Update()
         {
             if (Time.deltaTime <= 0) return;
             JumpedThisFrame = LandedThisFrame = false;
-            if (!input.CanControl) { velocity = Vector3.zero; velocityY = 0; LocalMotion = Vector2.zero; return; }
+            if (ExternalControl || !controller.enabled) { LocalMotion=Vector2.zero; return; }
             bool wasGrounded = Grounded;
-            Grounded = controller.isGrounded || (velocityY <= 0 && Physics.SphereCast(
-                transform.position + Vector3.up * .26f, .20f, Vector3.down, out _, .31f,
-                groundLayers, QueryTriggerInteraction.Ignore));
-            LandedThisFrame = Grounded && !wasGrounded && velocityY < -2;
-            if (Grounded) lastGrounded = Time.time;
+            Grounded = velocityY <= .1f && (controller.isGrounded || Physics.SphereCast(
+                transform.position + Vector3.up * .24f, .18f, Vector3.down, out var support, .12f,
+                groundLayers, QueryTriggerInteraction.Ignore) && support.normal.y > .55f);
+            LandingRecovery = Mathf.MoveTowards(LandingRecovery, 0, Time.deltaTime);
+            if (Grounded) { lastGrounded=Time.time; LastSupportedPosition=transform.position; }
             if (input.JumpPressed) lastJumpPressed = Time.time;
             UpdateCrouch();
             var cam = UnityEngine.Camera.main;
             float yaw = cam != null ? cam.transform.eulerAngles.y : transform.eulerAngles.y;
-            Vector2 axis = Vector2.ClampMagnitude(input.Move, 1);
+            Vector2 axis = Vector2.ClampMagnitude(input.CanControl ? input.Move : Vector2.zero, 1);
             Quaternion heading = Quaternion.Euler(0, yaw, 0);
             Vector3 wantedDirection = heading * new Vector3(axis.x, 0, axis.y);
             // Free movement follows actual travel; aiming keeps camera-relative strafing.
             float maxSpeed = IsCrouching ? crouchSpeed : input.Aim || input.Walk ? walkSpeed
                 : input.Sprint ? sprintSpeed : jogSpeed;
-            var targetVelocity = wantedDirection * maxSpeed;
+            var targetVelocity = wantedDirection * maxSpeed * (LandingRecovery > 0 ? .4f : 1) * (jumpAt > 0 ? .65f : 1);
             velocity = Vector3.MoveTowards(velocity, targetVelocity,
-                (axis.sqrMagnitude > .001f ? acceleration : deceleration) * Time.deltaTime);
+                (axis.sqrMagnitude > .001f ? acceleration : deceleration) * (Grounded ? 1 : .25f) * Time.deltaTime);
             float oldYaw = transform.eulerAngles.y;
             if (axis.sqrMagnitude > .001f || input.Aim)
             {
@@ -78,12 +86,16 @@ namespace DesertShift.Player
             }
             TurnRate = Mathf.DeltaAngle(oldYaw, transform.eulerAngles.y) / Time.deltaTime;
             if (Grounded && velocityY < 0) velocityY = -3f;
-            if (!IsCrouching && Time.time - lastJumpPressed < .12f && Time.time - lastGrounded < .12f)
+            if (!IsCrouching && LandingRecovery<=0 && jumpAt<=0 && Time.time-lastJumpPressed<.12f && Time.time-lastGrounded<.12f)
+            { jumpAt=Time.time+.09f; lastJumpPressed=-10; }
+            if(jumpAt>0 && Time.time>=jumpAt)
             {
-                velocityY = Mathf.Sqrt(jumpHeight * -2f * gravity); Grounded = false;
-                JumpedThisFrame = true; lastJumpPressed = lastGrounded = -10;
+                if(Time.time-lastGrounded<.22f) { velocityY=Mathf.Sqrt(jumpHeight*-2f*gravity); Grounded=false; JumpedThisFrame=true; lastGrounded=-10; }
+                jumpAt=0;
             }
-            velocityY = Mathf.Max(velocityY + gravity * Time.deltaTime, -45f);
+            float fallingGravity = velocityY < 0 ? gravity*1.25f : gravity;
+            velocityY = Mathf.Max(velocityY + fallingGravity * Time.deltaTime, -45f);
+            float impactSpeed = -velocityY;
             Vector3 horizontal = velocity;
             if (Grounded && Physics.Raycast(transform.position + Vector3.up * .3f, Vector3.down,
                 out RaycastHit slope, .7f, groundLayers, QueryTriggerInteraction.Ignore))
@@ -96,6 +108,14 @@ namespace DesertShift.Player
             if (GuardUnsafeLedges && Grounded && velocityY <= 0)
                 horizontal = ProtectLedge(horizontal, Time.deltaTime);
             CollisionFlags flags = controller.Move((horizontal + Vector3.up * velocityY) * Time.deltaTime);
+            Grounded = velocityY<=0 && (flags & CollisionFlags.Below)!=0;
+            if (Grounded)
+            {
+                if(!wasGrounded && AirTime>.08f)
+                { LandedThisFrame=true; LandingSpeed=impactSpeed; LandingRecovery=Mathf.Clamp((impactSpeed-3)/18,.08f,.7f); }
+                AirTime=0; velocityY=-3;
+            }
+            else AirTime+=Time.deltaTime;
             if ((flags & CollisionFlags.Above) != 0 && velocityY > 0) velocityY = 0;
             var local = transform.InverseTransformDirection(new Vector3(controller.velocity.x, 0, controller.velocity.z));
             LocalMotion = new Vector2(local.x, local.z);
@@ -105,7 +125,7 @@ namespace DesertShift.Player
                 p.y = Mathf.Lerp(p.y, IsCrouching ? .98f : 1.45f, 1 - Mathf.Exp(-14 * Time.deltaTime));
                 cameraTarget.localPosition = p;
             }
-            if (transform.position.y < -25) Teleport(start);
+            if (transform.position.y < -40) Teleport(LastSupportedPosition);
         }
         Vector3 ProtectLedge(Vector3 motion, float deltaTime)
         {
@@ -149,13 +169,15 @@ namespace DesertShift.Player
             controller.height = height; controller.center = Vector3.up * height * .5f;
             controller.stepOffset = Grounded ? (shouldCrouch ? .18f : .3f) : 0;
         }
+        public void SetExternalControl(bool active)
+        { ExternalControl=active; controller.enabled=!active; velocity=Vector3.zero; velocityY=0; LocalMotion=Vector2.zero; jumpAt=0; }
         public void Teleport(Vector3 position)
         {
             controller.enabled = false; transform.position = position;
             velocity = Vector3.zero; velocityY = 0; LocalMotion = Vector2.zero; TurnRate = 0;
             Grounded = JumpedThisFrame = LandedThisFrame = false;
             lastGrounded = lastJumpPressed = -10;
-            controller.enabled = true; TeleportVersion++;
+            controller.enabled = !ExternalControl; AirTime=LandingRecovery=0; jumpAt=0; TeleportVersion++;
         }
     }
 }

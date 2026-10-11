@@ -17,6 +17,12 @@ jobs:
           cache: pip
           cache-dependency-path: Tools/requirements.txt
       - run: pip install -r Tools/requirements.txt
+      - name: Execute poker and weapon rule tests
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq mono-mcs
+          mcs -out:/tmp/HoldemTests.exe Assets/Game/Scripts/Activities/PrisonPokerRules.cs Assets/Game/Scripts/Activities/HoldemGame.cs Assets/Game/Foundation/Scripts/WeaponState.cs Tools/Tests/HoldemTests.cs
+          mono /tmp/HoldemTests.exe
       - name: Check C# grammar
         run: python Tools/check_csharp_syntax.py
       - name: Check character forward axis and source gait

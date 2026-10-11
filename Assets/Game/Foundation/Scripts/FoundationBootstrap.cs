@@ -76,6 +76,8 @@ namespace Blackstone.Foundation
                 avatar.movement=isPlayer?Player:null;
                 avatar.seated=actor.pose==ActorPose.Cards||actor.pose==ActorPose.Read||actor.pose==ActorPose.SeatedTalk;
                 avatar.Bind();
+                var fall=actor.GetComponent<FoundationFall>();if(fall==null)fall=actor.gameObject.AddComponent<FoundationFall>();fall.avatar=avatar;
+                if(isPlayer||(!guard&&!storyMode))actor.gameObject.AddComponent<FoundationBoxing>();
                 if(identity!=null){animator.Play(0,0,identity.idlePhase);animator.Update(0);}
                 var feet=actor.gameObject.AddComponent<FoundationFootsteps>();feet.avatar=avatar;
                 var pose=actor.gameObject.AddComponent<FoundationActorPose>();pose.body=avatar;pose.actor=actor;

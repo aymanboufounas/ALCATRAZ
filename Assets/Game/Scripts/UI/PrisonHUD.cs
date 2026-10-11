@@ -217,31 +217,29 @@ namespace Blackstone.UI
         }
         void Menu()
         {
-            Panel(new Rect(0,0,1920,1080), new Color(.012f,.019f,.032f,.82f));
-            Panel(new Rect(104,170,6,610), amber);
-            Label(new Rect(148,177,1300,50), "THE SILENT BLUEPRINT", title, amber);
-            var heading = new GUIStyle(hero) { alignment = TextAnchor.MiddleLeft, fontSize = 76 };
-            Label(new Rect(146,231,1450,120), island!=null?"ALCATRAZ ISLAND":"BLACKSTONE ISLAND", heading);
-            Label(new Rect(152,366,850,110), "CHAPTER 01  /  THE PRISONER\nYou are Elias Vale, inmate B-04.\nBuild alliances and prepare to escape "+(island!=null?"Alcatraz.":"Blackstone."), body);
-            if (!settings)
-            {
-                if (director.CanContinue && GUI.Button(new Rect(150,498,460,64), "Continue checkpoint", button)) director.StartSession(true);
-                if (GUI.Button(new Rect(150,580,460,64), "New game — Enter Cell B-04", button)) director.StartSession(false);
-                if (GUI.Button(new Rect(150,662,460,64), "Settings", button)) settings = true;
-                Label(new Rect(150,760,900,75), "Mission 1: First respect  •  5–6 min at normal pace\nMission 2: Trust line  •  Mission 3: Yard trouble", small, amber);
-                Label(new Rect(150,928,1100,50), "CONTROLLER: X  CONTINUE / START     Y  NEW GAME", small);
-            }
-            else SettingsPanel();
+            Blackstone.Foundation.PrisonMenuTheme.Frame(1920,1080,"ALCATRAZ\nISLAND","THE PRISONER  /  CHAPTER 01",false);
+            if(settings){SettingsPanel();return;}
+            if(Blackstone.Foundation.PrisonMenuTheme.Navigation(0,"01   Continue checkpoint",director.CanContinue))director.StartSession(true);
+            if(Blackstone.Foundation.PrisonMenuTheme.Navigation(1,"02   New game"))director.StartSession(false);
+            if(Blackstone.Foundation.PrisonMenuTheme.Navigation(2,"03   Settings"))settings=true;
+            if(Blackstone.Foundation.PrisonMenuTheme.Navigation(3,"04   Quit"))Application.Quit();
+            Blackstone.Foundation.PrisonMenuTheme.Text(new Rect(750,235,950,32),"ELIAS VALE  /  INMATE B-04",true);
+            Label(new Rect(750,310,950,100),"The prison has a rhythm.",hero);
+            Blackstone.Foundation.PrisonMenuTheme.Text(new Rect(750,440,850,180),"Learn it. Build alliances. Find the gaps. Your first days inside Alcatraz are the beginning of your escape.");
+            Blackstone.Foundation.PrisonMenuTheme.Text(new Rect(750,745,930,80),"CONTROLLER   X: Continue  ·  Y: New game",true);
         }
         void Pause()
         {
-            Panel(new Rect(0,0,1920,1080), new Color(.015f,.022f,.032f,.88f));
-            if (settings) { SettingsPanel(); return; }
-            Label(new Rect(700,236,520,80), "PAUSED", hero, amber);
-            if (GUI.Button(new Rect(700,377,520,64), "Resume  [Esc / Start]", button)) director.input.Capture(true);
-            if (GUI.Button(new Rect(700,461,520,64), "Settings", button)) settings = true;
-            if (GUI.Button(new Rect(700,545,520,64), "Save checkpoint", button)) director.SaveNow();
-            if (GUI.Button(new Rect(700,629,520,64), "Return to title", button)) director.ReturnToMenu();
+            Blackstone.Foundation.PrisonMenuTheme.Frame(1920,1080,"PAUSED","ALCATRAZ CELLHOUSE",true);
+            if(settings){SettingsPanel();return;}
+            if(Blackstone.Foundation.PrisonMenuTheme.Navigation(0,"01   Resume game  [Esc / Start]"))director.input.Capture(true);
+            if(Blackstone.Foundation.PrisonMenuTheme.Navigation(1,"02   Settings"))settings=true;
+            if(Blackstone.Foundation.PrisonMenuTheme.Navigation(2,"03   Save checkpoint"))director.SaveNow();
+            if(Blackstone.Foundation.PrisonMenuTheme.Navigation(3,"04   Return to title"))director.ReturnToMenu();
+            Blackstone.Foundation.PrisonMenuTheme.Text(new Rect(750,235,960,35),"CHAPTER 01  /  THE PRISONER",true);
+            Blackstone.Foundation.PrisonMenuTheme.Text(new Rect(750,315,920,180),"Your next move matters. Learn the routine, earn the inmates’ trust and prepare your escape.");
+            Blackstone.Foundation.PrisonMenuTheme.Text(new Rect(750,635,900,32),"CHECKPOINTS",true);
+            Blackstone.Foundation.PrisonMenuTheme.Text(new Rect(750,695,900,130),"Save your current progress here. Continue from the title screen when you return.");
         }
         void SettingsPanel()
         {
