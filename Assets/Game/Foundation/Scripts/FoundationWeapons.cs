@@ -60,7 +60,7 @@ namespace Blackstone.Foundation
             if(value==Equipment.Pistol||value==Equipment.Revolver)
             {
                 string suppliedName=value==Equipment.Pistol?"Pistol10mm":"Revolver";
-                if(Resources.Load<GameObject>("AlcatrazSupplied/Prepared/"+suppliedName)==null)
+                if(SuppliedModel.Load(suppliedName)==null)
                 {Debug.LogError("Prepare the supplied assets before equipping "+suppliedName);return;}
             }
             if(!State.Equip(value))return;

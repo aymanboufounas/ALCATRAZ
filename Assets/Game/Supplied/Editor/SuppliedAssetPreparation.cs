@@ -49,6 +49,24 @@ namespace Blackstone.Supplied.Editor
                 var interior=AssetDatabase.LoadAssetAtPath<GameObject>(interiorPath);
                 if(interior==null||interior.GetComponentsInChildren<MeshFilter>(true).Any(f=>f.sharedMesh==null))
                     throw new InvalidOperationException("The native cellhouse interior or a required mesh is missing. Download the complete updated repository ZIP.");
+                // Revision 12 ships native prefabs, meshes and dog clips. Play and
+                // builds no longer depend on glTFast producing a prefab in a fresh
+                // Windows project while its package/dependency import is pending.
+                string baked=Root+"Resources/AlcatrazSupplied/Baked/";
+                if(File.Exists(baked+"Manifest.json"))
+                {
+                    foreach(string name in Names)
+                    {
+                        var model=AssetDatabase.LoadAssetAtPath<GameObject>(baked+name+".prefab");
+                        if(model==null||model.GetComponentsInChildren<Renderer>(true).Length==0
+                            ||model.GetComponentsInChildren<MeshFilter>(true).Any(f=>f.sharedMesh==null)
+                            ||model.GetComponentsInChildren<SkinnedMeshRenderer>(true).Any(s=>s.sharedMesh==null))
+                            throw new InvalidOperationException("The packaged native "+name+" is incomplete. Extract the complete latest project ZIP.");
+                        if(name=="Dog")
+                        {var clips=model.GetComponentInChildren<Animation>(true);if(clips==null||clips.GetClipCount()!=17)throw new InvalidOperationException("The packaged dog requires all 17 native animation clips.");}
+                    }
+                    return;
+                }
                 string stamp=Generated+"PreparedRevision.txt";
                 string signature=Signature();
                 if(File.Exists(stamp)&&File.ReadAllText(stamp)==signature&&Names.All(name=>AssetDatabase.LoadAssetAtPath<GameObject>(Generated+"Prepared/"+name+".prefab")!=null))return;

@@ -88,7 +88,7 @@ namespace Blackstone.Foundation
                 if(Application.CanStreamedLevelBeLoaded(storyScene)&&GUI.Button(new Rect(x+40,y+450,550,48),"Play Chapter 01 · story scene",button))
                 {Time.timeScale=1;SceneManager.LoadScene(storyScene);}
                 if(suppliedWorld==null&&Application.CanStreamedLevelBeLoaded("SC_AlcatrazSuppliedIsland")
-                    &&Resources.Load<GameObject>("AlcatrazSupplied/Prepared/Island")!=null
+                    &&Blackstone.Supplied.SuppliedModel.Load("Island")!=null
                     &&GUI.Button(new Rect(x+40,y+507,550,42),"Explore supplied Alcatraz",button))
                 {Time.timeScale=1;SceneManager.LoadScene("SC_AlcatrazSuppliedIsland");}
                 var audio=FoundationAudio.Instance;

@@ -1,0 +1,71 @@
+{
+  "revision": 12,
+  "models": {
+    "Island": {
+      "prefab": "Assets/Game/Supplied/Resources/AlcatrazSupplied/Baked/Island.prefab",
+      "triangles": 205423,
+      "format": "native Unity mesh/prefab"
+    },
+    "Pistol10mm": {
+      "prefab": "Assets/Game/Supplied/Resources/AlcatrazSupplied/Baked/Pistol10mm.prefab",
+      "triangles": 15274,
+      "format": "native Unity mesh/prefab"
+    },
+    "Revolver": {
+      "prefab": "Assets/Game/Supplied/Resources/AlcatrazSupplied/Baked/Revolver.prefab",
+      "triangles": 143426,
+      "format": "native Unity mesh/prefab"
+    },
+    "Police": {
+      "prefab": "Assets/Game/Supplied/Resources/AlcatrazSupplied/Baked/Police.prefab",
+      "triangles": 7814,
+      "format": "native Unity mesh/prefab"
+    },
+    "Helmet": {
+      "prefab": "Assets/Game/Supplied/Resources/AlcatrazSupplied/Baked/Helmet.prefab",
+      "triangles": 19147,
+      "format": "native Unity mesh/prefab"
+    },
+    "Vest": {
+      "prefab": "Assets/Game/Supplied/Resources/AlcatrazSupplied/Baked/Vest.prefab",
+      "triangles": 2960,
+      "format": "native Unity mesh/prefab"
+    },
+    "Helicopter": {
+      "prefab": "Assets/Game/Supplied/Resources/AlcatrazSupplied/Baked/Helicopter.prefab",
+      "triangles": 27453,
+      "format": "native Unity mesh/prefab"
+    },
+    "House": {
+      "prefab": "Assets/Game/Supplied/Resources/AlcatrazSupplied/Baked/House.prefab",
+      "triangles": 150793,
+      "format": "native Unity mesh/prefab"
+    },
+    "Dog": {
+      "prefab": "Assets/Game/Supplied/Resources/AlcatrazSupplied/Baked/Dog.prefab",
+      "triangles": 65395,
+      "clips": [
+        "Assets/Game/Supplied/Resources/AlcatrazSupplied/Baked/Animations/Dog_0.anim",
+        "Assets/Game/Supplied/Resources/AlcatrazSupplied/Baked/Animations/Dog_1.anim",
+        "Assets/Game/Supplied/Resources/AlcatrazSupplied/Baked/Animations/Dog_2.anim",
+        "Assets/Game/Supplied/Resources/AlcatrazSupplied/Baked/Animations/Dog_3.anim",
+        "Assets/Game/Supplied/Resources/AlcatrazSupplied/Baked/Animations/Dog_4.anim",
+        "Assets/Game/Supplied/Resources/AlcatrazSupplied/Baked/Animations/Dog_5.anim",
+        "Assets/Game/Supplied/Resources/AlcatrazSupplied/Baked/Animations/Dog_6.anim",
+        "Assets/Game/Supplied/Resources/AlcatrazSupplied/Baked/Animations/Dog_7.anim",
+        "Assets/Game/Supplied/Resources/AlcatrazSupplied/Baked/Animations/Dog_8.anim",
+        "Assets/Game/Supplied/Resources/AlcatrazSupplied/Baked/Animations/Dog_9.anim",
+        "Assets/Game/Supplied/Resources/AlcatrazSupplied/Baked/Animations/Dog_10.anim",
+        "Assets/Game/Supplied/Resources/AlcatrazSupplied/Baked/Animations/Dog_11.anim",
+        "Assets/Game/Supplied/Resources/AlcatrazSupplied/Baked/Animations/Dog_12.anim",
+        "Assets/Game/Supplied/Resources/AlcatrazSupplied/Baked/Animations/Dog_13.anim",
+        "Assets/Game/Supplied/Resources/AlcatrazSupplied/Baked/Animations/Dog_14.anim",
+        "Assets/Game/Supplied/Resources/AlcatrazSupplied/Baked/Animations/Dog_15.anim",
+        "Assets/Game/Supplied/Resources/AlcatrazSupplied/Baked/Animations/Dog_16.anim"
+      ],
+      "joints": 200,
+      "format": "native skinned mesh and Legacy clips"
+    }
+  },
+  "scope": "Native source conversion; Unity import and playback require Editor validation"
+}
