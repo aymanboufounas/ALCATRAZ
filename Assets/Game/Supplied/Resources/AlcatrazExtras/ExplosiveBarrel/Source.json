@@ -1,0 +1,21 @@
+{
+  "name": "ExplosiveBarrel",
+  "archive": "explosive-barrel(1).zip",
+  "sha256": "215f6c3293b5c5e4323112e88e54717686de4db2c5a147189b018bc530d256ba",
+  "resource": "AlcatrazExtras/ExplosiveBarrel/ExplosiveBarrel",
+  "triangles": 2974,
+  "materials": 2,
+  "textures": 1,
+  "bounds": [
+    [
+      -1.0012229681015015,
+      -1.5049760341644287,
+      -1.0002859830856323
+    ],
+    [
+      0.9993500113487244,
+      1.4953999519348145,
+      1.0002880096435547
+    ]
+  ]
+}

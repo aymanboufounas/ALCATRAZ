@@ -1,5 +1,26 @@
 [
   {
+    "name": "AcidBarrel",
+    "archive": "acid-barrel(1).zip",
+    "sha256": "84286b76d5af15c3f5dfafe99288d468d257b0b03d9a7c420305533506c97215",
+    "resource": "AlcatrazExtras/AcidBarrel/AcidBarrel",
+    "triangles": 252,
+    "materials": 2,
+    "textures": 3,
+    "bounds": [
+      [
+        -0.9251880049705505,
+        -1.4324619770050049,
+        -0.924934983253479
+      ],
+      [
+        0.9251880049705505,
+        1.4394279718399048,
+        0.9259260296821594
+      ]
+    ]
+  },
+  {
     "name": "BRX1",
     "archive": "beretta-brx1.zip",
     "sha256": "174f3724a90cae99a93cc26966513f4052bf8d2543b2d31205b3845c19b276a3",
@@ -80,6 +101,27 @@
         3.5105996131896973,
         0.8826602846384048,
         0.3757534623146057
+      ]
+    ]
+  },
+  {
+    "name": "ExplosiveBarrel",
+    "archive": "explosive-barrel(1).zip",
+    "sha256": "215f6c3293b5c5e4323112e88e54717686de4db2c5a147189b018bc530d256ba",
+    "resource": "AlcatrazExtras/ExplosiveBarrel/ExplosiveBarrel",
+    "triangles": 2974,
+    "materials": 2,
+    "textures": 1,
+    "bounds": [
+      [
+        -1.0012229681015015,
+        -1.5049760341644287,
+        -1.0002859830856323
+      ],
+      [
+        0.9993500113487244,
+        1.4953999519348145,
+        1.0002880096435547
       ]
     ]
   },

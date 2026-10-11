@@ -1,0 +1,21 @@
+{
+  "name": "AcidBarrel",
+  "archive": "acid-barrel(1).zip",
+  "sha256": "84286b76d5af15c3f5dfafe99288d468d257b0b03d9a7c420305533506c97215",
+  "resource": "AlcatrazExtras/AcidBarrel/AcidBarrel",
+  "triangles": 252,
+  "materials": 2,
+  "textures": 3,
+  "bounds": [
+    [
+      -0.9251880049705505,
+      -1.4324619770050049,
+      -0.924934983253479
+    ],
+    [
+      0.9251880049705505,
+      1.4394279718399048,
+      0.9259260296821594
+    ]
+  ]
+}
