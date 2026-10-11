@@ -1,0 +1,21 @@
+{
+  "name": "PokerProps",
+  "archive": "poker-set (1).zip",
+  "sha256": "bdc5f0dee1dd28a0a6d845abdedcc925b7481f056858e1f9cd1015082a42bfd9",
+  "resource": "AlcatrazExtras/PokerProps/PokerProps",
+  "triangles": 344893,
+  "materials": 9,
+  "textures": 8,
+  "bounds": [
+    [
+      -889.6879459258436,
+      -4.178799207044524,
+      -810.4656599661732
+    ],
+    [
+      831.7104371699213,
+      470.5446504265028,
+      893.8216276815228
+    ]
+  ]
+}

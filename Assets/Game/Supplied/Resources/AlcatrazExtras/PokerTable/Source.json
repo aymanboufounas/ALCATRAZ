@@ -1,0 +1,21 @@
+{
+  "name": "PokerTable",
+  "archive": "poker-set.zip",
+  "sha256": "a126548999a5d8ec8bb27af0bc2046803faeaa7e5ef254db9433d6ceedb204db",
+  "resource": "AlcatrazExtras/PokerTable/PokerTable",
+  "triangles": 119983,
+  "materials": 3,
+  "textures": 4,
+  "bounds": [
+    [
+      -1076.3579687723634,
+      -1.9588699340820312,
+      -347.7088394165039
+    ],
+    [
+      223.5352398384383,
+      267.94667053222656,
+      255.22724136766973
+    ]
+  ]
+}

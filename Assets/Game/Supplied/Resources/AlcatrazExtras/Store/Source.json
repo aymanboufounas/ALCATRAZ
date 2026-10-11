@@ -1,0 +1,21 @@
+{
+  "name": "Store",
+  "archive": "abandoned-store-for-free.zip",
+  "sha256": "61267db3649b905662fb34d9ca849691321e5f4be27ccd8a972d86a8532a0db3",
+  "resource": "AlcatrazExtras/Store/Store",
+  "triangles": 5745,
+  "materials": 12,
+  "textures": 15,
+  "bounds": [
+    [
+      -621.322466391226,
+      -32.96379362470179,
+      -1485.4127044677734
+    ],
+    [
+      2435.77734375,
+      1969.2772216796875,
+      1584.3919830322266
+    ]
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "name": "UtilityBuilding",
+  "archive": "industrial-utility-building-game-ready.zip",
+  "sha256": "f57355ddb862ae50e76f2a4b86336ac37794e13b93cec87053ed84eab3ee7b59",
+  "resource": "AlcatrazExtras/UtilityBuilding/UtilityBuilding",
+  "triangles": 13586,
+  "materials": 26,
+  "textures": 17,
+  "bounds": [
+    [
+      -2135.080666143942,
+      -3.005852616695986,
+      -1802.4811947714381
+    ],
+    [
+      1726.1030314961245,
+      727.1330910410727,
+      1726.1030314961245
+    ]
+  ]
+}

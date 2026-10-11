@@ -1,0 +1,21 @@
+{
+  "name": "Beach",
+  "archive": "small-beach-lowpoly.zip",
+  "sha256": "96ec97ecfc666851e1f5da4adfd7337d714bc73827b508da188f6fe42fff16cc",
+  "resource": "AlcatrazExtras/Beach/Beach",
+  "triangles": 3000,
+  "materials": 1,
+  "textures": 1,
+  "bounds": [
+    [
+      -50.02209544181824,
+      -7.650914673410389,
+      -43.8387009009667
+    ],
+    [
+      50.02209544181824,
+      7.651490670717325,
+      43.838695024221664
+    ]
+  ]
+}

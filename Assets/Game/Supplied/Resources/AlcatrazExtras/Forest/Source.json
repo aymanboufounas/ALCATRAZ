@@ -1,0 +1,21 @@
+{
+  "name": "Forest",
+  "archive": "pine-forest-at-sunset.zip",
+  "sha256": "6a05d679873784e2a9829b60e014229acce3df199b0510bdd6aef9f6cb9b5100",
+  "resource": "AlcatrazExtras/Forest/Forest",
+  "triangles": 333008,
+  "materials": 8,
+  "textures": 8,
+  "bounds": [
+    [
+      -130.0,
+      -0.4326565280494705,
+      -130.0
+    ],
+    [
+      130.0,
+      16.19860601039545,
+      130.0
+    ]
+  ]
+}

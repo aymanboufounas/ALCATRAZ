@@ -1,0 +1,21 @@
+{
+  "name": "SteelStairs",
+  "archive": "staircase-modular-frame-steel.zip",
+  "sha256": "7c393138f9c387befef87dbafbf82496a99fc485c1680fddeef3c755b11661c1",
+  "resource": "AlcatrazExtras/SteelStairs/SteelStairs",
+  "triangles": 55135,
+  "materials": 4,
+  "textures": 1,
+  "bounds": [
+    [
+      -271.48430347442627,
+      -1128.78733148152,
+      -748.8329291530903
+    ],
+    [
+      42.1659916639328,
+      727.9134758910542,
+      163.4621629994573
+    ]
+  ]
+}

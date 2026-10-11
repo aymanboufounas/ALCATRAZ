@@ -1,0 +1,21 @@
+{
+  "name": "M9A3",
+  "archive": "lowpoly-m9a3-pistol.zip",
+  "sha256": "30c94bfc7d3ac558bd05c037c2631be2bf38fd17c74b8c5d3556f9165c4223d7",
+  "resource": "AlcatrazExtras/M9A3/M9A3",
+  "triangles": 1796,
+  "materials": 3,
+  "textures": 1,
+  "bounds": [
+    [
+      -24.056900024414062,
+      -17.73889923095703,
+      -4.519000053405762
+    ],
+    [
+      -21.816499710083008,
+      -6.926400184631348,
+      21.50480079650879
+    ]
+  ]
+}

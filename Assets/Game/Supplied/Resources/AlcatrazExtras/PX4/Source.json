@@ -1,0 +1,21 @@
+{
+  "name": "PX4",
+  "archive": "beretta-px4-full-size.zip",
+  "sha256": "c3cedb3cd93c2efd01e130f4a4fe660b4cace9a1efe99f211668ba6dd0e2c266",
+  "resource": "AlcatrazExtras/PX4/PX4",
+  "triangles": 16322,
+  "materials": 2,
+  "textures": 2,
+  "bounds": [
+    [
+      -2.00075364112854,
+      -9.300094019041921,
+      -8.423374417100149
+    ],
+    [
+      1.7755355834960938,
+      4.579333334807586,
+      10.853356730211061
+    ]
+  ]
+}

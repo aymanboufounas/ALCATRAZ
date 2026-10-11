@@ -1,0 +1,21 @@
+{
+  "name": "ColtM5",
+  "archive": "the-hardest-interview-2-free-download.zip",
+  "sha256": "6f73334ee83825d76ca3ffa2aa5fc42d70a2a57fc4bf487a36995d9bdb0fcd02",
+  "resource": "AlcatrazExtras/ColtM5/ColtM5",
+  "triangles": 24615,
+  "materials": 7,
+  "textures": 0,
+  "bounds": [
+    [
+      -2.8961643278598785,
+      -1.726904034614563,
+      -0.32178452610969543
+    ],
+    [
+      3.5105996131896973,
+      0.8826602846384048,
+      0.3757534623146057
+    ]
+  ]
+}

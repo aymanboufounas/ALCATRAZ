@@ -1,0 +1,21 @@
+{
+  "name": "Shephard",
+  "archive": "ep4-adrian-shephard.zip",
+  "sha256": "564a6f085f80f53dea0978ad6fd6416b3cbd732e834ae55a1a2d27e7c0e06b18",
+  "resource": "AlcatrazExtras/Shephard/Shephard",
+  "triangles": 6008,
+  "materials": 5,
+  "textures": 3,
+  "bounds": [
+    [
+      -2589.738082885742,
+      0.5507747694180337,
+      -1562.3808309064102
+    ],
+    [
+      2589.737129211426,
+      7354.3998926816475,
+      799.3094591698338
+    ]
+  ]
+}

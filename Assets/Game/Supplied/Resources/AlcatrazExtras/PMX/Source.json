@@ -1,0 +1,21 @@
+{
+  "name": "PMX",
+  "archive": "beretta-pmx-pmxs-comune.zip",
+  "sha256": "1ffffc7f9a38c4bfef31ba4b2e30bb9f6faf3d74ecd22b3c789623542ef9ed98",
+  "resource": "AlcatrazExtras/PMX/PMX",
+  "triangles": 56382,
+  "materials": 3,
+  "textures": 4,
+  "bounds": [
+    [
+      -5.252658843994141,
+      -14.694968223571777,
+      -37.843910217285156
+    ],
+    [
+      2.23337721824646,
+      9.154499053955078,
+      26.3643798828125
+    ]
+  ]
+}

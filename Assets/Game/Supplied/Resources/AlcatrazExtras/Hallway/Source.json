@@ -1,0 +1,21 @@
+{
+  "name": "Hallway",
+  "archive": "prison-hallway.zip",
+  "sha256": "d08ba95009becd5012274475479f683e459cf0f4105974b9866ca98a19827dd4",
+  "resource": "AlcatrazExtras/Hallway/Hallway",
+  "triangles": 17254,
+  "materials": 30,
+  "textures": 29,
+  "bounds": [
+    [
+      -6.588196233856934,
+      6.61826761744661,
+      -2.3440400336225053
+    ],
+    [
+      17.482055184233786,
+      12.8799411865065,
+      22.00669988052914
+    ]
+  ]
+}

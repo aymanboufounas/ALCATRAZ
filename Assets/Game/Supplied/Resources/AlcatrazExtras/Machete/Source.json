@@ -1,0 +1,21 @@
+{
+  "name": "Machete",
+  "archive": "machete-farcry-3.zip",
+  "sha256": "6770dc1cbdc51f8ee9da680abdfd8ff4d61607e8b9a0c2afa8ed043bc42e4c8b",
+  "resource": "AlcatrazExtras/Machete/Machete",
+  "triangles": 1863,
+  "materials": 2,
+  "textures": 3,
+  "bounds": [
+    [
+      -12.928729057312012,
+      -45.45444965362549,
+      -14.414235353469849
+    ],
+    [
+      12.08089828491211,
+      234.69837188720703,
+      18.964020013809204
+    ]
+  ]
+}

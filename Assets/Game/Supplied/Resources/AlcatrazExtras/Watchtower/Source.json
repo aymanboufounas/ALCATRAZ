@@ -1,0 +1,21 @@
+{
+  "name": "Watchtower",
+  "archive": "gta-6-prison-tower-guard-tower-watchtower.zip",
+  "sha256": "672916cca29bc4b9e58e6ce008d4657a0d34ddbe1d0202a8865acc641641159f",
+  "resource": "AlcatrazExtras/Watchtower/Watchtower",
+  "triangles": 4880,
+  "materials": 3,
+  "textures": 3,
+  "bounds": [
+    [
+      -3.0,
+      0.0,
+      -3.0
+    ],
+    [
+      3.0,
+      5.695241792129764,
+      3.0
+    ]
+  ]
+}

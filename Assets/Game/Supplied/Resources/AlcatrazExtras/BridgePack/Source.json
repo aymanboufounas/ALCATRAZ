@@ -1,0 +1,21 @@
+{
+  "name": "BridgePack",
+  "archive": "bridge-pack-low-poly-3d-game-assets.zip",
+  "sha256": "12545b772460bd55537ea3eef5de4cdac30a19fe708ef95581e65257a94cf7e7",
+  "resource": "AlcatrazExtras/BridgePack/BridgePack",
+  "triangles": 21740,
+  "materials": 28,
+  "textures": 0,
+  "bounds": [
+    [
+      -676.3911572259624,
+      -141.99005509037934,
+      -888.0172135276651
+    ],
+    [
+      619.5309196250978,
+      276.01144379570223,
+      1008.0996589062829
+    ]
+  ]
+}

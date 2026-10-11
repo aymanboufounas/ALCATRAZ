@@ -1,0 +1,422 @@
+[
+  {
+    "name": "BRX1",
+    "archive": "beretta-brx1.zip",
+    "sha256": "174f3724a90cae99a93cc26966513f4052bf8d2543b2d31205b3845c19b276a3",
+    "resource": "AlcatrazExtras/BRX1/BRX1",
+    "triangles": 19083,
+    "materials": 4,
+    "textures": 6,
+    "bounds": [
+      [
+        -2.5282845497131348,
+        -14.623180389404297,
+        -52.544586181640625
+      ],
+      [
+        5.870797157287598,
+        2.7315902709960938,
+        57.01006317138672
+      ]
+    ]
+  },
+  {
+    "name": "Beach",
+    "archive": "small-beach-lowpoly.zip",
+    "sha256": "96ec97ecfc666851e1f5da4adfd7337d714bc73827b508da188f6fe42fff16cc",
+    "resource": "AlcatrazExtras/Beach/Beach",
+    "triangles": 3000,
+    "materials": 1,
+    "textures": 1,
+    "bounds": [
+      [
+        -50.02209544181824,
+        -7.650914673410389,
+        -43.8387009009667
+      ],
+      [
+        50.02209544181824,
+        7.651490670717325,
+        43.838695024221664
+      ]
+    ]
+  },
+  {
+    "name": "BridgePack",
+    "archive": "bridge-pack-low-poly-3d-game-assets.zip",
+    "sha256": "12545b772460bd55537ea3eef5de4cdac30a19fe708ef95581e65257a94cf7e7",
+    "resource": "AlcatrazExtras/BridgePack/BridgePack",
+    "triangles": 21740,
+    "materials": 28,
+    "textures": 0,
+    "bounds": [
+      [
+        -676.3911572259624,
+        -141.99005509037934,
+        -888.0172135276651
+      ],
+      [
+        619.5309196250978,
+        276.01144379570223,
+        1008.0996589062829
+      ]
+    ]
+  },
+  {
+    "name": "ColtM5",
+    "archive": "the-hardest-interview-2-free-download.zip",
+    "sha256": "6f73334ee83825d76ca3ffa2aa5fc42d70a2a57fc4bf487a36995d9bdb0fcd02",
+    "resource": "AlcatrazExtras/ColtM5/ColtM5",
+    "triangles": 24615,
+    "materials": 7,
+    "textures": 0,
+    "bounds": [
+      [
+        -2.8961643278598785,
+        -1.726904034614563,
+        -0.32178452610969543
+      ],
+      [
+        3.5105996131896973,
+        0.8826602846384048,
+        0.3757534623146057
+      ]
+    ]
+  },
+  {
+    "name": "Forest",
+    "archive": "pine-forest-at-sunset.zip",
+    "sha256": "6a05d679873784e2a9829b60e014229acce3df199b0510bdd6aef9f6cb9b5100",
+    "resource": "AlcatrazExtras/Forest/Forest",
+    "triangles": 333008,
+    "materials": 8,
+    "textures": 8,
+    "bounds": [
+      [
+        -130.0,
+        -0.4326565280494705,
+        -130.0
+      ],
+      [
+        130.0,
+        16.19860601039545,
+        130.0
+      ]
+    ]
+  },
+  {
+    "name": "Hallway",
+    "archive": "prison-hallway.zip",
+    "sha256": "d08ba95009becd5012274475479f683e459cf0f4105974b9866ca98a19827dd4",
+    "resource": "AlcatrazExtras/Hallway/Hallway",
+    "triangles": 17254,
+    "materials": 30,
+    "textures": 29,
+    "bounds": [
+      [
+        -6.588196233856934,
+        6.61826761744661,
+        -2.3440400336225053
+      ],
+      [
+        17.482055184233786,
+        12.8799411865065,
+        22.00669988052914
+      ]
+    ]
+  },
+  {
+    "name": "M9A3",
+    "archive": "lowpoly-m9a3-pistol.zip",
+    "sha256": "30c94bfc7d3ac558bd05c037c2631be2bf38fd17c74b8c5d3556f9165c4223d7",
+    "resource": "AlcatrazExtras/M9A3/M9A3",
+    "triangles": 1796,
+    "materials": 3,
+    "textures": 1,
+    "bounds": [
+      [
+        -24.056900024414062,
+        -17.73889923095703,
+        -4.519000053405762
+      ],
+      [
+        -21.816499710083008,
+        -6.926400184631348,
+        21.50480079650879
+      ]
+    ]
+  },
+  {
+    "name": "Machete",
+    "archive": "machete-farcry-3.zip",
+    "sha256": "6770dc1cbdc51f8ee9da680abdfd8ff4d61607e8b9a0c2afa8ed043bc42e4c8b",
+    "resource": "AlcatrazExtras/Machete/Machete",
+    "triangles": 1863,
+    "materials": 2,
+    "textures": 3,
+    "bounds": [
+      [
+        -12.928729057312012,
+        -45.45444965362549,
+        -14.414235353469849
+      ],
+      [
+        12.08089828491211,
+        234.69837188720703,
+        18.964020013809204
+      ]
+    ]
+  },
+  {
+    "name": "PMX",
+    "archive": "beretta-pmx-pmxs-comune.zip",
+    "sha256": "1ffffc7f9a38c4bfef31ba4b2e30bb9f6faf3d74ecd22b3c789623542ef9ed98",
+    "resource": "AlcatrazExtras/PMX/PMX",
+    "triangles": 56382,
+    "materials": 3,
+    "textures": 4,
+    "bounds": [
+      [
+        -5.252658843994141,
+        -14.694968223571777,
+        -37.843910217285156
+      ],
+      [
+        2.23337721824646,
+        9.154499053955078,
+        26.3643798828125
+      ]
+    ]
+  },
+  {
+    "name": "PX4",
+    "archive": "beretta-px4-full-size.zip",
+    "sha256": "c3cedb3cd93c2efd01e130f4a4fe660b4cace9a1efe99f211668ba6dd0e2c266",
+    "resource": "AlcatrazExtras/PX4/PX4",
+    "triangles": 16322,
+    "materials": 2,
+    "textures": 2,
+    "bounds": [
+      [
+        -2.00075364112854,
+        -9.300094019041921,
+        -8.423374417100149
+      ],
+      [
+        1.7755355834960938,
+        4.579333334807586,
+        10.853356730211061
+      ]
+    ]
+  },
+  {
+    "name": "PokerProps",
+    "archive": "poker-set (1).zip",
+    "sha256": "bdc5f0dee1dd28a0a6d845abdedcc925b7481f056858e1f9cd1015082a42bfd9",
+    "resource": "AlcatrazExtras/PokerProps/PokerProps",
+    "triangles": 344893,
+    "materials": 9,
+    "textures": 8,
+    "bounds": [
+      [
+        -889.6879459258436,
+        -4.178799207044524,
+        -810.4656599661732
+      ],
+      [
+        831.7104371699213,
+        470.5446504265028,
+        893.8216276815228
+      ]
+    ]
+  },
+  {
+    "name": "PokerTable",
+    "archive": "poker-set.zip",
+    "sha256": "a126548999a5d8ec8bb27af0bc2046803faeaa7e5ef254db9433d6ceedb204db",
+    "resource": "AlcatrazExtras/PokerTable/PokerTable",
+    "triangles": 119983,
+    "materials": 3,
+    "textures": 4,
+    "bounds": [
+      [
+        -1076.3579687723634,
+        -1.9588699340820312,
+        -347.7088394165039
+      ],
+      [
+        223.5352398384383,
+        267.94667053222656,
+        255.22724136766973
+      ]
+    ]
+  },
+  {
+    "name": "PrisonRoom",
+    "archive": "dp3-hw9-prison-room.zip",
+    "sha256": "4d3f8e8aebb5dc367eae9d78fac728fa2c8f9f4e628dafe5ea73e9fe68076f7e",
+    "resource": "AlcatrazExtras/PrisonRoom/PrisonRoom",
+    "triangles": 10335,
+    "materials": 19,
+    "textures": 16,
+    "bounds": [
+      [
+        -10.524627685546875,
+        0.07762215718430099,
+        -1.3780173063278198
+      ],
+      [
+        3.919543981552124,
+        9.712681770324707,
+        14.61838150024414
+      ]
+    ]
+  },
+  {
+    "name": "PunchingBag",
+    "archive": "punching-bagboxing-bag.zip",
+    "sha256": "c70e27457cbcfdcc3354775f08f0c358e4446a45266f05656b42c63ab001cebc",
+    "resource": "AlcatrazExtras/PunchingBag/PunchingBag",
+    "triangles": 54816,
+    "materials": 2,
+    "textures": 3,
+    "bounds": [
+      [
+        -1.0850671529769897,
+        3.699711799621582,
+        -1.048706293106079
+      ],
+      [
+        1.0668317079544067,
+        11.026698112487793,
+        1.077667474746704
+      ]
+    ]
+  },
+  {
+    "name": "Shephard",
+    "archive": "ep4-adrian-shephard.zip",
+    "sha256": "564a6f085f80f53dea0978ad6fd6416b3cbd732e834ae55a1a2d27e7c0e06b18",
+    "resource": "AlcatrazExtras/Shephard/Shephard",
+    "triangles": 6008,
+    "materials": 5,
+    "textures": 3,
+    "bounds": [
+      [
+        -2589.738082885742,
+        0.5507747694180337,
+        -1562.3808309064102
+      ],
+      [
+        2589.737129211426,
+        7354.3998926816475,
+        799.3094591698338
+      ]
+    ]
+  },
+  {
+    "name": "SteelStairs",
+    "archive": "staircase-modular-frame-steel.zip",
+    "sha256": "7c393138f9c387befef87dbafbf82496a99fc485c1680fddeef3c755b11661c1",
+    "resource": "AlcatrazExtras/SteelStairs/SteelStairs",
+    "triangles": 55135,
+    "materials": 4,
+    "textures": 1,
+    "bounds": [
+      [
+        -271.48430347442627,
+        -1128.78733148152,
+        -748.8329291530903
+      ],
+      [
+        42.1659916639328,
+        727.9134758910542,
+        163.4621629994573
+      ]
+    ]
+  },
+  {
+    "name": "Store",
+    "archive": "abandoned-store-for-free.zip",
+    "sha256": "61267db3649b905662fb34d9ca849691321e5f4be27ccd8a972d86a8532a0db3",
+    "resource": "AlcatrazExtras/Store/Store",
+    "triangles": 5745,
+    "materials": 12,
+    "textures": 15,
+    "bounds": [
+      [
+        -621.322466391226,
+        -32.96379362470179,
+        -1485.4127044677734
+      ],
+      [
+        2435.77734375,
+        1969.2772216796875,
+        1584.3919830322266
+      ]
+    ]
+  },
+  {
+    "name": "UtilityBuilding",
+    "archive": "industrial-utility-building-game-ready.zip",
+    "sha256": "f57355ddb862ae50e76f2a4b86336ac37794e13b93cec87053ed84eab3ee7b59",
+    "resource": "AlcatrazExtras/UtilityBuilding/UtilityBuilding",
+    "triangles": 13586,
+    "materials": 26,
+    "textures": 17,
+    "bounds": [
+      [
+        -2135.080666143942,
+        -3.005852616695986,
+        -1802.4811947714381
+      ],
+      [
+        1726.1030314961245,
+        727.1330910410727,
+        1726.1030314961245
+      ]
+    ]
+  },
+  {
+    "name": "Watchtower",
+    "archive": "gta-6-prison-tower-guard-tower-watchtower.zip",
+    "sha256": "672916cca29bc4b9e58e6ce008d4657a0d34ddbe1d0202a8865acc641641159f",
+    "resource": "AlcatrazExtras/Watchtower/Watchtower",
+    "triangles": 4880,
+    "materials": 3,
+    "textures": 3,
+    "bounds": [
+      [
+        -3.0,
+        0.0,
+        -3.0
+      ],
+      [
+        3.0,
+        5.695241792129764,
+        3.0
+      ]
+    ]
+  },
+  {
+    "name": "Workshop",
+    "archive": "alchemists-workshop-stylized-fantasy-scene.zip",
+    "sha256": "d02bc1145249f1f03b8d899211736017f2408cebbc855aeea972e26f3b76bbff",
+    "resource": "AlcatrazExtras/Workshop/Workshop",
+    "triangles": 28512,
+    "materials": 22,
+    "textures": 6,
+    "bounds": [
+      [
+        -1051.3070544144502,
+        -1.4250317887371224,
+        -1088.7236737975627
+      ],
+      [
+        1051.3070544144502,
+        1297.0052072718172,
+        1088.8895764597391
+      ]
+    ]
+  }
+]

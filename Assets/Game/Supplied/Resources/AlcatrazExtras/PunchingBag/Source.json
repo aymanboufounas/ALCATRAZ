@@ -1,0 +1,21 @@
+{
+  "name": "PunchingBag",
+  "archive": "punching-bagboxing-bag.zip",
+  "sha256": "c70e27457cbcfdcc3354775f08f0c358e4446a45266f05656b42c63ab001cebc",
+  "resource": "AlcatrazExtras/PunchingBag/PunchingBag",
+  "triangles": 54816,
+  "materials": 2,
+  "textures": 3,
+  "bounds": [
+    [
+      -1.0850671529769897,
+      3.699711799621582,
+      -1.048706293106079
+    ],
+    [
+      1.0668317079544067,
+      11.026698112487793,
+      1.077667474746704
+    ]
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "name": "Workshop",
+  "archive": "alchemists-workshop-stylized-fantasy-scene.zip",
+  "sha256": "d02bc1145249f1f03b8d899211736017f2408cebbc855aeea972e26f3b76bbff",
+  "resource": "AlcatrazExtras/Workshop/Workshop",
+  "triangles": 28512,
+  "materials": 22,
+  "textures": 6,
+  "bounds": [
+    [
+      -1051.3070544144502,
+      -1.4250317887371224,
+      -1088.7236737975627
+    ],
+    [
+      1051.3070544144502,
+      1297.0052072718172,
+      1088.8895764597391
+    ]
+  ]
+}

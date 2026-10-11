@@ -1,0 +1,21 @@
+{
+  "name": "PrisonRoom",
+  "archive": "dp3-hw9-prison-room.zip",
+  "sha256": "4d3f8e8aebb5dc367eae9d78fac728fa2c8f9f4e628dafe5ea73e9fe68076f7e",
+  "resource": "AlcatrazExtras/PrisonRoom/PrisonRoom",
+  "triangles": 10335,
+  "materials": 19,
+  "textures": 16,
+  "bounds": [
+    [
+      -10.524627685546875,
+      0.07762215718430099,
+      -1.3780173063278198
+    ],
+    [
+      3.919543981552124,
+      9.712681770324707,
+      14.61838150024414
+    ]
+  ]
+}
