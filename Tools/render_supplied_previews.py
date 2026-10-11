@@ -142,13 +142,13 @@ for meta in (ROOT/'Assets').rglob('*.meta'):
 def view(eye,center,up=(0,1,0)):
  eye=np.array(eye,float);f=np.array(center,float)-eye;f/=np.linalg.norm(f);s=np.cross(f,up);s/=np.linalg.norm(s);u=np.cross(s,f);m=np.eye(4);m[0,:3]=s;m[1,:3]=u;m[2,:3]=-f;m[:3,3]=-m[:3,:3]@eye;return m
 GPU={}
-def render(meshes,size=(1280,720),eye=None,center=None,transparent=False,orthographic=False):
+def render(meshes,size=(1280,720),eye=None,center=None,transparent=False,orthographic=False,fov=42,near_clip=.005,background=(.025,.07,.085)):
  lo,hi=bounds(meshes);center=np.array(center if center is not None else (lo+hi)/2);radius=np.linalg.norm(hi-lo)/2;eye=np.array(eye if eye is not None else center+np.array([1.4,.65,1.8])*max(.01,radius)*1.8);w,h=size;camera=view(eye,center)
  if orthographic:
   v=np.concatenate([m['v'] for m in meshes]);project=v@camera[:3,:3].T+camera[:3,3];x,y=project[:,:2].min(0),project[:,:2].max(0);sy=max((y[1]-x[1])*.58,(y[0]-x[0])*.58*h/w);sx=sy*w/h;projection=np.diag([1/sx,1/sy,-1/10000,1])
  else:
-  q=1/math.tan(math.radians(42)/2);near=.005;far=5000;projection=np.zeros((4,4));projection[0,0]=q*h/w;projection[1,1]=q;projection[2,2]=(far+near)/(near-far);projection[2,3]=2*far*near/(near-far);projection[3,2]=-1
- fbo=C.simple_framebuffer(size,components=4);fbo.use();C.enable(moderngl.DEPTH_TEST);fbo.clear(.025,.07,.085,0 if transparent else 1);PROGRAM['vp'].write((projection@camera).astype('f4').T.tobytes());PROGRAM['eye'].value=tuple(eye)
+  q=1/math.tan(math.radians(fov)/2);near=near_clip;far=5000;projection=np.zeros((4,4));projection[0,0]=q*h/w;projection[1,1]=q;projection[2,2]=(far+near)/(near-far);projection[2,3]=2*far*near/(near-far);projection[3,2]=-1
+ fbo=C.simple_framebuffer(size,components=4);fbo.use();C.enable(moderngl.DEPTH_TEST);fbo.clear(*background,0 if transparent else 1);PROGRAM['vp'].write((projection@camera).astype('f4').T.tobytes());PROGRAM['eye'].value=tuple(eye)
  for m in meshes:
   key=id(m)
   if key not in GPU:
