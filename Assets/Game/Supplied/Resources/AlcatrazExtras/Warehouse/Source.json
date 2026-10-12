@@ -1,0 +1,206 @@
+{
+  "name": "Warehouse",
+  "archive": "abandoned-warehouse-interior-scene(1).zip",
+  "sha256": "167b48a3b5c55cdb806280149f34851a97a6f4293427efa2f0d45d7418fc441c",
+  "resource": "AlcatrazExtras/Warehouse/Warehouse",
+  "triangles": 134418,
+  "materials": 36,
+  "textures": 27,
+  "bounds": [
+    [
+      -5.551204719364071,
+      -0.8533686101436615,
+      -3.6784741282463074
+    ],
+    [
+      4.059945642948151,
+      1.0709032802874652,
+      0.16348769888281822
+    ]
+  ],
+  "conversion": {
+    "resolved_images": {
+      "colonnes-droites": "colonnes-droites.png",
+      "colonnes-gauches": "colonnes-gauches.png",
+      "DM_Watch_Your_Step_graffiti.png": "DM_Watch_Your_Step_graffiti.png",
+      "mur-arriere": "mur-arriere.png",
+      "mur-droite": "mur-droite.png",
+      "mur-fond": "mur-fond.png",
+      "mur-gauche": "mur-gauche.png",
+      "mur-ss-fenetres": "mur-ss-fenetres.png",
+      "mur-sur-fenetres": "mur-sur-fenetres.png",
+      "palette": "palette.png",
+      "panda-gun": "pandagun_1280.png",
+      "pandagun_1280.png": "pandagun_1280.png",
+      "planche": "planche.png",
+      "porte-bois": "porte-bois.png",
+      "porte-metal": "porte-metal.png",
+      "poutre-seule": "poutres-main.png",
+      "poutre-toit-droite": "poutres-main.png",
+      "poutre-toit-gauche": "poutres-main.png",
+      "poutres-main": "poutres-main.png",
+      "sol-bake": "sol-bake.png",
+      "TexturesCom_CardboardPlain0019_2_alphamasked_S.png": "TexturesCom_CardboardPlain0019_2_alphamask.png",
+      "TexturesCom_CardboardPlain0022_2_alphamasked_S.png": "TexturesCom_CardboardPlain0022_2_alphamask.png",
+      "TexturesCom_CardboardPlain0026_2_alphamasked_S.png": "TexturesCom_CardboardPlain0026_2_alphamask.png",
+      "TexturesCom_WindowsBacklit0019_12_M.jpg": "TexturesCom_WindowsBacklit0019_12_M.jpg",
+      "TexturesCom_WindowsBacklit0019_12_M_SPEC.png": "TexturesCom_WindowsBacklit0019_12_M_SPEC.png",
+      "TexturesCom_WindowsBacklit0019_13_M.jpg": "TexturesCom_WindowsBacklit0019_13_M.jpg",
+      "TexturesCom_WindowsBacklit0019_13_M_SPEC.png": "TexturesCom_WindowsBacklit0019_13_M_SPEC.png",
+      "TexturesCom_WindowsBacklit0019_14_M.jpg": "TexturesCom_WindowsBacklit0019_14_M.jpg",
+      "TexturesCom_WindowsBacklit0019_14_M_SPEC.png": "TexturesCom_WindowsBacklit0019_14_M_SPEC.png",
+      "TexturesCom_WindowsBacklit0019_15_M.jpg": "TexturesCom_WindowsBacklit0019_15_M.jpg",
+      "TexturesCom_WindowsBacklit0019_15_M_spec.png": "TexturesCom_WindowsBacklit0019_15_M_spec.png",
+      "toiture-tole-droite": "toiture-tole-droite.png",
+      "toiture-tole-gauche": "toiture-tole-gauche.png"
+    },
+    "converted_materials": [
+      {
+        "material": "briques-ss-fenetre",
+        "color_texture": "mur-ss-fenetres"
+      },
+      {
+        "material": "briques-sur-fenetre",
+        "color_texture": "mur-sur-fenetres"
+      },
+      {
+        "material": "cable",
+        "color_texture": "cable-droite"
+      },
+      {
+        "material": "cable.001",
+        "color_texture": null
+      },
+      {
+        "material": "chaise",
+        "color_texture": null
+      },
+      {
+        "material": "colonne-beton",
+        "color_texture": "colonnes-droites"
+      },
+      {
+        "material": "colonne-beton.001",
+        "color_texture": "colonnes-gauches"
+      },
+      {
+        "material": "DM_Watch_Your_Step_graffiti",
+        "color_texture": "DM_Watch_Your_Step_graffiti.png"
+      },
+      {
+        "material": "dust",
+        "color_texture": null
+      },
+      {
+        "material": "fenetre.002",
+        "color_texture": "TexturesCom_WindowsBacklit0019_15_M.jpg"
+      },
+      {
+        "material": "fenetre.004",
+        "color_texture": "TexturesCom_WindowsBacklit0019_12_M.jpg"
+      },
+      {
+        "material": "fenetre.005",
+        "color_texture": "TexturesCom_WindowsBacklit0019_14_M.jpg"
+      },
+      {
+        "material": "fenetre.006",
+        "color_texture": "TexturesCom_WindowsBacklit0019_13_M.jpg"
+      },
+      {
+        "material": "gravas",
+        "color_texture": "RockSharp0024_1_S.jpg"
+      },
+      {
+        "material": "lampe",
+        "color_texture": null
+      },
+      {
+        "material": "lampe-interieure",
+        "color_texture": null
+      },
+      {
+        "material": "Material",
+        "color_texture": null
+      },
+      {
+        "material": "mur-arriere",
+        "color_texture": "mur-arriere"
+      },
+      {
+        "material": "mur-droite",
+        "color_texture": "mur-droite"
+      },
+      {
+        "material": "mur-fond",
+        "color_texture": "mur-fond"
+      },
+      {
+        "material": "mur-gauche",
+        "color_texture": "mur-gauche"
+      },
+      {
+        "material": "palette",
+        "color_texture": "palette"
+      },
+      {
+        "material": "palette.001",
+        "color_texture": "planche"
+      },
+      {
+        "material": "pandagun_1280",
+        "color_texture": "pandagun_1280.png"
+      },
+      {
+        "material": "poutre-toit.000",
+        "color_texture": "poutre-seule"
+      },
+      {
+        "material": "poutre-toit.001",
+        "color_texture": "poutres-main"
+      },
+      {
+        "material": "poutre-toit.002",
+        "color_texture": "poutre-toit-droite"
+      },
+      {
+        "material": "poutre-toit.003",
+        "color_texture": "poutre-toit-gauche"
+      },
+      {
+        "material": "sol",
+        "color_texture": "sol-bake"
+      },
+      {
+        "material": "TexturesCom_CardboardPlain0019_2_alphamasked_S",
+        "color_texture": "TexturesCom_CardboardPlain0019_2_alphamasked_S.png"
+      },
+      {
+        "material": "TexturesCom_CardboardPlain0022_2_alphamasked_S",
+        "color_texture": "TexturesCom_CardboardPlain0022_2_alphamasked_S.png"
+      },
+      {
+        "material": "TexturesCom_CardboardPlain0026_2_alphamasked_S",
+        "color_texture": "TexturesCom_CardboardPlain0026_2_alphamasked_S.png"
+      },
+      {
+        "material": "TexturesCom_DoorsRollup0044_M",
+        "color_texture": "porte-metal"
+      },
+      {
+        "material": "TexturesCom_DoorsWoodBarn0017_M",
+        "color_texture": "porte-bois"
+      },
+      {
+        "material": "toiture-tole",
+        "color_texture": "toiture-tole-droite"
+      },
+      {
+        "material": "toiture-tole.001",
+        "color_texture": "toiture-tole-gauche"
+      }
+    ],
+    "hidden_templates_excluded": true,
+    "textured_floor_geometry_preserved": true
+  }
+}
