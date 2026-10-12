@@ -65,6 +65,7 @@ def main():
             payload=embedded.get(key)
             if file is None and payload is None:return None
             image=Image.open(BytesIO(payload)) if payload else Image.open(file)
+            if name=='Warehouse' and not normal and image.mode in ('RGBA','P') and image.convert('RGBA').getchannel('A').getextrema()==(255,255):image=image.convert('RGB')
             path=u.ART+'/Textures/T'+str(len(texture_cache))+('.png' if normal or image.mode in ('RGBA','P') else '.jpg')
             result=old.texture(path,image,normal=normal,max_size=2048);texture_cache[cache]=result;return result
         for index,mat in enumerate(scene.materials):
@@ -122,8 +123,9 @@ def main():
             for v,n,uv,t in parts:
                 vs.append(v);ns.append(n);uvs.append(uv);faces.append(t+offset);offset+=len(v)
             v=np.concatenate(vs);n=np.concatenate(ns);uv=np.concatenate(uvs);t=np.concatenate(faces)
-            for start in range(0,len(t),20000):
-                used,mapped=np.unique(t[start:start+20000],return_inverse=True);key=mi+'_'+str(start//20000)
+            chunk=5000 if name=='Warehouse' else 20000
+            for start in range(0,len(t),chunk):
+                used,mapped=np.unique(t[start:start+chunk],return_inverse=True);key=mi+'_'+str(start//chunk)
                 u.ART=BASE+'/'+name
                 u.save_mesh(key,SimpleNamespace(v=v[used],n=n[used],uv=uv[used],t=mapped.reshape(-1).tolist()),folder='Meshes');u.PREVIEW['meshes'].pop(key,None)
                 child=u.Node(key,parent,static=False).render(key,mi)
