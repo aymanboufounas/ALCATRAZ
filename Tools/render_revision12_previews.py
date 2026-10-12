@@ -1,5 +1,5 @@
 """Offline native-geometry and menu-layout previews; not Unity screenshots."""
-import json,re
+import argparse,json,re
 from pathlib import Path
 from PIL import Image,ImageDraw,ImageFont
 import numpy as np
@@ -45,7 +45,20 @@ def menu():
     text(1500,1002,'ALCATRAZ  /  CHAPTER 01',15,gold)
     mark(image,'MENU LAYOUT FROM CODE').save(OUT/'Menu.png')
 
+def additions():
+    scene=placed(native('Warehouse'),5.5,(0,0,0))
+    scene+=placed(native('AcidBarrel'),1.1,(-10.5,0,10))+placed(native('AcidBarrel'),1.1,(-9.4,0,10))
+    scene+=placed(native('ExplosiveBarrel'),1.1,(10,0,10))+placed(native('ExplosiveBarrel'),1.1,(11.1,0,10))
+    scene+=[cube('Warehouse bay floor',(.5,-.2,0),(47,.4,50),(.43,.46,.45,1))]
+    mark(r.render(scene,size=(1600,900),eye=(20,10,25),center=(0,2,0)),'SUPPLIED WAREHOUSE & BARRELS').save(OUT/'Warehouse.png')
+    mark(r.render(scene,size=(1600,900),eye=(-10.25,1.65,-1.12),center=(0,1.65,0)),'SUPPLIED WAREHOUSE INTERIOR').save(OUT/'WarehouseInterior.png')
+    scene=placed(native('AcidBarrel'),1.1,(-.65,0,0))+placed(native('ExplosiveBarrel'),1.1,(.65,0,0))
+    scene+=[cube('Floor',(0,-.2,0),(6,.4,6),(.43,.46,.45,1))]
+    mark(r.render(scene,size=(1280,720),eye=(2.8,1.8,3.5),center=(0,.55,0)),'ACID BARREL / EXPLOSIVE BARREL MODELS').save(OUT/'Barrels.png')
+
 def main():
+    parser=argparse.ArgumentParser();parser.add_argument('--only-additions',action='store_true');args=parser.parse_args();additions()
+    if args.only_additions:return
     menu()
     scene=placed(native('PokerTable'),1.2,(0,0,0))+placed(native('PokerProps'),.32,(0,.85,0))
     scene+= [cube('Floor',(0,-.15,0),(10,.3,10),(.43,.46,.45,1))]

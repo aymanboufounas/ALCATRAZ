@@ -1,0 +1,40 @@
+{
+  "status": "PASS",
+  "checks": 33,
+  "errors": [],
+  "doors": [
+    {
+      "door": "Warehouse_M9_0",
+      "entry": [
+        61.68600036167541,
+        0.08,
+        -1.1213222923364596
+      ],
+      "supported": true,
+      "obstructed": false
+    },
+    {
+      "door": "Warehouse_M10_0",
+      "entry": [
+        61.68600036167541,
+        0.08,
+        2.891621785997031
+      ],
+      "supported": true,
+      "obstructed": false
+    }
+  ],
+  "warehouse_bounds": [
+    [
+      58.26459004105954,
+      -8.518171155927456e-08,
+      -5.490593821470572
+    ],
+    [
+      85.7354098970969,
+      5.500000059884218,
+      5.490593661754863
+    ]
+  ],
+  "scope": "Archive hashes, native meshes, UV alignment, fitted sizes, barrel separation, five-point floor support and conservative stationary clearance. Unity compilation, live contacts and swept collision remain unverified."
+}

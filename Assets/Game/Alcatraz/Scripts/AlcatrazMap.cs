@@ -54,7 +54,7 @@ namespace Blackstone.Alcatraz
             {safePosition=position;validSafePosition=true;}
             if(!validSafePosition)return;
             var annex=GetComponent<Blackstone.Supplied.SuppliedExtrasWorld>();
-            if(annex!=null&&annex.Visiting){var p=position-Blackstone.Supplied.SuppliedExtrasWorld.Origin;if(Mathf.Abs(p.x)>49.5f||Mathf.Abs(p.z)>54.5f||p.y<-1)player.Teleport(safePosition);return;}
+            if(annex!=null&&annex.Visiting){if(!Blackstone.Supplied.SuppliedExtrasWorld.ContainsPosition(position))player.Teleport(safePosition);return;}
             bool prison=suppliedWorld!=null&&suppliedWorld.InsidePrison;
             Vector3 local=prison?Blackstone.Supplied.SuppliedPrisonInterior.Local(position):position;
             bool outside=prison?(Mathf.Abs(local.x)>27.4f||local.z>66.8f||local.z<-43.4f||local.y<29.6f)

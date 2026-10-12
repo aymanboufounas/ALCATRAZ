@@ -1,0 +1,29 @@
+{
+  "version": "0.12.1",
+  "supplied_packs": 23,
+  "new_packs": [
+    "Warehouse",
+    "AcidBarrel",
+    "ExplosiveBarrel"
+  ],
+  "native_integrity": "PASS",
+  "native_counts": {
+    "native_files": 2563,
+    "yaml_documents": 88151,
+    "asset_guids": 3535,
+    "mesh_vertices": 7596829,
+    "mesh_triangles": 3631817,
+    "weighted_meshes": 271,
+    "csharp_files": 73,
+    "animation_clips": 14
+  },
+  "warehouse_entry_checks": 33,
+  "warehouse_status": "PASS",
+  "existing_route_status": "PASS",
+  "not_performed": [
+    "Unity compilation",
+    "Unity Play Mode",
+    "Live door/collision testing",
+    "Windows player build"
+  ]
+}

@@ -1,6 +1,6 @@
 # Alcatraz Escape — Unity source project
 
-**Revision 12 · version 0.12.0 · Unity 6000.0.62f1 · URP**
+**Revision 12 · version 0.12.1 · Unity 6000.0.62f1 · URP**
 
 The playable character is **Elias Vale, a prisoner in orange**. The default exploration scene now uses the **supplied scanned Alcatraz island**, police, animated dog, tactical helmet/vest, Little Bird, coastal house, 10mm pistol and revolver. The supplied exterior now has a connected enterable cellhouse. Chapter 01 retains its separate story scene, original rigged cast and mission progression.
 
@@ -15,6 +15,10 @@ If preparation is incomplete, choose **Alcatraz > Prepare Characters** and **Alc
 
 Equipment: **1** unarmed, **2** knife, **3** supplied 10mm pistol, **4** service rifle, **5** supplied revolver. RMB / LT aims, LMB / RT uses, R / Y reloads, and D-pad left cycles. Hold **Tab / LB** for inventory and **M / View** for the map. Use the three helipad practice targets to check hits. Pause stops reload/cooldown time.
 
+## Added in 0.12.1
+
+The warehouse, acid barrel and explosive barrel bring the extras catalog to **23 uploads**. The annex has a connected warehouse bay, both door interactions and four solid barrel props. See [access and validation](Documentation/Revision12_AddedPacks.md).
+
 ## New in Revision 12
 
 - Shared title, exploration pause and story pause menu design, with saved camera/audio settings.
@@ -22,7 +26,7 @@ Equipment: **1** unarmed, **2** knife, **3** supplied 10mm pistol, **4** service
 - Flyable Little Bird with spinning rotors and safe exits; original buoyant patrol boat at the coastal dock.
 - Timed boxing combinations, guard, stamina, Tomas sparring and the supplied suspended bag.
 - Four-player Texas Hold'em with blinds, betting rounds, all-ins, side pots, ties and public-information AI.
-- All 20 new archives converted to native assets and available through the workshop/recreation annex, including the bridge pack and industrial utility building. Large static geometry is batched by material.
+- All 23 new archives converted to native assets and available through the workshop/recreation annex, including the bridge pack and industrial utility building. Large static geometry is batched by material.
 - Supplied machete, M9A3, PX4, PMX, BRX1 and Colt M5 available with the mouse wheel.
 
 See [Revision 12 controls and validation](Documentation/Revision12.md). Source checks and 160,041 executable poker/weapon assertions pass. **Unity compilation, Play Mode and a Windows build remain unverified because the Editor is unavailable here.** Offline previews in `Documentation/Revision12Previews` are not Unity screenshots.

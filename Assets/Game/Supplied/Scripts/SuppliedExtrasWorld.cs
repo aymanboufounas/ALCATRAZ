@@ -20,7 +20,8 @@ namespace Blackstone.Supplied
             concrete=new Material(shader){color=new Color(.43f,.46f,.45f)};steel=new Material(shader){color=new Color(.12f,.17f,.19f)};
             Box("Workshop annex floor",Origin-Vector3.up*.2f,new Vector3(100,.4f,110),concrete);
             Box("North perimeter",Origin+new Vector3(0,1.4f,55),new Vector3(100,2.8f,.3f),steel);
-            Box("East perimeter",Origin+new Vector3(50,1.4f,0),new Vector3(.3f,2.8f,110),steel);
+            Box("East perimeter north",Origin+new Vector3(50,1.4f,29.5f),new Vector3(.3f,2.8f,51),steel);
+            Box("East perimeter south",Origin+new Vector3(50,1.4f,-29.5f),new Vector3(.3f,2.8f,51),steel);
             Box("West perimeter",Origin+new Vector3(-50,1.4f,0),new Vector3(.3f,2.8f,110),steel);
             Box("South perimeter",Origin+new Vector3(0,1.4f,-55),new Vector3(100,2.8f,.3f),steel);
             Model("PrisonRoom",3.7f,new Vector3(-15,0,22));Model("Hallway",3.8f,new Vector3(13,0,24));
@@ -28,6 +29,13 @@ namespace Blackstone.Supplied
             Model("SteelStairs",5.8f,new Vector3(31,0,20));
             Model("BridgePack",2.5f,new Vector3(22,0,3));Model("UtilityBuilding",6,new Vector3(10,0,-28));Model("Watchtower",8,new Vector3(34,0,-25));
             Model("Forest",12,new Vector3(-35,0,38));Model("Beach",2,new Vector3(34,0,42));var guard=Model("Shephard",1.82f,new Vector3(-10,0,5));if(guard!=null){var cap=guard.AddComponent<CapsuleCollider>();cap.height=1.82f/guard.transform.lossyScale.y;cap.radius=.23f/guard.transform.lossyScale.x;cap.center=guard.transform.InverseTransformPoint(Origin+new Vector3(-10,.91f,5));}
+            Box("Warehouse bay floor",Origin+new Vector3(72.5f,-.2f,0),new Vector3(47,.4f,50),concrete);
+            Box("Warehouse bay north",Origin+new Vector3(73,1.4f,25),new Vector3(46,2.8f,.3f),steel);
+            Box("Warehouse bay south",Origin+new Vector3(73,1.4f,-25),new Vector3(46,2.8f,.3f),steel);
+            Box("Warehouse bay east",Origin+new Vector3(96,1.4f,0),new Vector3(.3f,2.8f,50),steel);
+            var warehouse=Model("Warehouse",5.5f,new Vector3(72,0,0));if(warehouse!=null)warehouse.AddComponent<SuppliedWarehouse>();
+            Model("AcidBarrel",1.1f,new Vector3(61.5f,0,10));Model("AcidBarrel",1.1f,new Vector3(62.6f,0,10));
+            Model("ExplosiveBarrel",1.1f,new Vector3(82,0,10));Model("ExplosiveBarrel",1.1f,new Vector3(83.1f,0,10));
             var table=Model("PokerTable",1.2f,new Vector3(0,0,14));
             if(table!=null)
             {
@@ -63,6 +71,11 @@ namespace Blackstone.Supplied
             var map=GetComponent<Blackstone.Alcatraz.AlcatrazMap>();if(map!=null)map.SetSafePosition(player.transform.position);
         }
         public void EndVisit(){Visiting=false;}
+        public static bool ContainsPosition(Vector3 position)
+        {
+            var p=position-Origin;if(p.y<-1)return false;
+            return Mathf.Abs(p.x)<49.5f&&Mathf.Abs(p.z)<54.5f||p.x>=49&&p.x<95.5f&&Mathf.Abs(p.z)<24.5f;
+        }
         void Leave(){Visiting=false;player.Teleport(previous);var map=GetComponent<Blackstone.Alcatraz.AlcatrazMap>();if(map!=null)map.SetSafePosition(previous);}
         void Update()
         {
