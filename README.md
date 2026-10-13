@@ -17,6 +17,9 @@ Equipment: **1** unarmed, **2** knife, **3** supplied 10mm pistol, **4** service
 
 ## Added in 0.12.1
 
+The [uploaded asset batch](Documentation/UploadedExtras.md) lists all 21 requested
+packs, their in-game locations, and native dependency/archive verification results.
+
 The warehouse, acid barrel and explosive barrel bring the extras catalog to **23 uploads**. The annex has a connected warehouse bay, both door interactions and four solid barrel props. See [access and validation](Documentation/Revision12_AddedPacks.md).
 
 ## New in Revision 12

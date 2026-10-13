@@ -37,3 +37,5 @@ jobs:
         run: python Tools/validate_supplied_prison.py
       - name: Check warehouse door floor support and barrel assets
         run: python Tools/validate_warehouse.py
+      - name: Check all native extras and their runtime registration
+        run: python Tools/validate_extra_assets.py
