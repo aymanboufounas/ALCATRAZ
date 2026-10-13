@@ -17,6 +17,10 @@ Equipment: **1** unarmed, **2** knife, **3** supplied 10mm pistol, **4** service
 
 ## Added in 0.12.1
 
+[Police equipment and helicopter fixes](Documentation/PoliceHelicopterFixes.md)
+correct helmet/vest fitting, cockpit transparency, seat/rotor alignment and
+mixed keyboard/gamepad lift controls.
+
 The [factory, speaker array and radio uploads](Documentation/FactoryAudioUploads.md)
 are available in the north annex yard with source mesh detail and texture resolution
 preserved. Truck and garage uploads remain blocked by the attachment transfer limit.

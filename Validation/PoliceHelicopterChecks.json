@@ -1,0 +1,8 @@
+{
+  "status": "PASS",
+  "checks": 17,
+  "errors": [],
+  "police_triangles": 7814,
+  "helicopter_triangles": 27453,
+  "scope": "Native source triangle counts, police texture/renderer references and URP glass settings. Equipment fitting is reviewed in offline previews; Unity rendering and flight physics are unverified."
+}

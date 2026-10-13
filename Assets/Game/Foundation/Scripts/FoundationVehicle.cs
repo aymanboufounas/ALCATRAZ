@@ -33,8 +33,11 @@ namespace Blackstone.Foundation
             if(Active==this)
             {
                 controls=input.CanControl?input.Move:Vector2.zero;
-                lift=input.CanControl?((Keyboard.current!=null&&Keyboard.current.spaceKey.isPressed?1:0)-(input.Crouch?1:0)):0;
-                if(Gamepad.current!=null&&input.CanControl)lift=(Gamepad.current.buttonSouth.isPressed?1:0)-(Gamepad.current.buttonEast.isPressed?1:0);
+                lift=VehicleControlRules.Lift(input.CanControl,
+                    Keyboard.current!=null&&Keyboard.current.spaceKey.isPressed,
+                    Keyboard.current!=null&&Keyboard.current.leftCtrlKey.isPressed,
+                    Gamepad.current!=null&&Gamepad.current.buttonSouth.isPressed,
+                    Gamepad.current!=null&&Gamepad.current.buttonEast.isPressed);
                 if(input.InteractPressed)TryExit();
             }
             else if(Active==null && !player.ExternalControl && input.CanControl && Vector3.Distance(player.transform.position,transform.position)<4 && input.InteractPressed)Board();
@@ -44,7 +47,7 @@ namespace Blackstone.Foundation
         }
         void Board()
         {
-            Active=this;player.SetExternalControl(true);targetHeight=transform.position.y+2.5f;
+            Active=this;player.SetExternalControl(true);targetHeight=transform.position.y;
             passengerRenderers=avatar!=null?avatar.model.GetComponentsInChildren<Renderer>():new Renderer[0];previousVisibility=new bool[passengerRenderers.Length];
             for(int i=0;i<passengerRenderers.Length;i++){previousVisibility[i]=passengerRenderers[i].enabled;passengerRenderers[i].enabled=false;}
             if(avatar!=null)avatar.seated=true;
@@ -96,7 +99,7 @@ namespace Blackstone.Foundation
                 Vector3 origin=transform.position+offset+Vector3.up*2.5f;
                 if(!Physics.Raycast(origin,Vector3.down,out var hit,4,~((1<<8)|(1<<10)|(1<<11)),QueryTriggerInteraction.Ignore)||hit.normal.y<.6f||hit.point.y<Sea+.2f)continue;
                 Vector3 exit=hit.point+Vector3.up*.06f;
-                if(Physics.CheckCapsule(exit+Vector3.up*.32f,exit+Vector3.up*1.5f,.24f,~((1<<8)|(1<<10)|(1<<11)),QueryTriggerInteraction.Ignore))continue;
+                if(Physics.CheckCapsule(exit+Vector3.up*.32f,exit+Vector3.up*1.5f,.24f,~((1<<8)|(1<<10)),QueryTriggerInteraction.Ignore))continue;
                 Release();player.Teleport(exit);return;
             }
             Notice=aircraft?"Land beside clear ground to leave.":"Bring the boat alongside the dock to leave.";

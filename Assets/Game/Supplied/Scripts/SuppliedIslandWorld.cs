@@ -39,10 +39,14 @@ namespace Blackstone.Supplied
                 ChapterGate=new GameObject("Cellhouse entrance").transform;ChapterGate.SetParent(transform);ChapterGate.position=gate;
                 Vector3 guardPosition=Ground(new Vector3(-118,0,21));
                 var guard=SuppliedModel.Create("Police",transform);guard.transform.rotation=Quaternion.Euler(0,180,0);SuppliedModel.SizeAndGround(guard,1.82f,guardPosition);
-                var guardBounds=SuppliedModel.Bounds(guard);
-                var helmetAnchor=Anchor("Helmet socket",guard.transform,new Vector3(guardBounds.center.x,guardBounds.max.y-.12f,guardBounds.center.z));
-                var vestAnchor=Anchor("Vest socket",guard.transform,new Vector3(guardBounds.center.x,guardBounds.min.y+1.27f,guardBounds.center.z));
-                SuppliedModel.Attach("Helmet",helmetAnchor,.32f,Vector3.zero);SuppliedModel.Attach("Vest",vestAnchor,.58f,Vector3.zero);
+                var head=NamedRenderer(guard,"policeman_head");
+                if(head==null)throw new InvalidOperationException("The supplied police head mesh is missing.");
+                var headBounds=head.bounds;
+                var helmetAnchor=Anchor("Helmet socket",guard.transform,new Vector3(headBounds.center.x,headBounds.max.y-.065f,headBounds.center.z));
+                var vestAnchor=Anchor("Vest socket",guard.transform,new Vector3(headBounds.center.x,guardPosition.y+1.27f,headBounds.center.z)-guard.transform.forward*.025f);
+                // The supplied wearables face opposite the OBJ officer's source forward.
+                helmetAnchor.localRotation=vestAnchor.localRotation=Quaternion.Euler(0,180,0);
+                SuppliedModel.Attach("Helmet",helmetAnchor,.32f,Vector3.zero);SuppliedModel.Attach("Vest",vestAnchor,.56f,Vector3.zero);
                 var guardBody=guard.AddComponent<CapsuleCollider>();guardBody.height=1.8f/guard.transform.lossyScale.y;guardBody.radius=.25f/guard.transform.lossyScale.x;
                 guardBody.center=guard.transform.InverseTransformPoint(guardPosition+Vector3.up*.9f);
                 Vector3 dogPosition=Ground(new Vector3(-105,0,25));var dogRoot=new GameObject("Police dog patrol");dogRoot.transform.SetParent(transform);dogRoot.transform.position=dogPosition;
@@ -61,10 +65,12 @@ namespace Blackstone.Supplied
                     Cube("Dock practice target "+(i+1),landing+new Vector3(-3+i*3,1.35f,-4),new Vector3(.7f,1.1f,.12f),deck,true).AddComponent<FoundationTarget>();
                 helicopter.transform.rotation=Quaternion.Euler(0,110,0);SuppliedModel.SizeAndGround(helicopter,2.8f,landing+Vector3.up*.02f);
                 var aircraftBounds=SuppliedModel.Bounds(helicopter);
-                var craft=new GameObject("Flyable Little Bird");craft.transform.SetParent(transform);craft.transform.position=new Vector3(aircraftBounds.center.x,aircraftBounds.min.y,aircraftBounds.center.z);craft.transform.rotation=helicopter.transform.rotation;
+                var cockpit=NamedRenderer(helicopter,"vidrio");
+                if(cockpit==null)throw new InvalidOperationException("The supplied helicopter cockpit mesh is missing.");
+                var craft=new GameObject("Flyable Little Bird");craft.transform.SetParent(transform);craft.transform.position=new Vector3(cockpit.bounds.center.x,aircraftBounds.min.y,cockpit.bounds.center.z);craft.transform.rotation=helicopter.transform.rotation;
                 helicopter.transform.SetParent(craft.transform,true);
                 var aircraftBody=craft.AddComponent<BoxCollider>();aircraftBody.center=new Vector3(0,.85f,0);aircraftBody.size=new Vector3(1.7f,1.7f,3.4f);
-                var tail=craft.AddComponent<BoxCollider>();tail.center=new Vector3(0,1.25f,-2.5f);tail.size=new Vector3(.45f,.55f,2.8f);
+                var tail=craft.AddComponent<BoxCollider>();tail.center=new Vector3(0,1.25f,-4.1f);tail.size=new Vector3(.45f,.55f,4.8f);
                 craft.AddComponent<Rigidbody>();var flight=craft.AddComponent<FoundationVehicle>();flight.aircraft=true;
                 Renderer mainRotor=null,tailRotor=null;
                 foreach(var r in helicopter.GetComponentsInChildren<Renderer>())
@@ -127,7 +133,13 @@ namespace Blackstone.Supplied
                 EnterCellhouse();
         }
         static Transform RotorPivot(Renderer blade,Transform model)
-        {var pivot=new GameObject("Rotor axle").transform;pivot.SetParent(model,true);pivot.position=blade.bounds.center;pivot.rotation=model.rotation;blade.transform.SetParent(pivot,true);return pivot;}
+        {
+            var filter=blade.GetComponent<MeshFilter>();
+            Vector3 center=filter!=null&&filter.sharedMesh!=null?blade.transform.TransformPoint(filter.sharedMesh.bounds.center):blade.bounds.center;
+            var pivot=new GameObject("Rotor axle").transform;pivot.SetParent(model,true);pivot.position=center;pivot.rotation=model.rotation;blade.transform.SetParent(pivot,true);return pivot;
+        }
+        static Renderer NamedRenderer(GameObject model,string name)
+        {foreach(var renderer in model.GetComponentsInChildren<Renderer>())if(renderer.name==name)return renderer;return null;}
         void BuildBoat(Vector3 position)
         {
             var root=new GameObject("Alcatraz coastal patrol boat");root.transform.SetParent(transform);root.transform.position=position;

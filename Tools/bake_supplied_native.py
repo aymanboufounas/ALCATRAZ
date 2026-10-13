@@ -36,8 +36,17 @@ def metadata():
 
 def material(name, data):
     texture = str(Path(data['texture']).relative_to(u.ROOT)) if data['texture'] else None
-    return u.material(name, list(data['color']), rough=.85, texture=texture,
-                      transparent=data['color'][3] < .99)
+    color=list(data['color'])
+    glass=name.startswith('Helicopter_') and data['name']=='vidrio'
+    # glTF transmission is not represented by baseColor alpha. Approximate the
+    # source transmissive cockpit with standard URP transparent, double-sided glass.
+    if glass:color[3]=.18
+    path=u.material(name,color,rough=.05 if glass else .85,texture=texture,
+                    transparent=color[3]<.99)
+    if glass:
+        source=(u.ROOT/path).read_text().replace('- _Cull: 2','- _Cull: 0')
+        u.write(path,source)
+    return path
 
 
 def mesh_parts(name, data, weights=None, joints=None, bind=None):
@@ -126,6 +135,10 @@ def bake_static(name):
                 node.meshcollider(mesh)
         kept += len(model['t'])
     path = prefab(root, name)
+    for generated in (u.ROOT/BASE).rglob(name+'*'):
+        if generated.is_file() and generated.suffix in ('.meta','.asset','.mat','.prefab'):
+            text=generated.read_text();clean='\n'.join(line.rstrip() for line in text.splitlines())+'\n'
+            if text!=clean:u.write(str(generated.relative_to(u.ROOT)),clean)
     print(name, kept, 'triangles', flush=True)
     return {'prefab': path, 'triangles': kept, 'format': 'native Unity mesh/prefab'}
 

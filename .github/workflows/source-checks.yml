@@ -23,6 +23,8 @@ jobs:
           sudo apt-get install -y -qq mono-mcs
           mcs -out:/tmp/HoldemTests.exe Assets/Game/Scripts/Activities/PrisonPokerRules.cs Assets/Game/Scripts/Activities/HoldemGame.cs Assets/Game/Foundation/Scripts/WeaponState.cs Tools/Tests/HoldemTests.cs
           mono /tmp/HoldemTests.exe
+          mcs -out:/tmp/VehicleControlTests.exe Assets/Game/Foundation/Scripts/VehicleControlRules.cs Tools/Tests/VehicleControlTests.cs
+          mono /tmp/VehicleControlTests.exe
       - name: Check C# grammar
         run: python Tools/check_csharp_syntax.py
       - name: Check character forward axis and source gait
@@ -39,3 +41,5 @@ jobs:
         run: python Tools/validate_warehouse.py
       - name: Check all native extras and their runtime registration
         run: python Tools/validate_extra_assets.py
+      - name: Check police source detail and helicopter glass
+        run: python Tools/validate_police_helicopter.py
