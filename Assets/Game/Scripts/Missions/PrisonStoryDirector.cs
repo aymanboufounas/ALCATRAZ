@@ -372,10 +372,19 @@ namespace Blackstone.Story
         IEnumerator YardTableRoutine(Transform seat)
         {
             Vector3 before=player.transform.position;Quaternion rotation=player.transform.rotation;
-            BeginCinematic();if(seat!=null)Teleport(seat);playerActor.SetPose(ActorPose.SeatedTalk);
-            yield return Say("yard_table","reader");
-            playerActor.SetPose(ActorPose.Idle);player.Teleport(before);player.transform.rotation=rotation;
-            EndCinematic();
+            var avatar=player.GetComponent<Blackstone.Foundation.FoundationAvatar>();
+            bool wasSeated=avatar!=null&&avatar.seated,wasExternal=player.ExternalControl;
+            ActorPose beforePose=playerActor.pose;
+            BeginCinematic();if(seat!=null)Teleport(seat);
+            player.SetExternalControl(true);playerActor.SetPose(ActorPose.SeatedTalk);
+            if(avatar!=null)avatar.seated=true;
+            try { yield return Say("yard_table","reader"); }
+            finally
+            {
+                playerActor.SetPose(beforePose);if(avatar!=null)avatar.seated=wasSeated;
+                player.Teleport(before);player.transform.rotation=rotation;player.SetExternalControl(wasExternal);
+                EndCinematic();
+            }
         }
         PrisonActor SpeakerActor(string name)
         {

@@ -16,7 +16,7 @@ namespace Blackstone.Foundation.Editor
         public const string Controller="Assets/Game/Resources/BlackstoneFoundation/Locomotion.controller";
         public const string Scene="Assets/Game/Scenes/SC_BlackstoneFoundation.unity";
         public const string StoryScene="Assets/Game/Scenes/SC_BlackstoneStory_Upgraded.unity";
-        const string Revision="foundation-12.0";
+        const string Revision="foundation-12.1-motion";
         static bool preparing;
         static bool scheduled;
         [Serializable] sealed class GaitData { public float[] thresholds=new float[0]; }
@@ -99,7 +99,9 @@ namespace Blackstone.Foundation.Editor
             foreach(string mode in new[]{"Seated","Crouch","Air"})
             {
                 var state=machine.AddState(mode);state.motion=Clip(mode=="Air"?"Idle":mode);
-                var enter=mode=="Air"?machine.AddAnyStateTransition(state):ground.AddTransition(state);enter.hasExitTime=false;enter.duration=.15f;enter.AddCondition(AnimatorConditionMode.If,0,mode);if(mode=="Air"){enter.canTransitionToSelf=false;enter.AddCondition(AnimatorConditionMode.IfNot,0,"Seated");}
+                var enter=machine.AddAnyStateTransition(state);enter.hasExitTime=false;enter.duration=.15f;enter.canTransitionToSelf=false;enter.AddCondition(AnimatorConditionMode.If,0,mode);
+                if(mode!="Seated")enter.AddCondition(AnimatorConditionMode.IfNot,0,"Seated");
+                if(mode=="Crouch")enter.AddCondition(AnimatorConditionMode.IfNot,0,"Air");
                 var leave=state.AddTransition(ground);leave.hasExitTime=false;leave.duration=.15f;leave.AddCondition(AnimatorConditionMode.IfNot,0,mode);
             }
             foreach(string name in new[]{"Start","Stop","TurnLeft","TurnRight"})

@@ -71,7 +71,38 @@ namespace Blackstone.Alcatraz.Editor
                 int version = movement.TeleportVersion;
                 movement.Teleport(origin+Vector3.right*2);
                 Check(movement.TeleportVersion == version+1 && !movement.Grounded, "short teleport invalidates stale camera and ground state");
-                Debug.Log("Alcatraz movement/camera checks passed: 11 assertions using Unity physics. Full gameplay and visual review are still required.");
+                movement.Teleport(origin); Physics.SyncTransforms();
+                input.Capture(true);input.SetGameplayBlocked(true);
+                typeof(PlayerMovement).GetField("velocity", Private).SetValue(movement,Vector3.forward*5.5f);
+                typeof(PlayerMovement).GetField("jumpAt", Private).SetValue(movement,Time.time-.01f);
+                typeof(PlayerMovement).GetField("lastGrounded", Private).SetValue(movement,Time.time);
+                Invoke(movement,"Update");
+                Check(Vector3.ProjectOnPlane(hero.transform.position-origin,Vector3.up).sqrMagnitude<.000001f,
+                    "blocked input stops sprint momentum immediately");
+                Check(!movement.JumpedThisFrame && movement.JumpPreparation==0,
+                    "blocking input cancels a prepared jump");
+                movement.SetExternalControl(true);
+                Check(!controller.enabled && movement.Speed==0 && movement.VerticalSpeed==0,
+                    "seated external control disables gravity and movement");
+                Vector3 seatedPosition=hero.transform.position;Invoke(movement,"Update");
+                Check(hero.transform.position==seatedPosition,"seated player stays anchored");
+                movement.SetExternalControl(false);
+                Check(controller.enabled && !movement.Grounded && !movement.JumpedThisFrame &&
+                    !movement.LandedThisFrame && movement.AirTime==0 && movement.LandingRecovery==0,
+                    "standing restores controller without stale jump or landing state");
+                input.SetGameplayBlocked(false);
+                movement.Teleport(origin);controller.Move(Vector3.down*.02f);
+                typeof(PlayerMovement).GetField("lastGrounded",Private).SetValue(movement,Time.time);
+                typeof(PlayerMovement).GetField("jumpAt",Private).SetValue(movement,Time.time-.0001f);
+                Invoke(movement,"Update");
+                Check(movement.JumpedThisFrame && movement.VerticalSpeed>0 && !movement.Grounded,
+                    "prepared standing jump launches upward");
+                Invoke(movement,"Update");
+                Check(!movement.JumpedThisFrame,"prepared jump launches only once");
+                for(int i=0;i<10000&&!movement.Grounded;i++)Invoke(movement,"Update");
+                Check(movement.Grounded && movement.AirTime==0 && movement.VerticalSpeed<0,
+                    "jump lands and restores grounded movement");
+                Debug.Log("Alcatraz movement/camera checks passed: 19 assertions using Unity physics. Full gameplay and visual review are still required.");
             }
             catch (TargetInvocationException error)
             { Debug.LogException(error.InnerException ?? error); throw; }

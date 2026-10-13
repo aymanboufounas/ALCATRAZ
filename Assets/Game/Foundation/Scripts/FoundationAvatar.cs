@@ -65,7 +65,8 @@ namespace Blackstone.Foundation
             if (storyActor != null)
             {
                 var pose = storyActor.pose;
-                seated = pose == Blackstone.Actors.ActorPose.Cards || pose == Blackstone.Actors.ActorPose.Read || pose == Blackstone.Actors.ActorPose.SeatedTalk;
+                if (movement == null || !movement.ExternalControl)
+                    seated = pose == Blackstone.Actors.ActorPose.Cards || pose == Blackstone.Actors.ActorPose.Read || pose == Blackstone.Actors.ActorPose.SeatedTalk;
                 Vector3 displacement = transform.position - previousPosition; displacement.y = 0;
                 agentSpeed = displacement.magnitude < 1.5f ? displacement.magnitude / Time.deltaTime : 0;
                 previousPosition = transform.position;
@@ -74,10 +75,15 @@ namespace Blackstone.Foundation
             float scale = Mathf.Max(.05f, model.lossyScale.z);
             animator.SetFloat("Speed", MotionSpeed / scale, .12f, Time.deltaTime);
             bool crouch = movement != null && movement.IsCrouching;
-            bool air = movement != null && !movement.Grounded;
+            bool air = movement != null && !movement.ExternalControl && !seated && !movement.Grounded;
             animator.SetBool("Seated", seated);
             animator.SetBool("Crouch", crouch && MotionSpeed < .15f);
             animator.SetBool("Air", air);
+            if (seated || crouch || air || movement != null && movement.ExternalControl)
+            {
+                animator.ResetTrigger("Start");animator.ResetTrigger("Stop");
+                animator.ResetTrigger("TurnLeft");animator.ResetTrigger("TurnRight");
+            }
             bool strafing = movement != null && movement.IsAiming;
             float direction = strafing && movement.LocalMotion.y < -.12f ? -1 : 1;
             animator.SetFloat("Direction", direction);
@@ -87,7 +93,7 @@ namespace Blackstone.Foundation
                 if (previousSpeed > .5f && MotionSpeed < .1f) animator.SetTrigger("Stop");
             }
             float turn = Mathf.DeltaAngle(previousYaw, transform.eulerAngles.y);
-            if (MotionSpeed < .1f && Mathf.Abs(turn) > 12)
+            if (!seated && !crouch && !air && MotionSpeed < .1f && Mathf.Abs(turn) > 12)
                 animator.SetTrigger(turn < 0 ? "TurnLeft" : "TurnRight");
             previousYaw = transform.eulerAngles.y; previousSpeed = MotionSpeed;
             float yaw = 0;

@@ -57,6 +57,10 @@ namespace DesertShift.Player
             if (Time.deltaTime <= 0) return;
             JumpedThisFrame = LandedThisFrame = false;
             if (ExternalControl || !controller.enabled) { LocalMotion=Vector2.zero; return; }
+            if (!input.CanControl)
+            {
+                velocity = Vector3.zero; jumpAt = 0; lastJumpPressed = -10;
+            }
             bool wasGrounded = Grounded;
             Grounded = velocityY <= .1f && (controller.isGrounded || Physics.SphereCast(
                 transform.position + Vector3.up * .24f, .18f, Vector3.down, out var support, .12f,
@@ -77,7 +81,7 @@ namespace DesertShift.Player
             velocity = Vector3.MoveTowards(velocity, targetVelocity,
                 (axis.sqrMagnitude > .001f ? acceleration : deceleration) * (Grounded ? 1 : .25f) * Time.deltaTime);
             float oldYaw = transform.eulerAngles.y;
-            if (axis.sqrMagnitude > .001f || input.Aim)
+            if (input.CanControl && (axis.sqrMagnitude > .001f || input.Aim))
             {
                 Vector3 travel = velocity.sqrMagnitude > .04f ? velocity : wantedDirection;
                 transform.rotation = Quaternion.Slerp(transform.rotation,
@@ -86,7 +90,7 @@ namespace DesertShift.Player
             }
             TurnRate = Mathf.DeltaAngle(oldYaw, transform.eulerAngles.y) / Time.deltaTime;
             if (Grounded && velocityY < 0) velocityY = -3f;
-            if (!IsCrouching && LandingRecovery<=0 && jumpAt<=0 && Time.time-lastJumpPressed<.12f && Time.time-lastGrounded<.12f)
+            if (input.CanControl && !IsCrouching && LandingRecovery<=0 && jumpAt<=0 && Time.time-lastJumpPressed<.12f && Time.time-lastGrounded<.12f)
             { jumpAt=Time.time+.09f; lastJumpPressed=-10; }
             if(jumpAt>0 && Time.time>=jumpAt)
             {
@@ -156,7 +160,7 @@ namespace DesertShift.Player
         }
         void UpdateCrouch()
         {
-            bool shouldCrouch = input.Crouch;
+            bool shouldCrouch = input.CanControl ? input.Crouch : IsCrouching;
             if (!shouldCrouch && IsCrouching)
             {
                 var bottom = transform.position + Vector3.up * (controller.height - .24f);
@@ -170,7 +174,13 @@ namespace DesertShift.Player
             controller.stepOffset = Grounded ? (shouldCrouch ? .18f : .3f) : 0;
         }
         public void SetExternalControl(bool active)
-        { ExternalControl=active; controller.enabled=!active; velocity=Vector3.zero; velocityY=0; LocalMotion=Vector2.zero; jumpAt=0; }
+        {
+            ExternalControl=active; controller.enabled=!active;
+            velocity=Vector3.zero; velocityY=0; LocalMotion=Vector2.zero; TurnRate=0;
+            jumpAt=0; lastGrounded=lastJumpPressed=-10;
+            Grounded=JumpedThisFrame=LandedThisFrame=false;
+            AirTime=LandingSpeed=LandingRecovery=0;
+        }
         public void Teleport(Vector3 position)
         {
             controller.enabled = false; transform.position = position;

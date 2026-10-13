@@ -36,6 +36,7 @@ namespace Blackstone.Activities
             previousPosition=movement.transform.position;previousRotation=movement.transform.rotation;previousBlocked=input.GameplayBlocked;previousResumeOnClick=input.ResumeOnClick;previousSeated=avatar!=null&&avatar.seated;
             Active=this;openedAt=Time.time;input.SetGameplayBlocked(true);input.ResumeOnClick=false;
             if(playerSeat!=null){movement.Teleport(playerSeat.position);movement.transform.rotation=playerSeat.rotation;}
+            movement.SetExternalControl(true);
             if(avatar!=null)avatar.seated=true;
             if(director!=null){previousPose=director.playerActor.pose;director.playerActor.SetPose(ActorPose.Cards);}
             if(players!=null)
@@ -73,7 +74,7 @@ namespace Blackstone.Activities
             {if(game.Actor==0)game.Act(PokerAction.Fold);else{int amount;var action=game.ChooseAI(out amount);game.Act(action,amount);}}
             Active=null;if(director!=null){director.audioBus.StopDialogue();director.playerActor.SetPose(previousPose);}
             if(avatar!=null)avatar.seated=previousSeated;
-            movement.Teleport(previousPosition);movement.transform.rotation=previousRotation;input.SetGameplayBlocked(previousBlocked||director!=null&&(director.Busy||director.PhoneOpen));input.ResumeOnClick=previousResumeOnClick;
+            movement.Teleport(previousPosition);movement.transform.rotation=previousRotation;movement.SetExternalControl(false);input.SetGameplayBlocked(previousBlocked||director!=null&&(director.Busy||director.PhoneOpen));input.ResumeOnClick=previousResumeOnClick;
             if(players!=null&&opponentPositions!=null)for(int i=0;i<players.Length;i++)
             {var p=players[i];if(p==null)continue;p.transform.SetPositionAndRotation(opponentPositions[i],opponentRotations[i]);p.SetPose(opponentPoses[i]);p.Suspended=opponentSuspended[i];p.SpeakTo(null,false);var a=p.GetComponent<FoundationAvatar>();if(a!=null)a.seated=opponentSeated[i];}
             var view=Camera.main;if(view!=null){view.transform.SetPositionAndRotation(cameraPosition,cameraRotation);view.fieldOfView=cameraFov;}
