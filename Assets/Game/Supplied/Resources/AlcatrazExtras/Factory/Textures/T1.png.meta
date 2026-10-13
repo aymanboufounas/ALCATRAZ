@@ -1,0 +1,19 @@
+fileFormatVersion: 2
+guid: 533b441703b2a0bc1bd3dbf30f88b213
+TextureImporter:
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    enableMipMap: 1
+    sRGBTexture: 1
+  textureType: 0
+  maxTextureSize: 1024
+  isReadable: 0
+  textureSettings:
+    filterMode: 1
+    aniso: 4
+    wrapU: 0
+    wrapV: 0
+  userData:
+  assetBundleName:
+  assetBundleVariant:

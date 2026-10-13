@@ -1,0 +1,269 @@
+{
+  "status": "PASS",
+  "packs": 26,
+  "matched_archives": 3,
+  "errors": [],
+  "assets": [
+    {
+      "name": "Warehouse",
+      "archive": "abandoned-warehouse-interior-scene(1).zip",
+      "resource": "AlcatrazExtras/Warehouse/Warehouse",
+      "source_sha256": "167b48a3b5c55cdb806280149f34851a97a6f4293427efa2f0d45d7418fc441c",
+      "archive_status": "not supplied",
+      "meshes": 54,
+      "materials": 32,
+      "textures": 27
+    },
+    {
+      "name": "AcidBarrel",
+      "archive": "acid-barrel(1).zip",
+      "resource": "AlcatrazExtras/AcidBarrel/AcidBarrel",
+      "source_sha256": "84286b76d5af15c3f5dfafe99288d468d257b0b03d9a7c420305533506c97215",
+      "archive_status": "not supplied",
+      "meshes": 1,
+      "materials": 2,
+      "textures": 3
+    },
+    {
+      "name": "ExplosiveBarrel",
+      "archive": "explosive-barrel(1).zip",
+      "resource": "AlcatrazExtras/ExplosiveBarrel/ExplosiveBarrel",
+      "source_sha256": "215f6c3293b5c5e4323112e88e54717686de4db2c5a147189b018bc530d256ba",
+      "archive_status": "not supplied",
+      "meshes": 1,
+      "materials": 2,
+      "textures": 1
+    },
+    {
+      "name": "BridgePack",
+      "archive": "bridge-pack-low-poly-3d-game-assets.zip",
+      "resource": "AlcatrazExtras/BridgePack/BridgePack",
+      "source_sha256": "12545b772460bd55537ea3eef5de4cdac30a19fe708ef95581e65257a94cf7e7",
+      "archive_status": "not supplied",
+      "meshes": 8,
+      "materials": 8,
+      "textures": 0
+    },
+    {
+      "name": "UtilityBuilding",
+      "archive": "industrial-utility-building-game-ready.zip",
+      "resource": "AlcatrazExtras/UtilityBuilding/UtilityBuilding",
+      "source_sha256": "f57355ddb862ae50e76f2a4b86336ac37794e13b93cec87053ed84eab3ee7b59",
+      "archive_status": "not supplied",
+      "meshes": 23,
+      "materials": 23,
+      "textures": 17
+    },
+    {
+      "name": "PrisonRoom",
+      "archive": "dp3-hw9-prison-room.zip",
+      "resource": "AlcatrazExtras/PrisonRoom/PrisonRoom",
+      "source_sha256": "4d3f8e8aebb5dc367eae9d78fac728fa2c8f9f4e628dafe5ea73e9fe68076f7e",
+      "archive_status": "not supplied",
+      "meshes": 19,
+      "materials": 19,
+      "textures": 16
+    },
+    {
+      "name": "Hallway",
+      "archive": "prison-hallway.zip",
+      "resource": "AlcatrazExtras/Hallway/Hallway",
+      "source_sha256": "d08ba95009becd5012274475479f683e459cf0f4105974b9866ca98a19827dd4",
+      "archive_status": "not supplied",
+      "meshes": 29,
+      "materials": 30,
+      "textures": 29
+    },
+    {
+      "name": "Watchtower",
+      "archive": "gta-6-prison-tower-guard-tower-watchtower.zip",
+      "resource": "AlcatrazExtras/Watchtower/Watchtower",
+      "source_sha256": "672916cca29bc4b9e58e6ce008d4657a0d34ddbe1d0202a8865acc641641159f",
+      "archive_status": "not supplied",
+      "meshes": 3,
+      "materials": 3,
+      "textures": 3
+    },
+    {
+      "name": "Shephard",
+      "archive": "ep4-adrian-shephard.zip",
+      "resource": "AlcatrazExtras/Shephard/Shephard",
+      "source_sha256": "564a6f085f80f53dea0978ad6fd6416b3cbd732e834ae55a1a2d27e7c0e06b18",
+      "archive_status": "not supplied",
+      "meshes": 5,
+      "materials": 5,
+      "textures": 3
+    },
+    {
+      "name": "Forest",
+      "archive": "pine-forest-at-sunset.zip",
+      "resource": "AlcatrazExtras/Forest/Forest",
+      "source_sha256": "6a05d679873784e2a9829b60e014229acce3df199b0510bdd6aef9f6cb9b5100",
+      "archive_status": "not supplied",
+      "meshes": 21,
+      "materials": 8,
+      "textures": 8
+    },
+    {
+      "name": "Beach",
+      "archive": "small-beach-lowpoly.zip",
+      "resource": "AlcatrazExtras/Beach/Beach",
+      "source_sha256": "96ec97ecfc666851e1f5da4adfd7337d714bc73827b508da188f6fe42fff16cc",
+      "archive_status": "not supplied",
+      "meshes": 1,
+      "materials": 1,
+      "textures": 1
+    },
+    {
+      "name": "PunchingBag",
+      "archive": "punching-bagboxing-bag.zip",
+      "resource": "AlcatrazExtras/PunchingBag/PunchingBag",
+      "source_sha256": "c70e27457cbcfdcc3354775f08f0c358e4446a45266f05656b42c63ab001cebc",
+      "archive_status": "not supplied",
+      "meshes": 4,
+      "materials": 2,
+      "textures": 3
+    },
+    {
+      "name": "PokerTable",
+      "archive": "poker-set.zip",
+      "resource": "AlcatrazExtras/PokerTable/PokerTable",
+      "source_sha256": "a126548999a5d8ec8bb27af0bc2046803faeaa7e5ef254db9433d6ceedb204db",
+      "archive_status": "not supplied",
+      "meshes": 8,
+      "materials": 3,
+      "textures": 4
+    },
+    {
+      "name": "PokerProps",
+      "archive": "poker-set (1).zip",
+      "resource": "AlcatrazExtras/PokerProps/PokerProps",
+      "source_sha256": "bdc5f0dee1dd28a0a6d845abdedcc925b7481f056858e1f9cd1015082a42bfd9",
+      "archive_status": "not supplied",
+      "meshes": 23,
+      "materials": 8,
+      "textures": 8
+    },
+    {
+      "name": "SteelStairs",
+      "archive": "staircase-modular-frame-steel.zip",
+      "resource": "AlcatrazExtras/SteelStairs/SteelStairs",
+      "source_sha256": "7c393138f9c387befef87dbafbf82496a99fc485c1680fddeef3c755b11661c1",
+      "archive_status": "not supplied",
+      "meshes": 3,
+      "materials": 1,
+      "textures": 1
+    },
+    {
+      "name": "Machete",
+      "archive": "machete-farcry-3.zip",
+      "resource": "AlcatrazExtras/Machete/Machete",
+      "source_sha256": "6770dc1cbdc51f8ee9da680abdfd8ff4d61607e8b9a0c2afa8ed043bc42e4c8b",
+      "archive_status": "not supplied",
+      "meshes": 2,
+      "materials": 2,
+      "textures": 3
+    },
+    {
+      "name": "ColtM5",
+      "archive": "the-hardest-interview-2-free-download.zip",
+      "resource": "AlcatrazExtras/ColtM5/ColtM5",
+      "source_sha256": "6f73334ee83825d76ca3ffa2aa5fc42d70a2a57fc4bf487a36995d9bdb0fcd02",
+      "archive_status": "not supplied",
+      "meshes": 6,
+      "materials": 7,
+      "textures": 0
+    },
+    {
+      "name": "M9A3",
+      "archive": "lowpoly-m9a3-pistol.zip",
+      "resource": "AlcatrazExtras/M9A3/M9A3",
+      "source_sha256": "30c94bfc7d3ac558bd05c037c2631be2bf38fd17c74b8c5d3556f9165c4223d7",
+      "archive_status": "not supplied",
+      "meshes": 1,
+      "materials": 1,
+      "textures": 1
+    },
+    {
+      "name": "PMX",
+      "archive": "beretta-pmx-pmxs-comune.zip",
+      "resource": "AlcatrazExtras/PMX/PMX",
+      "source_sha256": "1ffffc7f9a38c4bfef31ba4b2e30bb9f6faf3d74ecd22b3c789623542ef9ed98",
+      "archive_status": "not supplied",
+      "meshes": 4,
+      "materials": 3,
+      "textures": 4
+    },
+    {
+      "name": "PX4",
+      "archive": "beretta-px4-full-size.zip",
+      "resource": "AlcatrazExtras/PX4/PX4",
+      "source_sha256": "c3cedb3cd93c2efd01e130f4a4fe660b4cace9a1efe99f211668ba6dd0e2c266",
+      "archive_status": "not supplied",
+      "meshes": 1,
+      "materials": 2,
+      "textures": 2
+    },
+    {
+      "name": "BRX1",
+      "archive": "beretta-brx1.zip",
+      "resource": "AlcatrazExtras/BRX1/BRX1",
+      "source_sha256": "174f3724a90cae99a93cc26966513f4052bf8d2543b2d31205b3845c19b276a3",
+      "archive_status": "not supplied",
+      "meshes": 3,
+      "materials": 4,
+      "textures": 6
+    },
+    {
+      "name": "Workshop",
+      "archive": "alchemists-workshop-stylized-fantasy-scene.zip",
+      "resource": "AlcatrazExtras/Workshop/Workshop",
+      "source_sha256": "d02bc1145249f1f03b8d899211736017f2408cebbc855aeea972e26f3b76bbff",
+      "archive_status": "not supplied",
+      "meshes": 6,
+      "materials": 22,
+      "textures": 6
+    },
+    {
+      "name": "Store",
+      "archive": "abandoned-store-for-free.zip",
+      "resource": "AlcatrazExtras/Store/Store",
+      "source_sha256": "61267db3649b905662fb34d9ca849691321e5f4be27ccd8a972d86a8532a0db3",
+      "archive_status": "not supplied",
+      "meshes": 12,
+      "materials": 12,
+      "textures": 15
+    },
+    {
+      "name": "SpeakerArray",
+      "archive": "speaker-array.zip",
+      "resource": "AlcatrazExtras/SpeakerArray/SpeakerArray",
+      "source_sha256": "e3c9262f8cc0dd2730d13de9b21cca5ff25f4f9341365f81841f7707b1049905",
+      "archive_status": "matched",
+      "meshes": 1,
+      "materials": 2,
+      "textures": 4
+    },
+    {
+      "name": "Radio",
+      "archive": "lowpoly-radio.zip",
+      "resource": "AlcatrazExtras/Radio/Radio",
+      "source_sha256": "a0b14a363a5b0d4894fd130f17d58c96a19cbc9cc3d3c1a5d285867d1af29d47",
+      "archive_status": "matched",
+      "meshes": 1,
+      "materials": 1,
+      "textures": 1
+    },
+    {
+      "name": "Factory",
+      "archive": "old-factory-free.zip",
+      "resource": "AlcatrazExtras/Factory/Factory",
+      "source_sha256": "50181f065d44363e8d230f33951d4a283dd86e4415dc9b088f106b535fdc5f80",
+      "archive_status": "matched",
+      "meshes": 15,
+      "materials": 11,
+      "textures": 11
+    }
+  ],
+  "scope": "Native prefab/material/texture references, catalog provenance, placement/equipment registration and supplied ZIP hashes/CRC. Unity import and gameplay are unverified."
+}

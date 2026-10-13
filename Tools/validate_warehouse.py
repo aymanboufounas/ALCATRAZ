@@ -8,7 +8,7 @@ def attributes(path):
 def main():
     parser=argparse.ArgumentParser();parser.add_argument('--archives',type=Path);args=parser.parse_args();checks=[]
     def check(ok,name):checks.append({'pass':bool(ok),'check':name})
-    catalog=json.loads((BASE/'Catalog.json').read_text());entries={e['name']:e for e in catalog};check(len(catalog)==23 and len(entries)==23,'All 23 packs have distinct entries')
+    catalog=json.loads((BASE/'Catalog.json').read_text());entries={e['name']:e for e in catalog};check(len(catalog)>=23 and len(entries)==len(catalog),'All supplied packs have distinct entries')
     source=(ROOT/'Assets/Game/Supplied/Scripts/SuppliedExtrasWorld.cs').read_text();placements=[(n,float(h),np.array([float(x.strip().rstrip('f')) for x in p.split(',')])) for n,h,p in re.findall(r'Model\("(Warehouse|AcidBarrel|ExplosiveBarrel)",([\d.]+)f?,new Vector3\(([^)]+)\)\)',source)];check(len(placements)==5,'One warehouse and four barrel instances');mesh_sets={}
     for n in ('Warehouse','AcidBarrel','ExplosiveBarrel'):
         e=entries[n];check(e==json.loads((BASE/n/'Source.json').read_text()),n+' catalog matches its source record')

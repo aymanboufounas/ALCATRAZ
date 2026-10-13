@@ -19,7 +19,8 @@ namespace Blackstone.Supplied
             var shader=Shader.Find("Universal Render Pipeline/Lit");if(shader==null)return;
             concrete=new Material(shader){color=new Color(.43f,.46f,.45f)};steel=new Material(shader){color=new Color(.12f,.17f,.19f)};
             Box("Workshop annex floor",Origin-Vector3.up*.2f,new Vector3(100,.4f,110),concrete);
-            Box("North perimeter",Origin+new Vector3(0,1.4f,55),new Vector3(100,2.8f,.3f),steel);
+            Box("North perimeter west",Origin+new Vector3(-27,1.4f,55),new Vector3(46,2.8f,.3f),steel);
+            Box("North perimeter east",Origin+new Vector3(27,1.4f,55),new Vector3(46,2.8f,.3f),steel);
             Box("East perimeter north",Origin+new Vector3(50,1.4f,29.5f),new Vector3(.3f,2.8f,51),steel);
             Box("East perimeter south",Origin+new Vector3(50,1.4f,-29.5f),new Vector3(.3f,2.8f,51),steel);
             Box("West perimeter",Origin+new Vector3(-50,1.4f,0),new Vector3(.3f,2.8f,110),steel);
@@ -36,6 +37,15 @@ namespace Blackstone.Supplied
             var warehouse=Model("Warehouse",5.5f,new Vector3(72,0,0));if(warehouse!=null)warehouse.AddComponent<SuppliedWarehouse>();
             Model("AcidBarrel",1.1f,new Vector3(61.5f,0,10));Model("AcidBarrel",1.1f,new Vector3(62.6f,0,10));
             Model("ExplosiveBarrel",1.1f,new Vector3(82,0,10));Model("ExplosiveBarrel",1.1f,new Vector3(83.1f,0,10));
+            // An overlapping north floor keeps the original annex connected to the new source models.
+            Box("Factory yard floor",Origin+new Vector3(0,-.2f,99),new Vector3(100,.4f,90),concrete);
+            Box("Factory yard north",Origin+new Vector3(0,1.4f,144),new Vector3(100,2.8f,.3f),steel);
+            Box("Factory yard west",Origin+new Vector3(-50,1.4f,99),new Vector3(.3f,2.8f,90),steel);
+            Box("Factory yard east",Origin+new Vector3(50,1.4f,99),new Vector3(.3f,2.8f,90),steel);
+            Model("Factory",10,new Vector3(-20,0,103));
+            Model("SpeakerArray",2.5f,new Vector3(20,0,96));
+            Box("Radio table",Origin+new Vector3(20,.4f,90),new Vector3(1.5f,.8f,1),steel);
+            Model("Radio",.35f,new Vector3(20,.8f,90));
             var table=Model("PokerTable",1.2f,new Vector3(0,0,14));
             if(table!=null)
             {
@@ -74,7 +84,7 @@ namespace Blackstone.Supplied
         public static bool ContainsPosition(Vector3 position)
         {
             var p=position-Origin;if(p.y<-1)return false;
-            return Mathf.Abs(p.x)<49.5f&&Mathf.Abs(p.z)<54.5f||p.x>=49&&p.x<95.5f&&Mathf.Abs(p.z)<24.5f;
+            return Mathf.Abs(p.x)<49.5f&&p.z> -54.5f&&p.z<143.5f||p.x>=49&&p.x<95.5f&&Mathf.Abs(p.z)<24.5f;
         }
         void Leave(){Visiting=false;player.Teleport(previous);var map=GetComponent<Blackstone.Alcatraz.AlcatrazMap>();if(map!=null)map.SetSafePosition(previous);}
         void Update()

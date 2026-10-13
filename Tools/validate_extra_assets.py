@@ -50,6 +50,7 @@ def main():
         if 'Model("' + name + '"' not in world and not re.search(r'\b' + name + r'\b', equipment):
             errors.append(name + ': no annex placement or equipment slot')
         counts = {'meshes': 0, 'materials': 0, 'textures': 0}
+        triangles = 0
         for asset in folder.rglob('*'):
             if not asset.is_file() or asset.suffix == '.meta' or asset.name == 'Source.json':
                 continue
@@ -63,6 +64,11 @@ def main():
                         errors.append(name + ': unresolved reference ' + guid + ' in ' + asset.name)
             if asset.suffix == '.asset':
                 counts['meshes'] += 1
+                text=asset.read_text()
+                buffer=re.search(r'm_IndexBuffer: ([0-9a-f]+)',text)
+                if buffer:
+                    width=4 if 'm_IndexFormat: 1' in text else 2
+                    triangles+=len(buffer[1])//(2*width*3)
             elif asset.suffix == '.mat':
                 counts['materials'] += 1
             elif asset.suffix.lower() in ('.png', '.jpg', '.jpeg'):
@@ -73,6 +79,19 @@ def main():
             errors.append(name + ': missing native meshes or materials')
         if counts['textures'] != entry['textures']:
             errors.append(name + ': texture count differs from provenance')
+        if triangles != entry['triangles']:
+            errors.append(name + ': native triangle count differs from provenance')
+        quality=entry.get('quality')
+        if quality:
+            if quality['mesh_simplification'] or triangles!=quality['source_triangles']:
+                errors.append(name + ': source triangle detail was not preserved')
+            for record in quality['textures']:
+                with Image.open(ROOT/record['output']) as image:
+                    if list(image.size)!=record['source_dimensions']:
+                        errors.append(name + ': source texture resolution was not preserved')
+            original=ROOT/'Documentation/SourceArchives'/archive
+            if not original.is_file() or hashlib.sha256(original.read_bytes()).hexdigest()!=entry['sha256']:
+                errors.append(name + ': byte-exact source archive is not retained')
         archive_status = 'not supplied'
         if args.archives:
             path = args.archives / archive

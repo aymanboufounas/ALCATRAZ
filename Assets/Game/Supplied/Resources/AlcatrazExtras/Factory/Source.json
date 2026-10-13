@@ -1,0 +1,173 @@
+{
+  "name": "Factory",
+  "archive": "old-factory-free.zip",
+  "sha256": "50181f065d44363e8d230f33951d4a283dd86e4415dc9b088f106b535fdc5f80",
+  "resource": "AlcatrazExtras/Factory/Factory",
+  "triangles": 113689,
+  "materials": 11,
+  "textures": 11,
+  "bounds": [
+    [
+      -963.6698226928711,
+      -221.18756314642602,
+      -2455.353386952403
+    ],
+    [
+      1105.8771934509277,
+      676.1037012321035,
+      806.1942748140208
+    ]
+  ],
+  "quality": {
+    "mesh_simplification": false,
+    "source_triangles": 113689,
+    "source_texture_resolution_preserved": true,
+    "texture_encoding": "lossless PNG",
+    "textures": [
+      {
+        "source": "\u043d\u0430 \u0441\u043a\u0435\u0442\u0447.fbm/7404ab5709e49acfb7ba9d9d0812ee4f.jpg",
+        "output": "Assets/Game/Supplied/Resources/AlcatrazExtras/Factory/Textures/T0.png",
+        "source_dimensions": [
+          1200,
+          820
+        ],
+        "output_dimensions": [
+          1200,
+          820
+        ],
+        "normal": false
+      },
+      {
+        "source": "\u043d\u0430 \u0441\u043a\u0435\u0442\u0447.fbm/image (1).jpeg",
+        "output": "Assets/Game/Supplied/Resources/AlcatrazExtras/Factory/Textures/T1.png",
+        "source_dimensions": [
+          1024,
+          1024
+        ],
+        "output_dimensions": [
+          1024,
+          1024
+        ],
+        "normal": false
+      },
+      {
+        "source": "\u043d\u0430 \u0441\u043a\u0435\u0442\u0447.fbm/NormalMap (2).png",
+        "output": "Assets/Game/Supplied/Resources/AlcatrazExtras/Factory/Textures/T2.png",
+        "source_dimensions": [
+          1024,
+          1024
+        ],
+        "output_dimensions": [
+          1024,
+          1024
+        ],
+        "normal": true
+      },
+      {
+        "source": "\u043d\u0430 \u0441\u043a\u0435\u0442\u0447.fbm/image (3).jpeg",
+        "output": "Assets/Game/Supplied/Resources/AlcatrazExtras/Factory/Textures/T3.png",
+        "source_dimensions": [
+          1024,
+          1024
+        ],
+        "output_dimensions": [
+          1024,
+          1024
+        ],
+        "normal": false
+      },
+      {
+        "source": "\u043d\u0430 \u0441\u043a\u0435\u0442\u0447.fbm/image.jpeg",
+        "output": "Assets/Game/Supplied/Resources/AlcatrazExtras/Factory/Textures/T4.png",
+        "source_dimensions": [
+          1024,
+          1024
+        ],
+        "output_dimensions": [
+          1024,
+          1024
+        ],
+        "normal": false
+      },
+      {
+        "source": "\u043d\u0430 \u0441\u043a\u0435\u0442\u0447.fbm/6baa65c88f34d351bd6dccd10beeb08f.jpg",
+        "output": "Assets/Game/Supplied/Resources/AlcatrazExtras/Factory/Textures/T5.png",
+        "source_dimensions": [
+          512,
+          1024
+        ],
+        "output_dimensions": [
+          512,
+          1024
+        ],
+        "normal": false
+      },
+      {
+        "source": "\u043d\u0430 \u0441\u043a\u0435\u0442\u0447.fbm/\u0411\u0435\u0437 \u043d\u0430\u0437\u0432\u0430\u043d\u0438\u044f226_20261005220625.png",
+        "output": "Assets/Game/Supplied/Resources/AlcatrazExtras/Factory/Textures/T6.png",
+        "source_dimensions": [
+          483,
+          724
+        ],
+        "output_dimensions": [
+          483,
+          724
+        ],
+        "normal": false
+      },
+      {
+        "source": "\u043d\u0430 \u0441\u043a\u0435\u0442\u0447.fbm/b0f1125183b0e578d9223f40105be9b3.jpg",
+        "output": "Assets/Game/Supplied/Resources/AlcatrazExtras/Factory/Textures/T7.png",
+        "source_dimensions": [
+          910,
+          1618
+        ],
+        "output_dimensions": [
+          910,
+          1618
+        ],
+        "normal": false
+      },
+      {
+        "source": "\u043d\u0430 \u0441\u043a\u0435\u0442\u0447.fbm/35b0f59ee812fe462121f77f71b3dc9e.jpg",
+        "output": "Assets/Game/Supplied/Resources/AlcatrazExtras/Factory/Textures/T8.png",
+        "source_dimensions": [
+          1024,
+          1024
+        ],
+        "output_dimensions": [
+          1024,
+          1024
+        ],
+        "normal": false
+      },
+      {
+        "source": "\u043d\u0430 \u0441\u043a\u0435\u0442\u0447.fbm/888f5f20a8f2e956140f91046092eeca.jpg",
+        "output": "Assets/Game/Supplied/Resources/AlcatrazExtras/Factory/Textures/T9.png",
+        "source_dimensions": [
+          1023,
+          1013
+        ],
+        "output_dimensions": [
+          1023,
+          1013
+        ],
+        "normal": false
+      },
+      {
+        "source": "\u043d\u0430 \u0441\u043a\u0435\u0442\u0447.fbm/c60aa02f0081feffa58766042f915ee4.jpg",
+        "output": "Assets/Game/Supplied/Resources/AlcatrazExtras/Factory/Textures/T10.png",
+        "source_dimensions": [
+          735,
+          672
+        ],
+        "output_dimensions": [
+          735,
+          672
+        ],
+        "normal": false
+      }
+    ],
+    "limits": "Static native conversion; URP material reconstruction is not a byte-exact material or lighting reproduction."
+  }
+}

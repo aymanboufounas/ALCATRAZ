@@ -1,0 +1,82 @@
+{
+  "name": "SpeakerArray",
+  "archive": "speaker-array.zip",
+  "sha256": "e3c9262f8cc0dd2730d13de9b21cca5ff25f4f9341365f81841f7707b1049905",
+  "resource": "AlcatrazExtras/SpeakerArray/SpeakerArray",
+  "triangles": 802,
+  "materials": 2,
+  "textures": 4,
+  "bounds": [
+    [
+      -0.2563202679157257,
+      -0.35993117094039917,
+      -0.3412625789642334
+    ],
+    [
+      0.2563202679157257,
+      0.35993117094039917,
+      0.3412625789642334
+    ]
+  ],
+  "quality": {
+    "mesh_simplification": false,
+    "source_triangles": 802,
+    "source_texture_resolution_preserved": true,
+    "texture_encoding": "lossless PNG",
+    "textures": [
+      {
+        "source": "*1",
+        "output": "Assets/Game/Supplied/Resources/AlcatrazExtras/SpeakerArray/Textures/T0.png",
+        "source_dimensions": [
+          512,
+          512
+        ],
+        "output_dimensions": [
+          512,
+          512
+        ],
+        "normal": false
+      },
+      {
+        "source": "*0",
+        "output": "Assets/Game/Supplied/Resources/AlcatrazExtras/SpeakerArray/Textures/T1.png",
+        "source_dimensions": [
+          512,
+          512
+        ],
+        "output_dimensions": [
+          512,
+          512
+        ],
+        "normal": true
+      },
+      {
+        "source": "*2",
+        "output": "Assets/Game/Supplied/Resources/AlcatrazExtras/SpeakerArray/Textures/T2.png",
+        "source_dimensions": [
+          2,
+          2
+        ],
+        "output_dimensions": [
+          2,
+          2
+        ],
+        "normal": false
+      },
+      {
+        "source": "*2",
+        "output": "Assets/Game/Supplied/Resources/AlcatrazExtras/SpeakerArray/Textures/T3.png",
+        "source_dimensions": [
+          2,
+          2
+        ],
+        "output_dimensions": [
+          2,
+          2
+        ],
+        "channel_conversion": "glTF B metallic to URP R; glTF G roughness to URP alpha smoothness"
+      }
+    ],
+    "limits": "Static native conversion; URP material reconstruction is not a byte-exact material or lighting reproduction."
+  }
+}

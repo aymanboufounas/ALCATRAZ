@@ -1,0 +1,43 @@
+{
+  "name": "Radio",
+  "archive": "lowpoly-radio.zip",
+  "sha256": "a0b14a363a5b0d4894fd130f17d58c96a19cbc9cc3d3c1a5d285867d1af29d47",
+  "resource": "AlcatrazExtras/Radio/Radio",
+  "triangles": 1070,
+  "materials": 1,
+  "textures": 1,
+  "bounds": [
+    [
+      -5.974180200131286,
+      -6.213374490471324e-06,
+      -4.150401130312957
+    ],
+    [
+      5.96836326131006,
+      37.403790200787626,
+      4.755390734733282
+    ]
+  ],
+  "quality": {
+    "mesh_simplification": false,
+    "source_triangles": 1070,
+    "source_texture_resolution_preserved": true,
+    "texture_encoding": "lossless PNG",
+    "textures": [
+      {
+        "source": "t_radio.jpg",
+        "output": "Assets/Game/Supplied/Resources/AlcatrazExtras/Radio/Textures/T0.png",
+        "source_dimensions": [
+          1024,
+          1024
+        ],
+        "output_dimensions": [
+          1024,
+          1024
+        ],
+        "normal": false
+      }
+    ],
+    "limits": "Static native conversion; URP material reconstruction is not a byte-exact material or lighting reproduction."
+  }
+}

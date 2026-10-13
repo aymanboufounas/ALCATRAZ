@@ -18,6 +18,7 @@
 *.opendb
 *.VC.db
 *.zip
+!Documentation/SourceArchives/*.zip
 *.tmp
 *.pending
 __pycache__/
