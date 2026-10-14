@@ -1,0 +1,32 @@
+{
+  "offline_integrity": "PASS",
+  "counts": {
+    "native_files": 2606,
+    "yaml_documents": 88300,
+    "asset_guids": 3663,
+    "mesh_vertices": 7802887,
+    "mesh_triangles": 3755038,
+    "weighted_meshes": 271,
+    "csharp_files": 80,
+    "animation_clips": 14
+  },
+  "errors": [],
+  "warnings": [],
+  "official_package_bindings_not_loaded_by_unity": [
+    "URP/Lit shader",
+    "UniversalRenderPipelineAsset script",
+    "UniversalRendererData script"
+  ],
+  "not_performed": [
+    "Unity editor import",
+    "C# compilation against Unity assemblies",
+    "Unity Play Mode",
+    "Humanoid Avatar validation inside Unity",
+    "Live movement and interaction tests",
+    "URP shader compilation",
+    "Windows player build",
+    "1080p FPS measurement",
+    "Lightmap / occlusion bake"
+  ],
+  "visual_qa": "Separate Mesa geometry previews; not Unity render captures"
+}

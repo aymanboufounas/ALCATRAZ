@@ -12,14 +12,14 @@ import unity_writer as u
 import import_supplied_assets as old
 
 BASE='Assets/Game/Supplied/Resources/AlcatrazExtras'
-CATALOG=[('Warehouse','abandoned-warehouse-interior-scene(1).zip'),('AcidBarrel','acid-barrel(1).zip'),('ExplosiveBarrel','explosive-barrel(1).zip'),('BridgePack','bridge-pack-low-poly-3d-game-assets.zip'),('UtilityBuilding','industrial-utility-building-game-ready.zip'),('PrisonRoom','dp3-hw9-prison-room.zip'),('Hallway','prison-hallway.zip'),('Watchtower','gta-6-prison-tower-guard-tower-watchtower.zip'),('Shephard','ep4-adrian-shephard.zip'),('Forest','pine-forest-at-sunset.zip'),('Beach','small-beach-lowpoly.zip'),('PunchingBag','punching-bagboxing-bag.zip'),('PokerTable','poker-set.zip'),('PokerProps','poker-set (1).zip'),('SteelStairs','staircase-modular-frame-steel.zip'),('Machete','machete-farcry-3.zip'),('ColtM5','the-hardest-interview-2-free-download.zip'),('M9A3','lowpoly-m9a3-pistol.zip'),('PMX','beretta-pmx-pmxs-comune.zip'),('PX4','beretta-px4-full-size.zip'),('BRX1','beretta-brx1.zip'),('Workshop','alchemists-workshop-stylized-fantasy-scene.zip'),('Store','abandoned-store-for-free.zip'),('SpeakerArray','speaker-array.zip'),('Radio','lowpoly-radio.zip'),('Factory','old-factory-free.zip'),('Carport','garage-roof-carport.zip')]
+CATALOG=[('Warehouse','abandoned-warehouse-interior-scene(1).zip'),('AcidBarrel','acid-barrel(1).zip'),('ExplosiveBarrel','explosive-barrel(1).zip'),('BridgePack','bridge-pack-low-poly-3d-game-assets.zip'),('UtilityBuilding','industrial-utility-building-game-ready.zip'),('PrisonRoom','dp3-hw9-prison-room.zip'),('Hallway','prison-hallway.zip'),('Watchtower','gta-6-prison-tower-guard-tower-watchtower.zip'),('Shephard','ep4-adrian-shephard.zip'),('Forest','pine-forest-at-sunset.zip'),('Beach','small-beach-lowpoly.zip'),('PunchingBag','punching-bagboxing-bag.zip'),('PokerTable','poker-set.zip'),('PokerProps','poker-set (1).zip'),('SteelStairs','staircase-modular-frame-steel.zip'),('Machete','machete-farcry-3.zip'),('ColtM5','the-hardest-interview-2-free-download.zip'),('M9A3','lowpoly-m9a3-pistol.zip'),('PMX','beretta-pmx-pmxs-comune.zip'),('PX4','beretta-px4-full-size.zip'),('BRX1','beretta-brx1.zip'),('Workshop','alchemists-workshop-stylized-fantasy-scene.zip'),('Store','abandoned-store-for-free.zip'),('SpeakerArray','speaker-array.zip'),('Radio','lowpoly-radio.zip'),('Factory','old-factory-free.zip'),('Carport','garage-roof-carport.zip'),('SolitaryDoor','door-of-the-solitary-cell-of-the-prison-14mb.zip'),('PrisonToilet','filthy-prison-toilet-4096px2.zip')]
 
 def main():
     args=argparse.ArgumentParser();args.add_argument('--archives',type=Path,required=True);args.add_argument('--only');args.add_argument('--blender',default='blender');args.add_argument('--preserve-quality',action='store_true',help='Keep all triangles and source texture dimensions; write lossless PNGs');options=args.parse_args()
     catalog=[]
     for name,archive in CATALOG:
         if options.only and name not in options.only.split(','):continue
-        preserve_quality=options.preserve_quality or name in ('SpeakerArray','Radio','Factory','Carport')
+        preserve_quality=options.preserve_quality or name in ('SpeakerArray','Radio','Factory','Carport','SolitaryDoor','PrisonToilet')
         root=u.ROOT/'SourceAssets/Revision12'/name;source=options.archives/archive
         if not root.exists():old.unpack(source,root)
         candidates=[p for p in root.rglob('*') if p.suffix.lower() in ('.fbx','.glb','.dae','.obj','.3ds')]
@@ -107,6 +107,23 @@ def main():
                     texture_records.append({'source':key,'output':surface,'source_dimensions':list(im.size),'output_dimensions':list(im.size),'channel_conversion':'glTF B metallic to URP R; glTF G roughness to URP alpha smoothness'})
                     rough=0;metal=1
             if norm is None and name=='AcidBarrel':norm=texture('AcidBarrel.normal2.png',True)
+            if name in ('SolitaryDoor','PrisonToilet'):
+                # These FBX materials have no texture references. Bind the supplied PBR files explicitly.
+                def supplied_map(token):
+                    return next((key for key in sorted(images) if token in key.lower()),None)
+                base_key=supplied_map('basecolor');normal_key=supplied_map('normal')
+                metal_key=supplied_map('metallic');rough_key=supplied_map('roughness')
+                if base_key:base=texture(base_key)
+                if normal_key:norm=texture(normal_key,True)
+                if metal_key and rough_key:
+                    metal_path=texture(metal_key);rough_path=texture(rough_key)
+                    m=Image.open(u.ROOT/metal_path).convert('L');r=Image.open(u.ROOT/rough_path).convert('L')
+                    if m.size!=r.size:raise ValueError('PBR map dimensions differ')
+                    packed=Image.merge('RGBA',(m,Image.new('L',m.size,0),Image.new('L',m.size,0),Image.eval(r,lambda x:255-x)))
+                    surface=u.ART+'/Textures/MetalSmooth.png';old.texture(surface,packed,max_size=max(m.size),linear=True)
+                    texture_cache[('supplied PBR','URP metallic/smoothness')]=surface
+                    texture_records.append({'source':metal_key+' + '+rough_key,'output':surface,'source_dimensions':list(m.size),'output_dimensions':list(packed.size),'channel_conversion':'Metallic to URP R; inverse roughness to URP alpha smoothness'})
+                    metal=1;rough=0
             color=list(mat.get('COLOR_DIFFUSE',(1,1,1,1)));color=(color+[1]*4)[:4]
             if base:color=[1,1,1,1]
             signature=(base,norm,surface,rough,metal,tuple(round(float(c),5) for c in color),two_sided,masked)

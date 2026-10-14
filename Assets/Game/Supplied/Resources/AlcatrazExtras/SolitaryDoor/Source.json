@@ -1,0 +1,95 @@
+{
+  "name": "SolitaryDoor",
+  "archive": "door-of-the-solitary-cell-of-the-prison-14mb.zip",
+  "sha256": "c790cc19ddccb47e5fd73f9d893fd923501cf2c46b7e2ebc6b2d8e10ab8bf9ec",
+  "resource": "AlcatrazExtras/SolitaryDoor/SolitaryDoor",
+  "triangles": 3228,
+  "materials": 1,
+  "textures": 5,
+  "bounds": [
+    [
+      -54.999999046325684,
+      0.0,
+      -12.069011688232422
+    ],
+    [
+      55.6800012588501,
+      229.99999523162842,
+      12.069011688232422
+    ]
+  ],
+  "quality": {
+    "mesh_simplification": false,
+    "source_triangles": 3228,
+    "source_texture_resolution_preserved": true,
+    "texture_encoding": "lossless PNG",
+    "textures": [
+      {
+        "source": "basecolor.png",
+        "output": "Assets/Game/Supplied/Resources/AlcatrazExtras/SolitaryDoor/Textures/T0.png",
+        "source_dimensions": [
+          2048,
+          2048
+        ],
+        "output_dimensions": [
+          2048,
+          2048
+        ],
+        "normal": false
+      },
+      {
+        "source": "normal.png",
+        "output": "Assets/Game/Supplied/Resources/AlcatrazExtras/SolitaryDoor/Textures/T1.png",
+        "source_dimensions": [
+          2048,
+          2048
+        ],
+        "output_dimensions": [
+          2048,
+          2048
+        ],
+        "normal": true
+      },
+      {
+        "source": "metallic.png",
+        "output": "Assets/Game/Supplied/Resources/AlcatrazExtras/SolitaryDoor/Textures/T2.png",
+        "source_dimensions": [
+          2048,
+          2048
+        ],
+        "output_dimensions": [
+          2048,
+          2048
+        ],
+        "normal": false
+      },
+      {
+        "source": "roughness.png",
+        "output": "Assets/Game/Supplied/Resources/AlcatrazExtras/SolitaryDoor/Textures/T3.png",
+        "source_dimensions": [
+          2048,
+          2048
+        ],
+        "output_dimensions": [
+          2048,
+          2048
+        ],
+        "normal": false
+      },
+      {
+        "source": "metallic.png + roughness.png",
+        "output": "Assets/Game/Supplied/Resources/AlcatrazExtras/SolitaryDoor/Textures/MetalSmooth.png",
+        "source_dimensions": [
+          2048,
+          2048
+        ],
+        "output_dimensions": [
+          2048,
+          2048
+        ],
+        "channel_conversion": "Metallic to URP R; inverse roughness to URP alpha smoothness"
+      }
+    ],
+    "limits": "Static native conversion; URP material reconstruction is not a byte-exact material or lighting reproduction."
+  }
+}

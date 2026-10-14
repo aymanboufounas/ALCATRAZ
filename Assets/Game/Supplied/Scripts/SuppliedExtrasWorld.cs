@@ -48,6 +48,7 @@ namespace Blackstone.Supplied
             Model("SpeakerArray",2.5f,new Vector3(20,0,96));
             Box("Radio table",Origin+new Vector3(20,.4f,90),new Vector3(1.5f,.8f,1),steel);
             Model("Radio",.35f,new Vector3(20,.8f,90));
+            SolitaryCell();
             var table=Model("PokerTable",1.2f,new Vector3(0,0,14));
             if(table!=null)
             {
@@ -100,10 +101,34 @@ namespace Blackstone.Supplied
             if(player==null||input==null||!input.CanControl)return;var door=Visiting?exit:entrance;
             if(door!=null&&Vector3.Distance(player.transform.position,door.position)<2.4f)GUI.Box(new Rect(Screen.width/2-210,Screen.height-150,420,45),Visiting?"E / X   RETURN TO CELLHOUSE":"E / X   ENTER WORKSHOP & RECREATION ANNEX");
         }
-        GameObject Model(string name,float height,Vector3 position)
+        void SolitaryCell()
+        {
+            // This footprint is beyond the forest bounds and clear of the north perimeter.
+            Box("Solitary cell west",Origin+new Vector3(10.2f,1.35f,138),new Vector3(.2f,2.7f,4.5f),concrete);
+            Box("Solitary cell east",Origin+new Vector3(13.8f,1.35f,138),new Vector3(.2f,2.7f,4.5f),concrete);
+            Box("Solitary cell rear",Origin+new Vector3(12,1.35f,140.25f),new Vector3(3.8f,2.7f,.2f),concrete);
+            Box("Solitary front left",Origin+new Vector3(10.8f,1.35f,135.75f),new Vector3(1.2f,2.7f,.2f),concrete);
+            Box("Solitary front right",Origin+new Vector3(13.2f,1.35f,135.75f),new Vector3(1.2f,2.7f,.2f),concrete);
+            Box("Solitary door lintel",Origin+new Vector3(12,2.45f,135.75f),new Vector3(1.2f,.5f,.2f),concrete);
+            Box("Solitary cell roof",Origin+new Vector3(12,2.8f,138),new Vector3(3.8f,.2f,4.7f),concrete);
+            Model("PrisonToilet",.88f,new Vector3(13,0,139.45f),180);
+            var door=Model("SolitaryDoor",2.1f,new Vector3(12,0,135.75f),180);
+            if(door==null)return;
+            var bounds=SuppliedModel.Bounds(door);
+            var pivot=new GameObject("Solitary cell door hinge");pivot.transform.SetParent(transform);
+            pivot.transform.position=new Vector3(bounds.min.x,Origin.y,bounds.center.z);
+            door.transform.SetParent(pivot.transform,true);
+            // A simple moving collision proxy avoids carrying concave mesh colliders on the hinge.
+            foreach(var shape in door.GetComponentsInChildren<MeshCollider>()){shape.enabled=false;Destroy(shape);}
+            var leaf=door.AddComponent<BoxCollider>();leaf.center=door.transform.InverseTransformPoint(bounds.center);
+            var scale=door.transform.lossyScale;leaf.size=new Vector3(bounds.size.x/scale.x,bounds.size.y/scale.y,bounds.size.z/scale.z);
+            var interaction=pivot.AddComponent<DesertShift.Interaction.DoorController>();
+            interaction.hinge=pivot.transform;interaction.leaf=leaf;interaction.doorName="solitary cell door";interaction.openAngle=100;
+        }
+        GameObject Model(string name,float height,Vector3 position,float yaw=0)
         {
             var prefab=Resources.Load<GameObject>("AlcatrazExtras/"+name+"/"+name);if(prefab==null){Debug.LogError("Missing supplied model: "+name);return null;}
-            var model=Instantiate(prefab,transform,false);SuppliedModel.SizeAndGround(model,height,Origin+position);return model;
+            var model=Instantiate(prefab,transform,false);model.transform.localRotation=Quaternion.Euler(0,yaw,0);SuppliedModel.SizeAndGround(model,height,Origin+position);return model;
         }
         void Box(string name,Vector3 position,Vector3 size,Material material)
         {var go=GameObject.CreatePrimitive(PrimitiveType.Cube);go.name=name;go.transform.SetParent(transform);go.transform.position=position;go.transform.localScale=size;go.GetComponent<Renderer>().sharedMaterial=material;}

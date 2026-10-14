@@ -1,0 +1,95 @@
+{
+  "name": "PrisonToilet",
+  "archive": "filthy-prison-toilet-4096px2.zip",
+  "sha256": "1f19c4d52a2365a24a91fce77c6b36adfdb811d04d6dfb907846e63b35deaf28",
+  "resource": "AlcatrazExtras/PrisonToilet/PrisonToilet",
+  "triangles": 3652,
+  "materials": 1,
+  "textures": 5,
+  "bounds": [
+    [
+      -23.83228838443756,
+      4.0446188470595384e-06,
+      0.1393358796227671
+    ],
+    [
+      23.83228838443756,
+      88.18422117426962,
+      69.11408257298939
+    ]
+  ],
+  "quality": {
+    "mesh_simplification": false,
+    "source_triangles": 3652,
+    "source_texture_resolution_preserved": true,
+    "texture_encoding": "lossless PNG",
+    "textures": [
+      {
+        "source": "prisontoilet_mtl_basecolor.png",
+        "output": "Assets/Game/Supplied/Resources/AlcatrazExtras/PrisonToilet/Textures/T0.png",
+        "source_dimensions": [
+          4096,
+          4096
+        ],
+        "output_dimensions": [
+          4096,
+          4096
+        ],
+        "normal": false
+      },
+      {
+        "source": "prisontoilet_mtl_normal.png",
+        "output": "Assets/Game/Supplied/Resources/AlcatrazExtras/PrisonToilet/Textures/T1.png",
+        "source_dimensions": [
+          4096,
+          4096
+        ],
+        "output_dimensions": [
+          4096,
+          4096
+        ],
+        "normal": true
+      },
+      {
+        "source": "prisontoilet_mtl_metallic.png",
+        "output": "Assets/Game/Supplied/Resources/AlcatrazExtras/PrisonToilet/Textures/T2.png",
+        "source_dimensions": [
+          4096,
+          4096
+        ],
+        "output_dimensions": [
+          4096,
+          4096
+        ],
+        "normal": false
+      },
+      {
+        "source": "prisontoilet_mtl_roughness.png",
+        "output": "Assets/Game/Supplied/Resources/AlcatrazExtras/PrisonToilet/Textures/T3.png",
+        "source_dimensions": [
+          4096,
+          4096
+        ],
+        "output_dimensions": [
+          4096,
+          4096
+        ],
+        "normal": false
+      },
+      {
+        "source": "prisontoilet_mtl_metallic.png + prisontoilet_mtl_roughness.png",
+        "output": "Assets/Game/Supplied/Resources/AlcatrazExtras/PrisonToilet/Textures/MetalSmooth.png",
+        "source_dimensions": [
+          4096,
+          4096
+        ],
+        "output_dimensions": [
+          4096,
+          4096
+        ],
+        "channel_conversion": "Metallic to URP R; inverse roughness to URP alpha smoothness"
+      }
+    ],
+    "limits": "Static native conversion; URP material reconstruction is not a byte-exact material or lighting reproduction."
+  }
+}

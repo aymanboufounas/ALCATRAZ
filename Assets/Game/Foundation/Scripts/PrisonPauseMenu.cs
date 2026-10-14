@@ -115,10 +115,10 @@ namespace Blackstone.Foundation
                 Rect r=new Rect(665,400,770,490);PrisonMenuTheme.Panel(r,new Color(.05f,.1f,.12f));
                 Vector3 local=Player.transform.position-SuppliedExtrasWorld.Origin;
                 Func<float,float,float,Rect> dot=(x,z,size)=>new Rect(r.x+(x+50)/146*r.width-size/2,r.y+(144-z)/199*r.height-size/2,size,size);
-                foreach(var place in new[]{new Vector3(-20,0,103),new Vector3(27,0,120),new Vector3(72,0,0),new Vector3(0,0,-47)})
+                foreach(var place in new[]{new Vector3(-20,0,103),new Vector3(27,0,120),new Vector3(72,0,0),new Vector3(0,0,-47),new Vector3(12,0,138)})
                     PrisonMenuTheme.Panel(dot(place.x,place.z,12),PrisonMenuTheme.Gold);
                 PrisonMenuTheme.Panel(dot(local.x,local.z,12),Color.white);
-                Card(new Rect(1470,400,330,320),"Annex","White: Elias\nGold: factory, carport, warehouse and return door\n\nNorth is up.");return;
+                Card(new Rect(1470,400,330,320),"Annex","White: Elias\nGold: factory, carport, warehouse, solitary cell and return door\n\nNorth is up.");return;
             }
             if(map==null||Player==null){Card(new Rect(665,400,1160,220),"Map unavailable","This scene has no island map component.");return;}
             float aspect=map.SuppliedExterior?1.5f:World!=null&&World.InsidePrison ? .5f : 2f/3;

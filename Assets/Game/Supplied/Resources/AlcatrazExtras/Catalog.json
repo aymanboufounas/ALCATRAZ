@@ -531,6 +531,101 @@
     ]
   },
   {
+    "name": "PrisonToilet",
+    "archive": "filthy-prison-toilet-4096px2.zip",
+    "sha256": "1f19c4d52a2365a24a91fce77c6b36adfdb811d04d6dfb907846e63b35deaf28",
+    "resource": "AlcatrazExtras/PrisonToilet/PrisonToilet",
+    "triangles": 3652,
+    "materials": 1,
+    "textures": 5,
+    "bounds": [
+      [
+        -23.83228838443756,
+        4.0446188470595384e-06,
+        0.1393358796227671
+      ],
+      [
+        23.83228838443756,
+        88.18422117426962,
+        69.11408257298939
+      ]
+    ],
+    "quality": {
+      "mesh_simplification": false,
+      "source_triangles": 3652,
+      "source_texture_resolution_preserved": true,
+      "texture_encoding": "lossless PNG",
+      "textures": [
+        {
+          "source": "prisontoilet_mtl_basecolor.png",
+          "output": "Assets/Game/Supplied/Resources/AlcatrazExtras/PrisonToilet/Textures/T0.png",
+          "source_dimensions": [
+            4096,
+            4096
+          ],
+          "output_dimensions": [
+            4096,
+            4096
+          ],
+          "normal": false
+        },
+        {
+          "source": "prisontoilet_mtl_normal.png",
+          "output": "Assets/Game/Supplied/Resources/AlcatrazExtras/PrisonToilet/Textures/T1.png",
+          "source_dimensions": [
+            4096,
+            4096
+          ],
+          "output_dimensions": [
+            4096,
+            4096
+          ],
+          "normal": true
+        },
+        {
+          "source": "prisontoilet_mtl_metallic.png",
+          "output": "Assets/Game/Supplied/Resources/AlcatrazExtras/PrisonToilet/Textures/T2.png",
+          "source_dimensions": [
+            4096,
+            4096
+          ],
+          "output_dimensions": [
+            4096,
+            4096
+          ],
+          "normal": false
+        },
+        {
+          "source": "prisontoilet_mtl_roughness.png",
+          "output": "Assets/Game/Supplied/Resources/AlcatrazExtras/PrisonToilet/Textures/T3.png",
+          "source_dimensions": [
+            4096,
+            4096
+          ],
+          "output_dimensions": [
+            4096,
+            4096
+          ],
+          "normal": false
+        },
+        {
+          "source": "prisontoilet_mtl_metallic.png + prisontoilet_mtl_roughness.png",
+          "output": "Assets/Game/Supplied/Resources/AlcatrazExtras/PrisonToilet/Textures/MetalSmooth.png",
+          "source_dimensions": [
+            4096,
+            4096
+          ],
+          "output_dimensions": [
+            4096,
+            4096
+          ],
+          "channel_conversion": "Metallic to URP R; inverse roughness to URP alpha smoothness"
+        }
+      ],
+      "limits": "Static native conversion; URP material reconstruction is not a byte-exact material or lighting reproduction."
+    }
+  },
+  {
     "name": "PunchingBag",
     "archive": "punching-bagboxing-bag.zip",
     "sha256": "c70e27457cbcfdcc3354775f08f0c358e4446a45266f05656b42c63ab001cebc",
@@ -614,6 +709,101 @@
         799.3094591698338
       ]
     ]
+  },
+  {
+    "name": "SolitaryDoor",
+    "archive": "door-of-the-solitary-cell-of-the-prison-14mb.zip",
+    "sha256": "c790cc19ddccb47e5fd73f9d893fd923501cf2c46b7e2ebc6b2d8e10ab8bf9ec",
+    "resource": "AlcatrazExtras/SolitaryDoor/SolitaryDoor",
+    "triangles": 3228,
+    "materials": 1,
+    "textures": 5,
+    "bounds": [
+      [
+        -54.999999046325684,
+        0.0,
+        -12.069011688232422
+      ],
+      [
+        55.6800012588501,
+        229.99999523162842,
+        12.069011688232422
+      ]
+    ],
+    "quality": {
+      "mesh_simplification": false,
+      "source_triangles": 3228,
+      "source_texture_resolution_preserved": true,
+      "texture_encoding": "lossless PNG",
+      "textures": [
+        {
+          "source": "basecolor.png",
+          "output": "Assets/Game/Supplied/Resources/AlcatrazExtras/SolitaryDoor/Textures/T0.png",
+          "source_dimensions": [
+            2048,
+            2048
+          ],
+          "output_dimensions": [
+            2048,
+            2048
+          ],
+          "normal": false
+        },
+        {
+          "source": "normal.png",
+          "output": "Assets/Game/Supplied/Resources/AlcatrazExtras/SolitaryDoor/Textures/T1.png",
+          "source_dimensions": [
+            2048,
+            2048
+          ],
+          "output_dimensions": [
+            2048,
+            2048
+          ],
+          "normal": true
+        },
+        {
+          "source": "metallic.png",
+          "output": "Assets/Game/Supplied/Resources/AlcatrazExtras/SolitaryDoor/Textures/T2.png",
+          "source_dimensions": [
+            2048,
+            2048
+          ],
+          "output_dimensions": [
+            2048,
+            2048
+          ],
+          "normal": false
+        },
+        {
+          "source": "roughness.png",
+          "output": "Assets/Game/Supplied/Resources/AlcatrazExtras/SolitaryDoor/Textures/T3.png",
+          "source_dimensions": [
+            2048,
+            2048
+          ],
+          "output_dimensions": [
+            2048,
+            2048
+          ],
+          "normal": false
+        },
+        {
+          "source": "metallic.png + roughness.png",
+          "output": "Assets/Game/Supplied/Resources/AlcatrazExtras/SolitaryDoor/Textures/MetalSmooth.png",
+          "source_dimensions": [
+            2048,
+            2048
+          ],
+          "output_dimensions": [
+            2048,
+            2048
+          ],
+          "channel_conversion": "Metallic to URP R; inverse roughness to URP alpha smoothness"
+        }
+      ],
+      "limits": "Static native conversion; URP material reconstruction is not a byte-exact material or lighting reproduction."
+    }
   },
   {
     "name": "SpeakerArray",
