@@ -1,9 +1,12 @@
 # Police equipment and Little Bird fixes
 
-The supplied police officer's helmet is now centered on its named head mesh,
-rather than on bounds that include its arms and holstered gun. The helmet is raised
-to keep the face clear. Helmet and vest anchors correct the supplied equipment's
-opposite forward direction, and the vest is fitted around the torso at 0.56 metres.
+The supplied police officer's helmet is centered and sized from its named head mesh,
+rather than bounds that include its arms and holstered gun. Its height is 58% of the
+head bounds and it sits below the cap's top, with a small clearance around the head.
+The vest's source front is along X: a 90-degree turn places the plate forward instead
+of exposing the armhole toward the camera. Its width, height and depth are fitted
+separately to an upper-body section of the officer, excluding its arms. Helmet and
+vest sizes use the officer's own coordinates and follow the parent body's scale.
 The officer's original mesh and three textures are unchanged. This remains the
 supplied static OBJ officer, not a newly animated or higher-resolution character.
 
@@ -50,3 +53,8 @@ controls with a connected idle gamepad, take off, turn, land and exit beside cle
 ground. Inspect rotor axles, transparent windows and tail collision clearance.
 These live Unity checks, flight physics and a Windows build remain unexecuted
 because the editor is unavailable in this cloud machine.
+
+The follow-up fitting check **Alcatraz > Validate Police Equipment Fit** checks
+helmet and vest centering and dimensions under three parent scales and four
+headings, including nonuniform parent scale. Its 48 assertions require imported
+Unity assets and have not been run in this cloud machine.

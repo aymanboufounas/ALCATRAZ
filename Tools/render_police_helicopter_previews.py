@@ -23,9 +23,18 @@ def main():
     head=next(m for m in officer if m['name']=='policeman_head');lo,hi=r.bounds([head]);center=(lo+hi)/2
     reverse=np.diag([-1,1,-1,1])
     helmet=[r.transform(m,reverse) for m in r.gltf('Helmet')]
-    vest=[r.transform(m,reverse) for m in r.gltf('Vest')]
-    fitted=officer+r.fit(helmet,.32,(center[0],hi[1]-.065,center[2]),bottom=False)
-    fitted+=r.fit(vest,.56,(center[0],1.27,center[2]-.025),bottom=False)
+    vest=[r.transform(m,np.array([[0,0,1,0],[0,1,0,0],[-1,0,0,0],[0,0,0,1]])) for m in r.gltf('Vest')]
+    whole_lo,whole_hi=r.bounds(officer)
+    torso=next(m for m in officer if m['name']=='policeman_body')['v']
+    height=whole_hi[1]-whole_lo[1]
+    torso=torso[(torso[:,1]>=whole_lo[1]+height*.55)&(torso[:,1]<=whole_lo[1]+height*.8)&(abs(torso[:,0]-center[0])<=(hi[0]-lo[0])*.9)]
+    torso_lo,torso_hi=torso.min(0),torso.max(0)
+    def fitted_box(meshes,size,position):
+        lower,upper=r.bounds(meshes);scale=np.array(size)/(upper-lower)
+        matrix=np.diag([*scale,1.]);matrix[:3,3]=np.array(position)-(lower+upper)/2*scale
+        return [r.transform(m,matrix) for m in meshes]
+    fitted=officer+fitted_box(helmet,(hi-lo)*[1.12,.58,.85],(center[0],hi[1]-(hi[1]-lo[1])*.20,center[2]))
+    fitted+=fitted_box(vest,(torso_hi-torso_lo)*[1.20,1.14,1.42],(torso_lo+torso_hi)/2)
     save(fitted,out/'Police.png','SUPPLIED POLICE / HEAD-ALIGNED EQUIPMENT',(2,1.7,3),(0,.95,0))
     save(fitted,out/'PoliceRear.png','SUPPLIED POLICE / EQUIPMENT REAR',(-2,1.7,-3),(0,.95,0))
     helicopter=r.fit(r.gltf('Helicopter'),2.8,(0,0,0))

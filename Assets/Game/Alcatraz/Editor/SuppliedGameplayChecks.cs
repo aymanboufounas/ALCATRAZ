@@ -66,7 +66,7 @@ namespace Blackstone.Alcatraz.Editor
                 var helmet=guard.transform.Find("Helmet socket");var vest=guard.transform.Find("Vest socket");
                 Check(helmet!=null&&Mathf.Abs(helmet.position.x-head.bounds.center.x)<.001f&&Mathf.Abs(helmet.position.z-head.bounds.center.z)<.001f,
                     "helmet is centered on the officer's head");
-                Check(vest!=null&&Quaternion.Angle(vest.localRotation,Quaternion.Euler(0,180,0))<.1f,
+                Check(vest!=null&&Quaternion.Angle(vest.localRotation,Quaternion.Euler(0,90,0))<.1f,
                     "vest faces the same direction as the officer");
                 world.EnterCellhouse();Check(world.InsidePrison,"enter cellhouse");Supported(player,"Cellhouse entry");
                 Check(foundation.PlayerEquipment==equipment,"equipment survives entry");
@@ -84,6 +84,33 @@ namespace Blackstone.Alcatraz.Editor
         }
         static Renderer NamedRenderer(GameObject model,string name)
         {if(model!=null)foreach(var r in model.GetComponentsInChildren<Renderer>())if(r.name==name)return r;return null;}
+        [MenuItem("Alcatraz/Validate Police Equipment Fit",priority=23)]
+        public static void ValidateEquipmentFit()
+        {
+            checks=0;
+            foreach(float scale in new[]{.75f,1f,1.3f})foreach(float yaw in new[]{0f,45f,90f,180f})
+            {
+                var root=new GameObject("Temporary police fitting check");root.hideFlags=HideFlags.HideAndDontSave;
+                try
+                {
+                    root.transform.position=new Vector3(3,10,4);
+                    root.transform.rotation=Quaternion.Euler(0,yaw,0);
+                    root.transform.localScale=new Vector3(scale*1.1f,scale,scale*.9f);
+                    foreach(string name in new[]{"Helmet","Vest"})
+                    {
+                        var anchor=new GameObject("Fit anchor").transform;anchor.SetParent(root.transform,false);
+                        anchor.localRotation=Quaternion.Euler(0,name=="Helmet"?180:90,0);
+                        Vector3 size=name=="Helmet"?new Vector3(.28f,.25f,.24f):new Vector3(.4f,.52f,.5f);
+                        var model=SuppliedModel.AttachFitted(name,anchor,size);
+                        var bounds=SuppliedModel.MeshBounds(model,anchor);
+                        Check((bounds.size-size).sqrMagnitude<.000001f,name+" fits requested local size under rotated/nonuniform parent");
+                        Check(bounds.center.sqrMagnitude<.000001f,name+" stays centered on anchor under rotated/nonuniform parent");
+                    }
+                }
+                finally {UnityEngine.Object.DestroyImmediate(root);}
+            }
+            Debug.Log("Police equipment fit passed: "+checks+" assertions using imported native mesh vertices.");
+        }
     }
 }
 #endif

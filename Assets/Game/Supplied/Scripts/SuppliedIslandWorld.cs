@@ -41,12 +41,23 @@ namespace Blackstone.Supplied
                 var guard=SuppliedModel.Create("Police",transform);guard.transform.rotation=Quaternion.Euler(0,180,0);SuppliedModel.SizeAndGround(guard,1.82f,guardPosition);
                 var head=NamedRenderer(guard,"policeman_head");
                 if(head==null)throw new InvalidOperationException("The supplied police head mesh is missing.");
-                var headBounds=head.bounds;
-                var helmetAnchor=Anchor("Helmet socket",guard.transform,new Vector3(headBounds.center.x,headBounds.max.y-.065f,headBounds.center.z));
-                var vestAnchor=Anchor("Vest socket",guard.transform,new Vector3(headBounds.center.x,guardPosition.y+1.27f,headBounds.center.z)-guard.transform.forward*.025f);
-                // The supplied wearables face opposite the OBJ officer's source forward.
-                helmetAnchor.localRotation=vestAnchor.localRotation=Quaternion.Euler(0,180,0);
-                SuppliedModel.Attach("Helmet",helmetAnchor,.32f,Vector3.zero);SuppliedModel.Attach("Vest",vestAnchor,.56f,Vector3.zero);
+                var body=NamedRenderer(guard,"policeman_body");
+                if(body==null)throw new InvalidOperationException("The supplied police body mesh is missing.");
+                var frame=guard.transform;
+                var officerBounds=SuppliedModel.MeshBounds(guard,frame);
+                var headBounds=SuppliedModel.MeshBounds(head.gameObject,frame);
+                var torso=SuppliedModel.MeshBounds(body.gameObject,frame,
+                    officerBounds.min.y+officerBounds.size.y*.55f,officerBounds.min.y+officerBounds.size.y*.8f,
+                    headBounds.center.x,headBounds.size.x*.9f);
+                var helmetPosition=new Vector3(headBounds.center.x,headBounds.max.y-headBounds.size.y*.20f,headBounds.center.z);
+                var helmetAnchor=Anchor("Helmet socket",frame,frame.TransformPoint(helmetPosition));
+                var vestAnchor=Anchor("Vest socket",frame,frame.TransformPoint(torso.center));
+                // Helmet forward is reversed; the vest's front plate is along its source X axis.
+                helmetAnchor.localRotation=Quaternion.Euler(0,180,0);
+                vestAnchor.localRotation=Quaternion.Euler(0,90,0);
+                SuppliedModel.AttachFitted("Helmet",helmetAnchor,Vector3.Scale(headBounds.size,new Vector3(1.12f,.58f,.85f)));
+                var vestSize=Vector3.Scale(torso.size,new Vector3(1.20f,1.14f,1.42f));
+                SuppliedModel.AttachFitted("Vest",vestAnchor,new Vector3(vestSize.z,vestSize.y,vestSize.x));
                 var guardBody=guard.AddComponent<CapsuleCollider>();guardBody.height=1.8f/guard.transform.lossyScale.y;guardBody.radius=.25f/guard.transform.lossyScale.x;
                 guardBody.center=guard.transform.InverseTransformPoint(guardPosition+Vector3.up*.9f);
                 Vector3 dogPosition=Ground(new Vector3(-105,0,25));var dogRoot=new GameObject("Police dog patrol");dogRoot.transform.SetParent(transform);dogRoot.transform.position=dogPosition;
