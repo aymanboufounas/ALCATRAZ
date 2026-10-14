@@ -46,7 +46,7 @@ namespace Blackstone.Foundation
             {
                 pendingSave=pendingLoad=-1;returnToTitle=false;
                 if(exploration!=null&&Input!=null&&Input.CanControl&&Time.unscaledTime>=nextAutosave)
-                {if(SafeCheckpoint)Save(0,false);nextAutosave=Time.unscaledTime+30;fullscreen=Screen.fullScreen;resolution=Array.IndexOf(widths,Screen.width);if(resolution<0)resolution=1;displayInitialized=true;}
+                {if(SafeCheckpoint)Save(0,false);nextAutosave=Time.unscaledTime+30;}
                 return;
             }
             var key=Keyboard.current;var pad=Gamepad.current;
