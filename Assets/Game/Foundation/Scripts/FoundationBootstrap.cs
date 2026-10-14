@@ -35,12 +35,6 @@ namespace Blackstone.Foundation
             {
                 bool isPlayer=actor.transform==Player.transform||actor.transform.IsChildOf(Player.transform);
                 Transform parent=isPlayer&&story!=null&&story.playerVisual!=null?story.playerVisual:actor.transform;
-                foreach(var a in actor.GetComponentsInChildren<Animator>(true))a.enabled=false;
-                foreach(var b in actor.GetComponentsInChildren<MonoBehaviour>(true))
-                    if(b is PrisonLocomotion||b is Blackstone.Audio.PrisonFootsteps||b is CharacterRig||b is PlayerAnimator||b is SurfaceFootsteps||b.GetType().Name=="DistanceDetail")b.enabled=false;
-                foreach(var lod in actor.GetComponentsInChildren<LODGroup>(true))lod.enabled=false;
-                foreach(var r in actor.GetComponentsInChildren<Renderer>(true))
-                    if(!StoryProp(r.transform,story))r.enabled=false;
                 bool guard=actor.displayName!=null&&actor.displayName.StartsWith("Officer");
                 string name=actor.displayName??"";
                 bool black=name.StartsWith("Malik")||name=="Andre"||name=="Moses"||name=="Jamal";
@@ -48,14 +42,34 @@ namespace Blackstone.Foundation
                 var identity=roster!=null?roster.Find(name):null;
                 if(identity!=null&&!string.IsNullOrEmpty(identity.model))profile=identity.model;
                 var prefab=Resources.Load<GameObject>("BlackstoneFoundation/Characters/"+profile+"/"+profile);
-                if(prefab==null){Status="Missing character: "+profile;continue;}
+                if(prefab==null){Status="Missing character: "+profile;Debug.LogError(Status+". Keeping the existing visible character.");continue;}
                 // Keep the orientation correction outside the animated FBX root.
                 // FBX axis conversion can leave the visible character facing -Z.
                 Transform model=new GameObject("Imported "+actor.displayName).transform;
                 model.SetParent(parent,false);
                 Transform rig=Instantiate(prefab,model,false).transform;
-                Normalize(model);
-                FoundationAvatar.AlignForward(model,actor.transform.forward);
+                try
+                {
+                    if(isPlayer&&parent!=actor.transform&&ZeroScale(parent.localScale))parent.localScale=Vector3.one;
+                    foreach(var renderer in model.GetComponentsInChildren<Renderer>(true))
+                    {
+                        for(var node=renderer.transform;node!=null&&node!=model.parent;node=node.parent)node.gameObject.SetActive(true);
+                        renderer.enabled=true;renderer.forceRenderingOff=false;
+                        if(renderer is SkinnedMeshRenderer skin&&isPlayer)skin.updateWhenOffscreen=true;
+                    }
+                    Normalize(model);
+                    FoundationAvatar.AlignForward(model,actor.transform.forward);
+                }
+                catch(System.Exception error) when(error is System.InvalidOperationException||error is UnityException)
+                {Destroy(model.gameObject);Status="Character setup failed: "+profile;Debug.LogError(Status+". "+error.Message+" Existing visuals retained.");continue;}
+                // Replace the old visuals only after the new model has been measured and aligned.
+                foreach(var oldAnimator in actor.GetComponentsInChildren<Animator>(true))
+                    if(!oldAnimator.transform.IsChildOf(model))oldAnimator.enabled=false;
+                foreach(var behaviour in actor.GetComponentsInChildren<MonoBehaviour>(true))
+                    if(!behaviour.transform.IsChildOf(model)&&(behaviour is PrisonLocomotion||behaviour is Blackstone.Audio.PrisonFootsteps||behaviour is CharacterRig||behaviour is PlayerAnimator||behaviour is SurfaceFootsteps||behaviour.GetType().Name=="DistanceDetail"))behaviour.enabled=false;
+                foreach(var lod in actor.GetComponentsInChildren<LODGroup>(true))if(!lod.transform.IsChildOf(model))lod.enabled=false;
+                foreach(var renderer in actor.GetComponentsInChildren<Renderer>(true))
+                    if(!renderer.transform.IsChildOf(model)&&!StoryProp(renderer.transform,story))renderer.enabled=false;
                 if(identity!=null)
                 {
                     float height=Mathf.Clamp(identity.height,1.55f,2.05f)/1.78f;
@@ -101,14 +115,21 @@ namespace Blackstone.Foundation
                 if(isPlayer)hero=avatar;
             }
             if(hero==null){Status="The prisoner avatar could not be created.";return;}
-            foreach(var c in FindObjectsByType<DesertShift.Camera.ThirdPersonCameraController>(FindObjectsSortMode.None))c.enabled=false;
             var camera=Camera.main;
+            if(camera==null&&story!=null)camera=story.mainCamera;
+            if(camera==null)
+                foreach(var candidate in FindObjectsByType<Camera>(FindObjectsSortMode.None))
+                    if(candidate.enabled&&!candidate.orthographic){camera=candidate;break;}
+            if(camera==null){Status="No active gameplay camera. Keeping the existing camera driver.";Debug.LogError(Status);return;}
+            camera.tag="MainCamera";camera.enabled=true;camera.cullingMask|=1<<Player.gameObject.layer;
+            foreach(var renderer in hero.model.GetComponentsInChildren<Renderer>(true))camera.cullingMask|=1<<renderer.gameObject.layer;
+            foreach(var c in FindObjectsByType<DesertShift.Camera.ThirdPersonCameraController>(FindObjectsSortMode.None))c.SetExternalDriver(true);
             if(camera!=null)
             {
                 foreach(var b in camera.GetComponents<Behaviour>())if(b.GetType().Name=="CinemachineBrain")b.enabled=false;
-                CameraRig=camera.gameObject.AddComponent<FoundationCamera>();CameraRig.player=Player;CameraRig.input=Input;
+                CameraRig=camera.GetComponent<FoundationCamera>();if(CameraRig==null)CameraRig=camera.gameObject.AddComponent<FoundationCamera>();CameraRig.enabled=true;CameraRig.player=Player;CameraRig.input=Input;
                 CameraRig.characterVisual=hero.model;
-                CameraRig.story=storyMode?story:null;
+                CameraRig.story=storyMode?story:null;CameraRig.RefreshBindings();
             }
             if(!storyMode)
             {
@@ -127,13 +148,15 @@ namespace Blackstone.Foundation
                 if(prop!=null&&(candidate==prop.transform||candidate.IsChildOf(prop.transform)))return true;
             return false;
         }
+        static bool ZeroScale(Vector3 scale)=>Mathf.Abs(scale.x)<.0001f||Mathf.Abs(scale.y)<.0001f||Mathf.Abs(scale.z)<.0001f;
         static void Normalize(Transform model)
         {
-            var meshes=model.GetComponentsInChildren<SkinnedMeshRenderer>(true);
-            if(meshes.Length==0)return;
-            Bounds bounds=meshes[0].bounds;foreach(var r in meshes)bounds.Encapsulate(r.bounds);
-            float scale=1.78f/Mathf.Max(.1f,bounds.size.y);model.localScale*=scale;
-            bounds=meshes[0].bounds;foreach(var r in meshes)bounds.Encapsulate(r.bounds);
+            // Imported skinned culling boxes can be much larger than the actual body.
+            Bounds bounds=Blackstone.Supplied.SuppliedModel.Bounds(model.gameObject);
+            if(bounds.size.y<.1f||float.IsNaN(bounds.size.y)||float.IsInfinity(bounds.size.y))
+                throw new System.InvalidOperationException("The imported model has no usable body geometry or has zero scale.");
+            model.localScale*=1.78f/bounds.size.y;
+            bounds=Blackstone.Supplied.SuppliedModel.Bounds(model.gameObject);
             model.position+=Vector3.up*(model.parent.position.y-bounds.min.y);
         }
         static void GuardMaterial(Transform model,string profile,bool harrow)

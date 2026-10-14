@@ -19,6 +19,9 @@ namespace Blackstone.Foundation
         Vector3 velocity;
         Camera view;
         bool wasCinematic;
+        float avoidanceYaw;
+        public float CurrentDistance { get; private set; }
+        public bool UsingObstructionOrbit { get; private set; }
         Renderer[] characterRenderers;
         bool[] originalRenderingOff;
         Vector3 previousPlayer;
@@ -26,14 +29,19 @@ namespace Blackstone.Foundation
         SphereCollider collisionProbe;
         readonly Collider[] overlaps = new Collider[24];
         const int ObstructionLayers = ~((1 << 8) | (1 << 2) | (1 << 10) | (1 << 11));
-        void Start()
+        void Start(){RefreshBindings();}
+        public void RefreshBindings()
         {
+            Visibility(false);
             view = GetComponent<Camera>();
             if (player == null) { enabled = false; return; }
-            var probe = new GameObject("Camera collision probe");
-            probe.hideFlags = HideFlags.HideInHierarchy; probe.layer = 2;
-            collisionProbe = probe.AddComponent<SphereCollider>(); collisionProbe.radius = .23f;
-            collisionProbe.enabled = false;
+            if(collisionProbe==null)
+            {
+                var probe=new GameObject("Camera collision probe");
+                probe.hideFlags=HideFlags.HideInHierarchy;probe.layer=2;
+                collisionProbe=probe.AddComponent<SphereCollider>();collisionProbe.radius=.23f;collisionProbe.enabled=false;
+            }
+            characterRenderers=null;originalRenderingOff=null;
             if (characterVisual != null)
             {
                 characterRenderers = characterVisual.GetComponentsInChildren<Renderer>(true);
@@ -52,7 +60,9 @@ namespace Blackstone.Foundation
             Quaternion facing = Quaternion.Euler(pitch, yaw, 0);
             Vector3 pivot = FollowOverride != null ? FollowOverride.position : player.cameraTarget != null ? player.cameraTarget.position : player.transform.position + Vector3.up * 1.45f;
             pivot = Separate(pivot);
-            transform.SetPositionAndRotation(Resolve(pivot, pivot - facing * Vector3.forward * 3.15f), facing);
+            Vector3 wanted=Resolve(pivot,pivot-facing*Vector3.forward*3.15f);
+            ChooseVisibleOrbit(pivot,3.15f,false,ref wanted,ref facing);
+            transform.SetPositionAndRotation(wanted,facing);CurrentDistance=Vector3.Distance(wanted,pivot);Visibility(false);
         }
         void Visibility(bool hidden)
         {
@@ -89,19 +99,50 @@ namespace Blackstone.Foundation
             pivot = Separate(pivot);
             Vector3 anchor = pivot + facing * new Vector3(.48f*shoulder, .08f, 0);
             anchor = Resolve(pivot, anchor);
-            Vector3 desired = anchor - facing * Vector3.forward * (FollowOverride != null ? FollowDistance : input.Aim ? 1.9f : 3.15f);
+            float distance=FollowOverride!=null?FollowDistance:input.Aim?1.9f:3.15f;
+            Vector3 desired=anchor-facing*Vector3.forward*distance;
             Vector3 wanted = Resolve(anchor, desired);
-            bool obstructed = (wanted-desired).sqrMagnitude > .0001f;
+            bool obstructed=(wanted-desired).sqrMagnitude>.0001f;
+            if(FollowOverride==null)ChooseVisibleOrbit(pivot,distance,input.Aim,ref wanted,ref facing);
             float dt = Mathf.Max(.0001f, Time.deltaTime);
             Vector3 smooth = Vector3.SmoothDamp(transform.position, wanted, ref velocity, .07f, 100, dt);
             // Contract immediately at an obstruction, then ease back into open space.
             if (obstructed && (wanted-pivot).sqrMagnitude < (smooth-pivot).sqrMagnitude)
             { smooth = wanted; velocity = Vector3.zero; }
-            transform.position = Resolve(pivot, smooth);
-            transform.rotation = facing;
-            Visibility((transform.position - pivot).sqrMagnitude < .68f * .68f);
-            view.fieldOfView = Mathf.Lerp(view.fieldOfView, input.Aim ? 48 : 58, 1-Mathf.Exp(-10*dt));
-            view.nearClipPlane = .08f;
+            transform.position=Resolve(pivot,smooth);
+            if(UsingObstructionOrbit&&Vector3.Distance(transform.position,pivot)<CameraFramingRules.MinimumDistance(input.Aim))
+            {transform.position=wanted;velocity=Vector3.zero;}
+            CurrentDistance=Vector3.Distance(transform.position,pivot);
+            Vector3 lookTarget=UsingObstructionOrbit?pivot:anchor;
+            if(!input.Aim&&CurrentDistance<2.4f)lookTarget-=Vector3.up*.4f;
+            Vector3 direction=lookTarget-transform.position;
+            transform.rotation=direction.sqrMagnitude>.00001f?Quaternion.LookRotation(direction,Vector3.up):facing;
+            // Keep the full prisoner mesh alive even if a narrow space prevents a long boom.
+            Visibility(false);
+            view.fieldOfView=Mathf.Lerp(view.fieldOfView,CameraFramingRules.FieldOfView(input.Aim,CurrentDistance),1-Mathf.Exp(-10*dt));
+            view.nearClipPlane=CurrentDistance < .7f ? .03f : .08f;
+        }
+        void ChooseVisibleOrbit(Vector3 pivot,float distance,bool aiming,ref Vector3 wanted,ref Quaternion facing)
+        {
+            UsingObstructionOrbit=false;
+            if(Vector3.Distance(pivot,wanted)>=CameraFramingRules.MinimumDistance(aiming)){avoidanceYaw=0;return;}
+            float best=float.NegativeInfinity,previous=avoidanceYaw,chosen=avoidanceYaw;Vector3 selected=wanted;Quaternion rotation=facing;
+            for(int i=0;i<CameraFramingRules.CandidateCount;i++)
+            {
+                float offset=CameraFramingRules.Offset(i);
+                Quaternion candidateFacing=Quaternion.Euler(pitch-kick,yaw+offset,0);
+                Vector3 candidateAnchor=Resolve(pivot,pivot+candidateFacing*new Vector3(.48f*shoulder,.08f,0));
+                Vector3 candidate=Resolve(candidateAnchor,candidateAnchor-candidateFacing*Vector3.forward*distance);
+                bool clear=(Clear(pivot,candidate,.23f)-candidate).sqrMagnitude<.0001f
+                    &&!Physics.CheckSphere(candidate,.22f,ObstructionLayers,QueryTriggerInteraction.Ignore);
+                float score=CameraFramingRules.Score(offset,Vector3.Distance(pivot,candidate),clear,aiming);
+                // Keep a chosen side stable when two candidates have nearly identical clearance.
+                if(Mathf.Abs(Mathf.DeltaAngle(offset,previous))<10)score+=.08f;
+                if(score<=best)continue;
+                best=score;selected=candidate;rotation=candidateFacing;chosen=offset;
+            }
+            if(float.IsNegativeInfinity(best))return;
+            wanted=selected;facing=rotation;avoidanceYaw=chosen;UsingObstructionOrbit=true;
         }
         Vector3 Resolve(Vector3 origin, Vector3 target)
         {

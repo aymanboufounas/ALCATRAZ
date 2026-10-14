@@ -54,7 +54,9 @@ namespace Blackstone.Alcatraz.Editor
                 var cameraObject = new GameObject("Test camera"); cameraObject.transform.SetParent(root.transform);
                 cameraObject.AddComponent<Camera>();
                 var camera = cameraObject.AddComponent<FoundationCamera>(); camera.enabled = false;
-                camera.player = movement; camera.input = input; Invoke(camera, "Start");
+                camera.player = movement; camera.input = input;
+                var visual=Box(hero.transform,"Visible prisoner proxy",origin+Vector3.up*.89f,new Vector3(.45f,1.78f,.3f));visual.layer=8;
+                camera.characterVisual=visual.transform;Invoke(camera,"Start");
                 var wall = Box(root.transform, "Wall", origin+new Vector3(0, 1.45f, -2), new Vector3(5, 3, .2f));
                 Physics.SyncTransforms();
                 Vector3 pivot = origin+Vector3.up*1.45f;
@@ -68,6 +70,26 @@ namespace Blackstone.Alcatraz.Editor
                 typeof(PlayerMovement).GetProperty("Grounded").GetSetMethod(true).Invoke(movement, new object[]{true});
                 resolved = (Vector3)Invoke(camera, "Resolve", pivot, origin+new Vector3(6, -1, 0));
                 Check(resolved.y >= .25f, "camera orbit beside an exposed cliff stays above the player's floor");
+                wall.transform.position=origin+new Vector3(0,1.45f,-.6f);wall.transform.localScale=new Vector3(1.1f,3,.2f);Physics.SyncTransforms();
+                Vector3 close=(Vector3)Invoke(camera,"Resolve",pivot,pivot+Vector3.back*3.15f);
+                object[] alternate={pivot,3.15f,false,close,Quaternion.Euler(12,0,0)};
+                Invoke(camera,"ChooseVisibleOrbit",alternate);
+                Check(camera.UsingObstructionOrbit&&Vector3.Distance(pivot,(Vector3)alternate[3])>=CameraFramingRules.MinimumDistance(false),
+                    "near rear wall chooses a clear third-person side orbit");
+                visual.GetComponent<Renderer>().forceRenderingOff=true;Invoke(camera,"LateUpdate");
+                Check(!visual.GetComponent<Renderer>().forceRenderingOff,"obstructed camera restores visible prisoner mesh");
+                wall.SetActive(false);Physics.SyncTransforms();
+                alternate=new object[]{pivot,3.15f,false,pivot+Vector3.back*3.15f,Quaternion.Euler(12,0,0)};
+                Invoke(camera,"ChooseVisibleOrbit",alternate);
+                Check(!camera.UsingObstructionOrbit,"rear view resumes when the wall clears");
+                wall.SetActive(true);wall.transform.position=origin+new Vector3(0,1.45f,-2);wall.transform.localScale=new Vector3(5,3,.2f);
+                var brain=cameraObject.AddComponent<Unity.Cinemachine.CinemachineBrain>();
+                var legacy=root.AddComponent<DesertShift.Camera.ThirdPersonCameraController>();
+                typeof(DesertShift.Camera.ThirdPersonCameraController).GetField("brain",Private).SetValue(legacy,brain);
+                var virtualObject=new GameObject("Temporary virtual camera");virtualObject.transform.SetParent(root.transform);
+                legacy.virtualCamera=virtualObject.AddComponent<Unity.Cinemachine.CinemachineCamera>();
+                legacy.SetExternalDriver(true);legacy.SetCinematic(false);
+                Check(!brain.enabled&&!legacy.virtualCamera.enabled&&!legacy.enabled,"returning from a cinematic cannot revive a competing camera driver");
                 int version = movement.TeleportVersion;
                 movement.Teleport(origin+Vector3.right*2);
                 Check(movement.TeleportVersion == version+1 && !movement.Grounded, "short teleport invalidates stale camera and ground state");
@@ -102,7 +124,7 @@ namespace Blackstone.Alcatraz.Editor
                 for(int i=0;i<10000&&!movement.Grounded;i++)Invoke(movement,"Update");
                 Check(movement.Grounded && movement.AirTime==0 && movement.VerticalSpeed<0,
                     "jump lands and restores grounded movement");
-                Debug.Log("Alcatraz movement/camera checks passed: 19 assertions using Unity physics. Full gameplay and visual review are still required.");
+                Debug.Log("Alcatraz movement/camera checks passed: 23 assertions using Unity physics. Full gameplay and visual review are still required.");
             }
             catch (TargetInvocationException error)
             { Debug.LogException(error.InnerException ?? error); throw; }

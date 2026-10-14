@@ -16,6 +16,7 @@ namespace DesertShift.Camera
         public float initialYaw = 10, initialPitch = 12;
         public bool invertY;
         public bool IsCinematic { get; private set; }
+        public bool ExternalDriver { get; private set; }
         public float fieldOfView = 58;
         bool rightShoulder = true;
         CinemachineBrain brain;
@@ -24,6 +25,7 @@ namespace DesertShift.Camera
         float yaw, pitch;
         void Start()
         {
+            if (ExternalDriver)return;
             if (followTarget == null || input == null) { enabled = false; return; }
             orbit = new GameObject("Camera Orbit Target").transform;
             orbit.SetParent(transform, false); orbit.position = followTarget.position;
@@ -67,11 +69,19 @@ namespace DesertShift.Camera
             orbit.position = followTarget.position;
             orbit.rotation = Quaternion.Euler(pitch, yaw, 0);
         }
+        public void SetExternalDriver(bool active)
+        {
+            ExternalDriver=active;
+            var main=UnityEngine.Camera.main;if(brain==null&&main!=null)brain=main.GetComponent<CinemachineBrain>();
+            if(brain!=null)brain.enabled=!active&&!IsCinematic;
+            if(virtualCamera!=null)virtualCamera.enabled=!active&&!IsCinematic;
+            enabled=!active;
+        }
         public void SetCinematic(bool cinematic)
         {
             IsCinematic = cinematic;
-            if (brain != null) brain.enabled = !cinematic;
-            if (virtualCamera != null) virtualCamera.enabled = !cinematic;
+            if (brain != null) brain.enabled = !cinematic&&!ExternalDriver;
+            if (virtualCamera != null) virtualCamera.enabled = !cinematic&&!ExternalDriver;
         }
         public void SnapBehind(float heading)
         {

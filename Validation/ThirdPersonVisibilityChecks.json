@@ -1,0 +1,37 @@
+{
+  "status": "PASS",
+  "executable_framing_assertions": 16,
+  "csharp_grammar": {
+    "status": "PASS",
+    "files": 82,
+    "errors": [],
+    "scope": "C# syntax grammar only; Unity API/type resolution and shader compilation are unverified"
+  },
+  "native_integrity": {
+    "status": "PASS",
+    "counts": {
+      "native_files": 2606,
+      "yaml_documents": 88300,
+      "asset_guids": 3665,
+      "mesh_vertices": 7802887,
+      "mesh_triangles": 3755038,
+      "weighted_meshes": 271,
+      "csharp_files": 82,
+      "animation_clips": 14
+    },
+    "errors": []
+  },
+  "unity_play_mode_fixture": {
+    "assertions": 23,
+    "executed": false,
+    "menu": "Alcatraz/Validate Movement and Camera (Play Mode)"
+  },
+  "recording_observation": "Player is visible while running and jumping; screenshots show an older four-action pause menu.",
+  "not_verified": [
+    "Unity API compilation",
+    "Unity model import and baked bounds",
+    "Unity physics fixture",
+    "Final third-person rendering",
+    "Full chapter movement/combat/cinematic playthrough"
+  ]
+}
