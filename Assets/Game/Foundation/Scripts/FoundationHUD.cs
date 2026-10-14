@@ -64,7 +64,7 @@ namespace Blackstone.Foundation
             try
             {
                 bool paused=foundation.Input==null||!foundation.Input.IsCaptured;
-                if(title||paused){Menu(viewport);return;}
+                if(title||paused){GUI.matrix=PrisonMenuTheme.MenuMatrix;Menu();return;}
                 bool mapHeld=Keyboard.current!=null&&Keyboard.current.mKey.isPressed
                     ||Gamepad.current!=null&&Gamepad.current.selectButton.isPressed;
                 if(mapHeld&&island!=null){FullMap(viewport);return;}
@@ -72,30 +72,31 @@ namespace Blackstone.Foundation
             }
             finally{GUI.matrix=old;GUI.color=oldColor;}
         }
-        void Menu(FoundationViewport viewport)
+        void Menu()
         {
-            PrisonMenuTheme.Frame(viewport.Width,viewport.Height,title?"ALCATRAZ\nISLAND":"PAUSED",suppliedWorld!=null&&suppliedWorld.InsidePrison?"CELLHOUSE":"SAN FRANCISCO BAY",!title);
+            PrisonMenuTheme.Frame(1920,1080,title?"ALCATRAZ\nISLAND":"PAUSED",suppliedWorld!=null&&suppliedWorld.InsidePrison?"CELLHOUSE":"SAN FRANCISCO BAY",!title);
             bool ready=foundation.Status=="Ready";
-            if(PrisonMenuTheme.Navigation(0,title?"01   Enter the island":"01   Resume game",ready)){menuPage=0;if(title)Enter();else foundation.Input.Capture(true);}
+            if(PrisonMenuTheme.Navigation(0,title?"01   Enter the island":"01   Resume game",ready,menuPage==0)){menuPage=0;if(title)Enter();else foundation.Input.Capture(true);}
             if(PrisonMenuTheme.Navigation(1,"02   Chapter 01",Application.CanStreamedLevelBeLoaded(storyScene))){Time.timeScale=1;SceneManager.LoadScene(storyScene);}
-            if(PrisonMenuTheme.Navigation(2,"03   Island locations",suppliedWorld!=null&&suppliedWorld.Ready))menuPage=1;
-            if(PrisonMenuTheme.Navigation(3,"04   Settings"))menuPage=2;
-            if(PrisonMenuTheme.Navigation(4,"05   Controls"))menuPage=3;
+            if(PrisonMenuTheme.Navigation(2,"03   Island locations",suppliedWorld!=null&&suppliedWorld.Ready,menuPage==1))menuPage=1;
+            if(PrisonMenuTheme.Navigation(3,"04   Settings",true,menuPage==2))menuPage=2;
+            if(PrisonMenuTheme.Navigation(4,"05   Controls",true,menuPage==3))menuPage=3;
             if(PrisonMenuTheme.Navigation(5,title?"06   Quit":"06   Return to title")){if(title)Application.Quit();else{title=true;menuPage=0;foundation.Input.SetGameplayBlocked(true);}}
-            float x=700,w=viewport.Width-770;
+            float x=665,w=1170;
             if(!ready){PrisonMenuTheme.Text(new Rect(x,160,w,250),foundation.Status??"Preparing the island…");return;}
             if(menuPage==0)
             {
-                PrisonMenuTheme.Text(new Rect(x,190,w,30),"CHAPTER 01  /  THE PRISONER",true);
-                GUI.Label(new Rect(x,235,w,90),"A way out begins here.",large);
-                PrisonMenuTheme.Text(new Rect(x,365,Mathf.Min(w,750),160),"Discover the island, meet the inmates and learn the prison routine. Build alliances. Find your route to freedom.");
-                PrisonMenuTheme.Panel(new Rect(x,600,w,1),new Color(1,1,1,.2f));
-                PrisonMenuTheme.Text(new Rect(x,644,w,30),"AVAILABLE ON THE ISLAND",true);
-                PrisonMenuTheme.Text(new Rect(x,702,w,130),"Cellhouse & galleries  ·  Coastal patrol boat\nHelicopter flight  ·  Boxing training  ·  Texas Hold’em");
+                PrisonMenuTheme.Text(new Rect(x,260,w,30),"CHAPTER 01  /  THE PRISONER",true);
+                PrisonMenuTheme.Hero(new Rect(x,285,w,105),"A way out begins here.",76);
+                PrisonMenuTheme.Panel(new Rect(x,421,80,3),PrisonMenuTheme.Gold);
+                PrisonMenuTheme.Text(new Rect(x,464,Mathf.Min(w,650),145),"Discover the island, meet the inmates and learn the prison routine. Build alliances. Find your route to freedom.");
+                PrisonMenuTheme.Panel(new Rect(x,655,w,1),new Color(.83f,.68f,.39f,.5f));
+                PrisonMenuTheme.Text(new Rect(x,685,w,30),"AVAILABLE ON THE ISLAND",true);
+                PrisonMenuTheme.Features(x,745,w);
             }
             else if(menuPage==1)
             {
-                GUI.Label(new Rect(x,180,w,80),"ISLAND LOCATIONS",large);
+                PrisonMenuTheme.Hero(new Rect(x,180,w,90),"ISLAND LOCATIONS",68);
                 if(PrisonMenuTheme.Button(new Rect(x,335,w,80),"Cellhouse   /   Cells, dining hall & poker")){suppliedWorld.EnterCellhouse();Enter();}
                 if(PrisonMenuTheme.Button(new Rect(x,440,w,80),"Helipad   /   Little Bird flight")){suppliedWorld.VisitHelipad();Enter();}
                 if(PrisonMenuTheme.Button(new Rect(x,545,w,80),"Coastal dock   /   Patrol boat")){suppliedWorld.VisitCoastalHouse();Enter();}
@@ -103,7 +104,7 @@ namespace Blackstone.Foundation
             }
             else if(menuPage==2)
             {
-                GUI.Label(new Rect(x,180,w,80),"SETTINGS",large);
+                PrisonMenuTheme.Hero(new Rect(x,180,w,90),"SETTINGS",68);
                 var audio=FoundationAudio.Instance;
                 if(audio!=null){PrisonMenuTheme.Text(new Rect(x,335,300,35),"Master volume");audio.master=GUI.HorizontalSlider(new Rect(x+330,352,w-350,22),audio.master,0,1);PrisonMenuTheme.Text(new Rect(x,414,300,35),"Effects & footsteps");audio.effects=GUI.HorizontalSlider(new Rect(x+330,430,w-350,22),audio.effects,0,1);}
                 if(foundation.CameraRig!=null){PrisonMenuTheme.Text(new Rect(x,493,300,35),"Camera sensitivity");foundation.CameraRig.sensitivity=GUI.HorizontalSlider(new Rect(x+330,510,w-350,22),foundation.CameraRig.sensitivity,.025f,.25f);foundation.CameraRig.invertY=GUI.Toggle(new Rect(x,572,w,40),foundation.CameraRig.invertY," Invert camera Y");}
@@ -112,7 +113,7 @@ namespace Blackstone.Foundation
             }
             else
             {
-                GUI.Label(new Rect(x,180,w,80),"CONTROLS",large);
+                PrisonMenuTheme.Hero(new Rect(x,180,w,90),"CONTROLS",68);
                 PrisonMenuTheme.Text(new Rect(x,320,w,440),"WASD / Left stick     Move\nShift / L3     Run      ·      Alt     Walk\nCtrl / B     Crouch      ·      Space / A     Jump\nE / X     Interact & board vehicles\n1–5     Equipment      ·      Mouse wheel     Extra weapons\nRMB / LT     Aim or boxing guard\nLMB / RT     Fire or punch      ·      R / Y     Reload\nSpace / Ctrl     Helicopter rise / descend\nTab / LB     Inventory      ·      M / View     Map\nEsc / Start     Pause      ·      P / B     Leave poker");
             }
         }

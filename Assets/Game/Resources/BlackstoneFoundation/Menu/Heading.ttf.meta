@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 4bf942c950c6ccd48ba8507f33763b34
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 32
+  fontNames: [Anton]
+  includeFontData: 1
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

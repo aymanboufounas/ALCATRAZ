@@ -1,0 +1,58 @@
+{
+  "status": "PASS",
+  "csharp_grammar": {
+    "status": "PASS",
+    "files": 77,
+    "errors": [],
+    "scope": "C# syntax grammar only; Unity API/type resolution and shader compilation are unverified"
+  },
+  "native_integrity": {
+    "status": "PASS",
+    "errors": [],
+    "scope": "Scratch checkout containing the new menu resources and changed menu scripts."
+  },
+  "html_layout_preview": [
+    {
+      "size": {
+        "width": 1920,
+        "height": 1080
+      },
+      "font": true,
+      "images": true,
+      "fits": true
+    },
+    {
+      "size": {
+        "width": 1280,
+        "height": 720
+      },
+      "font": true,
+      "images": true,
+      "fits": true
+    },
+    {
+      "size": {
+        "width": 3440,
+        "height": 1440
+      },
+      "font": true,
+      "images": true,
+      "fits": true
+    },
+    {
+      "size": {
+        "width": 1024,
+        "height": 768
+      },
+      "font": true,
+      "images": true,
+      "fits": true
+    }
+  ],
+  "not_verified": [
+    "Unity API compilation",
+    "Unity font and texture imports",
+    "Unity menu click targets and navigation transitions",
+    "Unity runtime visuals"
+  ]
+}

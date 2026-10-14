@@ -66,7 +66,11 @@ namespace Blackstone.UI
             if (director == null || director.input == null) return;
             Styles(); Matrix4x4 original = GUI.matrix;
             GUI.matrix = Matrix4x4.TRS(Vector3.zero, Quaternion.identity, new Vector3(Screen.width / 1920f, Screen.height / 1080f, 1));
-            if (director.MainMenu) Menu();
+            if (director.MainMenu)
+            {
+                GUI.matrix=Blackstone.Foundation.PrisonMenuTheme.MenuMatrix;Menu();
+                GUI.matrix=Matrix4x4.TRS(Vector3.zero,Quaternion.identity,new Vector3(Screen.width/1920f,Screen.height/1080f,1));
+            }
             else
             {
                 if (!director.Letterbox && Blackstone.Activities.PrisonPokerTable.Active == null) Gameplay();
@@ -83,7 +87,11 @@ namespace Blackstone.UI
                 if (director.State.stage == StoryStage.SolitarySleeping) SleepClock();
                 if (director.PhoneOpen) Phone();
                 if (!string.IsNullOrEmpty(director.Banner)) Banner();
-                if (!director.input.IsCaptured) Pause();
+                if (!director.input.IsCaptured)
+                {
+                    GUI.matrix=Blackstone.Foundation.PrisonMenuTheme.MenuMatrix;Pause();
+                    GUI.matrix=Matrix4x4.TRS(Vector3.zero,Quaternion.identity,new Vector3(Screen.width/1920f,Screen.height/1080f,1));
+                }
             }
             if (director.Fade > 0) Panel(new Rect(0,0,1920,1080), new Color(0,0,0,director.Fade));
             if (debug)
@@ -224,7 +232,7 @@ namespace Blackstone.UI
             if(Blackstone.Foundation.PrisonMenuTheme.Navigation(2,"03   Settings"))settings=true;
             if(Blackstone.Foundation.PrisonMenuTheme.Navigation(3,"04   Quit"))Application.Quit();
             Blackstone.Foundation.PrisonMenuTheme.Text(new Rect(750,235,950,32),"ELIAS VALE  /  INMATE B-04",true);
-            Label(new Rect(750,310,950,100),"The prison has a rhythm.",hero);
+            Blackstone.Foundation.PrisonMenuTheme.Hero(new Rect(750,310,1050,100),"The prison has a rhythm.",68);
             Blackstone.Foundation.PrisonMenuTheme.Text(new Rect(750,440,850,180),"Learn it. Build alliances. Find the gaps. Your first days inside Alcatraz are the beginning of your escape.");
             Blackstone.Foundation.PrisonMenuTheme.Text(new Rect(750,745,930,80),"CONTROLLER   X: Continue  ·  Y: New game",true);
         }
@@ -237,7 +245,8 @@ namespace Blackstone.UI
             if(Blackstone.Foundation.PrisonMenuTheme.Navigation(2,"03   Save checkpoint"))director.SaveNow();
             if(Blackstone.Foundation.PrisonMenuTheme.Navigation(3,"04   Return to title"))director.ReturnToMenu();
             Blackstone.Foundation.PrisonMenuTheme.Text(new Rect(750,235,960,35),"CHAPTER 01  /  THE PRISONER",true);
-            Blackstone.Foundation.PrisonMenuTheme.Text(new Rect(750,315,920,180),"Your next move matters. Learn the routine, earn the inmates’ trust and prepare your escape.");
+            Blackstone.Foundation.PrisonMenuTheme.Hero(new Rect(750,315,1050,105),"A way out begins here.",68);
+            Blackstone.Foundation.PrisonMenuTheme.Text(new Rect(750,445,920,160),"Your next move matters. Learn the routine, earn the inmates’ trust and prepare your escape.");
             Blackstone.Foundation.PrisonMenuTheme.Text(new Rect(750,635,900,32),"CHECKPOINTS",true);
             Blackstone.Foundation.PrisonMenuTheme.Text(new Rect(750,695,900,130),"Save your current progress here. Continue from the title screen when you return.");
         }
