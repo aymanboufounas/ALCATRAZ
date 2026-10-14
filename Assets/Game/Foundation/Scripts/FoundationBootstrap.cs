@@ -50,7 +50,8 @@ namespace Blackstone.Foundation
                 Transform rig=Instantiate(prefab,model,false).transform;
                 try
                 {
-                    if(isPlayer&&parent!=actor.transform&&ZeroScale(parent.localScale))parent.localScale=Vector3.one;
+                    if(isPlayer&&parent!=actor.transform)
+                    {parent.gameObject.SetActive(true);if(ZeroScale(parent.localScale))parent.localScale=Vector3.one;}
                     foreach(var renderer in model.GetComponentsInChildren<Renderer>(true))
                     {
                         for(var node=renderer.transform;node!=null&&node!=model.parent;node=node.parent)node.gameObject.SetActive(true);
