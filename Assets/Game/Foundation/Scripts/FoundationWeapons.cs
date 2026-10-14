@@ -136,7 +136,7 @@ namespace Blackstone.Foundation
         {
             meleeUntil=Time.time+.35f;
             meleeHitAt=Time.time+.16f;meleePending=true;
-            if(FoundationAudio.Instance!=null)FoundationAudio.Instance.Variation("Punch",transform.position+Vector3.up,.5f);
+            if(FoundationAudio.Instance!=null)FoundationAudio.Instance.Named("Handling","Swing",transform.position+Vector3.up,.5f);
         }
         void MeleeContact()
         {

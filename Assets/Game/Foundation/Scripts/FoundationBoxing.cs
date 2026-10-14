@@ -28,7 +28,7 @@ namespace Blackstone.Foundation
             combo=nextCombo;
             duration=combo==0?.42f:combo==1?.55f:.64f;started=Time.time;nextAttack=Time.time+duration;hitAt=Time.time+duration*.43f;connected=false;
             Stamina-=cost;
-            if(FoundationAudio.Instance!=null)FoundationAudio.Instance.Variation("Punch",transform.position+Vector3.up*1.3f,.4f);
+            if(FoundationAudio.Instance!=null)FoundationAudio.Instance.Named("Handling","Swing",transform.position+Vector3.up*1.3f,.4f);
         }
         void Update()
         {
@@ -96,7 +96,7 @@ namespace Blackstone.Foundation
             var practiceTarget=chosen.GetComponentInParent<FoundationTarget>();if(practiceTarget!=null){practiceTarget.Hit();hit=true;}
             if(!hit)return;
             if(avatar.equipment!=null)avatar.equipment.RegisterHit();
-            if(FoundationAudio.Instance!=null)FoundationAudio.Instance.Variation("Impact",origin+direction*.8f,.55f);
+            if(FoundationAudio.Instance!=null)FoundationAudio.Instance.Variation("Punch",origin+direction*.8f,.55f);
         }
         bool Receive(FoundationBoxing attacker,float damage)
         {

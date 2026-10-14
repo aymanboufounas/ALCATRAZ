@@ -29,13 +29,19 @@ namespace Blackstone.Foundation
                 s.minDistance=1.4f;s.maxDistance=32;s.rolloffMode=AudioRolloffMode.Logarithmic;pool[i]=s;
                 filters[i]=go.AddComponent<AudioLowPassFilter>();rooms[i]=go.AddComponent<AudioReverbFilter>();
             }
-            var p=FindFirstObjectByType<DesertShift.Player.PlayerMovement>();if(p!=null)listener=p.transform;
+            var audioListener=FindFirstObjectByType<AudioListener>();
+            if(audioListener!=null)listener=audioListener.transform;
             ambience=FindFirstObjectByType<PrisonAudio>();
             foreach(string name in new[]{"Concrete","Metal","Wood","Grass","Pistol","Rifle","Impact","Punch","Handling"})
                 clips[name]=Resources.LoadAll<AudioClip>("BlackstoneFoundation/Audio/"+name);
         }
         void Update()
         {
+            if(listener==null)
+            {
+                var audioListener=FindFirstObjectByType<AudioListener>();
+                if(audioListener!=null)listener=audioListener.transform;
+            }
             if(ambience!=null)
             {
                 if(followStoryMixer){master=ambience.master;effects=ambience.effects;}
@@ -47,9 +53,10 @@ namespace Blackstone.Foundation
                 pool[i].volume=gains[i]*master*effects;
                 if(paused)pool[i].Pause();else pool[i].UnPause();
                 if(!pool[i].isPlaying||listener==null)continue;
-                Vector3 source=pool[i].transform.position, end=listener.position+Vector3.up*1.3f;
+                Vector3 source=pool[i].transform.position, end=listener.position;
                 filters[i].cutoffFrequency=Physics.Linecast(source,end,1,QueryTriggerInteraction.Ignore)?2400:22000;
-                bool indoors=source.z<6||source.x>18.4f;
+                // Detect a ceiling in the current world instead of relying on old map coordinates.
+                bool indoors=Physics.Raycast(source+Vector3.up*.15f,Vector3.up,8,1,QueryTriggerInteraction.Ignore);
                 rooms[i].reverbPreset=indoors?AudioReverbPreset.Room:AudioReverbPreset.Off;
             }
             FoundationFmodBridge.SetPaused(paused);
