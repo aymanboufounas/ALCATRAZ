@@ -84,6 +84,49 @@
     ]
   },
   {
+    "name": "Carport",
+    "archive": "garage-roof-carport.zip",
+    "sha256": "cc7b9f4f115f42b8e250c68d5e8f768f42b36c15805503a02a45a3902301e4e6",
+    "resource": "AlcatrazExtras/Carport/Carport",
+    "triangles": 780,
+    "materials": 1,
+    "textures": 1,
+    "bounds": [
+      [
+        -466.4275207519531,
+        0.0,
+        -546.9618530273438
+      ],
+      [
+        466.4275207519531,
+        500.892578125,
+        546.9618530273438
+      ]
+    ],
+    "quality": {
+      "mesh_simplification": false,
+      "source_triangles": 780,
+      "source_texture_resolution_preserved": true,
+      "texture_encoding": "lossless PNG",
+      "textures": [
+        {
+          "source": "wooden_carport_base_color.png",
+          "output": "Assets/Game/Supplied/Resources/AlcatrazExtras/Carport/Textures/T0.png",
+          "source_dimensions": [
+            2048,
+            2048
+          ],
+          "output_dimensions": [
+            2048,
+            2048
+          ],
+          "normal": false
+        }
+      ],
+      "limits": "Static native conversion; URP material reconstruction is not a byte-exact material or lighting reproduction."
+    }
+  },
+  {
     "name": "ColtM5",
     "archive": "the-hardest-interview-2-free-download.zip",
     "sha256": "6f73334ee83825d76ca3ffa2aa5fc42d70a2a57fc4bf487a36995d9bdb0fcd02",

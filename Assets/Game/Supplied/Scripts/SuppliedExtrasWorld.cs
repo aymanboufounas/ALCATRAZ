@@ -43,6 +43,8 @@ namespace Blackstone.Supplied
             Box("Factory yard west",Origin+new Vector3(-50,1.4f,99),new Vector3(.3f,2.8f,90),steel);
             Box("Factory yard east",Origin+new Vector3(50,1.4f,99),new Vector3(.3f,2.8f,90),steel);
             Model("Factory",10,new Vector3(-20,0,103));
+            // Original wooden carport: leave clearance around the radio and the north walkway.
+            Model("Carport",3.2f,new Vector3(27,0,120));
             Model("SpeakerArray",2.5f,new Vector3(20,0,96));
             Box("Radio table",Origin+new Vector3(20,.4f,90),new Vector3(1.5f,.8f,1),steel);
             Model("Radio",.35f,new Vector3(20,.8f,90));
