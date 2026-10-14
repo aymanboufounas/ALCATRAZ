@@ -38,11 +38,25 @@ def icon(name):
             box((x+4,65,x+21,79))
     elif name=='cards':
         box((17,22,54,77));box((44,15,81,70));line([(63,31),(73,42),(63,53),(53,42),(63,31)])
+    elif name=='inmate':
+        oval((32,9,64,41));line([(24,81),(24,57),(33,47),(63,47),(72,57),(72,81)]);line([(34,60),(34,81)]);line([(62,60),(62,81)])
+    elif name=='id':
+        box((8,20,88,76));oval((20,32,38,50));line([(16,64),(20,55),(38,55),(42,64)]);line([(52,37),(77,37)]);line([(52,52),(77,52)]);line([(52,65),(68,65)])
+    elif name=='key':
+        oval((12,13,48,49));oval((24,25,36,37));line([(43,45),(77,79),(84,72)]);line([(63,65),(70,58)])
+    elif name=='phone':
+        box((27,8,69,88));line([(27,20),(69,20)]);line([(27,73),(69,73)]);oval((44,78,52,84))
+    elif name=='knife':
+        line([(19,78),(74,23),(77,12),(63,16),(41,38),(43,45)]);line([(34,43),(53,62)]);line([(31,53),(20,64),(14,75),(19,78)])
+    elif name=='tattoo':
+        oval((12,12,84,84));line([(28,63),(38,29),(47,56),(57,29),(68,63)]);line([(24,73),(72,73)])
+    elif name=='uniform':
+        line([(32,17),(17,24),(8,43),(24,50),(28,40),(28,80),(68,80),(68,40),(72,50),(88,43),(79,24),(64,17),(57,29),(39,29),(32,17)])
     im.resize((96,96),Image.Resampling.LANCZOS).save(u.ROOT/BASE/(name+'.png'))
 
 
 def main():
-    for name in ('play','book','map','settings','controls','exit','cell','boat','helicopter','boxing','cards'):icon(name)
+    for name in ('play','book','map','settings','controls','exit','cell','boat','helicopter','boxing','cards','inmate','id','key','phone','knife','tattoo','uniform'):icon(name)
     u.write(BASE+'.meta','fileFormatVersion: 2\nguid: '+u.guid(BASE)+'\nfolderAsset: yes\nDefaultImporter:\n  externalObjects: {}\n')
     for p in sorted((u.ROOT/BASE).iterdir()):
         rel=str(p.relative_to(u.ROOT))

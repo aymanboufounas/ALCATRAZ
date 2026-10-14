@@ -75,10 +75,16 @@ namespace Blackstone.Foundation
         }
         public static bool Navigation(int index,string value,bool enabled=true,bool selected=false)
         {
-            Styles();Rect r=new Rect(95,344+index*82,460,72);
+            return NavigationAt(new Rect(95,344+index*82,460,72),index,value,enabled,selected);
+        }
+        public static bool SectionNavigation(int index,string value,bool selected)
+        {return NavigationAt(new Rect(95,330+index*63,460,55),index,(index+1).ToString("00")+"   "+value,true,selected,true);}
+        static bool NavigationAt(Rect r,int index,string value,bool enabled,bool selected,bool compact=false)
+        {
+            Styles();
             bool old=GUI.enabled;GUI.enabled=old&&enabled;
             bool highlighted=GUI.enabled&&(selected||r.Contains(Event.current.mousePosition));
-            Panel(r,highlighted?new Color(.28f,.19f,.075f,.83f):new Color(.035f,.045f,.05f,.9f));
+            Panel(r,highlighted?(compact?new Color(.52f,.045f,.045f,.94f):new Color(.28f,.19f,.075f,.83f)):new Color(.035f,.045f,.05f,.9f));
             if(highlighted)for(int i=5;i>0;i--)Border(new Rect(r.x-i,r.y-i,r.width+2*i,r.height+2*i),new Color(Gold.r,Gold.g,Gold.b,.025f*(6-i)),1);
             Border(r,highlighted?Gold:new Color(.5f,.5f,.45f,.35f),highlighted?2:1);
             bool pressed=GUI.Button(r,GUIContent.none,GUIStyle.none);
@@ -86,15 +92,19 @@ namespace Blackstone.Foundation
             string icon=index>=0&&index<navigationIcons.Length?navigationIcons[index]:"play";
             string label=value.Length>=5?value.Substring(5).Trim():value;
             int shortcut=label.IndexOf("  [");if(shortcut>=0)label=label.Substring(0,shortcut);
-            if(label.Contains("Settings"))icon="settings";else if(label.Contains("Quit")||label.Contains("Return"))icon="exit";
-            Icon(new Rect(r.x+25,r.y+19,34,34),icon);
+            if(label.Contains("Settings"))icon="settings";
+            else if(label=="Map")icon="map";
+            else if(label=="Inventory"||label=="Weapons")icon="cards";
+            else if(label=="Character")icon="inmate";
+            else if(label=="Mission"||label=="Journal"||label.Contains("Game"))icon="book";else if(label.Contains("Quit")||label.Contains("Return")||label.Contains("Exit"))icon="exit";
+            Icon(new Rect(r.x+25,r.center.y-17,34,34),icon);
             GUI.Label(new Rect(r.x+91,r.y,50,r.height),(index+1).ToString("00"),number);
-            GUI.Label(new Rect(r.x+149,r.y,r.width-184,r.height),label,button);
+            GUI.Label(new Rect(r.x+149,r.y,r.width-184,r.height),compact?label.ToUpperInvariant():label,compact?new GUIStyle(button){fontSize=20,fontStyle=FontStyle.Bold}:button);
             GUI.Label(new Rect(r.xMax-36,r.y,25,r.height),"›",arrow);
             GUI.color=color;GUI.enabled=old;return pressed;
         }
         static readonly System.Collections.Generic.Dictionary<string,Texture2D> icons=new System.Collections.Generic.Dictionary<string,Texture2D>();
-        static void Icon(Rect r,string name)
+        public static void Icon(Rect r,string name)
         {
             if(!icons.TryGetValue(name,out var image)){image=Resources.Load<Texture2D>("BlackstoneFoundation/Menu/"+name);icons[name]=image;}
             if(image!=null)GUI.DrawTexture(r,image,ScaleMode.ScaleToFit);

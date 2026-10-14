@@ -63,7 +63,7 @@ namespace Blackstone.Foundation
             if(meleePending&&Time.time>=meleeHitAt)
             {meleePending=false;if(Time.time<meleeUntil&&(State.Equipped==Equipment.Knife||State.Equipped==Equipment.Machete))MeleeContact();}
         }
-        void Equip(Equipment value)
+        public void Equip(Equipment value)
         {
             if(value!=Equipment.Unarmed)
             {

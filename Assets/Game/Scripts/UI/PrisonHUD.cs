@@ -13,6 +13,7 @@ namespace Blackstone.UI
         readonly Color green = new Color(.24f, .85f, .39f);
         readonly Color red = new Color(.96f, .24f, .26f);
         bool settings, debug;
+        Blackstone.Foundation.PrisonPauseMenu pauseMenu;
         int quality = 2, resolution = 1;
         bool fullscreen, vsync = true;
         float sensitivity = .105f;
@@ -24,6 +25,8 @@ namespace Blackstone.UI
         void Start()
         {
             island=FindFirstObjectByType<Blackstone.Alcatraz.AlcatrazMap>();
+            pauseMenu=gameObject.GetComponent<Blackstone.Foundation.PrisonPauseMenu>();if(pauseMenu==null)pauseMenu=gameObject.AddComponent<Blackstone.Foundation.PrisonPauseMenu>();
+            pauseMenu.Configure(null,director,island);
             quality = PlayerPrefs.GetInt("Blackstone.Quality", 2);
             sensitivity = PlayerPrefs.GetFloat("Blackstone.Sensitivity", .105f);
             invert = PlayerPrefs.GetInt("Blackstone.Invert", 0) == 1;
@@ -77,7 +80,7 @@ namespace Blackstone.UI
                 if (director.Letterbox)
                 {
                     Panel(new Rect(0,0,1920,100), Color.black); Panel(new Rect(0,920,1920,160), Color.black);
-                    if (!string.IsNullOrEmpty(director.Subtitle))
+                    if (PlayerPrefs.GetInt("Blackstone.Subtitles",1)==1&&!string.IsNullOrEmpty(director.Subtitle))
                     {
                         Label(new Rect(300,926,1320,30), director.Speaker, small, amber, TextAnchor.MiddleCenter);
                         Label(new Rect(230,962,1460,64), director.Subtitle, subtitle);
@@ -229,7 +232,8 @@ namespace Blackstone.UI
             if(settings){SettingsPanel();return;}
             if(Blackstone.Foundation.PrisonMenuTheme.Navigation(0,"01   Continue checkpoint",director.CanContinue))director.StartSession(true);
             if(Blackstone.Foundation.PrisonMenuTheme.Navigation(1,"02   New game"))director.StartSession(false);
-            if(Blackstone.Foundation.PrisonMenuTheme.Navigation(2,"03   Settings"))settings=true;
+            if(Blackstone.Foundation.PrisonMenuTheme.Navigation(2,"03   Settings"))
+            {sensitivity=director.cameraRig.sensitivity;invert=director.cameraRig.invertY;fullscreen=Screen.fullScreen;settings=true;}
             if(Blackstone.Foundation.PrisonMenuTheme.Navigation(3,"04   Quit"))Application.Quit();
             Blackstone.Foundation.PrisonMenuTheme.Text(new Rect(750,235,950,32),"ELIAS VALE  /  INMATE B-04",true);
             Blackstone.Foundation.PrisonMenuTheme.Hero(new Rect(750,310,1050,100),"The prison has a rhythm.",68);
@@ -238,17 +242,7 @@ namespace Blackstone.UI
         }
         void Pause()
         {
-            Blackstone.Foundation.PrisonMenuTheme.Frame(1920,1080,"PAUSED","ALCATRAZ CELLHOUSE",true);
-            if(settings){SettingsPanel();return;}
-            if(Blackstone.Foundation.PrisonMenuTheme.Navigation(0,"01   Resume game  [Esc / Start]"))director.input.Capture(true);
-            if(Blackstone.Foundation.PrisonMenuTheme.Navigation(1,"02   Settings"))settings=true;
-            if(Blackstone.Foundation.PrisonMenuTheme.Navigation(2,"03   Save checkpoint"))director.SaveNow();
-            if(Blackstone.Foundation.PrisonMenuTheme.Navigation(3,"04   Return to title"))director.ReturnToMenu();
-            Blackstone.Foundation.PrisonMenuTheme.Text(new Rect(750,235,960,35),"CHAPTER 01  /  THE PRISONER",true);
-            Blackstone.Foundation.PrisonMenuTheme.Hero(new Rect(750,315,1050,105),"A way out begins here.",68);
-            Blackstone.Foundation.PrisonMenuTheme.Text(new Rect(750,445,920,160),"Your next move matters. Learn the routine, earn the inmates’ trust and prepare your escape.");
-            Blackstone.Foundation.PrisonMenuTheme.Text(new Rect(750,635,900,32),"CHECKPOINTS",true);
-            Blackstone.Foundation.PrisonMenuTheme.Text(new Rect(750,695,900,130),"Save your current progress here. Continue from the title screen when you return.");
+            if(pauseMenu!=null&&pauseMenu.Draw()){settings=false;director.ReturnToMenu();}
         }
         void SettingsPanel()
         {
@@ -273,6 +267,12 @@ namespace Blackstone.UI
         {
             Label(new Rect(886,y,250,35), label, body);
             return GUI.HorizontalSlider(new Rect(1150,y+15,610,24),value,min,max);
+        }
+        public int GraphicsPreset=>quality;
+        public void SetGraphicsPreset(int preset)
+        {
+            quality=preset;sensitivity=director.cameraRig.sensitivity;invert=director.cameraRig.invertY;
+            ApplySettings(false);
         }
         void ApplySettings(bool applyDisplay)
         {

@@ -23,6 +23,19 @@ namespace Blackstone.Foundation
         public int LoadedFor(Equipment value) => Enum.IsDefined(typeof(Equipment),value)?loaded[(int)value]:0;
         public int ReserveFor(Equipment value) => Enum.IsDefined(typeof(Equipment),value)?reserve[(int)value]:0;
 
+        public int[] LoadedSnapshot() => (int[])loaded.Clone();
+        public int[] ReserveSnapshot() => (int[])reserve.Clone();
+        public bool Restore(int[] magazines,int[] ammunition,Equipment equipped)
+        {
+            if(!Enum.IsDefined(typeof(Equipment),equipped)||magazines==null||ammunition==null
+                ||magazines.Length!=loaded.Length||ammunition.Length!=reserve.Length)return false;
+            for(int i=0;i<loaded.Length;i++)
+                if(magazines[i]<0||magazines[i]>capacities[i]||ammunition[i]<0||ammunition[i]>10000
+                    ||capacities[i]==0&&ammunition[i]!=0)return false;
+            Array.Copy(magazines,loaded,loaded.Length);Array.Copy(ammunition,reserve,reserve.Length);
+            Equipped=equipped;Reloading=false;reloadRemaining=cooldown=0;return true;
+        }
+
         public bool Equip(Equipment value)
         {
             if (!Enum.IsDefined(typeof(Equipment), value) || value == Equipped) return false;

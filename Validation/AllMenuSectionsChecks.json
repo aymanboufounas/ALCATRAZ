@@ -1,0 +1,522 @@
+{
+  "status": "PASS",
+  "sections": 10,
+  "csharp_grammar": {
+    "status": "PASS",
+    "files": 80,
+    "errors": [],
+    "scope": "C# syntax grammar only; Unity API/type resolution and shader compilation are unverified"
+  },
+  "native_integrity": {
+    "status": "PASS",
+    "errors": [],
+    "counts": {
+      "native_files": 2600,
+      "yaml_documents": 88282,
+      "asset_guids": 3637,
+      "mesh_vertices": 7796269,
+      "mesh_triangles": 3748158,
+      "weighted_meshes": 271,
+      "csharp_files": 80,
+      "animation_clips": 14
+    }
+  },
+  "map_bindings": {
+    "status": "PASS",
+    "checks": 214,
+    "errors": []
+  },
+  "executable_checkpoint_assertions": 34,
+  "executable_poker_weapon_assertions": 160041,
+  "offline_layout_checks": [
+    {
+      "size": {
+        "width": 1920,
+        "height": 1080
+      },
+      "section": 0,
+      "font": true,
+      "images": true,
+      "fits": true,
+      "nav": 10,
+      "selected": 1
+    },
+    {
+      "size": {
+        "width": 1920,
+        "height": 1080
+      },
+      "section": 1,
+      "font": true,
+      "images": true,
+      "fits": true,
+      "nav": 10,
+      "selected": 1
+    },
+    {
+      "size": {
+        "width": 1920,
+        "height": 1080
+      },
+      "section": 2,
+      "font": true,
+      "images": true,
+      "fits": true,
+      "nav": 10,
+      "selected": 1
+    },
+    {
+      "size": {
+        "width": 1920,
+        "height": 1080
+      },
+      "section": 3,
+      "font": true,
+      "images": true,
+      "fits": true,
+      "nav": 10,
+      "selected": 1
+    },
+    {
+      "size": {
+        "width": 1920,
+        "height": 1080
+      },
+      "section": 4,
+      "font": true,
+      "images": true,
+      "fits": true,
+      "nav": 10,
+      "selected": 1
+    },
+    {
+      "size": {
+        "width": 1920,
+        "height": 1080
+      },
+      "section": 5,
+      "font": true,
+      "images": true,
+      "fits": true,
+      "nav": 10,
+      "selected": 1
+    },
+    {
+      "size": {
+        "width": 1920,
+        "height": 1080
+      },
+      "section": 6,
+      "font": true,
+      "images": true,
+      "fits": true,
+      "nav": 10,
+      "selected": 1
+    },
+    {
+      "size": {
+        "width": 1920,
+        "height": 1080
+      },
+      "section": 7,
+      "font": true,
+      "images": true,
+      "fits": true,
+      "nav": 10,
+      "selected": 1
+    },
+    {
+      "size": {
+        "width": 1920,
+        "height": 1080
+      },
+      "section": 8,
+      "font": true,
+      "images": true,
+      "fits": true,
+      "nav": 10,
+      "selected": 1
+    },
+    {
+      "size": {
+        "width": 1920,
+        "height": 1080
+      },
+      "section": 9,
+      "font": true,
+      "images": true,
+      "fits": true,
+      "nav": 10,
+      "selected": 1
+    },
+    {
+      "size": {
+        "width": 1280,
+        "height": 720
+      },
+      "section": 0,
+      "font": true,
+      "images": true,
+      "fits": true,
+      "nav": 10,
+      "selected": 1
+    },
+    {
+      "size": {
+        "width": 1280,
+        "height": 720
+      },
+      "section": 1,
+      "font": true,
+      "images": true,
+      "fits": true,
+      "nav": 10,
+      "selected": 1
+    },
+    {
+      "size": {
+        "width": 1280,
+        "height": 720
+      },
+      "section": 2,
+      "font": true,
+      "images": true,
+      "fits": true,
+      "nav": 10,
+      "selected": 1
+    },
+    {
+      "size": {
+        "width": 1280,
+        "height": 720
+      },
+      "section": 3,
+      "font": true,
+      "images": true,
+      "fits": true,
+      "nav": 10,
+      "selected": 1
+    },
+    {
+      "size": {
+        "width": 1280,
+        "height": 720
+      },
+      "section": 4,
+      "font": true,
+      "images": true,
+      "fits": true,
+      "nav": 10,
+      "selected": 1
+    },
+    {
+      "size": {
+        "width": 1280,
+        "height": 720
+      },
+      "section": 5,
+      "font": true,
+      "images": true,
+      "fits": true,
+      "nav": 10,
+      "selected": 1
+    },
+    {
+      "size": {
+        "width": 1280,
+        "height": 720
+      },
+      "section": 6,
+      "font": true,
+      "images": true,
+      "fits": true,
+      "nav": 10,
+      "selected": 1
+    },
+    {
+      "size": {
+        "width": 1280,
+        "height": 720
+      },
+      "section": 7,
+      "font": true,
+      "images": true,
+      "fits": true,
+      "nav": 10,
+      "selected": 1
+    },
+    {
+      "size": {
+        "width": 1280,
+        "height": 720
+      },
+      "section": 8,
+      "font": true,
+      "images": true,
+      "fits": true,
+      "nav": 10,
+      "selected": 1
+    },
+    {
+      "size": {
+        "width": 1280,
+        "height": 720
+      },
+      "section": 9,
+      "font": true,
+      "images": true,
+      "fits": true,
+      "nav": 10,
+      "selected": 1
+    },
+    {
+      "size": {
+        "width": 3440,
+        "height": 1440
+      },
+      "section": 0,
+      "font": true,
+      "images": true,
+      "fits": true,
+      "nav": 10,
+      "selected": 1
+    },
+    {
+      "size": {
+        "width": 3440,
+        "height": 1440
+      },
+      "section": 1,
+      "font": true,
+      "images": true,
+      "fits": true,
+      "nav": 10,
+      "selected": 1
+    },
+    {
+      "size": {
+        "width": 3440,
+        "height": 1440
+      },
+      "section": 2,
+      "font": true,
+      "images": true,
+      "fits": true,
+      "nav": 10,
+      "selected": 1
+    },
+    {
+      "size": {
+        "width": 3440,
+        "height": 1440
+      },
+      "section": 3,
+      "font": true,
+      "images": true,
+      "fits": true,
+      "nav": 10,
+      "selected": 1
+    },
+    {
+      "size": {
+        "width": 3440,
+        "height": 1440
+      },
+      "section": 4,
+      "font": true,
+      "images": true,
+      "fits": true,
+      "nav": 10,
+      "selected": 1
+    },
+    {
+      "size": {
+        "width": 3440,
+        "height": 1440
+      },
+      "section": 5,
+      "font": true,
+      "images": true,
+      "fits": true,
+      "nav": 10,
+      "selected": 1
+    },
+    {
+      "size": {
+        "width": 3440,
+        "height": 1440
+      },
+      "section": 6,
+      "font": true,
+      "images": true,
+      "fits": true,
+      "nav": 10,
+      "selected": 1
+    },
+    {
+      "size": {
+        "width": 3440,
+        "height": 1440
+      },
+      "section": 7,
+      "font": true,
+      "images": true,
+      "fits": true,
+      "nav": 10,
+      "selected": 1
+    },
+    {
+      "size": {
+        "width": 3440,
+        "height": 1440
+      },
+      "section": 8,
+      "font": true,
+      "images": true,
+      "fits": true,
+      "nav": 10,
+      "selected": 1
+    },
+    {
+      "size": {
+        "width": 3440,
+        "height": 1440
+      },
+      "section": 9,
+      "font": true,
+      "images": true,
+      "fits": true,
+      "nav": 10,
+      "selected": 1
+    },
+    {
+      "size": {
+        "width": 1024,
+        "height": 768
+      },
+      "section": 0,
+      "font": true,
+      "images": true,
+      "fits": true,
+      "nav": 10,
+      "selected": 1
+    },
+    {
+      "size": {
+        "width": 1024,
+        "height": 768
+      },
+      "section": 1,
+      "font": true,
+      "images": true,
+      "fits": true,
+      "nav": 10,
+      "selected": 1
+    },
+    {
+      "size": {
+        "width": 1024,
+        "height": 768
+      },
+      "section": 2,
+      "font": true,
+      "images": true,
+      "fits": true,
+      "nav": 10,
+      "selected": 1
+    },
+    {
+      "size": {
+        "width": 1024,
+        "height": 768
+      },
+      "section": 3,
+      "font": true,
+      "images": true,
+      "fits": true,
+      "nav": 10,
+      "selected": 1
+    },
+    {
+      "size": {
+        "width": 1024,
+        "height": 768
+      },
+      "section": 4,
+      "font": true,
+      "images": true,
+      "fits": true,
+      "nav": 10,
+      "selected": 1
+    },
+    {
+      "size": {
+        "width": 1024,
+        "height": 768
+      },
+      "section": 5,
+      "font": true,
+      "images": true,
+      "fits": true,
+      "nav": 10,
+      "selected": 1
+    },
+    {
+      "size": {
+        "width": 1024,
+        "height": 768
+      },
+      "section": 6,
+      "font": true,
+      "images": true,
+      "fits": true,
+      "nav": 10,
+      "selected": 1
+    },
+    {
+      "size": {
+        "width": 1024,
+        "height": 768
+      },
+      "section": 7,
+      "font": true,
+      "images": true,
+      "fits": true,
+      "nav": 10,
+      "selected": 1
+    },
+    {
+      "size": {
+        "width": 1024,
+        "height": 768
+      },
+      "section": 8,
+      "font": true,
+      "images": true,
+      "fits": true,
+      "nav": 10,
+      "selected": 1
+    },
+    {
+      "size": {
+        "width": 1024,
+        "height": 768
+      },
+      "section": 9,
+      "font": true,
+      "images": true,
+      "fits": true,
+      "nav": 10,
+      "selected": 1
+    }
+  ],
+  "browser_navigation": "Sidebar click and arrow wrap passed",
+  "not_verified": [
+    "Unity import",
+    "Unity API compilation",
+    "Unity interaction and transition behavior",
+    "Unity audio settings and subtitles",
+    "Live checkpoint destination physics",
+    "Final Unity rendering"
+  ]
+}

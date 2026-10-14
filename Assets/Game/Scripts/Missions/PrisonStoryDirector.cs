@@ -61,7 +61,7 @@ namespace Blackstone.Story
             && ((State.stage >= StoryStage.Socialize && State.stage < StoryStage.KnifeOpportunity)
             || (State.stage >= StoryStage.Recognition && State.stage < StoryStage.RivalChallenge)
             || State.stage >= StoryStage.EscapeMeeting);
-        public bool CanContinue => PrisonSave.Exists;
+        public bool CanContinue => PrisonSave.TryLoad(out var checkpoint);
         DialogueBook dialogueBook;
         float bannerUntil, toastUntil, nextSave, nextRivalStrike, nextPlayerStrike, nextPhoneRing;
         Vector3 visualPosition;
@@ -82,8 +82,11 @@ namespace Blackstone.Story
             input.PauseEnabled = false; input.SetGameplayBlocked(true); input.Capture(false);
             UpdateWorld();
         }
-        public void StartSession(bool resume)
+        public void StartSession(bool resume, int slot=0)
         {
+            PrisonCheckpoint saved=null;
+            bool loaded=resume&&PrisonSave.TryLoad(out saved,slot);
+            if(resume&&!loaded){Notice("No valid checkpoint is available in this slot.");return;}
             StopAllCoroutines(); cameraRig.SetCinematic(false); audioBus.StopDialogue();
             ResetVisual(); Busy = Letterbox = PhoneOpen = wakePending = false;
             Speaker = Subtitle = Banner = Toast = null; Fade = 0;
@@ -95,8 +98,6 @@ namespace Blackstone.Story
             if (nikoHeldKnife != null) nikoHeldKnife.SetActive(false);
             if (concealKnifeProp != null) concealKnifeProp.SetActive(false);
             State = new PrisonStoryState();
-            PrisonCheckpoint saved = null;
-            bool loaded = resume && PrisonSave.TryLoad(out saved);
             if (loaded) State = saved.story;
             MainMenu = false; sessionStarted = true;
             input.PauseEnabled = true; input.SetGameplayBlocked(false); input.Capture(true);
@@ -584,13 +585,14 @@ namespace Blackstone.Story
             Banner = title; BannerDetail = detail; BannerFailed = failed; bannerUntil = Time.time + 6;
             audioBus.Play(failed ? audioBus.missed : audioBus.success);
         }
-        public void SaveNow()
+        public bool SaveNow(int slot=0)
         {
-            if (!sessionStarted) return;
+            if (!sessionStarted) return false;
             Vector3 position = PrisonPokerTable.Active!=null?PrisonPokerTable.Active.ReturnPosition:
                 Busy ? SpawnForStage().position : player.transform.position;
-            if (!PrisonSave.Write(new PrisonCheckpoint { story = State, position = position, yaw = PrisonPokerTable.Active!=null?PrisonPokerTable.Active.ReturnRotation.eulerAngles.y:player.transform.eulerAngles.y }))
-                Notice("Saving was unavailable. Progress remains in this session.");
+            bool saved=PrisonSave.Write(new PrisonCheckpoint { story = State, position = position, yaw = PrisonPokerTable.Active!=null?PrisonPokerTable.Active.ReturnRotation.eulerAngles.y:player.transform.eulerAngles.y },slot);
+            if(!saved)Notice("Saving was unavailable. Progress remains in this session.");
+            return saved;
         }
         void OnApplicationQuit() { if (sessionStarted) SaveNow(); }
         void OnDisable()
