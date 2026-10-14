@@ -10,6 +10,7 @@ namespace Blackstone.Foundation
     {
         public FoundationAvatar avatar;
         public bool Active { get; private set; }
+        public bool StayDown { get; set; }
         public bool Recovering=>Active||Time.time<blendUntil;
         readonly List<Rigidbody> bodies=new List<Rigidbody>();
         readonly List<Collider> colliders=new List<Collider>();
@@ -17,6 +18,8 @@ namespace Blackstone.Foundation
         Vector3[] fallenPositions; Quaternion[] fallenRotations;
         float downUntil, blendUntil; Vector3 recover;
         FoundationCamera cameraRig;
+        Collider[] rootShapes;
+        bool[] rootShapeEnabled;
         void Start()
         {
             if(avatar==null)avatar=GetComponent<FoundationAvatar>();
@@ -60,7 +63,7 @@ namespace Blackstone.Foundation
             if(avatar==null||Time.deltaTime<=0)return;
             if(!Active && avatar.movement!=null && avatar.movement.LandedThisFrame && avatar.movement.LandingSpeed>10.5f)
                 KnockDown(-Vector3.up*avatar.movement.LandingSpeed*.35f+transform.forward*2);
-            if(!Active||Time.time<downUntil)return;
+            if(!Active||Time.time<downUntil||StayDown)return;
             var point=avatar.pelvis.position;
             if(Physics.Raycast(point+Vector3.up*2,Vector3.down,out var floor,6,~((1<<8)|(1<<10)),QueryTriggerInteraction.Ignore))
             {
@@ -73,13 +76,19 @@ namespace Blackstone.Foundation
             for(int i=0;i<bones.Count;i++){fallenPositions[i]=bones[i].position;fallenRotations[i]=bones[i].rotation;bodies[i].isKinematic=true;colliders[i].enabled=false;}
             transform.position=recover;
             avatar.animator.enabled=true;avatar.animator.Rebind();avatar.animator.Update(0);
+            if(rootShapes!=null)for(int i=0;i<rootShapes.Length;i++)
+                if(rootShapes[i]!=null&&!(rootShapes[i] is CharacterController))rootShapes[i].enabled=rootShapeEnabled[i];
             Active=false;blendUntil=Time.time+.85f;
             if(cameraRig!=null&&cameraRig.FollowOverride==avatar.pelvis)cameraRig.FollowOverride=null;
         }
         public void KnockDown(Vector3 impulse)
         {
-            if(Active||bodies.Count==0||Time.time<blendUntil)return;
+            if(Active||bodies.Count==0||Time.time<blendUntil&&!StayDown)return;
+            blendUntil=0;
             Active=true;downUntil=Time.time+2.1f;
+            rootShapes=GetComponents<Collider>();rootShapeEnabled=new bool[rootShapes.Length];
+            for(int i=0;i<rootShapes.Length;i++)
+            {rootShapeEnabled[i]=rootShapes[i].enabled;if(!(rootShapes[i] is CharacterController))rootShapes[i].enabled=false;}
             avatar.animator.enabled=false;
             if(avatar.movement!=null)avatar.movement.SetExternalControl(true);
             for(int i=0;i<bodies.Count;i++){colliders[i].enabled=true;bodies[i].isKinematic=false;bodies[i].linearVelocity=impulse;}
@@ -111,8 +120,12 @@ namespace Blackstone.Foundation
                 Vector3 hips=avatar.pelvis.position;
                 FoundationAvatar.Solve(avatar.leftThigh,avatar.leftShin,avatar.leftFoot,hips-transform.right*.14f-Vector3.up*(rising?.55f:.72f)+transform.forward*.16f,transform.forward,.8f);
                 FoundationAvatar.Solve(avatar.rightThigh,avatar.rightShin,avatar.rightFoot,hips+transform.right*.14f-Vector3.up*(rising?.62f:.75f),transform.forward,.8f);
-                FoundationAvatar.Solve(avatar.leftArm,avatar.leftForearm,avatar.leftHand,hips+Vector3.up*.5f-transform.right*.52f+transform.forward*.12f,-transform.right,.75f);
-                FoundationAvatar.Solve(avatar.rightArm,avatar.rightForearm,avatar.rightHand,hips+Vector3.up*.5f+transform.right*.52f+transform.forward*.12f,transform.right,.75f);
+                bool weaponHands=avatar.equipment!=null&&(avatar.equipment.State.IsFirearm||avatar.equipment.MeleeActive);
+                if(!weaponHands)
+                {
+                    FoundationAvatar.Solve(avatar.leftArm,avatar.leftForearm,avatar.leftHand,hips+Vector3.up*.5f-transform.right*.52f+transform.forward*.12f,-transform.right,.75f);
+                    FoundationAvatar.Solve(avatar.rightArm,avatar.rightForearm,avatar.rightHand,hips+Vector3.up*.5f+transform.right*.52f+transform.forward*.12f,transform.right,.75f);
+                }
             }
         }
     }

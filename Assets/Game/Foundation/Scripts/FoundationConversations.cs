@@ -21,11 +21,12 @@ namespace Blackstone.Foundation
         void Update()
         {
             if(Time.deltaTime<=0||player==null||audioBus==null)return;
-            if(current!=null&&Time.time>until)
+            if(current!=null&&(Time.time>until||current.GetComponent<FoundationDamageable>()!=null&&current.GetComponent<FoundationDamageable>().Dead))
             {current.SpeakTo(null,false);current=null;Speaker=Subtitle=null;next=Time.time+16;}
             if(current!=null||Time.time<next)return;
             foreach(var actor in actors)
             {
+                if(actor==null||actor.GetComponent<FoundationDamageable>()!=null&&actor.GetComponent<FoundationDamageable>().Dead)continue;
                 string name=actor.displayName??"";string id=null,text=null;
                 if(name.StartsWith("Niko")){id="ambient_niko_01";text="Keep your voice down. Harrow hears more than you think.";}
                 else if(name.StartsWith("Malik")){id="ambient_malik_01";text="Every favor gets remembered. Good and bad.";}

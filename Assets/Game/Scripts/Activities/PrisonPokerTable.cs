@@ -23,6 +23,7 @@ namespace Blackstone.Activities
         Vector3 cameraPosition;Quaternion cameraRotation;float cameraFov,openedAt,actAt;int raiseTo;
         HoldemGame game;readonly Texture2D[] cards=new Texture2D[52];Texture2D back;
         Vector3[] opponentPositions;Quaternion[] opponentRotations;ActorPose[] opponentPoses;bool[] opponentSeated,opponentSuspended;
+        bool[] opponentCaptured;
         readonly System.Random random=new System.Random();GUIStyle text,heading,button;
         void Start()
         {
@@ -42,9 +43,11 @@ namespace Blackstone.Activities
             if(players!=null)
             {
                 opponentPositions=new Vector3[players.Length];opponentRotations=new Quaternion[players.Length];opponentPoses=new ActorPose[players.Length];opponentSeated=new bool[players.Length];opponentSuspended=new bool[players.Length];
+                opponentCaptured=new bool[players.Length];
                 for(int i=0;i<players.Length;i++)
                 {
-                    var p=players[i];if(p==null)continue;opponentPositions[i]=p.transform.position;opponentRotations[i]=p.transform.rotation;opponentPoses[i]=p.pose;opponentSuspended[i]=p.Suspended;
+                    var p=players[i];if(p==null||p.GetComponent<FoundationDamageable>()!=null&&p.GetComponent<FoundationDamageable>().Dead)continue;
+                    opponentCaptured[i]=true;opponentPositions[i]=p.transform.position;opponentRotations[i]=p.transform.rotation;opponentPoses[i]=p.pose;opponentSuspended[i]=p.Suspended;
                     var a=p.GetComponent<FoundationAvatar>();opponentSeated[i]=a!=null&&a.seated;
                     float angle=(i+1)*Mathf.PI*.5f;Vector3 seat=transform.position+new Vector3(Mathf.Sin(angle)*1.55f,0,-Mathf.Cos(angle)*1.55f);
                     seat.y=movement.transform.position.y;p.transform.position=seat;p.transform.rotation=Quaternion.LookRotation(Vector3.ProjectOnPlane(transform.position-seat,Vector3.up));
@@ -76,7 +79,7 @@ namespace Blackstone.Activities
             if(avatar!=null)avatar.seated=previousSeated;
             movement.Teleport(previousPosition);movement.transform.rotation=previousRotation;movement.SetExternalControl(false);input.SetGameplayBlocked(previousBlocked||director!=null&&(director.Busy||director.PhoneOpen));input.ResumeOnClick=previousResumeOnClick;
             if(players!=null&&opponentPositions!=null)for(int i=0;i<players.Length;i++)
-            {var p=players[i];if(p==null)continue;p.transform.SetPositionAndRotation(opponentPositions[i],opponentRotations[i]);p.SetPose(opponentPoses[i]);p.Suspended=opponentSuspended[i];p.SpeakTo(null,false);var a=p.GetComponent<FoundationAvatar>();if(a!=null)a.seated=opponentSeated[i];}
+            {var p=players[i];if(p==null||!opponentCaptured[i]||p.GetComponent<FoundationDamageable>()!=null&&p.GetComponent<FoundationDamageable>().Dead)continue;p.transform.SetPositionAndRotation(opponentPositions[i],opponentRotations[i]);p.SetPose(opponentPoses[i]);p.Suspended=opponentSuspended[i];p.SpeakTo(null,false);var a=p.GetComponent<FoundationAvatar>();if(a!=null)a.seated=opponentSeated[i];}
             var view=Camera.main;if(view!=null){view.transform.SetPositionAndRotation(cameraPosition,cameraRotation);view.fieldOfView=cameraFov;}
             if(cameraRig!=null){cameraRig.ActivityCamera=false;cameraRig.SnapToPlayer();}
             Cursor.lockState=input.IsCaptured?CursorLockMode.Locked:CursorLockMode.None;Cursor.visible=!input.IsCaptured;

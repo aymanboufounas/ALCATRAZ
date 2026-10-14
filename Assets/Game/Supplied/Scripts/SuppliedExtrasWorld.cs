@@ -29,7 +29,7 @@ namespace Blackstone.Supplied
             Model("Store",4.5f,new Vector3(-18,0,-14));Model("Workshop",3.2f,new Vector3(-18,0,-31));
             Model("SteelStairs",5.8f,new Vector3(31,0,20));
             Model("BridgePack",2.5f,new Vector3(22,0,3));Model("UtilityBuilding",6,new Vector3(10,0,-28));Model("Watchtower",8,new Vector3(34,0,-25));
-            Model("Forest",12,new Vector3(-35,0,38));Model("Beach",2,new Vector3(34,0,42));var guard=Model("Shephard",1.82f,new Vector3(-10,0,5));if(guard!=null){var cap=guard.AddComponent<CapsuleCollider>();cap.height=1.82f/guard.transform.lossyScale.y;cap.radius=.23f/guard.transform.lossyScale.x;cap.center=guard.transform.InverseTransformPoint(Origin+new Vector3(-10,.91f,5));}
+            Model("Forest",12,new Vector3(-35,0,38));Model("Beach",2,new Vector3(34,0,42));var guard=Model("Shephard",1.82f,new Vector3(-10,0,5));if(guard!=null){var cap=guard.AddComponent<CapsuleCollider>();cap.height=1.82f/guard.transform.lossyScale.y;cap.radius=.23f/guard.transform.lossyScale.x;cap.center=guard.transform.InverseTransformPoint(Origin+new Vector3(-10,.91f,5));guard.AddComponent<FoundationDamageable>();}
             Box("Warehouse bay floor",Origin+new Vector3(72.5f,-.2f,0),new Vector3(47,.4f,50),concrete);
             Box("Warehouse bay north",Origin+new Vector3(73,1.4f,25),new Vector3(46,2.8f,.3f),steel);
             Box("Warehouse bay south",Origin+new Vector3(73,1.4f,-25),new Vector3(46,2.8f,.3f),steel);

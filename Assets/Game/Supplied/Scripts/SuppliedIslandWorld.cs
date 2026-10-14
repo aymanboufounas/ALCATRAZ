@@ -60,6 +60,7 @@ namespace Blackstone.Supplied
                 SuppliedModel.AttachFitted("Vest",vestAnchor,new Vector3(vestSize.z,vestSize.y,vestSize.x));
                 var guardBody=guard.AddComponent<CapsuleCollider>();guardBody.height=1.8f/guard.transform.lossyScale.y;guardBody.radius=.25f/guard.transform.lossyScale.x;
                 guardBody.center=guard.transform.InverseTransformPoint(guardPosition+Vector3.up*.9f);
+                guard.AddComponent<FoundationDamageable>();
                 Vector3 dogPosition=Ground(new Vector3(-105,0,25));var dogRoot=new GameObject("Police dog patrol");dogRoot.transform.SetParent(transform);dogRoot.transform.position=dogPosition;
                 var dog=SuppliedModel.Create("Dog",dogRoot.transform);SuppliedModel.SizeAndGround(dog,.82f,dogPosition);
                 var patrol=dogRoot.AddComponent<SuppliedDogPatrol>();patrol.world=this;

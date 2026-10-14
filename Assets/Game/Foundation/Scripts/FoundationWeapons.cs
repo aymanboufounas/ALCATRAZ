@@ -13,8 +13,10 @@ namespace Blackstone.Foundation
         public readonly WeaponState State=new WeaponState();
         public int Hits { get; private set; }
         public float HitMarkerUntil { get; private set; }
+        public bool MeleeActive => Time.time < meleeUntil;
         Transform held, muzzle;
-        float emptyNext, meleeUntil;
+        float emptyNext, meleeUntil, meleeHitAt;
+        bool meleePending;
         Light flash;
         LineRenderer tracer;
         Material tracerMaterial;
@@ -31,11 +33,11 @@ namespace Blackstone.Foundation
         }
         void Update()
         {
-            bool active=input!=null&&input.CanControl&&Time.deltaTime>0&&(avatar.movement==null||!avatar.movement.ExternalControl);
+            bool active=input!=null&&input.CanControl&&Time.deltaTime>0&&avatar!=null&&!avatar.seated&&(avatar.movement==null||!avatar.movement.ExternalControl);
             State.Tick(Time.deltaTime,active);
             if(flash!=null)flash.intensity=Time.time<flashUntil?2.6f:0;
             if(tracer!=null)tracer.enabled=Time.time<flashUntil;
-            if(!active)return;
+            if(!active){meleePending=false;meleeUntil=0;return;}
             var key=Keyboard.current;var pad=Gamepad.current;
             if(key!=null)
             {
@@ -52,20 +54,27 @@ namespace Blackstone.Foundation
             if(reload&&State.TryReload())Sound(State.IsAutomatic||State.Equipped==Equipment.BRX1?"ReloadRifle":"ReloadPistol");
             bool heldTrigger=Mouse.current!=null&&Mouse.current.leftButton.isPressed||pad!=null&&pad.rightTrigger.isPressed;
             bool pressed=input.AttackPressed;
-            if((State.IsAutomatic?heldTrigger:pressed)&&State.TryUse())
-            {if(State.IsFirearm)Fire();else if(State.Equipped==Equipment.Unarmed){var boxing=GetComponent<FoundationBoxing>();if(boxing!=null)boxing.Punch();}else Melee();}
+            if(pressed&&State.Equipped==Equipment.Unarmed)
+            {var boxing=GetComponent<FoundationBoxing>();if(boxing!=null)boxing.Punch();}
+            else if((State.IsAutomatic?heldTrigger:pressed)&&State.TryUse())
+            {if(State.IsFirearm)Fire();else Melee();}
             else if(pressed&&State.IsFirearm&&State.Magazine==0&&!State.Reloading&&Time.time>emptyNext)
             {emptyNext=Time.time+.35f;Sound("Empty");}
+            if(meleePending&&Time.time>=meleeHitAt)
+            {meleePending=false;if(Time.time<meleeUntil&&(State.Equipped==Equipment.Knife||State.Equipped==Equipment.Machete))MeleeContact();}
         }
         void Equip(Equipment value)
         {
-            if(value==Equipment.Pistol||value==Equipment.Revolver)
+            if(value!=Equipment.Unarmed)
             {
-                string suppliedName=value==Equipment.Pistol?"Pistol10mm":"Revolver";
-                if(SuppliedModel.Load(suppliedName)==null)
-                {Debug.LogError("Prepare the supplied assets before equipping "+suppliedName);return;}
+                if(avatar==null||avatar.rightHand==null)return;
+                GameObject asset=value==Equipment.Pistol||value==Equipment.Revolver
+                    ?SuppliedModel.Load(value==Equipment.Pistol?"Pistol10mm":"Revolver")
+                    :Resources.Load<GameObject>((int)value>=5?"AlcatrazExtras/"+value+"/"+value:"BlackstoneFoundation/Weapons/"+value);
+                if(asset==null){Debug.LogError("Missing weapon: "+value+". Keeping current equipment.");return;}
             }
             if(!State.Equip(value))return;
+            meleePending=false;meleeUntil=0;
             if(held!=null)Destroy(held.gameObject);held=null;muzzle=null;
             if(value!=Equipment.Unarmed&&avatar.rightHand!=null)
             {
@@ -126,16 +135,38 @@ namespace Blackstone.Foundation
         void Melee()
         {
             meleeUntil=Time.time+.35f;
+            meleeHitAt=Time.time+.16f;meleePending=true;
             if(FoundationAudio.Instance!=null)FoundationAudio.Instance.Variation("Punch",transform.position+Vector3.up,.5f);
+        }
+        void MeleeContact()
+        {
             var view=Camera.main;
-            if(view!=null&&Physics.SphereCast(transform.position+Vector3.up*1.2f,.18f,view.transform.forward,out var hit,1.7f,~(1<<8),QueryTriggerInteraction.Ignore))Impact(hit);
+            if(view==null)return;
+            float crouch=avatar.movement!=null&&avatar.movement.IsCrouching?.32f:0;
+            Vector3 origin=transform.position+Vector3.up*(1.2f-crouch);
+            Collider closest=null;Vector3 point=origin;float distance=float.PositiveInfinity;
+            foreach(var shape in Physics.OverlapSphere(origin,.18f,~(1<<8),QueryTriggerInteraction.Ignore))
+            {
+                if(shape.transform.IsChildOf(transform))continue;
+                Vector3 p=shape.ClosestPoint(origin);float d=(p-origin).sqrMagnitude;
+                if(d<distance){distance=d;closest=shape;point=p;}
+            }
+            if(closest!=null){Impact(closest,point);return;}
+            if(Physics.SphereCast(origin,.18f,view.transform.forward,out var hit,1.7f,~(1<<8),QueryTriggerInteraction.Ignore))Impact(hit);
         }
         void Impact(RaycastHit hit)
+        {Impact(hit.collider,hit.point);}
+        void Impact(Collider collider,Vector3 point)
         {
-            var target=hit.collider.GetComponentInParent<FoundationTarget>();
-            if(target!=null){target.Hit();Hits++;HitMarkerUntil=Time.time+.18f;}
-            if(FoundationAudio.Instance!=null)FoundationAudio.Instance.Variation("Impact",hit.point,.45f);
+            var target=collider.GetComponentInParent<FoundationTarget>();
+            if(target!=null){target.Hit();RegisterHit();}
+            var victim=collider.GetComponentInParent<FoundationDamageable>();
+            var view=Camera.main;Vector3 direction=view!=null?view.transform.forward:transform.forward;
+            if(victim!=null&&!victim.transform.IsChildOf(transform)&&victim.Damage(CombatHealth.WeaponDamage(State.Equipped),point,direction*3))
+            {RegisterHit();}
+            if(FoundationAudio.Instance!=null)FoundationAudio.Instance.Variation("Impact",point,.45f);
         }
+        public void RegisterHit(){Hits++;HitMarkerUntil=Time.time+.18f;}
         public void PoseHands(FoundationAvatar body)
         {
             var view=Camera.main;if(view==null)return;
@@ -143,7 +174,8 @@ namespace Blackstone.Foundation
             {
                 Vector3 forward=view.transform.forward;
                 float dip=State.Reloading?Mathf.Sin(State.ReloadProgress*Mathf.PI):0;
-                Vector3 grip=transform.position+Vector3.up*(1.25f-.22f*dip)+transform.right*.23f+forward*.33f;
+                float crouch=body.movement!=null&&body.movement.IsCrouching?.32f:0;
+                Vector3 grip=transform.position+Vector3.up*(1.25f-.22f*dip-crouch)+transform.right*.23f+forward*.33f;
                 FoundationAvatar.Solve(body.rightArm,body.rightForearm,body.rightHand,grip,-transform.right,.95f);
                 held.position=body.rightHand.position;
                 held.rotation=Quaternion.LookRotation(forward,Vector3.up)*Quaternion.Euler(22*dip,0,0);
@@ -153,7 +185,8 @@ namespace Blackstone.Foundation
             else if(Time.time<meleeUntil&&body.rightArm!=null)
             {
                 float t=1-(meleeUntil-Time.time)/.35f;
-                Vector3 target=transform.position+Vector3.up*1.3f+view.transform.forward*(.35f+.38f*Mathf.Sin(t*Mathf.PI));
+                float crouch=body.movement!=null&&body.movement.IsCrouching?.32f:0;
+                Vector3 target=transform.position+Vector3.up*(1.3f-crouch)+view.transform.forward*(.35f+.38f*Mathf.Sin(t*Mathf.PI));
                 FoundationAvatar.Solve(body.rightArm,body.rightForearm,body.rightHand,target,-transform.right,.95f);
             }
             if((State.Equipped==Equipment.Knife||State.Equipped==Equipment.Machete)&&held!=null)

@@ -17,6 +17,9 @@ Equipment: **1** unarmed, **2** knife, **3** supplied 10mm pistol, **4** service
 
 ## Added in 0.12.1
 
+[Combat fixes](Documentation/CombatFixes.md) connect exploration shooting, knives
+and punches to NPC health and correct swing timing, canceled attacks and stamina.
+
 [Police equipment and helicopter fixes](Documentation/PoliceHelicopterFixes.md)
 correct helmet/vest fitting, cockpit transparency, seat/rotor alignment and
 mixed keyboard/gamepad lift controls.

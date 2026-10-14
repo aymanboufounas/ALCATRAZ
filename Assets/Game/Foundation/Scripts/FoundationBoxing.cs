@@ -8,26 +8,37 @@ namespace Blackstone.Foundation
     public sealed class FoundationBoxing : MonoBehaviour
     {
         public FoundationAvatar avatar;
-        public float Health { get; private set; }=100;
+        float health=100;
+        public float Health { get {return !Sparring&&damageable!=null?damageable.Health:health;} private set {health=value;} }
         public float Stamina { get; private set; }=100;
         public bool Sparring { get; private set; }
         public bool Guarding { get; private set; }
-        FoundationBoxing opponent;FoundationFall fall;FoundationAgent agent;PlayerInputHandler input;
+        FoundationBoxing opponent;FoundationFall fall;FoundationAgent agent;PlayerInputHandler input;FoundationDamageable damageable;
         float started=-10, duration=.48f,nextAttack,stopAt,hitAt;int combo;bool connected;
-        void Start(){avatar=GetComponent<FoundationAvatar>();fall=GetComponent<FoundationFall>();agent=GetComponent<FoundationAgent>();input=GetComponent<PlayerInputHandler>();}
-        bool Available=>avatar!=null && avatar.animator.enabled && (avatar.movement==null||avatar.movement.Grounded&&!avatar.movement.ExternalControl);
+        void Start(){avatar=GetComponent<FoundationAvatar>();fall=GetComponent<FoundationFall>();agent=GetComponent<FoundationAgent>();input=GetComponent<PlayerInputHandler>();damageable=GetComponent<FoundationDamageable>();}
+        bool Available=>avatar!=null && avatar.animator!=null && avatar.animator.enabled && !avatar.seated
+            && (input==null||input.CanControl) && (avatar.movement==null||avatar.movement.Grounded&&!avatar.movement.ExternalControl);
+        bool FistsReady=>input==null||avatar.equipment!=null&&avatar.equipment.State.Equipped==Equipment.Unarmed;
         public void Punch()
         {
-            if(!Available||Time.time<nextAttack||Stamina<12)return;
-            if(Time.time>nextAttack+1.1f)combo=0;else combo=(combo+1)%3;
+            if(!Available||!FistsReady||Time.time<nextAttack)return;
+            int nextCombo=started<0||Time.time>nextAttack+1.1f?0:(combo+1)%3;
+            float cost=CombatHealth.PunchStaminaCost(nextCombo);
+            if(Stamina<cost)return;
+            combo=nextCombo;
             duration=combo==0?.42f:combo==1?.55f:.64f;started=Time.time;nextAttack=Time.time+duration;hitAt=Time.time+duration*.43f;connected=false;
-            Stamina-=combo==0?12:20;
+            Stamina-=cost;
             if(FoundationAudio.Instance!=null)FoundationAudio.Instance.Variation("Punch",transform.position+Vector3.up*1.3f,.4f);
         }
         void Update()
         {
-            if(Time.deltaTime<=0||avatar==null)return;
+            if(avatar==null)return;
+            if(Time.deltaTime<=0)
+            {if(input!=null&&!input.CanControl){Guarding=false;connected=true;started=-10;}return;}
+            bool ready=Available&&FistsReady;
+            if(!ready)Guarding=false;
             Stamina=Mathf.MoveTowards(Stamina,100,(Guarding?8:18)*Time.deltaTime);
+            if(!ready){connected=true;started=-10;return;}
             if(fall!=null&&fall.Active)return;
             if(input!=null){Guarding=input.CanControl&&input.Aim&&avatar.equipment!=null&&avatar.equipment.State.Equipped==Equipment.Unarmed;}
             else if(Sparring&&opponent!=null)
@@ -53,35 +64,50 @@ namespace Blackstone.Foundation
         }
         void BeginSpar(FoundationBoxing other)
         {opponent=other;Sparring=other.Sparring=true;other.opponent=this;stopAt=Time.time+45;Health=other.Health=100;if(agent!=null)agent.enabled=false;}
-        void EndSpar(){Sparring=false;Guarding=false;if(opponent!=null){opponent.Sparring=false;opponent.opponent=null;}opponent=null;if(agent!=null)agent.enabled=true;}
+        void EndSpar(){Sparring=false;Guarding=false;if(opponent!=null){opponent.Sparring=false;opponent.opponent=null;}opponent=null;if(agent!=null)agent.enabled=damageable==null||!damageable.Dead;}
+        public void StopCombat(){connected=true;started=-10;EndSpar();enabled=false;}
         void Contact()
         {
-            Vector3 origin=transform.position+Vector3.up*1.25f;Vector3 direction=transform.forward;
+            float crouch=avatar.movement!=null&&avatar.movement.IsCrouching?.32f:0;
+            Vector3 origin=transform.position+Vector3.up*(1.25f-crouch);Vector3 direction=transform.forward;
             var hits=Physics.OverlapSphere(origin+direction*.65f,.58f,~(1<<10),QueryTriggerInteraction.Ignore);
             Collider chosen=null;float nearest=3;
             foreach(var shape in hits)
             {
                 if(shape.transform.IsChildOf(transform))continue;
                 var target=shape.GetComponentInParent<FoundationBoxing>();var bag=shape.GetComponentInParent<FoundationPunchingBag>();
-                if(target==null&&bag==null)continue;
+                var victim=shape.GetComponentInParent<FoundationDamageable>();
+                var practice=shape.GetComponentInParent<FoundationTarget>();
+                if(target==null&&bag==null&&practice==null&&(victim==null||victim.Dead))continue;
                 Vector3 point=shape.ClosestPoint(origin+direction*.9f);float distance=Vector3.Distance(origin,point);
                 if(distance>1.2f||distance>=nearest||Vector3.Dot(direction,(shape.bounds.center-origin).normalized)<.25f)continue;
                 if(Physics.Linecast(origin,point,out var wall,1,QueryTriggerInteraction.Ignore)&&wall.collider!=shape&&!wall.transform.IsChildOf(shape.transform))continue;
                 chosen=shape;nearest=distance;
             }
             if(chosen==null)return;
-            var fighter=chosen.GetComponentInParent<FoundationBoxing>();if(fighter!=null)fighter.Receive(this,combo==0?9:combo==1?17:21);
-            var punchingBag=chosen.GetComponentInParent<FoundationPunchingBag>();if(punchingBag!=null)punchingBag.Hit(direction*(combo==0?12:22),origin+direction);
+            bool hit=false;
+            var fighter=chosen.GetComponentInParent<FoundationBoxing>();if(fighter!=null)hit=fighter.Receive(this,combo==0?9:combo==1?17:21);
+            else
+            {
+                var victim=chosen.GetComponentInParent<FoundationDamageable>();
+                if(victim!=null)hit=victim.Damage(combo==0?9:combo==1?17:21,origin+direction*.8f,direction*3);
+            }
+            var punchingBag=chosen.GetComponentInParent<FoundationPunchingBag>();if(punchingBag!=null){punchingBag.Hit(direction*(combo==0?12:22),origin+direction);hit=true;}
+            var practiceTarget=chosen.GetComponentInParent<FoundationTarget>();if(practiceTarget!=null){practiceTarget.Hit();hit=true;}
+            if(!hit)return;
+            if(avatar.equipment!=null)avatar.equipment.RegisterHit();
             if(FoundationAudio.Instance!=null)FoundationAudio.Instance.Variation("Impact",origin+direction*.8f,.55f);
         }
-        void Receive(FoundationBoxing attacker,float damage)
+        bool Receive(FoundationBoxing attacker,float damage)
         {
-            if(!Available)return;
+            if(!Available)return false;
             bool blocked=Guarding&&Stamina>10&&Vector3.Dot(transform.forward,(attacker.transform.position-transform.position).normalized)>.25f;
             if(blocked){Stamina=Mathf.Max(0,Stamina-damage);damage*=.15f;}
             else{started=-10;nextAttack=Time.time+.35f;}
-            Health=Mathf.Max(0,Health-damage);
+            if(!Sparring&&damageable!=null&&!damageable.Damage(damage,avatar.chest!=null?avatar.chest.position:transform.position+Vector3.up,attacker.transform.forward*3+Vector3.up*.4f))return false;
+            if(Sparring||damageable==null)Health=Mathf.Max(0,Health-damage);
             if(Health<=0&&fall!=null)fall.KnockDown(attacker.transform.forward*3+Vector3.up*.4f);
+            return true;
         }
         void LateUpdate()
         {
@@ -91,7 +117,8 @@ namespace Blackstone.Foundation
             float t=Mathf.Clamp01((Time.time-started)/duration);float extension=Mathf.Sin(Mathf.Clamp01((t-.13f)/.68f)*Mathf.PI);
             if(Time.time>=started+duration)extension=0;
             bool left=combo!=1;
-            Vector3 center=transform.position+Vector3.up*(Guarding?1.52f:1.36f),forward=transform.forward,right=transform.right;
+            float crouch=avatar.movement!=null&&avatar.movement.IsCrouching?.32f:0;
+            Vector3 center=transform.position+Vector3.up*((Guarding?1.52f:1.36f)-crouch),forward=transform.forward,right=transform.right;
             Vector3 l=center-right*.2f+forward*.27f,r=center+right*.2f+forward*.27f;
             Vector3 punch=center+forward*(.32f+.5f*extension)+(combo==2?right*(.26f-.5f*extension):Vector3.zero);
             if(extension>0){if(left)l=punch;else r=punch;}
