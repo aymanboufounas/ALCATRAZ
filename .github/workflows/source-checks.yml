@@ -31,6 +31,10 @@ jobs:
           mono /tmp/MenuCheckpointTests.exe
           mcs -out:/tmp/CameraFramingTests.exe Assets/Game/Foundation/Scripts/CameraFramingRules.cs Tools/Tests/CameraFramingTests.cs
           mono /tmp/CameraFramingTests.exe
+          mcs -out:/tmp/PlayerFailureTests.exe Assets/Game/Foundation/Scripts/WeaponState.cs Assets/Game/Foundation/Scripts/CombatHealth.cs Assets/Game/Foundation/Scripts/PlayerFailureRules.cs Tools/Tests/PlayerFailureTests.cs
+          mono /tmp/PlayerFailureTests.exe
+          mcs -out:/tmp/SwimmingTests.exe Assets/Game/Foundation/Scripts/SwimmingRules.cs Tools/Tests/SwimmingTests.cs
+          mono /tmp/SwimmingTests.exe
       - name: Check C# grammar
         run: python Tools/check_csharp_syntax.py
       - name: Check character forward axis and source gait

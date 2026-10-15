@@ -99,27 +99,28 @@ namespace Blackstone.Foundation
             pivot = Separate(pivot);
             Vector3 anchor = pivot + facing * new Vector3(.48f*shoulder, .08f, 0);
             anchor = Resolve(pivot, anchor);
-            float distance=FollowOverride!=null?FollowDistance:input.Aim?1.9f:3.15f;
+            bool aiming=input.Aim&&!player.IsSwimming;
+            float distance=FollowOverride!=null?FollowDistance:aiming?1.9f:3.15f;
             Vector3 desired=anchor-facing*Vector3.forward*distance;
             Vector3 wanted = Resolve(anchor, desired);
             bool obstructed=(wanted-desired).sqrMagnitude>.0001f;
-            if(FollowOverride==null)ChooseVisibleOrbit(pivot,distance,input.Aim,ref wanted,ref facing);
+            if(FollowOverride==null)ChooseVisibleOrbit(pivot,distance,aiming,ref wanted,ref facing);
             float dt = Mathf.Max(.0001f, Time.deltaTime);
             Vector3 smooth = Vector3.SmoothDamp(transform.position, wanted, ref velocity, .07f, 100, dt);
             // Contract immediately at an obstruction, then ease back into open space.
             if (obstructed && (wanted-pivot).sqrMagnitude < (smooth-pivot).sqrMagnitude)
             { smooth = wanted; velocity = Vector3.zero; }
             transform.position=Resolve(pivot,smooth);
-            if(UsingObstructionOrbit&&Vector3.Distance(transform.position,pivot)<CameraFramingRules.MinimumDistance(input.Aim))
+            if(UsingObstructionOrbit&&Vector3.Distance(transform.position,pivot)<CameraFramingRules.MinimumDistance(aiming))
             {transform.position=wanted;velocity=Vector3.zero;}
             CurrentDistance=Vector3.Distance(transform.position,pivot);
             Vector3 lookTarget=UsingObstructionOrbit?pivot:anchor;
-            if(!input.Aim&&CurrentDistance<2.4f)lookTarget-=Vector3.up*.4f;
+            if(!aiming&&CurrentDistance<2.4f)lookTarget-=Vector3.up*.4f;
             Vector3 direction=lookTarget-transform.position;
             transform.rotation=direction.sqrMagnitude>.00001f?Quaternion.LookRotation(direction,Vector3.up):facing;
             // Keep the full prisoner mesh alive even if a narrow space prevents a long boom.
             Visibility(false);
-            view.fieldOfView=Mathf.Lerp(view.fieldOfView,CameraFramingRules.FieldOfView(input.Aim,CurrentDistance),1-Mathf.Exp(-10*dt));
+            view.fieldOfView=Mathf.Lerp(view.fieldOfView,CameraFramingRules.FieldOfView(aiming,CurrentDistance),1-Mathf.Exp(-10*dt));
             view.nearClipPlane=CurrentDistance < .7f ? .03f : .08f;
         }
         void ChooseVisibleOrbit(Vector3 pivot,float distance,bool aiming,ref Vector3 wanted,ref Quaternion facing)
@@ -150,6 +151,11 @@ namespace Blackstone.Foundation
             // Keep grounded orbit views above the player's floor even there.
             if (player != null && player.Grounded)
                 target.y = Mathf.Max(target.y, player.transform.position.y + .25f);
+            if(player!=null&&(player.IsSwimming||FoundationVehicle.Active!=null&&!FoundationVehicle.Active.aircraft))
+            {
+                var swimming=player.GetComponent<FoundationSwimming>();
+                if(swimming!=null)target.y=Mathf.Max(target.y,swimming.WaterLevel+.3f);
+            }
             Vector3 result = Clear(origin, target, .23f);
             result = Separate(result);
             return Clear(origin, result, .23f);

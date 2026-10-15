@@ -13,12 +13,13 @@ namespace Blackstone.Foundation
         public string scene,savedUtc;
         public Vector3 position;
         public float yaw;
+        public float health=100;
         public bool interior,annex;
         public Equipment equipped;
         public int[] magazines,ammunition;
         public bool Valid()
         {
-            if(version!=1||scene!=SceneManager.GetActiveScene().name||!Finite(yaw)
+            if(version!=1||scene!=SceneManager.GetActiveScene().name||!Finite(yaw)||!Finite(health)||health<=0||health>100
                 ||!Finite(position.x)||!Finite(position.y)||!Finite(position.z))return false;
             if(!new WeaponState().Restore(magazines,ammunition,equipped))return false;
             if(annex)return interior&&SuppliedExtrasWorld.ContainsPosition(position)&&position.y<90;
@@ -44,8 +45,11 @@ namespace Blackstone.Foundation
             ExplorationCheckpoint loaded=null;
             bool found=Blackstone.Save.CheckpointStorage.TryRead(PathName(slot),json=>
             {
-                var candidate=JsonUtility.FromJson<ExplorationCheckpoint>(json);
-                if(candidate==null||!candidate.Valid())return false;
+                // Preserve full health for v1 checkpoints written before health
+                // was stored; an explicit zero in a newer file is still invalid.
+                var candidate=new ExplorationCheckpoint();
+                JsonUtility.FromJsonOverwrite(json,candidate);
+                if(!candidate.Valid())return false;
                 loaded=candidate;return true;
             },out var contents);
             checkpoint=found?loaded:null;return found;

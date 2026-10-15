@@ -17,6 +17,15 @@ namespace Blackstone.Foundation
                 return Matrix4x4.TRS(new Vector3((Screen.width-1920*scale)/2,(Screen.height-1080*scale)/2,0),Quaternion.identity,new Vector3(scale,scale,1));
             }
         }
+        public static Rect FullScreenRect
+        {
+            get
+            {
+                float scale=Mathf.Min(Screen.width/1920f,Screen.height/1080f);
+                float width=Screen.width/scale,height=Screen.height/scale;
+                return new Rect((1920-width)/2,(1080-height)/2,width,height);
+            }
+        }
         static void Styles()
         {
             if(title!=null)return;
@@ -40,8 +49,7 @@ namespace Blackstone.Foundation
         {
             Styles();
             // The caller uses a uniformly scaled 1920 x 1080 menu canvas.
-            float scale=Mathf.Min(Screen.width/1920f,Screen.height/1080f);
-            Panel(new Rect(-(Screen.width/scale-1920)/2,-(Screen.height/scale-1080)/2,Screen.width/scale,Screen.height/scale),Color.black);
+            Panel(FullScreenRect,Color.black);
             if(background!=null)GUI.DrawTexture(new Rect(0,0,width,height),background,ScaleMode.ScaleAndCrop);
             else Panel(new Rect(0,0,width,height),new Color(.025f,.033f,.042f,1));
             Panel(new Rect(0,0,590,height),new Color(.015f,.019f,.022f,.82f));
@@ -62,10 +70,10 @@ namespace Blackstone.Foundation
         {Styles();GUI.Label(r,value,caption?subtitle:body);}
         public static void Hero(Rect r,string value,int size=76)
         {Styles();var style=new GUIStyle(title){fontSize=size,wordWrap=true};GUI.Label(r,value.ToUpperInvariant(),style);}
-        public static bool Button(Rect r,string value,bool enabled=true)
+        public static bool Button(Rect r,string value,bool enabled=true,bool selected=false)
         {
             Styles();bool old=GUI.enabled;GUI.enabled=old&&enabled;
-            bool hover=GUI.enabled&&r.Contains(Event.current.mousePosition);
+            bool hover=GUI.enabled&&(selected||r.Contains(Event.current.mousePosition));
             Panel(r,hover?new Color(.26f,.18f,.075f,.85f):new Color(.045f,.055f,.06f,.9f));
             Border(r,hover?Gold:new Color(.5f,.5f,.45f,.3f),hover?2:1);
             bool pressed=GUI.Button(r,GUIContent.none,GUIStyle.none);

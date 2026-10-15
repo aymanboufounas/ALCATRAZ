@@ -7,6 +7,12 @@ namespace Blackstone.Foundation
         public float Health { get; private set; } = 100;
         public bool Dead => Health <= 0;
         public static int PunchStaminaCost(int combo) => combo == 0 ? 12 : 20;
+        public bool Restore(float health)
+        {
+            if (float.IsNaN(health) || float.IsInfinity(health) || health < 0 || health > 100) return false;
+            Health = health;
+            return true;
+        }
         public bool Damage(float amount)
         {
             if (Dead || amount <= 0 || float.IsNaN(amount) || float.IsInfinity(amount)) return false;

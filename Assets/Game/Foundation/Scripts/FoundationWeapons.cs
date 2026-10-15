@@ -21,6 +21,7 @@ namespace Blackstone.Foundation
         LineRenderer tracer;
         Material tracerMaterial;
         float flashUntil;
+        bool Swimming => avatar!=null&&avatar.movement!=null&&avatar.movement.IsSwimming;
 
         void Start()
         {
@@ -33,7 +34,8 @@ namespace Blackstone.Foundation
         }
         void Update()
         {
-            bool active=input!=null&&input.CanControl&&Time.deltaTime>0&&avatar!=null&&!avatar.seated&&(avatar.movement==null||!avatar.movement.ExternalControl);
+            UpdateHeldVisibility();
+            bool active=input!=null&&input.CanControl&&Time.deltaTime>0&&avatar!=null&&!avatar.seated&&!Swimming&&(avatar.movement==null||!avatar.movement.ExternalControl);
             State.Tick(Time.deltaTime,active);
             if(flash!=null)flash.intensity=Time.time<flashUntil?2.6f:0;
             if(tracer!=null)tracer.enabled=Time.time<flashUntil;
@@ -85,8 +87,11 @@ namespace Blackstone.Foundation
                     if(asset!=null){held=Instantiate(asset,avatar.rightHand,false).transform;muzzle=held.Find("Muzzle");}
                 }
             }
+            UpdateHeldVisibility();
             Sound("Draw");
         }
+        void UpdateHeldVisibility()
+        {if(held!=null&&held.gameObject.activeSelf==Swimming)held.gameObject.SetActive(!Swimming);}
         void EquipSupplied(Equipment value)
         {
             held=new GameObject("Equipped "+value).transform;held.SetParent(avatar.rightHand,false);held.rotation=Quaternion.identity;
@@ -114,15 +119,16 @@ namespace Blackstone.Foundation
         {
             var view=Camera.main;if(view==null)return;
             Ray aim=view.ViewportPointToRay(new Vector3(.5f,.5f,0));Vector3 end=aim.origin+aim.direction*90;
-            if(Physics.Raycast(aim,out var aimed,90,~(1<<8),QueryTriggerInteraction.Ignore))end=aimed.point;
+            if(NearestRay(aim.origin,aim.direction,90,out var aimed))end=aimed.point;
             Vector3 origin=muzzle!=null?muzzle.position:transform.position+Vector3.up*1.2f;
             RaycastHit hit;bool struck;
             Vector3 chest=transform.position+Vector3.up*1.15f;
-            if(Physics.Linecast(chest,origin,out var barrier,~(1<<8),QueryTriggerInteraction.Ignore))
+            Vector3 toMuzzle=origin-chest;
+            if(NearestRay(chest,toMuzzle.normalized,toMuzzle.magnitude,out var barrier))
             {hit=barrier;struck=true;end=barrier.point;origin=chest;}
             else
             {
-                Vector3 delta=end-origin;struck=Physics.Raycast(origin,delta.normalized,out hit,delta.magnitude+.05f,~(1<<8),QueryTriggerInteraction.Ignore);
+                Vector3 delta=end-origin;struck=NearestRay(origin,delta.normalized,delta.magnitude+.05f,out hit);
                 if(struck)end=hit.point;
             }
             if(struck)Impact(hit);
@@ -145,14 +151,28 @@ namespace Blackstone.Foundation
             float crouch=avatar.movement!=null&&avatar.movement.IsCrouching?.32f:0;
             Vector3 origin=transform.position+Vector3.up*(1.2f-crouch);
             Collider closest=null;Vector3 point=origin;float distance=float.PositiveInfinity;
-            foreach(var shape in Physics.OverlapSphere(origin,.18f,~(1<<8),QueryTriggerInteraction.Ignore))
+            foreach(var shape in Physics.OverlapSphere(origin,.18f,~0,QueryTriggerInteraction.Ignore))
             {
                 if(shape.transform.IsChildOf(transform))continue;
                 Vector3 p=shape.ClosestPoint(origin);float d=(p-origin).sqrMagnitude;
                 if(d<distance){distance=d;closest=shape;point=p;}
             }
             if(closest!=null){Impact(closest,point);return;}
-            if(Physics.SphereCast(origin,.18f,view.transform.forward,out var hit,1.7f,~(1<<8),QueryTriggerInteraction.Ignore))Impact(hit);
+            if(NearestExternal(Physics.SphereCastAll(origin,.18f,view.transform.forward,1.7f,~0,QueryTriggerInteraction.Ignore),out var hit))Impact(hit);
+        }
+        // NPC capsules share the player's layer. Filter the shooter's hierarchy instead
+        // of excluding that layer, while keeping the nearest wall or other actor solid.
+        bool NearestRay(Vector3 origin,Vector3 direction,float distance,out RaycastHit hit)
+        {return NearestExternal(Physics.RaycastAll(origin,direction,distance,~0,QueryTriggerInteraction.Ignore),out hit);}
+        bool NearestExternal(RaycastHit[] contacts,out RaycastHit nearest)
+        {
+            nearest=default;float distance=float.PositiveInfinity;bool found=false;
+            foreach(var hit in contacts)
+            {
+                if(hit.collider==null||hit.transform.IsChildOf(transform)||hit.distance>=distance)continue;
+                nearest=hit;distance=hit.distance;found=true;
+            }
+            return found;
         }
         void Impact(RaycastHit hit)
         {Impact(hit.collider,hit.point);}
@@ -169,6 +189,7 @@ namespace Blackstone.Foundation
         public void RegisterHit(){Hits++;HitMarkerUntil=Time.time+.18f;}
         public void PoseHands(FoundationAvatar body)
         {
+            if(Swimming)return;
             var view=Camera.main;if(view==null)return;
             if(State.IsFirearm&&held!=null)
             {

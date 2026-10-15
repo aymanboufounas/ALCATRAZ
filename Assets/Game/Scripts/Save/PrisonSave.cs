@@ -46,7 +46,7 @@ namespace Blackstone.Save
         }
         static bool Valid(PrisonCheckpoint candidate)
         {
-            if(candidate==null||candidate.story==null||!candidate.story.IsValid())return false;
+            if(candidate==null||candidate.story==null||!candidate.story.IsValid()||candidate.health<=0||candidate.health>100)return false;
             Vector3 p=candidate.position;
             bool outside=Alcatraz?p.x< -130||p.x > 135||p.z< -190||p.z>190||p.y<1.2f||p.y > 68
                 :p.x< -50||p.x>50||p.z< -45||p.z>55||p.y< -.2f||p.y>6;

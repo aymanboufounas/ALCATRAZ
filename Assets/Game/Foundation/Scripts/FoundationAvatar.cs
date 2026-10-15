@@ -71,15 +71,16 @@ namespace Blackstone.Foundation
                 agentSpeed = displacement.magnitude < 1.5f ? displacement.magnitude / Time.deltaTime : 0;
                 previousPosition = transform.position;
             }
+            bool swimming=movement!=null&&movement.IsSwimming;
             MotionSpeed = movement != null ? movement.Speed : agentSpeed;
             float scale = Mathf.Max(.05f, model.lossyScale.z);
-            animator.SetFloat("Speed", MotionSpeed / scale, .12f, Time.deltaTime);
+            animator.SetFloat("Speed", swimming?0:MotionSpeed / scale, .12f, Time.deltaTime);
             bool crouch = movement != null && movement.IsCrouching;
-            bool air = movement != null && !movement.ExternalControl && !seated && !movement.Grounded;
+            bool air = movement != null && !movement.ExternalControl && !swimming && !seated && !movement.Grounded;
             animator.SetBool("Seated", seated);
             animator.SetBool("Crouch", crouch && MotionSpeed < .15f);
             animator.SetBool("Air", air);
-            if (seated || crouch || air || movement != null && movement.ExternalControl)
+            if (seated || crouch || air || swimming || movement != null && movement.ExternalControl)
             {
                 animator.ResetTrigger("Start");animator.ResetTrigger("Stop");
                 animator.ResetTrigger("TurnLeft");animator.ResetTrigger("TurnRight");
@@ -87,13 +88,13 @@ namespace Blackstone.Foundation
             bool strafing = movement != null && movement.IsAiming;
             float direction = strafing && movement.LocalMotion.y < -.12f ? -1 : 1;
             animator.SetFloat("Direction", direction);
-            if (!seated && !crouch && !air)
+            if (!seated && !crouch && !air && !swimming)
             {
                 if (previousSpeed < .15f && MotionSpeed > .2f && direction > 0) animator.SetTrigger("Start");
                 if (previousSpeed > .5f && MotionSpeed < .1f) animator.SetTrigger("Stop");
             }
             float turn = Mathf.DeltaAngle(previousYaw, transform.eulerAngles.y);
-            if (!seated && !crouch && !air && MotionSpeed < .1f && Mathf.Abs(turn) > 12)
+            if (!seated && !crouch && !air && !swimming && MotionSpeed < .1f && Mathf.Abs(turn) > 12)
                 animator.SetTrigger(turn < 0 ? "TurnLeft" : "TurnRight");
             previousYaw = transform.eulerAngles.y; previousSpeed = MotionSpeed;
             float yaw = 0;
@@ -105,6 +106,7 @@ namespace Blackstone.Foundation
         {
             if (Time.deltaTime <= 0 || animator == null || !animator.enabled || seated) return;
             if (storyActor != null && storyActor.pose == Blackstone.Actors.ActorPose.Sleep) return;
+            if(movement!=null&&movement.IsSwimming){SwimPose();return;}
             if (movement != null && movement.IsCrouching && MotionSpeed > .15f && pelvis != null)
             {
                 Vector3 l = leftFoot != null ? leftFoot.position : Vector3.zero;
@@ -117,6 +119,27 @@ namespace Blackstone.Foundation
             if (movement == null || movement.Grounded)
             { GroundFoot(leftThigh, leftShin, leftFoot); GroundFoot(rightThigh, rightShin, rightFoot); }
             if (equipment != null) equipment.PoseHands(this);
+        }
+        void SwimPose()
+        {
+            if(pelvis==null)return;
+            // Procedural treading and paddling on the imported rig. No walk/run
+            // clip is presented as a swimming animation.
+            float moving=Mathf.Clamp01(MotionSpeed/1.6f),phase=Time.time*(moving>.1f?4.5f:2.4f);
+            Vector3 hips=pelvis.position;
+            if(chest!=null)chest.rotation=Quaternion.AngleAxis(moving*12,transform.right)*chest.rotation;
+            for(int side=-1;side<=1;side+=2)
+            {
+                float stroke=Mathf.Sin(phase+(side>0?Mathf.PI:0));
+                Vector3 hand=hips+Vector3.up*(.45f+stroke*.08f)+transform.right*side*(.34f+Mathf.Cos(phase)*.08f)
+                    +transform.forward*(.25f+stroke*.24f*moving);
+                Vector3 foot=hips+transform.right*side*.16f-Vector3.up*(.65f+stroke*.08f)
+                    -transform.forward*(.1f+stroke*.12f*moving);
+                if(side<0)
+                {Solve(leftArm,leftForearm,leftHand,hand,-transform.right,.9f);Solve(leftThigh,leftShin,leftFoot,foot,transform.forward,.85f);}
+                else
+                {Solve(rightArm,rightForearm,rightHand,hand,transform.right,.9f);Solve(rightThigh,rightShin,rightFoot,foot,transform.forward,.85f);}
+            }
         }
         void GroundFoot(Transform upper, Transform middle, Transform foot)
         {

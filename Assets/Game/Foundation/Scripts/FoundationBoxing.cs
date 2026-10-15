@@ -17,7 +17,7 @@ namespace Blackstone.Foundation
         float started=-10, duration=.48f,nextAttack,stopAt,hitAt;int combo;bool connected;
         void Start(){avatar=GetComponent<FoundationAvatar>();fall=GetComponent<FoundationFall>();agent=GetComponent<FoundationAgent>();input=GetComponent<PlayerInputHandler>();damageable=GetComponent<FoundationDamageable>();}
         bool Available=>avatar!=null && avatar.animator!=null && avatar.animator.enabled && !avatar.seated
-            && (input==null||input.CanControl) && (avatar.movement==null||avatar.movement.Grounded&&!avatar.movement.ExternalControl);
+            && (input==null||input.CanControl) && (avatar.movement==null||avatar.movement.Grounded&&!avatar.movement.ExternalControl&&!avatar.movement.IsSwimming);
         bool FistsReady=>input==null||avatar.equipment!=null&&avatar.equipment.State.Equipped==Equipment.Unarmed;
         public void Punch()
         {
@@ -64,7 +64,17 @@ namespace Blackstone.Foundation
         }
         void BeginSpar(FoundationBoxing other)
         {opponent=other;Sparring=other.Sparring=true;other.opponent=this;stopAt=Time.time+45;Health=other.Health=100;if(agent!=null)agent.enabled=false;}
-        void EndSpar(){Sparring=false;Guarding=false;if(opponent!=null){opponent.Sparring=false;opponent.opponent=null;}opponent=null;if(agent!=null)agent.enabled=damageable==null||!damageable.Dead;}
+        void EndSpar()
+        {
+            var other=opponent;
+            FinishSpar();
+            if(other!=null)other.FinishSpar();
+        }
+        void FinishSpar()
+        {
+            Sparring=Guarding=false;opponent=null;connected=true;started=-10;
+            if(agent!=null)agent.enabled=damageable==null||!damageable.Dead;
+        }
         public void StopCombat(){connected=true;started=-10;EndSpar();enabled=false;}
         void Contact()
         {
@@ -100,13 +110,16 @@ namespace Blackstone.Foundation
         }
         bool Receive(FoundationBoxing attacker,float damage)
         {
-            if(!Available)return false;
+            // Seating prevents an NPC from attacking, but does not make its body
+            // immune to incoming punches. Player activity guards still apply.
+            if(!Available&&(input!=null||damageable==null))return false;
+            if(damageable!=null&&damageable.Dead)return false;
             bool blocked=Guarding&&Stamina>10&&Vector3.Dot(transform.forward,(attacker.transform.position-transform.position).normalized)>.25f;
             if(blocked){Stamina=Mathf.Max(0,Stamina-damage);damage*=.15f;}
             else{started=-10;nextAttack=Time.time+.35f;}
             if(!Sparring&&damageable!=null&&!damageable.Damage(damage,avatar.chest!=null?avatar.chest.position:transform.position+Vector3.up,attacker.transform.forward*3+Vector3.up*.4f))return false;
             if(Sparring||damageable==null)Health=Mathf.Max(0,Health-damage);
-            if(Health<=0&&fall!=null)fall.KnockDown(attacker.transform.forward*3+Vector3.up*.4f);
+            if(Health<=0&&fall!=null&&GetComponent<FoundationPlayerVitals>()?.Failed!=true)fall.KnockDown(attacker.transform.forward*3+Vector3.up*.4f);
             return true;
         }
         void LateUpdate()

@@ -52,7 +52,7 @@ namespace Blackstone.Foundation
             for(int i=0;i<passengerRenderers.Length;i++){previousVisibility[i]=passengerRenderers[i].enabled;passengerRenderers[i].enabled=false;}
             if(avatar!=null)avatar.seated=true;
             if(cameraRig!=null){cameraRig.FollowOverride=cameraFocus;cameraRig.FollowDistance=aircraft?9:7;}
-            Notice=aircraft?"W/S pitch · A/D yaw · Space rise · Ctrl descend · E exit after landing":"W/S throttle · A/D rudder · E leave at the dock";
+            Notice=aircraft?"W/S pitch · A/D yaw · Space rise · Ctrl descend · E exit after landing":"W/S throttle · A/D rudder · E leave at the dock or swim";
         }
         void FixedUpdate()
         {
@@ -93,15 +93,25 @@ namespace Blackstone.Foundation
         void TryExit()
         {
             if(body.linearVelocity.magnitude>1.4f){Notice="Stop before leaving the vehicle.";return;}
+            var swimming=player.GetComponent<FoundationSwimming>();
+            Vector3 waterExit=Vector3.zero;bool foundWater=false;
             for(int spot=0;spot<4;spot++)
             {
                 Vector3 offset=spot<2?transform.right*(spot==0?-1:1)*(aircraft?2.3f:2):transform.forward*(spot==2?1:-1)*(aircraft?4.5f:3.5f);
                 Vector3 origin=transform.position+offset+Vector3.up*2.5f;
-                if(!Physics.Raycast(origin,Vector3.down,out var hit,4,~((1<<8)|(1<<10)|(1<<11)),QueryTriggerInteraction.Ignore)||hit.normal.y<.6f||hit.point.y<Sea+.2f)continue;
-                Vector3 exit=hit.point+Vector3.up*.06f;
-                if(Physics.CheckCapsule(exit+Vector3.up*.32f,exit+Vector3.up*1.5f,.24f,~((1<<8)|(1<<10)),QueryTriggerInteraction.Ignore))continue;
-                Release();player.Teleport(exit);return;
+                if(Physics.Raycast(origin,Vector3.down,out var hit,4,~((1<<8)|(1<<10)|(1<<11)),QueryTriggerInteraction.Ignore)&&hit.normal.y>=.6f&&hit.point.y>=Sea+.2f)
+                {
+                    Vector3 exit=hit.point+Vector3.up*.06f;
+                    if(!Physics.CheckCapsule(exit+Vector3.up*.32f,exit+Vector3.up*1.5f,.24f,~((1<<8)|(1<<10)),QueryTriggerInteraction.Ignore))
+                    {Release();player.Teleport(exit);if(cameraRig!=null)cameraRig.SnapToPlayer();return;}
+                }
+                if(aircraft||swimming==null)continue;
+                Vector3 water=new Vector3(origin.x,swimming.WaterLevel-SwimmingRules.SurfaceBodyDepth,origin.z);
+                if(swimming.CanEnterWaterAt(water)&&!Physics.CheckCapsule(water+Vector3.up*.32f,water+Vector3.up*1.5f,.24f,~((1<<8)|(1<<10)),QueryTriggerInteraction.Ignore))
+                {waterExit=water;foundWater=true;}
             }
+            if(foundWater)
+            {Release();player.Teleport(waterExit);player.SetSwimming(true,swimming.WaterLevel);if(cameraRig!=null)cameraRig.SnapToPlayer();return;}
             Notice=aircraft?"Land beside clear ground to leave.":"Bring the boat alongside the dock to leave.";
         }
         void Release()

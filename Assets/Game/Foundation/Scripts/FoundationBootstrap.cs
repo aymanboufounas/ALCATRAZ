@@ -112,7 +112,7 @@ namespace Blackstone.Foundation
                     if(actor.patrolEnabled&&actor.patrol!=null&&actor.patrol.Length>0)
                     {var agent=actor.gameObject.AddComponent<FoundationAgent>();agent.route=actor.patrol;agent.avatar=avatar;agent.player=Player.transform;agent.speed=actor.walkingSpeed;}
                 }
-                if(!isPlayer&&!storyMode)actor.gameObject.AddComponent<FoundationDamageable>();
+                if(isPlayer||!storyMode)actor.gameObject.AddComponent<FoundationDamageable>();
                 if(isPlayer)hero=avatar;
             }
             if(hero==null){Status="The prisoner avatar could not be created.";return;}
@@ -140,6 +140,9 @@ namespace Blackstone.Foundation
                 PlayerEquipment.avatar=hero;PlayerEquipment.input=Input;PlayerEquipment.cameraRig=CameraRig;hero.equipment=PlayerEquipment;
                 foreach(var door in FindObjectsByType<DoorController>(FindObjectsSortMode.None))door.locked=false;
             }
+            Player.gameObject.AddComponent<FoundationSwimming>();
+            var vitals=Player.gameObject.AddComponent<FoundationPlayerVitals>();
+            vitals.Configure(this,storyMode?story:null);
             Status="Ready";
         }
         static bool StoryProp(Transform candidate,PrisonStoryDirector story)

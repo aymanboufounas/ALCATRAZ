@@ -81,6 +81,11 @@ namespace Blackstone.Story
             input.ResumeOnClick = false;
             input.PauseEnabled = false; input.SetGameplayBlocked(true); input.Capture(false);
             UpdateWorld();
+            if (Blackstone.Foundation.FoundationPlayerVitals.ConsumeRestart(UnityEngine.SceneManagement.SceneManager.GetActiveScene().name))
+            {
+                StartSession(CanContinue);
+                player.GetComponent<Blackstone.Foundation.FoundationDamageable>()?.Restore(100);
+            }
         }
         public void StartSession(bool resume, int slot=0)
         {
@@ -100,6 +105,7 @@ namespace Blackstone.Story
             State = new PrisonStoryState();
             if (loaded) State = saved.story;
             MainMenu = false; sessionStarted = true;
+            player.GetComponent<Blackstone.Foundation.FoundationDamageable>()?.Restore(loaded ? saved.health : 100);
             input.PauseEnabled = true; input.SetGameplayBlocked(false); input.Capture(true);
             Transform spawn = SpawnForStage();
             player.Teleport(loaded && !SpecialLocation(State.stage) ? saved.position : spawn.position);
@@ -124,7 +130,7 @@ namespace Blackstone.Story
         }
         void Update()
         {
-            if (MainMenu) return;
+            if (MainMenu || player.GetComponent<Blackstone.Foundation.FoundationPlayerVitals>()?.Failed == true) return;
             if (Time.time > bannerUntil && !State.missed) Banner = null;
             if (Time.time > toastUntil) Toast = null;
             if (State.missed)
@@ -162,7 +168,18 @@ namespace Blackstone.Story
             if (d.magnitude > 1.6f && d.magnitude < 12)
                 rival.transform.position += d.normalized * Mathf.Min(d.magnitude - 1.6f, 1.4f * Time.deltaTime);
             if (d.magnitude < 2 && Time.time > nextRivalStrike)
-            { rival.SetPose(ActorPose.Punch, .6f); nextRivalStrike = Time.time + 1.7f; audioBus.Play(audioBus.punch, .25f); }
+            {
+                rival.SetPose(ActorPose.Punch, .6f); nextRivalStrike = Time.time + 1.7f;
+                bool blocked = Physics.Linecast(rival.transform.position + Vector3.up * 1.3f,
+                    player.transform.position + Vector3.up * 1.3f, 1, QueryTriggerInteraction.Ignore);
+                if (!blocked)
+                {
+                    player.GetComponent<Blackstone.Foundation.FoundationDamageable>()?.Damage(12,
+                        player.transform.position + Vector3.up, d.normalized * 3);
+                    audioBus.Play(audioBus.punch, .25f);
+                }
+                if(player.GetComponent<Blackstone.Foundation.FoundationPlayerVitals>()?.Failed == true)return;
+            }
             if (input.AttackPressed && Time.time > nextPlayerStrike)
             {
                 nextPlayerStrike = Time.time + .55f; playerActor.SetPose(ActorPose.Punch, .45f);
@@ -587,10 +604,16 @@ namespace Blackstone.Story
         }
         public bool SaveNow(int slot=0)
         {
-            if (!sessionStarted) return false;
+            if (!sessionStarted || player.GetComponent<Blackstone.Foundation.FoundationPlayerVitals>()?.Failed == true || player.IsSwimming
+                || player.GetComponent<Blackstone.Foundation.FoundationSwimming>()?.RestrictedWater == true
+                || Blackstone.Foundation.FoundationVehicle.Active != null
+                || player.ExternalControl && !Busy && PrisonPokerTable.Active == null) return false;
+            var health=player.GetComponent<Blackstone.Foundation.FoundationDamageable>();
             Vector3 position = PrisonPokerTable.Active!=null?PrisonPokerTable.Active.ReturnPosition:
                 Busy ? SpawnForStage().position : player.transform.position;
-            bool saved=PrisonSave.Write(new PrisonCheckpoint { story = State, position = position, yaw = PrisonPokerTable.Active!=null?PrisonPokerTable.Active.ReturnRotation.eulerAngles.y:player.transform.eulerAngles.y },slot);
+            bool saved=PrisonSave.Write(new PrisonCheckpoint { story = State, position = position,
+                health = health!=null?Mathf.CeilToInt(health.Health):100,
+                yaw = PrisonPokerTable.Active!=null?PrisonPokerTable.Active.ReturnRotation.eulerAngles.y:player.transform.eulerAngles.y },slot);
             if(!saved)Notice("Saving was unavailable. Progress remains in this session.");
             return saved;
         }

@@ -20,6 +20,8 @@ namespace Blackstone.Foundation
         }
         public bool Damage(float amount,Vector3 point,Vector3 impulse)
         {
+            var player=GetComponent<FoundationPlayerVitals>();
+            if(player!=null&&!player.CanTakeDamage)return false;
             if(!state.Damage(amount))return false;
             for(int i=0;i<renderers.Length;i++)
             {
@@ -31,6 +33,7 @@ namespace Blackstone.Foundation
             flashing=true;flashUntil=Time.time+.12f;
             if(Dead)
             {
+                if(player!=null){player.Die(impulse);return true;}
                 var actor=GetComponent<PrisonActor>();if(actor!=null){actor.Suspended=true;actor.enabled=false;}
                 var agent=GetComponent<FoundationAgent>();if(agent!=null)agent.enabled=false;
                 var footsteps=GetComponent<FoundationFootsteps>();if(footsteps!=null)footsteps.enabled=false;
@@ -51,6 +54,7 @@ namespace Blackstone.Foundation
             }
             return true;
         }
+        public bool Restore(float health)=>state.Restore(health);
         void Update()
         {
             if(!flashing||Time.time<flashUntil)return;

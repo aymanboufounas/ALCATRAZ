@@ -48,7 +48,8 @@ namespace Blackstone.Alcatraz
         }
         void LateUpdate()
         {
-            if(player==null||player.ExternalControl||Time.deltaTime<=0)return;
+            if(player==null||player.ExternalControl||player.IsSwimming||Time.deltaTime<=0)return;
+            if(player.GetComponent<Blackstone.Foundation.FoundationPlayerVitals>()?.Failed==true)return;
             Vector3 position=player.transform.position;
             if(player.Grounded&&position.y>1.5f&&SafeFooting(position))
             {safePosition=position;validSafePosition=true;}

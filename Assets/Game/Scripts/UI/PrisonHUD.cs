@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
+using UnityEngine.InputSystem;
 using Blackstone.Story;
 
 namespace Blackstone.UI
@@ -13,6 +14,7 @@ namespace Blackstone.UI
         readonly Color green = new Color(.24f, .85f, .39f);
         readonly Color red = new Color(.96f, .24f, .26f);
         bool settings, debug;
+        int titleSelection;
         Blackstone.Foundation.PrisonPauseMenu pauseMenu;
         int quality = 2, resolution = 1;
         bool fullscreen, vsync = true;
@@ -22,6 +24,7 @@ namespace Blackstone.UI
         UniversalRenderPipelineAsset runtimePipeline;
         RenderPipelineAsset originalPipeline;
         Blackstone.Alcatraz.AlcatrazMap island;
+        bool Failed=>director!=null&&director.player!=null&&director.player.GetComponent<Blackstone.Foundation.FoundationPlayerVitals>() is Blackstone.Foundation.FoundationPlayerVitals vitals&&vitals.Failed;
         void Start()
         {
             island=FindFirstObjectByType<Blackstone.Alcatraz.AlcatrazMap>();
@@ -43,15 +46,42 @@ namespace Blackstone.UI
                 QualitySettings.renderPipeline = runtimePipeline;
             }
             ApplySettings(false);
+            titleSelection=director.CanContinue?0:1;
         }
         void Update()
         {
+            if(director==null||director.input==null||Failed)return;
             if (director.input.DebugPressed) debug = !debug;
             frameTime = Mathf.Lerp(frameTime, Time.unscaledDeltaTime, .08f);
-            if (director.MainMenu && director.input.ConfirmPressed)
-            { settings = false; director.StartSession(director.CanContinue); }
-            if (director.MainMenu && director.input.RetryPressed)
-            { settings = false; director.StartSession(false); }
+            if(!director.MainMenu)return;
+            var key=Keyboard.current;var pad=Gamepad.current;
+            if(settings)
+            {
+                if(key!=null&&(key.escapeKey.wasPressedThisFrame||key.backspaceKey.wasPressedThisFrame)
+                    ||pad!=null&&pad.buttonEast.wasPressedThisFrame)settings=false;
+                return;
+            }
+            bool down=key!=null&&key.downArrowKey.wasPressedThisFrame||pad!=null&&pad.dpad.down.wasPressedThisFrame;
+            bool up=key!=null&&key.upArrowKey.wasPressedThisFrame||pad!=null&&pad.dpad.up.wasPressedThisFrame;
+            if(down||up)
+            {
+                int direction=down?1:-1;
+                do{titleSelection=(titleSelection+direction+4)%4;}while(titleSelection==0&&!director.CanContinue);
+            }
+            if(director.input.ConfirmPressed){director.StartSession(director.CanContinue);return;}
+            if(director.input.RetryPressed){director.StartSession(false);return;}
+            if(key!=null&&key.enterKey.wasPressedThisFrame||pad!=null&&pad.buttonSouth.wasPressedThisFrame)ActivateTitle();
+        }
+        void ActivateTitle()
+        {
+            if(titleSelection==0){if(director.CanContinue)director.StartSession(true);}
+            else if(titleSelection==1)director.StartSession(false);
+            else if(titleSelection==2)
+            {
+                sensitivity=director.cameraRig.sensitivity;invert=director.cameraRig.invertY;fullscreen=Screen.fullScreen;
+                resolution=Screen.width==1280?0:Screen.width==2560?2:1;settings=true;
+            }
+            else Application.Quit();
         }
         void Styles()
         {
@@ -66,20 +96,23 @@ namespace Blackstone.UI
         }
         void OnGUI()
         {
-            if (director == null || director.input == null) return;
+            if (director == null || director.input == null || Failed) return;
             Styles(); Matrix4x4 original = GUI.matrix;
-            GUI.matrix = Matrix4x4.TRS(Vector3.zero, Quaternion.identity, new Vector3(Screen.width / 1920f, Screen.height / 1080f, 1));
+            // Preserve text, minimap and control proportions on 4:3 and ultrawide displays.
+            GUI.matrix = Blackstone.Foundation.PrisonMenuTheme.MenuMatrix;
             if (director.MainMenu)
             {
                 GUI.matrix=Blackstone.Foundation.PrisonMenuTheme.MenuMatrix;Menu();
-                GUI.matrix=Matrix4x4.TRS(Vector3.zero,Quaternion.identity,new Vector3(Screen.width/1920f,Screen.height/1080f,1));
+                GUI.matrix=Blackstone.Foundation.PrisonMenuTheme.MenuMatrix;
             }
             else
             {
                 if (!director.Letterbox && Blackstone.Activities.PrisonPokerTable.Active == null) Gameplay();
                 if (director.Letterbox)
                 {
-                    Panel(new Rect(0,0,1920,100), Color.black); Panel(new Rect(0,920,1920,160), Color.black);
+                    Rect screen=Blackstone.Foundation.PrisonMenuTheme.FullScreenRect;
+                    Panel(new Rect(screen.x,screen.y,screen.width,100-screen.y), Color.black);
+                    Panel(new Rect(screen.x,920,screen.width,screen.yMax-920), Color.black);
                     if (PlayerPrefs.GetInt("Blackstone.Subtitles",1)==1&&!string.IsNullOrEmpty(director.Subtitle))
                     {
                         Label(new Rect(300,926,1320,30), director.Speaker, small, amber, TextAnchor.MiddleCenter);
@@ -93,10 +126,10 @@ namespace Blackstone.UI
                 if (!director.input.IsCaptured)
                 {
                     GUI.matrix=Blackstone.Foundation.PrisonMenuTheme.MenuMatrix;Pause();
-                    GUI.matrix=Matrix4x4.TRS(Vector3.zero,Quaternion.identity,new Vector3(Screen.width/1920f,Screen.height/1080f,1));
+                    GUI.matrix=Blackstone.Foundation.PrisonMenuTheme.MenuMatrix;
                 }
             }
-            if (director.Fade > 0) Panel(new Rect(0,0,1920,1080), new Color(0,0,0,director.Fade));
+            if (director.Fade > 0) Panel(Blackstone.Foundation.PrisonMenuTheme.FullScreenRect, new Color(0,0,0,director.Fade));
             if (debug)
             {
                 Panel(new Rect(1360,30,530,145), new Color(0,0,0,.8f));
@@ -230,15 +263,14 @@ namespace Blackstone.UI
         {
             Blackstone.Foundation.PrisonMenuTheme.Frame(1920,1080,"ALCATRAZ\nISLAND","THE PRISONER  /  CHAPTER 01",false);
             if(settings){SettingsPanel();return;}
-            if(Blackstone.Foundation.PrisonMenuTheme.Navigation(0,"01   Continue checkpoint",director.CanContinue))director.StartSession(true);
-            if(Blackstone.Foundation.PrisonMenuTheme.Navigation(1,"02   New game"))director.StartSession(false);
-            if(Blackstone.Foundation.PrisonMenuTheme.Navigation(2,"03   Settings"))
-            {sensitivity=director.cameraRig.sensitivity;invert=director.cameraRig.invertY;fullscreen=Screen.fullScreen;settings=true;}
-            if(Blackstone.Foundation.PrisonMenuTheme.Navigation(3,"04   Quit"))Application.Quit();
+            string[] entries={"01   Continue checkpoint","02   New game","03   Settings","04   Quit"};
+            for(int i=0;i<entries.Length;i++)
+                if(Blackstone.Foundation.PrisonMenuTheme.Navigation(i,entries[i],i!=0||director.CanContinue,titleSelection==i))
+                {titleSelection=i;ActivateTitle();}
             Blackstone.Foundation.PrisonMenuTheme.Text(new Rect(750,235,950,32),"ELIAS VALE  /  INMATE B-04",true);
             Blackstone.Foundation.PrisonMenuTheme.Hero(new Rect(750,310,1050,100),"The prison has a rhythm.",68);
             Blackstone.Foundation.PrisonMenuTheme.Text(new Rect(750,440,850,180),"Learn it. Build alliances. Find the gaps. Your first days inside Alcatraz are the beginning of your escape.");
-            Blackstone.Foundation.PrisonMenuTheme.Text(new Rect(750,745,930,80),"CONTROLLER   X: Continue  ·  Y: New game",true);
+            Blackstone.Foundation.PrisonMenuTheme.Text(new Rect(750,745,930,80),"↑ ↓ / D-PAD: SELECT   ·   ENTER / A: CONFIRM\nE / X: CONTINUE   ·   R / Y: NEW GAME",true);
         }
         void Pause()
         {
@@ -262,6 +294,7 @@ namespace Blackstone.UI
             director.audioBus.music = Slider("Music", director.audioBus.music,0,1,746);
             if (GUI.Button(new Rect(1130,849,644,60), "Apply & back", button)) { ApplySettings(true); settings = false; }
             Label(new Rect(886,930,875,38), "Quality also controls shadows, anti-aliasing and texture resolution.", small);
+            Label(new Rect(886,966,875,30), "Esc / B: Back", small, amber);
         }
         float Slider(string label, float value, float min, float max, float y)
         {

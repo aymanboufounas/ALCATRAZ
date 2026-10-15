@@ -17,7 +17,7 @@ namespace Blackstone.Foundation
         bool title=true;
         public bool TitleVisible=>title;
         PrisonPauseMenu pauseMenu;
-        int menuPage;
+        int menuPage,menuSelection;
         string menuNotice;
         Blackstone.Supplied.SuppliedIslandWorld suppliedWorld;
         readonly Blackstone.Supplied.SuppliedWeaponCards weaponCards=new Blackstone.Supplied.SuppliedWeaponCards();
@@ -34,6 +34,11 @@ namespace Blackstone.Foundation
             if(foundation.Player!=null)interactor=foundation.Player.GetComponent<PlayerInteractor>();
             if(foundation.Input!=null)
             {foundation.Input.ResumeOnClick=false;foundation.Input.PauseEnabled=true;foundation.Input.SetGameplayBlocked(true);foundation.Input.Capture(false);}
+            if(FoundationPlayerVitals.ConsumeRestart(SceneManager.GetActiveScene().name))
+            {
+                Enter(); if(title)Enter(false);
+                foundation.Player?.GetComponent<FoundationDamageable>()?.Restore(100);
+            }
         }
         void OnEnable(){if(island!=null)island.ExplorationHudOwnsMap=true;}
         void OnDisable(){if(island!=null)island.ExplorationHudOwnsMap=false;}
@@ -48,8 +53,36 @@ namespace Blackstone.Foundation
         void Update()
         {
             if(foundation==null||foundation.Input==null)return;
-            if(title&&((Keyboard.current!=null&&Keyboard.current.enterKey.wasPressedThisFrame)
-                ||(Gamepad.current!=null&&Gamepad.current.buttonSouth.wasPressedThisFrame)))Enter();
+            if(!title||foundation.Player!=null&&foundation.Player.GetComponent<FoundationPlayerVitals>()?.Failed==true)return;
+            var key=Keyboard.current;var pad=Gamepad.current;
+            bool down=key!=null&&key.downArrowKey.wasPressedThisFrame||pad!=null&&pad.dpad.down.wasPressedThisFrame;
+            bool up=key!=null&&key.upArrowKey.wasPressedThisFrame||pad!=null&&pad.dpad.up.wasPressedThisFrame;
+            if(down||up)
+            {
+                int direction=down?1:-1;
+                do{menuSelection=(menuSelection+direction+6)%6;}while(!MenuAvailable(menuSelection));
+            }
+            if(key!=null&&key.enterKey.wasPressedThisFrame||pad!=null&&pad.buttonSouth.wasPressedThisFrame)
+                ActivateMenu(menuSelection);
+        }
+        bool MenuAvailable(int index)
+        {
+            if(index==0)return foundation.Status=="Ready";
+            if(index==1)return Application.CanStreamedLevelBeLoaded(storyScene);
+            if(index==2)return suppliedWorld!=null&&suppliedWorld.Ready;
+            return true;
+        }
+        void ActivateMenu(int index)
+        {
+            if(!MenuAvailable(index))return;
+            menuSelection=index;
+            if(index==0){menuPage=0;if(title)Enter();else foundation.Input.Capture(true);}
+            else if(index==1){Time.timeScale=1;SceneManager.LoadScene(storyScene);}
+            else if(index==2)menuPage=1;
+            else if(index==3)menuPage=2;
+            else if(index==4)menuPage=3;
+            else if(title)Application.Quit();
+            else{title=true;menuPage=menuSelection=0;foundation.Input.SetGameplayBlocked(true);}
         }
         void Styles()
         {
@@ -63,7 +96,8 @@ namespace Blackstone.Foundation
         }
         void OnGUI()
         {
-            if(foundation==null||Blackstone.Activities.PrisonPokerTable.Active!=null&&foundation.Input!=null&&foundation.Input.IsCaptured)return;Styles();
+            if(foundation==null||foundation.Player!=null&&foundation.Player.GetComponent<FoundationPlayerVitals>()?.Failed==true
+                ||Blackstone.Activities.PrisonPokerTable.Active!=null&&foundation.Input!=null&&foundation.Input.IsCaptured)return;Styles();
             var viewport=new FoundationViewport(Screen.width,Screen.height);
             Matrix4x4 old=GUI.matrix;Color oldColor=GUI.color;
             GUI.matrix=viewport.Matrix;GUI.color=Color.white;
@@ -75,7 +109,7 @@ namespace Blackstone.Foundation
                     GUI.matrix=PrisonMenuTheme.MenuMatrix;
                     if(title)Menu();
                     else if(pauseMenu!=null&&pauseMenu.Draw())
-                    {title=true;menuPage=0;foundation.Input.SetGameplayBlocked(true);}
+                    {title=true;menuPage=menuSelection=0;foundation.Input.SetGameplayBlocked(true);}
                     return;
                 }
                 bool mapHeld=Keyboard.current!=null&&Keyboard.current.mKey.isPressed
@@ -89,13 +123,13 @@ namespace Blackstone.Foundation
         {
             PrisonMenuTheme.Frame(1920,1080,title?"ALCATRAZ\nISLAND":"PAUSED",suppliedWorld!=null&&suppliedWorld.InsidePrison?"CELLHOUSE":"SAN FRANCISCO BAY",!title);
             bool ready=foundation.Status=="Ready";
-            if(PrisonMenuTheme.Navigation(0,title?(ExplorationSave.TryLoad(0,out var checkpoint)?"01   Continue checkpoint":"01   Enter the island"):"01   Resume game",ready,menuPage==0)){menuPage=0;if(title)Enter();else foundation.Input.Capture(true);}
-            if(PrisonMenuTheme.Navigation(1,"02   Chapter 01",Application.CanStreamedLevelBeLoaded(storyScene))){Time.timeScale=1;SceneManager.LoadScene(storyScene);}
-            if(PrisonMenuTheme.Navigation(2,"03   Island locations",suppliedWorld!=null&&suppliedWorld.Ready,menuPage==1))menuPage=1;
-            if(PrisonMenuTheme.Navigation(3,"04   Settings",true,menuPage==2))menuPage=2;
-            if(PrisonMenuTheme.Navigation(4,"05   Controls",true,menuPage==3))menuPage=3;
-            if(PrisonMenuTheme.Navigation(5,title?"06   Quit":"06   Return to title")){if(title)Application.Quit();else{title=true;menuPage=0;foundation.Input.SetGameplayBlocked(true);}}
+            string[] entries={title?(ExplorationSave.TryLoad(0,out var checkpoint)?"01   Continue checkpoint":"01   Enter the island"):"01   Resume game",
+                "02   Chapter 01","03   Island locations","04   Settings","05   Controls",title?"06   Quit":"06   Return to title"};
+            for(int i=0;i<entries.Length;i++)
+                if(PrisonMenuTheme.Navigation(i,entries[i],MenuAvailable(i),menuSelection==i))ActivateMenu(i);
             float x=665,w=1170;
+            if(menuPage>0&&Event.current.type==EventType.MouseDown&&new Rect(x,160,w,810).Contains(Event.current.mousePosition))
+                menuSelection=menuPage+1;
             if(!ready){PrisonMenuTheme.Text(new Rect(x,160,w,250),foundation.Status??"Preparing the island…");return;}
             if(menuPage==0)
             {
@@ -122,14 +156,15 @@ namespace Blackstone.Foundation
                 if(audio!=null){PrisonMenuTheme.Text(new Rect(x,335,300,35),"Master volume");audio.master=GUI.HorizontalSlider(new Rect(x+330,352,w-350,22),audio.master,0,1);PrisonMenuTheme.Text(new Rect(x,414,300,35),"Effects & footsteps");audio.effects=GUI.HorizontalSlider(new Rect(x+330,430,w-350,22),audio.effects,0,1);}
                 if(foundation.CameraRig!=null){PrisonMenuTheme.Text(new Rect(x,493,300,35),"Camera sensitivity");foundation.CameraRig.sensitivity=GUI.HorizontalSlider(new Rect(x+330,510,w-350,22),foundation.CameraRig.sensitivity,.025f,.25f);foundation.CameraRig.invertY=GUI.Toggle(new Rect(x,572,w,40),foundation.CameraRig.invertY," Invert camera Y");}
                 PrisonMenuTheme.Text(new Rect(x,640,300,35),"Display quality");int quality=GUI.SelectionGrid(new Rect(x+330,642,w-350,48),Mathf.Clamp(QualitySettings.GetQualityLevel(),0,QualitySettings.names.Length-1),QualitySettings.names,QualitySettings.names.Length);if(quality!=QualitySettings.GetQualityLevel())QualitySettings.SetQualityLevel(quality,true);
-                if(PrisonMenuTheme.Button(new Rect(x,765,w,66),"Save settings")){if(audio!=null){PlayerPrefs.SetFloat("Blackstone.Master",audio.master);PlayerPrefs.SetFloat("Blackstone.Effects",audio.effects);}if(foundation.CameraRig!=null){PlayerPrefs.SetFloat("Blackstone.Sensitivity",foundation.CameraRig.sensitivity);PlayerPrefs.SetInt("Blackstone.Invert",foundation.CameraRig.invertY?1:0);}PlayerPrefs.SetInt("Blackstone.Quality",quality);PlayerPrefs.Save();menuPage=0;}
+                if(PrisonMenuTheme.Button(new Rect(x,765,w,66),"Save settings")){if(audio!=null){PlayerPrefs.SetFloat("Blackstone.Master",audio.master);PlayerPrefs.SetFloat("Blackstone.Effects",audio.effects);}if(foundation.CameraRig!=null){PlayerPrefs.SetFloat("Blackstone.Sensitivity",foundation.CameraRig.sensitivity);PlayerPrefs.SetInt("Blackstone.Invert",foundation.CameraRig.invertY?1:0);}PlayerPrefs.SetInt("Blackstone.Quality",quality);PlayerPrefs.Save();menuPage=menuSelection=0;}
             }
             else
             {
                 PrisonMenuTheme.Hero(new Rect(x,180,w,90),"CONTROLS",68);
-                PrisonMenuTheme.Text(new Rect(x,320,w,440),"WASD / Left stick     Move\nShift / L3     Run      ·      Alt     Walk\nCtrl / B     Crouch      ·      Space / A     Jump\nE / X     Interact & board vehicles\n1–5     Equipment      ·      Mouse wheel     Extra weapons\nRMB / LT     Aim or boxing guard\nLMB / RT     Fire or punch      ·      R / Y     Reload\nSpace / Ctrl     Helicopter rise / descend\nTab / LB     Inventory      ·      M / View     Map\nEsc / Start     Pause      ·      P / B     Leave poker");
+                PrisonMenuTheme.Text(new Rect(x,320,w,470),"WASD / Left stick     Move or swim\nShift / L3     Run or swim faster      ·      Alt     Walk\nCtrl / B     Crouch      ·      Space / A     Jump or climb a low shore\nE / X     Interact & board vehicles\n1–5     Equipment      ·      Mouse wheel     Extra weapons\nRMB / LT     Aim or boxing guard\nLMB / RT     Fire or punch      ·      R / Y     Reload\nSpace / Ctrl     Helicopter rise / descend\nTab / LB     Inventory      ·      M / View     Map\nEsc / Start     Pause      ·      P / B     Leave poker\nRestricted water: wanted alert, then mission checkpoint restart.\nHealth starts at 100%. At 0%, restart from the latest checkpoint.");
             }
             if(menuNotice!=null)GUI.Label(new Rect(x,930,w,55),menuNotice,text);
+            PrisonMenuTheme.Text(new Rect(x,1000,w,28),"↑ ↓ / D-PAD: MENU   ·   ENTER / A: SELECT   ·   MOUSE: PAGE CONTROLS",true);
         }
         void Gameplay(FoundationViewport viewport)
         {

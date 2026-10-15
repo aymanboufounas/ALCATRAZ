@@ -20,7 +20,7 @@ namespace DesertShift.Player
         public Transform cameraTarget;
         public bool Grounded { get; private set; }
         public bool IsCrouching { get; private set; }
-        public bool IsAiming => input != null && input.Aim;
+        public bool IsAiming => !IsSwimming && input != null && input.Aim;
         // Exploration worlds can protect exposed cliffs without changing story movement.
         public bool GuardUnsafeLedges { get; set; }
         public int TeleportVersion { get; private set; }
@@ -28,6 +28,7 @@ namespace DesertShift.Player
             new Vector3(controller.velocity.x, 0, controller.velocity.z).magnitude;
         public float VerticalSpeed => velocityY;
         public bool ExternalControl { get; private set; }
+        public bool IsSwimming { get; private set; }
         public float AirTime { get; private set; }
         public float LandingSpeed { get; private set; }
         public float LandingRecovery { get; private set; }
@@ -43,6 +44,7 @@ namespace DesertShift.Player
         Vector3 velocity;
         float velocityY, lastGrounded = -10, lastJumpPressed = -10;
         float standingHeight = 1.78f;
+        float waterSurface, swimBoostUntil;
         Vector3 start;
         readonly Collider[] overhead = new Collider[12];
 
@@ -57,6 +59,7 @@ namespace DesertShift.Player
             if (Time.deltaTime <= 0) return;
             JumpedThisFrame = LandedThisFrame = false;
             if (ExternalControl || !controller.enabled) { LocalMotion=Vector2.zero; return; }
+            if (IsSwimming) { Swim(); return; }
             if (!input.CanControl)
             {
                 velocity = Vector3.zero; jumpAt = 0; lastJumpPressed = -10;
@@ -173,8 +176,53 @@ namespace DesertShift.Player
             controller.height = height; controller.center = Vector3.up * height * .5f;
             controller.stepOffset = Grounded ? (shouldCrouch ? .18f : .3f) : 0;
         }
+        // Water keeps the CharacterController active, so the swimmer cannot pass
+        // through the coast, piers or boats. Seats and ragdolls still own ExternalControl.
+        public void SetSwimming(bool active, float surface)
+        {
+            waterSurface=surface;
+            if(active==IsSwimming)return;
+            IsSwimming=active;velocity=Vector3.zero;velocityY=0;LocalMotion=Vector2.zero;
+            lastGrounded=lastJumpPressed=-10;jumpAt=0;swimBoostUntil=0;
+            Grounded=JumpedThisFrame=LandedThisFrame=false;
+            AirTime=LandingSpeed=LandingRecovery=0;
+            if(active)
+            {
+                IsCrouching=false;controller.height=standingHeight;
+                controller.center=Vector3.up*standingHeight*.5f;
+            }
+        }
+        void Swim()
+        {
+            Grounded=JumpedThisFrame=LandedThisFrame=false;AirTime=LandingSpeed=LandingRecovery=0;
+            IsCrouching=false;controller.stepOffset=.3f;
+            var cam=UnityEngine.Camera.main;
+            float yaw=cam!=null?cam.transform.eulerAngles.y:transform.eulerAngles.y;
+            Vector2 axis=Vector2.ClampMagnitude(input.CanControl?input.Move:Vector2.zero,1);
+            Vector3 direction=Quaternion.Euler(0,yaw,0)*new Vector3(axis.x,0,axis.y);
+            velocity=Vector3.MoveTowards(velocity,direction*(input.Sprint?2.45f:1.6f),6*Time.deltaTime);
+            if(!input.CanControl)velocity=Vector3.zero;
+            float oldYaw=transform.eulerAngles.y;
+            if(direction.sqrMagnitude>.001f)
+                transform.rotation=Quaternion.Slerp(transform.rotation,Quaternion.LookRotation(direction),1-Mathf.Exp(-6*Time.deltaTime));
+            TurnRate=Mathf.DeltaAngle(oldYaw,transform.eulerAngles.y)/Time.deltaTime;
+            // Keep the head above water. A short surface stroke helps step onto
+            // shallow banks; it never enables underwater flight or wall climbing.
+            if(input.JumpPressed&&Time.time>=swimBoostUntil){velocityY=2.2f;swimBoostUntil=Time.time+.65f;}
+            velocityY=Blackstone.Foundation.SwimmingRules.BuoyancyVelocity(velocityY,transform.position.y,waterSurface,Time.deltaTime);
+            CollisionFlags flags=controller.Move((velocity+Vector3.up*velocityY)*Time.deltaTime);
+            if((flags&CollisionFlags.Above)!=0&&velocityY>0)velocityY=0;
+            Vector3 local=transform.InverseTransformDirection(new Vector3(controller.velocity.x,0,controller.velocity.z));
+            LocalMotion=new Vector2(local.x,local.z);
+            if(cameraTarget!=null)
+            {
+                Vector3 target=cameraTarget.localPosition;target.y=Mathf.Lerp(target.y,1.45f,1-Mathf.Exp(-14*Time.deltaTime));
+                cameraTarget.localPosition=target;
+            }
+        }
         public void SetExternalControl(bool active)
         {
+            if(active)SetSwimming(false,waterSurface);
             ExternalControl=active; controller.enabled=!active;
             velocity=Vector3.zero; velocityY=0; LocalMotion=Vector2.zero; TurnRate=0;
             jumpAt=0; lastGrounded=lastJumpPressed=-10;
@@ -183,6 +231,7 @@ namespace DesertShift.Player
         }
         public void Teleport(Vector3 position)
         {
+            SetSwimming(false,waterSurface);
             controller.enabled = false; transform.position = position;
             velocity = Vector3.zero; velocityY = 0; LocalMotion = Vector2.zero; TurnRate = 0;
             Grounded = JumpedThisFrame = LandedThisFrame = false;

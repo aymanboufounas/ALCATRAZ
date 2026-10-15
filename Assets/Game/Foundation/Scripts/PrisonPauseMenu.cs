@@ -36,8 +36,15 @@ namespace Blackstone.Foundation
         PrisonStoryState State=>story!=null?story.State:null;
         SuppliedIslandWorld World=>exploration!=null?exploration.GetComponent<SuppliedIslandWorld>():null;
         SuppliedExtrasWorld Annex=>exploration!=null?exploration.GetComponent<SuppliedExtrasWorld>():null;
+        FoundationPlayerVitals Vitals=>Player!=null?Player.GetComponent<FoundationPlayerVitals>():null;
+        FoundationDamageable PlayerHealth=>Player!=null?Player.GetComponent<FoundationDamageable>():null;
+        bool ExplorationReady=>exploration!=null&&exploration.Status=="Ready"&&(World==null||World.Ready);
         bool Open=>Input!=null&&!Input.IsCaptured&&(story!=null?!story.MainMenu:explorationHUD!=null&&!explorationHUD.TitleVisible);
-        bool SafeCheckpoint=>Player!=null&&!Player.ExternalControl&&(story!=null?!story.Busy&&!story.PhoneOpen:World!=null&&World.Ready&&Player.Grounded);
+        bool CheckpointPlayerAvailable=>Player!=null&&!Player.ExternalControl&&!Player.IsSwimming&&(Vitals==null||!Vitals.Failed)&&(PlayerHealth==null||!PlayerHealth.Dead);
+        bool SafeCheckpoint=>CheckpointPlayerAvailable&&(story!=null?!story.Busy&&!story.PhoneOpen:ExplorationReady&&Player.Grounded);
+        // Loading validates the destination below. It must also work from a title screen
+        // before the paused controller has completed its first grounded update.
+        bool CanLoadCheckpoint=>CheckpointPlayerAvailable&&(story!=null?!story.Busy&&!story.PhoneOpen:ExplorationReady);
         public void Configure(FoundationBootstrap foundation,PrisonStoryDirector director,AlcatrazMap island)
         {exploration=foundation;story=director;map=island;explorationHUD=foundation!=null?foundation.GetComponent<FoundationHUD>():null;nextAutosave=Time.unscaledTime+30;fullscreen=Screen.fullScreen;resolution=Array.IndexOf(widths,Screen.width);if(resolution<0)resolution=1;displayInitialized=true;}
         void Update()
@@ -50,16 +57,24 @@ namespace Blackstone.Foundation
                 return;
             }
             var key=Keyboard.current;var pad=Gamepad.current;
+            bool confirm=key!=null&&key.enterKey.wasPressedThisFrame||pad!=null&&pad.buttonSouth.wasPressedThisFrame;
+            if(pendingSave>=0||pendingLoad>=0)
+            {
+                // Keep focus on the confirmation; section navigation must not silently
+                // dismiss an overwrite/load decision or operate the page underneath.
+                bool cancel=key!=null&&key.backspaceKey.wasPressedThisFrame||pad!=null&&pad.buttonEast.wasPressedThisFrame;
+                if(cancel)pendingSave=pendingLoad=-1;
+                else if(confirm)
+                {if(pendingSave>=0)Save(pendingSave,true);else Load(pendingLoad);pendingSave=pendingLoad=-1;}
+                return;
+            }
             if(key!=null&&key.downArrowKey.wasPressedThisFrame||pad!=null&&pad.dpad.down.wasPressedThisFrame)Select((section+1)%Sections.Length);
             if(key!=null&&key.upArrowKey.wasPressedThisFrame||pad!=null&&pad.dpad.up.wasPressedThisFrame)Select((section+Sections.Length-1)%Sections.Length);
             if(key!=null&&key.rightArrowKey.wasPressedThisFrame||pad!=null&&pad.dpad.right.wasPressedThisFrame)Choice(1);
             if(key!=null&&key.leftArrowKey.wasPressedThisFrame||pad!=null&&pad.dpad.left.wasPressedThisFrame)Choice(-1);
-            bool confirm=key!=null&&key.enterKey.wasPressedThisFrame||pad!=null&&pad.buttonSouth.wasPressedThisFrame;
             if(confirm)
             {
-                if(pendingSave>=0){Save(pendingSave,true);pendingSave=-1;}
-                else if(pendingLoad>=0){Load(pendingLoad);pendingLoad=-1;}
-                else if(section==7)RequestSave(slot);
+                if(section==7)RequestSave(slot);
                 else if(section==8)RequestLoad(slot);
                 else if(section==9)returnToTitle=true;
                 else if(section==4)EquipSelected();
@@ -69,9 +84,19 @@ namespace Blackstone.Foundation
         void Choice(int direction)
         {
             if(section==7||section==8)slot=(slot+direction+4)%4;
-            else if(section==4)weaponIndex=(weaponIndex+direction+11)%11;
+            else if(section==4)
+            {
+                weaponIndex=(weaponIndex+direction+11)%11;
+                float top=weaponIndex/2*135,bottom=top+120;
+                if(top<scroll.y)scroll.y=top;
+                else if(bottom>scroll.y+460)scroll.y=bottom-460;
+            }
         }
-        void Select(int index){section=index;scroll=Vector2.zero;pendingSave=pendingLoad=-1;message=null;}
+        void Select(int index)
+        {
+            section=index;scroll=Vector2.zero;pendingSave=pendingLoad=-1;message=null;
+            if(section==4)Choice(0);
+        }
         void Styles()
         {
             if(small!=null)return;
@@ -83,13 +108,14 @@ namespace Blackstone.Foundation
         public bool Draw()
         {
             Styles();
-            PrisonMenuTheme.Frame(1920,1080,"ALCATRAZ\nISLAND",story!=null?"CHAPTER 01":World!=null&&World.InsidePrison?"CELLHOUSE":"EXPLORATION",true);
+            PrisonMenuTheme.Frame(1920,1080,"PAUSED",story!=null?"CHAPTER 01":World!=null&&World.InsidePrison?"CELLHOUSE":"EXPLORATION",true);
             PrisonMenuTheme.Panel(new Rect(615,160,1265,810),new Color(.015f,.023f,.028f,.88f));
+            bool enabled=GUI.enabled;
+            GUI.enabled=enabled&&pendingSave<0&&pendingLoad<0;
             for(int i=0;i<Sections.Length;i++)if(PrisonMenuTheme.SectionNavigation(i,Sections[i],section==i))Select(i);
             PrisonMenuTheme.Text(new Rect(665,165,1160,28),"THE PRISON ESCAPE  /  SESSION PAUSED",true);
             PrisonMenuTheme.Hero(new Rect(665,205,1160,95),section==0?"ISLAND MAP":Sections[section],62);
             PrisonMenuTheme.Panel(new Rect(665,315,1160,1),new Color(.83f,.68f,.39f,.5f));
-            bool enabled=GUI.enabled;GUI.enabled=enabled&&pendingSave<0&&pendingLoad<0;
             if(section==0)Map();else if(section==1)Mission();else if(section==2)Inventory();else if(section==3)Character();
             else if(section==4)Equipment();else if(section==5)Journal();else if(section==6)Settings();
             else if(section==7||section==8)Slots(section==7);else Exit();
@@ -151,16 +177,16 @@ namespace Blackstone.Foundation
             PrisonMenuTheme.Text(new Rect(689,760,335,95),"Status: incarcerated\n"+(State!=null?"Chapter day "+State.gameDay:"Island exploration"));
             var boxer=Player!=null?Player.GetComponent<FoundationBoxing>():null;
             var health=Player!=null?Player.GetComponent<FoundationDamageable>():null;
-            Stat("Health",health!=null?health.Health:boxer!=null?boxer.Health:100,100,1085,365);
+            Stat("Health",health!=null?health.Health:boxer!=null?boxer.Health:100,100,1085,365,true);
             Stat("Stamina",boxer!=null?boxer.Stamina:100,100,1085,470);
             Stat("Gang respect",State!=null?State.respect:0,100,1085,575);
             string contacts=State!=null?(((State.acquaintances&1)!=0?1:0)+((State.acquaintances&2)!=0?1:0)+((State.acquaintances&4)!=0?1:0))+" / 3":"Chapter not started";
             Card(new Rect(1085,685,740,195),"Contacts / combat",contacts+"\nSuccessful combat hits: "+(Weapons!=null?Weapons.Hits:0));
         }
-        void Stat(string title,float value,float max,float x,float y)
+        void Stat(string title,float value,float max,float x,float y,bool percentage=false)
         {
             PrisonMenuTheme.Text(new Rect(x,y,520,35),title.ToUpperInvariant(),true);
-            PrisonMenuTheme.Text(new Rect(x+535,y,180,35),Mathf.RoundToInt(value)+" / "+max);
+            PrisonMenuTheme.Text(new Rect(x+535,y,180,35),percentage?Mathf.RoundToInt(Mathf.Clamp01(value/max)*100)+"%":Mathf.RoundToInt(value)+" / "+max);
             PrisonMenuTheme.Panel(new Rect(x,y+54,740,9),new Color(.22f,.25f,.25f));
             PrisonMenuTheme.Panel(new Rect(x,y+54,740*Mathf.Clamp01(value/max),9),PrisonMenuTheme.Gold);
         }
@@ -171,7 +197,7 @@ namespace Blackstone.Foundation
             {
                 var value=(Blackstone.Foundation.Equipment)i;Rect r=new Rect(i%2*560,i/2*135,540,120);
                 string detail=Weapons!=null?(Weapons.State.Equipped==value?"EQUIPPED":"AVAILABLE")+(i>=2&&i!=5?"  /  "+Weapons.State.LoadedFor(value)+" + "+Weapons.State.ReserveFor(value)+" rounds":""):(i==0?"FISTS / STORY COMBAT":i==1&&State!=null&&State.knife!=KnifeLocation.None?"QUEST ITEM / NON-EQUIPPABLE":"NOT AVAILABLE IN STORY");
-                if(PrisonMenuTheme.Button(r,value.ToString().ToUpperInvariant()+"\n"+detail)){weaponIndex=i;EquipSelected();}
+                if(PrisonMenuTheme.Button(r,value.ToString().ToUpperInvariant()+"\n"+detail,true,i==weaponIndex)){weaponIndex=i;EquipSelected();}
             }
             GUI.EndScrollView();
             PrisonMenuTheme.Text(new Rect(665,850,1160,65),"Selected: "+((Blackstone.Foundation.Equipment)weaponIndex)+". Use ← → and Enter, or click a card.");
@@ -189,7 +215,9 @@ namespace Blackstone.Foundation
                 Card(new Rect(665,545,1160,155),"Connected annex","The workshop connects to a factory yard, warehouse and wooden carport.");
                 Card(new Rect(665,725,1160,155),"Chapter file","Story discoveries appear here after you begin Chapter 01.");return;
             }
-            scroll=GUI.BeginScrollView(new Rect(665,365,1160,525),scroll,new Rect(0,0,1120,1050));
+            int rows=1+(State.acquaintances!=0?1:0)+(State.knife!=KnifeLocation.None?1:0)+(State.gangMember?1:0)+(State.phone?1:0)
+                +(State.gameDay>=2?1:0)+(State.fatherKidnapped?1:0)+(State.escapeAgreement?1:0);
+            scroll=GUI.BeginScrollView(new Rect(665,365,1160,525),scroll,new Rect(0,0,1120,Mathf.Max(525,rows*130)));
             int row=0;JournalRow(ref row,"DAY 01 / Arrival","First days inside Alcatraz. Cell assignment: B-04.");
             if(State.acquaintances!=0)JournalRow(ref row,"CONTACTS / The inmates","Contacts met: "+((State.acquaintances&1)!=0?"Tomas  ":"")+((State.acquaintances&2)!=0?"Samir  ":"")+((State.acquaintances&4)!=0?"Workshop contact":""));
             if(State.knife!=KnifeLocation.None)JournalRow(ref row,"QUEST / The confiscated knife",State.knife==KnifeLocation.CellStash?"The knife is hidden in your cell stash.":"You concealed the confiscated knife.");
@@ -276,7 +304,7 @@ namespace Blackstone.Foundation
         void RequestSave(int index)
         {if(!SafeCheckpoint){message="Leave the vehicle or activity and stand on safe ground before saving.";return;}if(Saved(index,out var detail))pendingSave=index;else Save(index,true);}
         void RequestLoad(int index)
-        {if(!SafeCheckpoint){message="Leave the current vehicle, activity or cinematic before loading.";return;}if(Saved(index,out var detail))pendingLoad=index;else message="This slot has no valid checkpoint.";}
+        {if(!CanLoadCheckpoint){message="Leave the current vehicle, activity or cinematic before loading.";return;}if(Saved(index,out var detail))pendingLoad=index;else message="This slot has no valid checkpoint.";}
         bool Save(int index,bool notify)
         {
             bool saved;
@@ -284,27 +312,29 @@ namespace Blackstone.Foundation
             else
             {
                 var state=Weapons!=null?Weapons.State:new WeaponState();
-                saved=ExplorationSave.Write(index,new ExplorationCheckpoint{scene=SceneManager.GetActiveScene().name,position=Player.transform.position,yaw=Player.transform.eulerAngles.y,interior=World!=null&&World.InsidePrison,annex=Annex!=null&&Annex.Visiting,equipped=state.Equipped,magazines=state.LoadedSnapshot(),ammunition=state.ReserveSnapshot()});
+                saved=ExplorationSave.Write(index,new ExplorationCheckpoint{scene=SceneManager.GetActiveScene().name,position=Player.transform.position,yaw=Player.transform.eulerAngles.y,health=PlayerHealth!=null?PlayerHealth.Health:100,interior=World!=null&&World.InsidePrison,annex=Annex!=null&&Annex.Visiting,equipped=state.Equipped,magazines=state.LoadedSnapshot(),ammunition=state.ReserveSnapshot()});
             }
             if(notify)message=saved?"Checkpoint saved to "+(index==0?"Autosave":"Slot "+index)+".":"Saving failed. Current progress remains in this session.";return saved;
         }
         public bool ResumeLatest()=>Load(0);
         bool Load(int index)
         {
-            if(!SafeCheckpoint){message="Loading unavailable during the current activity.";return false;}
+            if(!CanLoadCheckpoint){message="Loading unavailable during the current activity.";return false;}
             if(story!=null)
             {
                 if(!PrisonSave.TryLoad(out var checkpoint,index)){message="Checkpoint unavailable.";return false;}
                 story.StartSession(true,index);return true;
             }
             if(!ExplorationSave.TryLoad(index,out var saved)){message="Checkpoint unavailable.";return false;}
+            if((saved.interior||saved.annex)&&World==null||saved.annex&&Annex==null)
+            {message="This checkpoint requires a prison interior or annex unavailable in this scene.";return false;}
             Physics.SyncTransforms();
             if(!Physics.Raycast(saved.position+Vector3.up*.4f,Vector3.down,out var floor,1.2f,1,QueryTriggerInteraction.Ignore)||floor.normal.y<.55f)
             {message="This checkpoint currently has no safe floor.";return false;}
             foreach(var collider in Physics.OverlapCapsule(saved.position+Vector3.up*.32f,saved.position+Vector3.up*1.53f,.25f,1,QueryTriggerInteraction.Ignore))
                 if(!collider.transform.IsChildOf(Player.transform))
                 {message="The checkpoint position is currently blocked. Move the obstacle or choose another slot.";return false;}
-            if(saved.interior)World.EnterCellhouse();else World.VisitCellhouse();
+            if(World!=null){if(saved.interior)World.EnterCellhouse();else World.VisitCellhouse();}
             if(saved.annex&&Annex!=null)Annex.Visit();
             Player.Teleport(saved.position);Player.transform.rotation=Quaternion.Euler(0,saved.yaw,0);
             if(map!=null)map.SetSafePosition(saved.position);
@@ -314,6 +344,7 @@ namespace Blackstone.Foundation
                 // Equip validates the native held model before ammunition is restored.
                 Weapons.State.Restore(saved.magazines,saved.ammunition,Weapons.State.Equipped);
             }
+            if(PlayerHealth!=null)PlayerHealth.Restore(saved.health);
             if(exploration.CameraRig!=null)exploration.CameraRig.SnapToPlayer();
             Input.Capture(true);message=null;nextAutosave=Time.unscaledTime+30;return true;
         }
@@ -325,7 +356,7 @@ namespace Blackstone.Foundation
             PrisonMenuTheme.Text(new Rect(710,490,1050,110),saving?"The selected slot’s previous checkpoint will be replaced. A backup is retained.":"Current unsaved progress will be replaced by the selected checkpoint.");
             if(PrisonMenuTheme.Button(new Rect(710,655,480,70),saving?"Overwrite & save":"Load checkpoint"))
             {if(saving)Save(pendingSave,true);else Load(pendingLoad);pendingSave=pendingLoad=-1;}
-            if(PrisonMenuTheme.Button(new Rect(1230,655,480,70),"Cancel / stay"))pendingSave=pendingLoad=-1;
+            if(PrisonMenuTheme.Button(new Rect(1230,655,480,70),"Cancel / stay  [Backspace / B]"))pendingSave=pendingLoad=-1;
         }
         void Exit()
         {
