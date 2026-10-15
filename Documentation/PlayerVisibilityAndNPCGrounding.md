@@ -16,6 +16,10 @@ This revision strengthens character preparation and third-person camera ownershi
 
 Stop Play Mode, pull `main`, and let Unity finish compiling/importing. **Alcatraz → Open Island** selects the supplied island; **Alcatraz → Open Chapter 01** selects the chapter. Character preparation now runs automatically before Play. **Alcatraz → Prepare Characters** explicitly repairs imports when needed.
 
+The imported player is now measured again after the Animator binds and evaluates its initial pose. Its unanimated wrapper fits the body's height, horizontal center and feet to the movement controller. This runs once during setup; it does not resize crouching, jumping or swimming poses during gameplay. Invalid geometry fails setup before replacing the original visuals.
+
+The third-person view restores once when ordinary gameplay first becomes available. During gameplay, **V / right-stick click** repeats the restore: it reactivates the imported skinned body, restores its camera layers, clears stale activity/follow overrides and snaps the camera behind the prisoner. It preserves held equipment and does not interrupt vehicles, poker, cinematics, ragdolls or death. An on-screen message reports success or the remaining geometry/framing problem. This recovery does not establish the cause of the user's missing-player report.
+
 About one editor second after entering Play, loading a scene, resuming control, or teleporting, the project checks the actual imported player/camera and every standing NPC's floor. Unity logs **Alcatraz loaded-scene checks PASS/FAIL** and saves details to:
 
 `Library/AlcatrazVerification/LatestSceneChecks.json`
@@ -23,6 +27,8 @@ About one editor second after entering Play, loading a scene, resuming control, 
 The report distinguishes standing actors, intentionally excluded poses, dog support, camera distance and errors. Vehicle, activity, death and cinematic framing are handled separately from ordinary third-person framing.
 
 After entering normal gameplay, run **Alcatraz → Run All Gameplay Checks (Play Mode)**. This runs the movement/camera, NPC floor, combat, swimming, health/checkpoint and HUD fixtures, plus supplied-island travel where applicable. It records passed, failed and skipped suites. It refuses to report a test run while paused or during an activity/cinematic. These fixtures do not replace walking, running, jumping, crouching and fighting while visually observing the imported character.
+
+The combined runner also tests view recovery on the actual imported prisoner by hiding its body, removing camera layers and injecting stale camera overrides. It verifies that displaced or oversized geometry is rejected and that the startup fitting method corrects it. Held weapons cannot substitute for body geometry in these checks. The fixture restores the scene's presentation and movement settings afterward. **Alcatraz → Validate Loaded Player View Recovery (Play Mode)** runs that fixture separately.
 
 ## Verification scope
 

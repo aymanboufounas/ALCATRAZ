@@ -109,6 +109,12 @@ namespace Blackstone.Foundation
                     Panel(new Rect(viewport.Width/2-370,165,740,52),new Color(.18f,.055f,.025f,.95f));
                     GUI.Label(new Rect(viewport.Width/2-355,173,710,38),"RESTRICTED WATERS AHEAD — turn back toward the island",centered);
                 }
+                var cameraRig=foundation!=null?foundation.CameraRig:null;
+                if(cameraRig!=null&&!string.IsNullOrEmpty(cameraRig.ViewStatus)&&Time.unscaledTime<cameraRig.ViewStatusUntil)
+                {
+                    Panel(new Rect(viewport.Width/2-430,viewport.Height-328,860,96),new Color(.015f,.03f,.035f,.94f));
+                    GUI.Label(new Rect(viewport.Width/2-415,viewport.Height-323,830,86),cameraRig.ViewStatus,centered);
+                }
             }
             finally { GUI.matrix = old; GUI.depth = depth; GUI.color = color; }
         }

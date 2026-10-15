@@ -70,14 +70,6 @@ namespace Blackstone.Foundation
                 }
                 catch(System.Exception error) when(error is System.InvalidOperationException||error is UnityException)
                 {Destroy(model.gameObject);setupFailure=setupFailure??"Character setup failed: "+profile;Debug.LogError("Character setup failed: "+profile+". "+error.Message+" Existing visuals retained.");continue;}
-                // Replace the old visuals only after the new model has been measured and aligned.
-                foreach(var oldAnimator in actor.GetComponentsInChildren<Animator>(true))
-                    if(!oldAnimator.transform.IsChildOf(model))oldAnimator.enabled=false;
-                foreach(var behaviour in actor.GetComponentsInChildren<MonoBehaviour>(true))
-                    if(!behaviour.transform.IsChildOf(model)&&(behaviour is PrisonLocomotion||behaviour is Blackstone.Audio.PrisonFootsteps||behaviour is CharacterRig||behaviour is PlayerAnimator||behaviour is SurfaceFootsteps||behaviour.GetType().Name=="DistanceDetail"))behaviour.enabled=false;
-                foreach(var lod in actor.GetComponentsInChildren<LODGroup>(true))if(!lod.transform.IsChildOf(model))lod.enabled=false;
-                foreach(var renderer in actor.GetComponentsInChildren<Renderer>(true))
-                    if(!renderer.transform.IsChildOf(model)&&!StoryProp(renderer.transform,story))renderer.enabled=false;
                 if(identity!=null)
                 {
                     float height=Mathf.Clamp(identity.height,1.55f,2.05f)/1.78f;
@@ -97,10 +89,36 @@ namespace Blackstone.Foundation
                 var avatar=actor.gameObject.AddComponent<FoundationAvatar>();avatar.model=model;avatar.animator=animator;
                 avatar.movement=isPlayer?Player:null;
                 avatar.seated=actor.pose==ActorPose.Cards||actor.pose==ActorPose.Read||actor.pose==ActorPose.SeatedTalk;
-                avatar.Bind();
+                try
+                {
+                    avatar.Bind();
+                    if(identity!=null&&controller!=null){animator.Play(0,0,identity.idlePhase);animator.Update(0);}
+                    if(isPlayer)
+                    {
+                        if(!HasDrawableGeometry(model))throw new System.InvalidOperationException("The imported prisoner has no drawable body mesh.");
+                        // Measure after Rebind and the first animation evaluation.
+                        // Keep this correction on the unanimated wrapper so an
+                        // imported root transform cannot reset it on the next frame.
+                        CalibratePlayerBody(model,Player.transform,identity!=null?Mathf.Clamp(identity.height,1.55f,2.05f):1.78f);
+                    }
+                }
+                catch(System.Exception error) when(error is System.InvalidOperationException||error is UnityException)
+                {
+                    avatar.enabled=false;Destroy(avatar);Destroy(model.gameObject);
+                    setupFailure=setupFailure??"Character setup failed: "+profile;
+                    Debug.LogError("Character setup failed: "+profile+". "+error.Message+" Existing visuals retained.");continue;
+                }
+                // Retain the original body until the new animated geometry has
+                // passed its startup measurements and player calibration.
+                foreach(var oldAnimator in actor.GetComponentsInChildren<Animator>(true))
+                    if(!oldAnimator.transform.IsChildOf(model))oldAnimator.enabled=false;
+                foreach(var behaviour in actor.GetComponentsInChildren<MonoBehaviour>(true))
+                    if(!behaviour.transform.IsChildOf(model)&&(behaviour is PrisonLocomotion||behaviour is Blackstone.Audio.PrisonFootsteps||behaviour is CharacterRig||behaviour is PlayerAnimator||behaviour is SurfaceFootsteps||behaviour.GetType().Name=="DistanceDetail"))behaviour.enabled=false;
+                foreach(var lod in actor.GetComponentsInChildren<LODGroup>(true))if(!lod.transform.IsChildOf(model))lod.enabled=false;
+                foreach(var renderer in actor.GetComponentsInChildren<Renderer>(true))
+                    if(!renderer.transform.IsChildOf(model)&&!StoryProp(renderer.transform,story))renderer.enabled=false;
                 var fall=actor.GetComponent<FoundationFall>();if(fall==null)fall=actor.gameObject.AddComponent<FoundationFall>();fall.avatar=avatar;
                 if(isPlayer||(!guard&&!storyMode))actor.gameObject.AddComponent<FoundationBoxing>();
-                if(identity!=null&&controller!=null){animator.Play(0,0,identity.idlePhase);animator.Update(0);}
                 var feet=actor.gameObject.AddComponent<FoundationFootsteps>();feet.avatar=avatar;
                 var pose=actor.gameObject.AddComponent<FoundationActorPose>();pose.body=avatar;pose.actor=actor;
                 bool ambient=identity!=null&&identity.ambient;
@@ -173,18 +191,75 @@ namespace Blackstone.Foundation
             foreach(var behaviour in camera.GetComponents<Behaviour>())
                 if(behaviour.GetType().Name=="CinemachineBrain"&&behaviour.enabled)
                 {issue="Another camera driver is overriding the third-person camera.";return false;}
-            bool visible=false;
-            foreach(var renderer in avatar.model.GetComponentsInChildren<Renderer>(true))
+            if(!HasDrawableGeometry(avatar.model,camera))
+            {issue="The prisoner mesh cannot be rendered by the gameplay camera.";return false;}
+            try
             {
-                var skin=renderer as SkinnedMeshRenderer;
-                var mesh=renderer.GetComponent<MeshFilter>();
-                bool geometry=skin!=null?skin.sharedMesh!=null&&skin.sharedMesh.vertexCount>0
-                    :mesh!=null&&mesh.sharedMesh!=null&&mesh.sharedMesh.vertexCount>0;
-                if(geometry&&renderer.enabled&&!renderer.forceRenderingOff&&renderer.gameObject.activeInHierarchy
-                    &&camera!=null&&camera.enabled&&(camera.cullingMask&(1<<renderer.gameObject.layer))!=0)visible=true;
+                Bounds body=PlayerBodyBounds(avatar.model);
+                // These limits allow animated crouching and swimming. They catch
+                // a tiny/oversized import or a body left away from its controller.
+                if(body.size.y<.35f||body.size.y>2.75f||body.size.x>3.5f||body.size.z>3.5f)
+                {issue="The prisoner's animated body has an invalid size: "+body.size;return false;}
+                Vector3 offset=body.center-Player.transform.position;
+                if(new Vector2(offset.x,offset.z).magnitude>1.5f||Mathf.Abs(offset.y)>2.5f)
+                {issue="The prisoner body is displaced from its movement controller: "+offset;return false;}
             }
-            if(!visible){issue="The prisoner mesh cannot be rendered by the gameplay camera.";return false;}
+            catch(System.Exception error) when(error is System.InvalidOperationException||error is UnityException)
+            {issue="The prisoner body cannot be measured: "+error.Message;return false;}
             return true;
+        }
+        static bool HasDrawableGeometry(Transform model,Camera camera=null)
+        {
+            foreach(var skin in model.GetComponentsInChildren<SkinnedMeshRenderer>(true))
+            {
+                if(DrawableSkin(skin)
+                    &&(camera==null||camera.enabled&&(camera.cullingMask&(1<<skin.gameObject.layer))!=0))return true;
+            }
+            return false;
+        }
+        static bool DrawableSkin(SkinnedMeshRenderer skin)=>skin.sharedMesh!=null&&skin.sharedMesh.vertexCount>0
+            &&skin.enabled&&!skin.forceRenderingOff&&skin.gameObject.activeInHierarchy
+            &&skin.shadowCastingMode!=UnityEngine.Rendering.ShadowCastingMode.ShadowsOnly;
+        static bool Finite(Vector3 point)=>!float.IsNaN(point.x)&&!float.IsNaN(point.y)&&!float.IsNaN(point.z)
+            &&!float.IsInfinity(point.x)&&!float.IsInfinity(point.y)&&!float.IsInfinity(point.z);
+        public static Bounds PlayerBodyBounds(Transform model)
+        {
+            // The imported character is skinned. Held guns and other MeshRenderer
+            // props must not make a hidden body pass validation or change its fit.
+            Bounds bounds=new Bounds();bool found=false;
+            foreach(var skin in model.GetComponentsInChildren<SkinnedMeshRenderer>(true))
+            {
+                if(!DrawableSkin(skin))continue;
+                var baked=new Mesh();
+                try
+                {
+                    skin.BakeMesh(baked);
+                    foreach(var vertex in baked.vertices)
+                    {
+                        Vector3 point=skin.transform.TransformPoint(vertex);
+                        if(!Finite(point))throw new System.InvalidOperationException("The imported body contains a nonfinite vertex.");
+                        if(!found){bounds=new Bounds(point,Vector3.zero);found=true;}
+                        else bounds.Encapsulate(point);
+                    }
+                }
+                finally
+                {if(Application.isPlaying)Destroy(baked);else DestroyImmediate(baked);}
+            }
+            if(!found)throw new System.InvalidOperationException("The imported prisoner has no drawable skinned body geometry.");
+            if(!Finite(bounds.center)||!Finite(bounds.extents)||bounds.size.x<.0001f||bounds.size.y<.0001f||bounds.size.z<.0001f)
+                throw new System.InvalidOperationException("The imported model has no finite, usable body geometry.");
+            return bounds;
+        }
+        static void CalibratePlayerBody(Transform model,Transform controller,float expectedHeight)
+        {
+            Bounds bounds=PlayerBodyBounds(model);
+            model.localScale*=expectedHeight/bounds.size.y;
+            bounds=PlayerBodyBounds(model);
+            model.position+=controller.position-new Vector3(bounds.center.x,bounds.min.y,bounds.center.z);
+            bounds=PlayerBodyBounds(model);
+            Vector3 feet=new Vector3(bounds.center.x,bounds.min.y,bounds.center.z);
+            if(Mathf.Abs(bounds.size.y-expectedHeight)>.025f||Vector3.Distance(feet,controller.position)>.025f)
+                throw new System.InvalidOperationException("The animated prisoner could not be fitted to its movement controller.");
         }
         static bool StoryProp(Transform candidate,PrisonStoryDirector story)
         {
@@ -197,11 +272,11 @@ namespace Blackstone.Foundation
         static void Normalize(Transform model)
         {
             // Imported skinned culling boxes can be much larger than the actual body.
-            Bounds bounds=Blackstone.Supplied.SuppliedModel.Bounds(model.gameObject);
+            Bounds bounds=PlayerBodyBounds(model);
             if(bounds.size.y<.1f||float.IsNaN(bounds.size.y)||float.IsInfinity(bounds.size.y))
                 throw new System.InvalidOperationException("The imported model has no usable body geometry or has zero scale.");
             model.localScale*=1.78f/bounds.size.y;
-            bounds=Blackstone.Supplied.SuppliedModel.Bounds(model.gameObject);
+            bounds=PlayerBodyBounds(model);
             model.position+=Vector3.up*(model.parent.position.y-bounds.min.y);
         }
         static void GuardMaterial(Transform model,string profile,bool harrow)

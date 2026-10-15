@@ -179,7 +179,7 @@ namespace Blackstone.UI
             }
             if (!string.IsNullOrEmpty(director.Toast))
                 Label(new Rect(510,934,900,60), director.Toast, body, amber, TextAnchor.MiddleCenter);
-            Label(new Rect(500,1030,1360,30), "WASD / LEFT STICK  MOVE    SHIFT / L3  SPRINT    CTRL / B  CROUCH    E / X  INTERACT    P  PHONE    ESC / START  PAUSE", small,
+            Label(new Rect(390,1030,1470,30), "WASD MOVE    SHIFT / L3 SPRINT    CTRL / B CROUCH    E / X INTERACT    P PHONE    V / R3 RESTORE VIEW    ESC / START PAUSE", small,
                 new Color(1,1,1,.65f), TextAnchor.MiddleRight);
         }
         void Waypoint()

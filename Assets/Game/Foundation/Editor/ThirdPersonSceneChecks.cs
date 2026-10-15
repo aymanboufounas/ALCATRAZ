@@ -58,7 +58,7 @@ namespace Blackstone.Foundation.Editor
                 if(visible==0)errors.Add("No prisoner renderer is active in the gameplay view.");
                 try
                 {
-                    Bounds body=Blackstone.Supplied.SuppliedModel.Bounds(avatar.model.gameObject);
+                    Bounds body=FoundationBootstrap.PlayerBodyBounds(avatar.model);
                     if(body.size.y<.5f||float.IsNaN(body.size.y)||float.IsInfinity(body.size.y))
                         errors.Add("The imported prisoner has no usable body geometry.");
                     else if(!GeometryUtility.TestPlanesAABB(GeometryUtility.CalculateFrustumPlanes(camera),body)

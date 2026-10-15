@@ -176,7 +176,7 @@ namespace Blackstone.Foundation
             else
             {
                 PrisonMenuTheme.Hero(new Rect(x,180,w,90),"CONTROLS",68);
-                PrisonMenuTheme.Text(new Rect(x,320,w,470),"WASD / Left stick     Move or swim\nShift / L3     Run or swim faster      ·      Alt     Walk\nCtrl / B     Crouch      ·      Space / A     Jump or climb a low shore\nE / X     Interact & board vehicles\n1–5     Equipment      ·      Mouse wheel     Extra weapons\nRMB / LT     Aim or boxing guard\nLMB / RT     Fire or punch      ·      R / Y     Reload\nSpace / Ctrl     Helicopter rise / descend\nTab / LB     Inventory      ·      M / View     Map\nEsc / Start     Pause      ·      P / B     Leave poker\nRestricted water: wanted alert, then mission checkpoint restart.\nHealth starts at 100%. At 0%, restart from the latest checkpoint.");
+                PrisonMenuTheme.Text(new Rect(x,320,w,520),"WASD / Left stick     Move or swim\nShift / L3     Run or swim faster      ·      Alt     Walk\nCtrl / B     Crouch      ·      Space / A     Jump or climb a low shore\nE / X     Interact & board vehicles\n1–5     Equipment      ·      Mouse wheel     Extra weapons\nRMB / LT     Aim or boxing guard\nLMB / RT     Fire or punch      ·      R / Y     Reload\nSpace / Ctrl     Helicopter rise / descend\nTab / LB     Inventory      ·      M / View     Map\nV / Right-stick click     Restore third-person view\nEsc / Start     Pause      ·      P / B     Leave poker\nRestricted water: wanted alert, then mission checkpoint restart.\nHealth starts at 100%. At 0%, restart from the latest checkpoint.");
             }
             if(menuNotice!=null)GUI.Label(new Rect(x,930,w,55),menuNotice,text);
             PrisonMenuTheme.Text(new Rect(x,1000,w,28),"↑ ↓ / D-PAD: MENU   ·   ENTER / A: SELECT   ·   MOUSE: PAGE CONTROLS",true);
@@ -231,7 +231,7 @@ namespace Blackstone.Foundation
                 GUI.Label(new Rect(center-355,viewport.Height-129,710,25),conversations.Speaker,small);
                 GUI.Label(new Rect(center-355,viewport.Height-100,710,50),conversations.Subtitle,text);
             }
-            GUI.Label(new Rect(center-430,viewport.Height-28,860,25),"WASD Move   Shift Run   E Interact   RMB Aim   R Reload   Tab Inventory   M Map",small);
+            GUI.Label(new Rect(center-530,viewport.Height-28,1060,25),"WASD Move   Shift Run   E Interact   RMB Aim   R Reload   Tab Inventory   M Map   V / R3 Restore view",small);
         }
         void FullMap(FoundationViewport viewport)
         {

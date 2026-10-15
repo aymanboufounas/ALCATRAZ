@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 using DesertShift.Player;
 
 namespace Blackstone.Foundation
@@ -23,6 +24,9 @@ namespace Blackstone.Foundation
         public float CurrentDistance { get; private set; }
         public bool UsingObstructionOrbit { get; private set; }
         public bool UsingElevatedOrbit { get; private set; }
+        public string ViewStatus { get; private set; }
+        public float ViewStatusUntil { get; private set; }
+        bool automaticRestoreAttempted;
         Renderer[] characterRenderers;
         bool[] originalRenderingOff;
         Vector3 previousPlayer;
@@ -33,6 +37,97 @@ namespace Blackstone.Foundation
         static readonly float[] ElevatedPitches={35,55,70};
         const int ObstructionLayers = ~((1 << 8) | (1 << 2) | (1 << 10) | (1 << 11));
         void Start(){RefreshBindings();}
+        void Update()
+        {
+            // Wait for the title, cinematics and activities to release control.
+            // A failed first attempt is reported once; V / R3 can retry later.
+            bool requested=Keyboard.current!=null&&Keyboard.current.vKey.wasPressedThisFrame
+                ||Gamepad.current!=null&&Gamepad.current.rightStickButton.wasPressedThisFrame;
+            if(automaticRestoreAttempted&&!requested)return;
+            if(!CanRestorePlayerView(out _))return;
+            TryRestorePlayerView(out _);
+        }
+        bool CanRestorePlayerView(out string message)
+        {
+            message=null;
+            if(player==null||!player.gameObject.activeInHierarchy)
+            {message="The active prisoner is unavailable. Check the player diagnostic report.";return false;}
+            if(input==null)input=player.GetComponent<PlayerInputHandler>();
+            if(input==null||!input.CanControl)
+            {message="Resume normal gameplay before resetting the player view.";return false;}
+            var fall=player.GetComponent<FoundationFall>();
+            var vitals=player.GetComponent<FoundationPlayerVitals>();
+            var health=player.GetComponent<FoundationDamageable>();
+            if(player.ExternalControl||FoundationVehicle.Active!=null||Blackstone.Activities.PrisonPokerTable.Active!=null
+                ||fall!=null&&fall.Recovering||vitals!=null&&vitals.Failed||health!=null&&health.Dead
+                ||story!=null&&story.enabled&&(story.MainMenu||story.Busy||story.Letterbox||story.PhoneOpen))
+            {message="Leave the activity or cinematic before resetting the player view.";return false;}
+            return true;
+        }
+        bool ViewResult(bool success,string value,out string message)
+        {
+            ViewStatus=message=value;ViewStatusUntil=Time.unscaledTime+5;
+            return success;
+        }
+        public bool TryRestorePlayerView(out string message)
+        {
+            if(!CanRestorePlayerView(out string unavailable))return ViewResult(false,unavailable,out message);
+            automaticRestoreAttempted=true;
+            var avatar=player.GetComponent<FoundationAvatar>();
+            var camera=GetComponent<Camera>();
+            if(camera==null||!gameObject.activeInHierarchy||avatar==null||avatar.model==null
+                ||!avatar.model.IsChildOf(player.transform))
+                return ViewResult(false,"The imported prisoner or gameplay camera is unavailable. Check the player diagnostic report.",out message);
+            foreach(var other in FindObjectsByType<Camera>(FindObjectsSortMode.None))
+                if(other!=camera&&other.enabled&&other.CompareTag("MainCamera"))
+                    return ViewResult(false,"Another MainCamera is active. Check the player diagnostic report before resetting it.",out message);
+            var body=avatar.model.GetComponentsInChildren<SkinnedMeshRenderer>(true);
+            bool geometry=false;
+            foreach(var renderer in body)
+                if(renderer.sharedMesh!=null&&renderer.sharedMesh.vertexCount>0){geometry=true;break;}
+            if(!geometry)return ViewResult(false,"The prisoner has no imported body geometry. Prepare Characters before playing.",out message);
+            // Restore the body and its parents, never the disabled legacy model
+            // or held props that swimming and story activities hide deliberately.
+            foreach(var renderer in body)
+            {
+                if(renderer.sharedMesh==null||renderer.sharedMesh.vertexCount==0)continue;
+                for(var node=renderer.transform;node!=null&&node!=player.transform;node=node.parent)
+                    node.gameObject.SetActive(true);
+                renderer.enabled=true;renderer.forceRenderingOff=false;renderer.updateWhenOffscreen=true;
+                if(renderer.shadowCastingMode==UnityEngine.Rendering.ShadowCastingMode.ShadowsOnly)
+                    renderer.shadowCastingMode=UnityEngine.Rendering.ShadowCastingMode.On;
+                camera.cullingMask|=1<<renderer.gameObject.layer;
+            }
+            camera.tag="MainCamera";camera.enabled=true;camera.cullingMask|=1<<player.gameObject.layer;
+            foreach(var legacy in FindObjectsByType<DesertShift.Camera.ThirdPersonCameraController>(FindObjectsSortMode.None))
+                legacy.SetExternalDriver(true);
+            foreach(var behaviour in camera.GetComponents<Behaviour>())
+                if(behaviour.GetType().Name=="CinemachineBrain")behaviour.enabled=false;
+            // Only reach this point when no vehicle, poker, ragdoll or cinematic
+            // owns the view. These overrides can now be cleared as stale state.
+            ActivityCamera=false;FollowOverride=null;FollowDistance=3.15f;
+            characterVisual=avatar.model;characterRenderers=null;originalRenderingOff=null;
+            kick=avoidanceYaw=0;shoulder=1;wasCinematic=false;enabled=true;
+            Physics.SyncTransforms();RefreshBindings();
+            foreach(var foundation in FindObjectsByType<FoundationBootstrap>(FindObjectsSortMode.None))
+                if(foundation.Player==player&&foundation.CameraRig==this&&!foundation.ValidatePlayerPresentation(out string issue))
+                    return ViewResult(false,"Camera reset, but player presentation still needs repair: "+issue,out message);
+            try
+            {
+                Bounds bounds=FoundationBootstrap.PlayerBodyBounds(avatar.model);
+                if(!Finite(bounds.center)||!Finite(bounds.size)||bounds.size.y<.3f
+                    ||Vector3.Distance(bounds.center,player.transform.position+Vector3.up*.9f)>3)
+                    return ViewResult(false,"Camera reset, but the prisoner geometry is misplaced or collapsed. Check the player diagnostic report.",out message);
+                if(CurrentDistance<.7f||camera.WorldToViewportPoint(bounds.center).z<=camera.nearClipPlane
+                    ||!GeometryUtility.TestPlanesAABB(GeometryUtility.CalculateFrustumPlanes(camera),bounds))
+                    return ViewResult(false,"Camera reset, but the prisoner is still outside a clear third-person frame. Move into open space and press V / R3.",out message);
+            }
+            catch(System.Exception error) when(error is System.InvalidOperationException||error is UnityException)
+            {return ViewResult(false,"Camera reset, but the prisoner geometry could not be checked. Check the player diagnostic report.",out message);}
+            return ViewResult(true,"Third-person view reset. V / R3 resets the view again.",out message);
+        }
+        static bool Finite(Vector3 value)=>!float.IsNaN(value.x)&&!float.IsInfinity(value.x)
+            &&!float.IsNaN(value.y)&&!float.IsInfinity(value.y)&&!float.IsNaN(value.z)&&!float.IsInfinity(value.z);
         public void RefreshBindings()
         {
             Visibility(false);
