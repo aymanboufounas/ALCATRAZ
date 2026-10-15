@@ -15,6 +15,8 @@ If preparation is incomplete, choose **Alcatraz > Prepare Characters** and **Alc
 
 Equipment: **1** unarmed, **2** knife, **3** supplied 10mm pistol, **4** service rifle, **5** supplied revolver. RMB / LT aims, LMB / RT uses, R / Y reloads, and D-pad left cycles. Hold **Tab / LB** for inventory and **M / View** for the map. Use the three helipad practice targets to check hits. Pause stops reload/cooldown time.
 
+The [movement and animation quality pass](Documentation/MovementQuality.md) adds licensed running transitions, frame-independent animation events, stronger braking, wall response, stair support, gait phase alignment and calibrated foot contacts. It includes executable rule/source checks and additional Unity verification fixtures; live visual quality still requires Unity testing.
+
 ## Added in 0.12.1
 
 [Combat fixes](Documentation/CombatFixes.md) connect exploration shooting, knives

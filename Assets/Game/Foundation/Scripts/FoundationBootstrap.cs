@@ -100,6 +100,7 @@ namespace Blackstone.Foundation
                         // Keep this correction on the unanimated wrapper so an
                         // imported root transform cannot reset it on the next frame.
                         CalibratePlayerBody(model,Player.transform,identity!=null?Mathf.Clamp(identity.height,1.55f,2.05f):1.78f);
+                        avatar.CalibrateFootClearance();
                     }
                 }
                 catch(System.Exception error) when(error is System.InvalidOperationException||error is UnityException)

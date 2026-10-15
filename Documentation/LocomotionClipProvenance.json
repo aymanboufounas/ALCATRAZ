@@ -1,0 +1,31 @@
+{
+  "repository": "https://github.com/microsoft/Microsoft-Rocketbox",
+  "repository_commit": "0943055db6ec570bcef9f2c8b41c9e5467c808f9",
+  "license": "MIT",
+  "license_file": "Documentation/Licenses/Microsoft_Rocketbox_MIT.md",
+  "license_sha256": "17474e386e0b9e1a700cc3d06b2b0882a2c376d9c6b49c7f8274409b8f8d2352",
+  "files": [
+    {
+      "path": "Assets/Game/Foundation/Animations/Rocketbox/RunStart.fbx",
+      "source": "Assets/Animations/all_animations_max_motextr_xy/m_run_start.max.fbx",
+      "source_url": "https://raw.githubusercontent.com/microsoft/Microsoft-Rocketbox/0943055db6ec570bcef9f2c8b41c9e5467c808f9/Assets/Animations/all_animations_max_motextr_xy/m_run_start.max.fbx",
+      "sha256": "aba4486443fc3845f6d9b3d5b11d0fec9cfaeb39687b0e32d5b69493a130979d",
+      "git_blob_sha1": "cac897d67eb3375fc590e788e32bf31d5cedede6",
+      "bytes": 841824,
+      "upstream_html_blob_prefix": "cac897d",
+      "upstream_html_url": "https://github.com/microsoft/Microsoft-Rocketbox/blob/0943055db6ec570bcef9f2c8b41c9e5467c808f9/Assets/Animations/all_animations_max_motextr_xy/m_run_start.max.fbx"
+    },
+    {
+      "path": "Assets/Game/Foundation/Animations/Rocketbox/RunStop.fbx",
+      "source": "Assets/Animations/all_animations_max_motextr_xy/m_run_stop.max.fbx",
+      "source_url": "https://raw.githubusercontent.com/microsoft/Microsoft-Rocketbox/0943055db6ec570bcef9f2c8b41c9e5467c808f9/Assets/Animations/all_animations_max_motextr_xy/m_run_stop.max.fbx",
+      "sha256": "1eb03637281bd5c363ef2262321ca3322fc55387f33c09213528a67b6058202c",
+      "git_blob_sha1": "f0aa0ee5b787e4d9f6503a9dadce10d627dbf9b1",
+      "bytes": 1012752,
+      "upstream_html_blob_prefix": "f0aa0ee",
+      "upstream_html_url": "https://github.com/microsoft/Microsoft-Rocketbox/blob/0943055db6ec570bcef9f2c8b41c9e5467c808f9/Assets/Animations/all_animations_max_motextr_xy/m_run_stop.max.fbx"
+    }
+  ],
+  "identity_scope": "Downloaded from pinned HTTPS URLs. SHA256 and computed Git blob hashes are retained. GitHub source HTML independently exposed matching seven-character blob prefixes, not full upstream blob IDs.",
+  "usage": "Original Microsoft Rocketbox running start/stop clips; no Rockstar assets."
+}

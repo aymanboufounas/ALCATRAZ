@@ -1,0 +1,166 @@
+{
+  "checked_utc": "2026-10-15T21:52:59.607727+00:00",
+  "scope": "Public-source locomotion research; repository read only. No Rockstar implementation or proprietary animation assets were accessed or copied.",
+  "sources": [
+    {
+      "title": "Unity 6 / 6000.0 C# reference \u2014 BlendTree inspector",
+      "url": "https://raw.githubusercontent.com/Unity-Technologies/UnityCsReference/6000.0/Editor/Mono/Inspector/BlendTreeInspector.cs",
+      "fetched": true,
+      "sha256": "946b76a5c4743f9b2dadc7f403262826a284def85f664ea1bdaf0ca2678d185f",
+      "supported_points": [
+        {
+          "lines": "1525\u20131544, 1577\u20131608",
+          "point": "Unity exposes Compute Thresholds for 1D trees and Compute Positions / Velocity XZ for 2D trees. The speed threshold callback uses Motion.apparentSpeed; X/Z callbacks use Motion.averageSpeed components."
+        },
+        {
+          "lines": "1716\u20131735",
+          "point": "Homogeneous Speed adjusts child timeScale to blendTree.apparentSpeed / clip.apparentSpeed. A zero-speed clip produces a warning asking for root-joint translation curves."
+        }
+      ],
+      "limits": [
+        "This is official editor source, not a live Unity import or confirmation that the current project is free of foot sliding."
+      ],
+      "quoted_excerpts": [
+        {
+          "line": 1735,
+          "text": "timeScale.floatValue = apparentSpeed / clip.apparentSpeed;"
+        },
+        {
+          "line": 1590,
+          "text": "ComputeProperty((Motion m, float mirrorMultiplier) => m.apparentSpeed, prop, \"speed\");"
+        }
+      ]
+    },
+    {
+      "title": "Unity 6 / 6000.0 C# reference \u2014 Animator API",
+      "url": "https://raw.githubusercontent.com/Unity-Technologies/UnityCsReference/6000.0/Modules/Animation/ScriptBindings/Animator.bindings.cs",
+      "fetched": true,
+      "sha256": "c76b84ddb4ae48212f802ff4b80ecb8a45a7753bdb22c546817332ad64c15f22",
+      "supported_points": [
+        {
+          "lines": "337\u2013349",
+          "point": "Animator.SetFloat has overloads with dampTime and deltaTime."
+        },
+        {
+          "lines": "387\u2013395",
+          "point": "deltaPosition and deltaRotation expose the last evaluated avatar deltas; velocity and angularVelocity expose the last evaluated velocities."
+        },
+        {
+          "lines": "413\u2013418, 791\u2013871",
+          "point": "applyRootMotion controls root ownership; CrossFadeInFixedTime and normalized CrossFade are distinct APIs."
+        }
+      ],
+      "limits": [],
+      "quoted_excerpts": [
+        {
+          "line": 387,
+          "text": "// Gets the avatar delta position for the last evaluated frame"
+        },
+        {
+          "line": 344,
+          "text": "public void SetFloat(string name, float value, float dampTime, float deltaTime) { SetFloatStringDamp(name, value, dampTime, deltaTime); }"
+        }
+      ]
+    },
+    {
+      "title": "Unity 6 / 6000.0 C# reference \u2014 animation state transitions",
+      "url": "https://raw.githubusercontent.com/Unity-Technologies/UnityCsReference/6000.0/Editor/Mono/StateMachine.bindings.cs",
+      "fetched": true,
+      "sha256": "99d292d42c172b65d0d1eff623ba9cec7b0adc4130184511bfec22c63c708941",
+      "supported_points": [
+        {
+          "lines": "121\u2013146",
+          "point": "Transitions expose duration, interruptionSource, orderedInterruption, exitTime, hasExitTime, hasFixedDuration and canTransitionToSelf."
+        }
+      ],
+      "limits": [
+        "The source verifies API availability, not a universal recommended transition duration or any Rockstar-specific settings."
+      ],
+      "quoted_excerpts": [
+        {
+          "line": 145,
+          "text": "extern public bool                            hasFixedDuration { get; set; }"
+        }
+      ]
+    },
+    {
+      "title": "Unity 6 / 6000.0 C# reference \u2014 Motion API",
+      "url": "https://raw.githubusercontent.com/Unity-Technologies/UnityCsReference/6000.0/Modules/Animation/ScriptBindings/Motion.bindings.cs",
+      "fetched": true,
+      "sha256": "bf6e5610f802a4b239bbc5167a43f29958685e0c4ee8ac9b1fe11fd40e3f93f4",
+      "supported_points": [
+        {
+          "lines": "16\u201319",
+          "point": "Motion exposes averageDuration, averageAngularSpeed, averageSpeed and apparentSpeed."
+        }
+      ],
+      "limits": [],
+      "quoted_excerpts": [
+        {
+          "line": 18,
+          "text": "extern public Vector3 averageSpeed { get; }"
+        }
+      ]
+    },
+    {
+      "title": "Unity Standard Assets Characters \u2014 ThirdPersonMotor example",
+      "url": "https://raw.githubusercontent.com/Unity-Technologies/Standard-Assets-Characters/master/Assets/_Standard%20Assets/Characters/Scripts/ThirdPerson/ThirdPersonMotor.cs",
+      "fetched": true,
+      "sha256": "ba266609baa597175eb8e96ce9975310f5e3617e78440ce5c36885e463fb4e75",
+      "supported_points": [
+        {
+          "lines": "456\u2013480",
+          "point": "The example chooses between scaled Animator.deltaPosition and input-driven speed/direction movement. The input path interpolates ground speed."
+        },
+        {
+          "lines": "708\u2013758",
+          "point": "Rapid turning is a distinct movement state using heading/input-angle checks."
+        },
+        {
+          "lines": "768\u2013773",
+          "point": "Jump initiation is gated during turning-around and landing animation states."
+        }
+      ],
+      "limits": [
+        "The fetched README explicitly targets Unity 2019.3 beta. Use as a historical conceptual example only; do not transplant it into this Unity 6 project."
+      ],
+      "quoted_excerpts": [
+        {
+          "line": 461,
+          "text": "return m_Animator.deltaPosition * m_CurrentGroundMovementConfig.rootMotionScale;"
+        },
+        {
+          "line": 478,
+          "text": "m_GroundSpeed = Mathf.Lerp(m_GroundSpeed, maxSpeed, m_CurrentGroundMovementConfig.speedDelta);"
+        }
+      ],
+      "context_url": "https://raw.githubusercontent.com/Unity-Technologies/Standard-Assets-Characters/master/README.md",
+      "context_excerpt": "This package is intended for use in 2019.3.0f1"
+    }
+  ],
+  "rockstar_evidence": "No Rockstar / GDC first-party talk could be fetched or verified in this environment. Do not present an invented talk title, link, or claim that RDR2 uses a particular locomotion algorithm. Rockstar-inspired refers to the requested feel, not matching or copying its implementation.",
+  "unavailable_sources": "The Unity Manual/Learn and GDC sites returned an HTTPS proxy 403; their content was not reviewed.",
+  "project_specific_inferences_and_recommendations": [
+    {
+      "point": "Keep the CharacterController as movement authority for this project, and use measured travel speed to drive animation cadence. Preserve jump, swim, combat, pause, seating and failure guards.",
+      "basis": "Existing Assets/_DesertShift/Scripts/Player/PlayerMovement.cs owns movement; Animator.applyRootMotion is false. This is an implementation choice for this repository."
+    },
+    {
+      "point": "Use source-measured GaitSpeeds.json, not post-import Motion.apparentSpeed, for these anchored Rocketbox clips.",
+      "basis": "RocketboxImporter.OnPostprocessAnimation replaces horizontal root curves with constants. Unity BlendTreeInspector warns that speed-based adjustment fails for clips without root translation."
+    },
+    {
+      "point": "Limit cadence compensation to locomotion states with an animation state speed parameter; avoid changing global Animator.speed because that would alter attacks, seating and story clips.",
+      "basis": "Project-specific design inference based on its shared animator and existing Direction speed parameter; not an official Rockstar statement."
+    },
+    {
+      "point": "Smooth acceleration and turning, separate walk/run/stop thresholds to prevent rapid state toggling, and soften starts/stops without delaying blocked-input cancellation.",
+      "basis": "Project-specific recommendation; Unity source provides damping/transition controls and the older example separates rapid turns."
+    },
+    {
+      "point": "Validate at different frame rates and ground speeds, including sudden release, 180-degree turns, slopes, crouch, jump/landing, aiming, swimming and activity transitions.",
+      "basis": "Proposed validation scope; source/API evidence is not proof of live animation quality."
+    }
+  ],
+  "licensing": "UnityCsReference is reference-only source. Research records API facts and concepts; no Unity reference implementation or Rockstar assets are copied into the repository."
+}

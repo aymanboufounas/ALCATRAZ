@@ -1,0 +1,325 @@
+{
+  "status": "PASS_OFFLINE_UNITY_UNVERIFIED",
+  "checked_at_utc": "2026-10-15T22:09:00.185625+00:00",
+  "base_commit": "a0f3bef34733febe3c54cd669fc18d92176c0435",
+  "executed_csharp_rules": {
+    "status": "PASS",
+    "scope": "Executed C# world-independent gameplay rules; not Unity API compilation or Play Mode.",
+    "suites": [
+      {
+        "suite": "HoldemTests",
+        "status": "PASS",
+        "assertions": 160041,
+        "output": "PASS: 160041 executable poker / weapon checks"
+      },
+      {
+        "suite": "VehicleControlTests",
+        "status": "PASS",
+        "assertions": 32,
+        "output": "PASS: 32 helicopter input assertions"
+      },
+      {
+        "suite": "CombatTests",
+        "status": "PASS",
+        "assertions": 33,
+        "output": "PASS: 33 combat health/weapon/stamina assertions"
+      },
+      {
+        "suite": "MenuCheckpointTests",
+        "status": "PASS",
+        "assertions": 34,
+        "output": "PASS: 34 menu checkpoint assertions"
+      },
+      {
+        "suite": "CameraFramingTests",
+        "status": "PASS",
+        "assertions": 34,
+        "output": "PASS: 34 third-person framing assertions"
+      },
+      {
+        "suite": "PlayerFailureTests",
+        "status": "PASS",
+        "assertions": 27,
+        "output": "PASS: 27 player health/failure/restart assertions"
+      },
+      {
+        "suite": "SwimmingTests",
+        "status": "PASS",
+        "assertions": 54,
+        "output": "PASS: 54 swimming assertions"
+      },
+      {
+        "suite": "MovementResponseTests",
+        "status": "PASS",
+        "assertions": 2304,
+        "output": "PASS: 2304 movement response assertions across 30/60/120/240 Hz"
+      },
+      {
+        "suite": "LocomotionAnimationTests",
+        "status": "PASS",
+        "assertions": 226,
+        "output": "PASS: 226 locomotion animation assertions"
+      },
+      {
+        "suite": "FootContactTests",
+        "status": "PASS",
+        "assertions": 257,
+        "output": "PASS: 257 foot-contact, cadence and landing assertions"
+      }
+    ],
+    "assertions": 163042
+  },
+  "new_executable_assertions": 2787,
+  "verified_features": {
+    "braking_reversals_wall_projection": "MovementResponseTests: 2304 assertions, including 30/60/120/240 Hz trajectories.",
+    "start_stop_turn_events_and_queued_signals": "LocomotionAnimationTests: 226 assertions across ten frame rates and intent/direction/activity changes.",
+    "foot_contact_cadence_landing_and_volume": "FootContactTests: 257 assertions with multiple cadences, frame rates and ankle clearances.",
+    "new_licensed_clips_and_gait_phases": {
+      "status": "PASS",
+      "checks": 123,
+      "sampled_weighted_poses": 90,
+      "source_transition_pairs": [
+        {
+          "character": "Male_Adult_07",
+          "clip": "RunStart",
+          "seconds": 0.6333333333333333,
+          "weighted_bones": 80,
+          "min_height_m": 1.6045876378103143,
+          "max_height_m": 1.7734719627039535,
+          "max_horizontal_center_m": 0.07460092210638829
+        },
+        {
+          "character": "Male_Adult_07",
+          "clip": "RunStop",
+          "seconds": 1.2666666666666666,
+          "weighted_bones": 80,
+          "min_height_m": 1.6467653101150082,
+          "max_height_m": 1.7734722842409456,
+          "max_horizontal_center_m": 0.20246012013515674
+        },
+        {
+          "character": "Male_Adult_12",
+          "clip": "RunStart",
+          "seconds": 0.6333333333333333,
+          "weighted_bones": 80,
+          "min_height_m": 1.6073192862082533,
+          "max_height_m": 1.7742387838173888,
+          "max_horizontal_center_m": 0.07513421245375741
+        },
+        {
+          "character": "Male_Adult_12",
+          "clip": "RunStop",
+          "seconds": 1.2666666666666666,
+          "weighted_bones": 80,
+          "min_height_m": 1.6469363570985291,
+          "max_height_m": 1.774239123623832,
+          "max_horizontal_center_m": 0.2007333256218195
+        },
+        {
+          "character": "Male_Adult_16",
+          "clip": "RunStart",
+          "seconds": 0.6333333333333333,
+          "weighted_bones": 80,
+          "min_height_m": 1.6072438412058603,
+          "max_height_m": 1.7744401309078603,
+          "max_horizontal_center_m": 0.07515388899228481
+        },
+        {
+          "character": "Male_Adult_16",
+          "clip": "RunStop",
+          "seconds": 1.2666666666666666,
+          "weighted_bones": 80,
+          "min_height_m": 1.6471941946797357,
+          "max_height_m": 1.7744408050399478,
+          "max_horizontal_center_m": 0.20879362626156503
+        },
+        {
+          "character": "Male_Adult_17",
+          "clip": "RunStart",
+          "seconds": 0.6333333333333333,
+          "weighted_bones": 80,
+          "min_height_m": 1.6062658145053612,
+          "max_height_m": 1.7738352772505255,
+          "max_horizontal_center_m": 0.07491375602702874
+        },
+        {
+          "character": "Male_Adult_17",
+          "clip": "RunStop",
+          "seconds": 1.2666666666666666,
+          "weighted_bones": 80,
+          "min_height_m": 1.6467919359300902,
+          "max_height_m": 1.7738355411268787,
+          "max_horizontal_center_m": 0.2019459371789703
+        },
+        {
+          "character": "Male_Adult_20",
+          "clip": "RunStart",
+          "seconds": 0.6333333333333333,
+          "weighted_bones": 80,
+          "min_height_m": 1.6100332027677462,
+          "max_height_m": 1.7752930804699043,
+          "max_horizontal_center_m": 0.07519773486971408
+        },
+        {
+          "character": "Male_Adult_20",
+          "clip": "RunStop",
+          "seconds": 1.2666666666666666,
+          "weighted_bones": 80,
+          "min_height_m": 1.6480842605924915,
+          "max_height_m": 1.7752932780851867,
+          "max_horizontal_center_m": 0.20675600127298369
+        }
+      ],
+      "measured_phase_alignment": [
+        {
+          "reference": "Walk",
+          "slow_walk_cycle_offset": 0.5,
+          "correlation_before": -0.6289806969933722,
+          "correlation_after": 0.8236375700854554
+        },
+        {
+          "reference": "WalkFast",
+          "slow_walk_cycle_offset": 0.5,
+          "correlation_before": -0.6048276778169661,
+          "correlation_after": 0.6731723802565116
+        },
+        {
+          "reference": "Run",
+          "slow_walk_cycle_offset": 0.5,
+          "correlation_before": -0.7866295661736147,
+          "correlation_after": 0.812725252457202
+        },
+        {
+          "reference": "RunFast",
+          "slow_walk_cycle_offset": 0.5,
+          "correlation_before": -0.7584309784424892,
+          "correlation_after": 0.8016771916530843
+        }
+      ],
+      "scope": "Pinned source hashes/license, FBX weighted bone paths, 90 sampled weighted body poses and source foot-lift phase correlation. Unity import, animation graph evaluation, physics, rendering and visual quality remain unverified."
+    }
+  },
+  "source_checks": {
+    "grammar": {
+      "status": "PASS",
+      "files": 96,
+      "errors": [],
+      "scope": "C# syntax grammar only; Unity API/type resolution and shader compilation are unverified"
+    },
+    "startup": {
+      "status": "PASS",
+      "checks": 19382,
+      "scope": "Serialized startup bindings only; Unity import, compilation and Play Mode remain unverified."
+    },
+    "character-forward": {
+      "status": "PASS",
+      "checks": 650,
+      "scope": "FBX source anatomy, forward gait, and orientation math under both reflection conventions; Unity playback unverified"
+    },
+    "map": {
+      "status": "PASS",
+      "checks": 273,
+      "counts": {
+        "landmarks": 17,
+        "cells": 512,
+        "B_C_cells": 336,
+        "actors": 30,
+        "static_routes": 53,
+        "static_boxes_checked": 3024,
+        "unchanged_protected_files": 99
+      },
+      "errors": [],
+      "scope": "Native YAML bindings, file hashes, route dimensions, discrete stationary obstacle samples and native mesh/box floor support only. Operable mission doors are assumed open on exit routes; stair treads and dynamic actor colliders are excluded from obstacle samples. Swept physics, NPC avoidance, Unity import, Play Mode and a player build are unverified."
+    },
+    "supplied-assets": {
+      "status": "PASS",
+      "checks": 18449,
+      "errors": [],
+      "scope": "Native source references, glTF dependencies, byte hashes and static triangle floor samples; Unity import, physics and Play Mode unverified"
+    },
+    "prison": {
+      "status": "PASS",
+      "checks": 59,
+      "errors": [],
+      "scope": "Native prefab bindings, retained geometry, native mesh/box floor support and discrete static box clearance; Unity import and swept physics unverified"
+    },
+    "warehouse": {
+      "status": "PASS",
+      "checks": 30,
+      "errors": [],
+      "scope": "Archive hashes, native meshes, UV alignment, fitted sizes, barrel separation, five-point floor support and conservative stationary clearance. Unity compilation, live contacts and swept collision remain unverified."
+    },
+    "extras": {
+      "status": "PASS",
+      "packs": 29,
+      "matched_archives": 0,
+      "errors": [],
+      "scope": "Native prefab/material/texture references, catalog provenance, placement/equipment registration and supplied ZIP hashes/CRC. Unity import and gameplay are unverified."
+    },
+    "police-helicopter": {
+      "status": "PASS",
+      "checks": 17,
+      "errors": [],
+      "scope": "Native source triangle counts, police texture/renderer references and URP glass settings. Equipment fitting is reviewed in offline previews; Unity rendering and flight physics are unverified."
+    }
+  },
+  "native_integrity": {
+    "offline_integrity": "PASS",
+    "counts": {
+      "native_files": 2606,
+      "yaml_documents": 88300,
+      "asset_guids": 3681,
+      "mesh_vertices": 7802887,
+      "mesh_triangles": 3755038,
+      "weighted_meshes": 271,
+      "csharp_files": 96,
+      "animation_clips": 14
+    },
+    "errors": [],
+    "warnings": [],
+    "not_performed": [
+      "Unity editor import",
+      "C# compilation against Unity assemblies",
+      "Unity Play Mode",
+      "Humanoid Avatar validation inside Unity",
+      "Live movement and interaction tests",
+      "URP shader compilation",
+      "Windows player build",
+      "1080p FPS measurement",
+      "Lightmap / occlusion bake"
+    ]
+  },
+  "new_unity_tests_unexecuted": {
+    "menu": "Alcatraz / Validate Movement Response and Stairs (Play Mode)",
+    "assertions": 26,
+    "coverage": [
+      "Actual controller wall contacts and immediate departure",
+      "Tangential momentum and successful ascending steps",
+      "Bounded 28cm descent versus 65cm drop",
+      "Actual prepared jump stays airborne",
+      "Whole-frame motion and correction-free surface speed",
+      "Walkable slope projection and real 30-degree ramp",
+      "External control, swimming and teleport reset"
+    ],
+    "combined_runner": "Also included in Run All Gameplay Checks (Play Mode).",
+    "generated_animator_preflight": "Unity preparation validates parameter types, actual clips, thresholds, phase offsets, transition entries/exits and interruptions. Not executed here."
+  },
+  "not_performed": [
+    "Unity 6000.0.62f1 import and compilation against Unity assemblies",
+    "Unity physics fixtures and actual Animator graph evaluation",
+    "Visual foot sliding, body visibility, upper-body twisting and weapon grip review",
+    "Live audio synchronization and complete gameplay playthrough",
+    "Player build, performance measurement and commercial-game quality comparison"
+  ],
+  "research": {
+    "sources": "Documentation/MovementResearch.json",
+    "licensed_clip_provenance": "Documentation/LocomotionClipProvenance.json",
+    "rockstar": "Design inspiration requested by the user; no verified proprietary pipeline or assets."
+  },
+  "notes": [
+    "Offline checks do not establish live animation or commercial-game visual quality.",
+    "The new clips are original MIT Rocketbox sources. Strafe, crouch-walk, jump and swim still use existing/procedural approximations.",
+    "The scratch extras validator matched no original ZIP attachments in this run; native dependencies/provenance were checked.",
+    "Generated historical validation files were kept outside the working repository."
+  ]
+}

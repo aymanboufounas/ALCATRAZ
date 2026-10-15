@@ -16,7 +16,15 @@ namespace Blackstone.Foundation
         public Transform head, chest, pelvis, rightArm, rightForearm, rightHand,
             leftArm, leftForearm, leftHand, leftThigh, leftShin, leftFoot, rightThigh, rightShin, rightFoot;
         public float MotionSpeed { get; private set; }
-        float previousSpeed, previousYaw;
+        public float LeftAnkleClearance { get; private set; }=.105f;
+        public float RightAnkleClearance { get; private set; }=.105f;
+        readonly LocomotionAnimationRules locomotion=new LocomotionAnimationRules();
+        static readonly string[] MovementTriggers={"Start","Stop","RunStart","RunStop","TurnLeft","TurnRight"};
+        static readonly LocomotionSignal[] MovementSignals={LocomotionSignal.Start,LocomotionSignal.Stop,LocomotionSignal.RunStart,
+            LocomotionSignal.RunStop,LocomotionSignal.TurnLeft,LocomotionSignal.TurnRight};
+        float previousYaw,playbackDirection=1,clearanceScale=1;
+        int previousTeleportVersion;
+        bool aimPose;
         Quaternion modelRotation;
         Vector3 previousPosition;
 
@@ -56,52 +64,90 @@ namespace Blackstone.Foundation
             rightThigh = Bone("Bip01 R Thigh"); rightShin = Bone("Bip01 R Calf"); rightFoot = Bone("Bip01 R Foot");
             animator.applyRootMotion = false; animator.cullingMode = AnimatorCullingMode.AlwaysAnimate;
             if(animator.runtimeAnimatorController!=null){animator.Rebind();animator.Update(0);}
+            previousTeleportVersion=movement!=null?movement.TeleportVersion:0;
+            locomotion.Reset();playbackDirection=1;
+            CalibrateFootClearance();
+        }
+        public void CalibrateFootClearance()
+        {
+            if(model==null||leftFoot==null||rightFoot==null)return;
+            float floor=FoundationBootstrap.PlayerBodyBounds(model).min.y;
+            LeftAnkleClearance=Mathf.Clamp(leftFoot.position.y-floor,.045f,.18f);
+            RightAnkleClearance=Mathf.Clamp(rightFoot.position.y-floor,.045f,.18f);
+            clearanceScale=Mathf.Max(.0001f,Mathf.Abs(model.lossyScale.y));
+        }
+        public float FootClearance(bool left)
+        {
+            float scale=model!=null?Mathf.Abs(model.lossyScale.y)/clearanceScale:1;
+            return (left?LeftAnkleClearance:RightAnkleClearance)*scale;
         }
         Transform Bone(string name)
         { foreach (var t in model.GetComponentsInChildren<Transform>(true)) if (t.name == name) return t; return null; }
         void Update()
         {
-            if (Time.deltaTime <= 0 || animator == null || !animator.enabled || animator.runtimeAnimatorController==null) return;
+            if (animator == null || !animator.enabled || animator.runtimeAnimatorController==null) return;
+            if(Time.deltaTime<=0){ResetMovementSignals();return;}
+            Vector3 displacement=transform.position-previousPosition;
+            bool teleported=displacement.sqrMagnitude>1.5f*1.5f
+                ||movement!=null&&movement.TeleportVersion!=previousTeleportVersion;
+            previousPosition=transform.position;
+            if(movement!=null)previousTeleportVersion=movement.TeleportVersion;
             if (storyActor != null)
             {
                 var pose = storyActor.pose;
                 if (movement == null || !movement.ExternalControl)
                     seated = pose == Blackstone.Actors.ActorPose.Cards || pose == Blackstone.Actors.ActorPose.Read || pose == Blackstone.Actors.ActorPose.SeatedTalk;
-                Vector3 displacement = transform.position - previousPosition; displacement.y = 0;
-                agentSpeed = displacement.magnitude < 1.5f ? displacement.magnitude / Time.deltaTime : 0;
-                previousPosition = transform.position;
+                displacement.y=0;
+                agentSpeed=teleported?0:displacement.magnitude/Time.deltaTime;
             }
             bool swimming=movement!=null&&movement.IsSwimming;
-            MotionSpeed = movement != null ? movement.Speed : agentSpeed;
+            MotionSpeed = movement != null ? movement.Grounded?movement.SurfaceSpeed:movement.Speed : agentSpeed;
             float scale = Mathf.Max(.05f, model.lossyScale.z);
-            animator.SetFloat("Speed", swimming?0:MotionSpeed / scale, .12f, Time.deltaTime);
+            if(teleported)animator.SetFloat("Speed",0);
+            else animator.SetFloat("Speed",swimming?0:MotionSpeed/scale,.12f,Time.deltaTime);
             bool crouch = movement != null && movement.IsCrouching;
             bool air = movement != null && !movement.ExternalControl && !swimming && !seated && !movement.Grounded;
             animator.SetBool("Seated", seated);
             animator.SetBool("Crouch", crouch && MotionSpeed < .15f);
             animator.SetBool("Air", air);
-            if (seated || crouch || air || swimming || movement != null && movement.ExternalControl)
-            {
-                animator.ResetTrigger("Start");animator.ResetTrigger("Stop");
-                animator.ResetTrigger("TurnLeft");animator.ResetTrigger("TurnRight");
-            }
+            bool moveRequested=movement!=null?movement.WantsMove:MotionSpeed>LocomotionAnimationRules.StoppedThreshold;
+            animator.SetBool("MoveRequested",moveRequested&&MotionSpeed/scale>LocomotionAnimationRules.StoppedThreshold);
             bool strafing = movement != null && movement.IsAiming;
-            float direction = strafing && movement.LocalMotion.y < -.12f ? -1 : 1;
-            animator.SetFloat("Direction", direction);
-            if (!seated && !crouch && !air && !swimming)
+            playbackDirection=strafing?LocomotionAnimationRules.PlaybackDirection(movement.LocalMotion.x,movement.LocalMotion.y,playbackDirection):1;
+            animator.SetFloat("Direction",playbackDirection);
+            bool active=!seated&&!crouch&&!air&&!swimming&&!teleported&&(movement==null||!movement.ExternalControl);
+            // A trigger can wait while another state is playing. Revalidate it
+            // even on frames that emit no new event (walls, reversal, new input).
+            for(int i=0;i<MovementSignals.Length;i++)
+                if(!LocomotionAnimationRules.AllowsPending(MovementSignals[i],MotionSpeed/scale,moveRequested,playbackDirection<0,active))
+                    animator.ResetTrigger(MovementTriggers[i]);
+            float turn=teleported?0:Mathf.DeltaAngle(previousYaw,transform.eulerAngles.y);
+            if(!active)ResetMovementSignals();
+            else
             {
-                if (previousSpeed < .15f && MotionSpeed > .2f && direction > 0) animator.SetTrigger("Start");
-                if (previousSpeed > .5f && MotionSpeed < .1f) animator.SetTrigger("Stop");
+                var signal=locomotion.Step(MotionSpeed/scale,turn,Time.deltaTime,true,playbackDirection<0,
+                    movement!=null&&movement.WantsSprint,moveRequested);
+                signal=LocomotionAnimationRules.PendingSignal(signal,MotionSpeed/scale,moveRequested,playbackDirection<0,true);
+                // A long source turn must not queue another stationary turn to
+                // play later after the player has already stopped rotating.
+                bool turnSignal=signal==LocomotionSignal.TurnLeft||signal==LocomotionSignal.TurnRight;
+                if(turnSignal&&(!animator.GetCurrentAnimatorStateInfo(0).IsName("Locomotion")||animator.IsInTransition(0)))
+                    signal=LocomotionSignal.None;
+                if(signal!=LocomotionSignal.None)
+                {ClearMovementTriggers();animator.SetTrigger(signal.ToString());}
             }
-            float turn = Mathf.DeltaAngle(previousYaw, transform.eulerAngles.y);
-            if (!seated && !crouch && !air && !swimming && MotionSpeed < .1f && Mathf.Abs(turn) > 12)
-                animator.SetTrigger(turn < 0 ? "TurnLeft" : "TurnRight");
-            previousYaw = transform.eulerAngles.y; previousSpeed = MotionSpeed;
+            previousYaw=transform.eulerAngles.y;
             float yaw = 0;
-            if (strafing && movement.LocalMotion.sqrMagnitude > .05f)
-                yaw = Mathf.Clamp(Mathf.Atan2(movement.LocalMotion.x, Mathf.Abs(movement.LocalMotion.y)) * Mathf.Rad2Deg, -65, 65);
+            aimPose=active&&strafing;
+            if(aimPose)yaw=LocomotionAnimationRules.AimYaw(movement.LocalMotion.x,movement.LocalMotion.y,playbackDirection);
             model.localRotation = Quaternion.Slerp(model.localRotation, modelRotation * Quaternion.Euler(0, yaw, 0), 1 - Mathf.Exp(-9 * Time.deltaTime));
         }
+        void ClearMovementTriggers()
+        {
+            foreach(string name in MovementTriggers)animator.ResetTrigger(name);
+        }
+        void ResetMovementSignals()
+        {locomotion.Reset();ClearMovementTriggers();aimPose=false;previousYaw=transform.eulerAngles.y;}
         void LateUpdate()
         {
             if (Time.deltaTime <= 0 || animator == null || !animator.enabled || animator.runtimeAnimatorController==null || seated) return;
@@ -117,7 +163,17 @@ namespace Blackstone.Foundation
                 if (chest != null) chest.rotation = Quaternion.AngleAxis(10, transform.right) * chest.rotation;
             }
             if (movement == null || movement.Grounded)
-            { GroundFoot(leftThigh, leftShin, leftFoot); GroundFoot(rightThigh, rightShin, rightFoot); }
+            { GroundFoot(leftThigh,leftShin,leftFoot,FootClearance(true));GroundFoot(rightThigh,rightShin,rightFoot,FootClearance(false)); }
+            if(aimPose)
+            {
+                // Existing clips are forward/backward gaits. Face the legs along
+                // their travel while keeping the torso and head toward the aim.
+                // Weapon hand IK runs after this correction and retains its grip.
+                float yaw=Mathf.DeltaAngle(0,(Quaternion.Inverse(modelRotation)*model.localRotation).eulerAngles.y);
+                float torso=Mathf.Clamp(-yaw,-70,70);
+                if(chest!=null)chest.rotation=Quaternion.AngleAxis(torso,transform.up)*chest.rotation;
+                if(head!=null)head.rotation=Quaternion.AngleAxis(-yaw-torso,transform.up)*head.rotation;
+            }
             if (equipment != null) equipment.PoseHands(this);
         }
         void SwimPose()
@@ -141,16 +197,16 @@ namespace Blackstone.Foundation
                 {Solve(rightArm,rightForearm,rightHand,hand,transform.right,.9f);Solve(rightThigh,rightShin,rightFoot,foot,transform.forward,.85f);}
             }
         }
-        void GroundFoot(Transform upper, Transform middle, Transform foot)
+        void GroundFoot(Transform upper, Transform middle, Transform foot,float clearance)
         {
             if (foot == null) return;
             if (Physics.Raycast(foot.position + Vector3.up * .3f, Vector3.down, out var hit, .62f, 1, QueryTriggerInteraction.Ignore))
             {
                 float height = foot.position.y - hit.point.y;
                 // Lift a penetrating ankle; never pull an animated swing foot down.
-                if (height < .055f && height > -.15f)
+                if (hit.normal.y>.55f&&height<clearance-.003f&&height>clearance-.22f)
                 {
-                    var target = foot.position; target.y = hit.point.y + .055f;
+                    var target = foot.position; target.y = hit.point.y + clearance;
                     Solve(upper, middle, foot, target, transform.forward, .8f);
                 }
             }

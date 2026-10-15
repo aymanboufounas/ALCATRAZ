@@ -17,7 +17,7 @@ jobs:
           cache: pip
           cache-dependency-path: Tools/requirements.txt
       - run: pip install -r Tools/requirements.txt
-      - name: Execute poker and weapon rule tests
+      - name: Execute gameplay rule tests
         run: |
           sudo apt-get update -qq
           sudo apt-get install -y -qq mono-mcs
@@ -35,10 +35,18 @@ jobs:
           mono /tmp/PlayerFailureTests.exe
           mcs -out:/tmp/SwimmingTests.exe Assets/Game/Foundation/Scripts/SwimmingRules.cs Tools/Tests/SwimmingTests.cs
           mono /tmp/SwimmingTests.exe
+          mcs -out:/tmp/MovementResponseTests.exe Assets/Game/Foundation/Scripts/MovementResponseRules.cs Tools/Tests/MovementResponseTests.cs
+          mono /tmp/MovementResponseTests.exe
+          mcs -out:/tmp/LocomotionAnimationTests.exe Assets/Game/Foundation/Scripts/LocomotionAnimationRules.cs Tools/Tests/LocomotionAnimationTests.cs
+          mono /tmp/LocomotionAnimationTests.exe
+          mcs -out:/tmp/FootContactTests.exe Assets/Game/Foundation/Scripts/FootContactRules.cs Tools/Tests/FootContactTests.cs
+          mono /tmp/FootContactTests.exe
       - name: Check C# grammar
         run: python Tools/check_csharp_syntax.py
       - name: Check character forward axis and source gait
         run: python Tools/validate_character_forward.py
+      - name: Check running transitions, character rigs and gait phase alignment
+        run: python Tools/validate_locomotion_quality.py
       - name: Check scene bindings and supported routes
         run: python Tools/validate_alcatraz.py
       - name: Check enabled-scene player, camera and audio startup bindings

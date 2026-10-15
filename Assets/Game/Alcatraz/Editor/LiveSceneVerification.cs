@@ -121,6 +121,7 @@ namespace Blackstone.Alcatraz.Editor
             Action<string,Action> run=(name,action)=>
             {try{action();passed.Add(name);}catch(Exception error){failed.Add(name+": "+error.Message);Debug.LogException(error);}};
             run("Movement and third-person camera",GameplayRegressionChecks.Run);
+            run("Movement braking, walls, stairs and slopes",MovementQualityChecks.Run);
             run("Imported player view recovery",PlayerViewRecoveryChecks.Run);
             run("NPC floors and patrols",NPCGroundingChecks.Run);
             run("Shooting, knife and punches",CombatGameplayChecks.Run);
