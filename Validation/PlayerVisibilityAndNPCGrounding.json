@@ -1,0 +1,177 @@
+{
+  "status": "PASS_OFFLINE_UNITY_UNVERIFIED",
+  "checked_at_utc": "2026-10-15T21:26:01.712560+00:00",
+  "base_commit": "21e17a5ad4d978a62352a86722be8ee02d4e5b31",
+  "executable_csharp_suites": {
+    "CameraFramingTests": 34,
+    "CombatTests": 33,
+    "PlayerFailureTests": 27,
+    "SwimmingTests": 54,
+    "VehicleControlTests": 32,
+    "MenuCheckpointTests": 34,
+    "HoldemTests": 160041
+  },
+  "executable_assertions": 160255,
+  "checks": {
+    "validate_alcatraz": {
+      "status": "PASS",
+      "checks": 272,
+      "counts": {
+        "landmarks": 17,
+        "cells": 512,
+        "B_C_cells": 336,
+        "actors": 30,
+        "static_routes": 53,
+        "static_boxes_checked": 3024,
+        "unchanged_protected_files": 99
+      },
+      "scope": "Native YAML bindings, file hashes, route dimensions, discrete stationary obstacle samples and native mesh/box floor support only. Operable mission doors are assumed open on exit routes; stair treads and dynamic actor colliders are excluded from obstacle samples. Swept physics, NPC avoidance, Unity import, Play Mode and a player build are unverified."
+    },
+    "validate_character_forward": {
+      "status": "PASS",
+      "checks": 650,
+      "scope": "FBX source anatomy, forward gait, and orientation math under both reflection conventions; Unity playback unverified"
+    },
+    "validate_supplied_assets": {
+      "status": "PASS",
+      "checks": 18449,
+      "scope": "Native source references, glTF dependencies, byte hashes and static triangle floor samples; Unity import, physics and Play Mode unverified"
+    },
+    "validate_supplied_prison": {
+      "status": "PASS",
+      "checks": 59,
+      "scope": "Native prefab bindings, retained geometry, native mesh/box floor support and discrete static box clearance; Unity import and swept physics unverified"
+    },
+    "validate_warehouse": {
+      "status": "PASS",
+      "checks": 30,
+      "scope": "Archive hashes, native meshes, UV alignment, fitted sizes, barrel separation, five-point floor support and conservative stationary clearance. Unity compilation, live contacts and swept collision remain unverified."
+    },
+    "validate_extra_assets": {
+      "status": "PASS",
+      "packs": 29,
+      "matched_archives": 7,
+      "scope": "Native prefab/material/texture references, catalog provenance, placement/equipment registration and supplied ZIP hashes/CRC. Unity import and gameplay are unverified."
+    },
+    "validate_police_helicopter": {
+      "status": "PASS",
+      "checks": 17,
+      "scope": "Native source triangle counts, police texture/renderer references and URP glass settings. Equipment fitting is reviewed in offline previews; Unity rendering and flight physics are unverified."
+    },
+    "startup": {
+      "status": "PASS",
+      "checks": 19382,
+      "scenes": [
+        {
+          "scene": "Assets/Game/Scenes/SC_AlcatrazSuppliedIsland.unity",
+          "checks": 46,
+          "errors": []
+        },
+        {
+          "scene": "Assets/Game/Scenes/SC_AlcatrazIsland.unity",
+          "checks": 9670,
+          "errors": []
+        },
+        {
+          "scene": "Assets/Game/Scenes/SC_AlcatrazChapter01.unity",
+          "checks": 9666,
+          "errors": []
+        }
+      ],
+      "scope": "Serialized startup bindings only; Unity import, compilation and Play Mode remain unverified."
+    },
+    "native_integrity": {
+      "offline_integrity": "PASS",
+      "counts": {
+        "native_files": 2606,
+        "yaml_documents": 88300,
+        "asset_guids": 3674,
+        "mesh_vertices": 7802887,
+        "mesh_triangles": 3755038,
+        "weighted_meshes": 271,
+        "csharp_files": 91,
+        "animation_clips": 14
+      },
+      "errors": [],
+      "warnings": [],
+      "official_package_bindings_not_loaded_by_unity": [
+        "URP/Lit shader",
+        "UniversalRenderPipelineAsset script",
+        "UniversalRendererData script"
+      ],
+      "not_performed": [
+        "Unity editor import",
+        "C# compilation against Unity assemblies",
+        "Unity Play Mode",
+        "Humanoid Avatar validation inside Unity",
+        "Live movement and interaction tests",
+        "URP shader compilation",
+        "Windows player build",
+        "1080p FPS measurement",
+        "Lightmap / occlusion bake"
+      ],
+      "visual_qa": "Separate Mesa geometry previews; not Unity render captures"
+    },
+    "csharp_grammar": {
+      "status": "PASS",
+      "files": 91,
+      "errors": [],
+      "scope": "C# syntax grammar only; Unity API/type resolution and shader compilation are unverified"
+    }
+  },
+  "negative_startup_regressions": [
+    {
+      "case": "old supplied scene missing native audio listener",
+      "correctly_rejected": true,
+      "detected_errors": [
+        "41000063: MonoBehaviour has no native script binding",
+        "MainCamera must own the scene's single enabled native AudioListener (class ID 81)"
+      ]
+    },
+    {
+      "case": "zero player transform scale",
+      "correctly_rejected": true,
+      "detected_errors": [
+        "player and ancestor transforms must be active with nonzero scale"
+      ]
+    },
+    {
+      "case": "camera excludes every render layer",
+      "correctly_rejected": true,
+      "detected_errors": [
+        "gameplay camera must include the player layer"
+      ]
+    }
+  ],
+  "corrected_actor_stations": {
+    "Samir": [
+      -36,
+      27.3,
+      29.8
+    ],
+    "Theo Vale": [
+      22.75,
+      30.03,
+      -38
+    ]
+  },
+  "new_or_extended_unity_fixtures_unexecuted": {
+    "movement_and_camera": 35,
+    "npc_floor_and_patrols": 24,
+    "loaded_scene_audit": "Actual imported player/frustum/camera ownership and all standing NPCs, after Play/Continue/travel",
+    "run_all_gameplay_checks": "Manual combined runner; no suites executed in Unity here"
+  },
+  "not_performed": [
+    "Unity 6000.0.62f1 import and API compilation",
+    "Unity Play Mode and new physics fixtures",
+    "Reproduction of the reported eyes-only view in the user project",
+    "Live imported character animations, NPC feet rendering and menus",
+    "Player build"
+  ],
+  "notes": [
+    "Offline checks cannot establish a fully working game.",
+    "Generated animation controllers must be prepared and validated inside Unity.",
+    "Loaded-scene runtime reports are produced by Unity in Library/AlcatrazVerification/LatestSceneChecks.json.",
+    "Patrols and bounded static grounding exclude player movement and intentional seated/scripted/dead/ragdoll states."
+  ]
+}

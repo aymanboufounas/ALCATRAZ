@@ -19,12 +19,19 @@ namespace Blackstone.Foundation
         // Disabling a behaviour does not suppress Awake on an active GameObject.
         void Start()
         {
+            Status="Preparing characters…";
             var supplied=GetComponent<Blackstone.Supplied.SuppliedIslandWorld>();
             if(supplied!=null&&!supplied.Ready){Status=supplied.Status??"Prepare the supplied Alcatraz assets before Play.";return;}
             Player=FindFirstObjectByType<PlayerMovement>();Input=FindFirstObjectByType<PlayerInputHandler>();
             var controller=Resources.Load<RuntimeAnimatorController>("BlackstoneFoundation/Locomotion");
-            if(Player==null||Input==null||controller==null)
-            {Status="Finish Unity import, then choose Blackstone > Prepare Character Foundation.";Debug.LogError(Status);return;}
+            if(Player==null||Input==null)
+            {Status="The scene needs an active prisoner and player input.";Debug.LogError(Status);return;}
+            // A missing generated controller must not leave a moving invisible player
+            // and an unowned camera. Keep the imported body and third-person preview
+            // visible, and refuse gameplay until the animation setup is repaired.
+            string setupFailure=controller==null
+                ?"Character animation is unavailable. In Unity choose Alcatraz > Prepare Characters, then restart Play."
+                :null;
             var story=FindFirstObjectByType<PrisonStoryDirector>();
             var roster=FindFirstObjectByType<Blackstone.Alcatraz.AlcatrazMap>()!=null
                 ?Blackstone.Alcatraz.AlcatrazCharacterRoster.Load():null;
@@ -42,7 +49,7 @@ namespace Blackstone.Foundation
                 var identity=roster!=null?roster.Find(name):null;
                 if(identity!=null&&!string.IsNullOrEmpty(identity.model))profile=identity.model;
                 var prefab=Resources.Load<GameObject>("BlackstoneFoundation/Characters/"+profile+"/"+profile);
-                if(prefab==null){Status="Missing character: "+profile;Debug.LogError(Status+". Keeping the existing visible character.");continue;}
+                if(prefab==null){setupFailure=setupFailure??"Missing character: "+profile;Debug.LogError("Missing character: "+profile+". Keeping the existing visible character.");continue;}
                 // Keep the orientation correction outside the animated FBX root.
                 // FBX axis conversion can leave the visible character facing -Z.
                 Transform model=new GameObject("Imported "+actor.displayName).transform;
@@ -62,7 +69,7 @@ namespace Blackstone.Foundation
                     FoundationAvatar.AlignForward(model,actor.transform.forward);
                 }
                 catch(System.Exception error) when(error is System.InvalidOperationException||error is UnityException)
-                {Destroy(model.gameObject);Status="Character setup failed: "+profile;Debug.LogError(Status+". "+error.Message+" Existing visuals retained.");continue;}
+                {Destroy(model.gameObject);setupFailure=setupFailure??"Character setup failed: "+profile;Debug.LogError("Character setup failed: "+profile+". "+error.Message+" Existing visuals retained.");continue;}
                 // Replace the old visuals only after the new model has been measured and aligned.
                 foreach(var oldAnimator in actor.GetComponentsInChildren<Animator>(true))
                     if(!oldAnimator.transform.IsChildOf(model))oldAnimator.enabled=false;
@@ -86,14 +93,14 @@ namespace Blackstone.Foundation
                 if(guard)GuardMaterial(model,profile,name=="Officer Harrow");
                 if(isPlayer)PrisonerMaterial(model,profile);
                 var animator=rig.GetComponent<Animator>();if(animator==null)animator=rig.gameObject.AddComponent<Animator>();
-                animator.enabled=true;animator.runtimeAnimatorController=controller;
+                animator.runtimeAnimatorController=controller;animator.enabled=controller!=null;
                 var avatar=actor.gameObject.AddComponent<FoundationAvatar>();avatar.model=model;avatar.animator=animator;
                 avatar.movement=isPlayer?Player:null;
                 avatar.seated=actor.pose==ActorPose.Cards||actor.pose==ActorPose.Read||actor.pose==ActorPose.SeatedTalk;
                 avatar.Bind();
                 var fall=actor.GetComponent<FoundationFall>();if(fall==null)fall=actor.gameObject.AddComponent<FoundationFall>();fall.avatar=avatar;
                 if(isPlayer||(!guard&&!storyMode))actor.gameObject.AddComponent<FoundationBoxing>();
-                if(identity!=null){animator.Play(0,0,identity.idlePhase);animator.Update(0);}
+                if(identity!=null&&controller!=null){animator.Play(0,0,identity.idlePhase);animator.Update(0);}
                 var feet=actor.gameObject.AddComponent<FoundationFootsteps>();feet.avatar=avatar;
                 var pose=actor.gameObject.AddComponent<FoundationActorPose>();pose.body=avatar;pose.actor=actor;
                 bool ambient=identity!=null&&identity.ambient;
@@ -115,7 +122,7 @@ namespace Blackstone.Foundation
                 if(isPlayer||!storyMode)actor.gameObject.AddComponent<FoundationDamageable>();
                 if(isPlayer)hero=avatar;
             }
-            if(hero==null){Status="The prisoner avatar could not be created.";return;}
+            if(hero==null)setupFailure=setupFailure??"The prisoner avatar could not be created. Prepare Characters before playing.";
             var camera=Camera.main;
             if(camera==null&&story!=null)camera=story.mainCamera;
             if(camera==null)
@@ -123,16 +130,17 @@ namespace Blackstone.Foundation
                     if(candidate.enabled&&!candidate.orthographic){camera=candidate;break;}
             if(camera==null){Status="No active gameplay camera. Keeping the existing camera driver.";Debug.LogError(Status);return;}
             camera.tag="MainCamera";camera.enabled=true;camera.cullingMask|=1<<Player.gameObject.layer;
-            foreach(var renderer in hero.model.GetComponentsInChildren<Renderer>(true))camera.cullingMask|=1<<renderer.gameObject.layer;
+            Transform playerVisual=hero!=null?hero.model:Player.transform;
+            foreach(var renderer in playerVisual.GetComponentsInChildren<Renderer>(true))camera.cullingMask|=1<<renderer.gameObject.layer;
             foreach(var c in FindObjectsByType<DesertShift.Camera.ThirdPersonCameraController>(FindObjectsSortMode.None))c.SetExternalDriver(true);
             if(camera!=null)
             {
                 foreach(var b in camera.GetComponents<Behaviour>())if(b.GetType().Name=="CinemachineBrain")b.enabled=false;
                 CameraRig=camera.GetComponent<FoundationCamera>();if(CameraRig==null)CameraRig=camera.gameObject.AddComponent<FoundationCamera>();CameraRig.enabled=true;CameraRig.player=Player;CameraRig.input=Input;
-                CameraRig.characterVisual=hero.model;
+                CameraRig.characterVisual=playerVisual;
                 CameraRig.story=storyMode?story:null;CameraRig.RefreshBindings();
             }
-            if(!storyMode)
+            if(!storyMode&&hero!=null)
             {
                 if(story!=null)
                 {if(story.cellDoor!=null)story.cellDoor.gameObject.SetActive(false);if(story.solitaryDoor!=null)story.solitaryDoor.gameObject.SetActive(false);}
@@ -143,7 +151,40 @@ namespace Blackstone.Foundation
             Player.gameObject.AddComponent<FoundationSwimming>();
             var vitals=Player.gameObject.AddComponent<FoundationPlayerVitals>();
             vitals.Configure(this,storyMode?story:null);
-            Status="Ready";
+            if(setupFailure==null&&!ValidatePlayerPresentation(out var issue))setupFailure=issue;
+            Status=setupFailure??"Ready";
+            if(setupFailure!=null)
+            {
+                Input.SetGameplayBlocked(true);Input.PauseEnabled=false;
+                Debug.LogError("Alcatraz cannot start gameplay: "+Status);
+            }
+        }
+        public bool ValidatePlayerPresentation(out string issue)
+        {
+            issue=null;
+            var avatar=Player!=null?Player.GetComponent<FoundationAvatar>():null;
+            if(avatar==null||avatar.model==null||!avatar.model.gameObject.activeInHierarchy)
+            {issue="The prisoner has no active character model. Prepare Characters before playing.";return false;}
+            if(CameraRig==null||!CameraRig.isActiveAndEnabled||CameraRig.player!=Player)
+            {issue="The third-person camera is not following the prisoner.";return false;}
+            var camera=CameraRig.GetComponent<Camera>();
+            if(camera==null||!camera.enabled||Camera.main!=camera)
+            {issue="The active main camera is not the prisoner's third-person camera.";return false;}
+            foreach(var behaviour in camera.GetComponents<Behaviour>())
+                if(behaviour.GetType().Name=="CinemachineBrain"&&behaviour.enabled)
+                {issue="Another camera driver is overriding the third-person camera.";return false;}
+            bool visible=false;
+            foreach(var renderer in avatar.model.GetComponentsInChildren<Renderer>(true))
+            {
+                var skin=renderer as SkinnedMeshRenderer;
+                var mesh=renderer.GetComponent<MeshFilter>();
+                bool geometry=skin!=null?skin.sharedMesh!=null&&skin.sharedMesh.vertexCount>0
+                    :mesh!=null&&mesh.sharedMesh!=null&&mesh.sharedMesh.vertexCount>0;
+                if(geometry&&renderer.enabled&&!renderer.forceRenderingOff&&renderer.gameObject.activeInHierarchy
+                    &&camera!=null&&camera.enabled&&(camera.cullingMask&(1<<renderer.gameObject.layer))!=0)visible=true;
+            }
+            if(!visible){issue="The prisoner mesh cannot be rendered by the gameplay camera.";return false;}
+            return true;
         }
         static bool StoryProp(Transform candidate,PrisonStoryDirector story)
         {

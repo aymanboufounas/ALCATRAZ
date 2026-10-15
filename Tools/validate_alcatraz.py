@@ -217,8 +217,22 @@ floor_results={name:support_check(points) for name,points in routes.items()}
 for name,(gaps,buried,total) in floor_results.items():
     check(gaps==0 and buried==0,f'Native floor support: {name} / {total} samples, {gaps} unsupported, {buried} inside terrain')
 
+# Patrol routes alone miss stationary story characters. Check every actor's
+# actual scene transform, including seated actors' underlying floor. Chairs
+# intentionally intersect seated poses, so only standing poses need clearance.
+station_results={}
+for actor in actors:
+    name=actor['displayName'];position=world(transform_for[actor['m_GameObject']['fileID']])[:3,3].tolist()
+    gaps,buried,total=support_check([position,position])
+    fixed_pose=actor.get('pose',0) in (4,8,9,10)
+    blocked=[] if fixed_pose else route_hits([position,position])
+    check(gaps==0 and buried==0,f'All actor station floors: {name} / {gaps} unsupported, {buried} inside terrain')
+    if not fixed_pose:check(not blocked,'Standing actor capsule clearance: '+name+(' / '+', '.join(blocked) if blocked else ''))
+    station_results[name]={'position':position,'fixed_pose':fixed_pose,'unsupported':gaps,'buried':buried,'obstructions':blocked}
+
 baseline=json.loads((ROOT/'Validation/Revision04_PreservedFiles.json').read_text())
 adapted={'Assets/Game/Scripts/Missions/PrisonStoryDirector.cs','Assets/Game/Scripts/Save/PrisonSave.cs',
+         'Assets/Game/Scripts/AI/PrisonActor.cs',
          'Assets/Game/Scripts/UI/PrisonHUD.cs','Assets/Game/Scripts/Audio/PrisonAudio.cs',
          'Assets/_DesertShift/Scripts/Player/PlayerMovement.cs',
          'Assets/_DesertShift/Scripts/Camera/ThirdPersonCameraController.cs'}
@@ -233,7 +247,7 @@ save=(ROOT/'Assets/Game/Scripts/Save/PrisonSave.cs').read_text()
 check('AlcatrazMap.CheckpointFile' in save and 'p.y > 68' in save and 'p.x > 135' in save,'Separate Alcatraz checkpoint identity and expanded elevation bounds')
 check((ROOT/'Assets/Game/Alcatraz/Resources/Alcatraz/IslandMap.png').is_file(),'Runtime island map image is packaged')
 report={'status':'PASS' if not errors else 'FAIL','checks':len(passed)+len(errors),'errors':errors,
-        'passed_checks':passed,'counts':{'landmarks':len(landmarks),'cells':len(cells),'B_C_cells':len(bc),'actors':len(actors),
+        'passed_checks':passed,'actor_stations':station_results,'counts':{'landmarks':len(landmarks),'cells':len(cells),'B_C_cells':len(bc),'actors':len(actors),
         'static_routes':len(routes),'static_boxes_checked':len(boxes),'unchanged_protected_files':len(baseline)-len(changed)},
         'scope':'Native YAML bindings, file hashes, route dimensions, discrete stationary obstacle samples and native mesh/box floor support only. Operable mission doors are assumed open on exit routes; stair treads and dynamic actor colliders are excluded from obstacle samples. Swept physics, NPC avoidance, Unity import, Play Mode and a player build are unverified.'}
 (ROOT/'Validation/Revision08_AlcatrazChecks.json').write_text(json.dumps(report,indent=2)+'\n')

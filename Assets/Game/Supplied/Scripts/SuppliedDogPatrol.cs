@@ -40,9 +40,9 @@ namespace Blackstone.Supplied
             Vector3 direction=delta.normalized;
             if(Physics.SphereCast(transform.position+Vector3.up*.55f,.16f,direction,out _,.55f,1,QueryTriggerInteraction.Ignore))
             {index=(index+1)%route.Length;wait=Time.time+1;Play(idle);return;}
-            Vector3 next=transform.position+direction*Mathf.Min(delta.magnitude,.8f*Time.deltaTime);
-            if(Physics.Raycast(next+Vector3.up*2,Vector3.down,out var floor,4,1,QueryTriggerInteraction.Ignore)&&floor.normal.y>.68f)
-            {next.y=floor.point.y;transform.position=next;transform.rotation=Quaternion.Slerp(transform.rotation,Quaternion.LookRotation(direction),Time.deltaTime*4);Play(walk);}
+            Vector3 next=transform.position+direction*Mathf.Min(delta.magnitude,.8f*Mathf.Min(Time.deltaTime,.1f));
+            if(Blackstone.Actors.ActorGrounding.TrySupport(transform,next,.3f,.3f,false,out var supported))
+            {transform.position=supported;transform.rotation=Quaternion.Slerp(transform.rotation,Quaternion.LookRotation(direction),Time.deltaTime*4);Play(walk);}
             else{index=(index+1)%route.Length;wait=Time.time+1;Play(idle);}
         }
     }

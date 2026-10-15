@@ -62,6 +62,15 @@ namespace Blackstone.Story
             || (State.stage >= StoryStage.Recognition && State.stage < StoryStage.RivalChallenge)
             || State.stage >= StoryStage.EscapeMeeting);
         public bool CanContinue => PrisonSave.TryLoad(out var checkpoint);
+        public string StartupProblem
+        {
+            get
+            {
+                var foundation=FindFirstObjectByType<Blackstone.Foundation.FoundationBootstrap>();
+                if(foundation==null)return null;
+                return foundation.Status=="Ready"?null:foundation.Status??"Preparing the prisoner and third-person camera…";
+            }
+        }
         DialogueBook dialogueBook;
         float bannerUntil, toastUntil, nextSave, nextRivalStrike, nextPlayerStrike, nextPhoneRing;
         Vector3 visualPosition;
@@ -89,6 +98,8 @@ namespace Blackstone.Story
         }
         public void StartSession(bool resume, int slot=0)
         {
+            string startupProblem=StartupProblem;
+            if(startupProblem!=null){Notice(startupProblem);Debug.LogError("The chapter cannot start: "+startupProblem);return;}
             PrisonCheckpoint saved=null;
             bool loaded=resume&&PrisonSave.TryLoad(out saved,slot);
             if(resume&&!loaded){Notice("No valid checkpoint is available in this slot.");return;}

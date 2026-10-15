@@ -265,12 +265,14 @@ namespace Blackstone.UI
             if(settings){SettingsPanel();return;}
             string[] entries={"01   Continue checkpoint","02   New game","03   Settings","04   Quit"};
             for(int i=0;i<entries.Length;i++)
-                if(Blackstone.Foundation.PrisonMenuTheme.Navigation(i,entries[i],i!=0||director.CanContinue,titleSelection==i))
+                if(Blackstone.Foundation.PrisonMenuTheme.Navigation(i,entries[i],(i>1||director.StartupProblem==null)&&(i!=0||director.CanContinue),titleSelection==i))
                 {titleSelection=i;ActivateTitle();}
             Blackstone.Foundation.PrisonMenuTheme.Text(new Rect(750,235,950,32),"ELIAS VALE  /  INMATE B-04",true);
             Blackstone.Foundation.PrisonMenuTheme.Hero(new Rect(750,310,1050,100),"The prison has a rhythm.",68);
             Blackstone.Foundation.PrisonMenuTheme.Text(new Rect(750,440,850,180),"Learn it. Build alliances. Find the gaps. Your first days inside Alcatraz are the beginning of your escape.");
             Blackstone.Foundation.PrisonMenuTheme.Text(new Rect(750,745,930,80),"↑ ↓ / D-PAD: SELECT   ·   ENTER / A: CONFIRM\nE / X: CONTINUE   ·   R / Y: NEW GAME",true);
+            if(director.StartupProblem!=null)
+                Blackstone.Foundation.PrisonMenuTheme.Text(new Rect(750,865,1050,115),director.StartupProblem);
         }
         void Pause()
         {

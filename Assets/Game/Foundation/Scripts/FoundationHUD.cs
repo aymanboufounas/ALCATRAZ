@@ -50,6 +50,21 @@ namespace Blackstone.Foundation
             menuNotice=null;
             title=false;foundation.Input.SetGameplayBlocked(false);foundation.Input.Capture(true);
         }
+        void ReturnToTitle()
+        {
+            // Recreate the session so a hidden vehicle passenger, poker camera,
+            // ragdoll or external-control flag cannot survive into Continue.
+            var scene=SceneManager.GetActiveScene();
+            Time.timeScale=1;
+#if UNITY_EDITOR
+            if(!Application.CanStreamedLevelBeLoaded(scene.name)&&!string.IsNullOrEmpty(scene.path))
+            {
+                UnityEditor.SceneManagement.EditorSceneManager.LoadSceneInPlayMode(scene.path,new LoadSceneParameters(LoadSceneMode.Single));
+                return;
+            }
+#endif
+            SceneManager.LoadScene(scene.name);
+        }
         void Update()
         {
             if(foundation==null||foundation.Input==null)return;
@@ -82,7 +97,7 @@ namespace Blackstone.Foundation
             else if(index==3)menuPage=2;
             else if(index==4)menuPage=3;
             else if(title)Application.Quit();
-            else{title=true;menuPage=menuSelection=0;foundation.Input.SetGameplayBlocked(true);}
+            else ReturnToTitle();
         }
         void Styles()
         {
@@ -109,7 +124,7 @@ namespace Blackstone.Foundation
                     GUI.matrix=PrisonMenuTheme.MenuMatrix;
                     if(title)Menu();
                     else if(pauseMenu!=null&&pauseMenu.Draw())
-                    {title=true;menuPage=menuSelection=0;foundation.Input.SetGameplayBlocked(true);}
+                    ReturnToTitle();
                     return;
                 }
                 bool mapHeld=Keyboard.current!=null&&Keyboard.current.mKey.isPressed

@@ -30,6 +30,8 @@ namespace Blackstone.Actors
         void Awake()
         {
             home = transform.position; homeRotation = transform.rotation;
+            if(GetComponentInParent<DesertShift.Player.PlayerMovement>()==null&&GetComponent<ActorGrounding>()==null)
+                gameObject.AddComponent<ActorGrounding>();
             locomotion = GetComponentInChildren<PrisonLocomotion>();
             var player = FindFirstObjectByType<DesertShift.Player.PlayerMovement>(); if(player!=null)prisoner=player.transform;
             waitUntil = Time.time + Mathf.Repeat(home.x*.67f+home.z*.18f,3);
@@ -38,6 +40,7 @@ namespace Blackstone.Actors
         {
             transform.SetPositionAndRotation(home, homeRotation); pose = ActorPose.Idle;
             patrolIndex = 0; poseUntil = 0; Talking = false; Suspended = false;
+            var ground=GetComponent<ActorGrounding>();if(ground!=null)ground.GroundNow();
         }
         void Update()
         {
@@ -59,9 +62,10 @@ namespace Blackstone.Actors
                         .23f, dir, out _, .38f, 1, QueryTriggerInteraction.Ignore);
                     if(prisoner!=null&&Vector3.Distance(transform.position,prisoner.position)<.85f
                         &&Vector3.Dot(dir,(prisoner.position-transform.position).normalized)>.2f)blocked=true;
-                    if (!blocked)
+                    Vector3 wanted=transform.position+dir*Mathf.Min(d.magnitude,walkingSpeed*Mathf.Min(Time.deltaTime,.1f));
+                    if (!blocked&&ActorGrounding.TryStep(transform,wanted,out var supported))
                     {
-                        speed = walkingSpeed; transform.position += dir * Mathf.Min(d.magnitude,speed*Time.deltaTime);
+                        speed = walkingSpeed; transform.position = supported;
                         transform.rotation = Quaternion.Slerp(transform.rotation,Quaternion.LookRotation(d),1-Mathf.Exp(-5*Time.deltaTime));
                     }
                     else { waitUntil = Time.time + .65f; patrolIndex = (patrolIndex + 1) % patrol.Length; }

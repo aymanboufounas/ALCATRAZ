@@ -19,6 +19,9 @@ namespace Blackstone.Foundation.Editor
         const string Revision="foundation-12.1-motion";
         static bool preparing;
         static bool scheduled;
+        const string Stamp="Assets/Game/Resources/BlackstoneFoundation/ImportRevision.txt";
+        static readonly string[] Profiles={"16","07","12","17","20"};
+        static readonly string[] Clips={"Idle","WalkSlow","Walk","WalkFast","Run","RunFast","Seated","Crouch","Start","Stop","TurnLeft","TurnRight"};
         [Serializable] sealed class GaitData { public float[] thresholds=new float[0]; }
         public int callbackOrder=>0;
         [InitializeOnLoadMethod] static void Initialize(){Schedule();}
@@ -31,9 +34,56 @@ namespace Blackstone.Foundation.Editor
         {
             scheduled=false;
             if(EditorApplication.isCompiling||EditorApplication.isUpdating){Schedule();return;}
-            string stamp="Assets/Game/Resources/BlackstoneFoundation/ImportRevision.txt";
-            if(File.Exists(stamp)&&File.ReadAllText(stamp)==Revision&&File.Exists(Controller))return;
-            try{Prepare();}catch(Exception e){Debug.LogWarning("Blackstone character setup: "+e.Message+". Use Blackstone > Prepare Character Foundation.");}
+            try{EnsureReady();}catch(Exception e){Debug.LogWarning("Blackstone character setup: "+e.Message+". Use Blackstone > Prepare Character Foundation.");}
+        }
+        public static bool SceneUsesFoundation(string path)
+        {
+            if(string.IsNullOrEmpty(path)||!File.Exists(path))return false;
+            string script=AssetDatabase.AssetPathToGUID("Assets/Game/Foundation/Scripts/FoundationBootstrap.cs");
+            return !string.IsNullOrEmpty(script)&&File.ReadAllText(path).Contains("guid: "+script);
+        }
+        public static void EnsureReady()
+        {
+            if(!File.Exists(Stamp)||File.ReadAllText(Stamp)!=Revision||AssetDatabase.LoadAssetAtPath<AnimatorController>(Controller)==null)
+            {Prepare();return;}
+            try{ValidatePrepared();}
+            catch(InvalidOperationException){Prepare();}
+        }
+        public static void ValidatePrepared()
+        {
+            foreach(string path in AssetDatabase.GetAllAssetPaths().Where(RocketboxImporter.IsSource))
+            {
+                var importer=AssetImporter.GetAtPath(path) as ModelImporter;
+                bool animation=path.StartsWith(RocketboxImporter.Animations,StringComparison.Ordinal);
+                if(importer==null||importer.animationType!=ModelImporterAnimationType.Generic
+                    ||!importer.bakeAxisConversion||!importer.preserveHierarchy||importer.importAnimation!=animation
+                    ||!importer.useFileScale||Mathf.Abs(importer.globalScale-1)>.0001f||importer.motionNodeName!="Bip01")
+                    throw new InvalidOperationException("Character import settings need repair: "+path);
+            }
+            foreach(string profile in Profiles)
+            {
+                string path=RocketboxImporter.Characters+"Male_Adult_"+profile+"/Male_Adult_"+profile+".fbx";
+                var model=AssetDatabase.LoadAssetAtPath<GameObject>(path);
+                var skins=model!=null?model.GetComponentsInChildren<SkinnedMeshRenderer>(true):new SkinnedMeshRenderer[0];
+                if(skins.Length==0||skins.Any(s=>s.sharedMesh==null||s.sharedMesh.vertexCount==0||s.bones.Length==0||s.bones.Any(b=>b==null)))
+                    throw new InvalidOperationException("Missing character geometry or skeleton: "+path);
+                var animator=model.GetComponent<Animator>();
+                if(animator==null||animator.avatar==null||!animator.avatar.isValid)
+                    throw new InvalidOperationException("Invalid Generic avatar: "+path);
+                if(FoundationAvatar.AnatomicalForward(model.transform).sqrMagnitude<.5f)
+                    throw new InvalidOperationException("Missing foot/toe orientation bones: "+path);
+            }
+            var controller=AssetDatabase.LoadAssetAtPath<AnimatorController>(Controller);
+            if(controller==null||controller.layers.Length==0||controller.layers[0].stateMachine.defaultState==null)
+                throw new InvalidOperationException("The generated locomotion controller is missing or incomplete.");
+            foreach(string parameter in new[]{"Speed","Direction","Seated","Crouch","Air","Start","Stop","TurnLeft","TurnRight"})
+                if(!controller.parameters.Any(p=>p.name==parameter))throw new InvalidOperationException("Locomotion parameter is missing: "+parameter);
+            foreach(string name in Clips)
+            {
+                var clip=Clip(name);
+                if(!controller.animationClips.Contains(clip)||AnimationUtility.GetCurveBindings(clip).Length==0)
+                    throw new InvalidOperationException("Locomotion clip is not bound: "+name);
+            }
         }
         [MenuItem("Blackstone/Prepare Character Foundation",priority=5)]
         public static void Prepare()
@@ -46,23 +96,15 @@ namespace Blackstone.Foundation.Editor
                 {
                     var importer=AssetImporter.GetAtPath(path) as ModelImporter;
                     if(importer==null)throw new InvalidOperationException("Model import unavailable: "+path);
-                    if(importer.userData!=Revision)
-                    {
-                        RocketboxImporter.Configure(importer,path);importer.userData=Revision;importer.SaveAndReimport();
-                    }
-                }
-                foreach(string profile in new[]{"16","07","12","17","20"})
-                {
-                    string path=RocketboxImporter.Characters+"Male_Adult_"+profile+"/Male_Adult_"+profile+".fbx";
-                    var model=AssetDatabase.LoadAssetAtPath<GameObject>(path);
-                    if(model==null||model.GetComponentInChildren<SkinnedMeshRenderer>()==null)
-                        throw new InvalidOperationException("Missing skinned model: "+path);
-                    var animator=model.GetComponent<Animator>();
-                    if(animator==null||animator.avatar==null||!animator.avatar.isValid)
-                        throw new InvalidOperationException("Invalid Generic avatar: "+path);
+                    // A revision stamp does not prove that the imported subassets
+                    // or inspector settings are still valid. An explicit repair
+                    // must actually reimport them; EnsureReady avoids this work
+                    // when their settings, geometry and controller already pass.
+                    RocketboxImporter.Configure(importer,path);importer.userData=Revision;importer.SaveAndReimport();
                 }
                 BuildController();AssetDatabase.SaveAssets();
-                File.WriteAllText("Assets/Game/Resources/BlackstoneFoundation/ImportRevision.txt",Revision);
+                ValidatePrepared();
+                File.WriteAllText(Stamp,Revision);
                 AssetDatabase.Refresh();Debug.Log("Blackstone character foundation prepared.");
             }
             finally{preparing=false;}
@@ -137,7 +179,13 @@ namespace Blackstone.Foundation.Editor
             if(report.summary.result!=BuildResult.Succeeded)throw new InvalidOperationException("Windows build failed.");
         }
         public void OnPreprocessBuild(BuildReport report)
-        {if(EditorBuildSettings.scenes.Any(s=>s.enabled&&(s.path==Scene||s.path==StoryScene)))Prepare();}
+        {
+            if(EditorBuildSettings.scenes.Any(s=>s.enabled&&SceneUsesFoundation(s.path)))
+            {
+                try{EnsureReady();ValidatePrepared();}
+                catch(Exception error){throw new BuildFailedException("Alcatraz character preparation failed: "+error.Message);}
+            }
+        }
     }
     public sealed class FoundationImportWatcher : AssetPostprocessor
     {

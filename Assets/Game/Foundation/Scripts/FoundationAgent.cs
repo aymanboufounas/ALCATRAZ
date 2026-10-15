@@ -20,7 +20,7 @@ namespace Blackstone.Foundation
         }
         void Update()
         {
-            if(avatar==null||!avatar.animator.enabled)return;
+            if(avatar==null||avatar.animator==null||!avatar.animator.enabled)return;
             var fall=GetComponent<FoundationFall>();if(fall!=null&&fall.Recovering)return;
             avatar.agentSpeed = 0;
             if (Time.deltaTime <= 0 || avatar.seated || (actor!=null&&(actor.Talking||actor.Suspended)) || route == null || route.Length == 0 || Time.time < wait) return;
@@ -43,13 +43,11 @@ namespace Blackstone.Foundation
                 {blocked=true;break;}
             }
             if (blocked) { wait = Time.time + .5f; return; }
-            Vector3 wanted = transform.position + dir * Mathf.Min(delta.magnitude, speed * Time.deltaTime);
+            Vector3 wanted = transform.position + dir * Mathf.Min(delta.magnitude, speed * Mathf.Min(Time.deltaTime,.1f));
             // No route step is committed without a supporting, walkable floor.
-            if(!Physics.Raycast(wanted + Vector3.up*.55f, Vector3.down, out var floor, 1.3f, 1, QueryTriggerInteraction.Ignore)
-                ||floor.normal.y<.65f||Mathf.Abs(floor.point.y-transform.position.y)>.35f)
+            if(!Blackstone.Actors.ActorGrounding.TryStep(transform,wanted,out var supported))
             {wait=Time.time+.5f;return;}
-            wanted.y = floor.point.y + .025f;
-            transform.position = wanted;
+            transform.position = supported;
             transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(dir), 1-Mathf.Exp(-6*Time.deltaTime));
             avatar.agentSpeed = speed;
         }

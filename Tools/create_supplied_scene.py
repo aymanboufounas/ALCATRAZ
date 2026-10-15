@@ -23,8 +23,8 @@ player.script('Assets/_DesertShift/Scripts/Interaction/PlayerInteractor.cs')
 player.script('Assets/Game/Scripts/AI/PrisonActor.cs','  displayName: Elias Vale\n  driveLocomotion: 0\n')
 camera=u.Node('Main Camera',pos=(-146,34,9),static=False)
 camera.component(20,body(47222))
-# Retain the camera's URP settings and the existing sunlight/volume settings.
-if 47223 in blocks:camera.component(114,body(47223))
+# Retain the camera's native AudioListener and the existing sunlight/volume settings.
+if 47223 in blocks:camera.component(81,body(47223))
 settings=''.join(b for b in blocks.values() if b.startswith(('--- !u!29 ','--- !u!104 ','--- !u!157 ','--- !u!196 ')))
 text=u.HEAD+settings+''.join(u.node_yaml(n) for n in u.Node.all)
 retained=[]

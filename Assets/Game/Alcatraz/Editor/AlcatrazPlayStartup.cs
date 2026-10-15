@@ -36,13 +36,22 @@ namespace Blackstone.Alcatraz.Editor
         static void CurrentPlay(){UseCurrentScene();Debug.Log("Play now uses the open scene for this editor session.");}
         static void BeforePlay(PlayModeStateChange state)
         {
-            if(state!=PlayModeStateChange.ExitingEditMode||SessionState.GetBool(CurrentSceneKey,false))return;
+            if(state!=PlayModeStateChange.ExitingEditMode)return;
             try
             {
-                var scene=AssetDatabase.LoadAssetAtPath<SceneAsset>(AlcatrazPreparation.Supplied);
-                if(scene==null)throw new InvalidOperationException("The supplied island scene is missing.");
-                EditorSceneManager.playModeStartScene=scene;
-                FoundationPreparation.Prepare();SuppliedAssetPreparation.Prepare();
+                bool current=SessionState.GetBool(CurrentSceneKey,false);
+                if(!current)
+                {
+                    var scene=AssetDatabase.LoadAssetAtPath<SceneAsset>(AlcatrazPreparation.Supplied);
+                    if(scene==null)throw new InvalidOperationException("The supplied island scene is missing.");
+                    EditorSceneManager.playModeStartScene=scene;
+                }
+                var selected=EditorSceneManager.playModeStartScene;
+                string path=selected!=null?AssetDatabase.GetAssetPath(selected):UnityEngine.SceneManagement.SceneManager.GetActiveScene().path;
+                bool foundation=FoundationPreparation.SceneUsesFoundation(path)
+                    ||selected==null&&UnityEngine.Object.FindFirstObjectByType<Blackstone.Foundation.FoundationBootstrap>()!=null;
+                if(foundation){FoundationPreparation.EnsureReady();FoundationPreparation.ValidatePrepared();}
+                if(path==AlcatrazPreparation.Supplied)SuppliedAssetPreparation.Prepare();
             }
             catch(Exception error)
             {EditorApplication.isPlaying=false;Debug.LogError("Alcatraz cannot start until asset preparation succeeds: "+error.Message);}

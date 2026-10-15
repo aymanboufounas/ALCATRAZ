@@ -60,8 +60,27 @@ namespace Blackstone.Alcatraz.Editor
                 var wall = Box(root.transform, "Wall", origin+new Vector3(0, 1.45f, -2), new Vector3(5, 3, .2f));
                 Physics.SyncTransforms();
                 Vector3 pivot = origin+Vector3.up*1.45f;
+                var accessory=new GameObject("Player accessory on world layer");accessory.transform.SetParent(hero.transform);
+                accessory.transform.position=pivot+Vector3.back*.6f;
+                accessory.AddComponent<BoxCollider>().size=Vector3.one*.35f;Physics.SyncTransforms();
                 Vector3 resolved = (Vector3)Invoke(camera, "Resolve", pivot, pivot+Vector3.back*4);
-                Check(resolved.z > origin.z-1.7f, "camera stays in front of obstructing wall");
+                Check(resolved.z > origin.z-1.7f&&resolved.z<origin.z-1.3f,
+                    "camera ignores own accessory and still stops at the world wall");
+                Check(((Vector3)Invoke(camera,"Separate",accessory.transform.position)-accessory.transform.position).sqrMagnitude<.000001f,
+                    "own default-layer collider cannot displace the camera pivot");
+                Check(!(bool)Invoke(camera,"BlockedAt",accessory.transform.position,.22f),
+                    "own accessory cannot reject a visible third-person orbit");
+                // Saturating the non-alloc sweep must still find a real world wall.
+                for(int i=0;i<33;i++)
+                {
+                    var extra=new GameObject("Own overlapping accessory "+i);extra.transform.SetParent(hero.transform);
+                    extra.transform.position=accessory.transform.position+Vector3.back*(i*.008f);
+                    extra.AddComponent<BoxCollider>().size=Vector3.one*.3f;
+                }
+                Physics.SyncTransforms();
+                resolved=(Vector3)Invoke(camera,"Resolve",pivot,pivot+Vector3.back*4);
+                Check(resolved.z>origin.z-1.7f&&resolved.z<origin.z-1.3f,
+                    "full collision contact buffer retains the nearest external obstruction");
                 resolved = (Vector3)Invoke(camera, "Separate", wall.transform.position);
                 Check(!Physics.CheckSphere(resolved, .225f, ~((1<<8)|(1<<2)), QueryTriggerInteraction.Ignore), "camera starts inside wall");
                 resolved = (Vector3)Invoke(camera, "Resolve", pivot, origin-Vector3.up);
@@ -81,12 +100,44 @@ namespace Blackstone.Alcatraz.Editor
                 Invoke(camera,"ChooseVisibleOrbit",alternate);
                 Check(camera.UsingObstructionOrbit&&Vector3.Distance(pivot,(Vector3)alternate[3])>=CameraFramingRules.MinimumDistance(false),
                     "near rear wall chooses a clear third-person side orbit");
+                var sideWall=Box(root.transform,"Close left corner",origin+new Vector3(-.6f,1.45f,0),new Vector3(.2f,3,3));
+                Physics.SyncTransforms();
+                close=(Vector3)Invoke(camera,"Resolve",pivot,pivot+Vector3.back*3.15f);
+                alternate=new object[]{pivot,3.15f,false,close,Quaternion.Euler(12,0,0)};
+                Invoke(camera,"ChooseVisibleOrbit",alternate);
+                Check(camera.UsingObstructionOrbit&&Vector3.Distance(pivot,(Vector3)alternate[3])>=CameraFramingRules.MinimumDistance(false),
+                    "two close corner walls still select an available third-person orbit");
+                sideWall.SetActive(false);Physics.SyncTransforms();
                 visual.GetComponent<Renderer>().forceRenderingOff=true;Invoke(camera,"LateUpdate");
                 Check(!visual.GetComponent<Renderer>().forceRenderingOff,"obstructed camera restores visible prisoner mesh");
+                Check(GeometryUtility.TestPlanesAABB(GeometryUtility.CalculateFrustumPlanes(cameraObject.GetComponent<Camera>()),visual.GetComponent<Renderer>().bounds),
+                    "obstructed third-person camera frustum contains the prisoner body");
                 wall.SetActive(false);Physics.SyncTransforms();
                 alternate=new object[]{pivot,3.15f,false,pivot+Vector3.back*3.15f,Quaternion.Euler(12,0,0)};
                 Invoke(camera,"ChooseVisibleOrbit",alternate);
                 Check(!camera.UsingObstructionOrbit,"rear view resumes when the wall clears");
+                var cell=new GameObject("Temporary narrow cell");cell.transform.SetParent(root.transform);
+                Box(cell.transform,"Cell left",origin+new Vector3(-.75f,1.5f,0),new Vector3(.1f,3,2));
+                Box(cell.transform,"Cell right",origin+new Vector3(.75f,1.5f,0),new Vector3(.1f,3,2));
+                Box(cell.transform,"Cell front",origin+new Vector3(0,1.5f,.75f),new Vector3(2,3,.1f));
+                Box(cell.transform,"Cell rear",origin+new Vector3(0,1.5f,-.75f),new Vector3(2,3,.1f));
+                var roof=Box(cell.transform,"Cell roof",origin+Vector3.up*3.05f,new Vector3(2,.1f,2));
+                Physics.SyncTransforms();camera.SnapToPlayer();
+                Check(camera.UsingObstructionOrbit&&camera.UsingElevatedOrbit&&camera.CurrentDistance>=CameraFramingRules.ElevatedMinimumDistance(false),
+                    "a narrow cell with no horizontal boom uses available space above the prisoner");
+                Check(!(bool)Invoke(camera,"BlockedAt",camera.transform.position,.22f),
+                    "raised cell camera remains inside the walls and below the ceiling");
+                Vector3 bodyOnScreen=cameraObject.GetComponent<Camera>().WorldToViewportPoint(origin+Vector3.up*.9f);
+                Check(bodyOnScreen.z>.08f&&bodyOnScreen.x>0&&bodyOnScreen.x<1&&bodyOnScreen.y>0&&bodyOnScreen.y<1,
+                    "raised cell view keeps the prisoner torso on screen");
+                roof.transform.position=origin+Vector3.up*2.05f;Physics.SyncTransforms();camera.SnapToPlayer();
+                Check(!camera.UsingElevatedOrbit&&!camera.UsingObstructionOrbit,
+                    "a very low ceiling rejects raised views without inventing free space");
+                Check(!(bool)Invoke(camera,"BlockedAt",camera.transform.position,.22f),
+                    "a rejected raised view still cannot cross the cell ceiling");
+                cell.SetActive(false);Physics.SyncTransforms();camera.SnapToPlayer();
+                Check(!camera.UsingElevatedOrbit&&!camera.UsingObstructionOrbit&&camera.CurrentDistance>=3,
+                    "ordinary third-person framing returns after leaving the narrow cell");
                 wall.SetActive(true);wall.transform.position=origin+new Vector3(0,1.45f,-2);wall.transform.localScale=new Vector3(5,3,.2f);
                 var brain=cameraObject.AddComponent<Unity.Cinemachine.CinemachineBrain>();
                 var legacy=root.AddComponent<DesertShift.Camera.ThirdPersonCameraController>();
@@ -129,7 +180,7 @@ namespace Blackstone.Alcatraz.Editor
                 for(int i=0;i<10000&&!movement.Grounded;i++)Invoke(movement,"Update");
                 Check(movement.Grounded && movement.AirTime==0 && movement.VerticalSpeed<0,
                     "jump lands and restores grounded movement");
-                Debug.Log("Alcatraz movement/camera checks passed: 24 assertions using Unity physics. Full gameplay and visual review are still required.");
+                Debug.Log("Alcatraz movement/camera checks passed: 35 assertions using Unity physics. Full gameplay and visual review are still required.");
             }
             catch (TargetInvocationException error)
             { Debug.LogException(error.InnerException ?? error); throw; }

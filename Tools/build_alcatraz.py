@@ -28,7 +28,7 @@ POINTS = {
     'visitSpawn': (19,30.11,-38), 'guardIncident':(-42,27.30,54),
     'guardIsolation':(-13.3,30.04,CELL_Z), 'rivalIsolation':(-17.2,30.03,CELL_Z+4.06),
     'cellStash':(-5.04,30.57,CELL_Z-.15),
-    'reflection':(-3.7,30.65,CELL_Z+.57), 'brother':(22.25,30.03,-38),
+    'reflection':(-3.7,30.65,CELL_Z+.57), 'brother':(22.75,30.03,-38),
     'knife':(-41.75,27.305,42), 'phone':(-42.5,28.22,43),
 }
 COLLIDERS=[];CELLS=[];ROADS=[];LANDMARKS=[];BOXES={};BATCHES={};DETAIL_BOXES={}
@@ -732,6 +732,7 @@ def splice_old(source):
         go=c['m_GameObject']['fileID'];name=c['displayName'];p=oldpositions[tid_for[go]]
         dest=POINTS['cellSpawn'] if name=='Elias Vale' else POINTS['brother'] if name=='Theo Vale' else p+YARD
         if name=='Officer Harrow':dest=(-30.5,27.30,49)
+        if name=='Samir':dest=(-36,27.30,29.8)
         setpos(go,dest);actors.append({'id':go,'name':name,'position':list(dest),'yaw':float(trs[tid_for[go]]['m_LocalEulerAnglesHint']['y']),'pose':c.get('pose',0)})
         if c.get('patrol'):
             body=new[i][1]

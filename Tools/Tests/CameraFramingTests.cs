@@ -34,6 +34,23 @@ public static class CameraFramingTests
             if(score>best){best=score;chosen=i;}
         }
         Check(chosen==-1,"No unsafe camera position is invented in a fully enclosed space");
+        Check(CameraFramingRules.ElevatedMinimumDistance(false)>=.9f,"Raised fallback keeps the lens away from the head");
+        Check(CameraFramingRules.ElevatedMinimumDistance(true)>=CameraFramingRules.MinimumDistance(true),"Raised aim preserves its minimum lens distance");
+        Check(float.IsNegativeInfinity(CameraFramingRules.ElevatedScore(0,58,.3f,true,false)),"Raised view cannot accept a head-level contracted boom");
+        Check(!float.IsNegativeInfinity(CameraFramingRules.ElevatedScore(0,58,1.3f,true,false)),"Raised view accepts usable room above a narrow cell");
+        Check(float.IsNegativeInfinity(CameraFramingRules.ElevatedScore(0,58,1.3f,false,false)),"Raised view still rejects obstructed positions");
+        Check(CameraFramingRules.ElevatedScore(0,23,1.4f,true,false)>CameraFramingRules.ElevatedScore(0,58,1.4f,true,false),
+            "Equal clearance prefers the smaller pitch change");
+        Check(CameraFramingRules.ElevatedScore(0,58,1.4f,true,false)>CameraFramingRules.ElevatedScore(0,23,.95f,true,false),
+            "Useful body clearance can justify the steeper raised view");
+        foreach(float invalid in new[]{float.NaN,float.PositiveInfinity,float.NegativeInfinity})
+        {
+            Check(float.IsNegativeInfinity(CameraFramingRules.ElevatedScore(0,58,invalid,true,false)),"Raised view rejects invalid distance");
+            Check(float.IsNegativeInfinity(CameraFramingRules.ElevatedScore(invalid,58,1.3f,true,false)),"Raised view rejects invalid yaw");
+            Check(float.IsNegativeInfinity(CameraFramingRules.ElevatedScore(0,invalid,1.3f,true,false)),"Raised view rejects invalid pitch");
+        }
+        Check(float.IsNegativeInfinity(CameraFramingRules.ElevatedScore(0,0,1.3f,true,false)),"Raised pool requires an actual pitch increase");
+        Check(float.IsNegativeInfinity(CameraFramingRules.ElevatedScore(0,101,1.3f,true,false)),"Raised pool rejects an out-of-range pitch change");
         Console.WriteLine("PASS: "+checks+" third-person framing assertions");
     }
 }
