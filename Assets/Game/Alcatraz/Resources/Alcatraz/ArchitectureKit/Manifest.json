@@ -1,0 +1,720 @@
+{
+  "authoring_command": "python Tools/author_prison_architecture.py",
+  "check_command": "python Tools/author_prison_architecture.py --check",
+  "coordinate_system": {
+    "facade_anchor": "Bottom centre of the 3m x 3.5m bay; front wall plane z=0.",
+    "facade_core_depth_m": [
+      0,
+      0.28
+    ],
+    "front": "-Z",
+    "units": "metres",
+    "up": "+Y"
+  },
+  "description": "Original physical modular prison/service-building kit; not a rendered quality claim.",
+  "files_sha256": {
+    "Assets/Game/Alcatraz/Resources/Alcatraz/ArchitectureKit/Materials.meta": "eeb109b4a5b984692938fdde372184907467a2a32a2c4b74c31c9720ba392330",
+    "Assets/Game/Alcatraz/Resources/Alcatraz/ArchitectureKit/Materials/CoastalConcrete.mat": "9fa15aa436053f95d22199c3ae236a7026367938a8cc3225b6f792ca34a8c021",
+    "Assets/Game/Alcatraz/Resources/Alcatraz/ArchitectureKit/Materials/CoastalConcrete.mat.meta": "98f5a4d7bb79a589f00f118b8ad34b4575979e0b5303769fe6d4f10068f2b3f8",
+    "Assets/Game/Alcatraz/Resources/Alcatraz/ArchitectureKit/Materials/LimestoneTrim.mat": "21ed493c44915f25b72127782298f2987331485af99749288bf1c85e810f1af0",
+    "Assets/Game/Alcatraz/Resources/Alcatraz/ArchitectureKit/Materials/LimestoneTrim.mat.meta": "e9e9b4416edf1045fccb642eeae64c533dff9ddd48e0dedef6b86de7847adc59",
+    "Assets/Game/Alcatraz/Resources/Alcatraz/ArchitectureKit/Materials/OldTimber.mat": "967784c12c2ec0ced25667eede644e4d294fe42e9e97b46dd1e2af93c8a6a3ea",
+    "Assets/Game/Alcatraz/Resources/Alcatraz/ArchitectureKit/Materials/OldTimber.mat.meta": "796bfe249d98be447b4ccf271fb13a6f0f7823d34bf22f949c1fb30b1439aac8",
+    "Assets/Game/Alcatraz/Resources/Alcatraz/ArchitectureKit/Materials/OxidizedSteel.mat": "2cd7cc0ad645de3a2bdbb53b73f2c45a828d2fd1603754b526c50812d507fa3f",
+    "Assets/Game/Alcatraz/Resources/Alcatraz/ArchitectureKit/Materials/OxidizedSteel.mat.meta": "7a80cbc84d2f78873e689276cdea6eb6ce72d1fe9650fe693b4c71cbd9bfdc0d",
+    "Assets/Game/Alcatraz/Resources/Alcatraz/ArchitectureKit/Materials/PaintedSteel.mat": "7e6fa4e8ca0b886c78684601906470edff7087b7da807d187be1b52e7f01903a",
+    "Assets/Game/Alcatraz/Resources/Alcatraz/ArchitectureKit/Materials/PaintedSteel.mat.meta": "ccbd9ef310bd2a361d5bdd2078b7503652afed0364d6465db0dbddfc7191a6e9",
+    "Assets/Game/Alcatraz/Resources/Alcatraz/ArchitectureKit/Materials/RecessedGlass.mat": "627b2f72f8e2f54975962094b1982a57c581824d303dc9a2d0dc8e2a103385a9",
+    "Assets/Game/Alcatraz/Resources/Alcatraz/ArchitectureKit/Materials/RecessedGlass.mat.meta": "0dea7940bb55211bd2f80af36ab8633fb7c41976729f98cbee62c2f5773ad93b",
+    "Assets/Game/Alcatraz/Resources/Alcatraz/ArchitectureKit/Materials/WeatheredBrick.mat": "8fed6f956c35cdd20ec217885fb131349d0c4486d6dd0eb25f885b2e62293eac",
+    "Assets/Game/Alcatraz/Resources/Alcatraz/ArchitectureKit/Materials/WeatheredBrick.mat.meta": "ce7cc4fe2d9bc29beb4674ea2d6bae752641b8d4927cf032fc817219cd735b99",
+    "Assets/Game/Alcatraz/Resources/Alcatraz/ArchitectureKit/Meshes.meta": "61eefada62cf3234ba9fc1883021f5109e2c158040f9249975a38b7a9058ad96",
+    "Assets/Game/Alcatraz/Resources/Alcatraz/ArchitectureKit/Meshes/AccessDoor_ChamferedDoorJamb.asset": "fd3d85bf664dbc3f017a02450583893d6f8f871dc83a275cdd72e8b3ada8f097",
+    "Assets/Game/Alcatraz/Resources/Alcatraz/ArchitectureKit/Meshes/AccessDoor_ChamferedDoorJamb.asset.meta": "45640f7193f6e7ba05748f0c12444b759b48b2593248e6ce751d2132262902c0",
+    "Assets/Game/Alcatraz/Resources/Alcatraz/ArchitectureKit/Meshes/AccessDoor_ConcreteWall.asset": "015fd5055f535b126ac6c34b30fbcc804f875fab12e8b800c17d50685930df74",
+    "Assets/Game/Alcatraz/Resources/Alcatraz/ArchitectureKit/Meshes/AccessDoor_ConcreteWall.asset.meta": "82b44d7d9e5808588b8875c5999359457bdd23538e0dac7ff9f265e20bed8d90",
+    "Assets/Game/Alcatraz/Resources/Alcatraz/ArchitectureKit/Meshes/AccessDoor_HingesAndHandle.asset": "9cc29a4e77ca1277262b2aeb1f705af0a64ec6060a573d4830a3d49540749cf4",
+    "Assets/Game/Alcatraz/Resources/Alcatraz/ArchitectureKit/Meshes/AccessDoor_HingesAndHandle.asset.meta": "b99162b38708071200ac48fc4432e14d399f74cf6002dfd886299a055f9c6c73",
+    "Assets/Game/Alcatraz/Resources/Alcatraz/ArchitectureKit/Meshes/AccessDoor_InsetPanels.asset": "5648af6d0b299f1718c0e4019e97bcc558872d7c79ca203b62aeda6809dbb401",
+    "Assets/Game/Alcatraz/Resources/Alcatraz/ArchitectureKit/Meshes/AccessDoor_InsetPanels.asset.meta": "3f87acc975008f11d16a0d77b616268861ae149b2ab7dc426909750a952b042c",
+    "Assets/Game/Alcatraz/Resources/Alcatraz/ArchitectureKit/Meshes/AccessDoor_KickPlate.asset": "95e47c4e36205b21d48e9111567fe4483564e76c39240bae501277ce598356fe",
+    "Assets/Game/Alcatraz/Resources/Alcatraz/ArchitectureKit/Meshes/AccessDoor_KickPlate.asset.meta": "e918b0c8080e053d1a62af658b8375c4dae251585e716c98bc2ed1c15efe36b0",
+    "Assets/Game/Alcatraz/Resources/Alcatraz/ArchitectureKit/Meshes/AccessDoor_SteelDoorLeaf.asset": "1d62e6b29a76864a0c41f41ee38c2535fa555d3431f562e363f8241553f9e5b8",
+    "Assets/Game/Alcatraz/Resources/Alcatraz/ArchitectureKit/Meshes/AccessDoor_SteelDoorLeaf.asset.meta": "2232dcd4ff515de1ce69fde922e5bc35bf8b460b42dce252b80adce62aec98c1",
+    "Assets/Game/Alcatraz/Resources/Alcatraz/ArchitectureKit/Meshes/Drainpipe_MetalDownpipe.asset": "54b66ff74cc959b9a70b3de9db4d712c8522962858e6387024f3bbeb6665ac84",
+    "Assets/Game/Alcatraz/Resources/Alcatraz/ArchitectureKit/Meshes/Drainpipe_MetalDownpipe.asset.meta": "2120b62927d057478673362bbe0a6a9a6e95cc21487063b876f5f3682cd8788d",
+    "Assets/Game/Alcatraz/Resources/Alcatraz/ArchitectureKit/Meshes/Drainpipe_PipeCollars.asset": "6b5d4bb84e839812f6ad8bafd28256ec45f4adc4bc2500b328fa20a451a29b9d",
+    "Assets/Game/Alcatraz/Resources/Alcatraz/ArchitectureKit/Meshes/Drainpipe_PipeCollars.asset.meta": "efaa53236fc26f1faa727ee3175a964117c317e3d1bbaeb7cbf0aabbffec2b69",
+    "Assets/Game/Alcatraz/Resources/Alcatraz/ArchitectureKit/Meshes/Drainpipe_WallBrackets.asset": "05b53cf8ef9dd42027eba888f9184a1fd504a8f0f3c009a6aae4949446cbec90",
+    "Assets/Game/Alcatraz/Resources/Alcatraz/ArchitectureKit/Meshes/Drainpipe_WallBrackets.asset.meta": "2afdcb5eabdc35a01c27722c5c6899bd8d347fa004332c4694882cbcf31cbbb2",
+    "Assets/Game/Alcatraz/Resources/Alcatraz/ArchitectureKit/Meshes/FacadeBarredWindow_BoltedBarMounts.asset": "fa565c5e851d05950a52b93edbd21ee1359e08cccfd03317123cc54622a04295",
+    "Assets/Game/Alcatraz/Resources/Alcatraz/ArchitectureKit/Meshes/FacadeBarredWindow_BoltedBarMounts.asset.meta": "3db139740339976e7433ad1cb2266f5f427a54174e549b34ce6b637c8e9097d4",
+    "Assets/Game/Alcatraz/Resources/Alcatraz/ArchitectureKit/Meshes/FacadeBarredWindow_BrickWall.asset": "6c7aec8586e34c9541d8833fa295d59e02a76d4b0d08975c11d563317e9d7b0e",
+    "Assets/Game/Alcatraz/Resources/Alcatraz/ArchitectureKit/Meshes/FacadeBarredWindow_BrickWall.asset.meta": "f0b415f3b680fff686f1615a6be8f1c1128675cc5b1beb653af5ef8924d3e337",
+    "Assets/Game/Alcatraz/Resources/Alcatraz/ArchitectureKit/Meshes/FacadeBarredWindow_ChamferedReveal.asset": "d12b28b7141785a05991c99ea1c7f77944d342d556e5b5458ae00b1119d00125",
+    "Assets/Game/Alcatraz/Resources/Alcatraz/ArchitectureKit/Meshes/FacadeBarredWindow_ChamferedReveal.asset.meta": "06bd723e0d0d5c3caf5606c45267a8b603ee79a66f99528a41f025a611744d8b",
+    "Assets/Game/Alcatraz/Resources/Alcatraz/ArchitectureKit/Meshes/FacadeBarredWindow_Mullions.asset": "9230fa74a3332ddc13dcffb39e07164e24aceebbaa6435499199c091cf47b89f",
+    "Assets/Game/Alcatraz/Resources/Alcatraz/ArchitectureKit/Meshes/FacadeBarredWindow_Mullions.asset.meta": "15391c513a52ae710eee678e6df4b00190344f77d6d0f8cc2be13b52ee682fa2",
+    "Assets/Game/Alcatraz/Resources/Alcatraz/ArchitectureKit/Meshes/FacadeBarredWindow_PrisonBars.asset": "8535c3e92f17f62586702fbc91e73f843f04b6b2b915d0ce9256466b33fc0900",
+    "Assets/Game/Alcatraz/Resources/Alcatraz/ArchitectureKit/Meshes/FacadeBarredWindow_PrisonBars.asset.meta": "b5a114189adb3e8bbf4180327caf6c8217fd1adf5bdecab9c83f7eb4f371d642",
+    "Assets/Game/Alcatraz/Resources/Alcatraz/ArchitectureKit/Meshes/FacadeBarredWindow_RecessedGlass.asset": "5cf700351b5bcd7e6df6812c692f3ace96d199e048a672cbc5974ce20d9b7a8c",
+    "Assets/Game/Alcatraz/Resources/Alcatraz/ArchitectureKit/Meshes/FacadeBarredWindow_RecessedGlass.asset.meta": "45798164a75a78d6eea47b61878b87046769065e3767ad2433a5223d3374ebe1",
+    "Assets/Game/Alcatraz/Resources/Alcatraz/ArchitectureKit/Meshes/FacadeBarredWindow_SlopedSill.asset": "f3a146523a6b978f72ddf4646b9c8607ece79bc63cecda7389fdab4e720779e9",
+    "Assets/Game/Alcatraz/Resources/Alcatraz/ArchitectureKit/Meshes/FacadeBarredWindow_SlopedSill.asset.meta": "af190729de121294059b335fc1b6ba00e80065e974ee414b5d7321943411bc62",
+    "Assets/Game/Alcatraz/Resources/Alcatraz/ArchitectureKit/Meshes/FacadeBarredWindow_SteelFrame.asset": "edf2db502a13b09e032631a92efe639054f725efcd6ece8c5e3918dd36541c4e",
+    "Assets/Game/Alcatraz/Resources/Alcatraz/ArchitectureKit/Meshes/FacadeBarredWindow_SteelFrame.asset.meta": "277acdcf8eccfdac8e2ec2f2e09e14139e8b5dbe5385a05643f4375bd15a01cc",
+    "Assets/Game/Alcatraz/Resources/Alcatraz/ArchitectureKit/Meshes/FacadeBlank_ConcreteWall.asset": "25885bff07b6c914d11c3bb00c5eb4af37879fb95a67a09e0a387f7a760412bb",
+    "Assets/Game/Alcatraz/Resources/Alcatraz/ArchitectureKit/Meshes/FacadeBlank_ConcreteWall.asset.meta": "cddef05dc0c3c43b180083c8a6e9364444abb6d62ad3a90531c8ccab1381cf8c",
+    "Assets/Game/Alcatraz/Resources/Alcatraz/ArchitectureKit/Meshes/FacadeBlank_WeatheredPlinth.asset": "0b21c0f62e22bb0e542b507bab72d47696ba89eae7301d2b372903b92ca6a6fd",
+    "Assets/Game/Alcatraz/Resources/Alcatraz/ArchitectureKit/Meshes/FacadeBlank_WeatheredPlinth.asset.meta": "c2432ce5a136db45d9200fa23b17bd90fd3afd02217229601b7effd7219e8924",
+    "Assets/Game/Alcatraz/Resources/Alcatraz/ArchitectureKit/Meshes/FacadeBoardedWindow_BoardFixings.asset": "1ae78e47526a36d041948adc6164ff600c7420aa2641314df1ad2d1f2cd45304",
+    "Assets/Game/Alcatraz/Resources/Alcatraz/ArchitectureKit/Meshes/FacadeBoardedWindow_BoardFixings.asset.meta": "505b88af6f656c1855a061dcbaf3692c50d36ca936d9daaef0d96b6fbe641e06",
+    "Assets/Game/Alcatraz/Resources/Alcatraz/ArchitectureKit/Meshes/FacadeBoardedWindow_ChamferedReveal.asset": "1f8092cf103855526efb16d5c5dc18880a4cbc26f9f9cf933b932828f7ff6224",
+    "Assets/Game/Alcatraz/Resources/Alcatraz/ArchitectureKit/Meshes/FacadeBoardedWindow_ChamferedReveal.asset.meta": "adede0b5a1650e74eabfd2dd61c7d15c5ddca0c7b9d3b2a2cf07b1fc7e9773bb",
+    "Assets/Game/Alcatraz/Resources/Alcatraz/ArchitectureKit/Meshes/FacadeBoardedWindow_ConcreteWall.asset": "b3a286131691251836bbecd6d485672ffbb2aca3b724c1d7941ae5ba01fbb4e8",
+    "Assets/Game/Alcatraz/Resources/Alcatraz/ArchitectureKit/Meshes/FacadeBoardedWindow_ConcreteWall.asset.meta": "991e6d046a96efd431cdfbac99942df3314a4370e7e44cf7c0759cc0a548d6c1",
+    "Assets/Game/Alcatraz/Resources/Alcatraz/ArchitectureKit/Meshes/FacadeBoardedWindow_Mullions.asset": "e56212ce1c4d4ad03b3141d6ad790868b1bbf1291e428f010e3c22ac2a8dedce",
+    "Assets/Game/Alcatraz/Resources/Alcatraz/ArchitectureKit/Meshes/FacadeBoardedWindow_Mullions.asset.meta": "9ab3d56a16b81d33132a60ca237dc56401d2e037a3f032254f7c0c5a0574308d",
+    "Assets/Game/Alcatraz/Resources/Alcatraz/ArchitectureKit/Meshes/FacadeBoardedWindow_OldTimberBoards.asset": "5b3a9dfce860f1c902a71ef8a2ee1adffdfda8cda5e1654e927ebdfa3cbd26c2",
+    "Assets/Game/Alcatraz/Resources/Alcatraz/ArchitectureKit/Meshes/FacadeBoardedWindow_OldTimberBoards.asset.meta": "78d579514e6b3db96136c57d8f41e26882f8db0b6b9b608739923c1be5bdc145",
+    "Assets/Game/Alcatraz/Resources/Alcatraz/ArchitectureKit/Meshes/FacadeBoardedWindow_RecessedGlass.asset": "aa97fde366e8fba5ab9fb836b8b4e2a35f3aff31862670575c3dfb86365f7fa8",
+    "Assets/Game/Alcatraz/Resources/Alcatraz/ArchitectureKit/Meshes/FacadeBoardedWindow_RecessedGlass.asset.meta": "11aa4479ceb265412149ecc634a5050b1b13a6b330b74b26eda0329ad6d16fef",
+    "Assets/Game/Alcatraz/Resources/Alcatraz/ArchitectureKit/Meshes/FacadeBoardedWindow_SlopedSill.asset": "fd3824698778d3b756af67aabd3d9171863b25cd205006378420ea67e41a3d55",
+    "Assets/Game/Alcatraz/Resources/Alcatraz/ArchitectureKit/Meshes/FacadeBoardedWindow_SlopedSill.asset.meta": "7efd296dcf868b7ac8b0c48c53d6ae4b05dd4a40e801465bfb65fc80c06b4157",
+    "Assets/Game/Alcatraz/Resources/Alcatraz/ArchitectureKit/Meshes/FacadeBoardedWindow_SteelFrame.asset": "1e99b31f8b06ad6cee0bec339c9f33bd133b5a21fbfadceae3104e2767488169",
+    "Assets/Game/Alcatraz/Resources/Alcatraz/ArchitectureKit/Meshes/FacadeBoardedWindow_SteelFrame.asset.meta": "b7f2209e1f5dd4a4f46db4ffe939bcd1007144d622a50b5aa1ce56444a2de96e",
+    "Assets/Game/Alcatraz/Resources/Alcatraz/ArchitectureKit/Meshes/FacadeWindow_ChamferedReveal.asset": "d588d6e25f3f1641a902322ab70ab2d052bce59b25d80b5f31fd4614679793ea",
+    "Assets/Game/Alcatraz/Resources/Alcatraz/ArchitectureKit/Meshes/FacadeWindow_ChamferedReveal.asset.meta": "6a78c122194d5614e01bd289cc0f328feeb94783b57f5e61f44a3c6770d7af7a",
+    "Assets/Game/Alcatraz/Resources/Alcatraz/ArchitectureKit/Meshes/FacadeWindow_ConcreteWall.asset": "60afbeeeb82fa6844eca4f825b262bf0b860319307f06b46cb2948a5b4cd497a",
+    "Assets/Game/Alcatraz/Resources/Alcatraz/ArchitectureKit/Meshes/FacadeWindow_ConcreteWall.asset.meta": "0ce9ffbbfdcfe5e7af17524759c1dfd3eb1fb38d14ea12c12e778ea75c92a3d2",
+    "Assets/Game/Alcatraz/Resources/Alcatraz/ArchitectureKit/Meshes/FacadeWindow_Mullions.asset": "ae81ce745f82814aaa88b34beaf56e9b12d5c31db8f69912dd8e23326581516a",
+    "Assets/Game/Alcatraz/Resources/Alcatraz/ArchitectureKit/Meshes/FacadeWindow_Mullions.asset.meta": "d4a6c1662704dc01b5484d9775ef3315407447026a7660f543f03c4b5aa5c036",
+    "Assets/Game/Alcatraz/Resources/Alcatraz/ArchitectureKit/Meshes/FacadeWindow_RecessedGlass.asset": "812d0f53cecf6c5aed4524c8167c16b7629a6445bdb5997cd94e46da63dc0aff",
+    "Assets/Game/Alcatraz/Resources/Alcatraz/ArchitectureKit/Meshes/FacadeWindow_RecessedGlass.asset.meta": "9ba73e117374f9f16a0321083e894e9d8bd66d24cc36f0ef7a2b48db9a320e63",
+    "Assets/Game/Alcatraz/Resources/Alcatraz/ArchitectureKit/Meshes/FacadeWindow_SlopedSill.asset": "8658584156bc7b8b53cc029e4b87480a18f7ff71df89c3983b271ec693d26914",
+    "Assets/Game/Alcatraz/Resources/Alcatraz/ArchitectureKit/Meshes/FacadeWindow_SlopedSill.asset.meta": "fd7d88e4c2b94a27a66b417626d3a38ba38078cbbaf2903c52af1c5344968dfa",
+    "Assets/Game/Alcatraz/Resources/Alcatraz/ArchitectureKit/Meshes/FacadeWindow_SteelFrame.asset": "c56e1550d9a1ae490bad37c007fd385c2c4d97233ba696a3d5fbdc0183fc66e1",
+    "Assets/Game/Alcatraz/Resources/Alcatraz/ArchitectureKit/Meshes/FacadeWindow_SteelFrame.asset.meta": "01d092c0501ca7e88716ded80709e06a9eccb2125e524d262ceeaf0c9130f906",
+    "Assets/Game/Alcatraz/Resources/Alcatraz/ArchitectureKit/Meshes/RoofCornice_SteppedCoping.asset": "ddf24e7c8e94ff21f65e8805fc57c1035d29f9a44e3d0c674601085b1e90004a",
+    "Assets/Game/Alcatraz/Resources/Alcatraz/ArchitectureKit/Meshes/RoofCornice_SteppedCoping.asset.meta": "214c9747c592d957099eff3d87a49cb3cd9eca9e222a4658cce18d730f8f27d4",
+    "Assets/Game/Alcatraz/Resources/Alcatraz/ArchitectureKit/Prefabs.meta": "c7b21c5bc15ac781ac29ca842a63736106746fe9236558c7612a63ed56684494",
+    "Assets/Game/Alcatraz/Resources/Alcatraz/ArchitectureKit/Prefabs/AccessDoor.prefab": "bce46236eb73772ea71836700a6ee70429c8e39493d739290a60e8cc4cfdcbb4",
+    "Assets/Game/Alcatraz/Resources/Alcatraz/ArchitectureKit/Prefabs/AccessDoor.prefab.meta": "829f681b3ee69621f850190a358c4ab466cd2f7c000506807850db8ad9b7b9d4",
+    "Assets/Game/Alcatraz/Resources/Alcatraz/ArchitectureKit/Prefabs/Drainpipe.prefab": "4674f506b2b5694a7a87f452eeb262454a86db7c9505c0f463e898a5d8c3e5d9",
+    "Assets/Game/Alcatraz/Resources/Alcatraz/ArchitectureKit/Prefabs/Drainpipe.prefab.meta": "7ef932f519b74b6e463e09742d5118ead16252383b0ee205d8bd3d98f0655ee0",
+    "Assets/Game/Alcatraz/Resources/Alcatraz/ArchitectureKit/Prefabs/FacadeBarredWindow.prefab": "92c699290343e013ed20564ff47a6e7e0503b5fbf020ee926a0b2224f3c79f43",
+    "Assets/Game/Alcatraz/Resources/Alcatraz/ArchitectureKit/Prefabs/FacadeBarredWindow.prefab.meta": "3342b05a69075cfded1577510ffaf7ca4caa066bd01ec91f474191f9f9030f32",
+    "Assets/Game/Alcatraz/Resources/Alcatraz/ArchitectureKit/Prefabs/FacadeBlank.prefab": "d5315e69b8e1e6448cbb4ca2887f95c2f37a30bdd1be4443cdfe0fc3a387e25a",
+    "Assets/Game/Alcatraz/Resources/Alcatraz/ArchitectureKit/Prefabs/FacadeBlank.prefab.meta": "ffa119e5d7bc055ac8a9a55b2dc57a1702f007131e70471cdb1e4eeb3af868d9",
+    "Assets/Game/Alcatraz/Resources/Alcatraz/ArchitectureKit/Prefabs/FacadeBoardedWindow.prefab": "4bd60b3414759e3a44a6b4c66e4f761b697fe797583af60f44ff78c4c489e27d",
+    "Assets/Game/Alcatraz/Resources/Alcatraz/ArchitectureKit/Prefabs/FacadeBoardedWindow.prefab.meta": "48c380ab625ffb6306946a5fb431b8dd67b55354063b07c81c07af1ad647bb74",
+    "Assets/Game/Alcatraz/Resources/Alcatraz/ArchitectureKit/Prefabs/FacadeWindow.prefab": "85a8960468916869be9440161ef774b0f64c630694433273671956d09a79bc1a",
+    "Assets/Game/Alcatraz/Resources/Alcatraz/ArchitectureKit/Prefabs/FacadeWindow.prefab.meta": "4eb6b10785d650a7151fbafa0a10a00567240502d21291f7b9ea6e5be934e558",
+    "Assets/Game/Alcatraz/Resources/Alcatraz/ArchitectureKit/Prefabs/RoofCornice.prefab": "75db53af9f48c5a1db144a3620aedb779fc44bb7d09b28c6e60d1acd7bb90f0b",
+    "Assets/Game/Alcatraz/Resources/Alcatraz/ArchitectureKit/Prefabs/RoofCornice.prefab.meta": "0e5a7866d0c79f61ef8dde84bd836ead46f40a9305ce882740acd03c4974d659"
+  },
+  "geometry_policy": {
+    "colliders": 0,
+    "placement": "Root owns placements and scan-surface masking. Do not cover gates, required entrances or collision routes.",
+    "runtime_scripts": 0,
+    "uvs": "Planar material coordinates in metres, cylindrical arc/height in metres; brick profile repeats every2m.",
+    "window_detail": "Real opening, chamfered reveal, recessed opaque dark glass, molded metal frame, 6 panes, sloped sill."
+  },
+  "material_provenance": {
+    "credits": "Documentation/ThirdParty_Art_Credits.md",
+    "license": "Existing Poly Haven CC0 maps, unchanged and referenced in place."
+  },
+  "materials": {
+    "CoastalConcrete": {
+      "base_color": [
+        0.73,
+        0.71,
+        0.64,
+        1
+      ],
+      "emission": false,
+      "maps": {
+        "base": "Assets/Game/Textures/PBR_concrete_floor_worn_001_Base.png",
+        "normal": "Assets/Game/Textures/PBR_concrete_floor_worn_001_Normal.png",
+        "surface": "Assets/Game/Textures/PBR_concrete_floor_worn_001_Surface.png"
+      },
+      "metallic": 0,
+      "opaque": true,
+      "path": "Assets/Game/Alcatraz/Resources/Alcatraz/ArchitectureKit/Materials/CoastalConcrete.mat",
+      "roughness": 0.85,
+      "surface_map_drives_metallic": true
+    },
+    "LimestoneTrim": {
+      "base_color": [
+        0.86,
+        0.83,
+        0.74,
+        1
+      ],
+      "emission": false,
+      "maps": {
+        "base": "Assets/Game/Textures/PBR_concrete_floor_worn_001_Base.png",
+        "normal": "Assets/Game/Textures/PBR_concrete_floor_worn_001_Normal.png",
+        "surface": "Assets/Game/Textures/PBR_concrete_floor_worn_001_Surface.png"
+      },
+      "metallic": 0,
+      "opaque": true,
+      "path": "Assets/Game/Alcatraz/Resources/Alcatraz/ArchitectureKit/Materials/LimestoneTrim.mat",
+      "roughness": 0.76,
+      "surface_map_drives_metallic": true
+    },
+    "OldTimber": {
+      "base_color": [
+        0.52,
+        0.44,
+        0.33,
+        1
+      ],
+      "emission": false,
+      "maps": {
+        "base": "Assets/Game/Textures/PBR_wood_planks_Base.png",
+        "normal": "Assets/Game/Textures/PBR_wood_planks_Normal.png",
+        "surface": "Assets/Game/Textures/PBR_wood_planks_Surface.png"
+      },
+      "metallic": 0,
+      "opaque": true,
+      "path": "Assets/Game/Alcatraz/Resources/Alcatraz/ArchitectureKit/Materials/OldTimber.mat",
+      "roughness": 0.86,
+      "surface_map_drives_metallic": true
+    },
+    "OxidizedSteel": {
+      "base_color": [
+        0.19,
+        0.15,
+        0.105,
+        1
+      ],
+      "emission": false,
+      "maps": {
+        "base": "Assets/Game/Textures/PBR_concrete_floor_worn_001_Base.png",
+        "normal": "Assets/Game/Textures/PBR_concrete_floor_worn_001_Normal.png",
+        "surface": "Assets/Game/Textures/PBR_concrete_floor_worn_001_Surface.png"
+      },
+      "metallic": 0.73,
+      "opaque": true,
+      "path": "Assets/Game/Alcatraz/Resources/Alcatraz/ArchitectureKit/Materials/OxidizedSteel.mat",
+      "roughness": 0.7,
+      "surface_map_drives_metallic": false
+    },
+    "PaintedSteel": {
+      "base_color": [
+        0.105,
+        0.145,
+        0.139,
+        1
+      ],
+      "emission": false,
+      "maps": {
+        "base": "Assets/Game/Textures/PBR_concrete_floor_worn_001_Base.png",
+        "normal": "Assets/Game/Textures/PBR_concrete_floor_worn_001_Normal.png",
+        "surface": "Assets/Game/Textures/PBR_concrete_floor_worn_001_Surface.png"
+      },
+      "metallic": 0.5,
+      "opaque": true,
+      "path": "Assets/Game/Alcatraz/Resources/Alcatraz/ArchitectureKit/Materials/PaintedSteel.mat",
+      "roughness": 0.62,
+      "surface_map_drives_metallic": false
+    },
+    "RecessedGlass": {
+      "base_color": [
+        0.025,
+        0.044,
+        0.045,
+        1
+      ],
+      "emission": false,
+      "maps": {},
+      "metallic": 0.1,
+      "opaque": true,
+      "path": "Assets/Game/Alcatraz/Resources/Alcatraz/ArchitectureKit/Materials/RecessedGlass.mat",
+      "roughness": 0.18,
+      "surface_map_drives_metallic": false
+    },
+    "WeatheredBrick": {
+      "base_color": [
+        0.72,
+        0.65,
+        0.55,
+        1
+      ],
+      "emission": false,
+      "maps": {
+        "base": "Assets/Game/Textures/PBR_brick_wall_001_Base.png",
+        "normal": "Assets/Game/Textures/PBR_brick_wall_001_Normal.png",
+        "surface": "Assets/Game/Textures/PBR_brick_wall_001_Surface.png"
+      },
+      "metallic": 0,
+      "opaque": true,
+      "path": "Assets/Game/Alcatraz/Resources/Alcatraz/ArchitectureKit/Materials/WeatheredBrick.mat",
+      "roughness": 0.88,
+      "surface_map_drives_metallic": true
+    }
+  },
+  "module_count": 7,
+  "modules": [
+    {
+      "anchor": [
+        0,
+        0,
+        0
+      ],
+      "bounds_max_m": [
+        1.5,
+        3.5,
+        0.28
+      ],
+      "bounds_min_m": [
+        -1.5,
+        0.0,
+        -0.205
+      ],
+      "colliders": 0,
+      "name": "FacadeWindow",
+      "nominal_width_height_m": [
+        3,
+        3.5
+      ],
+      "notes": "Glass is recessed 0.195m; no emission. Wall has a physical opening.",
+      "parts": [
+        {
+          "material": "Assets/Game/Alcatraz/Resources/Alcatraz/ArchitectureKit/Materials/CoastalConcrete.mat",
+          "mesh": "Assets/Game/Alcatraz/Resources/Alcatraz/ArchitectureKit/Meshes/FacadeWindow_ConcreteWall.asset",
+          "name": "ConcreteWall",
+          "triangles": 24,
+          "vertices": 72
+        },
+        {
+          "material": "Assets/Game/Alcatraz/Resources/Alcatraz/ArchitectureKit/Materials/LimestoneTrim.mat",
+          "mesh": "Assets/Game/Alcatraz/Resources/Alcatraz/ArchitectureKit/Meshes/FacadeWindow_ChamferedReveal.asset",
+          "name": "ChamferedReveal",
+          "triangles": 32,
+          "vertices": 96
+        },
+        {
+          "material": "Assets/Game/Alcatraz/Resources/Alcatraz/ArchitectureKit/Materials/PaintedSteel.mat",
+          "mesh": "Assets/Game/Alcatraz/Resources/Alcatraz/ArchitectureKit/Meshes/FacadeWindow_SteelFrame.asset",
+          "name": "SteelFrame",
+          "triangles": 48,
+          "vertices": 144
+        },
+        {
+          "material": "Assets/Game/Alcatraz/Resources/Alcatraz/ArchitectureKit/Materials/RecessedGlass.mat",
+          "mesh": "Assets/Game/Alcatraz/Resources/Alcatraz/ArchitectureKit/Meshes/FacadeWindow_RecessedGlass.asset",
+          "name": "RecessedGlass",
+          "triangles": 108,
+          "vertices": 324
+        },
+        {
+          "material": "Assets/Game/Alcatraz/Resources/Alcatraz/ArchitectureKit/Materials/PaintedSteel.mat",
+          "mesh": "Assets/Game/Alcatraz/Resources/Alcatraz/ArchitectureKit/Meshes/FacadeWindow_Mullions.asset",
+          "name": "Mullions",
+          "triangles": 324,
+          "vertices": 972
+        },
+        {
+          "material": "Assets/Game/Alcatraz/Resources/Alcatraz/ArchitectureKit/Materials/LimestoneTrim.mat",
+          "mesh": "Assets/Game/Alcatraz/Resources/Alcatraz/ArchitectureKit/Meshes/FacadeWindow_SlopedSill.asset",
+          "name": "SlopedSill",
+          "triangles": 24,
+          "vertices": 72
+        }
+      ],
+      "prefab": "Assets/Game/Alcatraz/Resources/Alcatraz/ArchitectureKit/Prefabs/FacadeWindow.prefab",
+      "resources_path": "Alcatraz/ArchitectureKit/Prefabs/FacadeWindow",
+      "triangles": 560,
+      "use": "Windowed concrete service/prison facade",
+      "vertices": 1680
+    },
+    {
+      "anchor": [
+        0,
+        0,
+        0
+      ],
+      "bounds_max_m": [
+        1.5,
+        3.5,
+        0.28
+      ],
+      "bounds_min_m": [
+        -1.5,
+        0.0,
+        -0.205
+      ],
+      "colliders": 0,
+      "name": "FacadeBarredWindow",
+      "nominal_width_height_m": [
+        3,
+        3.5
+      ],
+      "notes": "Six cylindrical steel bars, three cross rails and bolted mounts.",
+      "parts": [
+        {
+          "material": "Assets/Game/Alcatraz/Resources/Alcatraz/ArchitectureKit/Materials/WeatheredBrick.mat",
+          "mesh": "Assets/Game/Alcatraz/Resources/Alcatraz/ArchitectureKit/Meshes/FacadeBarredWindow_BrickWall.asset",
+          "name": "BrickWall",
+          "triangles": 24,
+          "vertices": 72
+        },
+        {
+          "material": "Assets/Game/Alcatraz/Resources/Alcatraz/ArchitectureKit/Materials/LimestoneTrim.mat",
+          "mesh": "Assets/Game/Alcatraz/Resources/Alcatraz/ArchitectureKit/Meshes/FacadeBarredWindow_ChamferedReveal.asset",
+          "name": "ChamferedReveal",
+          "triangles": 32,
+          "vertices": 96
+        },
+        {
+          "material": "Assets/Game/Alcatraz/Resources/Alcatraz/ArchitectureKit/Materials/PaintedSteel.mat",
+          "mesh": "Assets/Game/Alcatraz/Resources/Alcatraz/ArchitectureKit/Meshes/FacadeBarredWindow_SteelFrame.asset",
+          "name": "SteelFrame",
+          "triangles": 48,
+          "vertices": 144
+        },
+        {
+          "material": "Assets/Game/Alcatraz/Resources/Alcatraz/ArchitectureKit/Materials/RecessedGlass.mat",
+          "mesh": "Assets/Game/Alcatraz/Resources/Alcatraz/ArchitectureKit/Meshes/FacadeBarredWindow_RecessedGlass.asset",
+          "name": "RecessedGlass",
+          "triangles": 108,
+          "vertices": 324
+        },
+        {
+          "material": "Assets/Game/Alcatraz/Resources/Alcatraz/ArchitectureKit/Materials/PaintedSteel.mat",
+          "mesh": "Assets/Game/Alcatraz/Resources/Alcatraz/ArchitectureKit/Meshes/FacadeBarredWindow_Mullions.asset",
+          "name": "Mullions",
+          "triangles": 324,
+          "vertices": 972
+        },
+        {
+          "material": "Assets/Game/Alcatraz/Resources/Alcatraz/ArchitectureKit/Materials/LimestoneTrim.mat",
+          "mesh": "Assets/Game/Alcatraz/Resources/Alcatraz/ArchitectureKit/Meshes/FacadeBarredWindow_SlopedSill.asset",
+          "name": "SlopedSill",
+          "triangles": 24,
+          "vertices": 72
+        },
+        {
+          "material": "Assets/Game/Alcatraz/Resources/Alcatraz/ArchitectureKit/Materials/OxidizedSteel.mat",
+          "mesh": "Assets/Game/Alcatraz/Resources/Alcatraz/ArchitectureKit/Meshes/FacadeBarredWindow_PrisonBars.asset",
+          "name": "PrisonBars",
+          "triangles": 564,
+          "vertices": 1692
+        },
+        {
+          "material": "Assets/Game/Alcatraz/Resources/Alcatraz/ArchitectureKit/Materials/PaintedSteel.mat",
+          "mesh": "Assets/Game/Alcatraz/Resources/Alcatraz/ArchitectureKit/Meshes/FacadeBarredWindow_BoltedBarMounts.asset",
+          "name": "BoltedBarMounts",
+          "triangles": 528,
+          "vertices": 1584
+        }
+      ],
+      "prefab": "Assets/Game/Alcatraz/Resources/Alcatraz/ArchitectureKit/Prefabs/FacadeBarredWindow.prefab",
+      "resources_path": "Alcatraz/ArchitectureKit/Prefabs/FacadeBarredWindow",
+      "triangles": 1652,
+      "use": "Barred brick service/prison facade",
+      "vertices": 4956
+    },
+    {
+      "anchor": [
+        0,
+        0,
+        0
+      ],
+      "bounds_max_m": [
+        1.5,
+        3.5,
+        0.28
+      ],
+      "bounds_min_m": [
+        -1.5,
+        0.0,
+        -0.205
+      ],
+      "colliders": 0,
+      "name": "FacadeBoardedWindow",
+      "nominal_width_height_m": [
+        3,
+        3.5
+      ],
+      "notes": "",
+      "parts": [
+        {
+          "material": "Assets/Game/Alcatraz/Resources/Alcatraz/ArchitectureKit/Materials/CoastalConcrete.mat",
+          "mesh": "Assets/Game/Alcatraz/Resources/Alcatraz/ArchitectureKit/Meshes/FacadeBoardedWindow_ConcreteWall.asset",
+          "name": "ConcreteWall",
+          "triangles": 24,
+          "vertices": 72
+        },
+        {
+          "material": "Assets/Game/Alcatraz/Resources/Alcatraz/ArchitectureKit/Materials/LimestoneTrim.mat",
+          "mesh": "Assets/Game/Alcatraz/Resources/Alcatraz/ArchitectureKit/Meshes/FacadeBoardedWindow_ChamferedReveal.asset",
+          "name": "ChamferedReveal",
+          "triangles": 32,
+          "vertices": 96
+        },
+        {
+          "material": "Assets/Game/Alcatraz/Resources/Alcatraz/ArchitectureKit/Materials/PaintedSteel.mat",
+          "mesh": "Assets/Game/Alcatraz/Resources/Alcatraz/ArchitectureKit/Meshes/FacadeBoardedWindow_SteelFrame.asset",
+          "name": "SteelFrame",
+          "triangles": 48,
+          "vertices": 144
+        },
+        {
+          "material": "Assets/Game/Alcatraz/Resources/Alcatraz/ArchitectureKit/Materials/RecessedGlass.mat",
+          "mesh": "Assets/Game/Alcatraz/Resources/Alcatraz/ArchitectureKit/Meshes/FacadeBoardedWindow_RecessedGlass.asset",
+          "name": "RecessedGlass",
+          "triangles": 108,
+          "vertices": 324
+        },
+        {
+          "material": "Assets/Game/Alcatraz/Resources/Alcatraz/ArchitectureKit/Materials/PaintedSteel.mat",
+          "mesh": "Assets/Game/Alcatraz/Resources/Alcatraz/ArchitectureKit/Meshes/FacadeBoardedWindow_Mullions.asset",
+          "name": "Mullions",
+          "triangles": 324,
+          "vertices": 972
+        },
+        {
+          "material": "Assets/Game/Alcatraz/Resources/Alcatraz/ArchitectureKit/Materials/LimestoneTrim.mat",
+          "mesh": "Assets/Game/Alcatraz/Resources/Alcatraz/ArchitectureKit/Meshes/FacadeBoardedWindow_SlopedSill.asset",
+          "name": "SlopedSill",
+          "triangles": 24,
+          "vertices": 72
+        },
+        {
+          "material": "Assets/Game/Alcatraz/Resources/Alcatraz/ArchitectureKit/Materials/OldTimber.mat",
+          "mesh": "Assets/Game/Alcatraz/Resources/Alcatraz/ArchitectureKit/Meshes/FacadeBoardedWindow_OldTimberBoards.asset",
+          "name": "OldTimberBoards",
+          "triangles": 540,
+          "vertices": 1620
+        },
+        {
+          "material": "Assets/Game/Alcatraz/Resources/Alcatraz/ArchitectureKit/Materials/OxidizedSteel.mat",
+          "mesh": "Assets/Game/Alcatraz/Resources/Alcatraz/ArchitectureKit/Meshes/FacadeBoardedWindow_BoardFixings.asset",
+          "name": "BoardFixings",
+          "triangles": 240,
+          "vertices": 720
+        }
+      ],
+      "prefab": "Assets/Game/Alcatraz/Resources/Alcatraz/ArchitectureKit/Prefabs/FacadeBoardedWindow.prefab",
+      "resources_path": "Alcatraz/ArchitectureKit/Prefabs/FacadeBoardedWindow",
+      "triangles": 1340,
+      "use": "Boarded closed window for abandoned service buildings",
+      "vertices": 4020
+    },
+    {
+      "anchor": [
+        0,
+        0,
+        0
+      ],
+      "bounds_max_m": [
+        1.5,
+        3.5,
+        0.28
+      ],
+      "bounds_min_m": [
+        -1.5,
+        0.0,
+        -0.1
+      ],
+      "colliders": 0,
+      "name": "FacadeBlank",
+      "nominal_width_height_m": [
+        3,
+        3.5
+      ],
+      "notes": "",
+      "parts": [
+        {
+          "material": "Assets/Game/Alcatraz/Resources/Alcatraz/ArchitectureKit/Materials/CoastalConcrete.mat",
+          "mesh": "Assets/Game/Alcatraz/Resources/Alcatraz/ArchitectureKit/Meshes/FacadeBlank_ConcreteWall.asset",
+          "name": "ConcreteWall",
+          "triangles": 108,
+          "vertices": 324
+        },
+        {
+          "material": "Assets/Game/Alcatraz/Resources/Alcatraz/ArchitectureKit/Materials/LimestoneTrim.mat",
+          "mesh": "Assets/Game/Alcatraz/Resources/Alcatraz/ArchitectureKit/Meshes/FacadeBlank_WeatheredPlinth.asset",
+          "name": "WeatheredPlinth",
+          "triangles": 108,
+          "vertices": 324
+        }
+      ],
+      "prefab": "Assets/Game/Alcatraz/Resources/Alcatraz/ArchitectureKit/Prefabs/FacadeBlank.prefab",
+      "resources_path": "Alcatraz/ArchitectureKit/Prefabs/FacadeBlank",
+      "triangles": 216,
+      "use": "Continuous solid wall bay; do not cover a playable doorway",
+      "vertices": 648
+    },
+    {
+      "anchor": [
+        0,
+        0,
+        0
+      ],
+      "bounds_max_m": [
+        1.5,
+        3.5,
+        0.28
+      ],
+      "bounds_min_m": [
+        -1.5,
+        0.0,
+        -0.055
+      ],
+      "colliders": 0,
+      "name": "AccessDoor",
+      "nominal_width_height_m": [
+        3,
+        3.5
+      ],
+      "notes": "Noninteractive visual module. Never place across a required gameplay entrance.",
+      "parts": [
+        {
+          "material": "Assets/Game/Alcatraz/Resources/Alcatraz/ArchitectureKit/Materials/CoastalConcrete.mat",
+          "mesh": "Assets/Game/Alcatraz/Resources/Alcatraz/ArchitectureKit/Meshes/AccessDoor_ConcreteWall.asset",
+          "name": "ConcreteWall",
+          "triangles": 24,
+          "vertices": 72
+        },
+        {
+          "material": "Assets/Game/Alcatraz/Resources/Alcatraz/ArchitectureKit/Materials/LimestoneTrim.mat",
+          "mesh": "Assets/Game/Alcatraz/Resources/Alcatraz/ArchitectureKit/Meshes/AccessDoor_ChamferedDoorJamb.asset",
+          "name": "ChamferedDoorJamb",
+          "triangles": 48,
+          "vertices": 144
+        },
+        {
+          "material": "Assets/Game/Alcatraz/Resources/Alcatraz/ArchitectureKit/Materials/PaintedSteel.mat",
+          "mesh": "Assets/Game/Alcatraz/Resources/Alcatraz/ArchitectureKit/Meshes/AccessDoor_SteelDoorLeaf.asset",
+          "name": "SteelDoorLeaf",
+          "triangles": 108,
+          "vertices": 324
+        },
+        {
+          "material": "Assets/Game/Alcatraz/Resources/Alcatraz/ArchitectureKit/Materials/PaintedSteel.mat",
+          "mesh": "Assets/Game/Alcatraz/Resources/Alcatraz/ArchitectureKit/Meshes/AccessDoor_InsetPanels.asset",
+          "name": "InsetPanels",
+          "triangles": 216,
+          "vertices": 648
+        },
+        {
+          "material": "Assets/Game/Alcatraz/Resources/Alcatraz/ArchitectureKit/Materials/OxidizedSteel.mat",
+          "mesh": "Assets/Game/Alcatraz/Resources/Alcatraz/ArchitectureKit/Meshes/AccessDoor_HingesAndHandle.asset",
+          "name": "HingesAndHandle",
+          "triangles": 660,
+          "vertices": 1980
+        },
+        {
+          "material": "Assets/Game/Alcatraz/Resources/Alcatraz/ArchitectureKit/Materials/OxidizedSteel.mat",
+          "mesh": "Assets/Game/Alcatraz/Resources/Alcatraz/ArchitectureKit/Meshes/AccessDoor_KickPlate.asset",
+          "name": "KickPlate",
+          "triangles": 108,
+          "vertices": 324
+        }
+      ],
+      "prefab": "Assets/Game/Alcatraz/Resources/Alcatraz/ArchitectureKit/Prefabs/AccessDoor.prefab",
+      "resources_path": "Alcatraz/ArchitectureKit/Prefabs/AccessDoor",
+      "triangles": 1164,
+      "use": "Closed decorative metal service door",
+      "vertices": 3492
+    },
+    {
+      "anchor": [
+        0,
+        0,
+        0
+      ],
+      "bounds_max_m": [
+        1.5,
+        0.41,
+        0.12
+      ],
+      "bounds_min_m": [
+        -1.5,
+        0.0,
+        -0.25
+      ],
+      "colliders": 0,
+      "name": "RoofCornice",
+      "nominal_width_height_m": [
+        3,
+        0.41
+      ],
+      "notes": "Anchor at bottom of coping, not bottom of storey. Front projects 0.25m.",
+      "parts": [
+        {
+          "material": "Assets/Game/Alcatraz/Resources/Alcatraz/ArchitectureKit/Materials/LimestoneTrim.mat",
+          "mesh": "Assets/Game/Alcatraz/Resources/Alcatraz/ArchitectureKit/Meshes/RoofCornice_SteppedCoping.asset",
+          "name": "SteppedCoping",
+          "triangles": 54,
+          "vertices": 162
+        }
+      ],
+      "prefab": "Assets/Game/Alcatraz/Resources/Alcatraz/ArchitectureKit/Prefabs/RoofCornice.prefab",
+      "resources_path": "Alcatraz/ArchitectureKit/Prefabs/RoofCornice",
+      "triangles": 54,
+      "use": "Continuous roof-edge coping/cornice; snap adjacent segments at 3m",
+      "vertices": 162
+    },
+    {
+      "anchor": [
+        0,
+        0,
+        0
+      ],
+      "bounds_max_m": [
+        0.105,
+        3.5,
+        0.012
+      ],
+      "bounds_min_m": [
+        -0.105,
+        0.06,
+        -0.219
+      ],
+      "colliders": 0,
+      "name": "Drainpipe",
+      "nominal_width_height_m": [
+        0.21,
+        3.5
+      ],
+      "notes": "Pipe is 108mm diameter with flared upper socket and three metal mounts.",
+      "parts": [
+        {
+          "material": "Assets/Game/Alcatraz/Resources/Alcatraz/ArchitectureKit/Materials/OxidizedSteel.mat",
+          "mesh": "Assets/Game/Alcatraz/Resources/Alcatraz/ArchitectureKit/Meshes/Drainpipe_MetalDownpipe.asset",
+          "name": "MetalDownpipe",
+          "triangles": 96,
+          "vertices": 288
+        },
+        {
+          "material": "Assets/Game/Alcatraz/Resources/Alcatraz/ArchitectureKit/Materials/PaintedSteel.mat",
+          "mesh": "Assets/Game/Alcatraz/Resources/Alcatraz/ArchitectureKit/Meshes/Drainpipe_PipeCollars.asset",
+          "name": "PipeCollars",
+          "triangles": 144,
+          "vertices": 432
+        },
+        {
+          "material": "Assets/Game/Alcatraz/Resources/Alcatraz/ArchitectureKit/Materials/PaintedSteel.mat",
+          "mesh": "Assets/Game/Alcatraz/Resources/Alcatraz/ArchitectureKit/Meshes/Drainpipe_WallBrackets.asset",
+          "name": "WallBrackets",
+          "triangles": 792,
+          "vertices": 2376
+        }
+      ],
+      "prefab": "Assets/Game/Alcatraz/Resources/Alcatraz/ArchitectureKit/Prefabs/Drainpipe.prefab",
+      "resources_path": "Alcatraz/ArchitectureKit/Prefabs/Drainpipe",
+      "triangles": 1032,
+      "use": "Narrow vertical facade accent; place away from window and door openings",
+      "vertices": 3096
+    }
+  ],
+  "schema_version": 1,
+  "triangles_all_modules": 6018,
+  "unity_runtime_verified": false,
+  "vertices_all_modules": 18054
+}

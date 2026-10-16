@@ -6,6 +6,8 @@ The playable character is **Elias Vale, a prisoner in orange**. The default expl
 
 The [map surface and lighting pass](Documentation/EnvironmentQuality.md) adds world-scale concrete/masonry detail to the supplied scan, textured helipad/docks, sparse supported ground cover and consistent afternoon lighting across the enabled Alcatraz scenes. It preserves original collision and source geometry; the remaining scan reconstruction and Unity visual review are documented explicitly.
 
+The [supplied-island geometry rebuild](Documentation/WorldRebuild.md) adds a retaining wall and exposed prison-tower façade with a 105 m² nominal footprint, source-fitted courtyard skins across 826.48 m² of original surface triangles and coastal trees/shrubs with two geometry LODs. Original source assets, collision and mission anchors remain authoritative. This covers selected supplied-world areas; the two lowest tower windows remain partly behind original foreground geometry in the offline preview, and Unity appearance/performance still require verification.
+
 ## Design and development plan
 
 The [complete ALCATRAZ design documentation](Documentation/GameDesign/README.md) covers the game concept, current systems, world and missions, proposed escape chapter, art/audio direction, high-end graphics targets, 36 prioritized requirements and verification gates. It distinguishes inspected source from future work and unexecuted Unity checks. [Research references](Documentation/GameDesign/Research.md) record the GDD templates actually read.

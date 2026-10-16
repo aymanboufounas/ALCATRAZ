@@ -1,0 +1,510 @@
+{
+  "status": "PASS",
+  "recorded_at_utc": "2026-10-16T11:35:40.538327+00:00",
+  "source_baseline_commit": "ff62e7661a05070616f8f8ab35d8377ef4348d76",
+  "scope": "Selected supplied-island courtyard/facade reconstruction and coastal vegetation. Source/native verification only.",
+  "offline_checks": {
+    "passed": 26,
+    "failed": 0,
+    "total": 26,
+    "standalone_rule_assertions": 220928,
+    "checks": [
+      {
+        "name": "source_check_runner",
+        "status": "passed",
+        "duration_seconds": 0.615,
+        "log_sha256": "15986155a7e96615a372265bd2ed6bf356f82d01522f75810dedfe3daddcb597"
+      },
+      {
+        "name": "HoldemTests",
+        "status": "passed",
+        "duration_seconds": 1.682,
+        "log_sha256": "0be718b8dd79ff14ae8eca6250faebf591e9c8f6a3ab80e23eeae1bb83e20f8b"
+      },
+      {
+        "name": "VehicleControlTests",
+        "status": "passed",
+        "duration_seconds": 0.397,
+        "log_sha256": "7c9a64f81d017061281d86b18987a64d583e0f39e751470f3304a356811ac378"
+      },
+      {
+        "name": "CombatTests",
+        "status": "passed",
+        "duration_seconds": 0.447,
+        "log_sha256": "e1cefc29cfc5b4be0f5a598d95c16eb801339440244412c7e7814ad6bceb4e32"
+      },
+      {
+        "name": "MenuCheckpointTests",
+        "status": "passed",
+        "duration_seconds": 0.479,
+        "log_sha256": "1304fd2ac680768b32b0a61d62c28e7915fbac61ea2790d662d07d2c711d3d87"
+      },
+      {
+        "name": "CameraFramingTests",
+        "status": "passed",
+        "duration_seconds": 0.447,
+        "log_sha256": "dd3a525abe66c2736bf236aa3d938fedfe61883809743aab5c71a51e15fb51db"
+      },
+      {
+        "name": "PlayerFailureTests",
+        "status": "passed",
+        "duration_seconds": 0.447,
+        "log_sha256": "630046f2f23d1444d1e66a376a3ee325849ea3c749654fdd11a5ac86bb9d7b13"
+      },
+      {
+        "name": "SwimmingTests",
+        "status": "passed",
+        "duration_seconds": 0.447,
+        "log_sha256": "52528022ac6894561c4e5970a650a9294d8223b940f5723a23239e6820e23bd2"
+      },
+      {
+        "name": "MovementResponseTests",
+        "status": "passed",
+        "duration_seconds": 0.397,
+        "log_sha256": "539370e067691cf2171f5090f36ca689d9c04b702d88e78818dee9ba59ecf160"
+      },
+      {
+        "name": "LocomotionAnimationTests",
+        "status": "passed",
+        "duration_seconds": 0.447,
+        "log_sha256": "7413ede5d11af3c71723d3845405fcab8aee0af6bbf6a9de18d239a2fcf620ce"
+      },
+      {
+        "name": "FootContactTests",
+        "status": "passed",
+        "duration_seconds": 0.446,
+        "log_sha256": "9c46389dcfbbf89e9e78774f5c6ff01b8eb8cdf02d264e10d9be0b50922a67fe"
+      },
+      {
+        "name": "GraphicsSettingsTests",
+        "status": "passed",
+        "duration_seconds": 0.447,
+        "log_sha256": "d46eed5bd4ecf0da6ba64f1305b9a18b96d59e6e0ff37006c286b845b5522e6d"
+      },
+      {
+        "name": "csharp_grammar",
+        "status": "passed",
+        "duration_seconds": 0.215,
+        "log_sha256": "e0825c9871e3ecc535ece41d67a06732ee14f9a0762299b65249969e681a4254"
+      },
+      {
+        "name": "character_forward",
+        "status": "passed",
+        "duration_seconds": 10.915,
+        "log_sha256": "759506eec83de090c5b6a6b109294ab743d5f34ef0d6281981b6c028a544c0b8"
+      },
+      {
+        "name": "locomotion_quality",
+        "status": "passed",
+        "duration_seconds": 7.338,
+        "log_sha256": "0b8b707e36d17a9d1d789a31ea447c43f99f69be7b57373b4dc9276aadec6e1f"
+      },
+      {
+        "name": "alcatraz_routes",
+        "status": "passed",
+        "duration_seconds": 12.016,
+        "log_sha256": "34fa738e94f41cfa4aef0eaef898e5f00b20a44a85b7d23487a527e25647922d"
+      },
+      {
+        "name": "scene_startup",
+        "status": "passed",
+        "duration_seconds": 5.129,
+        "log_sha256": "2ba7e30fb4af33cfde62ee04e8457b08cdb49b16fa4ecaf218519fb62ad27946"
+      },
+      {
+        "name": "native_asset_integrity",
+        "status": "passed",
+        "duration_seconds": 90.642,
+        "log_sha256": "543e1eccce56c9bdec39ef911cd629de5d072be7c75e833e672c13b462456124"
+      },
+      {
+        "name": "supplied_assets",
+        "status": "passed",
+        "duration_seconds": 0.618,
+        "log_sha256": "99303581968d3a764c95b778ab73583c047e0f60958608c2c5c450e107d8bbf8"
+      },
+      {
+        "name": "supplied_prison",
+        "status": "passed",
+        "duration_seconds": 4.083,
+        "log_sha256": "c1c10bd1a11bcb4261dda359385fd4f76647de37caaf605dcfbdb87afc1988a9"
+      },
+      {
+        "name": "warehouse",
+        "status": "passed",
+        "duration_seconds": 0.371,
+        "log_sha256": "c950474e8b61b727b9c3624a7a2ef815846c61db7047a68d6182cf372cace0b9"
+      },
+      {
+        "name": "extra_assets",
+        "status": "passed",
+        "duration_seconds": 0.515,
+        "log_sha256": "e5d7344bd5433a91883b5c1a8d00a5c817b1beed873e667e5f8d99cb6dd756e2"
+      },
+      {
+        "name": "police_helicopter",
+        "status": "passed",
+        "duration_seconds": 0.064,
+        "log_sha256": "60ab45a5dc633bbdfd5ef29f453fef7f00f893cdcd2960b86ed4584f32abd700"
+      },
+      {
+        "name": "graphics_quality",
+        "status": "passed",
+        "duration_seconds": 0.066,
+        "log_sha256": "ff314304d5e2d46542ca076b9ce0ee19538b21b7c567fd6a4c9192b7aa41db47"
+      },
+      {
+        "name": "environment_surface_quality",
+        "status": "passed",
+        "duration_seconds": 4.635,
+        "log_sha256": "5eca6abf895143fa35ff3c1b86c226f7a2d72a287ed1368a61fe121ae080a427"
+      },
+      {
+        "name": "world_rebuild",
+        "status": "passed",
+        "duration_seconds": 14.255,
+        "log_sha256": "b3d0b2e637be5f2c1cae8f06d0efb06acf77d1f23790c9a19062336b6b58b514"
+      }
+    ]
+  },
+  "world_source_checks": {
+    "status": "PASS",
+    "checks": 11911,
+    "errors": [],
+    "scope": "Sequential deterministic author checks, native buffers, material/resource dependencies, source provenance, court plane contacts, gate clearance and runtime source integration.",
+    "regeneration": [
+      {
+        "script": "Tools/author_prison_architecture.py",
+        "exit_code": 0,
+        "output": "{\n  \"status\": \"PASS\",\n  \"check_only\": true,\n  \"module_count\": 7,\n  \"triangles_all_modules\": 6018,\n  \"vertices_all_modules\": 18054,\n  \"files\": 102,\n  \"colliders\": 0,\n  \"unity_runtime_verified\": false\n}\n"
+      },
+      {
+        "script": "Tools/author_coastal_vegetation.py",
+        "exit_code": 0,
+        "output": "{\n  \"status\": \"PASS\",\n  \"mode\": \"check\",\n  \"trees\": 8,\n  \"shrubs\": 36,\n  \"lod0_triangles\": 45136,\n  \"lod1_triangles\": 16296,\n  \"stored_triangles\": 61432,\n  \"chunks\": 25,\n  \"output_files\": 426,\n  \"colliders\": 0\n}\n"
+      },
+      {
+        "script": "Tools/author_courtyard_surfaces.py",
+        "exit_code": 0,
+        "output": "{\n  \"status\": \"PASS\",\n  \"mode\": \"check\",\n  \"regions\": [\n    {\n      \"name\": \"ArrivalCourt\",\n      \"source_area_m2\": 747.571342,\n      \"source_face_count\": 99,\n      \"surface_vertices\": 540,\n      \"surface_triangles\": 180,\n      \"joint_triangles\": 608\n    },\n    {\n      \"name\": \"CellhouseGateWalk\",\n      \"source_area_m2\": 78.91082,\n      \"source_face_count\": 27,\n      \"surface_vertices\": 561,\n      \"surface_triangles\": 187,\n      \"joint_triangles\": 133\n    }\n  ],\n  \"surface_area_m2\": 826.482162,\n  \"vertices\": 3324,\n  \"triangles\": 1108,\n  \"source_plane_error_metres\": 0.006602436152674793,\n  \"colliders\": 0,\n  \"output_files\": 21\n}\n"
+      },
+      {
+        "script": "Tools/author_facade_rebuild.py",
+        "exit_code": 0,
+        "output": "{\n  \"status\": \"PASS\",\n  \"mode\": \"check\",\n  \"patches\": 2,\n  \"replaced_area_m2\": 182.98830710711516,\n  \"visual_chunks\": 2,\n  \"facade_triangles\": 7764,\n  \"facade_renderers\": 7,\n  \"colliders_added\": 0,\n  \"output_files\": 26\n}\n"
+      }
+    ],
+    "native_assets": {
+      "ArchitectureKit": {
+        "native_meshes": 34,
+        "vertices": 18054,
+        "stored_triangles": 6018,
+        "prefabs": 7,
+        "materials": 7,
+        "colliders_added": 0
+      },
+      "CoastalVegetation": {
+        "native_meshes": 200,
+        "vertices": 184296,
+        "stored_triangles": 61432,
+        "prefabs": 1,
+        "materials": 4,
+        "colliders_added": 0
+      },
+      "CourtyardSurfaces": {
+        "native_meshes": 4,
+        "vertices": 3324,
+        "stored_triangles": 1108,
+        "prefabs": 1,
+        "materials": 3,
+        "colliders_added": 0
+      },
+      "FacadeRebuild": {
+        "native_meshes": 9,
+        "vertices": 142467,
+        "stored_triangles": 47893,
+        "prefabs": 1,
+        "materials": 0,
+        "colliders_added": 0
+      }
+    },
+    "courtyard": {
+      "source_contact_vertices_checked": 3324,
+      "maximum_independent_source_plane_distance_metres": 0.006602435886151442,
+      "surface_area_m2": 826.482162
+    },
+    "facades": {
+      "patches": 2,
+      "replaced_projected_area_m2": 182.98830710711516,
+      "footprint_area_m2": 105.0,
+      "visual_replacement_chunks": 2,
+      "facade_triangles": 7764,
+      "gate_clearance_xz_metres": {
+        "retaining_east": 32.63036337191662,
+        "south_tower_face": 42.189891488896265
+      },
+      "independent_native_wall_support": [
+        {
+          "patch": "retaining_east",
+          "samples": 672,
+          "covered_samples": 672,
+          "coverage_fraction": 1.0,
+          "minimum_fraction": 0.995,
+          "scope": "Original front-facing near-vertical wall triangles within +/-1.5 m of the new plane; this measures background support, not exact visual/collider alignment."
+        },
+        {
+          "patch": "south_tower_face",
+          "samples": 1008,
+          "covered_samples": 1008,
+          "coverage_fraction": 1.0,
+          "minimum_fraction": 0.995,
+          "scope": "Original front-facing near-vertical wall triangles within +/-1.5 m of the new plane; this measures background support, not exact visual/collider alignment."
+        }
+      ],
+      "independent_native_aperture_rays": 54,
+      "old_scan_aperture_occluders": 0,
+      "aperture_rays_by_patch": {
+        "south_tower_face": 54
+      },
+      "aperture_ray_scope": "Front-facing scan triangles between the actual glass pane and each patch's declared ahead clipping depth; native structures beyond that local volume remain authoritative.",
+      "oblique_sightlines": {
+        "rays": 162,
+        "elevation_slopes": [
+          0,
+          0.35,
+          0.7
+        ],
+        "range_metres": 4,
+        "local_prism_occluded": 0,
+        "foreground_occluded_within_4m": 5,
+        "by_patch_and_row": {
+          "south_tower_face": {
+            "0": {
+              "rays": 54,
+              "locally_occluded": 0,
+              "foreground_occluded": 5
+            },
+            "1": {
+              "rays": 54,
+              "locally_occluded": 0,
+              "foreground_occluded": 0
+            },
+            "2": {
+              "rays": 54,
+              "locally_occluded": 0,
+              "foreground_occluded": 0
+            }
+          }
+        },
+        "blocked_rays": [
+          {
+            "patch": "south_tower_face",
+            "row": 0,
+            "column": 0,
+            "local_xy": [
+              -0.4,
+              1.3
+            ],
+            "camera_elevation_slope": 0.7,
+            "ray_start_world": [
+              -110.70499885988265,
+              49.8,
+              -19.70998153171909
+            ],
+            "scan_hits_within_4m": [
+              {
+                "source_mesh": "Island_0_7",
+                "native_triangle": 19994,
+                "distance_metres": 1.4800669856222586,
+                "point": [
+                  -110.95955334583866,
+                  50.648762683389705,
+                  -20.895478137742803
+                ],
+                "inside_rebuild_prism": false,
+                "near_horizontal_surface": false
+              }
+            ]
+          },
+          {
+            "patch": "south_tower_face",
+            "row": 0,
+            "column": 0,
+            "local_xy": [
+              -0.4,
+              1.97
+            ],
+            "camera_elevation_slope": 0.35,
+            "ray_start_world": [
+              -110.70499885988265,
+              50.47,
+              -19.70998153171909
+            ],
+            "scan_hits_within_4m": [
+              {
+                "source_mesh": "Island_0_7",
+                "native_triangle": 19840,
+                "distance_metres": 2.970915699742074,
+                "point": [
+                  -111.29369294424461,
+                  51.45144326324119,
+                  -22.45161398174766
+                ],
+                "inside_rebuild_prism": false,
+                "near_horizontal_surface": true
+              }
+            ]
+          },
+          {
+            "patch": "south_tower_face",
+            "row": 0,
+            "column": 0,
+            "local_xy": [
+              0.2,
+              1.3
+            ],
+            "camera_elevation_slope": 0.7,
+            "ray_start_world": [
+              -110.11837013046978,
+              49.8,
+              -19.835944755826148
+            ],
+            "scan_hits_within_4m": [
+              {
+                "source_mesh": "Island_0_7",
+                "native_triangle": 19842,
+                "distance_metres": 2.7697323469142376,
+                "point": [
+                  -110.5947322145197,
+                  51.388337204920376,
+                  -22.054431032972882
+                ],
+                "inside_rebuild_prism": false,
+                "near_horizontal_surface": true
+              }
+            ]
+          },
+          {
+            "patch": "south_tower_face",
+            "row": 0,
+            "column": 0,
+            "local_xy": [
+              0.2,
+              1.97
+            ],
+            "camera_elevation_slope": 0.35,
+            "ray_start_world": [
+              -110.11837013046978,
+              50.47,
+              -19.835944755826148
+            ],
+            "scan_hits_within_4m": [
+              {
+                "source_mesh": "Island_0_7",
+                "native_triangle": 19841,
+                "distance_metres": 2.7197618699404296,
+                "point": [
+                  -110.65729747998904,
+                  51.36847448889413,
+                  -22.345806412158712
+                ],
+                "inside_rebuild_prism": false,
+                "near_horizontal_surface": true
+              }
+            ]
+          },
+          {
+            "patch": "south_tower_face",
+            "row": 0,
+            "column": 0,
+            "local_xy": [
+              0.4,
+              1.97
+            ],
+            "camera_elevation_slope": 0.35,
+            "ray_start_world": [
+              -109.9228272206655,
+              50.47,
+              -19.877932497195165
+            ],
+            "scan_hits_within_4m": [
+              {
+                "source_mesh": "Island_0_7",
+                "native_triangle": 19842,
+                "distance_metres": 2.539956648677764,
+                "point": [
+                  -110.42612573355909,
+                  51.309075757681676,
+                  -22.221865571528216
+                ],
+                "inside_rebuild_prism": false,
+                "near_horizontal_surface": true
+              }
+            ]
+          }
+        ],
+        "scope": "Native scan geometry only: retained surfaces outside the declared reconstruction prisms are reported, not deleted or treated as local aperture failures.",
+        "limitation": "Preserved foreground terrain can still obscure upper windows from some views. These rays do not prove full facade visibility or reproduce Unity rendering."
+      }
+    },
+    "vegetation": {
+      "trees": 8,
+      "shrubs": 36,
+      "placements": 44,
+      "lod_groups": 25,
+      "lod0_triangles": 45136,
+      "stored_triangles": 61432
+    },
+    "unity_import_verified": false,
+    "unity_api_compilation_verified": false,
+    "unity_shader_compilation_verified": false,
+    "unity_rendered_quality_verified": false,
+    "unity_gameplay_verified": false,
+    "gpu_performance_verified": false,
+    "limitations": [
+      "The rebuilt floor/facade areas and confirmed green patches cover part of the supplied island, not the entire map.",
+      "Source color and elevation masks are conservative placement heuristics, not proof that every surface is natural ground.",
+      "Preserved native terrain outside facade reconstruction prisms can obscure upper windows; the 4 m oblique sightline report records that remaining visibility gap.",
+      "Native source checks do not execute Unity, test alpha overdraw, certify collision/camera behavior or establish reference-game visual parity."
+    ]
+  },
+  "source_snapshot": {
+    "files": 7939,
+    "sha256_of_sorted_path_hash_mapping": "f3f945792b42e25868f80b6125f55f467a547a63b75977e73809d971a889b3f8",
+    "matched_passing_scratch_inputs": true
+  },
+  "original_scan_inputs_unchanged": {
+    "Assets/Game/Supplied/Resources/AlcatrazSupplied/Baked/Meshes/Island_0_0.asset": "b98dbbfb0f8881cade102f580b8f145a6b7953dd2727a9901b88334289692436",
+    "Assets/Game/Supplied/Resources/AlcatrazSupplied/Baked/Meshes/Island_0_1.asset": "d0ff3df33f95081c3a7b0f64b24f812c6fe8e6ef8d08fca5b85b2335ae59f099",
+    "Assets/Game/Supplied/Resources/AlcatrazSupplied/Baked/Meshes/Island_0_10.asset": "a6466aa32d02d2741086b16d3bb88f865aae1e908fbf8c9ea5fd81f3df00ea57",
+    "Assets/Game/Supplied/Resources/AlcatrazSupplied/Baked/Meshes/Island_0_2.asset": "19eda43a9b05be0faf30092b131b9cb914c769cfbb5c4e71ed31993ede6cd7ae",
+    "Assets/Game/Supplied/Resources/AlcatrazSupplied/Baked/Meshes/Island_0_3.asset": "8ee0233665dee7c8562c9a00c211ca6d84ee5b0f6d078d5541455cf4e832b47c",
+    "Assets/Game/Supplied/Resources/AlcatrazSupplied/Baked/Meshes/Island_0_4.asset": "d4867750b2d1cf9bb13b2c68eaa199a9098b3fc19f19039c64cc0ddaef7a84bc",
+    "Assets/Game/Supplied/Resources/AlcatrazSupplied/Baked/Meshes/Island_0_5.asset": "fd06304f78db24f8beab62969df1d779eda765c4d9694e754f5c53ef216b4fe1",
+    "Assets/Game/Supplied/Resources/AlcatrazSupplied/Baked/Meshes/Island_0_6.asset": "a27f3dc3873b1be4983a65b4048592289a27c5ad0a55f2235ce623f10d1625a3",
+    "Assets/Game/Supplied/Resources/AlcatrazSupplied/Baked/Meshes/Island_0_7.asset": "a507640e2b4028816fbc6e052b97cd05ec1c7f77bc0b462c1ad5ff15e67e725a",
+    "Assets/Game/Supplied/Resources/AlcatrazSupplied/Baked/Meshes/Island_0_8.asset": "91f145fce68899e90fb5e79c57b055e69c28b5eb18f42fa63101f21c696e6843",
+    "Assets/Game/Supplied/Resources/AlcatrazSupplied/Baked/Meshes/Island_0_9.asset": "58cdf1a51fd66039eb9a2f4d4bab9cc9794efd98c8fc111ae73d388049244b12",
+    "Assets/Game/Supplied/Resources/AlcatrazSupplied/Baked/Materials/Island_0.mat": "f8bb72718a5bc08303677a4d7fe6c852d9a0cb48eb23a32cca0273f3bda59389",
+    "Assets/Game/Supplied/Resources/AlcatrazSupplied/Baked/Island.prefab": "03caa828799c013783cf8b043fa11a5414abb5c9a1d3086f9c031fa09c6a7913",
+    "Assets/Game/Supplied/Resources/AlcatrazSupplied/Island/Island_Texture_00.jpg": "664dd6fab6f31f4b182f3ae22ce994a027ff1abb6a0abc920411b73329723fa4"
+  },
+  "preview_evidence": {
+    "manifest": "Documentation/WorldRebuildPreviews/Manifest.json",
+    "manifest_sha256": "8aee4704d2e5627a52dee950b4dac212d5ec7e8e7d629a01498f76d8e51b7df9",
+    "offline_source_render_only": true
+  },
+  "unity_editor_available": false,
+  "unity_import_verified": false,
+  "unity_api_compilation_verified": false,
+  "unity_shader_compilation_verified": false,
+  "unity_play_mode_verified": false,
+  "unity_rendered_quality_verified": false,
+  "gpu_performance_verified": false,
+  "player_build_produced": false,
+  "limitations": [
+    "Most island buildings, roofs and terrain silhouettes remain coarse original scan geometry.",
+    "The two new facades are visual replacements; original collision is retained and does not exactly follow every planar visual surface.",
+    "This does not establish reference-image quality, full-map reconstruction or verified gameplay/performance in Unity."
+  ]
+}

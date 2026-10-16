@@ -1,0 +1,5812 @@
+{
+  "schema": 1,
+  "resource": "Alcatraz/CourtyardSurfaces/CourtyardSurfaces",
+  "world_position": [
+    0,
+    0,
+    0
+  ],
+  "world_scale": [
+    1,
+    1,
+    1
+  ],
+  "scan_offset": [
+    -63.0,
+    45.0,
+    12.0
+  ],
+  "source_hashes": {
+    "Assets/Game/Supplied/Resources/AlcatrazSupplied/Baked/Meshes/Island_0_0.asset": "b98dbbfb0f8881cade102f580b8f145a6b7953dd2727a9901b88334289692436",
+    "Assets/Game/Supplied/Resources/AlcatrazSupplied/Baked/Meshes/Island_0_1.asset": "d0ff3df33f95081c3a7b0f64b24f812c6fe8e6ef8d08fca5b85b2335ae59f099",
+    "Assets/Game/Supplied/Resources/AlcatrazSupplied/Baked/Meshes/Island_0_10.asset": "a6466aa32d02d2741086b16d3bb88f865aae1e908fbf8c9ea5fd81f3df00ea57",
+    "Assets/Game/Supplied/Resources/AlcatrazSupplied/Baked/Meshes/Island_0_2.asset": "19eda43a9b05be0faf30092b131b9cb914c769cfbb5c4e71ed31993ede6cd7ae",
+    "Assets/Game/Supplied/Resources/AlcatrazSupplied/Baked/Meshes/Island_0_3.asset": "8ee0233665dee7c8562c9a00c211ca6d84ee5b0f6d078d5541455cf4e832b47c",
+    "Assets/Game/Supplied/Resources/AlcatrazSupplied/Baked/Meshes/Island_0_4.asset": "d4867750b2d1cf9bb13b2c68eaa199a9098b3fc19f19039c64cc0ddaef7a84bc",
+    "Assets/Game/Supplied/Resources/AlcatrazSupplied/Baked/Meshes/Island_0_5.asset": "fd06304f78db24f8beab62969df1d779eda765c4d9694e754f5c53ef216b4fe1",
+    "Assets/Game/Supplied/Resources/AlcatrazSupplied/Baked/Meshes/Island_0_6.asset": "a27f3dc3873b1be4983a65b4048592289a27c5ad0a55f2235ce623f10d1625a3",
+    "Assets/Game/Supplied/Resources/AlcatrazSupplied/Baked/Meshes/Island_0_7.asset": "a507640e2b4028816fbc6e052b97cd05ec1c7f77bc0b462c1ad5ff15e67e725a",
+    "Assets/Game/Supplied/Resources/AlcatrazSupplied/Baked/Meshes/Island_0_8.asset": "91f145fce68899e90fb5e79c57b055e69c28b5eb18f42fa63101f21c696e6843",
+    "Assets/Game/Supplied/Resources/AlcatrazSupplied/Baked/Meshes/Island_0_9.asset": "58cdf1a51fd66039eb9a2f4d4bab9cc9794efd98c8fc111ae73d388049244b12",
+    "Assets/Game/Supplied/Resources/AlcatrazSupplied/Island/Island_Texture_00.jpg": "664dd6fab6f31f4b182f3ae22ce994a027ff1abb6a0abc920411b73329723fa4",
+    "Assets/Game/Supplied/Resources/AlcatrazSupplied/Baked/Island.prefab": "03caa828799c013783cf8b043fa11a5414abb5c9a1d3086f9c031fa09c6a7913",
+    "Assets/Game/Textures/PBR_concrete_floor_worn_001_Base.png": "6464d3bd1a40f01a65bc177e8101628db198fe2efa9f4165cafd76c07ba20d5e",
+    "Assets/Game/Textures/PBR_concrete_floor_worn_001_Normal.png": "d6fb702b8209330f2b38a381c99f560f3a96a1093253f186814c1608711b75b6",
+    "Assets/Game/Textures/PBR_concrete_floor_worn_001_Surface.png": "b76b3b0bf4fde45749cfad09f73b4c4838c98048afdb335e005fbd3732ddca33",
+    "Assets/Game/Textures/PBR_brushed_concrete_Base.png": "32f46964baf885a9ccc486f38bd1783b6d25f0b3cb7e2f60175c364b46706da6",
+    "Assets/Game/Textures/PBR_brushed_concrete_Normal.png": "5a1f0dcfd26b11a3eea6a7408cdd2c6a5a63a2eba225deede43d4dd547c946e0",
+    "Assets/Game/Textures/PBR_brushed_concrete_Surface.png": "956d1a20c654d531284c512f9557ae59279985935014c17f936cd0647b94363d",
+    "Tools/author_courtyard_surfaces.py": "d469b2da7526738e2a93e33f5a9ba8523381850ed1b645384237d06ace6cdd84",
+    "Tools/author_environment_dressing.py": "8b5e8440e14ae113bf8b7ae0779c29ab01af5eee9aa12ff0cf79811a161fedce",
+    "Tools/geometry.py": "ecce2f38983a49ce0e21dc010e6c1702f72c4a1f32ee213451c7683a42593af6",
+    "Tools/unity_writer.py": "7e04b29a2d1b69397998ee4ee325b203a36570f6df2401b8d0604de1cad85051",
+    "Assets/Game/Supplied/Scripts/SuppliedIslandWorld.cs": "9b142547702fd0176a39b94c61b2b4d39f57324076b45af5f9d4457979c629ae",
+    "Documentation/ThirdParty_Art_Credits.md": "b2d69591fa7bc3e4221bd2a610811018ef2b6de6380317782de897e02463e49e",
+    "Tools/ArtSources/download-provenance.json": "342e3207307b3d5f6950ae6c8f87c907ae64feccb1477d440358dd6caccf5b0f"
+  },
+  "source_atlas_dimensions": [
+    8192,
+    8192
+  ],
+  "referenced_pbr_dimensions": [
+    2048,
+    2048
+  ],
+  "texture_repeat_metres": 2.0,
+  "source_normal_y_minimum": 0.8,
+  "coverage_policy": "Continuously repave each authored floor region; no source-color or one-metre tile eligibility mask",
+  "visual_offset_metres": 0.006,
+  "joint_offset_metres": 0.0066,
+  "maximum_quantized_vertex_distance_from_source_metres": 0.006602436152674793,
+  "maximum_allowed_vertex_distance_metres": 0.01,
+  "vertical_wall_clearance_metres": 0.5,
+  "minimum_architecture_wall_height_metres": 1.0,
+  "wall_footprint_radius_metres": 0.52,
+  "wall_footprint_polygon_sides": 16,
+  "minimum_measured_vertical_wall_distance_metres": 0.5100083458096765,
+  "excluded_helipad_bounds_x0_x1_z0_z1": [
+    -157.35,
+    -144.65,
+    -11.35,
+    1.35
+  ],
+  "colliders": 0,
+  "source_geometry_or_collision_modified": false,
+  "surface_area_m2": 826.482162,
+  "vertices": 3324,
+  "triangles": 1108,
+  "regions": [
+    {
+      "name": "ArrivalCourt",
+      "height": [
+        29.5,
+        33.5
+      ],
+      "polygon": [
+        [
+          -168.5,
+          -14.0
+        ],
+        [
+          -141.0,
+          -14.0
+        ],
+        [
+          -146.4,
+          19.0
+        ],
+        [
+          -168.5,
+          19.0
+        ]
+      ],
+      "material": "ArrivalWornConcrete",
+      "surface_mesh": "Assets/Game/Alcatraz/Resources/Alcatraz/CourtyardSurfaces/Meshes/ArrivalCourt.asset",
+      "joint_mesh": "Assets/Game/Alcatraz/Resources/Alcatraz/CourtyardSurfaces/Meshes/ArrivalCourtExpansionJoints.asset",
+      "source_area_m2": 747.571342,
+      "source_face_count": 99,
+      "accepted_clipped_polygons": 117,
+      "surface_vertices": 540,
+      "surface_triangles": 180,
+      "joint_vertices": 1824,
+      "joint_triangles": 608,
+      "bounds": [
+        [
+          -168.5005749902302,
+          29.60480439525736,
+          -14.000266250724088
+        ],
+        [
+          -140.99999602329714,
+          32.17815201080593,
+          19.000277149681423
+        ]
+      ]
+    },
+    {
+      "name": "CellhouseGateWalk",
+      "height": [
+        48.0,
+        50.5
+      ],
+      "polygon": [
+        [
+          -121.0,
+          17.5
+        ],
+        [
+          -119.0,
+          17.5
+        ],
+        [
+          -99.5,
+          29.5
+        ],
+        [
+          -100.5,
+          32.0
+        ],
+        [
+          -119.5,
+          23.0
+        ]
+      ],
+      "material": "GateBrushedConcrete",
+      "surface_mesh": "Assets/Game/Alcatraz/Resources/Alcatraz/CourtyardSurfaces/Meshes/CellhouseGateWalk.asset",
+      "joint_mesh": "Assets/Game/Alcatraz/Resources/Alcatraz/CourtyardSurfaces/Meshes/CellhouseGateWalkExpansionJoints.asset",
+      "source_area_m2": 78.91082,
+      "source_face_count": 27,
+      "accepted_clipped_polygons": 99,
+      "surface_vertices": 561,
+      "surface_triangles": 187,
+      "joint_vertices": 399,
+      "joint_triangles": 133,
+      "bounds": [
+        [
+          -121.00278062576729,
+          48.004941624426365,
+          17.50021133397592
+        ],
+        [
+          -99.501145067594,
+          49.54606818891904,
+          31.999945384390212
+        ]
+      ]
+    }
+  ],
+  "rejected": {},
+  "rules": [
+    "Clip original source XYZ and UVs to independent floor polygons and height bands",
+    "Reject source normals below .80 Y; no guessed flat connecting floor",
+    "Repave the entire selected floor polygon continuously; source atlas colors do not create holes",
+    "Keep every accepted polygon at least .50m from vertical architecture source triangles spanning >=1m in height",
+    "Exclude the 12m helipad footprint plus .35m on every side",
+    "Full opaque CC0 PBR texture replacement, 2m world UV repeat; no scan-color blend",
+    "Every visual and joint vertex remains within .01m of its own authoritative source triangle",
+    "No colliders, floor changes, wall edits, NPC edits, camera edits or access obstacles"
+  ],
+  "limitations": [
+    "Conservative continuous architecture clearance footprints require Unity visual review",
+    "Only two confirmed floor areas receive replacement; the complete island is not rebuilt",
+    "No Unity shader compilation, rendering, collision playthrough or performance capture was run"
+  ],
+  "source_faces": [
+    {
+      "region": "ArrivalCourt",
+      "source_mesh": "Assets/Game/Supplied/Resources/AlcatrazSupplied/Baked/Meshes/Island_0_0.asset",
+      "source_triangle": 12407,
+      "clipped_piece": 0,
+      "source_normal": [
+        0.017383233,
+        0.998458569,
+        -0.052709672
+      ],
+      "source_area_m2": 1.21929434,
+      "source_bounds": [
+        [
+          -158.6057586669922,
+          31.75226112340961,
+          8.59094231069737
+        ],
+        [
+          -157.35,
+          31.856266021728516,
+          10.529873594437525
+        ]
+      ],
+      "surface_triangles": 1,
+      "joint_triangles": 2
+    },
+    {
+      "region": "ArrivalCourt",
+      "source_mesh": "Assets/Game/Supplied/Resources/AlcatrazSupplied/Baked/Meshes/Island_0_0.asset",
+      "source_triangle": 12407,
+      "clipped_piece": 0,
+      "source_normal": [
+        0.017383233,
+        0.998458569,
+        -0.052709672
+      ],
+      "source_area_m2": 5.173143746,
+      "source_bounds": [
+        [
+          -157.35,
+          31.736724853515625,
+          8.358509063720703
+        ],
+        [
+          -152.87779235839844,
+          31.854619332958958,
+          11.893684387207031
+        ]
+      ],
+      "surface_triangles": 2,
+      "joint_triangles": 6
+    },
+    {
+      "region": "ArrivalCourt",
+      "source_mesh": "Assets/Game/Supplied/Resources/AlcatrazSupplied/Baked/Meshes/Island_0_0.asset",
+      "source_triangle": 12408,
+      "clipped_piece": 0,
+      "source_normal": [
+        -0.008125494,
+        0.999488124,
+        0.03094296
+      ],
+      "source_area_m2": 8.629729002,
+      "source_bounds": [
+        [
+          -161.80657958984375,
+          31.707347869873047,
+          10.146926879882812
+        ],
+        [
+          -157.35,
+          31.856266021728516,
+          14.116607666015625
+        ]
+      ],
+      "surface_triangles": 2,
+      "joint_triangles": 4
+    },
+    {
+      "region": "ArrivalCourt",
+      "source_mesh": "Assets/Game/Supplied/Resources/AlcatrazSupplied/Baked/Meshes/Island_0_0.asset",
+      "source_triangle": 12408,
+      "clipped_piece": 0,
+      "source_normal": [
+        -0.008125494,
+        0.999488124,
+        0.03094296
+      ],
+      "source_area_m2": 5.542153135,
+      "source_bounds": [
+        [
+          -157.35,
+          31.777927624031296,
+          10.529873594437525
+        ],
+        [
+          -152.87779235839844,
+          31.854619332958958,
+          13.007091417354458
+        ]
+      ],
+      "surface_triangles": 1,
+      "joint_triangles": 6
+    },
+    {
+      "region": "ArrivalCourt",
+      "source_mesh": "Assets/Game/Supplied/Resources/AlcatrazSupplied/Baked/Meshes/Island_0_0.asset",
+      "source_triangle": 12409,
+      "clipped_piece": 0,
+      "source_normal": [
+        -0.007808201,
+        0.999450461,
+        0.032215029
+      ],
+      "source_area_m2": 9.698339728,
+      "source_bounds": [
+        [
+          -161.80657958984375,
+          31.637715926572316,
+          13.007091417354458
+        ],
+        [
+          -157.35,
+          31.777927624031296,
+          17.3570687559672
+        ]
+      ],
+      "surface_triangles": 1,
+      "joint_triangles": 4
+    },
+    {
+      "region": "ArrivalCourt",
+      "source_mesh": "Assets/Game/Supplied/Resources/AlcatrazSupplied/Baked/Meshes/Island_0_0.asset",
+      "source_triangle": 12409,
+      "clipped_piece": 0,
+      "source_normal": [
+        -0.007808201,
+        0.999450461,
+        0.032215029
+      ],
+      "source_area_m2": 10.035625285,
+      "source_bounds": [
+        [
+          -157.35,
+          31.636629104614258,
+          11.893684387207031
+        ],
+        [
+          -152.87779235839844,
+          31.8487548828125,
+          17.40764617919922
+        ]
+      ],
+      "surface_triangles": 2,
+      "joint_triangles": 8
+    },
+    {
+      "region": "ArrivalCourt",
+      "source_mesh": "Assets/Game/Supplied/Resources/AlcatrazSupplied/Baked/Meshes/Island_0_0.asset",
+      "source_triangle": 12411,
+      "clipped_piece": 0,
+      "source_normal": [
+        0.032845898,
+        0.99918663,
+        0.023392856
+      ],
+      "source_area_m2": 9.734544604,
+      "source_bounds": [
+        [
+          -165.4512939453125,
+          31.5894989749612,
+          14.116607666015625
+        ],
+        [
+          -161.6995176287528,
+          31.72074317932129,
+          19.0
+        ]
+      ],
+      "surface_triangles": 2,
+      "joint_triangles": 8
+    },
+    {
+      "region": "ArrivalCourt",
+      "source_mesh": "Assets/Game/Supplied/Resources/AlcatrazSupplied/Baked/Meshes/Island_0_0.asset",
+      "source_triangle": 12412,
+      "clipped_piece": 0,
+      "source_normal": [
+        -0.001953296,
+        0.999705995,
+        0.024168316
+      ],
+      "source_area_m2": 13.418970949,
+      "source_bounds": [
+        [
+          -161.80657958984375,
+          31.5894989749612,
+          14.116607666015625
+        ],
+        [
+          -157.35,
+          31.707347869873047,
+          19.0
+        ]
+      ],
+      "surface_triangles": 3,
+      "joint_triangles": 6
+    },
+    {
+      "region": "ArrivalCourt",
+      "source_mesh": "Assets/Game/Supplied/Resources/AlcatrazSupplied/Baked/Meshes/Island_0_0.asset",
+      "source_triangle": 12412,
+      "clipped_piece": 0,
+      "source_normal": [
+        -0.001953296,
+        0.999705995,
+        0.024168316
+      ],
+      "source_area_m2": 0.004910351,
+      "source_bounds": [
+        [
+          -157.35,
+          31.63430370369583,
+          17.3570687559672
+        ],
+        [
+          -157.2804412841797,
+          31.637715926572316,
+          17.498213038737063
+        ]
+      ],
+      "surface_triangles": 1,
+      "joint_triangles": 0
+    },
+    {
+      "region": "ArrivalCourt",
+      "source_mesh": "Assets/Game/Supplied/Resources/AlcatrazSupplied/Baked/Meshes/Island_0_0.asset",
+      "source_triangle": 12416,
+      "clipped_piece": 0,
+      "source_normal": [
+        -0.004640729,
+        0.999744878,
+        0.022105266
+      ],
+      "source_area_m2": 0.866322756,
+      "source_bounds": [
+        [
+          -158.50342822964376,
+          31.595743718323458,
+          17.498213038737063
+        ],
+        [
+          -157.35,
+          31.63430370369583,
+          19.0
+        ]
+      ],
+      "surface_triangles": 1,
+      "joint_triangles": 2
+    },
+    {
+      "region": "ArrivalCourt",
+      "source_mesh": "Assets/Game/Supplied/Resources/AlcatrazSupplied/Baked/Meshes/Island_0_0.asset",
+      "source_triangle": 12416,
+      "clipped_piece": 0,
+      "source_normal": [
+        -0.004640729,
+        0.999744878,
+        0.022105266
+      ],
+      "source_area_m2": 0.438876756,
+      "source_bounds": [
+        [
+          -157.35,
+          31.601097831915858,
+          17.40764617919922
+        ],
+        [
+          -156.86451292132872,
+          31.636629104614258,
+          19.0
+        ]
+      ],
+      "surface_triangles": 2,
+      "joint_triangles": 2
+    },
+    {
+      "region": "ArrivalCourt",
+      "source_mesh": "Assets/Game/Supplied/Resources/AlcatrazSupplied/Baked/Meshes/Island_0_0.asset",
+      "source_triangle": 12417,
+      "clipped_piece": 0,
+      "source_normal": [
+        -0.016582045,
+        0.999544385,
+        0.025220189
+      ],
+      "source_area_m2": 7.727249406,
+      "source_bounds": [
+        [
+          -157.2804412841797,
+          31.603351420739195,
+          17.40764617919922
+        ],
+        [
+          -151.3910140991211,
+          31.729835510253906,
+          19.0
+        ]
+      ],
+      "surface_triangles": 2,
+      "joint_triangles": 6
+    },
+    {
+      "region": "ArrivalCourt",
+      "source_mesh": "Assets/Game/Supplied/Resources/AlcatrazSupplied/Baked/Meshes/Island_0_0.asset",
+      "source_triangle": 12418,
+      "clipped_piece": 0,
+      "source_normal": [
+        -0.01658184,
+        0.999544562,
+        0.025213296
+      ],
+      "source_area_m2": 16.636941218,
+      "source_bounds": [
+        [
+          -157.2804412841797,
+          31.636629104614258,
+          11.893684387207031
+        ],
+        [
+          -151.3910140991211,
+          31.8487548828125,
+          17.58586883544922
+        ]
+      ],
+      "surface_triangles": 1,
+      "joint_triangles": 8
+    },
+    {
+      "region": "ArrivalCourt",
+      "source_mesh": "Assets/Game/Supplied/Resources/AlcatrazSupplied/Baked/Meshes/Island_0_0.asset",
+      "source_triangle": 12419,
+      "clipped_piece": 0,
+      "source_normal": [
+        -0.022812027,
+        0.999379497,
+        0.02683715
+      ],
+      "source_area_m2": 9.915345886,
+      "source_bounds": [
+        [
+          -152.87779235839844,
+          31.729835510253906,
+          11.893684387207031
+        ],
+        [
+          -148.4755630493164,
+          31.854598999023438,
+          17.58586883544922
+        ]
+      ],
+      "surface_triangles": 1,
+      "joint_triangles": 6
+    },
+    {
+      "region": "ArrivalCourt",
+      "source_mesh": "Assets/Game/Supplied/Resources/AlcatrazSupplied/Baked/Meshes/Island_0_0.asset",
+      "source_triangle": 12423,
+      "clipped_piece": 0,
+      "source_normal": [
+        0.010045748,
+        0.998910446,
+        0.045574155
+      ],
+      "source_area_m2": 3.892842186,
+      "source_bounds": [
+        [
+          -148.4755630493164,
+          31.67030217411246,
+          15.418025970458984
+        ],
+        [
+          -146.1066502202202,
+          31.854598999023438,
+          19.0
+        ]
+      ],
+      "surface_triangles": 2,
+      "joint_triangles": 4
+    },
+    {
+      "region": "ArrivalCourt",
+      "source_mesh": "Assets/Game/Supplied/Resources/AlcatrazSupplied/Baked/Meshes/Island_0_0.asset",
+      "source_triangle": 12439,
+      "clipped_piece": 0,
+      "source_normal": [
+        0.006804669,
+        0.998909421,
+        0.046191614
+      ],
+      "source_area_m2": 0.094605926,
+      "source_bounds": [
+        [
+          -165.71435688966739,
+          31.70309582575705,
+          18.661991119384766
+        ],
+        [
+          -165.15518370565204,
+          31.72074317932129,
+          19.0
+        ]
+      ],
+      "surface_triangles": 1,
+      "joint_triangles": 0
+    },
+    {
+      "region": "ArrivalCourt",
+      "source_mesh": "Assets/Game/Supplied/Resources/AlcatrazSupplied/Baked/Meshes/Island_0_0.asset",
+      "source_triangle": 12452,
+      "clipped_piece": 0,
+      "source_normal": [
+        0.001040011,
+        0.999227768,
+        0.039278318
+      ],
+      "source_area_m2": 1.081568776,
+      "source_bounds": [
+        [
+          -152.52012560859498,
+          31.673832224047395,
+          17.58586883544922
+        ],
+        [
+          -150.991648503786,
+          31.729835510253906,
+          19.0
+        ]
+      ],
+      "surface_triangles": 1,
+      "joint_triangles": 2
+    },
+    {
+      "region": "ArrivalCourt",
+      "source_mesh": "Assets/Game/Supplied/Resources/AlcatrazSupplied/Baked/Meshes/Island_0_0.asset",
+      "source_triangle": 12453,
+      "clipped_piece": 0,
+      "source_normal": [
+        -0.01101957,
+        0.999028185,
+        0.042676167
+      ],
+      "source_area_m2": 5.934842066,
+      "source_bounds": [
+        [
+          -151.3910140991211,
+          31.673832224047395,
+          15.418025970458984
+        ],
+        [
+          -148.4755630493164,
+          31.854598999023438,
+          19.0
+        ]
+      ],
+      "surface_triangles": 2,
+      "joint_triangles": 4
+    },
+    {
+      "region": "ArrivalCourt",
+      "source_mesh": "Assets/Game/Supplied/Resources/AlcatrazSupplied/Baked/Meshes/Island_0_0.asset",
+      "source_triangle": 12454,
+      "clipped_piece": 0,
+      "source_normal": [
+        0.008844707,
+        0.998902818,
+        0.045988374
+      ],
+      "source_area_m2": 3.289622384,
+      "source_bounds": [
+        [
+          -149.07383533965756,
+          31.678740609903336,
+          15.418025970458984
+        ],
+        [
+          -147.23908553728188,
+          31.854598999023438,
+          19.0
+        ]
+      ],
+      "surface_triangles": 1,
+      "joint_triangles": 2
+    },
+    {
+      "region": "ArrivalCourt",
+      "source_mesh": "Assets/Game/Supplied/Resources/AlcatrazSupplied/Baked/Meshes/Island_0_0.asset",
+      "source_triangle": 12762,
+      "clipped_piece": 0,
+      "source_normal": [
+        -0.032814147,
+        0.999406206,
+        0.010510329
+      ],
+      "source_area_m2": 16.034964399,
+      "source_bounds": [
+        [
+          -167.91610717773438,
+          31.33576202392578,
+          8.542327880859375
+        ],
+        [
+          -162.99639892578125,
+          31.499895095825195,
+          15.744049072265625
+        ]
+      ],
+      "surface_triangles": 1,
+      "joint_triangles": 8
+    },
+    {
+      "region": "ArrivalCourt",
+      "source_mesh": "Assets/Game/Supplied/Resources/AlcatrazSupplied/Baked/Meshes/Island_0_0.asset",
+      "source_triangle": 12763,
+      "clipped_piece": 0,
+      "source_normal": [
+        0.009247652,
+        0.999955818,
+        0.001686128
+      ],
+      "source_area_m2": 9.110739401,
+      "source_bounds": [
+        [
+          -164.50759887695312,
+          31.467823028564453,
+          8.542327880859375
+        ],
+        [
+          -161.47569274902344,
+          31.499895095825195,
+          15.744049072265625
+        ]
+      ],
+      "surface_triangles": 1,
+      "joint_triangles": 8
+    },
+    {
+      "region": "ArrivalCourt",
+      "source_mesh": "Assets/Game/Supplied/Resources/AlcatrazSupplied/Baked/Meshes/Island_0_0.asset",
+      "source_triangle": 12765,
+      "clipped_piece": 0,
+      "source_normal": [
+        -0.361330642,
+        0.928494159,
+        -0.08566659
+      ],
+      "source_area_m2": 0.564242738,
+      "source_bounds": [
+        [
+          -162.99639892578125,
+          31.47377586364746,
+          10.733657836914062
+        ],
+        [
+          -161.31558227539062,
+          31.665599822998047,
+          15.744049072265625
+        ]
+      ],
+      "surface_triangles": 1,
+      "joint_triangles": 6
+    },
+    {
+      "region": "ArrivalCourt",
+      "source_mesh": "Assets/Game/Supplied/Resources/AlcatrazSupplied/Baked/Meshes/Island_0_0.asset",
+      "source_triangle": 12766,
+      "clipped_piece": 0,
+      "source_normal": [
+        0.005166194,
+        0.99972602,
+        0.022829699
+      ],
+      "source_area_m2": 6.454343459,
+      "source_bounds": [
+        [
+          -162.7164077758789,
+          31.56324577331543,
+          10.349685668945312
+        ],
+        [
+          -158.5144500732422,
+          31.665599822998047,
+          15.532798767089844
+        ]
+      ],
+      "surface_triangles": 1,
+      "joint_triangles": 8
+    },
+    {
+      "region": "ArrivalCourt",
+      "source_mesh": "Assets/Game/Supplied/Resources/AlcatrazSupplied/Baked/Meshes/Island_0_0.asset",
+      "source_triangle": 12767,
+      "clipped_piece": 0,
+      "source_normal": [
+        0.043987427,
+        0.998947908,
+        -0.01296857
+      ],
+      "source_area_m2": 4.605067453,
+      "source_bounds": [
+        [
+          -159.994873046875,
+          31.578888217487926,
+          6.034706115722656
+        ],
+        [
+          -157.35,
+          31.669063568115234,
+          10.349685668945312
+        ]
+      ],
+      "surface_triangles": 2,
+      "joint_triangles": 4
+    },
+    {
+      "region": "ArrivalCourt",
+      "source_mesh": "Assets/Game/Supplied/Resources/AlcatrazSupplied/Baked/Meshes/Island_0_0.asset",
+      "source_triangle": 12767,
+      "clipped_piece": 0,
+      "source_normal": [
+        0.043987427,
+        0.998947908,
+        -0.01296857
+      ],
+      "source_area_m2": 0.105837077,
+      "source_bounds": [
+        [
+          -157.35,
+          31.56820297241211,
+          8.059654322124
+        ],
+        [
+          -157.0365982055664,
+          31.5876472963351,
+          8.73435196702313
+        ]
+      ],
+      "surface_triangles": 1,
+      "joint_triangles": 0
+    },
+    {
+      "region": "ArrivalCourt",
+      "source_mesh": "Assets/Game/Supplied/Resources/AlcatrazSupplied/Baked/Meshes/Island_0_0.asset",
+      "source_triangle": 12768,
+      "clipped_piece": 0,
+      "source_normal": [
+        0.002224038,
+        0.999996599,
+        0.001362227
+      ],
+      "source_area_m2": 6.327656219,
+      "source_bounds": [
+        [
+          -161.31558227539062,
+          31.659893035888672,
+          6.034706115722656
+        ],
+        [
+          -158.5144500732422,
+          31.669063568115234,
+          10.733657836914062
+        ]
+      ],
+      "surface_triangles": 1,
+      "joint_triangles": 4
+    },
+    {
+      "region": "ArrivalCourt",
+      "source_mesh": "Assets/Game/Supplied/Resources/AlcatrazSupplied/Baked/Meshes/Island_0_0.asset",
+      "source_triangle": 12770,
+      "clipped_piece": 0,
+      "source_normal": [
+        -0.01760791,
+        0.999206673,
+        0.035720936
+      ],
+      "source_area_m2": 9.205181189,
+      "source_bounds": [
+        [
+          -164.50759887695312,
+          31.467823028564453,
+          6.034706115722656
+        ],
+        [
+          -159.994873046875,
+          31.669063568115234,
+          10.933982849121094
+        ]
+      ],
+      "surface_triangles": 1,
+      "joint_triangles": 4
+    },
+    {
+      "region": "ArrivalCourt",
+      "source_mesh": "Assets/Game/Supplied/Resources/AlcatrazSupplied/Baked/Meshes/Island_0_0.asset",
+      "source_triangle": 12772,
+      "clipped_piece": 0,
+      "source_normal": [
+        -0.016050323,
+        0.999128968,
+        0.038518734
+      ],
+      "source_area_m2": 13.367277831,
+      "source_bounds": [
+        [
+          -164.50759887695312,
+          31.499895095825195,
+          2.5684890747070312
+        ],
+        [
+          -159.994873046875,
+          31.731782913208008,
+          8.542327880859375
+        ]
+      ],
+      "surface_triangles": 1,
+      "joint_triangles": 6
+    },
+    {
+      "region": "ArrivalCourt",
+      "source_mesh": "Assets/Game/Supplied/Resources/AlcatrazSupplied/Baked/Meshes/Island_0_0.asset",
+      "source_triangle": 12773,
+      "clipped_piece": 0,
+      "source_normal": [
+        -0.111746892,
+        0.993058595,
+        0.036705028
+      ],
+      "source_area_m2": 6.298322819,
+      "source_bounds": [
+        [
+          -166.52244567871094,
+          31.450578689575195,
+          2.5684890747070312
+        ],
+        [
+          -164.40908813476562,
+          31.731782913208008,
+          8.542327880859375
+        ]
+      ],
+      "surface_triangles": 1,
+      "joint_triangles": 6
+    },
+    {
+      "region": "ArrivalCourt",
+      "source_mesh": "Assets/Game/Supplied/Resources/AlcatrazSupplied/Baked/Meshes/Island_0_0.asset",
+      "source_triangle": 12774,
+      "clipped_piece": 0,
+      "source_normal": [
+        -0.018813879,
+        0.999820182,
+        -0.002375167
+      ],
+      "source_area_m2": 14.530534479,
+      "source_bounds": [
+        [
+          -168.5,
+          31.41923471762527,
+          3.742473602294922
+        ],
+        [
+          -164.50759887695312,
+          31.499895095825195,
+          9.866312227046521
+        ]
+      ],
+      "surface_triangles": 2,
+      "joint_triangles": 8
+    },
+    {
+      "region": "ArrivalCourt",
+      "source_mesh": "Assets/Game/Supplied/Resources/AlcatrazSupplied/Baked/Meshes/Island_0_0.asset",
+      "source_triangle": 12775,
+      "clipped_piece": 0,
+      "source_normal": [
+        -0.009146916,
+        0.999599957,
+        0.026763048
+      ],
+      "source_area_m2": 8.635509086,
+      "source_bounds": [
+        [
+          -168.5,
+          31.33576202392578,
+          8.542327880859375
+        ],
+        [
+          -164.50759887695312,
+          31.499895095825195,
+          13.507759094238281
+        ]
+      ],
+      "surface_triangles": 2,
+      "joint_triangles": 8
+    },
+    {
+      "region": "ArrivalCourt",
+      "source_mesh": "Assets/Game/Supplied/Resources/AlcatrazSupplied/Baked/Meshes/Island_0_0.asset",
+      "source_triangle": 12776,
+      "clipped_piece": 0,
+      "source_normal": [
+        0.006568952,
+        0.999969798,
+        -0.004153616
+      ],
+      "source_area_m2": 0.141001726,
+      "source_bounds": [
+        [
+          -168.5,
+          31.33576202392578,
+          13.210979982875735
+        ],
+        [
+          -167.91610717773438,
+          31.340371037095316,
+          13.69393665720526
+        ]
+      ],
+      "surface_triangles": 1,
+      "joint_triangles": 2
+    },
+    {
+      "region": "ArrivalCourt",
+      "source_mesh": "Assets/Game/Supplied/Resources/AlcatrazSupplied/Baked/Meshes/Island_0_0.asset",
+      "source_triangle": 12777,
+      "clipped_piece": 0,
+      "source_normal": [
+        -0.006918611,
+        0.998897727,
+        -0.046426969
+      ],
+      "source_area_m2": 5.131777293,
+      "source_bounds": [
+        [
+          -168.5,
+          31.33576202392578,
+          13.507759094238281
+        ],
+        [
+          -162.99639892578125,
+          31.47377586364746,
+          15.744049072265625
+        ]
+      ],
+      "surface_triangles": 2,
+      "joint_triangles": 6
+    },
+    {
+      "region": "ArrivalCourt",
+      "source_mesh": "Assets/Game/Supplied/Resources/AlcatrazSupplied/Baked/Meshes/Island_0_0.asset",
+      "source_triangle": 12778,
+      "clipped_piece": 0,
+      "source_normal": [
+        -0.012227334,
+        0.999921041,
+        0.002898844
+      ],
+      "source_area_m2": 15.303413093,
+      "source_bounds": [
+        [
+          -168.5,
+          31.39703694274605,
+          15.15308100297982
+        ],
+        [
+          -162.99639892578125,
+          31.47377586364746,
+          19.0
+        ]
+      ],
+      "surface_triangles": 2,
+      "joint_triangles": 6
+    },
+    {
+      "region": "ArrivalCourt",
+      "source_mesh": "Assets/Game/Supplied/Resources/AlcatrazSupplied/Baked/Meshes/Island_0_0.asset",
+      "source_triangle": 12824,
+      "clipped_piece": 0,
+      "source_normal": [
+        -0.095831705,
+        0.993246762,
+        0.065399949
+      ],
+      "source_area_m2": 6.515438289,
+      "source_bounds": [
+        [
+          -168.5,
+          31.450578689575195,
+          -0.8675816213709622
+        ],
+        [
+          -164.40908813476562,
+          31.731782913208008,
+          3.742473602294922
+        ]
+      ],
+      "surface_triangles": 2,
+      "joint_triangles": 8
+    },
+    {
+      "region": "ArrivalCourt",
+      "source_mesh": "Assets/Game/Supplied/Resources/AlcatrazSupplied/Baked/Meshes/Island_0_0.asset",
+      "source_triangle": 12825,
+      "clipped_piece": 0,
+      "source_normal": [
+        0.013291199,
+        0.999817405,
+        0.013729564
+      ],
+      "source_area_m2": 4.754646802,
+      "source_bounds": [
+        [
+          -168.5,
+          31.450578689575195,
+          -0.4233142748683276
+        ],
+        [
+          -166.52244567871094,
+          31.534072453964367,
+          4.3844207896414735
+        ]
+      ],
+      "surface_triangles": 1,
+      "joint_triangles": 6
+    },
+    {
+      "region": "ArrivalCourt",
+      "source_mesh": "Assets/Game/Supplied/Resources/AlcatrazSupplied/Baked/Meshes/Island_0_0.asset",
+      "source_triangle": 12826,
+      "clipped_piece": 0,
+      "source_normal": [
+        0.017494904,
+        0.999490704,
+        0.026688204
+      ],
+      "source_area_m2": 1.808653179,
+      "source_bounds": [
+        [
+          -168.5,
+          31.41923471762527,
+          3.742473602294922
+        ],
+        [
+          -166.52244567871094,
+          31.468052294090175,
+          6.212670988012501
+        ]
+      ],
+      "surface_triangles": 1,
+      "joint_triangles": 4
+    },
+    {
+      "region": "ArrivalCourt",
+      "source_mesh": "Assets/Game/Supplied/Resources/AlcatrazSupplied/Baked/Meshes/Island_0_7.asset",
+      "source_triangle": 13554,
+      "clipped_piece": 0,
+      "source_normal": [
+        -0.039213629,
+        0.998965291,
+        -0.02303559
+      ],
+      "source_area_m2": 1.591192806,
+      "source_bounds": [
+        [
+          -144.65,
+          31.441421510830832,
+          -11.160575802896737
+        ],
+        [
+          -141.46463305043508,
+          31.492301749007027,
+          -7.018235157767629
+        ]
+      ],
+      "surface_triangles": 2,
+      "joint_triangles": 4
+    },
+    {
+      "region": "ArrivalCourt",
+      "source_mesh": "Assets/Game/Supplied/Resources/AlcatrazSupplied/Baked/Meshes/Island_0_7.asset",
+      "source_triangle": 13555,
+      "clipped_piece": 0,
+      "source_normal": [
+        0.031040382,
+        0.998451379,
+        0.046166412
+      ],
+      "source_area_m2": 2.771653693,
+      "source_bounds": [
+        [
+          -144.65,
+          31.413913643524996,
+          -10.070601346951538
+        ],
+        [
+          -141.64299250686247,
+          31.492301749007027,
+          -6.736954891403462
+        ]
+      ],
+      "surface_triangles": 2,
+      "joint_triangles": 4
+    },
+    {
+      "region": "ArrivalCourt",
+      "source_mesh": "Assets/Game/Supplied/Resources/AlcatrazSupplied/Baked/Meshes/Island_0_7.asset",
+      "source_triangle": 13556,
+      "clipped_piece": 0,
+      "source_normal": [
+        -0.012858305,
+        0.999245172,
+        -0.036657203
+      ],
+      "source_area_m2": 2.968180999,
+      "source_bounds": [
+        [
+          -144.65,
+          31.413913643524996,
+          -8.165702797091125
+        ],
+        [
+          -141.9547031786578,
+          31.484971970802288,
+          -6.110759637779366
+        ]
+      ],
+      "surface_triangles": 2,
+      "joint_triangles": 2
+    },
+    {
+      "region": "ArrivalCourt",
+      "source_mesh": "Assets/Game/Supplied/Resources/AlcatrazSupplied/Baked/Meshes/Island_0_7.asset",
+      "source_triangle": 13557,
+      "clipped_piece": 0,
+      "source_normal": [
+        -0.019363636,
+        0.999541529,
+        0.0232762
+      ],
+      "source_area_m2": 2.572700759,
+      "source_bounds": [
+        [
+          -144.65,
+          31.435890012848173,
+          -6.366618902189633
+        ],
+        [
+          -142.290966604727,
+          31.484971970802288,
+          -4.313580385780123
+        ]
+      ],
+      "surface_triangles": 2,
+      "joint_triangles": 4
+    },
+    {
+      "region": "ArrivalCourt",
+      "source_mesh": "Assets/Game/Supplied/Resources/AlcatrazSupplied/Baked/Meshes/Island_0_7.asset",
+      "source_triangle": 15443,
+      "clipped_piece": 0,
+      "source_normal": [
+        0.052885415,
+        0.998446405,
+        0.017547367
+      ],
+      "source_area_m2": 1.071423808,
+      "source_bounds": [
+        [
+          -148.9803385974789,
+          31.514781951904297,
+          1.35
+        ],
+        [
+          -147.86172804052805,
+          31.58820244458997,
+          3.2626571655273438
+        ]
+      ],
+      "surface_triangles": 1,
+      "joint_triangles": 2
+    },
+    {
+      "region": "ArrivalCourt",
+      "source_mesh": "Assets/Game/Supplied/Resources/AlcatrazSupplied/Baked/Meshes/Island_0_7.asset",
+      "source_triangle": 15444,
+      "clipped_piece": 0,
+      "source_normal": [
+        -0.05598922,
+        0.996611485,
+        0.060255755
+      ],
+      "source_area_m2": 1.554310283,
+      "source_bounds": [
+        [
+          -150.60012023632618,
+          31.497203783873665,
+          1.35
+        ],
+        [
+          -148.22882080078125,
+          31.58820244458997,
+          3.2626571655273438
+        ]
+      ],
+      "surface_triangles": 1,
+      "joint_triangles": 4
+    },
+    {
+      "region": "ArrivalCourt",
+      "source_mesh": "Assets/Game/Supplied/Resources/AlcatrazSupplied/Baked/Meshes/Island_0_7.asset",
+      "source_triangle": 15445,
+      "clipped_piece": 0,
+      "source_normal": [
+        0.007020383,
+        0.999815268,
+        -0.017892569
+      ],
+      "source_area_m2": 3.994034384,
+      "source_bounds": [
+        [
+          -152.48307037353516,
+          31.497203783873665,
+          1.35
+        ],
+        [
+          -148.22882080078125,
+          31.53506851196289,
+          3.2626571655273438
+        ]
+      ],
+      "surface_triangles": 2,
+      "joint_triangles": 4
+    },
+    {
+      "region": "ArrivalCourt",
+      "source_mesh": "Assets/Game/Supplied/Resources/AlcatrazSupplied/Baked/Meshes/Island_0_7.asset",
+      "source_triangle": 15446,
+      "clipped_piece": 0,
+      "source_normal": [
+        -0.060542755,
+        0.995365813,
+        -0.074709251
+      ],
+      "source_area_m2": 8.971949394,
+      "source_bounds": [
+        [
+          -157.06683349609375,
+          31.337787628173828,
+          4.74920654296875
+        ],
+        [
+          -154.05937957763672,
+          31.78653335571289,
+          10.805259704589844
+        ]
+      ],
+      "surface_triangles": 1,
+      "joint_triangles": 6
+    },
+    {
+      "region": "ArrivalCourt",
+      "source_mesh": "Assets/Game/Supplied/Resources/AlcatrazSupplied/Baked/Meshes/Island_0_7.asset",
+      "source_triangle": 15447,
+      "clipped_piece": 0,
+      "source_normal": [
+        0.152814478,
+        0.98572748,
+        -0.070633348
+      ],
+      "source_area_m2": 4.769876252,
+      "source_bounds": [
+        [
+          -154.15480041503906,
+          31.337787628173828,
+          4.74920654296875
+        ],
+        [
+          -152.57115936279297,
+          31.78653335571289,
+          10.805259704589844
+        ]
+      ],
+      "surface_triangles": 1,
+      "joint_triangles": 6
+    },
+    {
+      "region": "ArrivalCourt",
+      "source_mesh": "Assets/Game/Supplied/Resources/AlcatrazSupplied/Baked/Meshes/Island_0_7.asset",
+      "source_triangle": 15448,
+      "clipped_piece": 0,
+      "source_normal": [
+        0.114053467,
+        0.988179532,
+        -0.102435443
+      ],
+      "source_area_m2": 4.835949083,
+      "source_bounds": [
+        [
+          -154.15480041503906,
+          31.400585174560547,
+          8.845329284667969
+        ],
+        [
+          -151.13880920410156,
+          31.78653335571289,
+          13.107826232910156
+        ]
+      ],
+      "surface_triangles": 1,
+      "joint_triangles": 6
+    },
+    {
+      "region": "ArrivalCourt",
+      "source_mesh": "Assets/Game/Supplied/Resources/AlcatrazSupplied/Baked/Meshes/Island_0_7.asset",
+      "source_triangle": 15449,
+      "clipped_piece": 0,
+      "source_normal": [
+        0.116469694,
+        0.987560071,
+        -0.105640503
+      ],
+      "source_area_m2": 4.316961167,
+      "source_bounds": [
+        [
+          -149.66360473632812,
+          31.45271873474121,
+          8.376091003417969
+        ],
+        [
+          -146.64308166503906,
+          31.75497055053711,
+          13.509212493896484
+        ]
+      ],
+      "surface_triangles": 1,
+      "joint_triangles": 6
+    },
+    {
+      "region": "ArrivalCourt",
+      "source_mesh": "Assets/Game/Supplied/Resources/AlcatrazSupplied/Baked/Meshes/Island_0_7.asset",
+      "source_triangle": 15450,
+      "clipped_piece": 0,
+      "source_normal": [
+        -0.185110415,
+        0.977193303,
+        -0.104054708
+      ],
+      "source_area_m2": 2.147387811,
+      "source_bounds": [
+        [
+          -151.13880920410156,
+          31.45271873474121,
+          8.376091003417969
+        ],
+        [
+          -149.65911102294922,
+          31.75497055053711,
+          13.107826232910156
+        ]
+      ],
+      "surface_triangles": 1,
+      "joint_triangles": 6
+    },
+    {
+      "region": "ArrivalCourt",
+      "source_mesh": "Assets/Game/Supplied/Resources/AlcatrazSupplied/Baked/Meshes/Island_0_7.asset",
+      "source_triangle": 15451,
+      "clipped_piece": 0,
+      "source_normal": [
+        -0.026887929,
+        0.998084508,
+        -0.055716733
+      ],
+      "source_area_m2": 6.545315625,
+      "source_bounds": [
+        [
+          -152.57115936279297,
+          31.400585174560547,
+          8.376091003417969
+        ],
+        [
+          -149.66360473632812,
+          31.677120208740234,
+          13.107826232910156
+        ]
+      ],
+      "surface_triangles": 1,
+      "joint_triangles": 6
+    },
+    {
+      "region": "ArrivalCourt",
+      "source_mesh": "Assets/Game/Supplied/Resources/AlcatrazSupplied/Baked/Meshes/Island_0_7.asset",
+      "source_triangle": 15452,
+      "clipped_piece": 0,
+      "source_normal": [
+        -0.019270173,
+        0.999779643,
+        -0.008326276
+      ],
+      "source_area_m2": 6.305404705,
+      "source_bounds": [
+        [
+          -154.05937957763672,
+          31.337787628173828,
+          4.74920654296875
+        ],
+        [
+          -149.66360473632812,
+          31.45271873474121,
+          8.845329284667969
+        ]
+      ],
+      "surface_triangles": 1,
+      "joint_triangles": 6
+    },
+    {
+      "region": "ArrivalCourt",
+      "source_mesh": "Assets/Game/Supplied/Resources/AlcatrazSupplied/Baked/Meshes/Island_0_7.asset",
+      "source_triangle": 15453,
+      "clipped_piece": 0,
+      "source_normal": [
+        -0.064692012,
+        0.996806358,
+        0.046819099
+      ],
+      "source_area_m2": 7.326447978,
+      "source_bounds": [
+        [
+          -154.05937957763672,
+          31.337787628173828,
+          2.7270355224609375
+        ],
+        [
+          -149.66360473632812,
+          31.53506851196289,
+          8.376091003417969
+        ]
+      ],
+      "surface_triangles": 1,
+      "joint_triangles": 8
+    },
+    {
+      "region": "ArrivalCourt",
+      "source_mesh": "Assets/Game/Supplied/Resources/AlcatrazSupplied/Baked/Meshes/Island_0_7.asset",
+      "source_triangle": 15454,
+      "clipped_piece": 0,
+      "source_normal": [
+        0.003129573,
+        0.999910412,
+        0.013014331
+      ],
+      "source_area_m2": 11.262171475,
+      "source_bounds": [
+        [
+          -152.48307037353516,
+          31.45271873474121,
+          2.7270355224609375
+        ],
+        [
+          -148.22882080078125,
+          31.53506851196289,
+          8.376091003417969
+        ]
+      ],
+      "surface_triangles": 1,
+      "joint_triangles": 6
+    },
+    {
+      "region": "ArrivalCourt",
+      "source_mesh": "Assets/Game/Supplied/Resources/AlcatrazSupplied/Baked/Meshes/Island_0_7.asset",
+      "source_triangle": 15455,
+      "clipped_piece": 0,
+      "source_normal": [
+        -0.011227595,
+        0.999896594,
+        0.00898567
+      ],
+      "source_area_m2": 7.618990166,
+      "source_bounds": [
+        [
+          -149.66360473632812,
+          31.45271873474121,
+          2.659160614013672
+        ],
+        [
+          -145.07980346679688,
+          31.555564880371094,
+          8.376091003417969
+        ]
+      ],
+      "surface_triangles": 1,
+      "joint_triangles": 6
+    },
+    {
+      "region": "ArrivalCourt",
+      "source_mesh": "Assets/Game/Supplied/Resources/AlcatrazSupplied/Baked/Meshes/Island_0_7.asset",
+      "source_triangle": 15456,
+      "clipped_piece": 0,
+      "source_normal": [
+        -0.011970483,
+        0.999915291,
+        0.005110576
+      ],
+      "source_area_m2": 4.51636154,
+      "source_bounds": [
+        [
+          -148.22882080078125,
+          31.514781951904297,
+          1.3499999999999996
+        ],
+        [
+          -145.07980346679688,
+          31.558493276577682,
+          3.2626571655273438
+        ]
+      ],
+      "surface_triangles": 2,
+      "joint_triangles": 4
+    },
+    {
+      "region": "ArrivalCourt",
+      "source_mesh": "Assets/Game/Supplied/Resources/AlcatrazSupplied/Baked/Meshes/Island_0_7.asset",
+      "source_triangle": 15457,
+      "clipped_piece": 0,
+      "source_normal": [
+        -0.031592664,
+        0.998736559,
+        -0.039079259
+      ],
+      "source_area_m2": 1.68663519,
+      "source_bounds": [
+        [
+          -144.65,
+          31.518683597677065,
+          0.3116349529058797
+        ],
+        [
+          -143.3419039013846,
+          31.610739324312657,
+          3.0229484257483437
+        ]
+      ],
+      "surface_triangles": 2,
+      "joint_triangles": 4
+    },
+    {
+      "region": "ArrivalCourt",
+      "source_mesh": "Assets/Game/Supplied/Resources/AlcatrazSupplied/Baked/Meshes/Island_0_7.asset",
+      "source_triangle": 15457,
+      "clipped_piece": 0,
+      "source_normal": [
+        -0.031592664,
+        0.998736559,
+        -0.039079259
+      ],
+      "source_area_m2": 0.150918962,
+      "source_bounds": [
+        [
+          -145.07980346679688,
+          31.54644369553551,
+          2.0785892808829307
+        ],
+        [
+          -144.65,
+          31.573887872166644,
+          2.779971638349408
+        ]
+      ],
+      "surface_triangles": 1,
+      "joint_triangles": 0
+    },
+    {
+      "region": "ArrivalCourt",
+      "source_mesh": "Assets/Game/Supplied/Resources/AlcatrazSupplied/Baked/Meshes/Island_0_7.asset",
+      "source_triangle": 15458,
+      "clipped_piece": 0,
+      "source_normal": [
+        0.018303349,
+        0.999830151,
+        -0.002157862
+      ],
+      "source_area_m2": 7.564921948,
+      "source_bounds": [
+        [
+          -144.65,
+          31.499595672191987,
+          -3.8527355926971834
+        ],
+        [
+          -142.73585399747836,
+          31.54644369553551,
+          2.0785892808829307
+        ]
+      ],
+      "surface_triangles": 2,
+      "joint_triangles": 6
+    },
+    {
+      "region": "ArrivalCourt",
+      "source_mesh": "Assets/Game/Supplied/Resources/AlcatrazSupplied/Baked/Meshes/Island_0_7.asset",
+      "source_triangle": 15458,
+      "clipped_piece": 0,
+      "source_normal": [
+        0.018303349,
+        0.999830151,
+        -0.002157862
+      ],
+      "source_area_m2": 0.643765081,
+      "source_bounds": [
+        [
+          -145.39411135422935,
+          31.544871233268342,
+          1.3499999999999996
+        ],
+        [
+          -144.65,
+          31.558493276577682,
+          2.659160614013672
+        ]
+      ],
+      "surface_triangles": 2,
+      "joint_triangles": 0
+    },
+    {
+      "region": "ArrivalCourt",
+      "source_mesh": "Assets/Game/Supplied/Resources/AlcatrazSupplied/Baked/Meshes/Island_0_7.asset",
+      "source_triangle": 15461,
+      "clipped_piece": 0,
+      "source_normal": [
+        0.028462701,
+        0.998605792,
+        -0.044456114
+      ],
+      "source_area_m2": 3.080598766,
+      "source_bounds": [
+        [
+          -144.65,
+          31.4397538190404,
+          -5.961732799326661
+        ],
+        [
+          -142.58756520434414,
+          31.533642540203243,
+          -3.392003348743326
+        ]
+      ],
+      "surface_triangles": 2,
+      "joint_triangles": 2
+    },
+    {
+      "region": "ArrivalCourt",
+      "source_mesh": "Assets/Game/Supplied/Resources/AlcatrazSupplied/Baked/Meshes/Island_0_7.asset",
+      "source_triangle": 15484,
+      "clipped_piece": 0,
+      "source_normal": [
+        0.010000667,
+        0.998764362,
+        0.048679934
+      ],
+      "source_area_m2": 6.798142708,
+      "source_bounds": [
+        [
+          -151.13880920410156,
+          31.45895004272461,
+          11.206588745117188
+        ],
+        [
+          -146.78378295898438,
+          31.75497055053711,
+          16.6893310546875
+        ]
+      ],
+      "surface_triangles": 1,
+      "joint_triangles": 8
+    },
+    {
+      "region": "ArrivalCourt",
+      "source_mesh": "Assets/Game/Supplied/Resources/AlcatrazSupplied/Baked/Meshes/Island_0_7.asset",
+      "source_triangle": 15485,
+      "clipped_piece": 0,
+      "source_normal": [
+        -0.008244266,
+        0.99826965,
+        0.058221459
+      ],
+      "source_area_m2": 4.966249892,
+      "source_bounds": [
+        [
+          -149.65911102294922,
+          31.45895004272461,
+          11.206588745117188
+        ],
+        [
+          -146.64308166503906,
+          31.75497055053711,
+          16.6893310546875
+        ]
+      ],
+      "surface_triangles": 1,
+      "joint_triangles": 6
+    },
+    {
+      "region": "ArrivalCourt",
+      "source_mesh": "Assets/Game/Supplied/Resources/AlcatrazSupplied/Baked/Meshes/Island_0_7.asset",
+      "source_triangle": 15486,
+      "clipped_piece": 0,
+      "source_normal": [
+        0.0663163,
+        0.995908845,
+        0.061381769
+      ],
+      "source_area_m2": 3.041386623,
+      "source_bounds": [
+        [
+          -146.78378295898438,
+          31.45895004272461,
+          11.649808804224609
+        ],
+        [
+          -145.1972414406913,
+          31.66390979431128,
+          16.6893310546875
+        ]
+      ],
+      "surface_triangles": 2,
+      "joint_triangles": 4
+    },
+    {
+      "region": "ArrivalCourt",
+      "source_mesh": "Assets/Game/Supplied/Resources/AlcatrazSupplied/Baked/Meshes/Island_0_7.asset",
+      "source_triangle": 15487,
+      "clipped_piece": 0,
+      "source_normal": [
+        -0.034694126,
+        0.999251173,
+        -0.017129254
+      ],
+      "source_area_m2": 11.748440015,
+      "source_bounds": [
+        [
+          -149.66360473632812,
+          31.45271873474121,
+          8.376091003417969
+        ],
+        [
+          -144.85566904641124,
+          31.66390979431128,
+          13.509212493896484
+        ]
+      ],
+      "surface_triangles": 2,
+      "joint_triangles": 6
+    },
+    {
+      "region": "ArrivalCourt",
+      "source_mesh": "Assets/Game/Supplied/Resources/AlcatrazSupplied/Baked/Meshes/Island_0_7.asset",
+      "source_triangle": 15488,
+      "clipped_piece": 0,
+      "source_normal": [
+        -0.036196565,
+        0.999283648,
+        -0.011045331
+      ],
+      "source_area_m2": 0.461583706,
+      "source_bounds": [
+        [
+          -144.65,
+          31.597342846350916,
+          5.03035528966117
+        ],
+        [
+          -144.36833597193035,
+          31.63354444948008,
+          8.305555555555554
+        ]
+      ],
+      "surface_triangles": 1,
+      "joint_triangles": 2
+    },
+    {
+      "region": "ArrivalCourt",
+      "source_mesh": "Assets/Game/Supplied/Resources/AlcatrazSupplied/Baked/Meshes/Island_0_7.asset",
+      "source_triangle": 15488,
+      "clipped_piece": 0,
+      "source_normal": [
+        -0.036196565,
+        0.999283648,
+        -0.011045331
+      ],
+      "source_area_m2": 18.029778457,
+      "source_bounds": [
+        [
+          -149.66360473632812,
+          31.45271873474121,
+          2.659160614013672
+        ],
+        [
+          -144.65,
+          31.639987056723072,
+          9.562421950290883
+        ]
+      ],
+      "surface_triangles": 3,
+      "joint_triangles": 8
+    },
+    {
+      "region": "ArrivalCourt",
+      "source_mesh": "Assets/Game/Supplied/Resources/AlcatrazSupplied/Baked/Meshes/Island_0_7.asset",
+      "source_triangle": 15489,
+      "clipped_piece": 0,
+      "source_normal": [
+        -0.039668045,
+        0.999158645,
+        -0.010413887
+      ],
+      "source_area_m2": 1.928600507,
+      "source_bounds": [
+        [
+          -144.65,
+          31.573887872166644,
+          2.779971638349408
+        ],
+        [
+          -143.7855733787588,
+          31.624721290434046,
+          6.584275384018726
+        ]
+      ],
+      "surface_triangles": 2,
+      "joint_triangles": 6
+    },
+    {
+      "region": "ArrivalCourt",
+      "source_mesh": "Assets/Game/Supplied/Resources/AlcatrazSupplied/Baked/Meshes/Island_0_7.asset",
+      "source_triangle": 15489,
+      "clipped_piece": 0,
+      "source_normal": [
+        -0.039668045,
+        0.999158645,
+        -0.010413887
+      ],
+      "source_area_m2": 0.484018579,
+      "source_bounds": [
+        [
+          -145.07980346679688,
+          31.555564880371094,
+          2.659160614013672
+        ],
+        [
+          -144.65,
+          31.597342846350916,
+          5.03035528966117
+        ]
+      ],
+      "surface_triangles": 1,
+      "joint_triangles": 2
+    },
+    {
+      "region": "ArrivalCourt",
+      "source_mesh": "Assets/Game/Supplied/Resources/AlcatrazSupplied/Baked/Meshes/Island_0_7.asset",
+      "source_triangle": 15524,
+      "clipped_piece": 0,
+      "source_normal": [
+        0.008817997,
+        0.99975869,
+        -0.020119772
+      ],
+      "source_area_m2": 0.281657453,
+      "source_bounds": [
+        [
+          -146.78378295898438,
+          31.447996245465117,
+          16.49302978271356
+        ],
+        [
+          -145.9897685098986,
+          31.463938915751324,
+          17.232214154619097
+        ]
+      ],
+      "surface_triangles": 1,
+      "joint_triangles": 0
+    },
+    {
+      "region": "ArrivalCourt",
+      "source_mesh": "Assets/Game/Supplied/Resources/AlcatrazSupplied/Baked/Meshes/Island_0_7.asset",
+      "source_triangle": 15525,
+      "clipped_piece": 0,
+      "source_normal": [
+        -0.012521743,
+        0.994273385,
+        -0.106130304
+      ],
+      "source_area_m2": 0.103278367,
+      "source_bounds": [
+        [
+          -146.78378295898438,
+          31.41977875562899,
+          16.22347222205023
+        ],
+        [
+          -145.94565909088095,
+          31.45895004272461,
+          16.6893310546875
+        ]
+      ],
+      "surface_triangles": 1,
+      "joint_triangles": 0
+    },
+    {
+      "region": "ArrivalCourt",
+      "source_mesh": "Assets/Game/Supplied/Resources/AlcatrazSupplied/Baked/Meshes/Island_0_7.asset",
+      "source_triangle": 15526,
+      "clipped_piece": 0,
+      "source_normal": [
+        0.085108308,
+        0.993941807,
+        0.069543223
+      ],
+      "source_area_m2": 0.886910402,
+      "source_bounds": [
+        [
+          -146.78378295898438,
+          31.41977875562899,
+          13.909399260433144
+        ],
+        [
+          -145.5669926062527,
+          31.549263627996275,
+          16.6893310546875
+        ]
+      ],
+      "surface_triangles": 1,
+      "joint_triangles": 2
+    },
+    {
+      "region": "ArrivalCourt",
+      "source_mesh": "Assets/Game/Supplied/Resources/AlcatrazSupplied/Baked/Meshes/Island_0_7.asset",
+      "source_triangle": 15797,
+      "clipped_piece": 0,
+      "source_normal": [
+        0.000662784,
+        0.999920319,
+        0.01260618
+      ],
+      "source_area_m2": 15.74212792,
+      "source_bounds": [
+        [
+          -144.65,
+          31.621776912282275,
+          -14.0
+        ],
+        [
+          -141.0,
+          31.7059458244903,
+          -7.323734576276895
+        ]
+      ],
+      "surface_triangles": 2,
+      "joint_triangles": 7
+    },
+    {
+      "region": "ArrivalCourt",
+      "source_mesh": "Assets/Game/Supplied/Resources/AlcatrazSupplied/Baked/Meshes/Island_0_7.asset",
+      "source_triangle": 15797,
+      "clipped_piece": 0,
+      "source_normal": [
+        0.000662784,
+        0.999920319,
+        0.01260618
+      ],
+      "source_area_m2": 7.62584419,
+      "source_bounds": [
+        [
+          -147.9799368438056,
+          31.672536784676108,
+          -14.0
+        ],
+        [
+          -144.65,
+          31.70815302859125,
+          -11.35
+        ]
+      ],
+      "surface_triangles": 2,
+      "joint_triangles": 4
+    },
+    {
+      "region": "ArrivalCourt",
+      "source_mesh": "Assets/Game/Supplied/Resources/AlcatrazSupplied/Baked/Meshes/Island_0_7.asset",
+      "source_triangle": 15803,
+      "clipped_piece": 0,
+      "source_normal": [
+        0.007205038,
+        0.999942435,
+        -0.007950761
+      ],
+      "source_area_m2": 7.255175823,
+      "source_bounds": [
+        [
+          -160.18531799316406,
+          31.660463520071332,
+          -10.941722869873047
+        ],
+        [
+          -157.35,
+          31.71125030517578,
+          -6.077342987060547
+        ]
+      ],
+      "surface_triangles": 2,
+      "joint_triangles": 4
+    },
+    {
+      "region": "ArrivalCourt",
+      "source_mesh": "Assets/Game/Supplied/Resources/AlcatrazSupplied/Baked/Meshes/Island_0_7.asset",
+      "source_triangle": 15804,
+      "clipped_piece": 0,
+      "source_normal": [
+        -0.002807176,
+        0.999934577,
+        -0.011088825
+      ],
+      "source_area_m2": 8.736750213,
+      "source_bounds": [
+        [
+          -164.57395935058594,
+          31.66158676147461,
+          -10.941722869873047
+        ],
+        [
+          -158.6606674194336,
+          31.72711944580078,
+          -3.5353431701660156
+        ]
+      ],
+      "surface_triangles": 1,
+      "joint_triangles": 8
+    },
+    {
+      "region": "ArrivalCourt",
+      "source_mesh": "Assets/Game/Supplied/Resources/AlcatrazSupplied/Baked/Meshes/Island_0_7.asset",
+      "source_triangle": 15805,
+      "clipped_piece": 0,
+      "source_normal": [
+        -0.002808713,
+        0.999934559,
+        -0.011090052
+      ],
+      "source_area_m2": 8.73659759,
+      "source_bounds": [
+        [
+          -164.57395935058594,
+          31.66158676147461,
+          -10.941722869873047
+        ],
+        [
+          -158.6606674194336,
+          31.72711944580078,
+          -3.5353431701660156
+        ]
+      ],
+      "surface_triangles": 1,
+      "joint_triangles": 8
+    },
+    {
+      "region": "ArrivalCourt",
+      "source_mesh": "Assets/Game/Supplied/Resources/AlcatrazSupplied/Baked/Meshes/Island_0_7.asset",
+      "source_triangle": 15806,
+      "clipped_piece": 0,
+      "source_normal": [
+        -0.011606248,
+        0.999843306,
+        -0.013366348
+      ],
+      "source_area_m2": 7.685501145,
+      "source_bounds": [
+        [
+          -168.5,
+          31.560496035313594,
+          -11.182280714001102
+        ],
+        [
+          -164.654296875,
+          31.647375106811523,
+          -7.18597802484266
+        ]
+      ],
+      "surface_triangles": 1,
+      "joint_triangles": 6
+    },
+    {
+      "region": "ArrivalCourt",
+      "source_mesh": "Assets/Game/Supplied/Resources/AlcatrazSupplied/Baked/Meshes/Island_0_7.asset",
+      "source_triangle": 15807,
+      "clipped_piece": 0,
+      "source_normal": [
+        -0.002393047,
+        0.999695091,
+        -0.024576385
+      ],
+      "source_area_m2": 13.747877327,
+      "source_bounds": [
+        [
+          -168.5,
+          31.49851577647155,
+          -14.0
+        ],
+        [
+          -164.654296875,
+          31.647375106811523,
+          -8.022758483886719
+        ]
+      ],
+      "surface_triangles": 3,
+      "joint_triangles": 8
+    },
+    {
+      "region": "ArrivalCourt",
+      "source_mesh": "Assets/Game/Supplied/Resources/AlcatrazSupplied/Baked/Meshes/Island_0_7.asset",
+      "source_triangle": 15808,
+      "clipped_piece": 0,
+      "source_normal": [
+        -0.018144986,
+        0.999832203,
+        0.002515129
+      ],
+      "source_area_m2": 2.451395786,
+      "source_bounds": [
+        [
+          -164.654296875,
+          31.647375106811523,
+          -11.955490112304688
+        ],
+        [
+          -160.91346740722656,
+          31.725156784057617,
+          -8.022758483886719
+        ]
+      ],
+      "surface_triangles": 1,
+      "joint_triangles": 4
+    },
+    {
+      "region": "ArrivalCourt",
+      "source_mesh": "Assets/Game/Supplied/Resources/AlcatrazSupplied/Baked/Meshes/Island_0_7.asset",
+      "source_triangle": 15809,
+      "clipped_piece": 0,
+      "source_normal": [
+        -0.067376387,
+        0.996740323,
+        -0.044375121
+      ],
+      "source_area_m2": 4.250402639,
+      "source_bounds": [
+        [
+          -164.654296875,
+          31.636662788710073,
+          -14.0
+        ],
+        [
+          -160.40064128436975,
+          31.725156784057617,
+          -8.022758483886719
+        ]
+      ],
+      "surface_triangles": 2,
+      "joint_triangles": 6
+    },
+    {
+      "region": "ArrivalCourt",
+      "source_mesh": "Assets/Game/Supplied/Resources/AlcatrazSupplied/Baked/Meshes/Island_0_7.asset",
+      "source_triangle": 15810,
+      "clipped_piece": 0,
+      "source_normal": [
+        -0.030885851,
+        0.999295642,
+        -0.021313943
+      ],
+      "source_area_m2": 13.340268768,
+      "source_bounds": [
+        [
+          -165.33661130989682,
+          31.49879800611742,
+          -14.0
+        ],
+        [
+          -160.87606796187126,
+          31.647375106811523,
+          -8.022758483886719
+        ]
+      ],
+      "surface_triangles": 1,
+      "joint_triangles": 8
+    },
+    {
+      "region": "ArrivalCourt",
+      "source_mesh": "Assets/Game/Supplied/Resources/AlcatrazSupplied/Baked/Meshes/Island_0_7.asset",
+      "source_triangle": 15813,
+      "clipped_piece": 0,
+      "source_normal": [
+        0.001782729,
+        0.999970875,
+        -0.007420977
+      ],
+      "source_area_m2": 1.128572433,
+      "source_bounds": [
+        [
+          -168.5,
+          31.49851577647155,
+          -14.0
+        ],
+        [
+          -165.45451272722164,
+          31.509445227522814,
+          -13.258877504845163
+        ]
+      ],
+      "surface_triangles": 1,
+      "joint_triangles": 2
+    },
+    {
+      "region": "ArrivalCourt",
+      "source_mesh": "Assets/Game/Supplied/Resources/AlcatrazSupplied/Baked/Meshes/Island_0_7.asset",
+      "source_triangle": 15824,
+      "clipped_piece": 0,
+      "source_normal": [
+        -0.010199768,
+        0.99992418,
+        -0.006899167
+      ],
+      "source_area_m2": 10.409704905,
+      "source_bounds": [
+        [
+          -168.5,
+          31.613920377125442,
+          -8.022758483886719
+        ],
+        [
+          -164.654296875,
+          31.65127026352916,
+          -1.7727075222877806
+        ]
+      ],
+      "surface_triangles": 1,
+      "joint_triangles": 8
+    },
+    {
+      "region": "ArrivalCourt",
+      "source_mesh": "Assets/Game/Supplied/Resources/AlcatrazSupplied/Baked/Meshes/Island_0_7.asset",
+      "source_triangle": 15825,
+      "clipped_piece": 0,
+      "source_normal": [
+        -0.022068161,
+        0.999655595,
+        -0.01420171
+      ],
+      "source_area_m2": 4.837426613,
+      "source_bounds": [
+        [
+          -168.5,
+          31.647375106811523,
+          -8.399757385253906
+        ],
+        [
+          -163.0492401123047,
+          31.677452087402344,
+          -1.5727976994988286
+        ]
+      ],
+      "surface_triangles": 2,
+      "joint_triangles": 8
+    },
+    {
+      "region": "ArrivalCourt",
+      "source_mesh": "Assets/Game/Supplied/Resources/AlcatrazSupplied/Baked/Meshes/Island_0_7.asset",
+      "source_triangle": 15826,
+      "clipped_piece": 0,
+      "source_normal": [
+        -0.028087248,
+        0.999424731,
+        -0.01900824
+      ],
+      "source_area_m2": 8.754957663,
+      "source_bounds": [
+        [
+          -168.5,
+          31.65411030296542,
+          -8.399757385253906
+        ],
+        [
+          -163.0492401123047,
+          31.72711944580078,
+          -1.2176599325327262
+        ]
+      ],
+      "surface_triangles": 2,
+      "joint_triangles": 8
+    },
+    {
+      "region": "ArrivalCourt",
+      "source_mesh": "Assets/Game/Supplied/Resources/AlcatrazSupplied/Baked/Meshes/Island_0_7.asset",
+      "source_triangle": 15828,
+      "clipped_piece": 0,
+      "source_normal": [
+        -0.021570719,
+        0.999735631,
+        -0.007960675
+      ],
+      "source_area_m2": 13.365931999,
+      "source_bounds": [
+        [
+          -168.5,
+          31.66086473258772,
+          -3.5353431701660156
+        ],
+        [
+          -164.57395935058594,
+          31.775447845458984,
+          2.5434951782226562
+        ]
+      ],
+      "surface_triangles": 2,
+      "joint_triangles": 8
+    },
+    {
+      "region": "ArrivalCourt",
+      "source_mesh": "Assets/Game/Supplied/Resources/AlcatrazSupplied/Baked/Meshes/Island_0_7.asset",
+      "source_triangle": 15829,
+      "clipped_piece": 0,
+      "source_normal": [
+        0.021206769,
+        0.999743614,
+        -0.007935934
+      ],
+      "source_area_m2": 13.673889874,
+      "source_bounds": [
+        [
+          -164.57748413085938,
+          31.659751892089844,
+          -3.5353431701660156
+        ],
+        [
+          -160.07830810546875,
+          31.775447845458984,
+          2.5434951782226562
+        ]
+      ],
+      "surface_triangles": 1,
+      "joint_triangles": 7
+    },
+    {
+      "region": "ArrivalCourt",
+      "source_mesh": "Assets/Game/Supplied/Resources/AlcatrazSupplied/Baked/Meshes/Island_0_7.asset",
+      "source_triangle": 15830,
+      "clipped_piece": 0,
+      "source_normal": [
+        0.008444309,
+        0.999929597,
+        0.008336358
+      ],
+      "source_area_m2": 13.453711899,
+      "source_bounds": [
+        [
+          -164.57395935058594,
+          31.659751892089844,
+          -6.077342987060547
+        ],
+        [
+          -160.07830810546875,
+          31.72711944580078,
+          -0.00860595703125
+        ]
+      ],
+      "surface_triangles": 1,
+      "joint_triangles": 6
+    },
+    {
+      "region": "ArrivalCourt",
+      "source_mesh": "Assets/Game/Supplied/Resources/AlcatrazSupplied/Baked/Meshes/Island_0_7.asset",
+      "source_triangle": 15831,
+      "clipped_piece": 0,
+      "source_normal": [
+        0.000385228,
+        0.999963981,
+        0.008478755
+      ],
+      "source_area_m2": 8.964187141,
+      "source_bounds": [
+        [
+          -160.18531799316406,
+          31.659751892089844,
+          -6.077342987060547
+        ],
+        [
+          -157.35,
+          31.71125030517578,
+          -0.00860595703125
+        ]
+      ],
+      "surface_triangles": 2,
+      "joint_triangles": 6
+    },
+    {
+      "region": "ArrivalCourt",
+      "source_mesh": "Assets/Game/Supplied/Resources/AlcatrazSupplied/Baked/Meshes/Island_0_7.asset",
+      "source_triangle": 15832,
+      "clipped_piece": 0,
+      "source_normal": [
+        0.012293574,
+        0.999923163,
+        0.001592715
+      ],
+      "source_area_m2": 9.095466223,
+      "source_bounds": [
+        [
+          -160.18531799316406,
+          31.668580962662624,
+          -7.5891867141936
+        ],
+        [
+          -157.35,
+          31.71125030517578,
+          -1.173844679626658
+        ]
+      ],
+      "surface_triangles": 1,
+      "joint_triangles": 6
+    },
+    {
+      "region": "ArrivalCourt",
+      "source_mesh": "Assets/Game/Supplied/Resources/AlcatrazSupplied/Baked/Meshes/Island_0_7.asset",
+      "source_triangle": 15834,
+      "clipped_piece": 0,
+      "source_normal": [
+        -0.055531047,
+        0.998131135,
+        -0.025505679
+      ],
+      "source_area_m2": 1.951159926,
+      "source_bounds": [
+        [
+          -156.45605177356316,
+          31.756441578333455,
+          1.35
+        ],
+        [
+          -154.76648048155218,
+          31.855417251586914,
+          3.65533447265625
+        ]
+      ],
+      "surface_triangles": 1,
+      "joint_triangles": 4
+    },
+    {
+      "region": "ArrivalCourt",
+      "source_mesh": "Assets/Game/Supplied/Resources/AlcatrazSupplied/Baked/Meshes/Island_0_7.asset",
+      "source_triangle": 15835,
+      "clipped_piece": 0,
+      "source_normal": [
+        0.052273479,
+        0.998435983,
+        0.019826027
+      ],
+      "source_area_m2": 3.299552575,
+      "source_bounds": [
+        [
+          -155.7358856201172,
+          31.700806146803572,
+          1.3499999999999996
+        ],
+        [
+          -151.90842057061494,
+          31.855417251586914,
+          3.65533447265625
+        ]
+      ],
+      "surface_triangles": 1,
+      "joint_triangles": 4
+    },
+    {
+      "region": "ArrivalCourt",
+      "source_mesh": "Assets/Game/Supplied/Resources/AlcatrazSupplied/Baked/Meshes/Island_0_7.asset",
+      "source_triangle": 15836,
+      "clipped_piece": 0,
+      "source_normal": [
+        0.02298946,
+        0.999319279,
+        -0.028852431
+      ],
+      "source_area_m2": 2.294093155,
+      "source_bounds": [
+        [
+          -155.7358856201172,
+          31.69341096417819,
+          1.35
+        ],
+        [
+          -151.58696244665214,
+          31.855417251586914,
+          3.65533447265625
+        ]
+      ],
+      "surface_triangles": 2,
+      "joint_triangles": 4
+    },
+    {
+      "region": "ArrivalCourt",
+      "source_mesh": "Assets/Game/Supplied/Resources/AlcatrazSupplied/Baked/Meshes/Island_0_7.asset",
+      "source_triangle": 15894,
+      "clipped_piece": 0,
+      "source_normal": [
+        -0.01318952,
+        0.999864712,
+        0.009828187
+      ],
+      "source_area_m2": 8.62051281,
+      "source_bounds": [
+        [
+          -154.8909776670271,
+          31.62377130224063,
+          -14.0
+        ],
+        [
+          -148.9788591764913,
+          31.701759860646906,
+          -11.35
+        ]
+      ],
+      "surface_triangles": 2,
+      "joint_triangles": 6
+    },
+    {
+      "region": "ArrivalCourt",
+      "source_mesh": "Assets/Game/Supplied/Resources/AlcatrazSupplied/Baked/Meshes/Island_0_7.asset",
+      "source_triangle": 15895,
+      "clipped_piece": 0,
+      "source_normal": [
+        -0.006399212,
+        0.999866758,
+        0.015017173
+      ],
+      "source_area_m2": 6.530300175,
+      "source_bounds": [
+        [
+          -151.00390808775725,
+          31.64899860411797,
+          -14.0
+        ],
+        [
+          -147.07495867146545,
+          31.70815302859125,
+          -11.35
+        ]
+      ],
+      "surface_triangles": 2,
+      "joint_triangles": 4
+    },
+    {
+      "region": "ArrivalCourt",
+      "source_mesh": "Assets/Game/Supplied/Resources/AlcatrazSupplied/Baked/Meshes/Island_0_7.asset",
+      "source_triangle": 15898,
+      "clipped_piece": 0,
+      "source_normal": [
+        -0.014919751,
+        0.999816933,
+        0.011979224
+      ],
+      "source_area_m2": 2.645859457,
+      "source_bounds": [
+        [
+          -155.46678964823855,
+          31.615178757752865,
+          -14.0
+        ],
+        [
+          -151.59695681407436,
+          31.641175517469048,
+          -11.35
+        ]
+      ],
+      "surface_triangles": 2,
+      "joint_triangles": 4
+    },
+    {
+      "region": "ArrivalCourt",
+      "source_mesh": "Assets/Game/Supplied/Resources/AlcatrazSupplied/Baked/Meshes/Island_0_7.asset",
+      "source_triangle": 15899,
+      "clipped_piece": 0,
+      "source_normal": [
+        0.006484242,
+        0.999948535,
+        -0.007802628
+      ],
+      "source_area_m2": 5.942093833,
+      "source_bounds": [
+        [
+          -156.76012334277686,
+          31.615178757752865,
+          -14.0
+        ],
+        [
+          -153.0176543327668,
+          31.640667689327252,
+          -11.35
+        ]
+      ],
+      "surface_triangles": 2,
+      "joint_triangles": 4
+    },
+    {
+      "region": "ArrivalCourt",
+      "source_mesh": "Assets/Game/Supplied/Resources/AlcatrazSupplied/Baked/Meshes/Island_0_7.asset",
+      "source_triangle": 15900,
+      "clipped_piece": 0,
+      "source_normal": [
+        0.007206778,
+        0.999942405,
+        -0.00795294
+      ],
+      "source_area_m2": 3.228494208,
+      "source_bounds": [
+        [
+          -158.6606674194336,
+          31.627816833144205,
+          -14.0
+        ],
+        [
+          -157.35,
+          31.66158676147461,
+          -9.895253003386173
+        ]
+      ],
+      "surface_triangles": 2,
+      "joint_triangles": 2
+    },
+    {
+      "region": "ArrivalCourt",
+      "source_mesh": "Assets/Game/Supplied/Resources/AlcatrazSupplied/Baked/Meshes/Island_0_7.asset",
+      "source_triangle": 15900,
+      "clipped_piece": 0,
+      "source_normal": [
+        0.007206778,
+        0.999942405,
+        -0.00795294
+      ],
+      "source_area_m2": 2.29395582,
+      "source_bounds": [
+        [
+          -157.35,
+          31.623565478323435,
+          -14.0
+        ],
+        [
+          -156.2086889597402,
+          31.648893338085497,
+          -11.35
+        ]
+      ],
+      "surface_triangles": 2,
+      "joint_triangles": 2
+    },
+    {
+      "region": "ArrivalCourt",
+      "source_mesh": "Assets/Game/Supplied/Resources/AlcatrazSupplied/Baked/Meshes/Island_0_7.asset",
+      "source_triangle": 15901,
+      "clipped_piece": 0,
+      "source_normal": [
+        -0.002810251,
+        0.999934525,
+        -0.011092707
+      ],
+      "source_area_m2": 7.94540585,
+      "source_bounds": [
+        [
+          -163.0492401123047,
+          31.62789253311365,
+          -14.0
+        ],
+        [
+          -157.70204735395322,
+          31.677452087402344,
+          -8.399757385253906
+        ]
+      ],
+      "surface_triangles": 2,
+      "joint_triangles": 8
+    },
+    {
+      "region": "ArrivalCourt",
+      "source_mesh": "Assets/Game/Supplied/Resources/AlcatrazSupplied/Baked/Meshes/Island_0_7.asset",
+      "source_triangle": 15902,
+      "clipped_piece": 0,
+      "source_normal": [
+        0.111522125,
+        0.990514344,
+        0.080275465
+      ],
+      "source_area_m2": 2.32823513,
+      "source_bounds": [
+        [
+          -163.0492401123047,
+          31.62789253311365,
+          -14.0
+        ],
+        [
+          -158.57791634855533,
+          31.725156784057617,
+          -8.399757385253906
+        ]
+      ],
+      "surface_triangles": 2,
+      "joint_triangles": 8
+    },
+    {
+      "region": "ArrivalCourt",
+      "source_mesh": "Assets/Game/Supplied/Resources/AlcatrazSupplied/Baked/Meshes/Island_0_7.asset",
+      "source_triangle": 15903,
+      "clipped_piece": 0,
+      "source_normal": [
+        0.00252665,
+        0.99963437,
+        -0.026921058
+      ],
+      "source_area_m2": 1.52669095,
+      "source_bounds": [
+        [
+          -160.91346740722656,
+          31.665026642353624,
+          -14.0
+        ],
+        [
+          -158.90773312611935,
+          31.725156784057617,
+          -11.955490112304688
+        ]
+      ],
+      "surface_triangles": 1,
+      "joint_triangles": 4
+    },
+    {
+      "region": "ArrivalCourt",
+      "source_mesh": "Assets/Game/Supplied/Resources/AlcatrazSupplied/Baked/Meshes/Island_0_7.asset",
+      "source_triangle": 15935,
+      "clipped_piece": 0,
+      "source_normal": [
+        0.012033785,
+        0.999637065,
+        -0.024102432
+      ],
+      "source_area_m2": 13.557135396,
+      "source_bounds": [
+        [
+          -164.57748413085938,
+          31.659751892089844,
+          -0.00860595703125
+        ],
+        [
+          -160.07830810546875,
+          31.807939529418945,
+          6.080432891845703
+        ]
+      ],
+      "surface_triangles": 1,
+      "joint_triangles": 7
+    },
+    {
+      "region": "ArrivalCourt",
+      "source_mesh": "Assets/Game/Supplied/Resources/AlcatrazSupplied/Baked/Meshes/Island_0_7.asset",
+      "source_triangle": 15936,
+      "clipped_piece": 0,
+      "source_normal": [
+        -0.0081757,
+        0.999666842,
+        -0.024481897
+      ],
+      "source_area_m2": 8.912354373,
+      "source_bounds": [
+        [
+          -160.19242095947266,
+          31.659751892089844,
+          -0.7172789363596856
+        ],
+        [
+          -157.35,
+          31.807939529418945,
+          6.080432891845703
+        ]
+      ],
+      "surface_triangles": 2,
+      "joint_triangles": 9
+    },
+    {
+      "region": "ArrivalCourt",
+      "source_mesh": "Assets/Game/Supplied/Resources/AlcatrazSupplied/Baked/Meshes/Island_0_7.asset",
+      "source_triangle": 15937,
+      "clipped_piece": 0,
+      "source_normal": [
+        -0.029045114,
+        0.999005895,
+        -0.033817207
+      ],
+      "source_area_m2": 6.826073892,
+      "source_bounds": [
+        [
+          -160.19242095947266,
+          31.675797232376063,
+          -0.26454341006184456
+        ],
+        [
+          -157.35,
+          31.838221275735755,
+          6.080432891845703
+        ]
+      ],
+      "surface_triangles": 1,
+      "joint_triangles": 8
+    },
+    {
+      "region": "ArrivalCourt",
+      "source_mesh": "Assets/Game/Supplied/Resources/AlcatrazSupplied/Baked/Meshes/Island_0_7.asset",
+      "source_triangle": 15937,
+      "clipped_piece": 0,
+      "source_normal": [
+        -0.029045114,
+        0.999005895,
+        -0.033817207
+      ],
+      "source_area_m2": 3.603420357,
+      "source_bounds": [
+        [
+          -157.35,
+          31.730450912300853,
+          1.35
+        ],
+        [
+          -155.7358856201172,
+          31.855417251586914,
+          4.5336818732651905
+        ]
+      ],
+      "surface_triangles": 2,
+      "joint_triangles": 4
+    },
+    {
+      "region": "ArrivalCourt",
+      "source_mesh": "Assets/Game/Supplied/Resources/AlcatrazSupplied/Baked/Meshes/Island_0_7.asset",
+      "source_triangle": 15938,
+      "clipped_piece": 0,
+      "source_normal": [
+        0.039980919,
+        0.994867837,
+        0.092948985
+      ],
+      "source_area_m2": 1.307480208,
+      "source_bounds": [
+        [
+          -160.19242095947266,
+          31.752710396352352,
+          4.5336818732651905
+        ],
+        [
+          -157.35,
+          31.838221275735755,
+          6.080432891845703
+        ]
+      ],
+      "surface_triangles": 1,
+      "joint_triangles": 4
+    },
+    {
+      "region": "ArrivalCourt",
+      "source_mesh": "Assets/Game/Supplied/Resources/AlcatrazSupplied/Baked/Meshes/Island_0_7.asset",
+      "source_triangle": 15938,
+      "clipped_piece": 0,
+      "source_normal": [
+        0.039980919,
+        0.994867837,
+        0.092948985
+      ],
+      "source_area_m2": 3.034410647,
+      "source_bounds": [
+        [
+          -157.35,
+          31.690961837768555,
+          3.65533447265625
+        ],
+        [
+          -154.17205047607422,
+          31.855417251586914,
+          5.448936878809986
+        ]
+      ],
+      "surface_triangles": 2,
+      "joint_triangles": 2
+    },
+    {
+      "region": "ArrivalCourt",
+      "source_mesh": "Assets/Game/Supplied/Resources/AlcatrazSupplied/Baked/Meshes/Island_0_7.asset",
+      "source_triangle": 15939,
+      "clipped_piece": 0,
+      "source_normal": [
+        0.048559706,
+        0.995553475,
+        0.080716997
+      ],
+      "source_area_m2": 2.106223898,
+      "source_bounds": [
+        [
+          -155.7358856201172,
+          31.690961837768555,
+          2.9793357849121094
+        ],
+        [
+          -152.8518524169922,
+          31.855417251586914,
+          4.742897033691406
+        ]
+      ],
+      "surface_triangles": 1,
+      "joint_triangles": 4
+    },
+    {
+      "region": "ArrivalCourt",
+      "source_mesh": "Assets/Game/Supplied/Resources/AlcatrazSupplied/Baked/Meshes/Island_0_7.asset",
+      "source_triangle": 15982,
+      "clipped_piece": 0,
+      "source_normal": [
+        0.186160936,
+        0.871057861,
+        0.454535266
+      ],
+      "source_area_m2": 3.744101187,
+      "source_bounds": [
+        [
+          -163.111572265625,
+          31.168720245361328,
+          -12.087909019825535
+        ],
+        [
+          -157.35,
+          31.82576493679953,
+          -8.469039916992188
+        ]
+      ],
+      "surface_triangles": 1,
+      "joint_triangles": 8
+    },
+    {
+      "region": "ArrivalCourt",
+      "source_mesh": "Assets/Game/Supplied/Resources/AlcatrazSupplied/Baked/Meshes/Island_0_7.asset",
+      "source_triangle": 15982,
+      "clipped_piece": 0,
+      "source_normal": [
+        0.186160936,
+        0.871057861,
+        0.454535266
+      ],
+      "source_area_m2": 8.776650408,
+      "source_bounds": [
+        [
+          -157.35,
+          31.245522910022192,
+          -14.0
+        ],
+        [
+          -150.2969586285263,
+          32.172925663637336,
+          -11.35
+        ]
+      ],
+      "surface_triangles": 3,
+      "joint_triangles": 6
+    },
+    {
+      "region": "ArrivalCourt",
+      "source_mesh": "Assets/Game/Supplied/Resources/AlcatrazSupplied/Baked/Meshes/Island_0_7.asset",
+      "source_triangle": 15991,
+      "clipped_piece": 0,
+      "source_normal": [
+        0.18219679,
+        0.971938906,
+        0.148792111
+      ],
+      "source_area_m2": 31.915858343,
+      "source_bounds": [
+        [
+          -168.5,
+          30.54363588023273,
+          -10.942761223187619
+        ],
+        [
+          -157.35,
+          31.677452087402344,
+          -1.225567462915492
+        ]
+      ],
+      "surface_triangles": 3,
+      "joint_triangles": 14
+    },
+    {
+      "region": "ArrivalCourt",
+      "source_mesh": "Assets/Game/Supplied/Resources/AlcatrazSupplied/Baked/Meshes/Island_0_7.asset",
+      "source_triangle": 15991,
+      "clipped_piece": 0,
+      "source_normal": [
+        0.18219679,
+        0.971938906,
+        0.148792111
+      ],
+      "source_area_m2": 10.606124468,
+      "source_bounds": [
+        [
+          -156.43731888742218,
+          29.59897276181963,
+          -14.0
+        ],
+        [
+          -147.38800455883032,
+          30.889647431580357,
+          -11.35
+        ]
+      ],
+      "surface_triangles": 2,
+      "joint_triangles": 8
+    },
+    {
+      "region": "ArrivalCourt",
+      "source_mesh": "Assets/Game/Supplied/Resources/AlcatrazSupplied/Baked/Meshes/Island_0_7.asset",
+      "source_triangle": 15993,
+      "clipped_piece": 0,
+      "source_normal": [
+        0.187036915,
+        0.973895011,
+        0.128630091
+      ],
+      "source_area_m2": 25.372158289,
+      "source_bounds": [
+        [
+          -168.5,
+          30.58539290530065,
+          -12.179456796377853
+        ],
+        [
+          -157.35,
+          31.63998120328503,
+          -1.310354278925911
+        ]
+      ],
+      "surface_triangles": 3,
+      "joint_triangles": 16
+    },
+    {
+      "region": "ArrivalCourt",
+      "source_mesh": "Assets/Game/Supplied/Resources/AlcatrazSupplied/Baked/Meshes/Island_0_7.asset",
+      "source_triangle": 15993,
+      "clipped_piece": 0,
+      "source_normal": [
+        0.187036915,
+        0.973895011,
+        0.128630091
+      ],
+      "source_area_m2": 7.534100796,
+      "source_bounds": [
+        [
+          -157.35,
+          30.085530387592335,
+          -14.0
+        ],
+        [
+          -151.87226772219435,
+          30.89707732136869,
+          -11.35
+        ]
+      ],
+      "surface_triangles": 3,
+      "joint_triangles": 6
+    },
+    {
+      "region": "ArrivalCourt",
+      "source_mesh": "Assets/Game/Supplied/Resources/AlcatrazSupplied/Baked/Meshes/Island_0_7.asset",
+      "source_triangle": 16004,
+      "clipped_piece": 0,
+      "source_normal": [
+        0.026753017,
+        0.999095934,
+        0.033039219
+      ],
+      "source_area_m2": 4.250130809,
+      "source_bounds": [
+        [
+          -160.19242095947266,
+          31.653906590898046,
+          5.448936878809986
+        ],
+        [
+          -157.35,
+          31.807939529418945,
+          8.43673388196895
+        ]
+      ],
+      "surface_triangles": 1,
+      "joint_triangles": 4
+    },
+    {
+      "region": "ArrivalCourt",
+      "source_mesh": "Assets/Game/Supplied/Resources/AlcatrazSupplied/Baked/Meshes/Island_0_7.asset",
+      "source_triangle": 16004,
+      "clipped_piece": 0,
+      "source_normal": [
+        0.026753017,
+        0.999095934,
+        0.033039219
+      ],
+      "source_area_m2": 4.936241726,
+      "source_bounds": [
+        [
+          -157.35,
+          31.6507511138916,
+          4.742897033691406
+        ],
+        [
+          -154.17205047607422,
+          31.752710396352352,
+          8.485004425048828
+        ]
+      ],
+      "surface_triangles": 2,
+      "joint_triangles": 4
+    },
+    {
+      "region": "CellhouseGateWalk",
+      "source_mesh": "Assets/Game/Supplied/Resources/AlcatrazSupplied/Baked/Meshes/Island_0_5.asset",
+      "source_triangle": 7227,
+      "clipped_piece": 0,
+      "source_normal": [
+        0.060683643,
+        0.997729065,
+        0.029226859
+      ],
+      "source_area_m2": 6.37575044,
+      "source_bounds": [
+        [
+          -118.7066650390625,
+          48.88135528564453,
+          20.839426040649414
+        ],
+        [
+          -111.3685073852539,
+          49.41347885131836,
+          24.37455940246582
+        ]
+      ],
+      "surface_triangles": 1,
+      "joint_triangles": 8
+    },
+    {
+      "region": "CellhouseGateWalk",
+      "source_mesh": "Assets/Game/Supplied/Resources/AlcatrazSupplied/Baked/Meshes/Island_0_5.asset",
+      "source_triangle": 7229,
+      "clipped_piece": 0,
+      "source_normal": [
+        -0.091397163,
+        0.995191412,
+        0.035222329
+      ],
+      "source_area_m2": 3.248118694,
+      "source_bounds": [
+        [
+          -120.16017150878906,
+          49.32422637939453,
+          17.5
+        ],
+        [
+          -118.7066650390625,
+          49.52054573633579,
+          20.839426040649414
+        ]
+      ],
+      "surface_triangles": 3,
+      "joint_triangles": 4
+    },
+    {
+      "region": "CellhouseGateWalk",
+      "source_mesh": "Assets/Game/Supplied/Resources/AlcatrazSupplied/Baked/Meshes/Island_0_5.asset",
+      "source_triangle": 7230,
+      "clipped_piece": 0,
+      "source_normal": [
+        0.071020294,
+        0.994396078,
+        0.078310649
+      ],
+      "source_area_m2": 1.338022809,
+      "source_bounds": [
+        [
+          -120.87870726090759,
+          49.32422637939453,
+          17.5
+        ],
+        [
+          -119.60521189497453,
+          49.54010181245049,
+          19.589563369750977
+        ]
+      ],
+      "surface_triangles": 1,
+      "joint_triangles": 4
+    },
+    {
+      "region": "CellhouseGateWalk",
+      "source_mesh": "Assets/Game/Supplied/Resources/AlcatrazSupplied/Baked/Meshes/Island_0_5.asset",
+      "source_triangle": 7231,
+      "clipped_piece": 0,
+      "source_normal": [
+        -0.463437628,
+        0.850930029,
+        0.247272421
+      ],
+      "source_area_m2": 0.440446496,
+      "source_bounds": [
+        [
+          -121.0,
+          49.21296049689249,
+          17.5
+        ],
+        [
+          -120.16017150878906,
+          49.54010181245049,
+          19.589563369750977
+        ]
+      ],
+      "surface_triangles": 2,
+      "joint_triangles": 2
+    },
+    {
+      "region": "CellhouseGateWalk",
+      "source_mesh": "Assets/Game/Supplied/Resources/AlcatrazSupplied/Baked/Meshes/Island_0_5.asset",
+      "source_triangle": 7241,
+      "clipped_piece": 0,
+      "source_normal": [
+        0.037411283,
+        0.977624159,
+        0.207005798
+      ],
+      "source_area_m2": 4.882162243,
+      "source_bounds": [
+        [
+          -106.89892273791044,
+          48.35137358132829,
+          24.946816776670502
+        ],
+        [
+          -102.47587973437008,
+          49.096972102498924,
+          27.668689394233798
+        ]
+      ],
+      "surface_triangles": 1,
+      "joint_triangles": 4
+    },
+    {
+      "region": "CellhouseGateWalk",
+      "source_mesh": "Assets/Game/Supplied/Resources/AlcatrazSupplied/Baked/Meshes/Island_0_5.asset",
+      "source_triangle": 7242,
+      "clipped_piece": 0,
+      "source_normal": [
+        0.072623024,
+        0.992420582,
+        -0.099132667
+      ],
+      "source_area_m2": 2.074575629,
+      "source_bounds": [
+        [
+          -106.76346588134766,
+          48.351171257758665,
+          27.18838119506836
+        ],
+        [
+          -102.45859751835587,
+          48.62726593017578,
+          28.29233169555664
+        ]
+      ],
+      "surface_triangles": 2,
+      "joint_triangles": 2
+    },
+    {
+      "region": "CellhouseGateWalk",
+      "source_mesh": "Assets/Game/Supplied/Resources/AlcatrazSupplied/Baked/Meshes/Island_0_5.asset",
+      "source_triangle": 7243,
+      "clipped_piece": 0,
+      "source_normal": [
+        0.086264346,
+        0.995648562,
+        -0.035247744
+      ],
+      "source_area_m2": 6.025157201,
+      "source_bounds": [
+        [
+          -105.39476013183594,
+          48.188434999779645,
+          27.679324604088695
+        ],
+        [
+          -99.6664069327548,
+          48.62726593017578,
+          30.48763070042557
+        ]
+      ],
+      "surface_triangles": 3,
+      "joint_triangles": 6
+    },
+    {
+      "region": "CellhouseGateWalk",
+      "source_mesh": "Assets/Game/Supplied/Resources/AlcatrazSupplied/Baked/Meshes/Island_0_5.asset",
+      "source_triangle": 7244,
+      "clipped_piece": 0,
+      "source_normal": [
+        0.075931259,
+        0.997071505,
+        -0.009102602
+      ],
+      "source_area_m2": 5.562630373,
+      "source_bounds": [
+        [
+          -105.39476013183594,
+          48.22848128162243,
+          28.29233169555664
+        ],
+        [
+          -99.89505228017023,
+          48.62726593017578,
+          32.0
+        ]
+      ],
+      "surface_triangles": 2,
+      "joint_triangles": 6
+    },
+    {
+      "region": "CellhouseGateWalk",
+      "source_mesh": "Assets/Game/Supplied/Resources/AlcatrazSupplied/Baked/Meshes/Island_0_5.asset",
+      "source_triangle": 7256,
+      "clipped_piece": 0,
+      "source_normal": [
+        -0.289441701,
+        0.932262775,
+        0.217047509
+      ],
+      "source_area_m2": 1.937197985,
+      "source_bounds": [
+        [
+          -108.57251392759663,
+          48.61715126037598,
+          23.91691450609438
+        ],
+        [
+          -106.76346588134766,
+          49.096972102498924,
+          27.18838119506836
+        ]
+      ],
+      "surface_triangles": 1,
+      "joint_triangles": 6
+    },
+    {
+      "region": "CellhouseGateWalk",
+      "source_mesh": "Assets/Game/Supplied/Resources/AlcatrazSupplied/Baked/Meshes/Island_0_5.asset",
+      "source_triangle": 7257,
+      "clipped_piece": 0,
+      "source_normal": [
+        0.035046017,
+        0.998516869,
+        0.041663406
+      ],
+      "source_area_m2": 8.43753651,
+      "source_bounds": [
+        [
+          -109.89703691521197,
+          48.61715126037598,
+          23.181417754023144
+        ],
+        [
+          -106.76346588134766,
+          48.88978565943496,
+          27.711003487112787
+        ]
+      ],
+      "surface_triangles": 3,
+      "joint_triangles": 6
+    },
+    {
+      "region": "CellhouseGateWalk",
+      "source_mesh": "Assets/Game/Supplied/Resources/AlcatrazSupplied/Baked/Meshes/Island_0_5.asset",
+      "source_triangle": 7262,
+      "clipped_piece": 0,
+      "source_normal": [
+        0.005088376,
+        0.99915429,
+        0.040802133
+      ],
+      "source_area_m2": 6.510270007,
+      "source_bounds": [
+        [
+          -112.36971088778598,
+          48.71209615066044,
+          22.952039976061297
+        ],
+        [
+          -109.76769614971239,
+          48.90105092489238,
+          27.548771987531172
+        ]
+      ],
+      "surface_triangles": 3,
+      "joint_triangles": 6
+    },
+    {
+      "region": "CellhouseGateWalk",
+      "source_mesh": "Assets/Game/Supplied/Resources/AlcatrazSupplied/Baked/Meshes/Island_0_5.asset",
+      "source_triangle": 7262,
+      "clipped_piece": 1,
+      "source_normal": [
+        0.005088376,
+        0.99915429,
+        0.040802133
+      ],
+      "source_area_m2": 0.520521042,
+      "source_bounds": [
+        [
+          -111.68720083687697,
+          48.856407955417154,
+          22.74651978952641
+        ],
+        [
+          -110.14043503890039,
+          48.91114448966028,
+          24.23814284263127
+        ]
+      ],
+      "surface_triangles": 2,
+      "joint_triangles": 4
+    },
+    {
+      "region": "CellhouseGateWalk",
+      "source_mesh": "Assets/Game/Supplied/Resources/AlcatrazSupplied/Baked/Meshes/Island_0_5.asset",
+      "source_triangle": 7262,
+      "clipped_piece": 2,
+      "source_normal": [
+        0.005088376,
+        0.99915429,
+        0.040802133
+      ],
+      "source_area_m2": 0.606077284,
+      "source_bounds": [
+        [
+          -112.2747911706432,
+          48.82988851453738,
+          23.46371965442724
+        ],
+        [
+          -110.52819463066899,
+          48.88213036779376,
+          24.960823040029553
+        ]
+      ],
+      "surface_triangles": 2,
+      "joint_triangles": 4
+    },
+    {
+      "region": "CellhouseGateWalk",
+      "source_mesh": "Assets/Game/Supplied/Resources/AlcatrazSupplied/Baked/Meshes/Island_0_5.asset",
+      "source_triangle": 7262,
+      "clipped_piece": 3,
+      "source_normal": [
+        0.005088376,
+        0.99915429,
+        0.040802133
+      ],
+      "source_area_m2": 0.074174715,
+      "source_bounds": [
+        [
+          -112.26461478827221,
+          48.82298936536633,
+          24.81746601179866
+        ],
+        [
+          -111.55408672114429,
+          48.8320724187787,
+          25.063104331241334
+        ]
+      ],
+      "surface_triangles": 1,
+      "joint_triangles": 0
+    },
+    {
+      "region": "CellhouseGateWalk",
+      "source_mesh": "Assets/Game/Supplied/Resources/AlcatrazSupplied/Baked/Meshes/Island_0_5.asset",
+      "source_triangle": 7262,
+      "clipped_piece": 4,
+      "source_normal": [
+        0.005088376,
+        0.99915429,
+        0.040802133
+      ],
+      "source_area_m2": 0.095369285,
+      "source_bounds": [
+        [
+          -112.34461662924855,
+          48.81641166951898,
+          24.95879883172078
+        ],
+        [
+          -111.74023563128665,
+          48.82991935137297,
+          25.24098880250823
+        ]
+      ],
+      "surface_triangles": 4,
+      "joint_triangles": 0
+    },
+    {
+      "region": "CellhouseGateWalk",
+      "source_mesh": "Assets/Game/Supplied/Resources/AlcatrazSupplied/Baked/Meshes/Island_0_5.asset",
+      "source_triangle": 7262,
+      "clipped_piece": 5,
+      "source_normal": [
+        0.005088376,
+        0.99915429,
+        0.040802133
+      ],
+      "source_area_m2": 0.009931599,
+      "source_bounds": [
+        [
+          -112.36057767692719,
+          48.81977633657374,
+          25.046701709756633
+        ],
+        [
+          -112.12963761959318,
+          48.82673711463344,
+          25.19034609160939
+        ]
+      ],
+      "surface_triangles": 2,
+      "joint_triangles": 0
+    },
+    {
+      "region": "CellhouseGateWalk",
+      "source_mesh": "Assets/Game/Supplied/Resources/AlcatrazSupplied/Baked/Meshes/Island_0_5.asset",
+      "source_triangle": 7262,
+      "clipped_piece": 6,
+      "source_normal": [
+        0.005088376,
+        0.99915429,
+        0.040802133
+      ],
+      "source_area_m2": 0.011628295,
+      "source_bounds": [
+        [
+          -112.12963761959318,
+          48.81347887058888,
+          25.19034609160939
+        ],
+        [
+          -111.87503951910314,
+          48.81977633657374,
+          25.320302197216517
+        ]
+      ],
+      "surface_triangles": 1,
+      "joint_triangles": 0
+    },
+    {
+      "region": "CellhouseGateWalk",
+      "source_mesh": "Assets/Game/Supplied/Resources/AlcatrazSupplied/Baked/Meshes/Island_0_5.asset",
+      "source_triangle": 7262,
+      "clipped_piece": 7,
+      "source_normal": [
+        0.005088376,
+        0.99915429,
+        0.040802133
+      ],
+      "source_area_m2": 0.048777368,
+      "source_bounds": [
+        [
+          -112.30041170955418,
+          48.80828910775767,
+          25.156377013088136
+        ],
+        [
+          -111.93514456304798,
+          48.82203321890394,
+          25.46065198514432
+        ]
+      ],
+      "surface_triangles": 3,
+      "joint_triangles": 0
+    },
+    {
+      "region": "CellhouseGateWalk",
+      "source_mesh": "Assets/Game/Supplied/Resources/AlcatrazSupplied/Baked/Meshes/Island_0_5.asset",
+      "source_triangle": 7262,
+      "clipped_piece": 8,
+      "source_normal": [
+        0.005088376,
+        0.99915429,
+        0.040802133
+      ],
+      "source_area_m2": 0.006816595,
+      "source_bounds": [
+        [
+          -112.28442563015467,
+          48.81154126274482,
+          25.18030187163987
+        ],
+        [
+          -112.14194467524904,
+          48.82097479533369,
+          25.39353968982174
+        ]
+      ],
+      "surface_triangles": 1,
+      "joint_triangles": 0
+    },
+    {
+      "region": "CellhouseGateWalk",
+      "source_mesh": "Assets/Game/Supplied/Resources/AlcatrazSupplied/Baked/Meshes/Island_0_5.asset",
+      "source_triangle": 7262,
+      "clipped_piece": 9,
+      "source_normal": [
+        0.005088376,
+        0.99915429,
+        0.040802133
+      ],
+      "source_area_m2": 0.002951978,
+      "source_bounds": [
+        [
+          -112.14194467524904,
+          48.80684741095018,
+          25.39353968982174
+        ],
+        [
+          -112.04150402732354,
+          48.81154126274482,
+          25.499640634099624
+        ]
+      ],
+      "surface_triangles": 1,
+      "joint_triangles": 0
+    },
+    {
+      "region": "CellhouseGateWalk",
+      "source_mesh": "Assets/Game/Supplied/Resources/AlcatrazSupplied/Baked/Meshes/Island_0_5.asset",
+      "source_triangle": 7262,
+      "clipped_piece": 10,
+      "source_normal": [
+        0.005088376,
+        0.99915429,
+        0.040802133
+      ],
+      "source_area_m2": 0.024941179,
+      "source_bounds": [
+        [
+          -112.25734815085275,
+          48.80297880609299,
+          25.3164295526817
+        ],
+        [
+          -112.07105029081947,
+          48.81527789722966,
+          25.604261575160592
+        ]
+      ],
+      "surface_triangles": 3,
+      "joint_triangles": 0
+    },
+    {
+      "region": "CellhouseGateWalk",
+      "source_mesh": "Assets/Game/Supplied/Resources/AlcatrazSupplied/Baked/Meshes/Island_0_5.asset",
+      "source_triangle": 7262,
+      "clipped_piece": 11,
+      "source_normal": [
+        0.005088376,
+        0.99915429,
+        0.040802133
+      ],
+      "source_area_m2": 0.003935727,
+      "source_bounds": [
+        [
+          -112.22118746135466,
+          48.80105555710998,
+          25.498221615057993
+        ],
+        [
+          -112.15033382524828,
+          48.80766995997873,
+          25.656273120904885
+        ]
+      ],
+      "surface_triangles": 1,
+      "joint_triangles": 0
+    },
+    {
+      "region": "CellhouseGateWalk",
+      "source_mesh": "Assets/Game/Supplied/Resources/AlcatrazSupplied/Baked/Meshes/Island_0_5.asset",
+      "source_triangle": 7262,
+      "clipped_piece": 12,
+      "source_normal": [
+        0.005088376,
+        0.99915429,
+        0.040802133
+      ],
+      "source_area_m2": 0.009936286,
+      "source_bounds": [
+        [
+          -112.25915954589844,
+          48.79895041389852,
+          25.454803695604422
+        ],
+        [
+          -112.18974906215874,
+          48.80959074664593,
+          25.713203738525824
+        ]
+      ],
+      "surface_triangles": 3,
+      "joint_triangles": 0
+    },
+    {
+      "region": "CellhouseGateWalk",
+      "source_mesh": "Assets/Game/Supplied/Resources/AlcatrazSupplied/Baked/Meshes/Island_0_5.asset",
+      "source_triangle": 7262,
+      "clipped_piece": 13,
+      "source_normal": [
+        0.005088376,
+        0.99915429,
+        0.040802133
+      ],
+      "source_area_m2": 0.005942842,
+      "source_bounds": [
+        [
+          -112.30412406512097,
+          48.7954746796278,
+          25.581148147583008
+        ],
+        [
+          -112.23289205567829,
+          48.80447689638842,
+          25.80720005081497
+        ]
+      ],
+      "surface_triangles": 1,
+      "joint_triangles": 0
+    },
+    {
+      "region": "CellhouseGateWalk",
+      "source_mesh": "Assets/Game/Supplied/Resources/AlcatrazSupplied/Baked/Meshes/Island_0_5.asset",
+      "source_triangle": 7263,
+      "clipped_piece": 0,
+      "source_normal": [
+        -0.338901965,
+        0.807808015,
+        0.482277585
+      ],
+      "source_area_m2": 0.580638609,
+      "source_bounds": [
+        [
+          -112.63947502117595,
+          48.46657512093705,
+          25.893747089337495
+        ],
+        [
+          -110.70030605044708,
+          48.7922743997392,
+          27.16827608136717
+        ]
+      ],
+      "surface_triangles": 1,
+      "joint_triangles": 4
+    },
+    {
+      "region": "CellhouseGateWalk",
+      "source_mesh": "Assets/Game/Supplied/Resources/AlcatrazSupplied/Baked/Meshes/Island_0_5.asset",
+      "source_triangle": 7269,
+      "clipped_piece": 0,
+      "source_normal": [
+        -0.260629498,
+        0.845748367,
+        0.465598501
+      ],
+      "source_area_m2": 0.045975528,
+      "source_bounds": [
+        [
+          -114.19376754760742,
+          48.68481164652842,
+          24.37455940246582
+        ],
+        [
+          -114.07079257930444,
+          49.03544044494629,
+          25.02010644519646
+        ]
+      ],
+      "surface_triangles": 1,
+      "joint_triangles": 0
+    },
+    {
+      "region": "CellhouseGateWalk",
+      "source_mesh": "Assets/Game/Supplied/Resources/AlcatrazSupplied/Baked/Meshes/Island_0_5.asset",
+      "source_triangle": 7269,
+      "clipped_piece": 1,
+      "source_normal": [
+        -0.260629498,
+        0.845748367,
+        0.465598501
+      ],
+      "source_area_m2": 0.506329021,
+      "source_bounds": [
+        [
+          -114.17833567328687,
+          48.409751687691646,
+          24.479450801713014
+        ],
+        [
+          -113.57026517365895,
+          49.01559249179408,
+          25.647569762015124
+        ]
+      ],
+      "surface_triangles": 3,
+      "joint_triangles": 2
+    },
+    {
+      "region": "CellhouseGateWalk",
+      "source_mesh": "Assets/Game/Supplied/Resources/AlcatrazSupplied/Baked/Meshes/Island_0_5.asset",
+      "source_triangle": 7269,
+      "clipped_piece": 2,
+      "source_normal": [
+        -0.260629498,
+        0.845748367,
+        0.465598501
+      ],
+      "source_area_m2": 0.229118719,
+      "source_bounds": [
+        [
+          -113.91068605796806,
+          48.421862756034216,
+          24.90637524547761
+        ],
+        [
+          -113.32862086069997,
+          48.93480820995413,
+          25.728357800734525
+        ]
+      ],
+      "surface_triangles": 2,
+      "joint_triangles": 0
+    },
+    {
+      "region": "CellhouseGateWalk",
+      "source_mesh": "Assets/Game/Supplied/Resources/AlcatrazSupplied/Baked/Meshes/Island_0_5.asset",
+      "source_triangle": 7269,
+      "clipped_piece": 3,
+      "source_normal": [
+        -0.260629498,
+        0.845748367,
+        0.465598501
+      ],
+      "source_area_m2": 0.065396265,
+      "source_bounds": [
+        [
+          -113.74013353178266,
+          48.429945809887826,
+          25.11248556578234
+        ],
+        [
+          -113.25534255852978,
+          48.8958072240682,
+          25.752414958087876
+        ]
+      ],
+      "surface_triangles": 2,
+      "joint_triangles": 0
+    },
+    {
+      "region": "CellhouseGateWalk",
+      "source_mesh": "Assets/Game/Supplied/Resources/AlcatrazSupplied/Baked/Meshes/Island_0_5.asset",
+      "source_triangle": 7270,
+      "clipped_piece": 0,
+      "source_normal": [
+        0.075417896,
+        0.99219273,
+        0.099326365
+      ],
+      "source_area_m2": 0.009939186,
+      "source_bounds": [
+        [
+          -114.19376754760742,
+          49.01559249179408,
+          24.342331145110766
+        ],
+        [
+          -114.0435177837954,
+          49.03544044494629,
+          24.479450801713014
+        ]
+      ],
+      "surface_triangles": 1,
+      "joint_triangles": 0
+    },
+    {
+      "region": "CellhouseGateWalk",
+      "source_mesh": "Assets/Game/Supplied/Resources/AlcatrazSupplied/Baked/Meshes/Island_0_5.asset",
+      "source_triangle": 7270,
+      "clipped_piece": 1,
+      "source_normal": [
+        0.075417896,
+        0.99219273,
+        0.099326365
+      ],
+      "source_area_m2": 0.312909671,
+      "source_bounds": [
+        [
+          -114.07079257930444,
+          48.93480820995413,
+          24.168086125363615
+        ],
+        [
+          -113.23117869968031,
+          49.02724606373478,
+          24.90637524547761
+        ]
+      ],
+      "surface_triangles": 2,
+      "joint_triangles": 2
+    },
+    {
+      "region": "CellhouseGateWalk",
+      "source_mesh": "Assets/Game/Supplied/Resources/AlcatrazSupplied/Baked/Meshes/Island_0_5.asset",
+      "source_triangle": 7270,
+      "clipped_piece": 2,
+      "source_normal": [
+        0.075417896,
+        0.99219273,
+        0.099326365
+      ],
+      "source_area_m2": 0.414988863,
+      "source_bounds": [
+        [
+          -113.57026517365895,
+          48.8958072240682,
+          24.03448510182002
+        ],
+        [
+          -112.60832397901324,
+          48.98294239257175,
+          25.11248556578234
+        ]
+      ],
+      "surface_triangles": 2,
+      "joint_triangles": 0
+    },
+    {
+      "region": "CellhouseGateWalk",
+      "source_mesh": "Assets/Game/Supplied/Resources/AlcatrazSupplied/Baked/Meshes/Island_0_5.asset",
+      "source_triangle": 7270,
+      "clipped_piece": 3,
+      "source_normal": [
+        0.075417896,
+        0.99219273,
+        0.099326365
+      ],
+      "source_area_m2": 0.189000952,
+      "source_bounds": [
+        [
+          -113.32862086069997,
+          48.88398022928529,
+          23.980730766515244
+        ],
+        [
+          -112.35771855240154,
+          48.94897289477658,
+          25.174988234050183
+        ]
+      ],
+      "surface_triangles": 2,
+      "joint_triangles": 2
+    },
+    {
+      "region": "CellhouseGateWalk",
+      "source_mesh": "Assets/Game/Supplied/Resources/AlcatrazSupplied/Baked/Meshes/Island_0_5.asset",
+      "source_triangle": 7270,
+      "clipped_piece": 4,
+      "source_normal": [
+        0.075417896,
+        0.99219273,
+        0.099326365
+      ],
+      "source_area_m2": 0.208755862,
+      "source_bounds": [
+        [
+          -113.13253851327755,
+          48.887642973998474,
+          23.911462464406736
+        ],
+        [
+          -112.03478622885687,
+          48.93530527662379,
+          25.011601730252725
+        ]
+      ],
+      "surface_triangles": 2,
+      "joint_triangles": 2
+    },
+    {
+      "region": "CellhouseGateWalk",
+      "source_mesh": "Assets/Game/Supplied/Resources/AlcatrazSupplied/Baked/Meshes/Island_0_5.asset",
+      "source_triangle": 7270,
+      "clipped_piece": 5,
+      "source_normal": [
+        0.075417896,
+        0.99219273,
+        0.099326365
+      ],
+      "source_area_m2": 0.004870375,
+      "source_bounds": [
+        [
+          -112.96383837189039,
+          48.883673682222984,
+          24.765537444710123
+        ],
+        [
+          -112.76427728554832,
+          48.889463241307766,
+          24.89887989956386
+        ]
+      ],
+      "surface_triangles": 1,
+      "joint_triangles": 0
+    },
+    {
+      "region": "CellhouseGateWalk",
+      "source_mesh": "Assets/Game/Supplied/Resources/AlcatrazSupplied/Baked/Meshes/Island_0_5.asset",
+      "source_triangle": 7270,
+      "clipped_piece": 6,
+      "source_normal": [
+        0.075417896,
+        0.99219273,
+        0.099326365
+      ],
+      "source_area_m2": 0.276115844,
+      "source_bounds": [
+        [
+          -112.76427728554832,
+          48.875863592453534,
+          23.76854705810547
+        ],
+        [
+          -111.3685073852539,
+          48.91769306547945,
+          24.765537444710123
+        ]
+      ],
+      "surface_triangles": 2,
+      "joint_triangles": 2
+    },
+    {
+      "region": "CellhouseGateWalk",
+      "source_mesh": "Assets/Game/Supplied/Resources/AlcatrazSupplied/Baked/Meshes/Island_0_5.asset",
+      "source_triangle": 7270,
+      "clipped_piece": 7,
+      "source_normal": [
+        0.075417896,
+        0.99219273,
+        0.099326365
+      ],
+      "source_area_m2": 0.214161349,
+      "source_bounds": [
+        [
+          -112.86063515698619,
+          48.85945808138884,
+          23.902646789122805
+        ],
+        [
+          -111.47287015784607,
+          48.887642973998474,
+          24.878351503766073
+        ]
+      ],
+      "surface_triangles": 3,
+      "joint_triangles": 2
+    },
+    {
+      "region": "CellhouseGateWalk",
+      "source_mesh": "Assets/Game/Supplied/Resources/AlcatrazSupplied/Baked/Meshes/Island_0_5.asset",
+      "source_triangle": 7270,
+      "clipped_piece": 8,
+      "source_normal": [
+        0.075417896,
+        0.99219273,
+        0.099326365
+      ],
+      "source_area_m2": 0.00481949,
+      "source_bounds": [
+        [
+          -112.76484298706055,
+          48.86647646641533,
+          24.81737427777192
+        ],
+        [
+          -112.55408194062551,
+          48.87829987261677,
+          24.881985809047492
+        ]
+      ],
+      "surface_triangles": 1,
+      "joint_triangles": 0
+    },
+    {
+      "region": "CellhouseGateWalk",
+      "source_mesh": "Assets/Game/Supplied/Resources/AlcatrazSupplied/Baked/Meshes/Island_0_5.asset",
+      "source_triangle": 7270,
+      "clipped_piece": 9,
+      "source_normal": [
+        0.075417896,
+        0.99219273,
+        0.099326365
+      ],
+      "source_area_m2": 0.079510567,
+      "source_bounds": [
+        [
+          -112.55408194062551,
+          48.84196293209497,
+          24.30324721315698
+        ],
+        [
+          -111.78463641298046,
+          48.86647646641533,
+          24.81737427777192
+        ]
+      ],
+      "surface_triangles": 1,
+      "joint_triangles": 0
+    },
+    {
+      "region": "CellhouseGateWalk",
+      "source_mesh": "Assets/Game/Supplied/Resources/AlcatrazSupplied/Baked/Meshes/Island_0_5.asset",
+      "source_triangle": 7270,
+      "clipped_piece": 10,
+      "source_normal": [
+        0.075417896,
+        0.99219273,
+        0.099326365
+      ],
+      "source_area_m2": 0.056741832,
+      "source_bounds": [
+        [
+          -112.65077993066718,
+          48.832824781385234,
+          24.730455131156152
+        ],
+        [
+          -112.11710988222222,
+          48.86735848301172,
+          24.953596430123987
+        ]
+      ],
+      "surface_triangles": 2,
+      "joint_triangles": 0
+    },
+    {
+      "region": "CellhouseGateWalk",
+      "source_mesh": "Assets/Game/Supplied/Resources/AlcatrazSupplied/Baked/Meshes/Island_0_5.asset",
+      "source_triangle": 7270,
+      "clipped_piece": 11,
+      "source_normal": [
+        0.075417896,
+        0.99219273,
+        0.099326365
+      ],
+      "source_area_m2": 0.00965784,
+      "source_bounds": [
+        [
+          -112.5658476022307,
+          48.83232063773263,
+          24.89887989956386
+        ],
+        [
+          -112.29076902727367,
+          48.85921143062797,
+          24.991226724129028
+        ]
+      ],
+      "surface_triangles": 2,
+      "joint_triangles": 0
+    },
+    {
+      "region": "CellhouseGateWalk",
+      "source_mesh": "Assets/Game/Supplied/Resources/AlcatrazSupplied/Baked/Meshes/Island_0_5.asset",
+      "source_triangle": 7270,
+      "clipped_piece": 12,
+      "source_normal": [
+        0.075417896,
+        0.99219273,
+        0.099326365
+      ],
+      "source_area_m2": 0.003936834,
+      "source_bounds": [
+        [
+          -112.42764081242261,
+          48.82934695017191,
+          24.96590693725862
+        ],
+        [
+          -112.30034964795679,
+          48.83946149781465,
+          25.03852037143147
+        ]
+      ],
+      "surface_triangles": 1,
+      "joint_triangles": 0
+    },
+    {
+      "region": "CellhouseGateWalk",
+      "source_mesh": "Assets/Game/Supplied/Resources/AlcatrazSupplied/Baked/Meshes/Island_0_5.asset",
+      "source_triangle": 7279,
+      "clipped_piece": 0,
+      "source_normal": [
+        0.025318697,
+        0.99821604,
+        0.05407126
+      ],
+      "source_area_m2": 2.0821429,
+      "source_bounds": [
+        [
+          -113.13795696296609,
+          48.88135528564453,
+          21.10741109971318
+        ],
+        [
+          -110.49405619574298,
+          49.070383637205396,
+          23.76854705810547
+        ]
+      ],
+      "surface_triangles": 1,
+      "joint_triangles": 2
+    },
+    {
+      "region": "CellhouseGateWalk",
+      "source_mesh": "Assets/Game/Supplied/Resources/AlcatrazSupplied/Baked/Meshes/Island_0_5.asset",
+      "source_triangle": 7280,
+      "clipped_piece": 0,
+      "source_normal": [
+        0.059979402,
+        0.997718467,
+        0.030989228
+      ],
+      "source_area_m2": 5.489490121,
+      "source_bounds": [
+        [
+          -118.7066650390625,
+          49.22551843306405,
+          18.68688936091455
+        ],
+        [
+          -115.65413241783659,
+          49.41347885131836,
+          21.87407071168807
+        ]
+      ],
+      "surface_triangles": 2,
+      "joint_triangles": 4
+    },
+    {
+      "region": "CellhouseGateWalk",
+      "source_mesh": "Assets/Game/Supplied/Resources/AlcatrazSupplied/Baked/Meshes/Island_0_5.asset",
+      "source_triangle": 7280,
+      "clipped_piece": 1,
+      "source_normal": [
+        0.059979402,
+        0.997718467,
+        0.030989228
+      ],
+      "source_area_m2": 1.450592936,
+      "source_bounds": [
+        [
+          -113.20778618413595,
+          48.88135528564453,
+          21.06443927130095
+        ],
+        [
+          -111.3685073852539,
+          49.0759162387494,
+          23.76854705810547
+        ]
+      ],
+      "surface_triangles": 2,
+      "joint_triangles": 0
+    },
+    {
+      "region": "CellhouseGateWalk",
+      "source_mesh": "Assets/Game/Supplied/Resources/AlcatrazSupplied/Baked/Meshes/Island_0_5.asset",
+      "source_triangle": 7280,
+      "clipped_piece": 2,
+      "source_normal": [
+        0.059979402,
+        0.997718467,
+        0.030989228
+      ],
+      "source_area_m2": 0.17262897,
+      "source_bounds": [
+        [
+          -113.15350634892792,
+          48.9838647577605,
+          22.196681974361717
+        ],
+        [
+          -112.78214646444621,
+          49.027209399424756,
+          23.204274643515095
+        ]
+      ],
+      "surface_triangles": 1,
+      "joint_triangles": 0
+    },
+    {
+      "region": "CellhouseGateWalk",
+      "source_mesh": "Assets/Game/Supplied/Resources/AlcatrazSupplied/Baked/Meshes/Island_0_5.asset",
+      "source_triangle": 7280,
+      "clipped_piece": 3,
+      "source_normal": [
+        0.059979402,
+        0.997718467,
+        0.030989228
+      ],
+      "source_area_m2": 0.841470817,
+      "source_bounds": [
+        [
+          -113.92080460095923,
+          49.01079377117248,
+          21.40042926465568
+        ],
+        [
+          -112.98256910762186,
+          49.07138994318552,
+          23.056041518254986
+        ]
+      ],
+      "surface_triangles": 3,
+      "joint_triangles": 0
+    },
+    {
+      "region": "CellhouseGateWalk",
+      "source_mesh": "Assets/Game/Supplied/Resources/AlcatrazSupplied/Baked/Meshes/Island_0_5.asset",
+      "source_triangle": 7280,
+      "clipped_piece": 4,
+      "source_normal": [
+        0.059979402,
+        0.997718467,
+        0.030989228
+      ],
+      "source_area_m2": 0.328087618,
+      "source_bounds": [
+        [
+          -113.86919897940408,
+          49.06146261447187,
+          21.15303718046541
+        ],
+        [
+          -113.14095361914191,
+          49.09085516425541,
+          22.4903254674584
+        ]
+      ],
+      "surface_triangles": 2,
+      "joint_triangles": 0
+    },
+    {
+      "region": "CellhouseGateWalk",
+      "source_mesh": "Assets/Game/Supplied/Resources/AlcatrazSupplied/Baked/Meshes/Island_0_5.asset",
+      "source_triangle": 7280,
+      "clipped_piece": 5,
+      "source_normal": [
+        0.059979402,
+        0.997718467,
+        0.030989228
+      ],
+      "source_area_m2": 0.090272883,
+      "source_bounds": [
+        [
+          -113.6665060857808,
+          49.07210493211478,
+          21.056439653235916
+        ],
+        [
+          -113.19016296427917,
+          49.09734339650397,
+          21.47131947857258
+        ]
+      ],
+      "surface_triangles": 3,
+      "joint_triangles": 0
+    },
+    {
+      "region": "CellhouseGateWalk",
+      "source_mesh": "Assets/Game/Supplied/Resources/AlcatrazSupplied/Baked/Meshes/Island_0_5.asset",
+      "source_triangle": 7280,
+      "clipped_piece": 6,
+      "source_normal": [
+        0.059979402,
+        0.997718467,
+        0.030989228
+      ],
+      "source_area_m2": 0.008415625,
+      "source_bounds": [
+        [
+          -113.59894360784953,
+          49.08516114868995,
+          21.054244642170882
+        ],
+        [
+          -113.37308846370733,
+          49.09882219681634,
+          21.13165996508281
+        ]
+      ],
+      "surface_triangles": 1,
+      "joint_triangles": 0
+    },
+    {
+      "region": "CellhouseGateWalk",
+      "source_mesh": "Assets/Game/Supplied/Resources/AlcatrazSupplied/Baked/Meshes/Island_0_5.asset",
+      "source_triangle": 7280,
+      "clipped_piece": 7,
+      "source_normal": [
+        0.059979402,
+        0.997718467,
+        0.030989228
+      ],
+      "source_area_m2": 0.010429731,
+      "source_bounds": [
+        [
+          -113.58354474269767,
+          49.08009037921391,
+          21.00925267737263
+        ],
+        [
+          -113.27907795034336,
+          49.09968164077518,
+          21.08673458367661
+        ]
+      ],
+      "surface_triangles": 2,
+      "joint_triangles": 0
+    },
+    {
+      "region": "CellhouseGateWalk",
+      "source_mesh": "Assets/Game/Supplied/Resources/AlcatrazSupplied/Baked/Meshes/Island_0_5.asset",
+      "source_triangle": 7280,
+      "clipped_piece": 8,
+      "source_normal": [
+        0.059979402,
+        0.997718467,
+        0.030989228
+      ],
+      "source_area_m2": 0.012795362,
+      "source_bounds": [
+        [
+          -113.57459528446658,
+          49.076946185598146,
+          20.97105179802636
+        ],
+        [
+          -113.22078556349165,
+          49.100411360295624,
+          21.068034729904806
+        ]
+      ],
+      "surface_triangles": 4,
+      "joint_triangles": 2
+    },
+    {
+      "region": "CellhouseGateWalk",
+      "source_mesh": "Assets/Game/Supplied/Resources/AlcatrazSupplied/Baked/Meshes/Island_0_5.asset",
+      "source_triangle": 7280,
+      "clipped_piece": 9,
+      "source_normal": [
+        0.059979402,
+        0.997718467,
+        0.030989228
+      ],
+      "source_area_m2": 0.003294162,
+      "source_bounds": [
+        [
+          -113.5663173432719,
+          49.08741705822754,
+          20.935538326220172
+        ],
+        [
+          -113.36932543243726,
+          49.10108974451241,
+          21.00682078402989
+        ]
+      ],
+      "surface_triangles": 1,
+      "joint_triangles": 1
+    },
+    {
+      "region": "CellhouseGateWalk",
+      "source_mesh": "Assets/Game/Supplied/Resources/AlcatrazSupplied/Baked/Meshes/Island_0_5.asset",
+      "source_triangle": 7280,
+      "clipped_piece": 10,
+      "source_normal": [
+        0.059979402,
+        0.997718467,
+        0.030989228
+      ],
+      "source_area_m2": 0.013488251,
+      "source_bounds": [
+        [
+          -114.01691638016086,
+          49.06643409686026,
+          22.4903254674584
+        ],
+        [
+          -113.86919897940408,
+          49.073403604066954,
+          22.74976444671841
+        ]
+      ],
+      "surface_triangles": 1,
+      "joint_triangles": 2
+    },
+    {
+      "region": "CellhouseGateWalk",
+      "source_mesh": "Assets/Game/Supplied/Resources/AlcatrazSupplied/Baked/Meshes/Island_0_5.asset",
+      "source_triangle": 7280,
+      "clipped_piece": 11,
+      "source_normal": [
+        0.059979402,
+        0.997718467,
+        0.030989228
+      ],
+      "source_area_m2": 0.682057061,
+      "source_bounds": [
+        [
+          -114.82323049237893,
+          49.07138994318552,
+          21.47131947857258
+        ],
+        [
+          -113.6665060857808,
+          49.131873149242764,
+          22.711400180676986
+        ]
+      ],
+      "surface_triangles": 3,
+      "joint_triangles": 2
+    },
+    {
+      "region": "CellhouseGateWalk",
+      "source_mesh": "Assets/Game/Supplied/Resources/AlcatrazSupplied/Baked/Meshes/Island_0_5.asset",
+      "source_triangle": 7280,
+      "clipped_piece": 12,
+      "source_normal": [
+        0.059979402,
+        0.997718467,
+        0.030989228
+      ],
+      "source_area_m2": 0.319338389,
+      "source_bounds": [
+        [
+          -114.64779996866639,
+          49.09085516425541,
+          21.13165996508281
+        ],
+        [
+          -113.59894360784953,
+          49.12948170733275,
+          22.126999088637586
+        ]
+      ],
+      "surface_triangles": 2,
+      "joint_triangles": 2
+    },
+    {
+      "region": "CellhouseGateWalk",
+      "source_mesh": "Assets/Game/Supplied/Resources/AlcatrazSupplied/Baked/Meshes/Island_0_5.asset",
+      "source_triangle": 7280,
+      "clipped_piece": 13,
+      "source_normal": [
+        0.059979402,
+        0.997718467,
+        0.030989228
+      ],
+      "source_area_m2": 0.081984771,
+      "source_bounds": [
+        [
+          -114.04156383874432,
+          49.09734339650397,
+          20.91376598017741
+        ],
+        [
+          -113.5663173432719,
+          49.12121758967649,
+          21.219702603060227
+        ]
+      ],
+      "surface_triangles": 2,
+      "joint_triangles": 4
+    },
+    {
+      "region": "CellhouseGateWalk",
+      "source_mesh": "Assets/Game/Supplied/Resources/AlcatrazSupplied/Baked/Meshes/Island_0_5.asset",
+      "source_triangle": 7280,
+      "clipped_piece": 14,
+      "source_normal": [
+        0.059979402,
+        0.997718467,
+        0.030989228
+      ],
+      "source_area_m2": 0.014109361,
+      "source_bounds": [
+        [
+          -113.83714352277684,
+          49.1004765968907,
+          20.848241566016497
+        ],
+        [
+          -113.559932588369,
+          49.118430963378415,
+          20.967636656691127
+        ]
+      ],
+      "surface_triangles": 2,
+      "joint_triangles": 0
+    },
+    {
+      "region": "CellhouseGateWalk",
+      "source_mesh": "Assets/Game/Supplied/Resources/AlcatrazSupplied/Baked/Meshes/Island_0_5.asset",
+      "source_triangle": 7280,
+      "clipped_piece": 15,
+      "source_normal": [
+        0.059979402,
+        0.997718467,
+        0.030989228
+      ],
+      "source_area_m2": 0.67617276,
+      "source_bounds": [
+        [
+          -115.81224885390895,
+          49.12877309307785,
+          21.283716501391545
+        ],
+        [
+          -114.59581770251651,
+          49.20359141994264,
+          22.38954942137318
+        ]
+      ],
+      "surface_triangles": 2,
+      "joint_triangles": 0
+    },
+    {
+      "region": "CellhouseGateWalk",
+      "source_mesh": "Assets/Game/Supplied/Resources/AlcatrazSupplied/Baked/Meshes/Island_0_5.asset",
+      "source_triangle": 7280,
+      "clipped_piece": 16,
+      "source_normal": [
+        0.059979402,
+        0.997718467,
+        0.030989228
+      ],
+      "source_area_m2": 0.003878575,
+      "source_bounds": [
+        [
+          -114.72745163540556,
+          49.15199184607158,
+          21.35002572491967
+        ],
+        [
+          -114.67146670382962,
+          49.157241062372776,
+          21.509457321319744
+        ]
+      ],
+      "surface_triangles": 1,
+      "joint_triangles": 0
+    },
+    {
+      "region": "CellhouseGateWalk",
+      "source_mesh": "Assets/Game/Supplied/Resources/AlcatrazSupplied/Baked/Meshes/Island_0_5.asset",
+      "source_triangle": 7280,
+      "clipped_piece": 17,
+      "source_normal": [
+        0.059979402,
+        0.997718467,
+        0.030989228
+      ],
+      "source_area_m2": 0.244366964,
+      "source_bounds": [
+        [
+          -114.70317962010468,
+          49.12121758967649,
+          21.219702603060227
+        ],
+        [
+          -114.04156383874432,
+          49.15503733481581,
+          22.04920212956126
+        ]
+      ],
+      "surface_triangles": 3,
+      "joint_triangles": 0
+    },
+    {
+      "region": "CellhouseGateWalk",
+      "source_mesh": "Assets/Game/Supplied/Resources/AlcatrazSupplied/Baked/Meshes/Island_0_5.asset",
+      "source_triangle": 7280,
+      "clipped_piece": 18,
+      "source_normal": [
+        0.059979402,
+        0.997718467,
+        0.030989228
+      ],
+      "source_area_m2": 0.123855098,
+      "source_bounds": [
+        [
+          -114.66075284676866,
+          49.118430963378415,
+          20.885958522271586
+        ],
+        [
+          -113.83714352277684,
+          49.15461560665821,
+          21.342866954501815
+        ]
+      ],
+      "surface_triangles": 2,
+      "joint_triangles": 4
+    },
+    {
+      "region": "CellhouseGateWalk",
+      "source_mesh": "Assets/Game/Supplied/Resources/AlcatrazSupplied/Baked/Meshes/Island_0_5.asset",
+      "source_triangle": 7280,
+      "clipped_piece": 19,
+      "source_normal": [
+        0.059979402,
+        0.997718467,
+        0.030989228
+      ],
+      "source_area_m2": 0.009545798,
+      "source_bounds": [
+        [
+          -113.97694105408242,
+          49.117834133701905,
+          20.81775845353686
+        ],
+        [
+          -113.79336150897234,
+          49.1276988122833,
+          20.91376598017741
+        ]
+      ],
+      "surface_triangles": 2,
+      "joint_triangles": 0
+    },
+    {
+      "region": "CellhouseGateWalk",
+      "source_mesh": "Assets/Game/Supplied/Resources/AlcatrazSupplied/Baked/Meshes/Island_0_5.asset",
+      "source_triangle": 7280,
+      "clipped_piece": 20,
+      "source_normal": [
+        0.059979402,
+        0.997718467,
+        0.030989228
+      ],
+      "source_area_m2": 0.009395501,
+      "source_bounds": [
+        [
+          -114.74808226101081,
+          49.15503733481581,
+          21.214512726340754
+        ],
+        [
+          -114.64451149247158,
+          49.16170276919392,
+          21.38743366024408
+        ]
+      ],
+      "surface_triangles": 2,
+      "joint_triangles": 0
+    },
+    {
+      "region": "CellhouseGateWalk",
+      "source_mesh": "Assets/Game/Supplied/Resources/AlcatrazSupplied/Baked/Meshes/Island_0_5.asset",
+      "source_triangle": 7280,
+      "clipped_piece": 21,
+      "source_normal": [
+        0.059979402,
+        0.997718467,
+        0.030989228
+      ],
+      "source_area_m2": 0.072203465,
+      "source_bounds": [
+        [
+          -114.67042544305956,
+          49.1276988122833,
+          20.859003310913533
+        ],
+        [
+          -113.97694105408242,
+          49.15762592654535,
+          21.344790953528747
+        ]
+      ],
+      "surface_triangles": 3,
+      "joint_triangles": 4
+    },
+    {
+      "region": "CellhouseGateWalk",
+      "source_mesh": "Assets/Game/Supplied/Resources/AlcatrazSupplied/Baked/Meshes/Island_0_5.asset",
+      "source_triangle": 7280,
+      "clipped_piece": 22,
+      "source_normal": [
+        0.059979402,
+        0.997718467,
+        0.030989228
+      ],
+      "source_area_m2": 0.013361156,
+      "source_bounds": [
+        [
+          -114.11245405266135,
+          49.12368109867375,
+          20.775592975213474
+        ],
+        [
+          -113.87487243819984,
+          49.13668261896249,
+          20.885958522271586
+        ]
+      ],
+      "surface_triangles": 2,
+      "joint_triangles": 2
+    },
+    {
+      "region": "CellhouseGateWalk",
+      "source_mesh": "Assets/Game/Supplied/Resources/AlcatrazSupplied/Baked/Meshes/Island_0_5.asset",
+      "source_triangle": 7280,
+      "clipped_piece": 23,
+      "source_normal": [
+        0.059979402,
+        0.997718467,
+        0.030989228
+      ],
+      "source_area_m2": 0.963352013,
+      "source_bounds": [
+        [
+          -116.11462952174932,
+          49.16170276919392,
+          20.818588659703448
+        ],
+        [
+          -114.74808226101081,
+          49.24147072876039,
+          21.994769885953414
+        ]
+      ],
+      "surface_triangles": 3,
+      "joint_triangles": 2
+    },
+    {
+      "region": "CellhouseGateWalk",
+      "source_mesh": "Assets/Game/Supplied/Resources/AlcatrazSupplied/Baked/Meshes/Island_0_5.asset",
+      "source_triangle": 7280,
+      "clipped_piece": 24,
+      "source_normal": [
+        0.059979402,
+        0.997718467,
+        0.030989228
+      ],
+      "source_area_m2": 0.057170243,
+      "source_bounds": [
+        [
+          -114.81682860506099,
+          49.15762592654535,
+          20.891030340089902
+        ],
+        [
+          -114.58016684521682,
+          49.17657027917867,
+          21.283716501391545
+        ]
+      ],
+      "surface_triangles": 2,
+      "joint_triangles": 2
+    },
+    {
+      "region": "CellhouseGateWalk",
+      "source_mesh": "Assets/Game/Supplied/Resources/AlcatrazSupplied/Baked/Meshes/Island_0_5.asset",
+      "source_triangle": 7280,
+      "clipped_piece": 25,
+      "source_normal": [
+        0.059979402,
+        0.997718467,
+        0.030989228
+      ],
+      "source_area_m2": 0.084399709,
+      "source_bounds": [
+        [
+          -114.64451149247158,
+          49.13668261896249,
+          20.828499896091234
+        ],
+        [
+          -114.11245405266135,
+          49.16380514063169,
+          21.214512726340754
+        ]
+      ],
+      "surface_triangles": 2,
+      "joint_triangles": 2
+    },
+    {
+      "region": "CellhouseGateWalk",
+      "source_mesh": "Assets/Game/Supplied/Resources/AlcatrazSupplied/Baked/Meshes/Island_0_5.asset",
+      "source_triangle": 7280,
+      "clipped_piece": 26,
+      "source_normal": [
+        0.059979402,
+        0.997718467,
+        0.030989228
+      ],
+      "source_area_m2": 0.008651638,
+      "source_bounds": [
+        [
+          -114.26580507464217,
+          49.1317688579189,
+          20.774008522818338
+        ],
+        [
+          -113.98762166358676,
+          49.14684899377508,
+          20.859003310913533
+        ]
+      ],
+      "surface_triangles": 2,
+      "joint_triangles": 3
+    },
+    {
+      "region": "CellhouseGateWalk",
+      "source_mesh": "Assets/Game/Supplied/Resources/AlcatrazSupplied/Baked/Meshes/Island_0_5.asset",
+      "source_triangle": 7280,
+      "clipped_piece": 27,
+      "source_normal": [
+        0.059979402,
+        0.997718467,
+        0.030989228
+      ],
+      "source_area_m2": 0.032553828,
+      "source_bounds": [
+        [
+          -114.84060194113516,
+          49.16380514063169,
+          20.76166647055983
+        ],
+        [
+          -114.5544347716752,
+          49.18171164802288,
+          20.938105291008743
+        ]
+      ],
+      "surface_triangles": 2,
+      "joint_triangles": 0
+    },
+    {
+      "region": "CellhouseGateWalk",
+      "source_mesh": "Assets/Game/Supplied/Resources/AlcatrazSupplied/Baked/Meshes/Island_0_5.asset",
+      "source_triangle": 7280,
+      "clipped_piece": 28,
+      "source_normal": [
+        0.059979402,
+        0.997718467,
+        0.030989228
+      ],
+      "source_area_m2": 0.018202397,
+      "source_bounds": [
+        [
+          -114.58016684521682,
+          49.14684899377508,
+          20.770729298722024
+        ],
+        [
+          -114.26580507464217,
+          49.16610315103664,
+          20.891030340089902
+        ]
+      ],
+      "surface_triangles": 1,
+      "joint_triangles": 0
+    },
+    {
+      "region": "CellhouseGateWalk",
+      "source_mesh": "Assets/Game/Supplied/Resources/AlcatrazSupplied/Baked/Meshes/Island_0_5.asset",
+      "source_triangle": 7280,
+      "clipped_piece": 29,
+      "source_normal": [
+        0.059979402,
+        0.997718467,
+        0.030989228
+      ],
+      "source_area_m2": 0.039171191,
+      "source_bounds": [
+        [
+          -114.5562374802801,
+          49.13207277168952,
+          20.699790120864716
+        ],
+        [
+          -113.99185844180718,
+          49.16627627068031,
+          20.828499896091234
+        ]
+      ],
+      "surface_triangles": 4,
+      "joint_triangles": 0
+    },
+    {
+      "region": "CellhouseGateWalk",
+      "source_mesh": "Assets/Game/Supplied/Resources/AlcatrazSupplied/Baked/Meshes/Island_0_5.asset",
+      "source_triangle": 7280,
+      "clipped_piece": 30,
+      "source_normal": [
+        0.059979402,
+        0.997718467,
+        0.030989228
+      ],
+      "source_area_m2": 0.576200305,
+      "source_bounds": [
+        [
+          -115.94851699916265,
+          49.18171164802288,
+          20.261416073531
+        ],
+        [
+          -114.84060194113516,
+          49.25632362889555,
+          21.03896666675128
+        ]
+      ],
+      "surface_triangles": 2,
+      "joint_triangles": 2
+    },
+    {
+      "region": "CellhouseGateWalk",
+      "source_mesh": "Assets/Game/Supplied/Resources/AlcatrazSupplied/Baked/Meshes/Island_0_5.asset",
+      "source_triangle": 7280,
+      "clipped_piece": 31,
+      "source_normal": [
+        0.059979402,
+        0.997718467,
+        0.030989228
+      ],
+      "source_area_m2": 0.076972759,
+      "source_bounds": [
+        [
+          -114.88980990711227,
+          49.149497492132,
+          20.571203509019536
+        ],
+        [
+          -114.24336135522438,
+          49.192353667400084,
+          20.818588659703448
+        ]
+      ],
+      "surface_triangles": 1,
+      "joint_triangles": 0
+    },
+    {
+      "region": "CellhouseGateWalk",
+      "source_mesh": "Assets/Game/Supplied/Resources/AlcatrazSupplied/Baked/Meshes/Island_0_5.asset",
+      "source_triangle": 7280,
+      "clipped_piece": 32,
+      "source_normal": [
+        0.059979402,
+        0.997718467,
+        0.030989228
+      ],
+      "source_area_m2": 0.081296585,
+      "source_bounds": [
+        [
+          -114.91672595365536,
+          49.1461896427468,
+          20.435887405261486
+        ],
+        [
+          -114.1820348405203,
+          49.19817469826737,
+          20.699790120864712
+        ]
+      ],
+      "surface_triangles": 3,
+      "joint_triangles": 0
+    },
+    {
+      "region": "CellhouseGateWalk",
+      "source_mesh": "Assets/Game/Supplied/Resources/AlcatrazSupplied/Baked/Meshes/Island_0_5.asset",
+      "source_triangle": 7280,
+      "clipped_piece": 33,
+      "source_normal": [
+        0.059979402,
+        0.997718467,
+        0.030989228
+      ],
+      "source_area_m2": 0.44058584,
+      "source_bounds": [
+        [
+          -115.79385256990778,
+          49.198174698267366,
+          19.56629206755696
+        ],
+        [
+          -114.91672595365536,
+          49.269602002717534,
+          20.435887405261486
+        ]
+      ],
+      "surface_triangles": 2,
+      "joint_triangles": 0
+    },
+    {
+      "region": "CellhouseGateWalk",
+      "source_mesh": "Assets/Game/Supplied/Resources/AlcatrazSupplied/Baked/Meshes/Island_0_5.asset",
+      "source_triangle": 7280,
+      "clipped_piece": 34,
+      "source_normal": [
+        0.059979402,
+        0.997718467,
+        0.030989228
+      ],
+      "source_area_m2": 0.067681609,
+      "source_bounds": [
+        [
+          -114.97159908219679,
+          49.16438201173558,
+          20.16002155908863
+        ],
+        [
+          -114.40699233565928,
+          49.210041900774726,
+          20.53727972595009
+        ]
+      ],
+      "surface_triangles": 1,
+      "joint_triangles": 0
+    },
+    {
+      "region": "CellhouseGateWalk",
+      "source_mesh": "Assets/Game/Supplied/Resources/AlcatrazSupplied/Baked/Meshes/Island_0_5.asset",
+      "source_triangle": 7280,
+      "clipped_piece": 35,
+      "source_normal": [
+        0.059979402,
+        0.997718467,
+        0.030989228
+      ],
+      "source_area_m2": 0.052638265,
+      "source_bounds": [
+        [
+          -115.00295959250765,
+          49.16202467439483,
+          20.002361627109558
+        ],
+        [
+          -114.37143392894878,
+          49.21682411889287,
+          20.544352732809127
+        ]
+      ],
+      "surface_triangles": 3,
+      "joint_triangles": 0
+    },
+    {
+      "region": "CellhouseGateWalk",
+      "source_mesh": "Assets/Game/Supplied/Resources/AlcatrazSupplied/Baked/Meshes/Island_0_5.asset",
+      "source_triangle": 7280,
+      "clipped_piece": 36,
+      "source_normal": [
+        0.059979402,
+        0.997718467,
+        0.030989228
+      ],
+      "source_area_m2": 0.009784001,
+      "source_bounds": [
+        [
+          -115.65558380825709,
+          49.21682411889287,
+          19.55899543517748
+        ],
+        [
+          -115.00295959250765,
+          49.26974138419702,
+          20.00236162710956
+        ]
+      ],
+      "surface_triangles": 3,
+      "joint_triangles": 0
+    },
+    {
+      "region": "CellhouseGateWalk",
+      "source_mesh": "Assets/Game/Supplied/Resources/AlcatrazSupplied/Baked/Meshes/Island_0_5.asset",
+      "source_triangle": 7280,
+      "clipped_piece": 37,
+      "source_normal": [
+        0.059979402,
+        0.997718467,
+        0.030989228
+      ],
+      "source_area_m2": 0.005557726,
+      "source_bounds": [
+        [
+          -115.44582945046433,
+          49.21221331637243,
+          19.687181876637332
+        ],
+        [
+          -114.94175716266612,
+          49.253237443588816,
+          20.032352618423445
+        ]
+      ],
+      "surface_triangles": 2,
+      "joint_triangles": 0
+    },
+    {
+      "region": "CellhouseGateWalk",
+      "source_mesh": "Assets/Game/Supplied/Resources/AlcatrazSupplied/Baked/Meshes/Island_0_5.asset",
+      "source_triangle": 7282,
+      "clipped_piece": 0,
+      "source_normal": [
+        -0.003872296,
+        0.999430684,
+        0.033515865
+      ],
+      "source_area_m2": 2.812212577,
+      "source_bounds": [
+        [
+          -118.7742507345368,
+          49.41347885131836,
+          17.638922624900427
+        ],
+        [
+          -116.99477011256805,
+          49.52054573633579,
+          20.839426040649414
+        ]
+      ],
+      "surface_triangles": 1,
+      "joint_triangles": 3
+    },
+    {
+      "region": "CellhouseGateWalk",
+      "source_mesh": "Assets/Game/Supplied/Resources/AlcatrazSupplied/Baked/Meshes/Island_0_5.asset",
+      "source_triangle": 7330,
+      "clipped_piece": 0,
+      "source_normal": [
+        0.096302606,
+        0.91984823,
+        0.380269696
+      ],
+      "source_area_m2": 2.659489152,
+      "source_bounds": [
+        [
+          -109.554548193873,
+          48.0,
+          27.18838119506836
+        ],
+        [
+          -106.76346588134766,
+          48.693306300696946,
+          28.803813081918737
+        ]
+      ],
+      "surface_triangles": 2,
+      "joint_triangles": 2
+    },
+    {
+      "region": "CellhouseGateWalk",
+      "source_mesh": "Assets/Game/Supplied/Resources/AlcatrazSupplied/Baked/Meshes/Island_0_5.asset",
+      "source_triangle": 7331,
+      "clipped_piece": 0,
+      "source_normal": [
+        -0.291236653,
+        0.889166763,
+        0.3529358
+      ],
+      "source_area_m2": 1.824826973,
+      "source_bounds": [
+        [
+          -106.82092598130583,
+          48.0,
+          27.18838119506836
+        ],
+        [
+          -105.39476013183594,
+          48.62726593017578,
+          29.279843741454375
+        ]
+      ],
+      "surface_triangles": 2,
+      "joint_triangles": 0
+    },
+    {
+      "region": "CellhouseGateWalk",
+      "source_mesh": "Assets/Game/Supplied/Resources/AlcatrazSupplied/Baked/Meshes/Island_0_5.asset",
+      "source_triangle": 7332,
+      "clipped_piece": 0,
+      "source_normal": [
+        -0.075219784,
+        0.865577141,
+        0.49509413
+      ],
+      "source_area_m2": 0.430720366,
+      "source_bounds": [
+        [
+          -106.11313009064862,
+          48.0,
+          28.29233169555664
+        ],
+        [
+          -105.39476013183594,
+          48.62726593017578,
+          29.383145041581795
+        ]
+      ],
+      "surface_triangles": 1,
+      "joint_triangles": 0
+    },
+    {
+      "region": "CellhouseGateWalk",
+      "source_mesh": "Assets/Game/Supplied/Resources/AlcatrazSupplied/Baked/Meshes/Island_0_5.asset",
+      "source_triangle": 7333,
+      "clipped_piece": 0,
+      "source_normal": [
+        -0.328966018,
+        0.823604071,
+        0.462014819
+      ],
+      "source_area_m2": 3.088441089,
+      "source_bounds": [
+        [
+          -105.43320435487969,
+          48.0,
+          28.29233169555664
+        ],
+        [
+          -101.54171940072487,
+          48.62726593017578,
+          31.506553968077693
+        ]
+      ],
+      "surface_triangles": 2,
+      "joint_triangles": 6
+    },
+    {
+      "region": "CellhouseGateWalk",
+      "source_mesh": "Assets/Game/Supplied/Resources/AlcatrazSupplied/Baked/Meshes/Island_0_5.asset",
+      "source_triangle": 7567,
+      "clipped_piece": 0,
+      "source_normal": [
+        -0.327731175,
+        0.844552345,
+        0.42346619
+      ],
+      "source_area_m2": 0.74273082,
+      "source_bounds": [
+        [
+          -102.30413167541178,
+          48.32497348289667,
+          27.7743805074389
+        ],
+        [
+          -99.58249045557791,
+          48.554427550648946,
+          29.873842295968647
+        ]
+      ],
+      "surface_triangles": 2,
+      "joint_triangles": 2
+    },
+    {
+      "region": "CellhouseGateWalk",
+      "source_mesh": "Assets/Game/Supplied/Resources/AlcatrazSupplied/Baked/Meshes/Island_0_5.asset",
+      "source_triangle": 7572,
+      "clipped_piece": 0,
+      "source_normal": [
+        -0.190844599,
+        0.899143266,
+        0.393852417
+      ],
+      "source_area_m2": 0.028803382,
+      "source_bounds": [
+        [
+          -99.701551947758,
+          48.435035330446766,
+          29.37596803214892
+        ],
+        [
+          -99.5,
+          48.554427550648946,
+          29.706226138944793
+        ]
+      ],
+      "surface_triangles": 1,
+      "joint_triangles": 0
+    },
+    {
+      "region": "CellhouseGateWalk",
+      "source_mesh": "Assets/Game/Supplied/Resources/AlcatrazSupplied/Baked/Meshes/Island_0_5.asset",
+      "source_triangle": 8992,
+      "clipped_piece": 0,
+      "source_normal": [
+        -0.212677238,
+        0.856550751,
+        0.470201238
+      ],
+      "source_area_m2": 0.066340881,
+      "source_bounds": [
+        [
+          -112.7720764066399,
+          49.35207918675766,
+          26.186911175802155
+        ],
+        [
+          -112.03702488305103,
+          49.44122505187988,
+          26.535093476449514
+        ]
+      ],
+      "surface_triangles": 1,
+      "joint_triangles": 0
+    },
+    {
+      "region": "CellhouseGateWalk",
+      "source_mesh": "Assets/Game/Supplied/Resources/AlcatrazSupplied/Baked/Meshes/Island_0_5.asset",
+      "source_triangle": 8993,
+      "clipped_piece": 0,
+      "source_normal": [
+        -0.174142901,
+        0.904475842,
+        -0.389355494
+      ],
+      "source_area_m2": 0.023253296,
+      "source_bounds": [
+        [
+          -112.7431267914357,
+          49.25754376925184,
+          25.93432271398466
+        ],
+        [
+          -112.40108108520508,
+          49.44122505187988,
+          26.208032608032227
+        ]
+      ],
+      "surface_triangles": 1,
+      "joint_triangles": 0
+    },
+    {
+      "region": "CellhouseGateWalk",
+      "source_mesh": "Assets/Game/Supplied/Resources/AlcatrazSupplied/Baked/Meshes/Island_0_5.asset",
+      "source_triangle": 8993,
+      "clipped_piece": 1,
+      "source_normal": [
+        -0.174142901,
+        0.904475842,
+        -0.389355494
+      ],
+      "source_area_m2": 0.022436879,
+      "source_bounds": [
+        [
+          -112.76267521298271,
+          49.24704611037847,
+          25.918679785881874
+        ],
+        [
+          -112.56653360259527,
+          49.40531483972757,
+          26.19861309805071
+        ]
+      ],
+      "surface_triangles": 2,
+      "joint_triangles": 0
+    },
+    {
+      "region": "CellhouseGateWalk",
+      "source_mesh": "Assets/Game/Supplied/Resources/AlcatrazSupplied/Baked/Meshes/Island_0_5.asset",
+      "source_triangle": 9081,
+      "clipped_piece": 0,
+      "source_normal": [
+        -0.267415931,
+        0.962106905,
+        0.053282485
+      ],
+      "source_area_m2": 0.059684147,
+      "source_bounds": [
+        [
+          -114.10899353027344,
+          49.114553451538086,
+          24.520429611206055
+        ],
+        [
+          -113.7195127570222,
+          49.19517139353315,
+          25.254451921730272
+        ]
+      ],
+      "surface_triangles": 1,
+      "joint_triangles": 2
+    },
+    {
+      "region": "CellhouseGateWalk",
+      "source_mesh": "Assets/Game/Supplied/Resources/AlcatrazSupplied/Baked/Meshes/Island_0_5.asset",
+      "source_triangle": 9081,
+      "clipped_piece": 1,
+      "source_normal": [
+        -0.267415931,
+        0.962106905,
+        0.053282485
+      ],
+      "source_area_m2": 0.086600432,
+      "source_bounds": [
+        [
+          -113.76625292225721,
+          49.16916668167172,
+          25.019473243175725
+        ],
+        [
+          -113.45792398987975,
+          49.24931719354276,
+          25.59666547870183
+        ]
+      ],
+      "surface_triangles": 2,
+      "joint_triangles": 0
+    },
+    {
+      "region": "CellhouseGateWalk",
+      "source_mesh": "Assets/Game/Supplied/Resources/AlcatrazSupplied/Baked/Meshes/Island_0_5.asset",
+      "source_triangle": 9081,
+      "clipped_piece": 2,
+      "source_normal": [
+        -0.267415931,
+        0.962106905,
+        0.053282485
+      ],
+      "source_area_m2": 0.006357449,
+      "source_bounds": [
+        [
+          -113.60646148144384,
+          49.19462828886509,
+          25.35464821817514
+        ],
+        [
+          -113.4403118539961,
+          49.25296269865261,
+          25.613859643081934
+        ]
+      ],
+      "surface_triangles": 2,
+      "joint_triangles": 0
+    },
+    {
+      "region": "CellhouseGateWalk",
+      "source_mesh": "Assets/Game/Supplied/Resources/AlcatrazSupplied/Baked/Meshes/Island_0_5.asset",
+      "source_triangle": 9081,
+      "clipped_piece": 3,
+      "source_normal": [
+        -0.267415931,
+        0.962106905,
+        0.053282485
+      ],
+      "source_area_m2": 0.038468258,
+      "source_bounds": [
+        [
+          -113.5984329266309,
+          49.19590758084679,
+          25.377214734577855
+        ],
+        [
+          -113.32408937523756,
+          49.27701938564351,
+          25.68671202470845
+        ]
+      ],
+      "surface_triangles": 2,
+      "joint_triangles": 0
+    },
+    {
+      "region": "CellhouseGateWalk",
+      "source_mesh": "Assets/Game/Supplied/Resources/AlcatrazSupplied/Baked/Meshes/Island_0_5.asset",
+      "source_triangle": 9081,
+      "clipped_piece": 4,
+      "source_normal": [
+        -0.267415931,
+        0.962106905,
+        0.053282485
+      ],
+      "source_area_m2": 0.002791657,
+      "source_bounds": [
+        [
+          -113.54511049713454,
+          49.20740819056134,
+          25.52613116871148
+        ],
+        [
+          -113.31162237509653,
+          49.279599908132035,
+          25.67381276089199
+        ]
+      ],
+      "surface_triangles": 1,
+      "joint_triangles": 0
+    },
+    {
+      "region": "CellhouseGateWalk",
+      "source_mesh": "Assets/Game/Supplied/Resources/AlcatrazSupplied/Baked/Meshes/Island_0_5.asset",
+      "source_triangle": 9081,
+      "clipped_piece": 5,
+      "source_normal": [
+        -0.267415931,
+        0.962106905,
+        0.053282485
+      ],
+      "source_area_m2": 0.004268739,
+      "source_bounds": [
+        [
+          -113.44594362701734,
+          49.23806939344131,
+          25.54210519736047
+        ],
+        [
+          -113.2784848857859,
+          49.286458978911845,
+          25.61787404018886
+        ]
+      ],
+      "surface_triangles": 1,
+      "joint_triangles": 0
+    },
+    {
+      "region": "CellhouseGateWalk",
+      "source_mesh": "Assets/Game/Supplied/Resources/AlcatrazSupplied/Baked/Meshes/Island_0_5.asset",
+      "source_triangle": 9084,
+      "clipped_piece": 0,
+      "source_normal": [
+        -0.111250987,
+        0.808853546,
+        -0.577389954
+      ],
+      "source_area_m2": 0.258095791,
+      "source_bounds": [
+        [
+          -115.17782518750843,
+          49.07369529370102,
+          24.520429611206055
+        ],
+        [
+          -114.10899353027344,
+          49.37104246528313,
+          24.992448675413012
+        ]
+      ],
+      "surface_triangles": 1,
+      "joint_triangles": 0
+    },
+    {
+      "region": "CellhouseGateWalk",
+      "source_mesh": "Assets/Game/Supplied/Resources/AlcatrazSupplied/Baked/Meshes/Island_0_5.asset",
+      "source_triangle": 9084,
+      "clipped_piece": 1,
+      "source_normal": [
+        -0.111250987,
+        0.808853546,
+        -0.577389954
+      ],
+      "source_area_m2": 0.021962195,
+      "source_bounds": [
+        [
+          -115.21743800116248,
+          49.07218101726498,
+          24.66913381047177
+        ],
+        [
+          -114.69395029748193,
+          49.38292172651171,
+          25.01431018786811
+        ]
+      ],
+      "surface_triangles": 2,
+      "joint_triangles": 0
+    }
+  ]
+}

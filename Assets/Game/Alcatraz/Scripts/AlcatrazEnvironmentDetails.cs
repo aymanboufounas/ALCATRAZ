@@ -5,17 +5,22 @@ using Blackstone.Supplied;
 
 namespace Blackstone.Alcatraz
 {
-    // Presentation only: original scan vertices, UVs, colliders and travel points
-    // remain authoritative. Runtime materials never overwrite imported assets.
+    // Presentation only: original scan assets, colliders and travel points
+    // remain authoritative. Selected visual meshes are reversible runtime copies.
     [DefaultExecutionOrder(150), DisallowMultipleComponent]
     public sealed class AlcatrazEnvironmentDetails : MonoBehaviour
     {
         public int DetailedScanRenderers { get; private set; }
         public int GroundCoverRenderers { get; private set; }
         public bool HelipadDetailed { get; private set; }
+        public int RebuiltScanChunks { get; private set; }
+        public int FacadeRenderers { get; private set; }
+        public int CourtyardRenderers { get; private set; }
+        public int VegetationRenderers { get; private set; }
         public string Status { get; private set; }
         readonly List<Material> materials = new List<Material>();
         readonly Dictionary<Renderer, Material[]> originals = new Dictionary<Renderer, Material[]>();
+        readonly Dictionary<MeshFilter, Mesh> originalMeshes = new Dictionary<MeshFilter, Mesh>();
         GameObject dressing;
         Mesh markings;
 
@@ -42,8 +47,100 @@ namespace Blackstone.Alcatraz
             ApplyScan(supplied);
             ApplyDecks(supplied);
             AddGroundCover();
+            AddWorldRebuild(supplied);
             Status = DetailedScanRenderers + " scan surfaces detailed; " + GroundCoverRenderers
                 + " ground-cover chunks; helipad " + (HelipadDetailed ? "marked" : "unavailable") + ".";
+            Status += " Rebuilt " + RebuiltScanChunks + " visual chunks; " + FacadeRenderers
+                + " facade, " + CourtyardRenderers + " courtyard and " + VegetationRenderers + " vegetation renderers.";
+        }
+
+        public Mesh OriginalScanMesh(MeshFilter filter)
+        { return filter != null && originalMeshes.TryGetValue(filter, out var source) ? source : filter != null ? filter.sharedMesh : null; }
+
+        [System.Serializable] sealed class RebuildIndex { public int facadeRenderers; public VisualReplacement[] replacements; }
+        [System.Serializable] sealed class VisualReplacement { public string sourceMesh, resource; }
+
+        static bool UsableWorldPrefab(GameObject prefab, int expectedRenderers = 0)
+        {
+            if (prefab == null || prefab.GetComponentsInChildren<Collider>(true).Length != 0) return false;
+            var renderers = prefab.GetComponentsInChildren<MeshRenderer>(true);
+            if (renderers.Length == 0 || (expectedRenderers > 0 && renderers.Length != expectedRenderers)) return false;
+            var filters = prefab.GetComponentsInChildren<MeshFilter>(true);
+            if (filters.Length != renderers.Length) return false;
+            foreach (var renderer in renderers)
+            {
+                var filter = renderer.GetComponent<MeshFilter>();
+                if (filter == null || filter.sharedMesh == null || filter.sharedMesh.vertexCount == 0) return false;
+                var slots = renderer.sharedMaterials;
+                if (slots.Length < filter.sharedMesh.subMeshCount) return false;
+                foreach (var material in slots)
+                    if (material == null || material.shader == null || !material.shader.isSupported) return false;
+            }
+            return true;
+        }
+
+        GameObject AddWorldPrefab(string resource, int expectedRenderers = 0)
+        {
+            var prefab = Resources.Load<GameObject>(resource);
+            if (!UsableWorldPrefab(prefab, expectedRenderers))
+            {
+                Debug.LogWarning("Environment resource incomplete or unsupported; skipped " + resource + ".");
+                return null;
+            }
+            var instance = Instantiate(prefab, dressing.transform, false);
+            instance.transform.SetPositionAndRotation(Vector3.zero, Quaternion.identity);
+            instance.transform.localScale = Vector3.one;
+            return instance;
+        }
+
+        void AddWorldRebuild(SuppliedIslandWorld supplied)
+        {
+            var court = AddWorldPrefab("Alcatraz/CourtyardSurfaces/CourtyardSurfaces");
+            if (court != null) CourtyardRenderers = court.GetComponentsInChildren<MeshRenderer>(true).Length;
+            var vegetation = AddWorldPrefab("Alcatraz/CoastalVegetation/CoastalVegetation");
+            if (vegetation != null) VegetationRenderers = vegetation.GetComponentsInChildren<MeshRenderer>(true).Length;
+            var prefab = Resources.Load<GameObject>("Alcatraz/FacadeRebuild/FacadeRebuild");
+            var data = Resources.Load<TextAsset>("Alcatraz/FacadeRebuild/Runtime");
+            var scan = supplied.transform.Find("Supplied Island");
+            if (prefab == null || data == null || scan == null) return;
+            RebuildIndex index;
+            try { index = JsonUtility.FromJson<RebuildIndex>(data.text); }
+            catch (System.ArgumentException) { Debug.LogWarning("Facade index unreadable; original visual meshes retained."); return; }
+            if (index == null || index.replacements == null || index.replacements.Length == 0
+                || index.facadeRenderers <= 0 || !UsableWorldPrefab(prefab, index.facadeRenderers))
+            {
+                Debug.LogWarning("Facade prefab incomplete or unsupported; original visual meshes retained.");
+                return;
+            }
+            var pending = new Dictionary<MeshFilter, Mesh>();
+            // Resolve every replacement and the facade prefab before removing any
+            // old wall pixels. A partial import keeps the original closed scan.
+            foreach (var replacement in index.replacements)
+            {
+                if (replacement == null || string.IsNullOrEmpty(replacement.sourceMesh) || string.IsNullOrEmpty(replacement.resource)) return;
+                var visual = Resources.Load<Mesh>(replacement.resource);
+                MeshFilter target = null;
+                foreach (var filter in scan.GetComponentsInChildren<MeshFilter>(true))
+                    if (filter.sharedMesh != null && filter.sharedMesh.name == replacement.sourceMesh) { target = filter; break; }
+                var collider = target != null ? target.GetComponent<MeshCollider>() : null;
+                if (visual == null || visual.vertexCount == 0 || target == null || pending.ContainsKey(target)
+                    || collider == null || collider.sharedMesh != target.sharedMesh
+                    || visual.subMeshCount != target.sharedMesh.subMeshCount)
+                {
+                    Debug.LogWarning("Facade rebuild incomplete; original visual meshes retained.");
+                    return;
+                }
+                pending.Add(target, visual);
+            }
+            var facade = AddWorldPrefab("Alcatraz/FacadeRebuild/FacadeRebuild", index.facadeRenderers);
+            if (facade == null) return;
+            foreach (var item in pending)
+            {
+                originalMeshes.Add(item.Key, item.Key.sharedMesh);
+                item.Key.sharedMesh = item.Value;
+            }
+            RebuiltScanChunks = pending.Count;
+            FacadeRenderers = facade.GetComponentsInChildren<MeshRenderer>(true).Length;
         }
 
         void Replace(Renderer renderer, Material[] replacements)
@@ -159,6 +256,7 @@ namespace Blackstone.Alcatraz
 
         void OnDestroy()
         {
+            foreach (var item in originalMeshes) if (item.Key != null) item.Key.sharedMesh = item.Value;
             foreach (var item in originals) if (item.Key != null) item.Key.sharedMaterials = item.Value;
             if (dressing != null) Destroy(dressing);
             foreach (var material in materials) if (material != null) Destroy(material);

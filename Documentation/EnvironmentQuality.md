@@ -1,5 +1,7 @@
 # Map surface and lighting improvement
 
+This document records the earlier surface/lighting pass and its verification counts. The later [supplied-island geometry rebuild](WorldRebuild.md) now replaces selected runtime visual meshes and adds fitted courtyards/coastal vegetation. Original scan source assets and colliders remain authoritative; the historical pass described below did not replace those visual meshes.
+
 This pass responds to the blurred terrain, stretched walls, flat helipad and sparse environment in the earlier preview. The user's landscape reference is the visual direction: coherent natural light, readable materials and detailed ground. This is an actual runtime/material/geometry change, rather than a generated picture. It does not establish that the current scanned map matches the reference game's fidelity.
 
 ## Changes in the project

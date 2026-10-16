@@ -1,0 +1,715 @@
+{
+  "schema": 1,
+  "baseline": "ff62e7661a05070616f8f8ab35d8377ef4348d76",
+  "resource": "Alcatraz/FacadeRebuild/FacadeRebuild",
+  "source_hashes": {
+    "Assets/Game/Alcatraz/Resources/Alcatraz/FacadeRebuild/Layout.json": "3b9930a4d8e6f97b4345c72b3d4f93b41d1959ea9075b293ce695ee22856a287",
+    "Assets/Game/Alcatraz/Resources/Alcatraz/ArchitectureKit/Manifest.json": "d70004d77eb48c72533cb91b2d2e8173bddd37a87760fa9b031e9ec3a259ac00",
+    "Tools/author_facade_rebuild.py": "970e621ca895af68162e06347a918223025585e12d99cdce56853b40c5d62546",
+    "Tools/unity_writer.py": "7e04b29a2d1b69397998ee4ee325b203a36570f6df2401b8d0604de1cad85051",
+    "Assets/Game/Supplied/Resources/AlcatrazSupplied/Baked/Meshes/Island_0_7.asset": "a507640e2b4028816fbc6e052b97cd05ec1c7f77bc0b462c1ad5ff15e67e725a",
+    "Assets/Game/Supplied/Resources/AlcatrazSupplied/Baked/Meshes/Island_0_8.asset": "91f145fce68899e90fb5e79c57b055e69c28b5eb18f42fa63101f21c696e6843",
+    "Assets/Game/Alcatraz/Resources/Alcatraz/ArchitectureKit/Meshes/FacadeBlank_ConcreteWall.asset": "25885bff07b6c914d11c3bb00c5eb4af37879fb95a67a09e0a387f7a760412bb",
+    "Assets/Game/Alcatraz/Resources/Alcatraz/ArchitectureKit/Meshes/FacadeBlank_WeatheredPlinth.asset": "0b21c0f62e22bb0e542b507bab72d47696ba89eae7301d2b372903b92ca6a6fd",
+    "Assets/Game/Alcatraz/Resources/Alcatraz/ArchitectureKit/Meshes/RoofCornice_SteppedCoping.asset": "ddf24e7c8e94ff21f65e8805fc57c1035d29f9a44e3d0c674601085b1e90004a",
+    "Assets/Game/Alcatraz/Resources/Alcatraz/ArchitectureKit/Meshes/FacadeBarredWindow_BrickWall.asset": "6c7aec8586e34c9541d8833fa295d59e02a76d4b0d08975c11d563317e9d7b0e",
+    "Assets/Game/Alcatraz/Resources/Alcatraz/ArchitectureKit/Meshes/FacadeBarredWindow_ChamferedReveal.asset": "d12b28b7141785a05991c99ea1c7f77944d342d556e5b5458ae00b1119d00125",
+    "Assets/Game/Alcatraz/Resources/Alcatraz/ArchitectureKit/Meshes/FacadeBarredWindow_SteelFrame.asset": "edf2db502a13b09e032631a92efe639054f725efcd6ece8c5e3918dd36541c4e",
+    "Assets/Game/Alcatraz/Resources/Alcatraz/ArchitectureKit/Meshes/FacadeBarredWindow_RecessedGlass.asset": "5cf700351b5bcd7e6df6812c692f3ace96d199e048a672cbc5974ce20d9b7a8c",
+    "Assets/Game/Alcatraz/Resources/Alcatraz/ArchitectureKit/Meshes/FacadeBarredWindow_Mullions.asset": "9230fa74a3332ddc13dcffb39e07164e24aceebbaa6435499199c091cf47b89f",
+    "Assets/Game/Alcatraz/Resources/Alcatraz/ArchitectureKit/Meshes/FacadeBarredWindow_SlopedSill.asset": "f3a146523a6b978f72ddf4646b9c8607ece79bc63cecda7389fdab4e720779e9",
+    "Assets/Game/Alcatraz/Resources/Alcatraz/ArchitectureKit/Meshes/FacadeBarredWindow_PrisonBars.asset": "8535c3e92f17f62586702fbc91e73f843f04b6b2b915d0ce9256466b33fc0900",
+    "Assets/Game/Alcatraz/Resources/Alcatraz/ArchitectureKit/Meshes/FacadeBarredWindow_BoltedBarMounts.asset": "fa565c5e851d05950a52b93edbd21ee1359e08cccfd03317123cc54622a04295",
+    "Assets/Game/Alcatraz/Resources/Alcatraz/ArchitectureKit/Meshes/FacadeWindow_ConcreteWall.asset": "60afbeeeb82fa6844eca4f825b262bf0b860319307f06b46cb2948a5b4cd497a",
+    "Assets/Game/Alcatraz/Resources/Alcatraz/ArchitectureKit/Meshes/FacadeWindow_ChamferedReveal.asset": "d588d6e25f3f1641a902322ab70ab2d052bce59b25d80b5f31fd4614679793ea",
+    "Assets/Game/Alcatraz/Resources/Alcatraz/ArchitectureKit/Meshes/FacadeWindow_SteelFrame.asset": "c56e1550d9a1ae490bad37c007fd385c2c4d97233ba696a3d5fbdc0183fc66e1",
+    "Assets/Game/Alcatraz/Resources/Alcatraz/ArchitectureKit/Meshes/FacadeWindow_RecessedGlass.asset": "812d0f53cecf6c5aed4524c8167c16b7629a6445bdb5997cd94e46da63dc0aff",
+    "Assets/Game/Alcatraz/Resources/Alcatraz/ArchitectureKit/Meshes/FacadeWindow_Mullions.asset": "ae81ce745f82814aaa88b34beaf56e9b12d5c31db8f69912dd8e23326581516a",
+    "Assets/Game/Alcatraz/Resources/Alcatraz/ArchitectureKit/Meshes/FacadeWindow_SlopedSill.asset": "8658584156bc7b8b53cc029e4b87480a18f7ff71df89c3983b271ec693d26914",
+    "Assets/Game/Alcatraz/Resources/Alcatraz/ArchitectureKit/Meshes/Drainpipe_MetalDownpipe.asset": "54b66ff74cc959b9a70b3de9db4d712c8522962858e6387024f3bbeb6665ac84",
+    "Assets/Game/Alcatraz/Resources/Alcatraz/ArchitectureKit/Meshes/Drainpipe_PipeCollars.asset": "6b5d4bb84e839812f6ad8bafd28256ec45f4adc4bc2500b328fa20a451a29b9d",
+    "Assets/Game/Alcatraz/Resources/Alcatraz/ArchitectureKit/Meshes/Drainpipe_WallBrackets.asset": "05b53cf8ef9dd42027eba888f9184a1fd504a8f0f3c009a6aae4949446cbec90",
+    "Assets/Game/Alcatraz/Resources/Alcatraz/ArchitectureKit/Materials/CoastalConcrete.mat": "9fa15aa436053f95d22199c3ae236a7026367938a8cc3225b6f792ca34a8c021",
+    "Assets/Game/Alcatraz/Resources/Alcatraz/ArchitectureKit/Materials/LimestoneTrim.mat": "21ed493c44915f25b72127782298f2987331485af99749288bf1c85e810f1af0",
+    "Assets/Game/Alcatraz/Resources/Alcatraz/ArchitectureKit/Materials/OxidizedSteel.mat": "2cd7cc0ad645de3a2bdbb53b73f2c45a828d2fd1603754b526c50812d507fa3f",
+    "Assets/Game/Alcatraz/Resources/Alcatraz/ArchitectureKit/Materials/PaintedSteel.mat": "7e6fa4e8ca0b886c78684601906470edff7087b7da807d187be1b52e7f01903a",
+    "Assets/Game/Alcatraz/Resources/Alcatraz/ArchitectureKit/Materials/RecessedGlass.mat": "627b2f72f8e2f54975962094b1982a57c581824d303dc9a2d0dc8e2a103385a9"
+  },
+  "patches": [
+    {
+      "bottom_center": [
+        -143.1908299657015,
+        29.8,
+        5.862362881492459
+      ],
+      "normal": [
+        -0.9871140182540429,
+        0.0,
+        -0.16001848320227646
+      ],
+      "right": [
+        -0.16001848320227646,
+        0.0,
+        0.9871140182540429
+      ],
+      "width": 12,
+      "height": 3.5,
+      "plane_distance": 140.40758912829727,
+      "u_bounds": [
+        22.7,
+        34.7
+      ],
+      "y_bounds": [
+        29.8,
+        33.3
+      ],
+      "source_depth_spread": 0.09184432373780282,
+      "id": "retaining_east",
+      "group": "retaining_east",
+      "role": "retaining"
+    },
+    {
+      "bottom_center": [
+        -108.88680969227735,
+        48.5,
+        -20.29267540364696
+      ],
+      "normal": [
+        -0.20993870684509572,
+        0.0,
+        -0.9777145490214458
+      ],
+      "right": [
+        -0.9777145490214458,
+        0.0,
+        0.20993870684509572
+      ],
+      "width": 6.0,
+      "height": 10.5,
+      "plane_distance": 42.7,
+      "u_bounds": [
+        99.2,
+        105.2
+      ],
+      "y_bounds": [
+        48.5,
+        59.0
+      ],
+      "id": "south_tower_face",
+      "group": "south_tower_face",
+      "role": "window",
+      "depth_ahead": 1.0,
+      "depth_behind": 0.6,
+      "minimum_native_support_fraction": 0.995,
+      "fit_note": "Continuous exposed south tower facade, 6 x 10.5 m, with two columns and three storeys. All 6,300 native support samples on a 0.1 m lattice are covered. Surveyed near-vertical source core depths span 42.236 to 42.912 m; the new plane is 42.7 m. Original collision is preserved; visual and collider surfaces do not match exactly. Camera visibility requires a separate source-render study."
+    }
+  ],
+  "footprint_area_m2": 105.0,
+  "replaced_projected_area_m2": 182.98830710711516,
+  "removed_area_by_patch": {
+    "retaining_east": 57.72298478365034,
+    "south_tower_face": 125.26532232346482
+  },
+  "front_projected_removed_area_by_patch": {
+    "retaining_east": 41.99999999999998,
+    "south_tower_face": 114.73949901618512
+  },
+  "removed_surface_area_by_patch": {
+    "retaining_east": 57.74268613604742,
+    "south_tower_face": 138.7083740307851
+  },
+  "clipping_depth_metres": {
+    "behind_plane": 0.45,
+    "ahead_of_plane": 0.8
+  },
+  "retaining_preserved_floor_absolute_normal_y_minimum": 0.8,
+  "area_note": "Footprint counts each surveyed rectangle once. Removed projected/surface areas count all old scan layers, ledges and both windings, so they can exceed the footprint.",
+  "window_aperture_checks": [
+    {
+      "patch": "south_tower_face",
+      "row": 0,
+      "column": 0,
+      "local_xy": [
+        0.18,
+        1.4
+      ],
+      "world_position": [
+        -110.17739289698565,
+        49.9,
+        -20.015556310611434
+      ],
+      "scan_occluders": 0
+    },
+    {
+      "patch": "south_tower_face",
+      "row": 0,
+      "column": 0,
+      "local_xy": [
+        -0.18,
+        2.4
+      ],
+      "world_position": [
+        -110.52937013463338,
+        50.9,
+        -19.9399783761472
+      ],
+      "scan_occluders": 0
+    },
+    {
+      "patch": "south_tower_face",
+      "row": 0,
+      "column": 0,
+      "local_xy": [
+        0.4,
+        1.4
+      ],
+      "world_position": [
+        -109.96229569620094,
+        49.9,
+        -20.061742826117353
+      ],
+      "scan_occluders": 0
+    },
+    {
+      "patch": "south_tower_face",
+      "row": 0,
+      "column": 0,
+      "local_xy": [
+        -0.4,
+        2.4
+      ],
+      "world_position": [
+        -110.7444673354181,
+        50.9,
+        -19.89379186064128
+      ],
+      "scan_occluders": 0
+    },
+    {
+      "patch": "south_tower_face",
+      "row": 0,
+      "column": 1,
+      "local_xy": [
+        0.18,
+        1.4
+      ],
+      "world_position": [
+        -107.24424924992132,
+        49.9,
+        -20.645372431146722
+      ],
+      "scan_occluders": 0
+    },
+    {
+      "patch": "south_tower_face",
+      "row": 0,
+      "column": 1,
+      "local_xy": [
+        -0.18,
+        2.4
+      ],
+      "world_position": [
+        -107.59622648756906,
+        50.9,
+        -20.569794496682487
+      ],
+      "scan_occluders": 0
+    },
+    {
+      "patch": "south_tower_face",
+      "row": 0,
+      "column": 1,
+      "local_xy": [
+        0.4,
+        1.4
+      ],
+      "world_position": [
+        -107.02915204913661,
+        49.9,
+        -20.69155894665264
+      ],
+      "scan_occluders": 0
+    },
+    {
+      "patch": "south_tower_face",
+      "row": 0,
+      "column": 1,
+      "local_xy": [
+        -0.4,
+        2.4
+      ],
+      "world_position": [
+        -107.81132368835377,
+        50.9,
+        -20.523607981176568
+      ],
+      "scan_occluders": 0
+    },
+    {
+      "patch": "south_tower_face",
+      "row": 1,
+      "column": 0,
+      "local_xy": [
+        0.18,
+        1.4
+      ],
+      "world_position": [
+        -110.17739289698565,
+        53.4,
+        -20.015556310611434
+      ],
+      "scan_occluders": 0
+    },
+    {
+      "patch": "south_tower_face",
+      "row": 1,
+      "column": 0,
+      "local_xy": [
+        -0.18,
+        2.4
+      ],
+      "world_position": [
+        -110.52937013463338,
+        54.4,
+        -19.9399783761472
+      ],
+      "scan_occluders": 0
+    },
+    {
+      "patch": "south_tower_face",
+      "row": 1,
+      "column": 0,
+      "local_xy": [
+        0.4,
+        1.4
+      ],
+      "world_position": [
+        -109.96229569620094,
+        53.4,
+        -20.061742826117353
+      ],
+      "scan_occluders": 0
+    },
+    {
+      "patch": "south_tower_face",
+      "row": 1,
+      "column": 0,
+      "local_xy": [
+        -0.4,
+        2.4
+      ],
+      "world_position": [
+        -110.7444673354181,
+        54.4,
+        -19.89379186064128
+      ],
+      "scan_occluders": 0
+    },
+    {
+      "patch": "south_tower_face",
+      "row": 1,
+      "column": 1,
+      "local_xy": [
+        0.18,
+        1.4
+      ],
+      "world_position": [
+        -107.24424924992132,
+        53.4,
+        -20.645372431146722
+      ],
+      "scan_occluders": 0
+    },
+    {
+      "patch": "south_tower_face",
+      "row": 1,
+      "column": 1,
+      "local_xy": [
+        -0.18,
+        2.4
+      ],
+      "world_position": [
+        -107.59622648756906,
+        54.4,
+        -20.569794496682487
+      ],
+      "scan_occluders": 0
+    },
+    {
+      "patch": "south_tower_face",
+      "row": 1,
+      "column": 1,
+      "local_xy": [
+        0.4,
+        1.4
+      ],
+      "world_position": [
+        -107.02915204913661,
+        53.4,
+        -20.69155894665264
+      ],
+      "scan_occluders": 0
+    },
+    {
+      "patch": "south_tower_face",
+      "row": 1,
+      "column": 1,
+      "local_xy": [
+        -0.4,
+        2.4
+      ],
+      "world_position": [
+        -107.81132368835377,
+        54.4,
+        -20.523607981176568
+      ],
+      "scan_occluders": 0
+    },
+    {
+      "patch": "south_tower_face",
+      "row": 2,
+      "column": 0,
+      "local_xy": [
+        0.18,
+        1.4
+      ],
+      "world_position": [
+        -110.17739289698565,
+        56.9,
+        -20.015556310611434
+      ],
+      "scan_occluders": 0
+    },
+    {
+      "patch": "south_tower_face",
+      "row": 2,
+      "column": 0,
+      "local_xy": [
+        -0.18,
+        2.4
+      ],
+      "world_position": [
+        -110.52937013463338,
+        57.9,
+        -19.9399783761472
+      ],
+      "scan_occluders": 0
+    },
+    {
+      "patch": "south_tower_face",
+      "row": 2,
+      "column": 0,
+      "local_xy": [
+        0.4,
+        1.4
+      ],
+      "world_position": [
+        -109.96229569620094,
+        56.9,
+        -20.061742826117353
+      ],
+      "scan_occluders": 0
+    },
+    {
+      "patch": "south_tower_face",
+      "row": 2,
+      "column": 0,
+      "local_xy": [
+        -0.4,
+        2.4
+      ],
+      "world_position": [
+        -110.7444673354181,
+        57.9,
+        -19.89379186064128
+      ],
+      "scan_occluders": 0
+    },
+    {
+      "patch": "south_tower_face",
+      "row": 2,
+      "column": 1,
+      "local_xy": [
+        0.18,
+        1.4
+      ],
+      "world_position": [
+        -107.24424924992132,
+        56.9,
+        -20.645372431146722
+      ],
+      "scan_occluders": 0
+    },
+    {
+      "patch": "south_tower_face",
+      "row": 2,
+      "column": 1,
+      "local_xy": [
+        -0.18,
+        2.4
+      ],
+      "world_position": [
+        -107.59622648756906,
+        57.9,
+        -20.569794496682487
+      ],
+      "scan_occluders": 0
+    },
+    {
+      "patch": "south_tower_face",
+      "row": 2,
+      "column": 1,
+      "local_xy": [
+        0.4,
+        1.4
+      ],
+      "world_position": [
+        -107.02915204913661,
+        56.9,
+        -20.69155894665264
+      ],
+      "scan_occluders": 0
+    },
+    {
+      "patch": "south_tower_face",
+      "row": 2,
+      "column": 1,
+      "local_xy": [
+        -0.4,
+        2.4
+      ],
+      "world_position": [
+        -107.81132368835377,
+        57.9,
+        -20.523607981176568
+      ],
+      "scan_occluders": 0
+    }
+  ],
+  "native_wall_support": [
+    {
+      "patch": "retaining_east",
+      "sample_spacing_metres": 0.25,
+      "sample_count": 672,
+      "covered_samples": 672,
+      "coverage_fraction": 1.0,
+      "minimum_fraction": 0.995,
+      "method": "Original front-facing wall triangles: absolute geometric normalY < .15, dot(normal, facadeNormal) > .94, depth within +/-1.5m of new plane; rectangle-centred .25m lattice."
+    },
+    {
+      "patch": "south_tower_face",
+      "sample_spacing_metres": 0.25,
+      "sample_count": 1008,
+      "covered_samples": 1008,
+      "coverage_fraction": 1.0,
+      "minimum_fraction": 0.995,
+      "method": "Original front-facing wall triangles: absolute geometric normalY < .15, dot(normal, facadeNormal) > .94, depth within +/-1.5m of new plane; rectangle-centred .25m lattice."
+    }
+  ],
+  "wall_material_policy": "All storeys use the same coastal concrete, including the barred ground-floor module; the source kit remains unchanged.",
+  "original_source_triangles_clipped": 103,
+  "replacement_scan_chunks": [
+    {
+      "sourceMesh": "Island_0_7",
+      "resource": "Alcatraz/FacadeRebuild/Meshes/Visual_Island_0_7",
+      "asset": "Assets/Game/Alcatraz/Resources/Alcatraz/FacadeRebuild/Meshes/Visual_Island_0_7.asset",
+      "source_asset": "Assets/Game/Supplied/Resources/AlcatrazSupplied/Baked/Meshes/Island_0_7.asset",
+      "source_triangles": 20000,
+      "result_triangles": 20116,
+      "clipped_source_faces": 93,
+      "bounds_min": [
+        -117.91116333007812,
+        -36.4286003112793,
+        -88.19229888916016
+      ],
+      "bounds_max": [
+        71.96007537841797,
+        17.751880645751953,
+        15.390342712402344
+      ]
+    },
+    {
+      "sourceMesh": "Island_0_8",
+      "resource": "Alcatraz/FacadeRebuild/Meshes/Visual_Island_0_8",
+      "asset": "Assets/Game/Alcatraz/Resources/Alcatraz/FacadeRebuild/Meshes/Visual_Island_0_8.asset",
+      "source_asset": "Assets/Game/Supplied/Resources/AlcatrazSupplied/Baked/Meshes/Island_0_8.asset",
+      "source_triangles": 20000,
+      "result_triangles": 20013,
+      "clipped_source_faces": 10,
+      "bounds_min": [
+        -165.2056121826172,
+        -44.625247955322266,
+        -117.28583526611328
+      ],
+      "bounds_max": [
+        16.978004455566406,
+        16.954458236694336,
+        -17.25897979736328
+      ]
+    }
+  ],
+  "module_instances": [
+    {
+      "module": "FacadeBlank",
+      "position": [
+        -143.91091314011175,
+        29.8,
+        10.304375963635652
+      ],
+      "group": "retaining_east"
+    },
+    {
+      "module": "RoofCornice",
+      "position": [
+        -143.91091314011175,
+        33.3,
+        10.304375963635652
+      ],
+      "group": "retaining_east"
+    },
+    {
+      "module": "FacadeBlank",
+      "position": [
+        -143.43085769050492,
+        29.8,
+        7.343033908873523
+      ],
+      "group": "retaining_east"
+    },
+    {
+      "module": "RoofCornice",
+      "position": [
+        -143.43085769050492,
+        33.3,
+        7.343033908873523
+      ],
+      "group": "retaining_east"
+    },
+    {
+      "module": "FacadeBlank",
+      "position": [
+        -142.9508022408981,
+        29.8,
+        4.381691854111394
+      ],
+      "group": "retaining_east"
+    },
+    {
+      "module": "RoofCornice",
+      "position": [
+        -142.9508022408981,
+        33.3,
+        4.381691854111394
+      ],
+      "group": "retaining_east"
+    },
+    {
+      "module": "FacadeBlank",
+      "position": [
+        -142.47074679129128,
+        29.8,
+        1.4203497993492658
+      ],
+      "group": "retaining_east"
+    },
+    {
+      "module": "RoofCornice",
+      "position": [
+        -142.47074679129128,
+        33.3,
+        1.4203497993492658
+      ],
+      "group": "retaining_east"
+    },
+    {
+      "module": "FacadeBarredWindow",
+      "position": [
+        -110.35338151580952,
+        48.5,
+        -19.977767343379316
+      ],
+      "group": "south_tower_face"
+    },
+    {
+      "module": "FacadeBarredWindow",
+      "position": [
+        -107.42023786874519,
+        48.5,
+        -20.607583463914604
+      ],
+      "group": "south_tower_face"
+    },
+    {
+      "module": "FacadeWindow",
+      "position": [
+        -110.35338151580952,
+        52.0,
+        -19.977767343379316
+      ],
+      "group": "south_tower_face"
+    },
+    {
+      "module": "FacadeWindow",
+      "position": [
+        -107.42023786874519,
+        52.0,
+        -20.607583463914604
+      ],
+      "group": "south_tower_face"
+    },
+    {
+      "module": "FacadeWindow",
+      "position": [
+        -110.35338151580952,
+        55.5,
+        -19.977767343379316
+      ],
+      "group": "south_tower_face"
+    },
+    {
+      "module": "RoofCornice",
+      "position": [
+        -110.35338151580952,
+        59.0,
+        -19.977767343379316
+      ],
+      "group": "south_tower_face"
+    },
+    {
+      "module": "FacadeWindow",
+      "position": [
+        -107.42023786874519,
+        55.5,
+        -20.607583463914604
+      ],
+      "group": "south_tower_face"
+    },
+    {
+      "module": "RoofCornice",
+      "position": [
+        -107.42023786874519,
+        59.0,
+        -20.607583463914604
+      ],
+      "group": "south_tower_face"
+    },
+    {
+      "module": "Drainpipe",
+      "position": [
+        -106.1492089550173,
+        48.5,
+        -20.88050378281323
+      ],
+      "group": "south_tower_face"
+    }
+  ],
+  "facade_renderers": 7,
+  "facade_triangles": 7764,
+  "colliders_added": 0,
+  "geometry_policy": "Only visual fragments inside surveyed R/Y/depth prisms are replaced, including oblique window ledges. At retaining walls near-horizontal courtyard floors (absolute normalY >= .8) are preserved. All fragments outside the six planes are retained. Original scan asset bytes and MeshColliders remain unchanged; source UVs and normals outside the prisms are interpolated without remapping.",
+  "limits": [
+    "Reconstruction covers inspected facade patches, not the whole island.",
+    "Opaque recessed window panes remain sealed by original wall collision. No new enterable room is implied.",
+    "Unity rendering, collision/camera interaction and performance remain unverified."
+  ]
+}

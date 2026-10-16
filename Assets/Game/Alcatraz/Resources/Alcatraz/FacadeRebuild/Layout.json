@@ -1,0 +1,79 @@
+{
+  "schema": 1,
+  "units": "metres; Unity Y up; world coordinates",
+  "survey_sample_metres": 0.1,
+  "source_projected_coverage": 1,
+  "patches": [
+    {
+      "bottom_center": [
+        -143.1908299657015,
+        29.8,
+        5.862362881492459
+      ],
+      "normal": [
+        -0.9871140182540429,
+        0.0,
+        -0.16001848320227646
+      ],
+      "right": [
+        -0.16001848320227646,
+        0.0,
+        0.9871140182540429
+      ],
+      "width": 12,
+      "height": 3.5,
+      "plane_distance": 140.40758912829727,
+      "u_bounds": [
+        22.7,
+        34.7
+      ],
+      "y_bounds": [
+        29.8,
+        33.3
+      ],
+      "source_depth_spread": 0.09184432373780282,
+      "id": "retaining_east",
+      "group": "retaining_east",
+      "role": "retaining"
+    },
+    {
+      "bottom_center": [
+        -108.88680969227735,
+        48.5,
+        -20.29267540364696
+      ],
+      "normal": [
+        -0.20993870684509572,
+        0.0,
+        -0.9777145490214458
+      ],
+      "right": [
+        -0.9777145490214458,
+        0.0,
+        0.20993870684509572
+      ],
+      "width": 6.0,
+      "height": 10.5,
+      "plane_distance": 42.7,
+      "u_bounds": [
+        99.2,
+        105.2
+      ],
+      "y_bounds": [
+        48.5,
+        59.0
+      ],
+      "id": "south_tower_face",
+      "group": "south_tower_face",
+      "role": "window",
+      "depth_ahead": 1.0,
+      "depth_behind": 0.6,
+      "minimum_native_support_fraction": 0.995,
+      "fit_note": "Continuous exposed south tower facade, 6 x 10.5 m, with two columns and three storeys. All 6,300 native support samples on a 0.1 m lattice are covered. Surveyed near-vertical source core depths span 42.236 to 42.912 m; the new plane is 42.7 m. Original collision is preserved; visual and collider surfaces do not match exactly. Camera visibility requires a separate source-render study."
+    }
+  ],
+  "limits": [
+    "Reconstruction covers two coherent, surveyed facade sections rather than the entire island.",
+    "The buried west facade was removed after integration previews showed poor visibility. The current south tower face requires integrated preview inspection."
+  ]
+}

@@ -40,9 +40,9 @@ namespace Blackstone.Alcatraz.Editor
             var atlas = source.GetComponentInChildren<MeshRenderer>(true).sharedMaterial.GetTexture("_BaseMap");
             for (int i = 0; i < actual.Length; i++)
             {
-                Check(actual[i].sharedMesh == expected[i].sharedMesh, "scan chunk " + i + " keeps its original mesh/UVs");
+                Check(details.OriginalScanMesh(actual[i]) == expected[i].sharedMesh, "scan chunk " + i + " retains its original collision/restore mesh");
                 var collider = actual[i].GetComponent<MeshCollider>();
-                Check(collider != null && collider.sharedMesh == actual[i].sharedMesh, "scan collision remains unchanged at chunk " + i);
+                Check(collider != null && collider.sharedMesh == expected[i].sharedMesh, "scan collision remains unchanged at chunk " + i);
                 var material = actual[i].GetComponent<MeshRenderer>().sharedMaterial;
                 Check(material.shader.name == "Blackstone/Island Surface Detail" && material.shader.isSupported,
                     "surface shader is supported on the current graphics backend");
@@ -54,6 +54,17 @@ namespace Blackstone.Alcatraz.Editor
             Check(dressing != null && dressing.GetComponentsInChildren<Collider>(true).Length == 0,
                 "paint and ground cover add no collision");
             Check(details.GroundCoverRenderers > 0, "sampled ground-cover chunks are present");
+            Check(details.RebuiltScanChunks > 0 && details.FacadeRenderers > 0, "surveyed facade visual replacements are installed");
+            Check(details.CourtyardRenderers > 0 && details.VegetationRenderers > 0, "courtyard surfaces and coastal vegetation are installed");
+            foreach (var renderer in dressing.GetComponentsInChildren<MeshRenderer>(true))
+            {
+                var filter = renderer.GetComponent<MeshFilter>();
+                Check(filter != null && filter.sharedMesh != null && filter.sharedMesh.vertexCount > 0,
+                    renderer.name + " has a usable imported mesh");
+                foreach (var material in renderer.sharedMaterials)
+                    Check(material != null && material.shader != null && material.shader.isSupported,
+                        renderer.name + " has a supported imported material");
+            }
             Check(details.HelipadDetailed, "textured helipad and visible markings were created");
             var paint = dressing.Find("Helipad painted perimeter and H");
             Check(paint != null, "helipad paint object exists");

@@ -61,6 +61,7 @@ PYTHON_VALIDATORS = (
     ("police_helicopter", "validate_police_helicopter.py"),
     ("graphics_quality", "validate_graphics_quality.py"),
     ("environment_surface_quality", "validate_environment_quality.py"),
+    ("world_rebuild", "validate_world_rebuild.py"),
 )
 
 

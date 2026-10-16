@@ -1,0 +1,13 @@
+{
+  "facadeRenderers": 7,
+  "replacements": [
+    {
+      "sourceMesh": "Island_0_7",
+      "resource": "Alcatraz/FacadeRebuild/Meshes/Visual_Island_0_7"
+    },
+    {
+      "sourceMesh": "Island_0_8",
+      "resource": "Alcatraz/FacadeRebuild/Meshes/Visual_Island_0_8"
+    }
+  ]
+}
