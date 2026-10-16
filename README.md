@@ -4,6 +4,8 @@
 
 The playable character is **Elias Vale, a prisoner in orange**. The default exploration scene now uses the **supplied scanned Alcatraz island**, police, animated dog, tactical helmet/vest, Little Bird, coastal house, 10mm pistol and revolver. The supplied exterior now has a connected enterable cellhouse. Chapter 01 retains its separate story scene, original rigged cast and mission progression.
 
+The [map surface and lighting pass](Documentation/EnvironmentQuality.md) adds world-scale concrete/masonry detail to the supplied scan, textured helipad/docks, sparse supported ground cover and consistent afternoon lighting across the enabled Alcatraz scenes. It preserves original collision and source geometry; the remaining scan reconstruction and Unity visual review are documented explicitly.
+
 ## Design and development plan
 
 The [complete ALCATRAZ design documentation](Documentation/GameDesign/README.md) covers the game concept, current systems, world and missions, proposed escape chapter, art/audio direction, high-end graphics targets, 36 prioritized requirements and verification gates. It distinguishes inspected source from future work and unexecuted Unity checks. [Research references](Documentation/GameDesign/Research.md) record the GDD templates actually read.

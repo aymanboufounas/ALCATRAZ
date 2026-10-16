@@ -68,10 +68,16 @@ namespace Blackstone.Supplied
                 patrol.route=new[]{Ground(new Vector3(-105,0,25)),Ground(new Vector3(-112,0,25))};
                 var helicopter=SuppliedModel.Create("Helicopter",transform);
                 Vector3 landing=Ground(HelipadXZ);
-                // Level the pad above every sampled corner, avoiding buried skids.
-                for(int x=-5;x<=5;x+=5)for(int z=-5;z<=5;z+=5)
-                    landing.y=Mathf.Max(landing.y,Ground(HelipadXZ+new Vector3(x,0,z)).y);
-                landing.y+=.08f;
+                // The old nine-point probe missed a scan ridge through the pad.
+                // Cover its full 12 m footprint once during startup. Some scan
+                // edge samples have no triangle; the solid deck spans those gaps.
+                for(int x=-12;x<=12;x++)for(int z=-12;z<=12;z++)
+                {
+                    var sample=HelipadXZ+new Vector3(x*.5f,140,z*.5f);
+                    if(Physics.Raycast(sample,Vector3.down,out var floor,200,1,QueryTriggerInteraction.Ignore))
+                        landing.y=Mathf.Max(landing.y,floor.point.y);
+                }
+                landing.y+=.12f;
                 Helipad=new GameObject("Little Bird helipad").transform;Helipad.SetParent(transform);Helipad.position=landing;
                 Cube("Helicopter landing deck",landing-Vector3.up*.16f,new Vector3(12,.3f,12),deck,true);
                 for(int i=0;i<3;i++)

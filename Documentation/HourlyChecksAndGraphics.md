@@ -4,7 +4,7 @@
 
 [Unity source checks](../.github/workflows/source-checks.yml) is configured for minute **17 of every hour, UTC**, plus pushes, pull requests and manual runs. GitHub schedules run from the default branch and can be delayed. Committing this configuration does not prove a scheduled run has executed; check the repository's Actions tab for actual runs.
 
-The job runs 24 independent checks: 11 executable C# rule suites, 12 source/asset validators and the runner regression suite. A failed check does not hide later failures. JSON results, a Markdown summary and individual logs are uploaded as an Actions artifact with 14-day retention. An incomplete run remains explicitly incomplete. The runner rejects invalid timeouts and removes old test executables before compiling.
+The job runs 25 independent checks: 11 executable C# rule suites, 13 source/asset validators and the runner regression suite. A failed check does not hide later failures. JSON results, a Markdown summary and individual logs are uploaded as an Actions artifact with 14-day retention. An incomplete run remains explicitly incomplete. The runner rejects invalid timeouts and removes old test executables before compiling.
 
 This is a checking/reporting workflow. It does not run Unity, inspect rendered gameplay or operate a continuing AI coding agent. New problems need a coding session to investigate and fix them. The chat cannot keep making hourly code changes after the session ends.
 

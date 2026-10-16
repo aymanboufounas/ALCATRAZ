@@ -1,0 +1,394 @@
+{
+  "scope": "Actual scan-wide material integration, source-preserving ground cover, shared lighting and helipad terrain-clearance repair",
+  "baseline_commit": "e4eff1de4afbce888e5cc06a270c9f3e2d4c4079",
+  "started_at_utc": "2026-10-16T10:41:21.884470+00:00",
+  "finished_at_utc": "2026-10-16T10:43:45.791601+00:00",
+  "status": "PASS",
+  "source_checks_passed": 25,
+  "source_checks_failed": 0,
+  "source_checks": [
+    {
+      "name": "source_check_runner",
+      "status": "passed",
+      "duration_seconds": 0.716
+    },
+    {
+      "name": "HoldemTests",
+      "status": "passed",
+      "duration_seconds": 1.635
+    },
+    {
+      "name": "VehicleControlTests",
+      "status": "passed",
+      "duration_seconds": 0.397
+    },
+    {
+      "name": "CombatTests",
+      "status": "passed",
+      "duration_seconds": 0.451
+    },
+    {
+      "name": "MenuCheckpointTests",
+      "status": "passed",
+      "duration_seconds": 0.532
+    },
+    {
+      "name": "CameraFramingTests",
+      "status": "passed",
+      "duration_seconds": 0.447
+    },
+    {
+      "name": "PlayerFailureTests",
+      "status": "passed",
+      "duration_seconds": 0.447
+    },
+    {
+      "name": "SwimmingTests",
+      "status": "passed",
+      "duration_seconds": 0.396
+    },
+    {
+      "name": "MovementResponseTests",
+      "status": "passed",
+      "duration_seconds": 0.449
+    },
+    {
+      "name": "LocomotionAnimationTests",
+      "status": "passed",
+      "duration_seconds": 0.447
+    },
+    {
+      "name": "FootContactTests",
+      "status": "passed",
+      "duration_seconds": 0.447
+    },
+    {
+      "name": "GraphicsSettingsTests",
+      "status": "passed",
+      "duration_seconds": 0.498
+    },
+    {
+      "name": "csharp_grammar",
+      "status": "passed",
+      "duration_seconds": 0.214
+    },
+    {
+      "name": "character_forward",
+      "status": "passed",
+      "duration_seconds": 11.301
+    },
+    {
+      "name": "locomotion_quality",
+      "status": "passed",
+      "duration_seconds": 7.439
+    },
+    {
+      "name": "alcatraz_routes",
+      "status": "passed",
+      "duration_seconds": 11.902
+    },
+    {
+      "name": "scene_startup",
+      "status": "passed",
+      "duration_seconds": 4.98
+    },
+    {
+      "name": "native_asset_integrity",
+      "status": "passed",
+      "duration_seconds": 90.777
+    },
+    {
+      "name": "supplied_assets",
+      "status": "passed",
+      "duration_seconds": 0.569
+    },
+    {
+      "name": "supplied_prison",
+      "status": "passed",
+      "duration_seconds": 4.183
+    },
+    {
+      "name": "warehouse",
+      "status": "passed",
+      "duration_seconds": 0.333
+    },
+    {
+      "name": "extra_assets",
+      "status": "passed",
+      "duration_seconds": 0.515
+    },
+    {
+      "name": "police_helicopter",
+      "status": "passed",
+      "duration_seconds": 0.064
+    },
+    {
+      "name": "graphics_quality",
+      "status": "passed",
+      "duration_seconds": 0.064
+    },
+    {
+      "name": "environment_surface_quality",
+      "status": "passed",
+      "duration_seconds": 4.682
+    }
+  ],
+  "csharp_rule_assertions": {
+    "total": 220928,
+    "suites": {
+      "HoldemTests": 160041,
+      "VehicleControlTests": 32,
+      "CombatTests": 33,
+      "MenuCheckpointTests": 34,
+      "CameraFramingTests": 34,
+      "PlayerFailureTests": 27,
+      "SwimmingTests": 54,
+      "MovementResponseTests": 2304,
+      "LocomotionAnimationTests": 58068,
+      "FootContactTests": 257,
+      "GraphicsSettingsTests": 44
+    }
+  },
+  "new_environment_checks": {
+    "status": "PASS",
+    "checks": 175,
+    "errors": [],
+    "scan_renderers": 11,
+    "helipad_support": {
+      "exact_source_peak_y": 31.90959358215332,
+      "old_pad_top_y": 31.835453798047592,
+      "new_pad_top_y": 32.011843034221776,
+      "old_scan_intrusion_metres": 0.07413978410572852,
+      "new_clearance_metres": 0.10224945206845604,
+      "startup_ray_samples": 625
+    },
+    "ground_cover": {
+      "tufts": 458,
+      "clusters": 120,
+      "chunks": 39,
+      "vertices": 23580,
+      "triangles": 7860,
+      "colliders": 0
+    },
+    "scope": "PBR resource dependencies, original input identity, deterministic supported placement and native mesh buffers.",
+    "unity_shader_compilation_verified": false,
+    "unity_rendered_quality_verified": false,
+    "gpu_performance_verified": false
+  },
+  "native_asset_integrity": {
+    "offline_integrity": "PASS",
+    "counts": {
+      "native_files": 2650,
+      "yaml_documents": 88501,
+      "asset_guids": 3737,
+      "mesh_vertices": 7826467,
+      "mesh_triangles": 3762898,
+      "weighted_meshes": 271,
+      "csharp_files": 102,
+      "animation_clips": 14
+    },
+    "errors": [],
+    "warnings": [],
+    "official_package_bindings_not_loaded_by_unity": [
+      "URP PostProcessData asset",
+      "URP/Lit shader",
+      "UniversalRenderPipelineAsset script",
+      "UniversalRendererData script"
+    ],
+    "not_performed": [
+      "Unity editor import",
+      "C# compilation against Unity assemblies",
+      "Unity Play Mode",
+      "Humanoid Avatar validation inside Unity",
+      "Live movement and interaction tests",
+      "URP shader compilation",
+      "Windows player build",
+      "1080p FPS measurement",
+      "Lightmap / occlusion bake"
+    ],
+    "visual_qa": "Separate Mesa geometry previews; not Unity render captures"
+  },
+  "csharp_grammar": {
+    "status": "PASS",
+    "files": 102,
+    "errors": [],
+    "scope": "C# syntax grammar only; Unity API/type resolution and shader compilation are unverified"
+  },
+  "source_coverage": {
+    "alcatraz_routes": 276,
+    "scene_startup": 19382,
+    "graphics": 34
+  },
+  "validated_input_sha256": {
+    "Assets/Game/Alcatraz/Art/Materials/Alc_MarineSky.mat": "6fedd067c7fc613c5f879a561dbdd8e575e792d890ab3dd574b95968239a4cff",
+    "Assets/Game/Alcatraz/Editor/EnvironmentDetailGameplayChecks.cs": "8600a6d9033cf3c6ff4ad2dbf8b156f8b734e52325e293c7bea478fc31b4f83a",
+    "Assets/Game/Alcatraz/Editor/EnvironmentDetailGameplayChecks.cs.meta": "31f1de3f97acf0e83eab6373698c72faaadace66892e0bef1b82a14e3e94b425",
+    "Assets/Game/Alcatraz/Editor/LiveSceneVerification.cs": "3fa89d4f6086d94669f5c7a5fedd06251f4a51fe0e8c2620f9f7b90bbffe0690",
+    "Assets/Game/Alcatraz/Resources/Alcatraz/EnvironmentDressing.meta": "9d210bb6aa71ad9298a70cbb9d109067048dbb976518c2d94798b214e0e45e39",
+    "Assets/Game/Alcatraz/Resources/Alcatraz/EnvironmentDressing/Manifest.json": "3a8e3f428e47ebcf065a36f2a581a544b3b6014a39e7cd46fefb5974ab979c27",
+    "Assets/Game/Alcatraz/Resources/Alcatraz/EnvironmentDressing/Manifest.json.meta": "5b8caa8beaf2ae718d62847ab9ad47af10ea2f2aa2fe9dcf5dade5dcfd5d542b",
+    "Assets/Game/Alcatraz/Resources/Alcatraz/EnvironmentDressing/Materials.meta": "4045d36a1c3d0e48730d6ac579d759688300775b99a669f9b353ae6f1f4eb70a",
+    "Assets/Game/Alcatraz/Resources/Alcatraz/EnvironmentDressing/Materials/CoastalGroundcover.mat": "033825b4e7945a27c1a415676710705894751c91bdb3f66a945092336ea5d95f",
+    "Assets/Game/Alcatraz/Resources/Alcatraz/EnvironmentDressing/Materials/CoastalGroundcover.mat.meta": "10aa1f2c9ccfe865054cb4c7a2db1be3e24df01bb0a839a689bb3972818628dd",
+    "Assets/Game/Alcatraz/Resources/Alcatraz/EnvironmentDressing/Meshes.meta": "46cd8e34ea79a54d61b0e0eb905f201af4e3179553f08a0a7dc544083540e9a5",
+    "Assets/Game/Alcatraz/Resources/Alcatraz/EnvironmentDressing/Meshes/Groundcover_-1_-1.asset": "068745223a4341eae4ee27dc1c845dfddfca16039ef00d55edfa9fd1164c296b",
+    "Assets/Game/Alcatraz/Resources/Alcatraz/EnvironmentDressing/Meshes/Groundcover_-1_-1.asset.meta": "c82f8c5e8386383226633feaef42267eaf385eae5d8a6d1bb7b2da65d41010ba",
+    "Assets/Game/Alcatraz/Resources/Alcatraz/EnvironmentDressing/Meshes/Groundcover_-1_-2.asset": "2654e94057074366f6ca81595b0493b74e5b7a431248512109847b775cf04a3a",
+    "Assets/Game/Alcatraz/Resources/Alcatraz/EnvironmentDressing/Meshes/Groundcover_-1_-2.asset.meta": "e1f9980edb7887a47f1ca876c18d63f5c48d239ad95f0d575bdc0207682da9aa",
+    "Assets/Game/Alcatraz/Resources/Alcatraz/EnvironmentDressing/Meshes/Groundcover_-1_-3.asset": "ad998ae5dea09a91e6c6b9f63a445c419c6f6c94c9c68d7eda92e05d24612810",
+    "Assets/Game/Alcatraz/Resources/Alcatraz/EnvironmentDressing/Meshes/Groundcover_-1_-3.asset.meta": "1b53321ff9ad9d07a648a77392bb3fc38165d88644053a054726a72c40a703a5",
+    "Assets/Game/Alcatraz/Resources/Alcatraz/EnvironmentDressing/Meshes/Groundcover_-1_1.asset": "b074d001d3a39591983e135789091ce2b631477133cda75fce32ea7af50fca23",
+    "Assets/Game/Alcatraz/Resources/Alcatraz/EnvironmentDressing/Meshes/Groundcover_-1_1.asset.meta": "15d3bf08a521acc5edb4a382fca3f235d2b34a11e8eee2ccef4c6bea89d01fdc",
+    "Assets/Game/Alcatraz/Resources/Alcatraz/EnvironmentDressing/Meshes/Groundcover_-2_-2.asset": "2c6dd94cd2042c997e865d28cd5722bafc14662871055cca2db5db22ccaaeea7",
+    "Assets/Game/Alcatraz/Resources/Alcatraz/EnvironmentDressing/Meshes/Groundcover_-2_-2.asset.meta": "b9eda229fc247bc75d10fec5d220435833905dd300318c8e671b1844a3876675",
+    "Assets/Game/Alcatraz/Resources/Alcatraz/EnvironmentDressing/Meshes/Groundcover_-2_2.asset": "aa895f3194e64d9b2e703afcf1e74b1d8495e53e64b92dff4cfcd869d294a715",
+    "Assets/Game/Alcatraz/Resources/Alcatraz/EnvironmentDressing/Meshes/Groundcover_-2_2.asset.meta": "fd6cc04616ad74bd71e3c570f496620dc1119d39f6eb02b23b0819db728526c0",
+    "Assets/Game/Alcatraz/Resources/Alcatraz/EnvironmentDressing/Meshes/Groundcover_-2_3.asset": "e59f68501bd273d30295e0d4e1f5c66a0ce1c89298399f7da40cfe359c0baeac",
+    "Assets/Game/Alcatraz/Resources/Alcatraz/EnvironmentDressing/Meshes/Groundcover_-2_3.asset.meta": "0d2af111d400671994fb6aa25aed3089e8b9d6e70501fb1ad76fd8c184e4c04f",
+    "Assets/Game/Alcatraz/Resources/Alcatraz/EnvironmentDressing/Meshes/Groundcover_-3_-1.asset": "a6e192c358a513416f313f8ee975d7d620dd236f884b515c3425cba19e1c71f2",
+    "Assets/Game/Alcatraz/Resources/Alcatraz/EnvironmentDressing/Meshes/Groundcover_-3_-1.asset.meta": "17fa4f0512ff651b4b8b1e570e43b2526a4943554e89f1f14a0c40faf5a84deb",
+    "Assets/Game/Alcatraz/Resources/Alcatraz/EnvironmentDressing/Meshes/Groundcover_-3_-2.asset": "244274507dde879b1a355f1a43a2e08c6206e0c3fe7848c85dfd09a0d193ea9f",
+    "Assets/Game/Alcatraz/Resources/Alcatraz/EnvironmentDressing/Meshes/Groundcover_-3_-2.asset.meta": "afccc1002ae06b7a4aecb36dbfe4bc3fbe34367256d44075a2cec3674eaf763e",
+    "Assets/Game/Alcatraz/Resources/Alcatraz/EnvironmentDressing/Meshes/Groundcover_-3_-3.asset": "35c90338f5066dee5e95da673888f647bff8894e0d52b9bd92d3d27b3e9304b1",
+    "Assets/Game/Alcatraz/Resources/Alcatraz/EnvironmentDressing/Meshes/Groundcover_-3_-3.asset.meta": "c71c036ec7e68ce07822c499d127cca2a223f0575c0929ef937a50aca46f6cc1",
+    "Assets/Game/Alcatraz/Resources/Alcatraz/EnvironmentDressing/Meshes/Groundcover_-3_-4.asset": "1cd731dca03a176cb50d36324a3a1481fa209fcf3878c795ca008d7b0adf5802",
+    "Assets/Game/Alcatraz/Resources/Alcatraz/EnvironmentDressing/Meshes/Groundcover_-3_-4.asset.meta": "0e4d91bf357220e8532baf005f9569e9cc605e71883e9be3016669632d335db1",
+    "Assets/Game/Alcatraz/Resources/Alcatraz/EnvironmentDressing/Meshes/Groundcover_-3_3.asset": "95a6c682e519f17d024afa2e1e4bab8782b0d1e4ae8fa7bbf8473c2d70f58b64",
+    "Assets/Game/Alcatraz/Resources/Alcatraz/EnvironmentDressing/Meshes/Groundcover_-3_3.asset.meta": "3f8f7183dfef8646292a198b049476075350a80f321eb374164408fbb35ab820",
+    "Assets/Game/Alcatraz/Resources/Alcatraz/EnvironmentDressing/Meshes/Groundcover_-4_-4.asset": "3d050e0b17801191646a83ce45e561316916ebbeed0530d366657ea9c6b81297",
+    "Assets/Game/Alcatraz/Resources/Alcatraz/EnvironmentDressing/Meshes/Groundcover_-4_-4.asset.meta": "e4c2700b3a2ae6ccdcbe490e1d4423c610a0e984fd8d63ed497efa1db9f5a168",
+    "Assets/Game/Alcatraz/Resources/Alcatraz/EnvironmentDressing/Meshes/Groundcover_-6_-2.asset": "0819850e7d5a7df569ff7b114db90d9ab2474c8a2ceb9c07806be13cfa79ab88",
+    "Assets/Game/Alcatraz/Resources/Alcatraz/EnvironmentDressing/Meshes/Groundcover_-6_-2.asset.meta": "f474aed533944a321f662fadcdc2f88fbc129273124b6673f334bf4a6b201242",
+    "Assets/Game/Alcatraz/Resources/Alcatraz/EnvironmentDressing/Meshes/Groundcover_-6_1.asset": "19f30ae3c84d5dfc74a7a896840cda1aa92a98c1741beafd6941b43e01fd8751",
+    "Assets/Game/Alcatraz/Resources/Alcatraz/EnvironmentDressing/Meshes/Groundcover_-6_1.asset.meta": "a1cc856f840d6bd7a69cb339799ac65f72fc5f8f156bd317d40f2948c9d9fe8c",
+    "Assets/Game/Alcatraz/Resources/Alcatraz/EnvironmentDressing/Meshes/Groundcover_-7_-1.asset": "1eda3e670031c49bb1a5d30074211b8b6e8592bba8fbe58511c800627fca46ee",
+    "Assets/Game/Alcatraz/Resources/Alcatraz/EnvironmentDressing/Meshes/Groundcover_-7_-1.asset.meta": "6b6eda264b4b6d5aa430a4d9f8e32570f5951a043ab62f2dd14d25f19741cdfa",
+    "Assets/Game/Alcatraz/Resources/Alcatraz/EnvironmentDressing/Meshes/Groundcover_-7_-2.asset": "23a32ce074f8218c12b4374ddbae81d6f0fc0cd84f057fddcc359a65e509659b",
+    "Assets/Game/Alcatraz/Resources/Alcatraz/EnvironmentDressing/Meshes/Groundcover_-7_-2.asset.meta": "2671bdca8eba28deb1a61ce21e4e60a1b1d1205df27d1683dbb65fc1f3781148",
+    "Assets/Game/Alcatraz/Resources/Alcatraz/EnvironmentDressing/Meshes/Groundcover_-7_0.asset": "f2a673270349e2c45b3c31f047284bdef3f70233b3c9cad4028f3253aac1590b",
+    "Assets/Game/Alcatraz/Resources/Alcatraz/EnvironmentDressing/Meshes/Groundcover_-7_0.asset.meta": "909bd445ae06c1ee0281159139b000714c4d938ed676a5f399f558f9791849dc",
+    "Assets/Game/Alcatraz/Resources/Alcatraz/EnvironmentDressing/Meshes/Groundcover_-7_2.asset": "9b2b4736132c154a3d3e2793eacd33f3e67ff17958ae5a9857e0e013fa43d901",
+    "Assets/Game/Alcatraz/Resources/Alcatraz/EnvironmentDressing/Meshes/Groundcover_-7_2.asset.meta": "9292b13715e32f6e337c70eb819b8ff52ea9ab90a2eb712d4364187ede83bcbf",
+    "Assets/Game/Alcatraz/Resources/Alcatraz/EnvironmentDressing/Meshes/Groundcover_-8_-1.asset": "04ce3510bdea4b5ad79cf3f00b70033aa057618e4a6f22ce351127ba2e4c8a55",
+    "Assets/Game/Alcatraz/Resources/Alcatraz/EnvironmentDressing/Meshes/Groundcover_-8_-1.asset.meta": "232e7f963e5870a70c2d865263c1ddd86c860edf2f2184552cf1fa6dfc231fa4",
+    "Assets/Game/Alcatraz/Resources/Alcatraz/EnvironmentDressing/Meshes/Groundcover_-8_-2.asset": "52189bb771cd776e2d5510f39ebc178131c92799f06bd6129cd6e86511756303",
+    "Assets/Game/Alcatraz/Resources/Alcatraz/EnvironmentDressing/Meshes/Groundcover_-8_-2.asset.meta": "6840dd4997d8aad8468ed5e272ef47ba3428847c33badccbc2248b3833546d68",
+    "Assets/Game/Alcatraz/Resources/Alcatraz/EnvironmentDressing/Meshes/Groundcover_-8_1.asset": "60916d599598baaa21d93d9343b07408392ea89676a60e6ac495c0a0860737e9",
+    "Assets/Game/Alcatraz/Resources/Alcatraz/EnvironmentDressing/Meshes/Groundcover_-8_1.asset.meta": "9dfe19f6128d16a07c7f8dabece1f6ac39dde98980d8f861d70bec2d57d62320",
+    "Assets/Game/Alcatraz/Resources/Alcatraz/EnvironmentDressing/Meshes/Groundcover_0_-2.asset": "c9fc6b425d8a2affab5ce9174e38b18450e7d71aeb4ab06d27de575e0fa2c1b8",
+    "Assets/Game/Alcatraz/Resources/Alcatraz/EnvironmentDressing/Meshes/Groundcover_0_-2.asset.meta": "0a8c4fdc090685ba78a6314ec9d5668fc50da6c3e1706a8ed5be8a225e8e374a",
+    "Assets/Game/Alcatraz/Resources/Alcatraz/EnvironmentDressing/Meshes/Groundcover_0_1.asset": "7fac22bdf739bb9a99c680fddb38a1ef50a67e02dda68c74424869c166530293",
+    "Assets/Game/Alcatraz/Resources/Alcatraz/EnvironmentDressing/Meshes/Groundcover_0_1.asset.meta": "2ae1a9e310c409ea7556874c5c17ca8f89d33148161f8ffc9694f3b3b7995cda",
+    "Assets/Game/Alcatraz/Resources/Alcatraz/EnvironmentDressing/Meshes/Groundcover_0_2.asset": "009c03811143b0797c6091566b3f971dc68e40e9b4a98cb45e7efa7d9d66c4c2",
+    "Assets/Game/Alcatraz/Resources/Alcatraz/EnvironmentDressing/Meshes/Groundcover_0_2.asset.meta": "1c54f34a3b1494c108aae733621a23307a116f9bc484067174869ed50beccf98",
+    "Assets/Game/Alcatraz/Resources/Alcatraz/EnvironmentDressing/Meshes/Groundcover_1_-1.asset": "4687885765ebd906fdb15518d07a9b74cd616d61fdcebd11a9ec2b5890b27d11",
+    "Assets/Game/Alcatraz/Resources/Alcatraz/EnvironmentDressing/Meshes/Groundcover_1_-1.asset.meta": "6917f08ee9c84ccd0f563b9663abfea462c789f9e7e62c7098c7ce2c76bf910d",
+    "Assets/Game/Alcatraz/Resources/Alcatraz/EnvironmentDressing/Meshes/Groundcover_1_-2.asset": "69db44b1c5fc7776da650c21c2417f9daf6826d799ede728b2e90ff76df5f098",
+    "Assets/Game/Alcatraz/Resources/Alcatraz/EnvironmentDressing/Meshes/Groundcover_1_-2.asset.meta": "db8f1cb80ee0c15c4e701454f7c6b705e596768eeed3363d74ab030e5d00eb5a",
+    "Assets/Game/Alcatraz/Resources/Alcatraz/EnvironmentDressing/Meshes/Groundcover_1_-3.asset": "97acc33ea58dd976ca0ddc66340fb9ffdb0930c3936a1b8b7f557b53d766f81c",
+    "Assets/Game/Alcatraz/Resources/Alcatraz/EnvironmentDressing/Meshes/Groundcover_1_-3.asset.meta": "076a73fe8fcf8ef8d11c4a13ed1d8b042507f01a47607e2423fd2474b50e9e42",
+    "Assets/Game/Alcatraz/Resources/Alcatraz/EnvironmentDressing/Meshes/Groundcover_1_2.asset": "a0b0801a29c4af672c302ad5f9b7810117e6e34d315034a251ff19edb48cab35",
+    "Assets/Game/Alcatraz/Resources/Alcatraz/EnvironmentDressing/Meshes/Groundcover_1_2.asset.meta": "dafd4a52de523a40ad448145f7e2e9ce0e758c1c819fba71312290730500cf6b",
+    "Assets/Game/Alcatraz/Resources/Alcatraz/EnvironmentDressing/Meshes/Groundcover_1_3.asset": "828040d99bd7eb495c6e72ad7eaa6cf152701dea7984ad911c8dc3bdf6e1d0c9",
+    "Assets/Game/Alcatraz/Resources/Alcatraz/EnvironmentDressing/Meshes/Groundcover_1_3.asset.meta": "c8e26f0de4c042136d4aefa18971c3e372718966164e292fca08c1a28e9ff026",
+    "Assets/Game/Alcatraz/Resources/Alcatraz/EnvironmentDressing/Meshes/Groundcover_2_-1.asset": "34cd60e329f7ee5b6d8d861764569b4c9226b9df67a2fd319337c0ba494fd988",
+    "Assets/Game/Alcatraz/Resources/Alcatraz/EnvironmentDressing/Meshes/Groundcover_2_-1.asset.meta": "39411cc0cefa1b343427863470dfafc893938ab7041aecce91115df4bc3cd34e",
+    "Assets/Game/Alcatraz/Resources/Alcatraz/EnvironmentDressing/Meshes/Groundcover_2_-2.asset": "0f7ae94bef7f8f3817f1f8ce672c3369b96131af5e0a0309c96e7944cb2bb8b5",
+    "Assets/Game/Alcatraz/Resources/Alcatraz/EnvironmentDressing/Meshes/Groundcover_2_-2.asset.meta": "3d1d7e3953f313db50f82e3694f9e237493bdb99ec4d234652c3002583441c41",
+    "Assets/Game/Alcatraz/Resources/Alcatraz/EnvironmentDressing/Meshes/Groundcover_3_-1.asset": "183c4a87b0f025330b3c72850fda9e01601904b380bdbf6418dd58c7cee81841",
+    "Assets/Game/Alcatraz/Resources/Alcatraz/EnvironmentDressing/Meshes/Groundcover_3_-1.asset.meta": "17aeadc2096704130f9060ad5506c2a6ed426c6e2ca2a7c830b50828d5c5909c",
+    "Assets/Game/Alcatraz/Resources/Alcatraz/EnvironmentDressing/Meshes/Groundcover_3_1.asset": "1ecc0e9283ff84c5105f1c2b5f5e45d5c7cad3ffc156ef18994dd1259f391034",
+    "Assets/Game/Alcatraz/Resources/Alcatraz/EnvironmentDressing/Meshes/Groundcover_3_1.asset.meta": "17147405a3876bc74c562905440aa972bf5fda97df4a0efeed034a0accf458f1",
+    "Assets/Game/Alcatraz/Resources/Alcatraz/EnvironmentDressing/Meshes/Groundcover_4_-2.asset": "2ff860adaccebcd34889ea83c7bd4c58ad147b22aec87499a54e8e4989d0562d",
+    "Assets/Game/Alcatraz/Resources/Alcatraz/EnvironmentDressing/Meshes/Groundcover_4_-2.asset.meta": "f51f9097fb9693ec3275b06f5d440a136b92f1dc05fbbedc032b2c83d96aa0f8",
+    "Assets/Game/Alcatraz/Resources/Alcatraz/EnvironmentDressing/Meshes/Groundcover_4_0.asset": "34157518ec3c4c0d243821bebc18adce7380adb9165b38127e69ed06bfc49c39",
+    "Assets/Game/Alcatraz/Resources/Alcatraz/EnvironmentDressing/Meshes/Groundcover_4_0.asset.meta": "85ce0ec00cb51509bb8fa188cf05834f5d5056b76097d8f51e2ad7370697f401",
+    "Assets/Game/Alcatraz/Resources/Alcatraz/EnvironmentDressing/Meshes/Groundcover_5_-2.asset": "5525f9372c74553967627ae399f9fcb83c51e7ea9aab68c4f93a5bfdfdc526bf",
+    "Assets/Game/Alcatraz/Resources/Alcatraz/EnvironmentDressing/Meshes/Groundcover_5_-2.asset.meta": "cea2707586739975a40fd4fa9dd8c0a9367a46a6096ff5aac3f6eaef98371d4c",
+    "Assets/Game/Alcatraz/Resources/Alcatraz/EnvironmentDressing/Meshes/Groundcover_5_0.asset": "93c4122c4bdbcd2ca15455fed5d14fab5a87761ead81b5cd4d0db325948a342b",
+    "Assets/Game/Alcatraz/Resources/Alcatraz/EnvironmentDressing/Meshes/Groundcover_5_0.asset.meta": "e6d9422b621d3a0b979c3745a774febc09cf78b4d141e5b45f92c5ef1df127d9",
+    "Assets/Game/Alcatraz/Resources/Alcatraz/EnvironmentDressing/Meshes/Groundcover_6_1.asset": "69782412654beb9c68eb3b74d4e652f5745a649d2cf222b6a22eca0d587e331f",
+    "Assets/Game/Alcatraz/Resources/Alcatraz/EnvironmentDressing/Meshes/Groundcover_6_1.asset.meta": "c381ed5694b82e8de83f3ddbe474615aa557f89107befea45ea289b6c9733fee",
+    "Assets/Game/Alcatraz/Resources/Alcatraz/EnvironmentDressing/SuppliedGroundCover.prefab": "553321f57baab4e73ded6c8369f9a338394c48c1c418b125dd16c71ecd6660c1",
+    "Assets/Game/Alcatraz/Resources/Alcatraz/EnvironmentDressing/SuppliedGroundCover.prefab.meta": "45117a25557ee360c51ea274658eda6aed9574d968390065be1d4d8bfc520242",
+    "Assets/Game/Alcatraz/Resources/Alcatraz/MarineSky.mat": "6fedd067c7fc613c5f879a561dbdd8e575e792d890ab3dd574b95968239a4cff",
+    "Assets/Game/Alcatraz/Resources/Alcatraz/SurfaceDetails.meta": "19377164cc23ce12377b4f55b3c25b8b953a903ea6220d77ad06683140cd4cd8",
+    "Assets/Game/Alcatraz/Resources/Alcatraz/SurfaceDetails/DockTimber.mat": "a7f7e87ab7103ab0547e4f080bbd301851a33df2ae137da57d4923a5250b0319",
+    "Assets/Game/Alcatraz/Resources/Alcatraz/SurfaceDetails/DockTimber.mat.meta": "81b8931f470c2cbdaa2742eff1bf395b179c17d82bf4c0c1a62a3714ab7fa5c0",
+    "Assets/Game/Alcatraz/Resources/Alcatraz/SurfaceDetails/HelipadConcrete.mat": "d5fb59eb91a60fab37f96c82f3afdb193c94065fa1c52895cfa2490edf81ee5c",
+    "Assets/Game/Alcatraz/Resources/Alcatraz/SurfaceDetails/HelipadConcrete.mat.meta": "2e45acffaf65685274c0a85e1a5980709c63c57c2d270bc9b9e504cc7e92c76b",
+    "Assets/Game/Alcatraz/Resources/Alcatraz/SurfaceDetails/IslandSurface.mat": "e8caf85546071a0f8b6ca33aa76754037dc2ffd67348173ec0d6175ca237359b",
+    "Assets/Game/Alcatraz/Resources/Alcatraz/SurfaceDetails/IslandSurface.mat.meta": "37fe9aeabbdc150eee04bc88fc7d565e5fb173eb53919015ef3ff0eaa2077ec9",
+    "Assets/Game/Alcatraz/Scripts/AlcatrazEnvironmentDetails.cs": "66e51951190cbfe4049166d3b5c1b877d38525ca7c6074dc588d8dd995a3b152",
+    "Assets/Game/Alcatraz/Scripts/AlcatrazEnvironmentDetails.cs.meta": "abbf4920a311b4f54a495683527eac4dc1e55ffe1522c37620eb70d4729c8c38",
+    "Assets/Game/Alcatraz/Scripts/AlcatrazPresentation.cs": "dc272857abb5eedc0ef71e33efc6906f02fa85ad5a1587a9e369b3992b61b2d0",
+    "Assets/Game/Alcatraz/Shaders/MarineSky.shader": "cded6cc23c781457fe4fa17b198032b13451b5fa697e02ba4c32529024ae0773",
+    "Assets/Game/Shaders/IslandSurfaceDetail.shader": "8796946e26e0f94c89aef886a38d5a4666f44133e5c7f72208793137071c759e",
+    "Assets/Game/Shaders/IslandSurfaceDetail.shader.meta": "83c71d701833410a966d13e18adbf3214494eacb3b801e6f49ebdddbe589504c",
+    "Assets/Game/Supplied/Scripts/SuppliedIslandWorld.cs": "9b142547702fd0176a39b94c61b2b4d39f57324076b45af5f9d4457979c629ae",
+    "Tools/author_environment_dressing.py": "8b5e8440e14ae113bf8b7ae0779c29ab01af5eee9aa12ff0cf79811a161fedce",
+    "Tools/author_surface_detail_materials.py": "17e6cc419d29d795cc9be0b9f06c4d5b70f5a5381555ed36bbd43a4c66d637e5",
+    "Tools/run_source_checks.py": "7a9690ff4c886f8c3e82996b85f925656356dc295a400517d7cd4030545675af",
+    "Tools/validate_environment_quality.py": "abac1642da4de97dc9822794167355f2da9fc1c97a75cffb816477c5ba325070"
+  },
+  "unchanged_original_scan_sha256": {
+    "Assets/Game/Supplied/Resources/AlcatrazSupplied/Island/Island_Texture_00.jpg": "664dd6fab6f31f4b182f3ae22ce994a027ff1abb6a0abc920411b73329723fa4",
+    "Assets/Game/Supplied/Resources/AlcatrazSupplied/Baked/Island.prefab": "03caa828799c013783cf8b043fa11a5414abb5c9a1d3086f9c031fa09c6a7913",
+    "Assets/Game/Supplied/Resources/AlcatrazSupplied/Baked/Materials/Island_0.mat": "f8bb72718a5bc08303677a4d7fe6c852d9a0cb48eb23a32cca0273f3bda59389",
+    "Assets/Game/Supplied/Resources/AlcatrazSupplied/Baked/Meshes/Island_0_0.asset": "b98dbbfb0f8881cade102f580b8f145a6b7953dd2727a9901b88334289692436",
+    "Assets/Game/Supplied/Resources/AlcatrazSupplied/Baked/Meshes/Island_0_1.asset": "d0ff3df33f95081c3a7b0f64b24f812c6fe8e6ef8d08fca5b85b2335ae59f099",
+    "Assets/Game/Supplied/Resources/AlcatrazSupplied/Baked/Meshes/Island_0_10.asset": "a6466aa32d02d2741086b16d3bb88f865aae1e908fbf8c9ea5fd81f3df00ea57",
+    "Assets/Game/Supplied/Resources/AlcatrazSupplied/Baked/Meshes/Island_0_2.asset": "19eda43a9b05be0faf30092b131b9cb914c769cfbb5c4e71ed31993ede6cd7ae",
+    "Assets/Game/Supplied/Resources/AlcatrazSupplied/Baked/Meshes/Island_0_3.asset": "8ee0233665dee7c8562c9a00c211ca6d84ee5b0f6d078d5541455cf4e832b47c",
+    "Assets/Game/Supplied/Resources/AlcatrazSupplied/Baked/Meshes/Island_0_4.asset": "d4867750b2d1cf9bb13b2c68eaa199a9098b3fc19f19039c64cc0ddaef7a84bc",
+    "Assets/Game/Supplied/Resources/AlcatrazSupplied/Baked/Meshes/Island_0_5.asset": "fd06304f78db24f8beab62969df1d779eda765c4d9694e754f5c53ef216b4fe1",
+    "Assets/Game/Supplied/Resources/AlcatrazSupplied/Baked/Meshes/Island_0_6.asset": "a27f3dc3873b1be4983a65b4048592289a27c5ad0a55f2235ce623f10d1625a3",
+    "Assets/Game/Supplied/Resources/AlcatrazSupplied/Baked/Meshes/Island_0_7.asset": "a507640e2b4028816fbc6e052b97cd05ec1c7f77bc0b462c1ad5ff15e67e725a",
+    "Assets/Game/Supplied/Resources/AlcatrazSupplied/Baked/Meshes/Island_0_8.asset": "91f145fce68899e90fb5e79c57b055e69c28b5eb18f42fa63101f21c696e6843",
+    "Assets/Game/Supplied/Resources/AlcatrazSupplied/Baked/Meshes/Island_0_9.asset": "58cdf1a51fd66039eb9a2f4d4bab9cc9794efd98c8fc111ae73d388049244b12"
+  },
+  "shader_review": {
+    "api_reference_branch": "Unity-Technologies/Graphics 6000.0/staging",
+    "randomized_neutral_projection_directions_checked": 100000,
+    "neutral_normal_max_error": 3.33e-16,
+    "ground_mask_cases_checked": [
+      "pale neutral ground enabled",
+      "vertical walls preserved",
+      "dark asphalt preserved",
+      "saturated green preserved",
+      "detail ends at120m"
+    ],
+    "unity_shader_compilation_verified": false
+  },
+  "offline_previews": {
+    "tool": "Tools/render_environment_quality_preview.py",
+    "tool_sha256": "92ec672029e20ea71a8d6c05ca756d41955aabeccb027eff3b873cff1723642c",
+    "renderer": "Independent EGL/GLSL material study using actual native mesh and original texture inputs",
+    "original_island_atlas_dimensions": [
+      8192,
+      8192
+    ],
+    "same_before_after_cameras": true,
+    "same_before_after_lighting": true,
+    "files": [
+      "Documentation/EnvironmentQualityPreviews/SurfaceBeforeAfter.png",
+      "Documentation/EnvironmentQualityPreviews/HelipadBeforeAfter.png"
+    ],
+    "unity_capture": false,
+    "ssao_shadows_gi_physics_reproduced": false
+  },
+  "unity_play_mode_fixture": "Alcatraz > Validate Map Surface Detail (Play Mode); also included in Run All Gameplay Checks",
+  "unity_api_compilation_verified": false,
+  "unity_import_verified": false,
+  "unity_rendered_quality_verified": false,
+  "live_gameplay_verified": false,
+  "gpu_performance_verified": false,
+  "player_build_produced": false,
+  "reference_visual_parity_verified": false,
+  "limitations": [
+    "The supplied scan retains its original coarse geometry and blurred baked features. Material resurfacing cannot reconstruct missing architecture or landscape silhouettes.",
+    "Ground and grass classification are conservative heuristics, requiring live visual inspection of streets, roofs, water, entrances and actor routes.",
+    "Offline material studies approximate lighting; they do not reproduce Unity URP output or prove shader compilation, player visibility, collision behavior or frame rate.",
+    "A licensed Unity editor and target PC are required for the documented rendered gameplay, source integration fixture and performance checks."
+  ]
+}

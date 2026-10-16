@@ -17,7 +17,7 @@ Material:
   m_EnableInstancingVariants: 1
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: -1
-  stringTagMap: {RenderType: Opaque}
+  stringTagMap: {RenderType: Background}
   disabledShaderPasses: []
   m_LockedProperties: 
   m_SavedProperties:
@@ -49,6 +49,7 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
+    - _CloudCoverage: 0.52
     - _WorkflowMode: 1
     - _Surface: 0
     - _Blend: 0
@@ -69,8 +70,13 @@ Material:
     - _EnvironmentReflections: 1
     - _QueueOffset: 0
     m_Colors:
-    - _BaseColor: {r: 0.68, g: 0.79, b: 0.86, a: 1}
-    - _Color: {r: 0.68, g: 0.79, b: 0.86, a: 1}
+    - _BaseColor: {r: 0.76, g: 0.79, b: 0.77, a: 1}
+    - _ZenithColor: {r: 0.28, g: 0.48, b: 0.67, a: 1}
+    - _CloudColor: {r: 0.96, g: 0.93, b: 0.84, a: 1}
+    - _CloudShadowColor: {r: 0.50, g: 0.58, b: 0.65, a: 1}
+    - _SunColor: {r: 1, g: 0.86, b: 0.65, a: 1}
+    - _SunDirection: {r: 0.398, g: 0.530, b: -0.748, a: 0}
+    - _Color: {r: 0.76, g: 0.79, b: 0.77, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _SpecColor: {r: 0.2, g: 0.2, b: 0.2, a: 1}
   m_BuildTextureStacks: []
