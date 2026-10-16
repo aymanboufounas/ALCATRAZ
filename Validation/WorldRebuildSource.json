@@ -1,13 +1,13 @@
 {
   "status": "PASS",
-  "checks": 11911,
+  "checks": 16679,
   "errors": [],
-  "scope": "Sequential deterministic author checks, native buffers, material/resource dependencies, source provenance, court plane contacts, gate clearance and runtime source integration.",
+  "scope": "Sequential deterministic author checks, native buffers/materials, source provenance and retained fragments, court contacts, actual window-instance rays, closed roof volume/membrane and its one declared runtime support box.",
   "regeneration": [
     {
       "script": "Tools/author_prison_architecture.py",
       "exit_code": 0,
-      "output": "{\n  \"status\": \"PASS\",\n  \"check_only\": true,\n  \"module_count\": 7,\n  \"triangles_all_modules\": 6018,\n  \"vertices_all_modules\": 18054,\n  \"files\": 102,\n  \"colliders\": 0,\n  \"unity_runtime_verified\": false\n}\n"
+      "output": "{\n  \"status\": \"PASS\",\n  \"check_only\": true,\n  \"module_count\": 10,\n  \"triangles_all_modules\": 7014,\n  \"vertices_all_modules\": 21042,\n  \"files\": 132,\n  \"colliders\": 0,\n  \"unity_runtime_verified\": false\n}\n"
     },
     {
       "script": "Tools/author_coastal_vegetation.py",
@@ -22,16 +22,16 @@
     {
       "script": "Tools/author_facade_rebuild.py",
       "exit_code": 0,
-      "output": "{\n  \"status\": \"PASS\",\n  \"mode\": \"check\",\n  \"patches\": 2,\n  \"replaced_area_m2\": 182.98830710711516,\n  \"visual_chunks\": 2,\n  \"facade_triangles\": 7764,\n  \"facade_renderers\": 7,\n  \"colliders_added\": 0,\n  \"output_files\": 26\n}\n"
+      "output": "{\n  \"status\": \"PASS\",\n  \"mode\": \"check\",\n  \"patches\": 5,\n  \"replaced_area_m2\": 807.9783312911562,\n  \"visual_chunks\": 3,\n  \"facade_triangles\": 28880,\n  \"facade_renderers\": 24,\n  \"colliders_added\": 1,\n  \"output_files\": 62\n}\n"
     }
   ],
   "native_assets": {
     "ArchitectureKit": {
-      "native_meshes": 34,
-      "vertices": 18054,
-      "stored_triangles": 6018,
-      "prefabs": 7,
-      "materials": 7,
+      "native_meshes": 44,
+      "vertices": 21042,
+      "stored_triangles": 7014,
+      "prefabs": 10,
+      "materials": 9,
       "colliders_added": 0
     },
     "CoastalVegetation": {
@@ -51,9 +51,9 @@
       "colliders_added": 0
     },
     "FacadeRebuild": {
-      "native_meshes": 9,
-      "vertices": 142467,
-      "stored_triangles": 47893,
+      "native_meshes": 27,
+      "vertices": 266040,
+      "stored_triangles": 88944,
       "prefabs": 1,
       "materials": 0,
       "colliders_added": 0
@@ -65,14 +65,17 @@
     "surface_area_m2": 826.482162
   },
   "facades": {
-    "patches": 2,
-    "replaced_projected_area_m2": 182.98830710711516,
-    "footprint_area_m2": 105.0,
-    "visual_replacement_chunks": 2,
-    "facade_triangles": 7764,
+    "patches": 5,
+    "replaced_projected_area_m2": 807.9783312911562,
+    "footprint_area_m2": 358.9650000000002,
+    "visual_replacement_chunks": 3,
+    "facade_triangles": 28880,
     "gate_clearance_xz_metres": {
       "retaining_east": 32.63036337191662,
-      "south_tower_face": 42.189891488896265
+      "south_tower_face": 42.129389248748126,
+      "east_tower_return": 32.02138439084228,
+      "north_tower_return": 29.247401949147623,
+      "west_tower_step": 40.383945239786975
     },
     "independent_native_wall_support": [
       {
@@ -85,21 +88,47 @@
       },
       {
         "patch": "south_tower_face",
-        "samples": 1008,
-        "covered_samples": 1008,
-        "coverage_fraction": 1.0,
-        "minimum_fraction": 0.995,
+        "samples": 1092,
+        "covered_samples": 1084,
+        "coverage_fraction": 0.9926739926739927,
+        "minimum_fraction": 0.98,
+        "scope": "Original front-facing near-vertical wall triangles within +/-1.5 m of the new plane; this measures background support, not exact visual/collider alignment."
+      },
+      {
+        "patch": "east_tower_return",
+        "samples": 2268,
+        "covered_samples": 1979,
+        "coverage_fraction": 0.8725749559082893,
+        "minimum_fraction": 0.85,
+        "scope": "Original front-facing near-vertical wall triangles within +/-1.5 m of the new plane; this measures background support, not exact visual/collider alignment."
+      },
+      {
+        "patch": "north_tower_return",
+        "samples": 1092,
+        "covered_samples": 1042,
+        "coverage_fraction": 0.9542124542124543,
+        "minimum_fraction": 0.95,
+        "scope": "Original front-facing near-vertical wall triangles within +/-1.5 m of the new plane; this measures background support, not exact visual/collider alignment."
+      },
+      {
+        "patch": "west_tower_step",
+        "samples": 294,
+        "covered_samples": 262,
+        "coverage_fraction": 0.891156462585034,
+        "minimum_fraction": 0.83,
         "scope": "Original front-facing near-vertical wall triangles within +/-1.5 m of the new plane; this measures background support, not exact visual/collider alignment."
       }
     ],
-    "independent_native_aperture_rays": 54,
+    "independent_native_aperture_rays": 216,
     "old_scan_aperture_occluders": 0,
     "aperture_rays_by_patch": {
-      "south_tower_face": 54
+      "south_tower_face": 54,
+      "east_tower_return": 108,
+      "north_tower_return": 54
     },
     "aperture_ray_scope": "Front-facing scan triangles between the actual glass pane and each patch's declared ahead clipping depth; native structures beyond that local volume remain authoritative.",
     "oblique_sightlines": {
-      "rays": 162,
+      "rays": 648,
       "elevation_slopes": [
         0,
         0.35,
@@ -107,13 +136,47 @@
       ],
       "range_metres": 4,
       "local_prism_occluded": 0,
-      "foreground_occluded_within_4m": 5,
+      "foreground_occluded_within_4m": 45,
       "by_patch_and_row": {
         "south_tower_face": {
           "0": {
             "rays": 54,
             "locally_occluded": 0,
-            "foreground_occluded": 5
+            "foreground_occluded": 4
+          },
+          "1": {
+            "rays": 54,
+            "locally_occluded": 0,
+            "foreground_occluded": 0
+          },
+          "2": {
+            "rays": 54,
+            "locally_occluded": 0,
+            "foreground_occluded": 0
+          }
+        },
+        "east_tower_return": {
+          "0": {
+            "rays": 108,
+            "locally_occluded": 0,
+            "foreground_occluded": 26
+          },
+          "1": {
+            "rays": 108,
+            "locally_occluded": 0,
+            "foreground_occluded": 1
+          },
+          "2": {
+            "rays": 108,
+            "locally_occluded": 0,
+            "foreground_occluded": 0
+          }
+        },
+        "north_tower_return": {
+          "0": {
+            "rays": 54,
+            "locally_occluded": 0,
+            "foreground_occluded": 14
           },
           "1": {
             "rays": 54,
@@ -134,52 +197,23 @@
           "column": 0,
           "local_xy": [
             -0.4,
-            1.3
-          ],
-          "camera_elevation_slope": 0.7,
-          "ray_start_world": [
-            -110.70499885988265,
-            49.8,
-            -19.70998153171909
-          ],
-          "scan_hits_within_4m": [
-            {
-              "source_mesh": "Island_0_7",
-              "native_triangle": 19994,
-              "distance_metres": 1.4800669856222586,
-              "point": [
-                -110.95955334583866,
-                50.648762683389705,
-                -20.895478137742803
-              ],
-              "inside_rebuild_prism": false,
-              "near_horizontal_surface": false
-            }
-          ]
-        },
-        {
-          "patch": "south_tower_face",
-          "row": 0,
-          "column": 0,
-          "local_xy": [
-            -0.4,
             1.97
           ],
           "camera_elevation_slope": 0.35,
           "ray_start_world": [
-            -110.70499885988265,
+            -110.85165604223587,
             50.47,
-            -19.70998153171909
+            -19.678490725692324
           ],
           "scan_hits_within_4m": [
             {
               "source_mesh": "Island_0_7",
-              "native_triangle": 19840,
-              "distance_metres": 2.970915699742074,
+              "native_triangle": 19826,
+              "distance_metres": 3.033852889216626,
               "point": [
-                -111.29369294424461,
-                51.45144326324119,
-                -22.45161398174766
+                -111.45282128191647,
+                51.4722345905153,
+                -22.478203127633364
               ],
               "inside_rebuild_prism": false,
               "near_horizontal_surface": true
@@ -196,19 +230,19 @@
           ],
           "camera_elevation_slope": 0.7,
           "ray_start_world": [
-            -110.11837013046978,
+            -110.26502731282301,
             49.8,
-            -19.835944755826148
+            -19.80445394979938
           ],
           "scan_hits_within_4m": [
             {
               "source_mesh": "Island_0_7",
-              "native_triangle": 19842,
-              "distance_metres": 2.7697323469142376,
+              "native_triangle": 19826,
+              "distance_metres": 2.814163150404257,
               "point": [
-                -110.5947322145197,
-                51.388337204920376,
-                -22.054431032972882
+                -110.74903098367466,
+                51.41381659765171,
+                -22.058528188337053
               ],
               "inside_rebuild_prism": false,
               "near_horizontal_surface": true
@@ -225,19 +259,19 @@
           ],
           "camera_elevation_slope": 0.35,
           "ray_start_world": [
-            -110.11837013046978,
+            -110.26502731282301,
             50.47,
-            -19.835944755826148
+            -19.80445394979938
           ],
           "scan_hits_within_4m": [
             {
               "source_mesh": "Island_0_7",
-              "native_triangle": 19841,
-              "distance_metres": 2.7197618699404296,
+              "native_triangle": 19826,
+              "distance_metres": 2.782104131318429,
               "point": [
-                -110.65729747998904,
-                51.36847448889413,
-                -22.345806412158712
+                -110.81630793122909,
+                51.38906928141886,
+                -22.37184654409054
               ],
               "inside_rebuild_prism": false,
               "near_horizontal_surface": true
@@ -254,19 +288,1304 @@
           ],
           "camera_elevation_slope": 0.35,
           "ray_start_world": [
-            -109.9228272206655,
+            -110.06948440301872,
             50.47,
-            -19.877932497195165
+            -19.846441691168398
           ],
           "scan_hits_within_4m": [
             {
               "source_mesh": "Island_0_7",
-              "native_triangle": 19842,
-              "distance_metres": 2.539956648677764,
+              "native_triangle": 19827,
+              "distance_metres": 2.6992259955134084,
               "point": [
-                -110.42612573355909,
-                51.309075757681676,
-                -22.221865571528216
+                -110.60434251967708,
+                51.361690454055,
+                -22.337352348748716
+              ],
+              "inside_rebuild_prism": false,
+              "near_horizontal_surface": true
+            }
+          ]
+        },
+        {
+          "patch": "east_tower_return",
+          "row": 0,
+          "column": 0,
+          "local_xy": [
+            -0.4,
+            1.3
+          ],
+          "camera_elevation_slope": 0.35,
+          "ray_start_world": [
+            -105.72183522363672,
+            49.8,
+            -19.66181708873984
+          ],
+          "scan_hits_within_4m": [
+            {
+              "source_mesh": "Island_0_8",
+              "native_triangle": 621,
+              "distance_metres": 2.468593137406964,
+              "point": [
+                -103.44375811359946,
+                50.61550079142327,
+                -20.150974750404284
+              ],
+              "inside_rebuild_prism": false,
+              "near_horizontal_surface": true
+            }
+          ]
+        },
+        {
+          "patch": "east_tower_return",
+          "row": 0,
+          "column": 0,
+          "local_xy": [
+            -0.4,
+            1.97
+          ],
+          "camera_elevation_slope": 0,
+          "ray_start_world": [
+            -105.72183522363672,
+            50.47,
+            -19.66181708873984
+          ],
+          "scan_hits_within_4m": [
+            {
+              "source_mesh": "Island_0_8",
+              "native_triangle": 621,
+              "distance_metres": 2.685961824238805,
+              "point": [
+                -103.09573126996226,
+                50.47,
+                -20.22570444075583
+              ],
+              "inside_rebuild_prism": false,
+              "near_horizontal_surface": true
+            }
+          ]
+        },
+        {
+          "patch": "east_tower_return",
+          "row": 0,
+          "column": 0,
+          "local_xy": [
+            0.2,
+            1.3
+          ],
+          "camera_elevation_slope": 0.35,
+          "ray_start_world": [
+            -105.59587199952966,
+            49.8,
+            -19.075188359326976
+          ],
+          "scan_hits_within_4m": [
+            {
+              "source_mesh": "Island_0_7",
+              "native_triangle": 16995,
+              "distance_metres": 2.3678923919117056,
+              "point": [
+                -103.41072395900987,
+                50.58223425737848,
+                -19.544391926309753
+              ],
+              "inside_rebuild_prism": false,
+              "near_horizontal_surface": false
+            }
+          ]
+        },
+        {
+          "patch": "east_tower_return",
+          "row": 0,
+          "column": 0,
+          "local_xy": [
+            0.2,
+            1.97
+          ],
+          "camera_elevation_slope": 0,
+          "ray_start_world": [
+            -105.59587199952966,
+            50.47,
+            -19.075188359326976
+          ],
+          "scan_hits_within_4m": [
+            {
+              "source_mesh": "Island_0_7",
+              "native_triangle": 16995,
+              "distance_metres": 2.345708732200291,
+              "point": [
+                -103.30243844429079,
+                50.47,
+                -19.567643417200355
+              ],
+              "inside_rebuild_prism": false,
+              "near_horizontal_surface": false
+            }
+          ]
+        },
+        {
+          "patch": "east_tower_return",
+          "row": 0,
+          "column": 0,
+          "local_xy": [
+            0.4,
+            1.3
+          ],
+          "camera_elevation_slope": 0.35,
+          "ray_start_world": [
+            -105.55388425816064,
+            49.8,
+            -18.879645449522688
+          ],
+          "scan_hits_within_4m": [
+            {
+              "source_mesh": "Island_0_7",
+              "native_triangle": 16995,
+              "distance_metres": 2.267348031564828,
+              "point": [
+                -103.46152097118275,
+                50.549019385233876,
+                -19.328925909916713
+              ],
+              "inside_rebuild_prism": false,
+              "near_horizontal_surface": false
+            }
+          ]
+        },
+        {
+          "patch": "east_tower_return",
+          "row": 0,
+          "column": 0,
+          "local_xy": [
+            0.4,
+            1.97
+          ],
+          "camera_elevation_slope": 0,
+          "ray_start_world": [
+            -105.55388425816064,
+            50.47,
+            -18.879645449522688
+          ],
+          "scan_hits_within_4m": [
+            {
+              "source_mesh": "Island_0_7",
+              "native_triangle": 16995,
+              "distance_metres": 2.2180323817260343,
+              "point": [
+                -103.3852817283464,
+                50.47,
+                -19.3452962994828
+              ],
+              "inside_rebuild_prism": false,
+              "near_horizontal_surface": false
+            }
+          ]
+        },
+        {
+          "patch": "east_tower_return",
+          "row": 0,
+          "column": 1,
+          "local_xy": [
+            -0.4,
+            1.3
+          ],
+          "camera_elevation_slope": 0.35,
+          "ray_start_world": [
+            -105.01591632187008,
+            49.8,
+            -16.374251917655233
+          ],
+          "scan_hits_within_4m": [
+            {
+              "source_mesh": "Island_0_7",
+              "native_triangle": 20031,
+              "distance_metres": 2.1491037298360194,
+              "point": [
+                -103.032671719976,
+                50.509957329936086,
+                -16.8001019855466
+              ],
+              "inside_rebuild_prism": false,
+              "near_horizontal_surface": true
+            },
+            {
+              "source_mesh": "Island_0_7",
+              "native_triangle": 18566,
+              "distance_metres": 3.052256731946651,
+              "point": [
+                -102.19922041129625,
+                50.80831430777779,
+                -16.97906392299317
+              ],
+              "inside_rebuild_prism": false,
+              "near_horizontal_surface": false
+            }
+          ]
+        },
+        {
+          "patch": "east_tower_return",
+          "row": 0,
+          "column": 1,
+          "local_xy": [
+            -0.4,
+            1.97
+          ],
+          "camera_elevation_slope": 0,
+          "ray_start_world": [
+            -105.01591632187008,
+            50.47,
+            -16.374251917655233
+          ],
+          "scan_hits_within_4m": [
+            {
+              "source_mesh": "Island_0_7",
+              "native_triangle": 20031,
+              "distance_metres": 2.0857776160675128,
+              "point": [
+                -102.9766212006176,
+                50.47,
+                -16.812137373138892
+              ],
+              "inside_rebuild_prism": false,
+              "near_horizontal_surface": true
+            },
+            {
+              "source_mesh": "Island_0_7",
+              "native_triangle": 18566,
+              "distance_metres": 2.8671580377388293,
+              "point": [
+                -102.21265419402904,
+                50.47,
+                -16.976179368418645
+              ],
+              "inside_rebuild_prism": false,
+              "near_horizontal_surface": false
+            }
+          ]
+        },
+        {
+          "patch": "east_tower_return",
+          "row": 0,
+          "column": 2,
+          "local_xy": [
+            -0.4,
+            1.3
+          ],
+          "camera_elevation_slope": 0.35,
+          "ray_start_world": [
+            -104.30999742010344,
+            49.8,
+            -13.08668674657062
+          ],
+          "scan_hits_within_4m": [
+            {
+              "source_mesh": "Island_0_7",
+              "native_triangle": 16164,
+              "distance_metres": 3.0204146799610703,
+              "point": [
+                -101.5226861208152,
+                50.79779527238014,
+                -13.685189172798157
+              ],
+              "inside_rebuild_prism": false,
+              "near_horizontal_surface": false
+            }
+          ]
+        },
+        {
+          "patch": "east_tower_return",
+          "row": 0,
+          "column": 2,
+          "local_xy": [
+            -0.4,
+            1.97
+          ],
+          "camera_elevation_slope": 0,
+          "ray_start_world": [
+            -104.30999742010344,
+            50.47,
+            -13.08668674657062
+          ],
+          "scan_hits_within_4m": [
+            {
+              "source_mesh": "Island_0_7",
+              "native_triangle": 16159,
+              "distance_metres": 3.7338388854836992,
+              "point": [
+                -100.65936881806401,
+                50.47,
+                -13.870564053757002
+              ],
+              "inside_rebuild_prism": false,
+              "near_horizontal_surface": false
+            }
+          ]
+        },
+        {
+          "patch": "east_tower_return",
+          "row": 0,
+          "column": 2,
+          "local_xy": [
+            -0.4,
+            1.97
+          ],
+          "camera_elevation_slope": 0.7,
+          "ray_start_world": [
+            -104.30999742010344,
+            50.47,
+            -13.08668674657062
+          ],
+          "scan_hits_within_4m": [
+            {
+              "source_mesh": "Island_0_7",
+              "native_triangle": 18502,
+              "distance_metres": 3.173602467084479,
+              "point": [
+                -101.7680212864926,
+                52.289941510851506,
+                -13.632509842744728
+              ],
+              "inside_rebuild_prism": false,
+              "near_horizontal_surface": true
+            }
+          ]
+        },
+        {
+          "patch": "east_tower_return",
+          "row": 0,
+          "column": 2,
+          "local_xy": [
+            -0.4,
+            2.6
+          ],
+          "camera_elevation_slope": 0.35,
+          "ray_start_world": [
+            -104.30999742010344,
+            51.1,
+            -13.08668674657062
+          ],
+          "scan_hits_within_4m": [
+            {
+              "source_mesh": "Island_0_7",
+              "native_triangle": 18501,
+              "distance_metres": 3.320893398362441,
+              "point": [
+                -101.24539713379221,
+                52.1970585446258,
+                -13.74472975283377
+              ],
+              "inside_rebuild_prism": false,
+              "near_horizontal_surface": true
+            }
+          ]
+        },
+        {
+          "patch": "east_tower_return",
+          "row": 0,
+          "column": 2,
+          "local_xy": [
+            0.2,
+            1.3
+          ],
+          "camera_elevation_slope": 0.35,
+          "ray_start_world": [
+            -104.18403419599639,
+            49.8,
+            -12.500058017157754
+          ],
+          "scan_hits_within_4m": [
+            {
+              "source_mesh": "Island_0_7",
+              "native_triangle": 16159,
+              "distance_metres": 3.15352280517332,
+              "point": [
+                -101.27388751787998,
+                50.841767598078775,
+                -13.124936138225694
+              ],
+              "inside_rebuild_prism": false,
+              "near_horizontal_surface": false
+            },
+            {
+              "source_mesh": "Island_0_5",
+              "native_triangle": 11582,
+              "distance_metres": 3.6031573168091042,
+              "point": [
+                -100.85895397807593,
+                50.99030454997007,
+                -13.214032297079326
+              ],
+              "inside_rebuild_prism": false,
+              "near_horizontal_surface": true
+            }
+          ]
+        },
+        {
+          "patch": "east_tower_return",
+          "row": 0,
+          "column": 2,
+          "local_xy": [
+            0.2,
+            1.3
+          ],
+          "camera_elevation_slope": 0.7,
+          "ray_start_world": [
+            -104.18403419599639,
+            49.8,
+            -12.500058017157754
+          ],
+          "scan_hits_within_4m": [
+            {
+              "source_mesh": "Island_0_7",
+              "native_triangle": 18476,
+              "distance_metres": 3.8200531602330567,
+              "point": [
+                -101.124267239312,
+                51.99065664085979,
+                -13.157063191905934
+              ],
+              "inside_rebuild_prism": false,
+              "near_horizontal_surface": false
+            }
+          ]
+        },
+        {
+          "patch": "east_tower_return",
+          "row": 0,
+          "column": 2,
+          "local_xy": [
+            0.2,
+            1.97
+          ],
+          "camera_elevation_slope": 0.7,
+          "ray_start_world": [
+            -104.18403419599639,
+            50.47,
+            -12.500058017157754
+          ],
+          "scan_hits_within_4m": [
+            {
+              "source_mesh": "Island_0_7",
+              "native_triangle": 18502,
+              "distance_metres": 3.077957378365064,
+              "point": [
+                -101.7186673842346,
+                52.235092654047634,
+                -13.029431258947094
+              ],
+              "inside_rebuild_prism": false,
+              "near_horizontal_surface": true
+            }
+          ]
+        },
+        {
+          "patch": "east_tower_return",
+          "row": 0,
+          "column": 2,
+          "local_xy": [
+            0.2,
+            2.6
+          ],
+          "camera_elevation_slope": 0,
+          "ray_start_world": [
+            -104.18403419599639,
+            51.1,
+            -12.500058017157754
+          ],
+          "scan_hits_within_4m": [
+            {
+              "source_mesh": "Island_0_7",
+              "native_triangle": 16159,
+              "distance_metres": 3.026713545380472,
+              "point": [
+                -101.22477232695762,
+                51.1,
+                -13.135482344865466
+              ],
+              "inside_rebuild_prism": false,
+              "near_horizontal_surface": false
+            }
+          ]
+        },
+        {
+          "patch": "east_tower_return",
+          "row": 0,
+          "column": 2,
+          "local_xy": [
+            0.2,
+            2.6
+          ],
+          "camera_elevation_slope": 0.35,
+          "ray_start_world": [
+            -104.18403419599639,
+            51.1,
+            -12.500058017157754
+          ],
+          "scan_hits_within_4m": [
+            {
+              "source_mesh": "Island_0_7",
+              "native_triangle": 18501,
+              "distance_metres": 3.194951020160057,
+              "point": [
+                -101.23565656485621,
+                52.15545342649537,
+                -13.13314523856822
+              ],
+              "inside_rebuild_prism": false,
+              "near_horizontal_surface": true
+            }
+          ]
+        },
+        {
+          "patch": "east_tower_return",
+          "row": 0,
+          "column": 2,
+          "local_xy": [
+            0.4,
+            1.3
+          ],
+          "camera_elevation_slope": 0.35,
+          "ray_start_world": [
+            -104.14204645462736,
+            49.8,
+            -12.304515107353463
+          ],
+          "scan_hits_within_4m": [
+            {
+              "source_mesh": "Island_0_5",
+              "native_triangle": 11582,
+              "distance_metres": 3.8805993461731445,
+              "point": [
+                -100.56093606029621,
+                51.081957642207904,
+                -13.073465192025795
+              ],
+              "inside_rebuild_prism": false,
+              "near_horizontal_surface": true
+            }
+          ]
+        },
+        {
+          "patch": "east_tower_return",
+          "row": 0,
+          "column": 2,
+          "local_xy": [
+            0.4,
+            1.3
+          ],
+          "camera_elevation_slope": 0.7,
+          "ray_start_world": [
+            -104.14204645462736,
+            49.8,
+            -12.304515107353463
+          ],
+          "scan_hits_within_4m": [
+            {
+              "source_mesh": "Island_0_7",
+              "native_triangle": 16165,
+              "distance_metres": 2.8495508366830493,
+              "point": [
+                -101.85962756521505,
+                51.43411010318674,
+                -12.794605052932793
+              ],
+              "inside_rebuild_prism": false,
+              "near_horizontal_surface": false
+            },
+            {
+              "source_mesh": "Island_0_7",
+              "native_triangle": 18476,
+              "distance_metres": 3.5549074879519957,
+              "point": [
+                -101.29465454423787,
+                51.8386055820357,
+                -12.91591827829599
+              ],
+              "inside_rebuild_prism": false,
+              "near_horizontal_surface": false
+            }
+          ]
+        },
+        {
+          "patch": "east_tower_return",
+          "row": 0,
+          "column": 2,
+          "local_xy": [
+            0.4,
+            1.97
+          ],
+          "camera_elevation_slope": 0.35,
+          "ray_start_world": [
+            -104.14204645462736,
+            50.47,
+            -12.304515107353463
+          ],
+          "scan_hits_within_4m": [
+            {
+              "source_mesh": "Island_0_7",
+              "native_triangle": 16164,
+              "distance_metres": 2.910780572942647,
+              "point": [
+                -101.4559081456928,
+                51.43157759856192,
+                -12.881293271848614
+              ],
+              "inside_rebuild_prism": false,
+              "near_horizontal_surface": false
+            }
+          ]
+        },
+        {
+          "patch": "east_tower_return",
+          "row": 0,
+          "column": 2,
+          "local_xy": [
+            0.4,
+            1.97
+          ],
+          "camera_elevation_slope": 0.7,
+          "ray_start_world": [
+            -104.14204645462736,
+            50.47,
+            -12.304515107353463
+          ],
+          "scan_hits_within_4m": [
+            {
+              "source_mesh": "Island_0_7",
+              "native_triangle": 18502,
+              "distance_metres": 3.0460756821252573,
+              "point": [
+                -101.70221608348193,
+                52.216809701779674,
+                -12.82840506434788
+              ],
+              "inside_rebuild_prism": false,
+              "near_horizontal_surface": true
+            }
+          ]
+        },
+        {
+          "patch": "east_tower_return",
+          "row": 0,
+          "column": 2,
+          "local_xy": [
+            0.4,
+            2.6
+          ],
+          "camera_elevation_slope": 0,
+          "ray_start_world": [
+            -104.14204645462736,
+            51.1,
+            -12.304515107353463
+          ],
+          "scan_hits_within_4m": [
+            {
+              "source_mesh": "Island_0_7",
+              "native_triangle": 16159,
+              "distance_metres": 2.7501531931704366,
+              "point": [
+                -101.45318166562684,
+                51.1,
+                -12.881878712353576
+              ],
+              "inside_rebuild_prism": false,
+              "near_horizontal_surface": false
+            },
+            {
+              "source_mesh": "Island_0_5",
+              "native_triangle": 11582,
+              "distance_metres": 3.5327188439064496,
+              "point": [
+                -100.6880558433378,
+                51.1,
+                -13.046169533090485
+              ],
+              "inside_rebuild_prism": false,
+              "near_horizontal_surface": true
+            }
+          ]
+        },
+        {
+          "patch": "east_tower_return",
+          "row": 0,
+          "column": 2,
+          "local_xy": [
+            0.4,
+            2.6
+          ],
+          "camera_elevation_slope": 0.35,
+          "ray_start_world": [
+            -104.14204645462736,
+            51.1,
+            -12.304515107353463
+          ],
+          "scan_hits_within_4m": [
+            {
+              "source_mesh": "Island_0_7",
+              "native_triangle": 18476,
+              "distance_metres": 3.0524877633451872,
+              "point": [
+                -101.3251373427233,
+                52.10839062909843,
+                -12.90937289211814
+              ],
+              "inside_rebuild_prism": false,
+              "near_horizontal_surface": false
+            }
+          ]
+        },
+        {
+          "patch": "east_tower_return",
+          "row": 0,
+          "column": 3,
+          "local_xy": [
+            -0.4,
+            1.97
+          ],
+          "camera_elevation_slope": 0.7,
+          "ray_start_world": [
+            -103.6040785183368,
+            50.47,
+            -9.799121575486009
+          ],
+          "scan_hits_within_4m": [
+            {
+              "source_mesh": "Island_0_5",
+              "native_triangle": 11603,
+              "distance_metres": 3.628439466112584,
+              "point": [
+                -100.69778933411418,
+                52.550773402617345,
+                -10.423171400319088
+              ],
+              "inside_rebuild_prism": false,
+              "near_horizontal_surface": true
+            }
+          ]
+        },
+        {
+          "patch": "east_tower_return",
+          "row": 0,
+          "column": 3,
+          "local_xy": [
+            0.2,
+            1.97
+          ],
+          "camera_elevation_slope": 0.7,
+          "ray_start_world": [
+            -103.47811529422975,
+            50.47,
+            -9.212492846073141
+          ],
+          "scan_hits_within_4m": [
+            {
+              "source_mesh": "Island_0_5",
+              "native_triangle": 11604,
+              "distance_metres": 3.4894826075292613,
+              "point": [
+                -100.68312707532458,
+                52.47108687672879,
+                -9.812643690623332
+              ],
+              "inside_rebuild_prism": false,
+              "near_horizontal_surface": true
+            }
+          ]
+        },
+        {
+          "patch": "east_tower_return",
+          "row": 0,
+          "column": 3,
+          "local_xy": [
+            0.4,
+            1.97
+          ],
+          "camera_elevation_slope": 0.7,
+          "ray_start_world": [
+            -103.43612755286073,
+            50.47,
+            -9.016949936268851
+          ],
+          "scan_hits_within_4m": [
+            {
+              "source_mesh": "Island_0_5",
+              "native_triangle": 11604,
+              "distance_metres": 3.443163622085114,
+              "point": [
+                -100.67823968182623,
+                52.444524682747456,
+                -9.60913444845417
+              ],
+              "inside_rebuild_prism": false,
+              "near_horizontal_surface": true
+            }
+          ]
+        },
+        {
+          "patch": "east_tower_return",
+          "row": 1,
+          "column": 1,
+          "local_xy": [
+            0.4,
+            1.3
+          ],
+          "camera_elevation_slope": 0.35,
+          "ray_start_world": [
+            -104.847965356394,
+            53.3,
+            -15.592080278438077
+          ],
+          "scan_hits_within_4m": [
+            {
+              "source_mesh": "Island_0_7",
+              "native_triangle": 19727,
+              "distance_metres": 3.004339654331077,
+              "point": [
+                -102.07548847731702,
+                54.29248488083576,
+                -16.187397399712275
+              ],
+              "inside_rebuild_prism": false,
+              "near_horizontal_surface": true
+            }
+          ]
+        },
+        {
+          "patch": "north_tower_return",
+          "row": 0,
+          "column": 0,
+          "local_xy": [
+            -0.4,
+            1.97
+          ],
+          "camera_elevation_slope": 0.7,
+          "ray_start_world": [
+            -104.19605919015444,
+            50.47,
+            -7.735605526578632
+          ],
+          "scan_hits_within_4m": [
+            {
+              "source_mesh": "Island_0_5",
+              "native_triangle": 13690,
+              "distance_metres": 3.1465010822120854,
+              "point": [
+                -103.65489722024145,
+                52.27439988714709,
+                -5.215336923840965
+              ],
+              "inside_rebuild_prism": false,
+              "near_horizontal_surface": true
+            }
+          ]
+        },
+        {
+          "patch": "north_tower_return",
+          "row": 0,
+          "column": 0,
+          "local_xy": [
+            -0.4,
+            2.6
+          ],
+          "camera_elevation_slope": 0.35,
+          "ray_start_world": [
+            -104.19605919015444,
+            51.1,
+            -7.735605526578632
+          ],
+          "scan_hits_within_4m": [
+            {
+              "source_mesh": "Island_0_5",
+              "native_triangle": 13690,
+              "distance_metres": 3.572016056724731,
+              "point": [
+                -103.4882556257442,
+                52.28001702147463,
+                -4.439263212325212
+              ],
+              "inside_rebuild_prism": false,
+              "near_horizontal_surface": true
+            }
+          ]
+        },
+        {
+          "patch": "north_tower_return",
+          "row": 0,
+          "column": 0,
+          "local_xy": [
+            0.2,
+            1.97
+          ],
+          "camera_elevation_slope": 0.7,
+          "ray_start_world": [
+            -104.78268791956731,
+            50.47,
+            -7.609642302471574
+          ],
+          "scan_hits_within_4m": [
+            {
+              "source_mesh": "Island_0_5",
+              "native_triangle": 13690,
+              "distance_metres": 3.1302406510473517,
+              "point": [
+                -104.24432255665708,
+                52.26507514217101,
+                -5.102397898061099
+              ],
+              "inside_rebuild_prism": false,
+              "near_horizontal_surface": true
+            }
+          ]
+        },
+        {
+          "patch": "north_tower_return",
+          "row": 0,
+          "column": 0,
+          "local_xy": [
+            0.2,
+            2.6
+          ],
+          "camera_elevation_slope": 0.35,
+          "ray_start_world": [
+            -104.78268791956731,
+            51.1,
+            -7.609642302471574
+          ],
+          "scan_hits_within_4m": [
+            {
+              "source_mesh": "Island_0_5",
+              "native_triangle": 13691,
+              "distance_metres": 3.5431595074677396,
+              "point": [
+                -104.0806023497283,
+                52.2704842481714,
+                -4.339929505792713
+              ],
+              "inside_rebuild_prism": false,
+              "near_horizontal_surface": true
+            }
+          ]
+        },
+        {
+          "patch": "north_tower_return",
+          "row": 0,
+          "column": 0,
+          "local_xy": [
+            0.4,
+            1.97
+          ],
+          "camera_elevation_slope": 0.7,
+          "ray_start_world": [
+            -104.9782308293716,
+            50.47,
+            -7.567654561102555
+          ],
+          "scan_hits_within_4m": [
+            {
+              "source_mesh": "Island_0_5",
+              "native_triangle": 13690,
+              "distance_metres": 3.124820507325775,
+              "point": [
+                -104.44079766879562,
+                52.261966893845646,
+                -5.0647515561344765
+              ],
+              "inside_rebuild_prism": false,
+              "near_horizontal_surface": true
+            }
+          ]
+        },
+        {
+          "patch": "north_tower_return",
+          "row": 0,
+          "column": 0,
+          "local_xy": [
+            0.4,
+            2.6
+          ],
+          "camera_elevation_slope": 0.35,
+          "ray_start_world": [
+            -104.9782308293716,
+            51.1,
+            -7.567654561102555
+          ],
+          "scan_hits_within_4m": [
+            {
+              "source_mesh": "Island_0_5",
+              "native_triangle": 13691,
+              "distance_metres": 3.5318271396837906,
+              "point": [
+                -104.27839079543816,
+                52.26674059566079,
+                -4.308399545926828
+              ],
+              "inside_rebuild_prism": false,
+              "near_horizontal_surface": true
+            }
+          ]
+        },
+        {
+          "patch": "north_tower_return",
+          "row": 0,
+          "column": 1,
+          "local_xy": [
+            -0.4,
+            1.97
+          ],
+          "camera_elevation_slope": 0.7,
+          "ray_start_world": [
+            -107.32474574702306,
+            50.47,
+            -7.063801664674325
+          ],
+          "scan_hits_within_4m": [
+            {
+              "source_mesh": "Island_0_5",
+              "native_triangle": 13694,
+              "distance_metres": 3.067757756435788,
+              "point": [
+                -106.7971267228079,
+                52.22924355494445,
+                -4.60660449475804
+              ],
+              "inside_rebuild_prism": false,
+              "near_horizontal_surface": true
+            },
+            {
+              "source_mesh": "Island_0_5",
+              "native_triangle": 12082,
+              "distance_metres": 3.326663122140708,
+              "point": [
+                -106.75259797990742,
+                52.37771603292984,
+                -4.399227777821497
+              ],
+              "inside_rebuild_prism": false,
+              "near_horizontal_surface": true
+            }
+          ]
+        },
+        {
+          "patch": "north_tower_return",
+          "row": 0,
+          "column": 1,
+          "local_xy": [
+            -0.4,
+            2.6
+          ],
+          "camera_elevation_slope": 0.35,
+          "ray_start_world": [
+            -107.32474574702306,
+            51.1,
+            -7.063801664674325
+          ],
+          "scan_hits_within_4m": [
+            {
+              "source_mesh": "Island_0_5",
+              "native_triangle": 13694,
+              "distance_metres": 3.4282958846494807,
+              "point": [
+                -106.64542068003755,
+                52.232539001587575,
+                -3.90008778128463
+              ],
+              "inside_rebuild_prism": false,
+              "near_horizontal_surface": true
+            }
+          ]
+        },
+        {
+          "patch": "north_tower_return",
+          "row": 0,
+          "column": 1,
+          "local_xy": [
+            -0.4,
+            2.6
+          ],
+          "camera_elevation_slope": 0.7,
+          "ray_start_world": [
+            -107.32474574702306,
+            51.1,
+            -7.063801664674325
+          ],
+          "scan_hits_within_4m": [
+            {
+              "source_mesh": "Island_0_5",
+              "native_triangle": 12083,
+              "distance_metres": 2.583721892944154,
+              "point": [
+                -106.88037532007567,
+                52.58166721391061,
+                -4.99430510489079
+              ],
+              "inside_rebuild_prism": false,
+              "near_horizontal_surface": true
+            }
+          ]
+        },
+        {
+          "patch": "north_tower_return",
+          "row": 0,
+          "column": 1,
+          "local_xy": [
+            0.2,
+            1.97
+          ],
+          "camera_elevation_slope": 0.7,
+          "ray_start_world": [
+            -107.91137447643592,
+            50.47,
+            -6.937838440567267
+          ],
+          "scan_hits_within_4m": [
+            {
+              "source_mesh": "Island_0_5",
+              "native_triangle": 13695,
+              "distance_metres": 3.0640401969036954,
+              "point": [
+                -107.38439482967118,
+                52.22711167453986,
+                -4.483618942777176
+              ],
+              "inside_rebuild_prism": false,
+              "near_horizontal_surface": true
+            },
+            {
+              "source_mesh": "Island_0_5",
+              "native_triangle": 12081,
+              "distance_metres": 3.3673646451007406,
+              "point": [
+                -107.33222651584569,
+                52.40105682370566,
+                -4.240663652675606
+              ],
+              "inside_rebuild_prism": false,
+              "near_horizontal_surface": true
+            }
+          ]
+        },
+        {
+          "patch": "north_tower_return",
+          "row": 0,
+          "column": 1,
+          "local_xy": [
+            0.2,
+            2.6
+          ],
+          "camera_elevation_slope": 0.35,
+          "ray_start_world": [
+            -107.91137447643592,
+            51.1,
+            -6.937838440567267
+          ],
+          "scan_hits_within_4m": [
+            {
+              "source_mesh": "Island_0_5",
+              "native_triangle": 13695,
+              "distance_metres": 3.4217999461309407,
+              "point": [
+                -107.23333659527617,
+                52.23039306553897,
+                -3.7801191654518376
+              ],
+              "inside_rebuild_prism": false,
+              "near_horizontal_surface": true
+            }
+          ]
+        },
+        {
+          "patch": "north_tower_return",
+          "row": 0,
+          "column": 1,
+          "local_xy": [
+            0.2,
+            2.6
+          ],
+          "camera_elevation_slope": 0.7,
+          "ray_start_world": [
+            -107.91137447643592,
+            51.1,
+            -6.937838440567267
+          ],
+          "scan_hits_within_4m": [
+            {
+              "source_mesh": "Island_0_5",
+              "native_triangle": 12084,
+              "distance_metres": 2.622841469325843,
+              "point": [
+                -107.46027593261721,
+                52.604100817892956,
+                -4.837008079354414
+              ],
+              "inside_rebuild_prism": false,
+              "near_horizontal_surface": true
+            }
+          ]
+        },
+        {
+          "patch": "north_tower_return",
+          "row": 0,
+          "column": 1,
+          "local_xy": [
+            0.4,
+            1.97
+          ],
+          "camera_elevation_slope": 0.7,
+          "ray_start_world": [
+            -108.10691738624021,
+            50.47,
+            -6.895850699198248
+          ],
+          "scan_hits_within_4m": [
+            {
+              "source_mesh": "Island_0_5",
+              "native_triangle": 13695,
+              "distance_metres": 3.062801045162301,
+              "point": [
+                -107.58015085931235,
+                52.22640106767722,
+                -4.442623730934214
+              ],
+              "inside_rebuild_prism": false,
+              "near_horizontal_surface": true
+            },
+            {
+              "source_mesh": "Island_0_5",
+              "native_triangle": 12081,
+              "distance_metres": 3.3593033023200936,
+              "point": [
+                -107.5291558838222,
+                52.39643394717595,
+                -4.205132845080049
+              ],
+              "inside_rebuild_prism": false,
+              "near_horizontal_surface": true
+            }
+          ]
+        },
+        {
+          "patch": "north_tower_return",
+          "row": 0,
+          "column": 1,
+          "local_xy": [
+            0.4,
+            2.6
+          ],
+          "camera_elevation_slope": 0.35,
+          "ray_start_world": [
+            -108.10691738624021,
+            51.1,
+            -6.895850699198248
+          ],
+          "scan_hits_within_4m": [
+            {
+              "source_mesh": "Island_0_5",
+              "native_triangle": 13695,
+              "distance_metres": 3.4196346771822808,
+              "point": [
+                -107.4293085583253,
+                52.22967776802213,
+                -3.740129586337372
               ],
               "inside_rebuild_prism": false,
               "near_horizontal_surface": true
@@ -276,6 +1595,71 @@
       ],
       "scope": "Native scan geometry only: retained surfaces outside the declared reconstruction prisms are reported, not deleted or treated as local aperture failures.",
       "limitation": "Preserved foreground terrain can still obscure upper windows from some views. These rays do not prove full facade visibility or reproduce Unity rendering."
+    },
+    "roof_support": {
+      "runtime_box_colliders_added": 1,
+      "native_prefab_colliders_added": 0,
+      "center": [
+        -107.50121422709972,
+        59.699999999999996,
+        -13.839759380105413
+      ],
+      "size": [
+        6.0,
+        0.2,
+        13.2
+      ],
+      "forward": [
+        0.20993870684509572,
+        -0.0,
+        0.9777145490214458
+      ],
+      "finished_top_y": 59.8,
+      "native_closed_core_volume_m3": 15.518327503219076,
+      "runtime_box_volume_m3": 15.840000000000002,
+      "core_closed_edge_count": 162,
+      "core_to_finished_top_gap_metres": 0.003998565673823867,
+      "membrane_area_m2": 78.81640464613156,
+      "original_floor_void_samples": [
+        {
+          "world_xz": [
+            -107.50121422709972,
+            -13.839759380105413
+          ],
+          "original_highest_upward_y": 51.16455920016827,
+          "native_membrane_y": 59.79999923706055,
+          "runtime_box_top_y": 59.8,
+          "original_floor_below_roof_metres": 8.635440799831727
+        },
+        {
+          "world_xz": [
+            -105.88708548389928,
+            -12.03848527537449
+          ],
+          "original_highest_upward_y": 50.994777791971444,
+          "native_membrane_y": 59.79999923706055,
+          "runtime_box_top_y": 59.8,
+          "original_floor_below_roof_metres": 8.805222208028553
+        },
+        {
+          "world_xz": [
+            -108.68226940932256,
+            -15.529466057770083
+          ],
+          "original_highest_upward_y": 55.142818841761546,
+          "native_membrane_y": 59.79999923706055,
+          "runtime_box_top_y": 59.8,
+          "original_floor_below_roof_metres": 4.657181158238451
+        }
+      ],
+      "scope": "Native roof geometry and static runtime support metadata; no Unity physics or character landing test."
+    },
+    "visual_source_fragment_preservation": {
+      "unmodified_original_faces_retained": 59331,
+      "replaced_original_faces": 669,
+      "outside_fragment_samples_checked": 801,
+      "owned_volumes": 6,
+      "scope": "Exact original triangle indices for unowned faces plus four barycentric samples per clipped face outside the declared volume union; not an exhaustive image proof."
     }
   },
   "vegetation": {
@@ -296,6 +1680,7 @@
     "The rebuilt floor/facade areas and confirmed green patches cover part of the supplied island, not the entire map.",
     "Source color and elevation masks are conservative placement heuristics, not proof that every surface is natural ground.",
     "Preserved native terrain outside facade reconstruction prisms can obscure upper windows; the 4 m oblique sightline report records that remaining visibility gap.",
+    "The new roof BoxCollider is checked as a source/geometry contract; Unity physics, landing and teardown still need Play Mode verification.",
     "Native source checks do not execute Unity, test alpha overdraw, certify collision/camera behavior or establish reference-game visual parity."
   ]
 }

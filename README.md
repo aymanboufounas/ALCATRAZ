@@ -6,7 +6,9 @@ The playable character is **Elias Vale, a prisoner in orange**. The default expl
 
 The [map surface and lighting pass](Documentation/EnvironmentQuality.md) adds world-scale concrete/masonry detail to the supplied scan, textured helipad/docks, sparse supported ground cover and consistent afternoon lighting across the enabled Alcatraz scenes. It preserves original collision and source geometry; the remaining scan reconstruction and Unity visual review are documented explicitly.
 
-The [supplied-island geometry rebuild](Documentation/WorldRebuild.md) adds a retaining wall and exposed prison-tower façade with a 105 m² nominal footprint, source-fitted courtyard skins across 826.48 m² of original surface triangles and coastal trees/shrubs with two geometry LODs. Original source assets, collision and mission anchors remain authoritative. This covers selected supplied-world areas; the two lowest tower windows remain partly behind original foreground geometry in the offline preview, and Unity appearance/performance still require verification.
+The [supplied-island geometry rebuild](Documentation/WorldRebuild.md) now wraps the exposed tower with coherent walls and 24 recessed windows, adds a closed roof with matching solid support, and retains the fitted courts/coastal planting. Original source meshes, scan colliders and mission anchors remain unchanged; the roof adds one intentional collider. [Whole-block source comparison](Documentation/WorldRebuildPreviews/TowerBlockBeforeAfter.png) shows the current local improvement and coarse surrounding scan. Unity appearance, physics and performance still require verification.
+
+The [finished-player audit](Documentation/PlayerBuildVerification.md) measures real exported files against the requested **5 GB installed-game minimum**. No playable build has been produced here. [Poker cards and the workshop table](Documentation/RestoredTextureDetail.md) now retain their genuine higher-resolution original textures; their restoration script verifies original archive bytes, preserved material GUIDs and unchanged native geometry.
 
 ## Design and development plan
 

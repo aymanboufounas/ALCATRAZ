@@ -51,8 +51,18 @@ namespace Blackstone.Alcatraz.Editor
                     Check(material.GetTexture(property) != null, property + " is bound");
             }
             var dressing = details.transform.Find("Alcatraz environment detail");
-            Check(dressing != null && dressing.GetComponentsInChildren<Collider>(true).Length == 0,
-                "paint and ground cover add no collision");
+            Check(dressing != null, "the environment detail root exists");
+            var addedColliders = dressing.GetComponentsInChildren<Collider>(true);
+            Check(addedColliders.Length == 1 && addedColliders[0] == details.RoofCollider
+                && details.RoofCollider.enabled && !details.RoofCollider.isTrigger,
+                "only the rebuilt tower roof adds a solid collider");
+            var roof = details.RoofCollider;
+            Vector3 roofCenter = roof.transform.TransformPoint(roof.center);
+            float roofTop = roof.bounds.max.y;
+            Check(Physics.Raycast(new Vector3(roofCenter.x, roofTop + .5f, roofCenter.z), Vector3.down,
+                out var roofFloor, 1, 1, QueryTriggerInteraction.Ignore) && roofFloor.collider == roof,
+                "the closed tower roof supports its previously open center");
+            Check(Mathf.Abs(roofFloor.point.y - roofTop) < .005f, "roof collision top matches its measured deck height");
             Check(details.GroundCoverRenderers > 0, "sampled ground-cover chunks are present");
             Check(details.RebuiltScanChunks > 0 && details.FacadeRenderers > 0, "surveyed facade visual replacements are installed");
             Check(details.CourtyardRenderers > 0 && details.VegetationRenderers > 0, "courtyard surfaces and coastal vegetation are installed");

@@ -37,7 +37,7 @@ namespace Blackstone.Alcatraz.Editor
         public static void Build()
         {
             Prepare();Directory.CreateDirectory("Builds/Windows");
-            var report=BuildPipeline.BuildPlayer(new BuildPlayerOptions{scenes=new[]{Supplied,Chapter,Island},
+            var report=AlcatrazBuildSizeReport.BuildPlayer(new BuildPlayerOptions{scenes=new[]{Supplied,Chapter,Island},
                 locationPathName="Builds/Windows/AlcatrazEscape.exe",target=BuildTarget.StandaloneWindows64,options=BuildOptions.None});
             if(report.summary.result!=BuildResult.Succeeded)throw new InvalidOperationException("Alcatraz build failed.");
         }

@@ -3,10 +3,13 @@
   "baseline": "ff62e7661a05070616f8f8ab35d8377ef4348d76",
   "resource": "Alcatraz/FacadeRebuild/FacadeRebuild",
   "source_hashes": {
-    "Assets/Game/Alcatraz/Resources/Alcatraz/FacadeRebuild/Layout.json": "3b9930a4d8e6f97b4345c72b3d4f93b41d1959ea9075b293ce695ee22856a287",
-    "Assets/Game/Alcatraz/Resources/Alcatraz/ArchitectureKit/Manifest.json": "d70004d77eb48c72533cb91b2d2e8173bddd37a87760fa9b031e9ec3a259ac00",
-    "Tools/author_facade_rebuild.py": "970e621ca895af68162e06347a918223025585e12d99cdce56853b40c5d62546",
+    "Assets/Game/Alcatraz/Resources/Alcatraz/FacadeRebuild/Layout.json": "dc6fdc6506f5a86ef1f42ed55aadacb43e348ec4beed7abe25cc852ef2efc8cf",
+    "Assets/Game/Alcatraz/Resources/Alcatraz/ArchitectureKit/Manifest.json": "109d81fa6453bd4feb93378637746a334d64e664c928edaf710a5c43c4b5b3ea",
+    "Tools/author_facade_rebuild.py": "296f1bea3152a418f53ed257b50982809302304d6ed1ed6bb76ec19249fb2d45",
     "Tools/unity_writer.py": "7e04b29a2d1b69397998ee4ee325b203a36570f6df2401b8d0604de1cad85051",
+    "Tools/author_prison_architecture.py": "0ad9ae46e059664be9a528f266f0360b629a0021c4c9eed59342585a05366d7d",
+    "Tools/geometry.py": "ecce2f38983a49ce0e21dc010e6c1702f72c4a1f32ee213451c7683a42593af6",
+    "Assets/Game/Supplied/Resources/AlcatrazSupplied/Baked/Meshes/Island_0_5.asset": "fd06304f78db24f8beab62969df1d779eda765c4d9694e754f5c53ef216b4fe1",
     "Assets/Game/Supplied/Resources/AlcatrazSupplied/Baked/Meshes/Island_0_7.asset": "a507640e2b4028816fbc6e052b97cd05ec1c7f77bc0b462c1ad5ff15e67e725a",
     "Assets/Game/Supplied/Resources/AlcatrazSupplied/Baked/Meshes/Island_0_8.asset": "91f145fce68899e90fb5e79c57b055e69c28b5eb18f42fa63101f21c696e6843",
     "Assets/Game/Alcatraz/Resources/Alcatraz/ArchitectureKit/Meshes/FacadeBlank_ConcreteWall.asset": "25885bff07b6c914d11c3bb00c5eb4af37879fb95a67a09e0a387f7a760412bb",
@@ -33,7 +36,9 @@
     "Assets/Game/Alcatraz/Resources/Alcatraz/ArchitectureKit/Materials/LimestoneTrim.mat": "21ed493c44915f25b72127782298f2987331485af99749288bf1c85e810f1af0",
     "Assets/Game/Alcatraz/Resources/Alcatraz/ArchitectureKit/Materials/OxidizedSteel.mat": "2cd7cc0ad645de3a2bdbb53b73f2c45a828d2fd1603754b526c50812d507fa3f",
     "Assets/Game/Alcatraz/Resources/Alcatraz/ArchitectureKit/Materials/PaintedSteel.mat": "7e6fa4e8ca0b886c78684601906470edff7087b7da807d187be1b52e7f01903a",
-    "Assets/Game/Alcatraz/Resources/Alcatraz/ArchitectureKit/Materials/RecessedGlass.mat": "627b2f72f8e2f54975962094b1982a57c581824d303dc9a2d0dc8e2a103385a9"
+    "Assets/Game/Alcatraz/Resources/Alcatraz/ArchitectureKit/Materials/RecessedGlass.mat": "627b2f72f8e2f54975962094b1982a57c581824d303dc9a2d0dc8e2a103385a9",
+    "Assets/Game/Alcatraz/Resources/Alcatraz/ArchitectureKit/Materials/RoofMembrane.mat": "675b127df5d2f3ca18a759474371d696ea631bc9f6f09570ff998e32e99f7ea8",
+    "Assets/Game/Alcatraz/Resources/Alcatraz/ArchitectureKit/Materials/RoofFlashing.mat": "d800f26a69ebf621df31c21c58ee152f3a7438652aa235a64fb24b9d301ec646"
   },
   "patches": [
     {
@@ -66,13 +71,17 @@
       "source_depth_spread": 0.09184432373780282,
       "id": "retaining_east",
       "group": "retaining_east",
-      "role": "retaining"
+      "role": "retaining",
+      "blank_bays": []
     },
     {
+      "id": "south_tower_face",
+      "group": "south_tower_face",
+      "role": "window",
       "bottom_center": [
-        -108.88680969227735,
+        -108.93569541972842,
         48.5,
-        -20.29267540364696
+        -20.282178468304704
       ],
       "normal": [
         -0.20993870684509572,
@@ -84,39 +93,4204 @@
         0.0,
         0.20993870684509572
       ],
-      "width": 6.0,
-      "height": 10.5,
+      "width": 6.400000000000006,
+      "height": 11.3,
+      "window_height": 10.5,
+      "columns": 2,
       "plane_distance": 42.7,
       "u_bounds": [
-        99.2,
-        105.2
+        99.05,
+        105.45
       ],
       "y_bounds": [
         48.5,
-        59.0
+        59.8
       ],
-      "id": "south_tower_face",
-      "group": "south_tower_face",
-      "role": "window",
-      "depth_ahead": 1.0,
+      "support_y_bounds": [
+        48.5,
+        59
+      ],
       "depth_behind": 0.6,
-      "minimum_native_support_fraction": 0.995,
-      "fit_note": "Continuous exposed south tower facade, 6 x 10.5 m, with two columns and three storeys. All 6,300 native support samples on a 0.1 m lattice are covered. Surveyed near-vertical source core depths span 42.236 to 42.912 m; the new plane is 42.7 m. Original collision is preserved; visual and collider surfaces do not match exactly. Camera visibility requires a separate source-render study."
+      "depth_ahead": 1.0,
+      "minimum_native_support_fraction": 0.98,
+      "fit_note": "Exposed south face joins the new side returns. Fixed-size window frames, glass and bars occupy rebuilt variable-width wall bays; a solid upper band meets the new roof.",
+      "blank_bays": []
+    },
+    {
+      "id": "east_tower_return",
+      "group": "east_tower_return",
+      "role": "window",
+      "bottom_center": [
+        -104.39517105932653,
+        48.5,
+        -14.378851988039788
+      ],
+      "normal": [
+        0.9777145490214458,
+        -0.0,
+        -0.20993870684509572
+      ],
+      "right": [
+        -0.20993870684509572,
+        0.0,
+        -0.9777145490214458
+      ],
+      "width": 13.450000000000003,
+      "height": 11.3,
+      "window_height": 10.5,
+      "columns": 4,
+      "plane_distance": -99.05,
+      "u_bounds": [
+        29.25,
+        42.7
+      ],
+      "y_bounds": [
+        48.5,
+        59.8
+      ],
+      "support_y_bounds": [
+        48.5,
+        59
+      ],
+      "depth_behind": 0.85,
+      "depth_ahead": 1.8,
+      "minimum_native_support_fraction": 0.85,
+      "fit_note": "Native east flank has partial boundary gaps into the attached structure. Unsupported pane samples produce solid blank bays. Local original window projections remain collision-authoritative and can exceed one metre of visual offset.",
+      "blank_bays": []
+    },
+    {
+      "id": "north_tower_return",
+      "group": "north_tower_return",
+      "role": "window",
+      "bottom_center": [
+        -106.11201981266188,
+        48.5,
+        -7.1319177839662515
+      ],
+      "normal": [
+        0.20993870684509572,
+        -0.0,
+        0.9777145490214458
+      ],
+      "right": [
+        0.9777145490214458,
+        0.0,
+        -0.20993870684509572
+      ],
+      "width": 6.400000000000006,
+      "height": 11.3,
+      "window_height": 10.5,
+      "columns": 2,
+      "plane_distance": -29.25,
+      "u_bounds": [
+        -105.45,
+        -99.05
+      ],
+      "y_bounds": [
+        48.5,
+        59.8
+      ],
+      "support_y_bounds": [
+        48.5,
+        59
+      ],
+      "depth_behind": 0.75,
+      "depth_ahead": 1.8,
+      "minimum_native_support_fraction": 0.95,
+      "fit_note": "Native north return follows the attached block. High original chimney and ruin features above the owned roof slab are retained.",
+      "blank_bays": []
+    },
+    {
+      "id": "west_tower_step",
+      "group": "west_tower_step",
+      "role": "blank",
+      "bottom_center": [
+        -111.87543714043646,
+        48.5,
+        -18.730431512281093
+      ],
+      "normal": [
+        -0.9777145490214458,
+        0.0,
+        0.20993870684509572
+      ],
+      "right": [
+        0.20993870684509572,
+        0.0,
+        0.9777145490214458
+      ],
+      "width": 1.8000000000000043,
+      "height": 11.3,
+      "window_height": 10.5,
+      "columns": 1,
+      "plane_distance": 105.45,
+      "u_bounds": [
+        -42.7,
+        -40.9
+      ],
+      "y_bounds": [
+        48.5,
+        59.8
+      ],
+      "support_y_bounds": [
+        48.5,
+        59
+      ],
+      "depth_behind": 0.7,
+      "depth_ahead": 1.6,
+      "minimum_native_support_fraction": 0.83,
+      "fit_note": "Short solid return closes the stepped front joint. The rest of the west boundary remains attached to the existing wing; no invented full west wall is added.",
+      "blank_bays": []
     }
   ],
-  "footprint_area_m2": 105.0,
-  "replaced_projected_area_m2": 182.98830710711516,
+  "footprint_area_m2": 358.9650000000002,
+  "cleanup_volumes": [
+    {
+      "id": "elevated_southeast_corner_cleanup",
+      "role": "cleanup",
+      "normal": [
+        -0.20993870684509572,
+        0.0,
+        -0.9777145490214458
+      ],
+      "right": [
+        -0.9777145490214458,
+        0.0,
+        0.20993870684509572
+      ],
+      "plane_distance": 42.7,
+      "u_bounds": [
+        97.25,
+        99.33
+      ],
+      "y_bounds": [
+        52.5,
+        59.8
+      ],
+      "depth_behind": 0.28,
+      "depth_ahead": 1.0,
+      "bottom_center": [
+        -105.06394580560348,
+        52.5,
+        -21.113535747411284
+      ],
+      "purpose": "Remove the surveyed elevated source window wedge diagonally outside both touching facade rectangles. Exact volume U97.25..99.33,D42.42..43.7,Y52.5..59.8; all outside fragments remain.",
+      "collision_note": "Original source colliders remain unchanged. This elevated projection remains physical; helicopter clearance requires Unity verification. Original ground and normal plateau head clearance remain below the owned volume."
+    }
+  ],
+  "clipped_source_references_by_volume": {
+    "retaining_east": [
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 14962,
+        "removed_surface_area_m2": 2.3645262402347234
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 14963,
+        "removed_surface_area_m2": 8.346760978696292
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 14964,
+        "removed_surface_area_m2": 2.7977377147487372
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 14970,
+        "removed_surface_area_m2": 7.761372647802965
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 14971,
+        "removed_surface_area_m2": 6.89068979434729
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 14972,
+        "removed_surface_area_m2": 7.441226013841617
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 14973,
+        "removed_surface_area_m2": 14.583035637919942
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 14980,
+        "removed_surface_area_m2": 2.2189413809532192
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 14984,
+        "removed_surface_area_m2": 2.649349773366883
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 14985,
+        "removed_surface_area_m2": 2.6890459541357496
+      }
+    ],
+    "south_tower_face": [
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 16950,
+        "removed_surface_area_m2": 3.2620135929077247
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 16959,
+        "removed_surface_area_m2": 0.03407301460528397
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 17016,
+        "removed_surface_area_m2": 0.038003616703260676
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 17017,
+        "removed_surface_area_m2": 0.26765700066856
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 17018,
+        "removed_surface_area_m2": 0.20664389422954027
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 17019,
+        "removed_surface_area_m2": 2.338552520009759
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 17020,
+        "removed_surface_area_m2": 1.370886880836007
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 17021,
+        "removed_surface_area_m2": 2.971306093066734
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 17022,
+        "removed_surface_area_m2": 1.1903189241556515
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 17023,
+        "removed_surface_area_m2": 2.276353127972806
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 17024,
+        "removed_surface_area_m2": 16.27411859841472
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 17025,
+        "removed_surface_area_m2": 0.38435960495425997
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 17026,
+        "removed_surface_area_m2": 1.4185272221145566
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 17027,
+        "removed_surface_area_m2": 0.9657855110358509
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 17028,
+        "removed_surface_area_m2": 0.984472765273213
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 17029,
+        "removed_surface_area_m2": 0.059630926574381245
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 18045,
+        "removed_surface_area_m2": 0.5402905490256594
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 18046,
+        "removed_surface_area_m2": 0.5004424779373964
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 18047,
+        "removed_surface_area_m2": 0.6741984820216527
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 18048,
+        "removed_surface_area_m2": 1.1975363193852104
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 18049,
+        "removed_surface_area_m2": 1.9133221331248236
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 18079,
+        "removed_surface_area_m2": 0.16784228492415673
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 18080,
+        "removed_surface_area_m2": 2.2622198400683096
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 18081,
+        "removed_surface_area_m2": 2.800778420140851
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 18082,
+        "removed_surface_area_m2": 0.6381963807514375
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 18083,
+        "removed_surface_area_m2": 0.9383566581509672
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 18084,
+        "removed_surface_area_m2": 0.03073450691299377
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 18085,
+        "removed_surface_area_m2": 0.0077626089997894585
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 18086,
+        "removed_surface_area_m2": 11.726675191211005
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 18087,
+        "removed_surface_area_m2": 1.4668879432499744
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 18088,
+        "removed_surface_area_m2": 0.4922064871909257
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 18511,
+        "removed_surface_area_m2": 0.556721374145391
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 18512,
+        "removed_surface_area_m2": 1.1414835751944012
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 18513,
+        "removed_surface_area_m2": 0.34586222174710773
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 18514,
+        "removed_surface_area_m2": 0.10279554306741942
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 18516,
+        "removed_surface_area_m2": 0.11599323174870659
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 18517,
+        "removed_surface_area_m2": 0.01125178666845036
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 18518,
+        "removed_surface_area_m2": 0.0510867442947849
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 18519,
+        "removed_surface_area_m2": 0.015224626556742464
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 18520,
+        "removed_surface_area_m2": 0.03296213724362622
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 18521,
+        "removed_surface_area_m2": 0.19257927952144752
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 18524,
+        "removed_surface_area_m2": 0.16202441231130965
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 18525,
+        "removed_surface_area_m2": 0.2506357427544018
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 18526,
+        "removed_surface_area_m2": 0.41433762918229894
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 18527,
+        "removed_surface_area_m2": 0.0010205244101276249
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 18534,
+        "removed_surface_area_m2": 0.04485678600654383
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 18676,
+        "removed_surface_area_m2": 0.002735697881327316
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 18677,
+        "removed_surface_area_m2": 0.00015660669675805186
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 18678,
+        "removed_surface_area_m2": 0.06972140955692878
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 18679,
+        "removed_surface_area_m2": 0.0011094163581459563
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 18687,
+        "removed_surface_area_m2": 0.05315513660266272
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 18688,
+        "removed_surface_area_m2": 0.036749746234864794
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 18689,
+        "removed_surface_area_m2": 0.2859885146851825
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 18690,
+        "removed_surface_area_m2": 0.861422493793019
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 18691,
+        "removed_surface_area_m2": 11.744158232385635
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 18692,
+        "removed_surface_area_m2": 22.814862145953885
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 18693,
+        "removed_surface_area_m2": 4.515774170693472
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 18694,
+        "removed_surface_area_m2": 2.9009177850767687
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 18695,
+        "removed_surface_area_m2": 1.6087071026983124
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 18696,
+        "removed_surface_area_m2": 0.000477340919642349
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 18744,
+        "removed_surface_area_m2": 0.48812331415790255
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 18745,
+        "removed_surface_area_m2": 6.24900625918051
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 18746,
+        "removed_surface_area_m2": 0.6489778511437656
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 19503,
+        "removed_surface_area_m2": 0.03530001225580555
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 19504,
+        "removed_surface_area_m2": 0.036175058531720546
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 19505,
+        "removed_surface_area_m2": 0.06192137705423608
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 19799,
+        "removed_surface_area_m2": 0.7291765799782586
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 19816,
+        "removed_surface_area_m2": 1.2813631445168445
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 19817,
+        "removed_surface_area_m2": 3.2553268435114227
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 19818,
+        "removed_surface_area_m2": 0.05702596533478287
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 19864,
+        "removed_surface_area_m2": 0.24645714082999196
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 19865,
+        "removed_surface_area_m2": 0.41965788938262083
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 19866,
+        "removed_surface_area_m2": 0.39231371393464415
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 19867,
+        "removed_surface_area_m2": 0.7932565238661475
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 19868,
+        "removed_surface_area_m2": 0.9960901843365713
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 19869,
+        "removed_surface_area_m2": 0.5098400024408298
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 19872,
+        "removed_surface_area_m2": 0.5925329051558048
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 19873,
+        "removed_surface_area_m2": 0.2845958068358618
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 19874,
+        "removed_surface_area_m2": 1.586695987892452
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 19875,
+        "removed_surface_area_m2": 1.4583787431827
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 19876,
+        "removed_surface_area_m2": 3.6743197739649145
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 19877,
+        "removed_surface_area_m2": 0.5994160304109611
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 19878,
+        "removed_surface_area_m2": 0.5111228039743605
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 19879,
+        "removed_surface_area_m2": 0.8115322319133478
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 19880,
+        "removed_surface_area_m2": 0.43833879269547366
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 19881,
+        "removed_surface_area_m2": 2.283324497726616
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 19882,
+        "removed_surface_area_m2": 5.406064788719745
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 19883,
+        "removed_surface_area_m2": 1.9769512443425445
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 19884,
+        "removed_surface_area_m2": 0.7236296639287505
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 19885,
+        "removed_surface_area_m2": 7.088464977744272
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 19891,
+        "removed_surface_area_m2": 0.008003714636755426
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 19892,
+        "removed_surface_area_m2": 0.8658947553571985
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 19893,
+        "removed_surface_area_m2": 0.7832423463903806
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 19894,
+        "removed_surface_area_m2": 0.4782556884080414
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 19895,
+        "removed_surface_area_m2": 3.231502795443412
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 19896,
+        "removed_surface_area_m2": 0.07337109059445411
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 19897,
+        "removed_surface_area_m2": 0.06401142204427596
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 19898,
+        "removed_surface_area_m2": 0.04662188431629041
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 19899,
+        "removed_surface_area_m2": 0.08555413229419875
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 19900,
+        "removed_surface_area_m2": 0.03239305394595936
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 19901,
+        "removed_surface_area_m2": 0.058319131743412016
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 19909,
+        "removed_surface_area_m2": 0.038921624963269646
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 19910,
+        "removed_surface_area_m2": 0.22367029488199464
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 19911,
+        "removed_surface_area_m2": 0.21703765109798678
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 19912,
+        "removed_surface_area_m2": 0.290585876197622
+      },
+      {
+        "source_mesh": "Island_0_8",
+        "source_triangle": 581,
+        "removed_surface_area_m2": 0.0005471909724517871
+      },
+      {
+        "source_mesh": "Island_0_8",
+        "source_triangle": 582,
+        "removed_surface_area_m2": 0.0003647748958840716
+      },
+      {
+        "source_mesh": "Island_0_8",
+        "source_triangle": 583,
+        "removed_surface_area_m2": 0.5271015001487354
+      },
+      {
+        "source_mesh": "Island_0_8",
+        "source_triangle": 584,
+        "removed_surface_area_m2": 0.3651391539422021
+      },
+      {
+        "source_mesh": "Island_0_8",
+        "source_triangle": 585,
+        "removed_surface_area_m2": 0.06682423307321274
+      },
+      {
+        "source_mesh": "Island_0_8",
+        "source_triangle": 586,
+        "removed_surface_area_m2": 0.03341596280176063
+      },
+      {
+        "source_mesh": "Island_0_8",
+        "source_triangle": 607,
+        "removed_surface_area_m2": 0.008535326058341543
+      },
+      {
+        "source_mesh": "Island_0_8",
+        "source_triangle": 608,
+        "removed_surface_area_m2": 0.5228394637109408
+      },
+      {
+        "source_mesh": "Island_0_8",
+        "source_triangle": 609,
+        "removed_surface_area_m2": 0.011216347820300185
+      },
+      {
+        "source_mesh": "Island_0_8",
+        "source_triangle": 610,
+        "removed_surface_area_m2": 0.0002965566005893051
+      },
+      {
+        "source_mesh": "Island_0_8",
+        "source_triangle": 611,
+        "removed_surface_area_m2": 0.0002166408482775583
+      }
+    ],
+    "east_tower_return": [
+      {
+        "source_mesh": "Island_0_5",
+        "source_triangle": 11591,
+        "removed_surface_area_m2": 0.001666176145953757
+      },
+      {
+        "source_mesh": "Island_0_5",
+        "source_triangle": 11592,
+        "removed_surface_area_m2": 0.6053231589551226
+      },
+      {
+        "source_mesh": "Island_0_5",
+        "source_triangle": 11593,
+        "removed_surface_area_m2": 0.7701991371988988
+      },
+      {
+        "source_mesh": "Island_0_5",
+        "source_triangle": 11594,
+        "removed_surface_area_m2": 0.05182843736252864
+      },
+      {
+        "source_mesh": "Island_0_5",
+        "source_triangle": 11595,
+        "removed_surface_area_m2": 0.5649438216326679
+      },
+      {
+        "source_mesh": "Island_0_5",
+        "source_triangle": 11596,
+        "removed_surface_area_m2": 2.405595227811461
+      },
+      {
+        "source_mesh": "Island_0_5",
+        "source_triangle": 11597,
+        "removed_surface_area_m2": 2.3945306807110724
+      },
+      {
+        "source_mesh": "Island_0_5",
+        "source_triangle": 11598,
+        "removed_surface_area_m2": 0.6995430942243199
+      },
+      {
+        "source_mesh": "Island_0_5",
+        "source_triangle": 11599,
+        "removed_surface_area_m2": 0.28977818915851
+      },
+      {
+        "source_mesh": "Island_0_5",
+        "source_triangle": 11600,
+        "removed_surface_area_m2": 0.5229012816806342
+      },
+      {
+        "source_mesh": "Island_0_5",
+        "source_triangle": 12159,
+        "removed_surface_area_m2": 0.24930888486653785
+      },
+      {
+        "source_mesh": "Island_0_5",
+        "source_triangle": 12160,
+        "removed_surface_area_m2": 0.24930858528489502
+      },
+      {
+        "source_mesh": "Island_0_5",
+        "source_triangle": 12161,
+        "removed_surface_area_m2": 0.049861843094685526
+      },
+      {
+        "source_mesh": "Island_0_5",
+        "source_triangle": 12162,
+        "removed_surface_area_m2": 0.20678940303841192
+      },
+      {
+        "source_mesh": "Island_0_5",
+        "source_triangle": 12163,
+        "removed_surface_area_m2": 0.3737967155190026
+      },
+      {
+        "source_mesh": "Island_0_5",
+        "source_triangle": 12164,
+        "removed_surface_area_m2": 0.09194323675881946
+      },
+      {
+        "source_mesh": "Island_0_5",
+        "source_triangle": 12165,
+        "removed_surface_area_m2": 1.2425028544585828
+      },
+      {
+        "source_mesh": "Island_0_5",
+        "source_triangle": 12169,
+        "removed_surface_area_m2": 0.0997226087774629
+      },
+      {
+        "source_mesh": "Island_0_5",
+        "source_triangle": 12170,
+        "removed_surface_area_m2": 0.0705136017758249
+      },
+      {
+        "source_mesh": "Island_0_5",
+        "source_triangle": 12171,
+        "removed_surface_area_m2": 0.32794718077983553
+      },
+      {
+        "source_mesh": "Island_0_5",
+        "source_triangle": 12172,
+        "removed_surface_area_m2": 0.07685071707597019
+      },
+      {
+        "source_mesh": "Island_0_5",
+        "source_triangle": 12173,
+        "removed_surface_area_m2": 0.09193893785489449
+      },
+      {
+        "source_mesh": "Island_0_5",
+        "source_triangle": 12174,
+        "removed_surface_area_m2": 0.3737955248972068
+      },
+      {
+        "source_mesh": "Island_0_5",
+        "source_triangle": 12175,
+        "removed_surface_area_m2": 0.1201759354457825
+      },
+      {
+        "source_mesh": "Island_0_5",
+        "source_triangle": 12176,
+        "removed_surface_area_m2": 0.3009249538843382
+      },
+      {
+        "source_mesh": "Island_0_5",
+        "source_triangle": 12177,
+        "removed_surface_area_m2": 0.8626993511638613
+      },
+      {
+        "source_mesh": "Island_0_5",
+        "source_triangle": 12178,
+        "removed_surface_area_m2": 1.207844409745258
+      },
+      {
+        "source_mesh": "Island_0_5",
+        "source_triangle": 12179,
+        "removed_surface_area_m2": 1.243527200814229
+      },
+      {
+        "source_mesh": "Island_0_5",
+        "source_triangle": 12180,
+        "removed_surface_area_m2": 0.12213558927838626
+      },
+      {
+        "source_mesh": "Island_0_5",
+        "source_triangle": 12181,
+        "removed_surface_area_m2": 0.08343506574727591
+      },
+      {
+        "source_mesh": "Island_0_5",
+        "source_triangle": 12182,
+        "removed_surface_area_m2": 0.2161954594472468
+      },
+      {
+        "source_mesh": "Island_0_5",
+        "source_triangle": 12183,
+        "removed_surface_area_m2": 0.1611424105864074
+      },
+      {
+        "source_mesh": "Island_0_5",
+        "source_triangle": 12184,
+        "removed_surface_area_m2": 0.0023051251589812373
+      },
+      {
+        "source_mesh": "Island_0_5",
+        "source_triangle": 12185,
+        "removed_surface_area_m2": 0.0012919712078371054
+      },
+      {
+        "source_mesh": "Island_0_5",
+        "source_triangle": 12186,
+        "removed_surface_area_m2": 0.005073733951501151
+      },
+      {
+        "source_mesh": "Island_0_5",
+        "source_triangle": 12191,
+        "removed_surface_area_m2": 0.11149582737028184
+      },
+      {
+        "source_mesh": "Island_0_5",
+        "source_triangle": 12192,
+        "removed_surface_area_m2": 0.17871579234899404
+      },
+      {
+        "source_mesh": "Island_0_5",
+        "source_triangle": 12193,
+        "removed_surface_area_m2": 0.0979682216646713
+      },
+      {
+        "source_mesh": "Island_0_5",
+        "source_triangle": 12194,
+        "removed_surface_area_m2": 0.022450386594494113
+      },
+      {
+        "source_mesh": "Island_0_5",
+        "source_triangle": 12195,
+        "removed_surface_area_m2": 0.016672523462867378
+      },
+      {
+        "source_mesh": "Island_0_5",
+        "source_triangle": 12196,
+        "removed_surface_area_m2": 0.23878843057525606
+      },
+      {
+        "source_mesh": "Island_0_5",
+        "source_triangle": 12197,
+        "removed_surface_area_m2": 0.1755807948962249
+      },
+      {
+        "source_mesh": "Island_0_5",
+        "source_triangle": 12198,
+        "removed_surface_area_m2": 0.09460521833297655
+      },
+      {
+        "source_mesh": "Island_0_5",
+        "source_triangle": 12199,
+        "removed_surface_area_m2": 0.10218542515895225
+      },
+      {
+        "source_mesh": "Island_0_5",
+        "source_triangle": 12200,
+        "removed_surface_area_m2": 0.38686970450256436
+      },
+      {
+        "source_mesh": "Island_0_5",
+        "source_triangle": 12201,
+        "removed_surface_area_m2": 0.388794272819129
+      },
+      {
+        "source_mesh": "Island_0_5",
+        "source_triangle": 12202,
+        "removed_surface_area_m2": 0.13745809922713745
+      },
+      {
+        "source_mesh": "Island_0_5",
+        "source_triangle": 12203,
+        "removed_surface_area_m2": 0.042066646354515645
+      },
+      {
+        "source_mesh": "Island_0_5",
+        "source_triangle": 12204,
+        "removed_surface_area_m2": 0.03219230067389583
+      },
+      {
+        "source_mesh": "Island_0_5",
+        "source_triangle": 12205,
+        "removed_surface_area_m2": 0.06307049782520849
+      },
+      {
+        "source_mesh": "Island_0_5",
+        "source_triangle": 12223,
+        "removed_surface_area_m2": 0.49159224031277743
+      },
+      {
+        "source_mesh": "Island_0_5",
+        "source_triangle": 12226,
+        "removed_surface_area_m2": 0.03292766481885946
+      },
+      {
+        "source_mesh": "Island_0_5",
+        "source_triangle": 12227,
+        "removed_surface_area_m2": 1.0070350057075763
+      },
+      {
+        "source_mesh": "Island_0_5",
+        "source_triangle": 12228,
+        "removed_surface_area_m2": 0.07148902177911517
+      },
+      {
+        "source_mesh": "Island_0_5",
+        "source_triangle": 12245,
+        "removed_surface_area_m2": 0.746923823101874
+      },
+      {
+        "source_mesh": "Island_0_5",
+        "source_triangle": 12246,
+        "removed_surface_area_m2": 0.10922670700457927
+      },
+      {
+        "source_mesh": "Island_0_5",
+        "source_triangle": 12247,
+        "removed_surface_area_m2": 0.1755750808335477
+      },
+      {
+        "source_mesh": "Island_0_5",
+        "source_triangle": 12248,
+        "removed_surface_area_m2": 0.054620912608390526
+      },
+      {
+        "source_mesh": "Island_0_5",
+        "source_triangle": 12249,
+        "removed_surface_area_m2": 0.09972364053595212
+      },
+      {
+        "source_mesh": "Island_0_5",
+        "source_triangle": 12250,
+        "removed_surface_area_m2": 0.41179324435768916
+      },
+      {
+        "source_mesh": "Island_0_5",
+        "source_triangle": 12251,
+        "removed_surface_area_m2": 0.04839929298681615
+      },
+      {
+        "source_mesh": "Island_0_5",
+        "source_triangle": 12272,
+        "removed_surface_area_m2": 0.9510372542698535
+      },
+      {
+        "source_mesh": "Island_0_5",
+        "source_triangle": 12273,
+        "removed_surface_area_m2": 0.942625128408111
+      },
+      {
+        "source_mesh": "Island_0_5",
+        "source_triangle": 12284,
+        "removed_surface_area_m2": 1.5013245971192979
+      },
+      {
+        "source_mesh": "Island_0_5",
+        "source_triangle": 12285,
+        "removed_surface_area_m2": 0.9710268341005601
+      },
+      {
+        "source_mesh": "Island_0_5",
+        "source_triangle": 12286,
+        "removed_surface_area_m2": 4.3358600825748015
+      },
+      {
+        "source_mesh": "Island_0_5",
+        "source_triangle": 12287,
+        "removed_surface_area_m2": 4.943578950933595
+      },
+      {
+        "source_mesh": "Island_0_5",
+        "source_triangle": 12288,
+        "removed_surface_area_m2": 0.4911048762117499
+      },
+      {
+        "source_mesh": "Island_0_5",
+        "source_triangle": 12289,
+        "removed_surface_area_m2": 0.35080224878972976
+      },
+      {
+        "source_mesh": "Island_0_5",
+        "source_triangle": 12290,
+        "removed_surface_area_m2": 2.3858244055066327
+      },
+      {
+        "source_mesh": "Island_0_5",
+        "source_triangle": 12291,
+        "removed_surface_area_m2": 3.6287264539033193
+      },
+      {
+        "source_mesh": "Island_0_5",
+        "source_triangle": 12292,
+        "removed_surface_area_m2": 1.1956113786189388
+      },
+      {
+        "source_mesh": "Island_0_5",
+        "source_triangle": 12293,
+        "removed_surface_area_m2": 0.2915926629943715
+      },
+      {
+        "source_mesh": "Island_0_5",
+        "source_triangle": 12294,
+        "removed_surface_area_m2": 0.14822299377624365
+      },
+      {
+        "source_mesh": "Island_0_5",
+        "source_triangle": 12295,
+        "removed_surface_area_m2": 0.0026240300522781808
+      },
+      {
+        "source_mesh": "Island_0_5",
+        "source_triangle": 12299,
+        "removed_surface_area_m2": 0.5527461826738309
+      },
+      {
+        "source_mesh": "Island_0_5",
+        "source_triangle": 13714,
+        "removed_surface_area_m2": 0.9631608459791436
+      },
+      {
+        "source_mesh": "Island_0_5",
+        "source_triangle": 13972,
+        "removed_surface_area_m2": 0.2915885891940147
+      },
+      {
+        "source_mesh": "Island_0_5",
+        "source_triangle": 13973,
+        "removed_surface_area_m2": 0.5104388488575549
+      },
+      {
+        "source_mesh": "Island_0_5",
+        "source_triangle": 13974,
+        "removed_surface_area_m2": 0.1261288326040272
+      },
+      {
+        "source_mesh": "Island_0_5",
+        "source_triangle": 13975,
+        "removed_surface_area_m2": 1.5358502173526731
+      },
+      {
+        "source_mesh": "Island_0_5",
+        "source_triangle": 13976,
+        "removed_surface_area_m2": 2.4703584482212246
+      },
+      {
+        "source_mesh": "Island_0_5",
+        "source_triangle": 13977,
+        "removed_surface_area_m2": 1.071463376209464
+      },
+      {
+        "source_mesh": "Island_0_5",
+        "source_triangle": 13978,
+        "removed_surface_area_m2": 0.3657288826101131
+      },
+      {
+        "source_mesh": "Island_0_5",
+        "source_triangle": 13979,
+        "removed_surface_area_m2": 0.34617277467342367
+      },
+      {
+        "source_mesh": "Island_0_5",
+        "source_triangle": 13990,
+        "removed_surface_area_m2": 0.015257429819700003
+      },
+      {
+        "source_mesh": "Island_0_5",
+        "source_triangle": 13991,
+        "removed_surface_area_m2": 0.025509166251574414
+      },
+      {
+        "source_mesh": "Island_0_5",
+        "source_triangle": 13992,
+        "removed_surface_area_m2": 0.05201689201569953
+      },
+      {
+        "source_mesh": "Island_0_5",
+        "source_triangle": 14008,
+        "removed_surface_area_m2": 1.3220115470508031
+      },
+      {
+        "source_mesh": "Island_0_5",
+        "source_triangle": 14009,
+        "removed_surface_area_m2": 3.1779963141067977
+      },
+      {
+        "source_mesh": "Island_0_5",
+        "source_triangle": 14012,
+        "removed_surface_area_m2": 1.2514975602169611
+      },
+      {
+        "source_mesh": "Island_0_5",
+        "source_triangle": 14013,
+        "removed_surface_area_m2": 0.42064872211361104
+      },
+      {
+        "source_mesh": "Island_0_5",
+        "source_triangle": 14042,
+        "removed_surface_area_m2": 0.0024249806617276126
+      },
+      {
+        "source_mesh": "Island_0_5",
+        "source_triangle": 14043,
+        "removed_surface_area_m2": 0.0022204926336256785
+      },
+      {
+        "source_mesh": "Island_0_5",
+        "source_triangle": 14044,
+        "removed_surface_area_m2": 0.2493365901128302
+      },
+      {
+        "source_mesh": "Island_0_5",
+        "source_triangle": 14045,
+        "removed_surface_area_m2": 0.7740496195779252
+      },
+      {
+        "source_mesh": "Island_0_5",
+        "source_triangle": 14046,
+        "removed_surface_area_m2": 6.264534052598044
+      },
+      {
+        "source_mesh": "Island_0_5",
+        "source_triangle": 14047,
+        "removed_surface_area_m2": 6.822284549608227
+      },
+      {
+        "source_mesh": "Island_0_5",
+        "source_triangle": 14048,
+        "removed_surface_area_m2": 0.22296037712863878
+      },
+      {
+        "source_mesh": "Island_0_5",
+        "source_triangle": 14049,
+        "removed_surface_area_m2": 3.5310009281143935
+      },
+      {
+        "source_mesh": "Island_0_5",
+        "source_triangle": 14050,
+        "removed_surface_area_m2": 0.2020295452978868
+      },
+      {
+        "source_mesh": "Island_0_5",
+        "source_triangle": 14051,
+        "removed_surface_area_m2": 0.09289258349163154
+      },
+      {
+        "source_mesh": "Island_0_5",
+        "source_triangle": 14053,
+        "removed_surface_area_m2": 0.021429325968881308
+      },
+      {
+        "source_mesh": "Island_0_5",
+        "source_triangle": 14054,
+        "removed_surface_area_m2": 1.2472888005464182
+      },
+      {
+        "source_mesh": "Island_0_5",
+        "source_triangle": 14055,
+        "removed_surface_area_m2": 0.039075679405293835
+      },
+      {
+        "source_mesh": "Island_0_5",
+        "source_triangle": 14058,
+        "removed_surface_area_m2": 0.004412929736111853
+      },
+      {
+        "source_mesh": "Island_0_5",
+        "source_triangle": 14124,
+        "removed_surface_area_m2": 1.2032563283144815
+      },
+      {
+        "source_mesh": "Island_0_5",
+        "source_triangle": 14125,
+        "removed_surface_area_m2": 0.5780242694883444
+      },
+      {
+        "source_mesh": "Island_0_5",
+        "source_triangle": 14126,
+        "removed_surface_area_m2": 6.854821188477607
+      },
+      {
+        "source_mesh": "Island_0_5",
+        "source_triangle": 14800,
+        "removed_surface_area_m2": 0.09460600876627497
+      },
+      {
+        "source_mesh": "Island_0_5",
+        "source_triangle": 14801,
+        "removed_surface_area_m2": 0.03153556945447544
+      },
+      {
+        "source_mesh": "Island_0_5",
+        "source_triangle": 14803,
+        "removed_surface_area_m2": 0.17946413861971616
+      },
+      {
+        "source_mesh": "Island_0_5",
+        "source_triangle": 14804,
+        "removed_surface_area_m2": 0.18522774979211132
+      },
+      {
+        "source_mesh": "Island_0_5",
+        "source_triangle": 14805,
+        "removed_surface_area_m2": 0.2731053593123122
+      },
+      {
+        "source_mesh": "Island_0_5",
+        "source_triangle": 14806,
+        "removed_surface_area_m2": 1.0071554188676666
+      },
+      {
+        "source_mesh": "Island_0_5",
+        "source_triangle": 14807,
+        "removed_surface_area_m2": 0.38622508000849076
+      },
+      {
+        "source_mesh": "Island_0_5",
+        "source_triangle": 14808,
+        "removed_surface_area_m2": 0.7065637877180614
+      },
+      {
+        "source_mesh": "Island_0_5",
+        "source_triangle": 14809,
+        "removed_surface_area_m2": 2.741972037589038
+      },
+      {
+        "source_mesh": "Island_0_5",
+        "source_triangle": 14840,
+        "removed_surface_area_m2": 0.15095959421487548
+      },
+      {
+        "source_mesh": "Island_0_5",
+        "source_triangle": 14841,
+        "removed_surface_area_m2": 0.3189815515205873
+      },
+      {
+        "source_mesh": "Island_0_5",
+        "source_triangle": 14842,
+        "removed_surface_area_m2": 1.440386149246876
+      },
+      {
+        "source_mesh": "Island_0_5",
+        "source_triangle": 14843,
+        "removed_surface_area_m2": 0.17556879122196486
+      },
+      {
+        "source_mesh": "Island_0_5",
+        "source_triangle": 14844,
+        "removed_surface_area_m2": 0.1852196304703552
+      },
+      {
+        "source_mesh": "Island_0_5",
+        "source_triangle": 14845,
+        "removed_surface_area_m2": 0.06688594829854798
+      },
+      {
+        "source_mesh": "Island_0_5",
+        "source_triangle": 14846,
+        "removed_surface_area_m2": 0.049836146014775304
+      },
+      {
+        "source_mesh": "Island_0_5",
+        "source_triangle": 14847,
+        "removed_surface_area_m2": 0.03151608104675472
+      },
+      {
+        "source_mesh": "Island_0_5",
+        "source_triangle": 14848,
+        "removed_surface_area_m2": 0.05462144434831972
+      },
+      {
+        "source_mesh": "Island_0_5",
+        "source_triangle": 14849,
+        "removed_surface_area_m2": 0.10458447093330345
+      },
+      {
+        "source_mesh": "Island_0_5",
+        "source_triangle": 14850,
+        "removed_surface_area_m2": 0.6134694084992955
+      },
+      {
+        "source_mesh": "Island_0_5",
+        "source_triangle": 14851,
+        "removed_surface_area_m2": 1.2400936527092594
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 16031,
+        "removed_surface_area_m2": 4.4028452079811675
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 16032,
+        "removed_surface_area_m2": 0.36008724528560215
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 16052,
+        "removed_surface_area_m2": 0.06942534033908396
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 16053,
+        "removed_surface_area_m2": 0.2239798598229451
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 16054,
+        "removed_surface_area_m2": 3.2013744488094
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 16055,
+        "removed_surface_area_m2": 3.096360872270913
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 16056,
+        "removed_surface_area_m2": 2.182510752214053
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 16057,
+        "removed_surface_area_m2": 2.628037541227031
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 16103,
+        "removed_surface_area_m2": 0.00337034945056341
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 16104,
+        "removed_surface_area_m2": 0.12476002847587558
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 16105,
+        "removed_surface_area_m2": 0.11762831548371395
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 16106,
+        "removed_surface_area_m2": 0.11762302607326038
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 16107,
+        "removed_surface_area_m2": 0.5441658398552706
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 16108,
+        "removed_surface_area_m2": 0.5994171598802625
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 16109,
+        "removed_surface_area_m2": 0.14297981841158444
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 16110,
+        "removed_surface_area_m2": 0.0011169566404987613
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 16111,
+        "removed_surface_area_m2": 0.010321439306199453
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 16904,
+        "removed_surface_area_m2": 0.02449523398227149
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 16905,
+        "removed_surface_area_m2": 0.023999900861234935
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 16906,
+        "removed_surface_area_m2": 0.0517831369993663
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 16919,
+        "removed_surface_area_m2": 0.048218521760325414
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 16934,
+        "removed_surface_area_m2": 1.0137115717611167
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 16941,
+        "removed_surface_area_m2": 0.32469250184295817
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 16942,
+        "removed_surface_area_m2": 1.5509678388011199
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 16943,
+        "removed_surface_area_m2": 1.2542657599653462
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 16945,
+        "removed_surface_area_m2": 0.2622699117008748
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 16946,
+        "removed_surface_area_m2": 1.012446318538039
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 16959,
+        "removed_surface_area_m2": 1.7746914812128018
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 17022,
+        "removed_surface_area_m2": 0.16259367076147976
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 17023,
+        "removed_surface_area_m2": 0.019785508837350124
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 17027,
+        "removed_surface_area_m2": 1.1673602984643572
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 17028,
+        "removed_surface_area_m2": 0.2363507006602042
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 17029,
+        "removed_surface_area_m2": 0.985370193524745
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 17030,
+        "removed_surface_area_m2": 0.49185428464711
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 17032,
+        "removed_surface_area_m2": 0.19086285265938857
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 17188,
+        "removed_surface_area_m2": 0.07414849503660391
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 17191,
+        "removed_surface_area_m2": 0.17457781627283456
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 18045,
+        "removed_surface_area_m2": 6.4581861447308215
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 18046,
+        "removed_surface_area_m2": 2.0182842227565643
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 18068,
+        "removed_surface_area_m2": 0.09116644676556272
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 18076,
+        "removed_surface_area_m2": 0.11848631907712012
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 18077,
+        "removed_surface_area_m2": 1.3080161097901528
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 18078,
+        "removed_surface_area_m2": 10.406570951971327
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 18079,
+        "removed_surface_area_m2": 22.634037680777904
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 18080,
+        "removed_surface_area_m2": 1.5531602768775983
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 18339,
+        "removed_surface_area_m2": 0.05593045225629726
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 18340,
+        "removed_surface_area_m2": 1.7902868473685336
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 18369,
+        "removed_surface_area_m2": 0.014504725050961672
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 18370,
+        "removed_surface_area_m2": 0.00835936272961436
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 18371,
+        "removed_surface_area_m2": 0.0028354504509489737
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 18372,
+        "removed_surface_area_m2": 0.0843543484695557
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 18373,
+        "removed_surface_area_m2": 0.07945830294336949
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 18374,
+        "removed_surface_area_m2": 0.338926580322825
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 18375,
+        "removed_surface_area_m2": 0.18123070484547374
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 18376,
+        "removed_surface_area_m2": 2.0981866770502164
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 18377,
+        "removed_surface_area_m2": 2.140738432737757
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 18378,
+        "removed_surface_area_m2": 3.311473786483834
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 18379,
+        "removed_surface_area_m2": 0.03976751553104351
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 18380,
+        "removed_surface_area_m2": 0.23189701278165414
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 18381,
+        "removed_surface_area_m2": 0.2054847757170066
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 18383,
+        "removed_surface_area_m2": 0.12088534871229512
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 18384,
+        "removed_surface_area_m2": 0.12082824413258621
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 18385,
+        "removed_surface_area_m2": 0.07564890002601049
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 18386,
+        "removed_surface_area_m2": 0.1854864188098238
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 18387,
+        "removed_surface_area_m2": 0.04348979440547614
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 18388,
+        "removed_surface_area_m2": 0.25236193025756437
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 18389,
+        "removed_surface_area_m2": 0.7536497245418275
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 18390,
+        "removed_surface_area_m2": 0.6669029286126226
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 18391,
+        "removed_surface_area_m2": 0.014801087181936678
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 18392,
+        "removed_surface_area_m2": 0.021613307794551447
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 18393,
+        "removed_surface_area_m2": 0.0747699463398424
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 18394,
+        "removed_surface_area_m2": 0.04870062573673138
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 18395,
+        "removed_surface_area_m2": 0.13037251851257625
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 18396,
+        "removed_surface_area_m2": 0.397675690317753
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 18397,
+        "removed_surface_area_m2": 0.0889085687268091
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 18398,
+        "removed_surface_area_m2": 0.056230935356100874
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 18399,
+        "removed_surface_area_m2": 0.0843455095559899
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 18400,
+        "removed_surface_area_m2": 0.42129368299189324
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 18401,
+        "removed_surface_area_m2": 0.25305603135493
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 18402,
+        "removed_surface_area_m2": 0.028115188194409557
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 18403,
+        "removed_surface_area_m2": 0.17782997969274034
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 18404,
+        "removed_surface_area_m2": 0.17783063338000812
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 18405,
+        "removed_surface_area_m2": 0.06593629577310627
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 18406,
+        "removed_surface_area_m2": 0.08434584869668726
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 18407,
+        "removed_surface_area_m2": 0.20151813156690884
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 18408,
+        "removed_surface_area_m2": 0.03160644421741627
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 18435,
+        "removed_surface_area_m2": 0.1029869846160025
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 18436,
+        "removed_surface_area_m2": 1.4348018519483812
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 18437,
+        "removed_surface_area_m2": 3.173855309247655
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 18438,
+        "removed_surface_area_m2": 0.013108678352232459
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 18498,
+        "removed_surface_area_m2": 0.7923582117810807
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 18499,
+        "removed_surface_area_m2": 0.5907887087923381
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 18500,
+        "removed_surface_area_m2": 3.76517678675932
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 18501,
+        "removed_surface_area_m2": 3.3471044737423115
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 18502,
+        "removed_surface_area_m2": 2.087591163148218
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 18503,
+        "removed_surface_area_m2": 3.3988651927166695
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 18504,
+        "removed_surface_area_m2": 1.2581958290995745
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 18505,
+        "removed_surface_area_m2": 5.270813141775736
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 18506,
+        "removed_surface_area_m2": 14.096495835550096
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 18507,
+        "removed_surface_area_m2": 23.247180456998777
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 18508,
+        "removed_surface_area_m2": 6.633309792402089
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 18509,
+        "removed_surface_area_m2": 0.9685270005180778
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 18510,
+        "removed_surface_area_m2": 0.19682249456600195
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 18513,
+        "removed_surface_area_m2": 0.1760256872928801
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 18514,
+        "removed_surface_area_m2": 0.16322308488480225
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 18515,
+        "removed_surface_area_m2": 0.18117736442232732
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 18516,
+        "removed_surface_area_m2": 0.5214968799766811
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 18517,
+        "removed_surface_area_m2": 0.1375343655471732
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 18518,
+        "removed_surface_area_m2": 2.290834844011514
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 18519,
+        "removed_surface_area_m2": 2.125529073458262
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 18520,
+        "removed_surface_area_m2": 2.2286200836739645
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 18521,
+        "removed_surface_area_m2": 1.2179371773704988
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 18522,
+        "removed_surface_area_m2": 0.06800387838041494
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 18523,
+        "removed_surface_area_m2": 0.1852718345481098
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 18524,
+        "removed_surface_area_m2": 0.14265680412517695
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 18525,
+        "removed_surface_area_m2": 0.07966105743153928
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 18526,
+        "removed_surface_area_m2": 0.013949647196274435
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 18527,
+        "removed_surface_area_m2": 0.24336716330314148
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 18528,
+        "removed_surface_area_m2": 0.1600617986361812
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 18529,
+        "removed_surface_area_m2": 0.27148425024605544
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 18533,
+        "removed_surface_area_m2": 0.8497295731483008
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 18534,
+        "removed_surface_area_m2": 0.1964550688027467
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 18535,
+        "removed_surface_area_m2": 0.13415120773887193
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 18662,
+        "removed_surface_area_m2": 0.34492845718201015
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 18663,
+        "removed_surface_area_m2": 0.36605027425608616
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 18664,
+        "removed_surface_area_m2": 0.6271618299583954
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 18665,
+        "removed_surface_area_m2": 0.1124784901345827
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 18666,
+        "removed_surface_area_m2": 0.05623889042066099
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 18667,
+        "removed_surface_area_m2": 0.10403879079978806
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 18668,
+        "removed_surface_area_m2": 0.008239475271117572
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 18669,
+        "removed_surface_area_m2": 0.021397901918976378
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 18670,
+        "removed_surface_area_m2": 0.07201243307679309
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 18671,
+        "removed_surface_area_m2": 0.011508016927677892
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 18672,
+        "removed_surface_area_m2": 1.1987086636668467
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 18673,
+        "removed_surface_area_m2": 11.027625606386323
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 18674,
+        "removed_surface_area_m2": 22.26404577668503
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 18675,
+        "removed_surface_area_m2": 11.336857015126123
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 18676,
+        "removed_surface_area_m2": 11.693508282235666
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 18677,
+        "removed_surface_area_m2": 0.6385336711361719
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 18678,
+        "removed_surface_area_m2": 1.020453156496649
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 18679,
+        "removed_surface_area_m2": 0.4580312756291143
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 18680,
+        "removed_surface_area_m2": 0.4612841433951273
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 18681,
+        "removed_surface_area_m2": 1.5554860721215693
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 18682,
+        "removed_surface_area_m2": 0.0743937777110675
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 18683,
+        "removed_surface_area_m2": 0.09111730985430871
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 18684,
+        "removed_surface_area_m2": 1.7095045835021814
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 18685,
+        "removed_surface_area_m2": 19.228323723552762
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 18686,
+        "removed_surface_area_m2": 21.49981192304548
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 18687,
+        "removed_surface_area_m2": 21.3796580042861
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 18688,
+        "removed_surface_area_m2": 7.047122969438361
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 18689,
+        "removed_surface_area_m2": 2.7388037646393433
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 18690,
+        "removed_surface_area_m2": 3.9572375126824277
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 18695,
+        "removed_surface_area_m2": 3.410906561445545
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 18696,
+        "removed_surface_area_m2": 0.13289491485558977
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 18697,
+        "removed_surface_area_m2": 0.2150518122849248
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 18698,
+        "removed_surface_area_m2": 0.4045938605043154
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 18699,
+        "removed_surface_area_m2": 0.38014692677543943
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 18700,
+        "removed_surface_area_m2": 0.42268001199628064
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 18701,
+        "removed_surface_area_m2": 5.190008268635914
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 18702,
+        "removed_surface_area_m2": 0.6316417177231959
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 18703,
+        "removed_surface_area_m2": 1.6436328966920468
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 18704,
+        "removed_surface_area_m2": 1.345161539334669
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 18705,
+        "removed_surface_area_m2": 0.3092559403082531
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 18707,
+        "removed_surface_area_m2": 2.971273833611961
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 18708,
+        "removed_surface_area_m2": 0.18354093634336635
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 18709,
+        "removed_surface_area_m2": 0.5569726303629038
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 18717,
+        "removed_surface_area_m2": 0.10520924717499083
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 18718,
+        "removed_surface_area_m2": 0.8108320952080424
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 18719,
+        "removed_surface_area_m2": 0.22666556535122132
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 18720,
+        "removed_surface_area_m2": 3.3948409004040756
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 19461,
+        "removed_surface_area_m2": 0.04871696002789957
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 19462,
+        "removed_surface_area_m2": 0.10138592119245154
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 19463,
+        "removed_surface_area_m2": 0.07977989683457122
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 19464,
+        "removed_surface_area_m2": 0.13339254837829057
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 19465,
+        "removed_surface_area_m2": 1.335977601571444
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 19466,
+        "removed_surface_area_m2": 0.616643437936024
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 19502,
+        "removed_surface_area_m2": 7.158563447567905
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 19759,
+        "removed_surface_area_m2": 0.058115270621276374
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 19816,
+        "removed_surface_area_m2": 0.13182531367957023
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 19867,
+        "removed_surface_area_m2": 0.027206528176675984
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 19868,
+        "removed_surface_area_m2": 0.0060820619918658825
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 19873,
+        "removed_surface_area_m2": 0.0023874584389624834
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 19874,
+        "removed_surface_area_m2": 0.004849306733383588
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 19900,
+        "removed_surface_area_m2": 0.024313697126761836
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 19901,
+        "removed_surface_area_m2": 1.682369908251658
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 19904,
+        "removed_surface_area_m2": 0.00464233472635059
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 19905,
+        "removed_surface_area_m2": 0.004281183725455284
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 19906,
+        "removed_surface_area_m2": 1.5434907029342615
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 19907,
+        "removed_surface_area_m2": 2.5106152895971445
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 19908,
+        "removed_surface_area_m2": 0.7557958047107797
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 19909,
+        "removed_surface_area_m2": 1.4924346210618922
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 19910,
+        "removed_surface_area_m2": 2.4788130075388572
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 19911,
+        "removed_surface_area_m2": 0.1300817862188815
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 19912,
+        "removed_surface_area_m2": 0.3318921265215671
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 19913,
+        "removed_surface_area_m2": 0.14754489938024365
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 19914,
+        "removed_surface_area_m2": 0.9888544797178442
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 19915,
+        "removed_surface_area_m2": 2.088458945580533
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 19916,
+        "removed_surface_area_m2": 1.918638293884284
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 19917,
+        "removed_surface_area_m2": 2.6520096354906655
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 19918,
+        "removed_surface_area_m2": 3.2738259714599973
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 19919,
+        "removed_surface_area_m2": 1.277886211195026
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 19920,
+        "removed_surface_area_m2": 1.8441104430932307
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 19921,
+        "removed_surface_area_m2": 1.332427384946124
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 19922,
+        "removed_surface_area_m2": 0.8086397187317815
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 19923,
+        "removed_surface_area_m2": 0.26674271758127494
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 19924,
+        "removed_surface_area_m2": 0.35785198285999026
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 19925,
+        "removed_surface_area_m2": 2.0242708585976668
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 19926,
+        "removed_surface_area_m2": 3.1339327491661306
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 19927,
+        "removed_surface_area_m2": 7.390337438002918
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 19928,
+        "removed_surface_area_m2": 3.1527404143822855
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 19929,
+        "removed_surface_area_m2": 13.122179172071363
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 19930,
+        "removed_surface_area_m2": 0.3977442738019727
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 19931,
+        "removed_surface_area_m2": 4.266193192557339
+      },
+      {
+        "source_mesh": "Island_0_8",
+        "source_triangle": 581,
+        "removed_surface_area_m2": 0.7118521106069072
+      },
+      {
+        "source_mesh": "Island_0_8",
+        "source_triangle": 582,
+        "removed_surface_area_m2": 1.6745528687922329
+      },
+      {
+        "source_mesh": "Island_0_8",
+        "source_triangle": 583,
+        "removed_surface_area_m2": 0.7797031377316094
+      },
+      {
+        "source_mesh": "Island_0_8",
+        "source_triangle": 605,
+        "removed_surface_area_m2": 1.3894778984672782
+      },
+      {
+        "source_mesh": "Island_0_8",
+        "source_triangle": 606,
+        "removed_surface_area_m2": 1.5489099656772052
+      },
+      {
+        "source_mesh": "Island_0_8",
+        "source_triangle": 607,
+        "removed_surface_area_m2": 2.228080266044459
+      },
+      {
+        "source_mesh": "Island_0_8",
+        "source_triangle": 608,
+        "removed_surface_area_m2": 1.917515716067006
+      },
+      {
+        "source_mesh": "Island_0_8",
+        "source_triangle": 609,
+        "removed_surface_area_m2": 1.3201234856805129
+      },
+      {
+        "source_mesh": "Island_0_8",
+        "source_triangle": 610,
+        "removed_surface_area_m2": 1.1879890692462085
+      },
+      {
+        "source_mesh": "Island_0_8",
+        "source_triangle": 611,
+        "removed_surface_area_m2": 1.5607393511469843
+      },
+      {
+        "source_mesh": "Island_0_8",
+        "source_triangle": 612,
+        "removed_surface_area_m2": 2.105440386650565
+      },
+      {
+        "source_mesh": "Island_0_8",
+        "source_triangle": 613,
+        "removed_surface_area_m2": 1.9531523560302126
+      },
+      {
+        "source_mesh": "Island_0_8",
+        "source_triangle": 628,
+        "removed_surface_area_m2": 1.0848719535448508
+      }
+    ],
+    "north_tower_return": [
+      {
+        "source_mesh": "Island_0_5",
+        "source_triangle": 11594,
+        "removed_surface_area_m2": 0.9234152571517026
+      },
+      {
+        "source_mesh": "Island_0_5",
+        "source_triangle": 11595,
+        "removed_surface_area_m2": 0.37454551235053124
+      },
+      {
+        "source_mesh": "Island_0_5",
+        "source_triangle": 11596,
+        "removed_surface_area_m2": 1.5989889963436263
+      },
+      {
+        "source_mesh": "Island_0_5",
+        "source_triangle": 12053,
+        "removed_surface_area_m2": 1.4535202798959146
+      },
+      {
+        "source_mesh": "Island_0_5",
+        "source_triangle": 12068,
+        "removed_surface_area_m2": 0.02836809509038869
+      },
+      {
+        "source_mesh": "Island_0_5",
+        "source_triangle": 12072,
+        "removed_surface_area_m2": 0.19779125197652886
+      },
+      {
+        "source_mesh": "Island_0_5",
+        "source_triangle": 12073,
+        "removed_surface_area_m2": 0.18871367533543323
+      },
+      {
+        "source_mesh": "Island_0_5",
+        "source_triangle": 12074,
+        "removed_surface_area_m2": 0.5060100147640981
+      },
+      {
+        "source_mesh": "Island_0_5",
+        "source_triangle": 12075,
+        "removed_surface_area_m2": 0.16079934540689572
+      },
+      {
+        "source_mesh": "Island_0_5",
+        "source_triangle": 12076,
+        "removed_surface_area_m2": 0.16233850176167183
+      },
+      {
+        "source_mesh": "Island_0_5",
+        "source_triangle": 12077,
+        "removed_surface_area_m2": 0.11370275496304309
+      },
+      {
+        "source_mesh": "Island_0_5",
+        "source_triangle": 12078,
+        "removed_surface_area_m2": 0.054621340977493785
+      },
+      {
+        "source_mesh": "Island_0_5",
+        "source_triangle": 12079,
+        "removed_surface_area_m2": 0.06307049884813525
+      },
+      {
+        "source_mesh": "Island_0_5",
+        "source_triangle": 12080,
+        "removed_surface_area_m2": 0.17860148349758895
+      },
+      {
+        "source_mesh": "Island_0_5",
+        "source_triangle": 12081,
+        "removed_surface_area_m2": 0.05572952398906149
+      },
+      {
+        "source_mesh": "Island_0_5",
+        "source_triangle": 12210,
+        "removed_surface_area_m2": 0.06358483272426534
+      },
+      {
+        "source_mesh": "Island_0_5",
+        "source_triangle": 12211,
+        "removed_surface_area_m2": 0.05363012195763331
+      },
+      {
+        "source_mesh": "Island_0_5",
+        "source_triangle": 12212,
+        "removed_surface_area_m2": 0.028152423140706435
+      },
+      {
+        "source_mesh": "Island_0_5",
+        "source_triangle": 12213,
+        "removed_surface_area_m2": 0.0125352036160965
+      },
+      {
+        "source_mesh": "Island_0_5",
+        "source_triangle": 12214,
+        "removed_surface_area_m2": 2.941286420741527e-06
+      },
+      {
+        "source_mesh": "Island_0_5",
+        "source_triangle": 12215,
+        "removed_surface_area_m2": 0.08723337361818764
+      },
+      {
+        "source_mesh": "Island_0_5",
+        "source_triangle": 12216,
+        "removed_surface_area_m2": 0.05963430124973318
+      },
+      {
+        "source_mesh": "Island_0_5",
+        "source_triangle": 12217,
+        "removed_surface_area_m2": 0.06307021651556936
+      },
+      {
+        "source_mesh": "Island_0_5",
+        "source_triangle": 12218,
+        "removed_surface_area_m2": 0.05462122748965293
+      },
+      {
+        "source_mesh": "Island_0_5",
+        "source_triangle": 12219,
+        "removed_surface_area_m2": 0.022298654536856675
+      },
+      {
+        "source_mesh": "Island_0_5",
+        "source_triangle": 12224,
+        "removed_surface_area_m2": 0.04986214893901621
+      },
+      {
+        "source_mesh": "Island_0_5",
+        "source_triangle": 12225,
+        "removed_surface_area_m2": 0.0668954656759145
+      },
+      {
+        "source_mesh": "Island_0_5",
+        "source_triangle": 12226,
+        "removed_surface_area_m2": 0.6168025143561376
+      },
+      {
+        "source_mesh": "Island_0_5",
+        "source_triangle": 12227,
+        "removed_surface_area_m2": 1.6666900206100144
+      },
+      {
+        "source_mesh": "Island_0_5",
+        "source_triangle": 12228,
+        "removed_surface_area_m2": 1.7670510265520105
+      },
+      {
+        "source_mesh": "Island_0_5",
+        "source_triangle": 12229,
+        "removed_surface_area_m2": 0.29094680526215394
+      },
+      {
+        "source_mesh": "Island_0_5",
+        "source_triangle": 12230,
+        "removed_surface_area_m2": 0.3712173982835804
+      },
+      {
+        "source_mesh": "Island_0_5",
+        "source_triangle": 12231,
+        "removed_surface_area_m2": 0.09391078821261455
+      },
+      {
+        "source_mesh": "Island_0_5",
+        "source_triangle": 12232,
+        "removed_surface_area_m2": 0.09460624899342159
+      },
+      {
+        "source_mesh": "Island_0_5",
+        "source_triangle": 12233,
+        "removed_surface_area_m2": 0.09460630401867695
+      },
+      {
+        "source_mesh": "Island_0_5",
+        "source_triangle": 12234,
+        "removed_surface_area_m2": 0.12614120059737982
+      },
+      {
+        "source_mesh": "Island_0_5",
+        "source_triangle": 12235,
+        "removed_surface_area_m2": 1.565850867267532
+      },
+      {
+        "source_mesh": "Island_0_5",
+        "source_triangle": 12236,
+        "removed_surface_area_m2": 1.0176777910323567
+      },
+      {
+        "source_mesh": "Island_0_5",
+        "source_triangle": 12237,
+        "removed_surface_area_m2": 0.5470066484464742
+      },
+      {
+        "source_mesh": "Island_0_5",
+        "source_triangle": 12238,
+        "removed_surface_area_m2": 0.1261400262593696
+      },
+      {
+        "source_mesh": "Island_0_5",
+        "source_triangle": 12239,
+        "removed_surface_area_m2": 0.2103692139435258
+      },
+      {
+        "source_mesh": "Island_0_5",
+        "source_triangle": 12240,
+        "removed_surface_area_m2": 0.32159280502474713
+      },
+      {
+        "source_mesh": "Island_0_5",
+        "source_triangle": 12241,
+        "removed_surface_area_m2": 1.0208708122288215
+      },
+      {
+        "source_mesh": "Island_0_5",
+        "source_triangle": 12242,
+        "removed_surface_area_m2": 1.0208711737635108
+      },
+      {
+        "source_mesh": "Island_0_5",
+        "source_triangle": 12243,
+        "removed_surface_area_m2": 0.1021858853223494
+      },
+      {
+        "source_mesh": "Island_0_5",
+        "source_triangle": 12244,
+        "removed_surface_area_m2": 0.08343451340322174
+      },
+      {
+        "source_mesh": "Island_0_5",
+        "source_triangle": 12245,
+        "removed_surface_area_m2": 0.4351472709316302
+      },
+      {
+        "source_mesh": "Island_0_5",
+        "source_triangle": 12250,
+        "removed_surface_area_m2": 0.03705936632981865
+      },
+      {
+        "source_mesh": "Island_0_5",
+        "source_triangle": 12251,
+        "removed_surface_area_m2": 0.2408536191612
+      },
+      {
+        "source_mesh": "Island_0_5",
+        "source_triangle": 12271,
+        "removed_surface_area_m2": 3.4822927796001752
+      },
+      {
+        "source_mesh": "Island_0_5",
+        "source_triangle": 12272,
+        "removed_surface_area_m2": 4.306991042081235
+      },
+      {
+        "source_mesh": "Island_0_5",
+        "source_triangle": 12273,
+        "removed_surface_area_m2": 9.669302329469891
+      },
+      {
+        "source_mesh": "Island_0_5",
+        "source_triangle": 12274,
+        "removed_surface_area_m2": 0.5407644606264471
+      },
+      {
+        "source_mesh": "Island_0_5",
+        "source_triangle": 12275,
+        "removed_surface_area_m2": 0.650490633705994
+      },
+      {
+        "source_mesh": "Island_0_5",
+        "source_triangle": 12276,
+        "removed_surface_area_m2": 0.5110966291470087
+      },
+      {
+        "source_mesh": "Island_0_5",
+        "source_triangle": 12277,
+        "removed_surface_area_m2": 0.17982911234488566
+      },
+      {
+        "source_mesh": "Island_0_5",
+        "source_triangle": 12284,
+        "removed_surface_area_m2": 0.09210834477548648
+      },
+      {
+        "source_mesh": "Island_0_5",
+        "source_triangle": 12285,
+        "removed_surface_area_m2": 2.4463392167179077
+      },
+      {
+        "source_mesh": "Island_0_5",
+        "source_triangle": 12286,
+        "removed_surface_area_m2": 0.7976202054219015
+      },
+      {
+        "source_mesh": "Island_0_5",
+        "source_triangle": 12294,
+        "removed_surface_area_m2": 0.300528354869342
+      },
+      {
+        "source_mesh": "Island_0_5",
+        "source_triangle": 12295,
+        "removed_surface_area_m2": 0.3783294432890742
+      },
+      {
+        "source_mesh": "Island_0_5",
+        "source_triangle": 12297,
+        "removed_surface_area_m2": 0.0135737545091994
+      },
+      {
+        "source_mesh": "Island_0_5",
+        "source_triangle": 12298,
+        "removed_surface_area_m2": 0.011868296712383875
+      },
+      {
+        "source_mesh": "Island_0_5",
+        "source_triangle": 12299,
+        "removed_surface_area_m2": 0.34605570417045056
+      },
+      {
+        "source_mesh": "Island_0_5",
+        "source_triangle": 13714,
+        "removed_surface_area_m2": 5.399420048648976
+      },
+      {
+        "source_mesh": "Island_0_5",
+        "source_triangle": 13715,
+        "removed_surface_area_m2": 0.44143651296173986
+      },
+      {
+        "source_mesh": "Island_0_5",
+        "source_triangle": 13716,
+        "removed_surface_area_m2": 0.7050227758277837
+      },
+      {
+        "source_mesh": "Island_0_5",
+        "source_triangle": 13717,
+        "removed_surface_area_m2": 0.6833714766585153
+      },
+      {
+        "source_mesh": "Island_0_5",
+        "source_triangle": 13718,
+        "removed_surface_area_m2": 0.13728957638535666
+      },
+      {
+        "source_mesh": "Island_0_5",
+        "source_triangle": 13989,
+        "removed_surface_area_m2": 0.09459800315527164
+      },
+      {
+        "source_mesh": "Island_0_5",
+        "source_triangle": 13990,
+        "removed_surface_area_m2": 0.4077873276993006
+      },
+      {
+        "source_mesh": "Island_0_5",
+        "source_triangle": 13991,
+        "removed_surface_area_m2": 0.5559698176228418
+      },
+      {
+        "source_mesh": "Island_0_5",
+        "source_triangle": 13992,
+        "removed_surface_area_m2": 1.0203869263926146
+      },
+      {
+        "source_mesh": "Island_0_5",
+        "source_triangle": 14010,
+        "removed_surface_area_m2": 1.4351197113207133
+      },
+      {
+        "source_mesh": "Island_0_5",
+        "source_triangle": 14011,
+        "removed_surface_area_m2": 2.3685634851839867
+      },
+      {
+        "source_mesh": "Island_0_5",
+        "source_triangle": 14039,
+        "removed_surface_area_m2": 0.03708898533224721
+      },
+      {
+        "source_mesh": "Island_0_5",
+        "source_triangle": 14041,
+        "removed_surface_area_m2": 0.001869572994428605
+      },
+      {
+        "source_mesh": "Island_0_5",
+        "source_triangle": 14042,
+        "removed_surface_area_m2": 0.2177954829749489
+      },
+      {
+        "source_mesh": "Island_0_5",
+        "source_triangle": 14043,
+        "removed_surface_area_m2": 0.6730343084315692
+      },
+      {
+        "source_mesh": "Island_0_5",
+        "source_triangle": 14044,
+        "removed_surface_area_m2": 0.5336658082522504
+      },
+      {
+        "source_mesh": "Island_0_5",
+        "source_triangle": 14048,
+        "removed_surface_area_m2": 3.9015459581616385
+      },
+      {
+        "source_mesh": "Island_0_5",
+        "source_triangle": 14049,
+        "removed_surface_area_m2": 4.182228247710931
+      },
+      {
+        "source_mesh": "Island_0_5",
+        "source_triangle": 14050,
+        "removed_surface_area_m2": 2.5594231071593305
+      },
+      {
+        "source_mesh": "Island_0_5",
+        "source_triangle": 14051,
+        "removed_surface_area_m2": 1.1763809658296327
+      },
+      {
+        "source_mesh": "Island_0_5",
+        "source_triangle": 14052,
+        "removed_surface_area_m2": 0.22298692005307785
+      },
+      {
+        "source_mesh": "Island_0_5",
+        "source_triangle": 14053,
+        "removed_surface_area_m2": 0.4711659122149767
+      },
+      {
+        "source_mesh": "Island_0_5",
+        "source_triangle": 14054,
+        "removed_surface_area_m2": 1.8811053339023809
+      },
+      {
+        "source_mesh": "Island_0_5",
+        "source_triangle": 14055,
+        "removed_surface_area_m2": 1.052481070203162
+      },
+      {
+        "source_mesh": "Island_0_5",
+        "source_triangle": 14057,
+        "removed_surface_area_m2": 0.1025187505964589
+      },
+      {
+        "source_mesh": "Island_0_5",
+        "source_triangle": 14058,
+        "removed_surface_area_m2": 0.7546289026260201
+      },
+      {
+        "source_mesh": "Island_0_5",
+        "source_triangle": 14802,
+        "removed_surface_area_m2": 0.4197716270537267
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 16050,
+        "removed_surface_area_m2": 0.7993939367491784
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 16051,
+        "removed_surface_area_m2": 3.814727307456426e-05
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 16052,
+        "removed_surface_area_m2": 2.4753870481983906
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 16053,
+        "removed_surface_area_m2": 6.936652125167493e-05
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 16097,
+        "removed_surface_area_m2": 0.8253881519318413
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 16098,
+        "removed_surface_area_m2": 3.4731983615283917
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 16099,
+        "removed_surface_area_m2": 0.0973068552499355
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 16100,
+        "removed_surface_area_m2": 0.6630557636435945
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 16101,
+        "removed_surface_area_m2": 0.3230450882474389
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 16102,
+        "removed_surface_area_m2": 0.32304184187857593
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 16103,
+        "removed_surface_area_m2": 0.3755052764431762
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 16104,
+        "removed_surface_area_m2": 0.07044850738316712
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 16903,
+        "removed_surface_area_m2": 0.0015494437230894977
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 16907,
+        "removed_surface_area_m2": 0.0795817479596202
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 16908,
+        "removed_surface_area_m2": 0.14878060233868726
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 16909,
+        "removed_surface_area_m2": 0.16870527202144564
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 16910,
+        "removed_surface_area_m2": 0.26675074297464574
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 16911,
+        "removed_surface_area_m2": 1.0059381784719301
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 16912,
+        "removed_surface_area_m2": 5.059017158862124
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 16931,
+        "removed_surface_area_m2": 0.24233013612782667
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 16982,
+        "removed_surface_area_m2": 0.13338443003096515
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 16983,
+        "removed_surface_area_m2": 0.030861329030907162
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 16984,
+        "removed_surface_area_m2": 0.2762194031298717
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 16985,
+        "removed_surface_area_m2": 0.49867806179483415
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 16986,
+        "removed_surface_area_m2": 0.15271251477667208
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 17033,
+        "removed_surface_area_m2": 9.974304941097809e-05
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 17037,
+        "removed_surface_area_m2": 0.1461186357783818
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 17038,
+        "removed_surface_area_m2": 0.008845147791810256
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 17039,
+        "removed_surface_area_m2": 0.059658798515366415
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 17040,
+        "removed_surface_area_m2": 0.05623970356233737
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 17041,
+        "removed_surface_area_m2": 0.14474172275144964
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 17042,
+        "removed_surface_area_m2": 0.510792375181031
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 17043,
+        "removed_surface_area_m2": 0.6337483586962518
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 17129,
+        "removed_surface_area_m2": 0.0018349605649295166
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 17131,
+        "removed_surface_area_m2": 0.0872707886550602
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 17132,
+        "removed_surface_area_m2": 0.08586885983754819
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 17153,
+        "removed_surface_area_m2": 0.17217933773447977
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 17154,
+        "removed_surface_area_m2": 0.21506912402853912
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 17155,
+        "removed_surface_area_m2": 0.02811481911349088
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 17156,
+        "removed_surface_area_m2": 0.044453829398779184
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 17157,
+        "removed_surface_area_m2": 0.13334690963550364
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 17158,
+        "removed_surface_area_m2": 0.24984338507895787
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 17159,
+        "removed_surface_area_m2": 0.09649713101509354
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 17160,
+        "removed_surface_area_m2": 0.06099143295365569
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 17161,
+        "removed_surface_area_m2": 0.25039588575684724
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 17162,
+        "removed_surface_area_m2": 0.001996324871216748
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 17163,
+        "removed_surface_area_m2": 0.0034970739185474268
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 17164,
+        "removed_surface_area_m2": 0.0342712438477185
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 17165,
+        "removed_surface_area_m2": 0.08892188869463695
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 17166,
+        "removed_surface_area_m2": 1.3187656673386198e-07
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 17167,
+        "removed_surface_area_m2": 0.0444595460147541
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 18324,
+        "removed_surface_area_m2": 16.71045114150938
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 18325,
+        "removed_surface_area_m2": 0.6175947561879745
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 18326,
+        "removed_surface_area_m2": 1.32564081239216
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 18327,
+        "removed_surface_area_m2": 2.337112878330134
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 18328,
+        "removed_surface_area_m2": 0.07649230985482709
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 18329,
+        "removed_surface_area_m2": 0.0010741832954570439
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 18351,
+        "removed_surface_area_m2": 0.0022369200070824326
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 18352,
+        "removed_surface_area_m2": 0.06163874487115287
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 18353,
+        "removed_surface_area_m2": 0.052021665203680664
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 18354,
+        "removed_surface_area_m2": 0.10281553864555418
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 18356,
+        "removed_surface_area_m2": 0.014235327856882108
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 18357,
+        "removed_surface_area_m2": 0.01044131252545277
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 18580,
+        "removed_surface_area_m2": 0.003973682311616889
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 18581,
+        "removed_surface_area_m2": 0.021831268754197608
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 18582,
+        "removed_surface_area_m2": 0.2317685655799674
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 18583,
+        "removed_surface_area_m2": 0.3745639118702694
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 18584,
+        "removed_surface_area_m2": 0.5241009243383092
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 18585,
+        "removed_surface_area_m2": 1.1222831346336457
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 18586,
+        "removed_surface_area_m2": 0.9923817485627988
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 18588,
+        "removed_surface_area_m2": 0.554358924976467
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 18589,
+        "removed_surface_area_m2": 0.3350647354026932
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 18591,
+        "removed_surface_area_m2": 0.5079483981217316
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 18596,
+        "removed_surface_area_m2": 1.2893701848461137
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 18597,
+        "removed_surface_area_m2": 1.8703569514708953
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 18598,
+        "removed_surface_area_m2": 1.2942588324201552
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 18607,
+        "removed_surface_area_m2": 0.1264428096142266
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 18610,
+        "removed_surface_area_m2": 0.6449181332098316
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 18634,
+        "removed_surface_area_m2": 0.6798636188146894
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 18635,
+        "removed_surface_area_m2": 0.026433559129471085
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 18651,
+        "removed_surface_area_m2": 2.752439709269066
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 18652,
+        "removed_surface_area_m2": 7.855450072219897
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 18658,
+        "removed_surface_area_m2": 0.3205796666807864
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 18659,
+        "removed_surface_area_m2": 0.34728648670019086
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 18660,
+        "removed_surface_area_m2": 0.09112963381133968
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 18661,
+        "removed_surface_area_m2": 0.0487027950622346
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 18667,
+        "removed_surface_area_m2": 0.022000733576630616
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 18668,
+        "removed_surface_area_m2": 0.18248072297864243
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 18669,
+        "removed_surface_area_m2": 1.476287122998557
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 18670,
+        "removed_surface_area_m2": 0.04881172584063191
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 19490,
+        "removed_surface_area_m2": 0.0006130266019965643
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 19493,
+        "removed_surface_area_m2": 0.004506378003979077
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 19494,
+        "removed_surface_area_m2": 0.02391743970493356
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 19495,
+        "removed_surface_area_m2": 0.571773945551462
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 19496,
+        "removed_surface_area_m2": 0.5717361596174045
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 19497,
+        "removed_surface_area_m2": 5.019372846563389
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 19498,
+        "removed_surface_area_m2": 3.2890371459893886
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 19527,
+        "removed_surface_area_m2": 6.02025599483687
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 19528,
+        "removed_surface_area_m2": 13.24076622168986
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 19580,
+        "removed_surface_area_m2": 0.7329487585249875
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 19581,
+        "removed_surface_area_m2": 0.01791602731163366
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 19582,
+        "removed_surface_area_m2": 3.776837482236661
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 19583,
+        "removed_surface_area_m2": 0.6946766109257163
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 19584,
+        "removed_surface_area_m2": 3.9544960613239373
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 19585,
+        "removed_surface_area_m2": 1.094954387800391
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 19586,
+        "removed_surface_area_m2": 1.4461160008105298
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 19587,
+        "removed_surface_area_m2": 3.0057733798897517
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 19588,
+        "removed_surface_area_m2": 0.19037129276812095
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 19589,
+        "removed_surface_area_m2": 0.13197986114440574
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 19590,
+        "removed_surface_area_m2": 0.33153894227433184
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 19594,
+        "removed_surface_area_m2": 0.2395771453025763
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 19598,
+        "removed_surface_area_m2": 0.41959625091956065
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 19599,
+        "removed_surface_area_m2": 0.2763503321554946
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 19600,
+        "removed_surface_area_m2": 0.0237228387833031
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 19601,
+        "removed_surface_area_m2": 0.02935377392253029
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 19616,
+        "removed_surface_area_m2": 2.075387339729971
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 19617,
+        "removed_surface_area_m2": 2.4975434313661315
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 19622,
+        "removed_surface_area_m2": 0.7113597490449942
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 19644,
+        "removed_surface_area_m2": 0.026706104851398193
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 19645,
+        "removed_surface_area_m2": 0.08893339087944198
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 19646,
+        "removed_surface_area_m2": 0.15203192954377134
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 19647,
+        "removed_surface_area_m2": 0.05808001195801188
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 19648,
+        "removed_surface_area_m2": 0.8250588664987366
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 19941,
+        "removed_surface_area_m2": 0.33859814049460674
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 19942,
+        "removed_surface_area_m2": 0.38347199562527023
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 19943,
+        "removed_surface_area_m2": 0.8509754369118747
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 19944,
+        "removed_surface_area_m2": 9.889209169976642
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 19945,
+        "removed_surface_area_m2": 0.44696978745844224
+      },
+      {
+        "source_mesh": "Island_0_8",
+        "source_triangle": 557,
+        "removed_surface_area_m2": 0.015401554948223423
+      },
+      {
+        "source_mesh": "Island_0_8",
+        "source_triangle": 588,
+        "removed_surface_area_m2": 0.2832529097495254
+      },
+      {
+        "source_mesh": "Island_0_8",
+        "source_triangle": 589,
+        "removed_surface_area_m2": 0.29423276918967733
+      },
+      {
+        "source_mesh": "Island_0_8",
+        "source_triangle": 590,
+        "removed_surface_area_m2": 1.2256192578647709
+      },
+      {
+        "source_mesh": "Island_0_8",
+        "source_triangle": 591,
+        "removed_surface_area_m2": 1.8995884734058088
+      }
+    ],
+    "west_tower_step": [
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 16924,
+        "removed_surface_area_m2": 0.013386068830574718
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 17021,
+        "removed_surface_area_m2": 1.147418931897069
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 17023,
+        "removed_surface_area_m2": 0.0009325614746667067
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 17024,
+        "removed_surface_area_m2": 0.023290323742567152
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 17090,
+        "removed_surface_area_m2": 0.18149994911903625
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 17169,
+        "removed_surface_area_m2": 0.03700936969127343
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 17170,
+        "removed_surface_area_m2": 0.5033571208542806
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 17171,
+        "removed_surface_area_m2": 1.50300981663899
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 17172,
+        "removed_surface_area_m2": 1.2068915576409578
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 18068,
+        "removed_surface_area_m2": 0.05708384672471528
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 18069,
+        "removed_surface_area_m2": 1.9395203394252358
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 18071,
+        "removed_surface_area_m2": 3.8614531826427236
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 18072,
+        "removed_surface_area_m2": 5.805314200454366
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 18074,
+        "removed_surface_area_m2": 0.29869750860870425
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 18075,
+        "removed_surface_area_m2": 0.011805710508760654
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 18076,
+        "removed_surface_area_m2": 0.06987789178162863
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 18081,
+        "removed_surface_area_m2": 0.035205337393931245
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 18083,
+        "removed_surface_area_m2": 0.012461207320870072
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 18084,
+        "removed_surface_area_m2": 0.17655166853707713
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 18085,
+        "removed_surface_area_m2": 0.17927187468650854
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 18087,
+        "removed_surface_area_m2": 0.8851045731495737
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 18088,
+        "removed_surface_area_m2": 4.8909325081903425
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 18089,
+        "removed_surface_area_m2": 2.691591153316722
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 18090,
+        "removed_surface_area_m2": 9.062117782847006
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 18091,
+        "removed_surface_area_m2": 3.4195065069615085
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 18231,
+        "removed_surface_area_m2": 0.06992270933312067
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 18232,
+        "removed_surface_area_m2": 0.06932329303737468
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 18746,
+        "removed_surface_area_m2": 0.8628938602331211
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 18747,
+        "removed_surface_area_m2": 0.9546186325676794
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 18748,
+        "removed_surface_area_m2": 1.8217651908878976
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 18749,
+        "removed_surface_area_m2": 4.475865754211149
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 19800,
+        "removed_surface_area_m2": 0.14155434815681422
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 19801,
+        "removed_surface_area_m2": 0.2351510950027656
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 19802,
+        "removed_surface_area_m2": 0.2511543713309229
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 19805,
+        "removed_surface_area_m2": 0.4501893448691652
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 19806,
+        "removed_surface_area_m2": 0.44118656586354504
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 19807,
+        "removed_surface_area_m2": 0.002738528803506097
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 19808,
+        "removed_surface_area_m2": 0.03499105342035338
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 19809,
+        "removed_surface_area_m2": 0.5541042629946319
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 19810,
+        "removed_surface_area_m2": 0.4413422376098906
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 19811,
+        "removed_surface_area_m2": 0.03455443996604901
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 19812,
+        "removed_surface_area_m2": 0.0789534784848261
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 19813,
+        "removed_surface_area_m2": 1.9452587011002773
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 19814,
+        "removed_surface_area_m2": 0.8454676676504899
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 19815,
+        "removed_surface_area_m2": 0.05287150908985529
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 19816,
+        "removed_surface_area_m2": 0.0013589780925832694
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 19817,
+        "removed_surface_area_m2": 0.1183595107371413
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 19818,
+        "removed_surface_area_m2": 0.8542635106970877
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 19819,
+        "removed_surface_area_m2": 0.7056081644129336
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 19820,
+        "removed_surface_area_m2": 0.11012641911020662
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 19823,
+        "removed_surface_area_m2": 1.4304298729943912
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 19824,
+        "removed_surface_area_m2": 0.4820145517189006
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 19825,
+        "removed_surface_area_m2": 2.1231740168475617
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 19826,
+        "removed_surface_area_m2": 0.40485289190064766
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 19827,
+        "removed_surface_area_m2": 0.3134493986184528
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 19842,
+        "removed_surface_area_m2": 0.1332219381814467
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 19843,
+        "removed_surface_area_m2": 0.9814180511035322
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 19844,
+        "removed_surface_area_m2": 0.5130396427353419
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 19852,
+        "removed_surface_area_m2": 0.3736128253378479
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 19853,
+        "removed_surface_area_m2": 0.0034620492844624224
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 19854,
+        "removed_surface_area_m2": 0.004510339328106632
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 19855,
+        "removed_surface_area_m2": 0.003515094895836867
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 19870,
+        "removed_surface_area_m2": 0.017535987966479018
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 19871,
+        "removed_surface_area_m2": 0.5536583067937926
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 19872,
+        "removed_surface_area_m2": 0.003171766091611914
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 19873,
+        "removed_surface_area_m2": 0.0011744889466323884
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 19881,
+        "removed_surface_area_m2": 0.0012269230868522253
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 19882,
+        "removed_surface_area_m2": 0.005191598452177635
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 19883,
+        "removed_surface_area_m2": 0.003947972557656996
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 19884,
+        "removed_surface_area_m2": 0.0012861561518407961
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 19885,
+        "removed_surface_area_m2": 0.3842228138183925
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 19886,
+        "removed_surface_area_m2": 3.2580532323079527
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 19887,
+        "removed_surface_area_m2": 4.0835769083503095
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 19888,
+        "removed_surface_area_m2": 3.3115488754366154
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 19889,
+        "removed_surface_area_m2": 1.7364575381955583
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 19890,
+        "removed_surface_area_m2": 1.0439457260201368
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 19891,
+        "removed_surface_area_m2": 0.016863258872469804
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 19892,
+        "removed_surface_area_m2": 0.02434344105503114
+      },
+      {
+        "source_mesh": "Island_0_8",
+        "source_triangle": 627,
+        "removed_surface_area_m2": 0.37434181750875944
+      }
+    ],
+    "elevated_southeast_corner_cleanup": [
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 16934,
+        "removed_surface_area_m2": 0.11136965633331204
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 17022,
+        "removed_surface_area_m2": 0.7411934124650582
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 17023,
+        "removed_surface_area_m2": 0.1642444508123278
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 17024,
+        "removed_surface_area_m2": 0.4425404125399929
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 17025,
+        "removed_surface_area_m2": 0.02516117120996531
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 17026,
+        "removed_surface_area_m2": 0.24725674934498723
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 17027,
+        "removed_surface_area_m2": 0.2818069034961486
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 19909,
+        "removed_surface_area_m2": 0.5562708643935732
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 19917,
+        "removed_surface_area_m2": 0.04491294126557027
+      },
+      {
+        "source_mesh": "Island_0_7",
+        "source_triangle": 19918,
+        "removed_surface_area_m2": 0.043905562717601924
+      }
+    ]
+  },
+  "replaced_projected_area_m2": 807.9783312911562,
   "removed_area_by_patch": {
     "retaining_east": 57.72298478365034,
-    "south_tower_face": 125.26532232346482
+    "south_tower_face": 136.97449812394154,
+    "east_tower_return": 396.98189214402356,
+    "north_tower_return": 174.23577413085908,
+    "west_tower_step": 39.66031389874953,
+    "elevated_southeast_corner_cleanup": 2.4028682099321337
   },
   "front_projected_removed_area_by_patch": {
     "retaining_east": 41.99999999999998,
-    "south_tower_face": 114.73949901618512
+    "south_tower_face": 124.08027067952722,
+    "east_tower_return": 262.31471861545634,
+    "north_tower_return": 112.1414710691844,
+    "west_tower_step": 26.482547268683792,
+    "elevated_southeast_corner_cleanup": 2.3102735321792904
   },
   "removed_surface_area_by_patch": {
     "retaining_east": 57.74268613604742,
-    "south_tower_face": 138.7083740307851
+    "south_tower_face": 159.4041877131387,
+    "east_tower_return": 520.4595928810752,
+    "north_tower_return": 206.51371345853642,
+    "west_tower_step": 75.15416210466131,
+    "elevated_southeast_corner_cleanup": 2.658662124578538
   },
   "clipping_depth_metres": {
     "behind_plane": 0.45,
@@ -134,9 +4308,9 @@
         1.4
       ],
       "world_position": [
-        -110.17739289698565,
+        -110.32405007933887,
         49.9,
-        -20.015556310611434
+        -19.984065504584667
       ],
       "scan_occluders": 0
     },
@@ -149,9 +4323,9 @@
         2.4
       ],
       "world_position": [
-        -110.52937013463338,
+        -110.6760273169866,
         50.9,
-        -19.9399783761472
+        -19.908487570120432
       ],
       "scan_occluders": 0
     },
@@ -164,9 +4338,9 @@
         1.4
       ],
       "world_position": [
-        -109.96229569620094,
+        -110.10895287855416,
         49.9,
-        -20.061742826117353
+        -20.030252020090586
       ],
       "scan_occluders": 0
     },
@@ -179,9 +4353,9 @@
         2.4
       ],
       "world_position": [
-        -110.7444673354181,
+        -110.89112451777132,
         50.9,
-        -19.89379186064128
+        -19.862301054614512
       ],
       "scan_occluders": 0
     },
@@ -194,9 +4368,9 @@
         1.4
       ],
       "world_position": [
-        -107.24424924992132,
+        -107.19536352247023,
         49.9,
-        -20.645372431146722
+        -20.655869366488975
       ],
       "scan_occluders": 0
     },
@@ -209,9 +4383,9 @@
         2.4
       ],
       "world_position": [
-        -107.59622648756906,
+        -107.54734076011796,
         50.9,
-        -20.569794496682487
+        -20.58029143202474
       ],
       "scan_occluders": 0
     },
@@ -224,9 +4398,9 @@
         1.4
       ],
       "world_position": [
-        -107.02915204913661,
+        -106.98026632168552,
         49.9,
-        -20.69155894665264
+        -20.702055881994895
       ],
       "scan_occluders": 0
     },
@@ -239,9 +4413,9 @@
         2.4
       ],
       "world_position": [
-        -107.81132368835377,
+        -107.76243796090267,
         50.9,
-        -20.523607981176568
+        -20.53410491651882
       ],
       "scan_occluders": 0
     },
@@ -254,9 +4428,9 @@
         1.4
       ],
       "world_position": [
-        -110.17739289698565,
+        -110.32405007933887,
         53.4,
-        -20.015556310611434
+        -19.984065504584667
       ],
       "scan_occluders": 0
     },
@@ -269,9 +4443,9 @@
         2.4
       ],
       "world_position": [
-        -110.52937013463338,
+        -110.6760273169866,
         54.4,
-        -19.9399783761472
+        -19.908487570120432
       ],
       "scan_occluders": 0
     },
@@ -284,9 +4458,9 @@
         1.4
       ],
       "world_position": [
-        -109.96229569620094,
+        -110.10895287855416,
         53.4,
-        -20.061742826117353
+        -20.030252020090586
       ],
       "scan_occluders": 0
     },
@@ -299,9 +4473,9 @@
         2.4
       ],
       "world_position": [
-        -110.7444673354181,
+        -110.89112451777132,
         54.4,
-        -19.89379186064128
+        -19.862301054614512
       ],
       "scan_occluders": 0
     },
@@ -314,9 +4488,9 @@
         1.4
       ],
       "world_position": [
-        -107.24424924992132,
+        -107.19536352247023,
         53.4,
-        -20.645372431146722
+        -20.655869366488975
       ],
       "scan_occluders": 0
     },
@@ -329,9 +4503,9 @@
         2.4
       ],
       "world_position": [
-        -107.59622648756906,
+        -107.54734076011796,
         54.4,
-        -20.569794496682487
+        -20.58029143202474
       ],
       "scan_occluders": 0
     },
@@ -344,9 +4518,9 @@
         1.4
       ],
       "world_position": [
-        -107.02915204913661,
+        -106.98026632168552,
         53.4,
-        -20.69155894665264
+        -20.702055881994895
       ],
       "scan_occluders": 0
     },
@@ -359,9 +4533,9 @@
         2.4
       ],
       "world_position": [
-        -107.81132368835377,
+        -107.76243796090267,
         54.4,
-        -20.523607981176568
+        -20.53410491651882
       ],
       "scan_occluders": 0
     },
@@ -374,9 +4548,9 @@
         1.4
       ],
       "world_position": [
-        -110.17739289698565,
+        -110.32405007933887,
         56.9,
-        -20.015556310611434
+        -19.984065504584667
       ],
       "scan_occluders": 0
     },
@@ -389,9 +4563,9 @@
         2.4
       ],
       "world_position": [
-        -110.52937013463338,
+        -110.6760273169866,
         57.9,
-        -19.9399783761472
+        -19.908487570120432
       ],
       "scan_occluders": 0
     },
@@ -404,9 +4578,9 @@
         1.4
       ],
       "world_position": [
-        -109.96229569620094,
+        -110.10895287855416,
         56.9,
-        -20.061742826117353
+        -20.030252020090586
       ],
       "scan_occluders": 0
     },
@@ -419,9 +4593,9 @@
         2.4
       ],
       "world_position": [
-        -110.7444673354181,
+        -110.89112451777132,
         57.9,
-        -19.89379186064128
+        -19.862301054614512
       ],
       "scan_occluders": 0
     },
@@ -434,9 +4608,9 @@
         1.4
       ],
       "world_position": [
-        -107.24424924992132,
+        -107.19536352247023,
         56.9,
-        -20.645372431146722
+        -20.655869366488975
       ],
       "scan_occluders": 0
     },
@@ -449,9 +4623,9 @@
         2.4
       ],
       "world_position": [
-        -107.59622648756906,
+        -107.54734076011796,
         57.9,
-        -20.569794496682487
+        -20.58029143202474
       ],
       "scan_occluders": 0
     },
@@ -464,9 +4638,9 @@
         1.4
       ],
       "world_position": [
-        -107.02915204913661,
+        -106.98026632168552,
         56.9,
-        -20.69155894665264
+        -20.702055881994895
       ],
       "scan_occluders": 0
     },
@@ -479,9 +4653,1089 @@
         2.4
       ],
       "world_position": [
-        -107.81132368835377,
+        -107.76243796090267,
         57.9,
-        -20.523607981176568
+        -20.53410491651882
+      ],
+      "scan_occluders": 0
+    },
+    {
+      "patch": "east_tower_return",
+      "row": 0,
+      "column": 0,
+      "local_xy": [
+        0.18,
+        1.4
+      ],
+      "world_position": [
+        -105.41626044474437,
+        49.9,
+        -19.134211125842842
+      ],
+      "scan_occluders": 0
+    },
+    {
+      "patch": "east_tower_return",
+      "row": 0,
+      "column": 0,
+      "local_xy": [
+        -0.18,
+        2.4
+      ],
+      "world_position": [
+        -105.4918383792086,
+        50.9,
+        -19.486188363490566
+      ],
+      "scan_occluders": 0
+    },
+    {
+      "patch": "east_tower_return",
+      "row": 0,
+      "column": 0,
+      "local_xy": [
+        0.4,
+        1.4
+      ],
+      "world_position": [
+        -105.37007392923844,
+        49.9,
+        -18.919113925058127
+      ],
+      "scan_occluders": 0
+    },
+    {
+      "patch": "east_tower_return",
+      "row": 0,
+      "column": 0,
+      "local_xy": [
+        -0.4,
+        2.4
+      ],
+      "world_position": [
+        -105.53802489471452,
+        50.9,
+        -19.70128556427528
+      ],
+      "scan_occluders": 0
+    },
+    {
+      "patch": "east_tower_return",
+      "row": 0,
+      "column": 1,
+      "local_xy": [
+        0.18,
+        1.4
+      ],
+      "world_position": [
+        -104.71034154297773,
+        49.9,
+        -15.846645954758236
+      ],
+      "scan_occluders": 0
+    },
+    {
+      "patch": "east_tower_return",
+      "row": 0,
+      "column": 1,
+      "local_xy": [
+        -0.18,
+        2.4
+      ],
+      "world_position": [
+        -104.78591947744196,
+        50.9,
+        -16.198623192405957
+      ],
+      "scan_occluders": 0
+    },
+    {
+      "patch": "east_tower_return",
+      "row": 0,
+      "column": 1,
+      "local_xy": [
+        0.4,
+        1.4
+      ],
+      "world_position": [
+        -104.6641550274718,
+        49.9,
+        -15.631548753973517
+      ],
+      "scan_occluders": 0
+    },
+    {
+      "patch": "east_tower_return",
+      "row": 0,
+      "column": 1,
+      "local_xy": [
+        -0.4,
+        2.4
+      ],
+      "world_position": [
+        -104.83210599294789,
+        50.9,
+        -16.413720393190673
+      ],
+      "scan_occluders": 0
+    },
+    {
+      "patch": "east_tower_return",
+      "row": 0,
+      "column": 2,
+      "local_xy": [
+        0.18,
+        1.4
+      ],
+      "world_position": [
+        -104.0044226412111,
+        49.9,
+        -12.559080783673622
+      ],
+      "scan_occluders": 0
+    },
+    {
+      "patch": "east_tower_return",
+      "row": 0,
+      "column": 2,
+      "local_xy": [
+        -0.18,
+        2.4
+      ],
+      "world_position": [
+        -104.08000057567533,
+        50.9,
+        -12.911058021321342
+      ],
+      "scan_occluders": 0
+    },
+    {
+      "patch": "east_tower_return",
+      "row": 0,
+      "column": 2,
+      "local_xy": [
+        0.4,
+        1.4
+      ],
+      "world_position": [
+        -103.95823612570517,
+        49.9,
+        -12.343983582888903
+      ],
+      "scan_occluders": 0
+    },
+    {
+      "patch": "east_tower_return",
+      "row": 0,
+      "column": 2,
+      "local_xy": [
+        -0.4,
+        2.4
+      ],
+      "world_position": [
+        -104.12618709118125,
+        50.9,
+        -13.12615522210606
+      ],
+      "scan_occluders": 0
+    },
+    {
+      "patch": "east_tower_return",
+      "row": 0,
+      "column": 3,
+      "local_xy": [
+        0.18,
+        1.4
+      ],
+      "world_position": [
+        -103.29850373944446,
+        49.9,
+        -9.27151561258901
+      ],
+      "scan_occluders": 0
+    },
+    {
+      "patch": "east_tower_return",
+      "row": 0,
+      "column": 3,
+      "local_xy": [
+        -0.18,
+        2.4
+      ],
+      "world_position": [
+        -103.37408167390869,
+        50.9,
+        -9.62349285023673
+      ],
+      "scan_occluders": 0
+    },
+    {
+      "patch": "east_tower_return",
+      "row": 0,
+      "column": 3,
+      "local_xy": [
+        0.4,
+        1.4
+      ],
+      "world_position": [
+        -103.25231722393853,
+        49.9,
+        -9.056418411804291
+      ],
+      "scan_occluders": 0
+    },
+    {
+      "patch": "east_tower_return",
+      "row": 0,
+      "column": 3,
+      "local_xy": [
+        -0.4,
+        2.4
+      ],
+      "world_position": [
+        -103.42026818941461,
+        50.9,
+        -9.838590051021448
+      ],
+      "scan_occluders": 0
+    },
+    {
+      "patch": "east_tower_return",
+      "row": 1,
+      "column": 0,
+      "local_xy": [
+        0.18,
+        1.4
+      ],
+      "world_position": [
+        -105.41626044474437,
+        53.4,
+        -19.134211125842842
+      ],
+      "scan_occluders": 0
+    },
+    {
+      "patch": "east_tower_return",
+      "row": 1,
+      "column": 0,
+      "local_xy": [
+        -0.18,
+        2.4
+      ],
+      "world_position": [
+        -105.4918383792086,
+        54.4,
+        -19.486188363490566
+      ],
+      "scan_occluders": 0
+    },
+    {
+      "patch": "east_tower_return",
+      "row": 1,
+      "column": 0,
+      "local_xy": [
+        0.4,
+        1.4
+      ],
+      "world_position": [
+        -105.37007392923844,
+        53.4,
+        -18.919113925058127
+      ],
+      "scan_occluders": 0
+    },
+    {
+      "patch": "east_tower_return",
+      "row": 1,
+      "column": 0,
+      "local_xy": [
+        -0.4,
+        2.4
+      ],
+      "world_position": [
+        -105.53802489471452,
+        54.4,
+        -19.70128556427528
+      ],
+      "scan_occluders": 0
+    },
+    {
+      "patch": "east_tower_return",
+      "row": 1,
+      "column": 1,
+      "local_xy": [
+        0.18,
+        1.4
+      ],
+      "world_position": [
+        -104.71034154297773,
+        53.4,
+        -15.846645954758236
+      ],
+      "scan_occluders": 0
+    },
+    {
+      "patch": "east_tower_return",
+      "row": 1,
+      "column": 1,
+      "local_xy": [
+        -0.18,
+        2.4
+      ],
+      "world_position": [
+        -104.78591947744196,
+        54.4,
+        -16.198623192405957
+      ],
+      "scan_occluders": 0
+    },
+    {
+      "patch": "east_tower_return",
+      "row": 1,
+      "column": 1,
+      "local_xy": [
+        0.4,
+        1.4
+      ],
+      "world_position": [
+        -104.6641550274718,
+        53.4,
+        -15.631548753973517
+      ],
+      "scan_occluders": 0
+    },
+    {
+      "patch": "east_tower_return",
+      "row": 1,
+      "column": 1,
+      "local_xy": [
+        -0.4,
+        2.4
+      ],
+      "world_position": [
+        -104.83210599294789,
+        54.4,
+        -16.413720393190673
+      ],
+      "scan_occluders": 0
+    },
+    {
+      "patch": "east_tower_return",
+      "row": 1,
+      "column": 2,
+      "local_xy": [
+        0.18,
+        1.4
+      ],
+      "world_position": [
+        -104.0044226412111,
+        53.4,
+        -12.559080783673622
+      ],
+      "scan_occluders": 0
+    },
+    {
+      "patch": "east_tower_return",
+      "row": 1,
+      "column": 2,
+      "local_xy": [
+        -0.18,
+        2.4
+      ],
+      "world_position": [
+        -104.08000057567533,
+        54.4,
+        -12.911058021321342
+      ],
+      "scan_occluders": 0
+    },
+    {
+      "patch": "east_tower_return",
+      "row": 1,
+      "column": 2,
+      "local_xy": [
+        0.4,
+        1.4
+      ],
+      "world_position": [
+        -103.95823612570517,
+        53.4,
+        -12.343983582888903
+      ],
+      "scan_occluders": 0
+    },
+    {
+      "patch": "east_tower_return",
+      "row": 1,
+      "column": 2,
+      "local_xy": [
+        -0.4,
+        2.4
+      ],
+      "world_position": [
+        -104.12618709118125,
+        54.4,
+        -13.12615522210606
+      ],
+      "scan_occluders": 0
+    },
+    {
+      "patch": "east_tower_return",
+      "row": 1,
+      "column": 3,
+      "local_xy": [
+        0.18,
+        1.4
+      ],
+      "world_position": [
+        -103.29850373944446,
+        53.4,
+        -9.27151561258901
+      ],
+      "scan_occluders": 0
+    },
+    {
+      "patch": "east_tower_return",
+      "row": 1,
+      "column": 3,
+      "local_xy": [
+        -0.18,
+        2.4
+      ],
+      "world_position": [
+        -103.37408167390869,
+        54.4,
+        -9.62349285023673
+      ],
+      "scan_occluders": 0
+    },
+    {
+      "patch": "east_tower_return",
+      "row": 1,
+      "column": 3,
+      "local_xy": [
+        0.4,
+        1.4
+      ],
+      "world_position": [
+        -103.25231722393853,
+        53.4,
+        -9.056418411804291
+      ],
+      "scan_occluders": 0
+    },
+    {
+      "patch": "east_tower_return",
+      "row": 1,
+      "column": 3,
+      "local_xy": [
+        -0.4,
+        2.4
+      ],
+      "world_position": [
+        -103.42026818941461,
+        54.4,
+        -9.838590051021448
+      ],
+      "scan_occluders": 0
+    },
+    {
+      "patch": "east_tower_return",
+      "row": 2,
+      "column": 0,
+      "local_xy": [
+        0.18,
+        1.4
+      ],
+      "world_position": [
+        -105.41626044474437,
+        56.9,
+        -19.134211125842842
+      ],
+      "scan_occluders": 0
+    },
+    {
+      "patch": "east_tower_return",
+      "row": 2,
+      "column": 0,
+      "local_xy": [
+        -0.18,
+        2.4
+      ],
+      "world_position": [
+        -105.4918383792086,
+        57.9,
+        -19.486188363490566
+      ],
+      "scan_occluders": 0
+    },
+    {
+      "patch": "east_tower_return",
+      "row": 2,
+      "column": 0,
+      "local_xy": [
+        0.4,
+        1.4
+      ],
+      "world_position": [
+        -105.37007392923844,
+        56.9,
+        -18.919113925058127
+      ],
+      "scan_occluders": 0
+    },
+    {
+      "patch": "east_tower_return",
+      "row": 2,
+      "column": 0,
+      "local_xy": [
+        -0.4,
+        2.4
+      ],
+      "world_position": [
+        -105.53802489471452,
+        57.9,
+        -19.70128556427528
+      ],
+      "scan_occluders": 0
+    },
+    {
+      "patch": "east_tower_return",
+      "row": 2,
+      "column": 1,
+      "local_xy": [
+        0.18,
+        1.4
+      ],
+      "world_position": [
+        -104.71034154297773,
+        56.9,
+        -15.846645954758236
+      ],
+      "scan_occluders": 0
+    },
+    {
+      "patch": "east_tower_return",
+      "row": 2,
+      "column": 1,
+      "local_xy": [
+        -0.18,
+        2.4
+      ],
+      "world_position": [
+        -104.78591947744196,
+        57.9,
+        -16.198623192405957
+      ],
+      "scan_occluders": 0
+    },
+    {
+      "patch": "east_tower_return",
+      "row": 2,
+      "column": 1,
+      "local_xy": [
+        0.4,
+        1.4
+      ],
+      "world_position": [
+        -104.6641550274718,
+        56.9,
+        -15.631548753973517
+      ],
+      "scan_occluders": 0
+    },
+    {
+      "patch": "east_tower_return",
+      "row": 2,
+      "column": 1,
+      "local_xy": [
+        -0.4,
+        2.4
+      ],
+      "world_position": [
+        -104.83210599294789,
+        57.9,
+        -16.413720393190673
+      ],
+      "scan_occluders": 0
+    },
+    {
+      "patch": "east_tower_return",
+      "row": 2,
+      "column": 2,
+      "local_xy": [
+        0.18,
+        1.4
+      ],
+      "world_position": [
+        -104.0044226412111,
+        56.9,
+        -12.559080783673622
+      ],
+      "scan_occluders": 0
+    },
+    {
+      "patch": "east_tower_return",
+      "row": 2,
+      "column": 2,
+      "local_xy": [
+        -0.18,
+        2.4
+      ],
+      "world_position": [
+        -104.08000057567533,
+        57.9,
+        -12.911058021321342
+      ],
+      "scan_occluders": 0
+    },
+    {
+      "patch": "east_tower_return",
+      "row": 2,
+      "column": 2,
+      "local_xy": [
+        0.4,
+        1.4
+      ],
+      "world_position": [
+        -103.95823612570517,
+        56.9,
+        -12.343983582888903
+      ],
+      "scan_occluders": 0
+    },
+    {
+      "patch": "east_tower_return",
+      "row": 2,
+      "column": 2,
+      "local_xy": [
+        -0.4,
+        2.4
+      ],
+      "world_position": [
+        -104.12618709118125,
+        57.9,
+        -13.12615522210606
+      ],
+      "scan_occluders": 0
+    },
+    {
+      "patch": "east_tower_return",
+      "row": 2,
+      "column": 3,
+      "local_xy": [
+        0.18,
+        1.4
+      ],
+      "world_position": [
+        -103.29850373944446,
+        56.9,
+        -9.27151561258901
+      ],
+      "scan_occluders": 0
+    },
+    {
+      "patch": "east_tower_return",
+      "row": 2,
+      "column": 3,
+      "local_xy": [
+        -0.18,
+        2.4
+      ],
+      "world_position": [
+        -103.37408167390869,
+        57.9,
+        -9.62349285023673
+      ],
+      "scan_occluders": 0
+    },
+    {
+      "patch": "east_tower_return",
+      "row": 2,
+      "column": 3,
+      "local_xy": [
+        0.4,
+        1.4
+      ],
+      "world_position": [
+        -103.25231722393853,
+        56.9,
+        -9.056418411804291
+      ],
+      "scan_occluders": 0
+    },
+    {
+      "patch": "east_tower_return",
+      "row": 2,
+      "column": 3,
+      "local_xy": [
+        -0.4,
+        2.4
+      ],
+      "world_position": [
+        -103.42026818941461,
+        57.9,
+        -9.838590051021448
+      ],
+      "scan_occluders": 0
+    },
+    {
+      "patch": "north_tower_return",
+      "row": 0,
+      "column": 0,
+      "local_xy": [
+        0.18,
+        1.4
+      ],
+      "world_position": [
+        -104.72366515305144,
+        49.9,
+        -7.4300307476862875
+      ],
+      "scan_occluders": 0
+    },
+    {
+      "patch": "north_tower_return",
+      "row": 0,
+      "column": 0,
+      "local_xy": [
+        -0.18,
+        2.4
+      ],
+      "world_position": [
+        -104.37168791540371,
+        50.9,
+        -7.505608682150522
+      ],
+      "scan_occluders": 0
+    },
+    {
+      "patch": "north_tower_return",
+      "row": 0,
+      "column": 0,
+      "local_xy": [
+        0.4,
+        1.4
+      ],
+      "world_position": [
+        -104.93876235383615,
+        49.9,
+        -7.383844232180366
+      ],
+      "scan_occluders": 0
+    },
+    {
+      "patch": "north_tower_return",
+      "row": 0,
+      "column": 0,
+      "local_xy": [
+        -0.4,
+        2.4
+      ],
+      "world_position": [
+        -104.156590714619,
+        50.9,
+        -7.5517951976564435
+      ],
+      "scan_occluders": 0
+    },
+    {
+      "patch": "north_tower_return",
+      "row": 0,
+      "column": 1,
+      "local_xy": [
+        0.18,
+        1.4
+      ],
+      "world_position": [
+        -107.85235170992006,
+        49.9,
+        -6.758226885781981
+      ],
+      "scan_occluders": 0
+    },
+    {
+      "patch": "north_tower_return",
+      "row": 0,
+      "column": 1,
+      "local_xy": [
+        -0.18,
+        2.4
+      ],
+      "world_position": [
+        -107.50037447227233,
+        50.9,
+        -6.833804820246216
+      ],
+      "scan_occluders": 0
+    },
+    {
+      "patch": "north_tower_return",
+      "row": 0,
+      "column": 1,
+      "local_xy": [
+        0.4,
+        1.4
+      ],
+      "world_position": [
+        -108.06744891070477,
+        49.9,
+        -6.71204037027606
+      ],
+      "scan_occluders": 0
+    },
+    {
+      "patch": "north_tower_return",
+      "row": 0,
+      "column": 1,
+      "local_xy": [
+        -0.4,
+        2.4
+      ],
+      "world_position": [
+        -107.28527727148762,
+        50.9,
+        -6.879991335752137
+      ],
+      "scan_occluders": 0
+    },
+    {
+      "patch": "north_tower_return",
+      "row": 1,
+      "column": 0,
+      "local_xy": [
+        0.18,
+        1.4
+      ],
+      "world_position": [
+        -104.72366515305144,
+        53.4,
+        -7.4300307476862875
+      ],
+      "scan_occluders": 0
+    },
+    {
+      "patch": "north_tower_return",
+      "row": 1,
+      "column": 0,
+      "local_xy": [
+        -0.18,
+        2.4
+      ],
+      "world_position": [
+        -104.37168791540371,
+        54.4,
+        -7.505608682150522
+      ],
+      "scan_occluders": 0
+    },
+    {
+      "patch": "north_tower_return",
+      "row": 1,
+      "column": 0,
+      "local_xy": [
+        0.4,
+        1.4
+      ],
+      "world_position": [
+        -104.93876235383615,
+        53.4,
+        -7.383844232180366
+      ],
+      "scan_occluders": 0
+    },
+    {
+      "patch": "north_tower_return",
+      "row": 1,
+      "column": 0,
+      "local_xy": [
+        -0.4,
+        2.4
+      ],
+      "world_position": [
+        -104.156590714619,
+        54.4,
+        -7.5517951976564435
+      ],
+      "scan_occluders": 0
+    },
+    {
+      "patch": "north_tower_return",
+      "row": 1,
+      "column": 1,
+      "local_xy": [
+        0.18,
+        1.4
+      ],
+      "world_position": [
+        -107.85235170992006,
+        53.4,
+        -6.758226885781981
+      ],
+      "scan_occluders": 0
+    },
+    {
+      "patch": "north_tower_return",
+      "row": 1,
+      "column": 1,
+      "local_xy": [
+        -0.18,
+        2.4
+      ],
+      "world_position": [
+        -107.50037447227233,
+        54.4,
+        -6.833804820246216
+      ],
+      "scan_occluders": 0
+    },
+    {
+      "patch": "north_tower_return",
+      "row": 1,
+      "column": 1,
+      "local_xy": [
+        0.4,
+        1.4
+      ],
+      "world_position": [
+        -108.06744891070477,
+        53.4,
+        -6.71204037027606
+      ],
+      "scan_occluders": 0
+    },
+    {
+      "patch": "north_tower_return",
+      "row": 1,
+      "column": 1,
+      "local_xy": [
+        -0.4,
+        2.4
+      ],
+      "world_position": [
+        -107.28527727148762,
+        54.4,
+        -6.879991335752137
+      ],
+      "scan_occluders": 0
+    },
+    {
+      "patch": "north_tower_return",
+      "row": 2,
+      "column": 0,
+      "local_xy": [
+        0.18,
+        1.4
+      ],
+      "world_position": [
+        -104.72366515305144,
+        56.9,
+        -7.4300307476862875
+      ],
+      "scan_occluders": 0
+    },
+    {
+      "patch": "north_tower_return",
+      "row": 2,
+      "column": 0,
+      "local_xy": [
+        -0.18,
+        2.4
+      ],
+      "world_position": [
+        -104.37168791540371,
+        57.9,
+        -7.505608682150522
+      ],
+      "scan_occluders": 0
+    },
+    {
+      "patch": "north_tower_return",
+      "row": 2,
+      "column": 0,
+      "local_xy": [
+        0.4,
+        1.4
+      ],
+      "world_position": [
+        -104.93876235383615,
+        56.9,
+        -7.383844232180366
+      ],
+      "scan_occluders": 0
+    },
+    {
+      "patch": "north_tower_return",
+      "row": 2,
+      "column": 0,
+      "local_xy": [
+        -0.4,
+        2.4
+      ],
+      "world_position": [
+        -104.156590714619,
+        57.9,
+        -7.5517951976564435
+      ],
+      "scan_occluders": 0
+    },
+    {
+      "patch": "north_tower_return",
+      "row": 2,
+      "column": 1,
+      "local_xy": [
+        0.18,
+        1.4
+      ],
+      "world_position": [
+        -107.85235170992006,
+        56.9,
+        -6.758226885781981
+      ],
+      "scan_occluders": 0
+    },
+    {
+      "patch": "north_tower_return",
+      "row": 2,
+      "column": 1,
+      "local_xy": [
+        -0.18,
+        2.4
+      ],
+      "world_position": [
+        -107.50037447227233,
+        57.9,
+        -6.833804820246216
+      ],
+      "scan_occluders": 0
+    },
+    {
+      "patch": "north_tower_return",
+      "row": 2,
+      "column": 1,
+      "local_xy": [
+        0.4,
+        1.4
+      ],
+      "world_position": [
+        -108.06744891070477,
+        56.9,
+        -6.71204037027606
+      ],
+      "scan_occluders": 0
+    },
+    {
+      "patch": "north_tower_return",
+      "row": 2,
+      "column": 1,
+      "local_xy": [
+        -0.4,
+        2.4
+      ],
+      "world_position": [
+        -107.28527727148762,
+        57.9,
+        -6.879991335752137
       ],
       "scan_occluders": 0
     }
@@ -494,29 +5748,95 @@
       "covered_samples": 672,
       "coverage_fraction": 1.0,
       "minimum_fraction": 0.995,
+      "sampled_y_bounds": [
+        29.8,
+        33.3
+      ],
       "method": "Original front-facing wall triangles: absolute geometric normalY < .15, dot(normal, facadeNormal) > .94, depth within +/-1.5m of new plane; rectangle-centred .25m lattice."
     },
     {
       "patch": "south_tower_face",
       "sample_spacing_metres": 0.25,
-      "sample_count": 1008,
-      "covered_samples": 1008,
-      "coverage_fraction": 1.0,
-      "minimum_fraction": 0.995,
+      "sample_count": 1092,
+      "covered_samples": 1084,
+      "coverage_fraction": 0.9926739926739927,
+      "minimum_fraction": 0.98,
+      "sampled_y_bounds": [
+        48.5,
+        59
+      ],
+      "method": "Original front-facing wall triangles: absolute geometric normalY < .15, dot(normal, facadeNormal) > .94, depth within +/-1.5m of new plane; rectangle-centred .25m lattice."
+    },
+    {
+      "patch": "east_tower_return",
+      "sample_spacing_metres": 0.25,
+      "sample_count": 2268,
+      "covered_samples": 1979,
+      "coverage_fraction": 0.8725749559082893,
+      "minimum_fraction": 0.85,
+      "sampled_y_bounds": [
+        48.5,
+        59
+      ],
+      "method": "Original front-facing wall triangles: absolute geometric normalY < .15, dot(normal, facadeNormal) > .94, depth within +/-1.5m of new plane; rectangle-centred .25m lattice."
+    },
+    {
+      "patch": "north_tower_return",
+      "sample_spacing_metres": 0.25,
+      "sample_count": 1092,
+      "covered_samples": 1042,
+      "coverage_fraction": 0.9542124542124543,
+      "minimum_fraction": 0.95,
+      "sampled_y_bounds": [
+        48.5,
+        59
+      ],
+      "method": "Original front-facing wall triangles: absolute geometric normalY < .15, dot(normal, facadeNormal) > .94, depth within +/-1.5m of new plane; rectangle-centred .25m lattice."
+    },
+    {
+      "patch": "west_tower_step",
+      "sample_spacing_metres": 0.25,
+      "sample_count": 294,
+      "covered_samples": 262,
+      "coverage_fraction": 0.891156462585034,
+      "minimum_fraction": 0.83,
+      "sampled_y_bounds": [
+        48.5,
+        59
+      ],
       "method": "Original front-facing wall triangles: absolute geometric normalY < .15, dot(normal, facadeNormal) > .94, depth within +/-1.5m of new plane; rectangle-centred .25m lattice."
     }
   ],
   "wall_material_policy": "All storeys use the same coastal concrete, including the barred ground-floor module; the source kit remains unchanged.",
-  "original_source_triangles_clipped": 103,
+  "original_source_triangles_clipped": 669,
   "replacement_scan_chunks": [
+    {
+      "sourceMesh": "Island_0_5",
+      "resource": "Alcatraz/FacadeRebuild/Meshes/Visual_Island_0_5",
+      "asset": "Assets/Game/Alcatraz/Resources/Alcatraz/FacadeRebuild/Meshes/Visual_Island_0_5.asset",
+      "source_asset": "Assets/Game/Supplied/Resources/AlcatrazSupplied/Baked/Meshes/Island_0_5.asset",
+      "source_triangles": 20000,
+      "result_triangles": 19950,
+      "clipped_source_faces": 189,
+      "bounds_min": [
+        -70.63677215576172,
+        -32.88594055175781,
+        -49.45690155029297
+      ],
+      "bounds_max": [
+        95.34292602539062,
+        17.777286529541016,
+        60.940040588378906
+      ]
+    },
     {
       "sourceMesh": "Island_0_7",
       "resource": "Alcatraz/FacadeRebuild/Meshes/Visual_Island_0_7",
       "asset": "Assets/Game/Alcatraz/Resources/Alcatraz/FacadeRebuild/Meshes/Visual_Island_0_7.asset",
       "source_asset": "Assets/Game/Supplied/Resources/AlcatrazSupplied/Baked/Meshes/Island_0_7.asset",
       "source_triangles": 20000,
-      "result_triangles": 20116,
-      "clipped_source_faces": 93,
+      "result_triangles": 20121,
+      "clipped_source_faces": 458,
       "bounds_min": [
         -117.91116333007812,
         -36.4286003112793,
@@ -534,8 +5854,8 @@
       "asset": "Assets/Game/Alcatraz/Resources/Alcatraz/FacadeRebuild/Meshes/Visual_Island_0_8.asset",
       "source_asset": "Assets/Game/Supplied/Resources/AlcatrazSupplied/Baked/Meshes/Island_0_8.asset",
       "source_triangles": 20000,
-      "result_triangles": 20013,
-      "clipped_source_faces": 10,
+      "result_triangles": 19993,
+      "clipped_source_faces": 22,
       "bounds_min": [
         -165.2056121826172,
         -44.625247955322266,
@@ -556,7 +5876,11 @@
         29.8,
         10.304375963635652
       ],
-      "group": "retaining_east"
+      "group": "retaining_east",
+      "patch": "retaining_east",
+      "type": "blank",
+      "width": 3.0,
+      "height": 3.5
     },
     {
       "module": "RoofCornice",
@@ -565,7 +5889,11 @@
         33.3,
         10.304375963635652
       ],
-      "group": "retaining_east"
+      "group": "retaining_east",
+      "patch": "retaining_east",
+      "type": "trim",
+      "width": 3.0,
+      "height": 0.41
     },
     {
       "module": "FacadeBlank",
@@ -574,7 +5902,11 @@
         29.8,
         7.343033908873523
       ],
-      "group": "retaining_east"
+      "group": "retaining_east",
+      "patch": "retaining_east",
+      "type": "blank",
+      "width": 3.0,
+      "height": 3.5
     },
     {
       "module": "RoofCornice",
@@ -583,7 +5915,11 @@
         33.3,
         7.343033908873523
       ],
-      "group": "retaining_east"
+      "group": "retaining_east",
+      "patch": "retaining_east",
+      "type": "trim",
+      "width": 3.0,
+      "height": 0.41
     },
     {
       "module": "FacadeBlank",
@@ -592,7 +5928,11 @@
         29.8,
         4.381691854111394
       ],
-      "group": "retaining_east"
+      "group": "retaining_east",
+      "patch": "retaining_east",
+      "type": "blank",
+      "width": 3.0,
+      "height": 3.5
     },
     {
       "module": "RoofCornice",
@@ -601,7 +5941,11 @@
         33.3,
         4.381691854111394
       ],
-      "group": "retaining_east"
+      "group": "retaining_east",
+      "patch": "retaining_east",
+      "type": "trim",
+      "width": 3.0,
+      "height": 0.41
     },
     {
       "module": "FacadeBlank",
@@ -610,7 +5954,11 @@
         29.8,
         1.4203497993492658
       ],
-      "group": "retaining_east"
+      "group": "retaining_east",
+      "patch": "retaining_east",
+      "type": "blank",
+      "width": 3.0,
+      "height": 3.5
     },
     {
       "module": "RoofCornice",
@@ -619,97 +5967,1249 @@
         33.3,
         1.4203497993492658
       ],
-      "group": "retaining_east"
+      "group": "retaining_east",
+      "patch": "retaining_east",
+      "type": "trim",
+      "width": 3.0,
+      "height": 0.41
     },
     {
       "module": "FacadeBarredWindow",
       "position": [
-        -110.35338151580952,
+        -110.50003869816274,
         48.5,
-        -19.977767343379316
+        -19.94627653735255
       ],
-      "group": "south_tower_face"
+      "group": "south_tower_face",
+      "patch": "south_tower_face",
+      "type": "window",
+      "width": 3.200000000000003,
+      "height": 3.5,
+      "aperture_bounds_local": {
+        "min": [
+          -0.72,
+          0.96,
+          0
+        ],
+        "max": [
+          0.72,
+          2.98,
+          0.28
+        ]
+      },
+      "glass_bounds_local": {
+        "min": [
+          -0.55,
+          1.13,
+          0.188
+        ],
+        "max": [
+          0.55,
+          2.81,
+          0.202
+        ]
+      }
     },
     {
       "module": "FacadeBarredWindow",
       "position": [
-        -107.42023786874519,
+        -107.3713521412941,
         48.5,
-        -20.607583463914604
+        -20.618080399256858
       ],
-      "group": "south_tower_face"
+      "group": "south_tower_face",
+      "patch": "south_tower_face",
+      "type": "window",
+      "width": 3.200000000000003,
+      "height": 3.5,
+      "aperture_bounds_local": {
+        "min": [
+          -0.72,
+          0.96,
+          0
+        ],
+        "max": [
+          0.72,
+          2.98,
+          0.28
+        ]
+      },
+      "glass_bounds_local": {
+        "min": [
+          -0.55,
+          1.13,
+          0.188
+        ],
+        "max": [
+          0.55,
+          2.81,
+          0.202
+        ]
+      }
     },
     {
       "module": "FacadeWindow",
       "position": [
-        -110.35338151580952,
+        -110.50003869816274,
         52.0,
-        -19.977767343379316
+        -19.94627653735255
       ],
-      "group": "south_tower_face"
+      "group": "south_tower_face",
+      "patch": "south_tower_face",
+      "type": "window",
+      "width": 3.200000000000003,
+      "height": 3.5,
+      "aperture_bounds_local": {
+        "min": [
+          -0.72,
+          0.96,
+          0
+        ],
+        "max": [
+          0.72,
+          2.98,
+          0.28
+        ]
+      },
+      "glass_bounds_local": {
+        "min": [
+          -0.55,
+          1.13,
+          0.188
+        ],
+        "max": [
+          0.55,
+          2.81,
+          0.202
+        ]
+      }
     },
     {
       "module": "FacadeWindow",
       "position": [
-        -107.42023786874519,
+        -107.3713521412941,
         52.0,
-        -20.607583463914604
+        -20.618080399256858
       ],
-      "group": "south_tower_face"
+      "group": "south_tower_face",
+      "patch": "south_tower_face",
+      "type": "window",
+      "width": 3.200000000000003,
+      "height": 3.5,
+      "aperture_bounds_local": {
+        "min": [
+          -0.72,
+          0.96,
+          0
+        ],
+        "max": [
+          0.72,
+          2.98,
+          0.28
+        ]
+      },
+      "glass_bounds_local": {
+        "min": [
+          -0.55,
+          1.13,
+          0.188
+        ],
+        "max": [
+          0.55,
+          2.81,
+          0.202
+        ]
+      }
     },
     {
       "module": "FacadeWindow",
       "position": [
-        -110.35338151580952,
+        -110.50003869816274,
         55.5,
-        -19.977767343379316
+        -19.94627653735255
       ],
-      "group": "south_tower_face"
+      "group": "south_tower_face",
+      "patch": "south_tower_face",
+      "type": "window",
+      "width": 3.200000000000003,
+      "height": 3.5,
+      "aperture_bounds_local": {
+        "min": [
+          -0.72,
+          0.96,
+          0
+        ],
+        "max": [
+          0.72,
+          2.98,
+          0.28
+        ]
+      },
+      "glass_bounds_local": {
+        "min": [
+          -0.55,
+          1.13,
+          0.188
+        ],
+        "max": [
+          0.55,
+          2.81,
+          0.202
+        ]
+      }
     },
     {
       "module": "RoofCornice",
       "position": [
-        -110.35338151580952,
+        -110.50003869816274,
         59.0,
-        -19.977767343379316
+        -19.94627653735255
       ],
-      "group": "south_tower_face"
+      "group": "south_tower_face",
+      "patch": "south_tower_face",
+      "type": "trim",
+      "width": 3.200000000000003,
+      "height": 0.41
     },
     {
       "module": "FacadeWindow",
       "position": [
-        -107.42023786874519,
+        -107.3713521412941,
         55.5,
-        -20.607583463914604
+        -20.618080399256858
       ],
-      "group": "south_tower_face"
+      "group": "south_tower_face",
+      "patch": "south_tower_face",
+      "type": "window",
+      "width": 3.200000000000003,
+      "height": 3.5,
+      "aperture_bounds_local": {
+        "min": [
+          -0.72,
+          0.96,
+          0
+        ],
+        "max": [
+          0.72,
+          2.98,
+          0.28
+        ]
+      },
+      "glass_bounds_local": {
+        "min": [
+          -0.55,
+          1.13,
+          0.188
+        ],
+        "max": [
+          0.55,
+          2.81,
+          0.202
+        ]
+      }
     },
     {
       "module": "RoofCornice",
       "position": [
-        -107.42023786874519,
+        -107.3713521412941,
         59.0,
-        -20.607583463914604
+        -20.618080399256858
       ],
-      "group": "south_tower_face"
+      "group": "south_tower_face",
+      "patch": "south_tower_face",
+      "type": "trim",
+      "width": 3.200000000000003,
+      "height": 0.41
+    },
+    {
+      "module": "SolidUpperBand",
+      "type": "blank",
+      "patch": "south_tower_face",
+      "group": "south_tower_face",
+      "position": [
+        -108.93569541972842,
+        59.0,
+        -20.282178468304704
+      ],
+      "width": 6.400000000000006,
+      "height": 0.8000000000000007
     },
     {
       "module": "Drainpipe",
       "position": [
-        -106.1492089550173,
+        -106.00255177266408,
         48.5,
-        -20.88050378281323
+        -20.911994588839992
       ],
-      "group": "south_tower_face"
+      "group": "south_tower_face",
+      "patch": "south_tower_face",
+      "type": "trim",
+      "width": 3.0,
+      "height": 3.44
+    },
+    {
+      "module": "FacadeBarredWindow",
+      "position": [
+        -105.45404941197648,
+        48.5,
+        -19.310199744666704
+      ],
+      "group": "east_tower_return",
+      "patch": "east_tower_return",
+      "type": "window",
+      "width": 3.3625000000000007,
+      "height": 3.5,
+      "aperture_bounds_local": {
+        "min": [
+          -0.72,
+          0.96,
+          0
+        ],
+        "max": [
+          0.72,
+          2.98,
+          0.28
+        ]
+      },
+      "glass_bounds_local": {
+        "min": [
+          -0.55,
+          1.13,
+          0.188
+        ],
+        "max": [
+          0.55,
+          2.81,
+          0.202
+        ]
+      }
+    },
+    {
+      "module": "FacadeBarredWindow",
+      "position": [
+        -104.74813051020985,
+        48.5,
+        -16.022634573582096
+      ],
+      "group": "east_tower_return",
+      "patch": "east_tower_return",
+      "type": "window",
+      "width": 3.3625000000000007,
+      "height": 3.5,
+      "aperture_bounds_local": {
+        "min": [
+          -0.72,
+          0.96,
+          0
+        ],
+        "max": [
+          0.72,
+          2.98,
+          0.28
+        ]
+      },
+      "glass_bounds_local": {
+        "min": [
+          -0.55,
+          1.13,
+          0.188
+        ],
+        "max": [
+          0.55,
+          2.81,
+          0.202
+        ]
+      }
+    },
+    {
+      "module": "FacadeBarredWindow",
+      "position": [
+        -104.04221160844321,
+        48.5,
+        -12.735069402497482
+      ],
+      "group": "east_tower_return",
+      "patch": "east_tower_return",
+      "type": "window",
+      "width": 3.3625000000000007,
+      "height": 3.5,
+      "aperture_bounds_local": {
+        "min": [
+          -0.72,
+          0.96,
+          0
+        ],
+        "max": [
+          0.72,
+          2.98,
+          0.28
+        ]
+      },
+      "glass_bounds_local": {
+        "min": [
+          -0.55,
+          1.13,
+          0.188
+        ],
+        "max": [
+          0.55,
+          2.81,
+          0.202
+        ]
+      }
+    },
+    {
+      "module": "FacadeBarredWindow",
+      "position": [
+        -103.33629270667657,
+        48.5,
+        -9.44750423141287
+      ],
+      "group": "east_tower_return",
+      "patch": "east_tower_return",
+      "type": "window",
+      "width": 3.3625000000000007,
+      "height": 3.5,
+      "aperture_bounds_local": {
+        "min": [
+          -0.72,
+          0.96,
+          0
+        ],
+        "max": [
+          0.72,
+          2.98,
+          0.28
+        ]
+      },
+      "glass_bounds_local": {
+        "min": [
+          -0.55,
+          1.13,
+          0.188
+        ],
+        "max": [
+          0.55,
+          2.81,
+          0.202
+        ]
+      }
+    },
+    {
+      "module": "FacadeWindow",
+      "position": [
+        -105.45404941197648,
+        52.0,
+        -19.310199744666704
+      ],
+      "group": "east_tower_return",
+      "patch": "east_tower_return",
+      "type": "window",
+      "width": 3.3625000000000007,
+      "height": 3.5,
+      "aperture_bounds_local": {
+        "min": [
+          -0.72,
+          0.96,
+          0
+        ],
+        "max": [
+          0.72,
+          2.98,
+          0.28
+        ]
+      },
+      "glass_bounds_local": {
+        "min": [
+          -0.55,
+          1.13,
+          0.188
+        ],
+        "max": [
+          0.55,
+          2.81,
+          0.202
+        ]
+      }
+    },
+    {
+      "module": "FacadeWindow",
+      "position": [
+        -104.74813051020985,
+        52.0,
+        -16.022634573582096
+      ],
+      "group": "east_tower_return",
+      "patch": "east_tower_return",
+      "type": "window",
+      "width": 3.3625000000000007,
+      "height": 3.5,
+      "aperture_bounds_local": {
+        "min": [
+          -0.72,
+          0.96,
+          0
+        ],
+        "max": [
+          0.72,
+          2.98,
+          0.28
+        ]
+      },
+      "glass_bounds_local": {
+        "min": [
+          -0.55,
+          1.13,
+          0.188
+        ],
+        "max": [
+          0.55,
+          2.81,
+          0.202
+        ]
+      }
+    },
+    {
+      "module": "FacadeWindow",
+      "position": [
+        -104.04221160844321,
+        52.0,
+        -12.735069402497482
+      ],
+      "group": "east_tower_return",
+      "patch": "east_tower_return",
+      "type": "window",
+      "width": 3.3625000000000007,
+      "height": 3.5,
+      "aperture_bounds_local": {
+        "min": [
+          -0.72,
+          0.96,
+          0
+        ],
+        "max": [
+          0.72,
+          2.98,
+          0.28
+        ]
+      },
+      "glass_bounds_local": {
+        "min": [
+          -0.55,
+          1.13,
+          0.188
+        ],
+        "max": [
+          0.55,
+          2.81,
+          0.202
+        ]
+      }
+    },
+    {
+      "module": "FacadeWindow",
+      "position": [
+        -103.33629270667657,
+        52.0,
+        -9.44750423141287
+      ],
+      "group": "east_tower_return",
+      "patch": "east_tower_return",
+      "type": "window",
+      "width": 3.3625000000000007,
+      "height": 3.5,
+      "aperture_bounds_local": {
+        "min": [
+          -0.72,
+          0.96,
+          0
+        ],
+        "max": [
+          0.72,
+          2.98,
+          0.28
+        ]
+      },
+      "glass_bounds_local": {
+        "min": [
+          -0.55,
+          1.13,
+          0.188
+        ],
+        "max": [
+          0.55,
+          2.81,
+          0.202
+        ]
+      }
+    },
+    {
+      "module": "FacadeWindow",
+      "position": [
+        -105.45404941197648,
+        55.5,
+        -19.310199744666704
+      ],
+      "group": "east_tower_return",
+      "patch": "east_tower_return",
+      "type": "window",
+      "width": 3.3625000000000007,
+      "height": 3.5,
+      "aperture_bounds_local": {
+        "min": [
+          -0.72,
+          0.96,
+          0
+        ],
+        "max": [
+          0.72,
+          2.98,
+          0.28
+        ]
+      },
+      "glass_bounds_local": {
+        "min": [
+          -0.55,
+          1.13,
+          0.188
+        ],
+        "max": [
+          0.55,
+          2.81,
+          0.202
+        ]
+      }
+    },
+    {
+      "module": "RoofCornice",
+      "position": [
+        -105.45404941197648,
+        59.0,
+        -19.310199744666704
+      ],
+      "group": "east_tower_return",
+      "patch": "east_tower_return",
+      "type": "trim",
+      "width": 3.3625000000000007,
+      "height": 0.41
+    },
+    {
+      "module": "FacadeWindow",
+      "position": [
+        -104.74813051020985,
+        55.5,
+        -16.022634573582096
+      ],
+      "group": "east_tower_return",
+      "patch": "east_tower_return",
+      "type": "window",
+      "width": 3.3625000000000007,
+      "height": 3.5,
+      "aperture_bounds_local": {
+        "min": [
+          -0.72,
+          0.96,
+          0
+        ],
+        "max": [
+          0.72,
+          2.98,
+          0.28
+        ]
+      },
+      "glass_bounds_local": {
+        "min": [
+          -0.55,
+          1.13,
+          0.188
+        ],
+        "max": [
+          0.55,
+          2.81,
+          0.202
+        ]
+      }
+    },
+    {
+      "module": "RoofCornice",
+      "position": [
+        -104.74813051020985,
+        59.0,
+        -16.022634573582096
+      ],
+      "group": "east_tower_return",
+      "patch": "east_tower_return",
+      "type": "trim",
+      "width": 3.3625000000000007,
+      "height": 0.41
+    },
+    {
+      "module": "FacadeWindow",
+      "position": [
+        -104.04221160844321,
+        55.5,
+        -12.735069402497482
+      ],
+      "group": "east_tower_return",
+      "patch": "east_tower_return",
+      "type": "window",
+      "width": 3.3625000000000007,
+      "height": 3.5,
+      "aperture_bounds_local": {
+        "min": [
+          -0.72,
+          0.96,
+          0
+        ],
+        "max": [
+          0.72,
+          2.98,
+          0.28
+        ]
+      },
+      "glass_bounds_local": {
+        "min": [
+          -0.55,
+          1.13,
+          0.188
+        ],
+        "max": [
+          0.55,
+          2.81,
+          0.202
+        ]
+      }
+    },
+    {
+      "module": "RoofCornice",
+      "position": [
+        -104.04221160844321,
+        59.0,
+        -12.735069402497482
+      ],
+      "group": "east_tower_return",
+      "patch": "east_tower_return",
+      "type": "trim",
+      "width": 3.3625000000000007,
+      "height": 0.41
+    },
+    {
+      "module": "FacadeWindow",
+      "position": [
+        -103.33629270667657,
+        55.5,
+        -9.44750423141287
+      ],
+      "group": "east_tower_return",
+      "patch": "east_tower_return",
+      "type": "window",
+      "width": 3.3625000000000007,
+      "height": 3.5,
+      "aperture_bounds_local": {
+        "min": [
+          -0.72,
+          0.96,
+          0
+        ],
+        "max": [
+          0.72,
+          2.98,
+          0.28
+        ]
+      },
+      "glass_bounds_local": {
+        "min": [
+          -0.55,
+          1.13,
+          0.188
+        ],
+        "max": [
+          0.55,
+          2.81,
+          0.202
+        ]
+      }
+    },
+    {
+      "module": "RoofCornice",
+      "position": [
+        -103.33629270667657,
+        59.0,
+        -9.44750423141287
+      ],
+      "group": "east_tower_return",
+      "patch": "east_tower_return",
+      "type": "trim",
+      "width": 3.3625000000000007,
+      "height": 0.41
+    },
+    {
+      "module": "SolidUpperBand",
+      "type": "blank",
+      "patch": "east_tower_return",
+      "group": "east_tower_return",
+      "position": [
+        -104.39517105932653,
+        59.0,
+        -14.378851988039788
+      ],
+      "width": 13.450000000000003,
+      "height": 0.8000000000000007
+    },
+    {
+      "module": "Drainpipe",
+      "position": [
+        -103.02532099716228,
+        48.5,
+        -7.999264555674853
+      ],
+      "group": "east_tower_return",
+      "patch": "east_tower_return",
+      "type": "trim",
+      "width": 3.0,
+      "height": 3.44
+    },
+    {
+      "module": "FacadeBarredWindow",
+      "position": [
+        -104.54767653422758,
+        48.5,
+        -7.467819714918405
+      ],
+      "group": "north_tower_return",
+      "patch": "north_tower_return",
+      "type": "window",
+      "width": 3.200000000000003,
+      "height": 3.5,
+      "aperture_bounds_local": {
+        "min": [
+          -0.72,
+          0.96,
+          0
+        ],
+        "max": [
+          0.72,
+          2.98,
+          0.28
+        ]
+      },
+      "glass_bounds_local": {
+        "min": [
+          -0.55,
+          1.13,
+          0.188
+        ],
+        "max": [
+          0.55,
+          2.81,
+          0.202
+        ]
+      }
+    },
+    {
+      "module": "FacadeBarredWindow",
+      "position": [
+        -107.67636309109619,
+        48.5,
+        -6.796015853014098
+      ],
+      "group": "north_tower_return",
+      "patch": "north_tower_return",
+      "type": "window",
+      "width": 3.200000000000003,
+      "height": 3.5,
+      "aperture_bounds_local": {
+        "min": [
+          -0.72,
+          0.96,
+          0
+        ],
+        "max": [
+          0.72,
+          2.98,
+          0.28
+        ]
+      },
+      "glass_bounds_local": {
+        "min": [
+          -0.55,
+          1.13,
+          0.188
+        ],
+        "max": [
+          0.55,
+          2.81,
+          0.202
+        ]
+      }
+    },
+    {
+      "module": "FacadeWindow",
+      "position": [
+        -104.54767653422758,
+        52.0,
+        -7.467819714918405
+      ],
+      "group": "north_tower_return",
+      "patch": "north_tower_return",
+      "type": "window",
+      "width": 3.200000000000003,
+      "height": 3.5,
+      "aperture_bounds_local": {
+        "min": [
+          -0.72,
+          0.96,
+          0
+        ],
+        "max": [
+          0.72,
+          2.98,
+          0.28
+        ]
+      },
+      "glass_bounds_local": {
+        "min": [
+          -0.55,
+          1.13,
+          0.188
+        ],
+        "max": [
+          0.55,
+          2.81,
+          0.202
+        ]
+      }
+    },
+    {
+      "module": "FacadeWindow",
+      "position": [
+        -107.67636309109619,
+        52.0,
+        -6.796015853014098
+      ],
+      "group": "north_tower_return",
+      "patch": "north_tower_return",
+      "type": "window",
+      "width": 3.200000000000003,
+      "height": 3.5,
+      "aperture_bounds_local": {
+        "min": [
+          -0.72,
+          0.96,
+          0
+        ],
+        "max": [
+          0.72,
+          2.98,
+          0.28
+        ]
+      },
+      "glass_bounds_local": {
+        "min": [
+          -0.55,
+          1.13,
+          0.188
+        ],
+        "max": [
+          0.55,
+          2.81,
+          0.202
+        ]
+      }
+    },
+    {
+      "module": "FacadeWindow",
+      "position": [
+        -104.54767653422758,
+        55.5,
+        -7.467819714918405
+      ],
+      "group": "north_tower_return",
+      "patch": "north_tower_return",
+      "type": "window",
+      "width": 3.200000000000003,
+      "height": 3.5,
+      "aperture_bounds_local": {
+        "min": [
+          -0.72,
+          0.96,
+          0
+        ],
+        "max": [
+          0.72,
+          2.98,
+          0.28
+        ]
+      },
+      "glass_bounds_local": {
+        "min": [
+          -0.55,
+          1.13,
+          0.188
+        ],
+        "max": [
+          0.55,
+          2.81,
+          0.202
+        ]
+      }
+    },
+    {
+      "module": "RoofCornice",
+      "position": [
+        -104.54767653422758,
+        59.0,
+        -7.467819714918405
+      ],
+      "group": "north_tower_return",
+      "patch": "north_tower_return",
+      "type": "trim",
+      "width": 3.200000000000003,
+      "height": 0.41
+    },
+    {
+      "module": "FacadeWindow",
+      "position": [
+        -107.67636309109619,
+        55.5,
+        -6.796015853014098
+      ],
+      "group": "north_tower_return",
+      "patch": "north_tower_return",
+      "type": "window",
+      "width": 3.200000000000003,
+      "height": 3.5,
+      "aperture_bounds_local": {
+        "min": [
+          -0.72,
+          0.96,
+          0
+        ],
+        "max": [
+          0.72,
+          2.98,
+          0.28
+        ]
+      },
+      "glass_bounds_local": {
+        "min": [
+          -0.55,
+          1.13,
+          0.188
+        ],
+        "max": [
+          0.55,
+          2.81,
+          0.202
+        ]
+      }
+    },
+    {
+      "module": "RoofCornice",
+      "position": [
+        -107.67636309109619,
+        59.0,
+        -6.796015853014098
+      ],
+      "group": "north_tower_return",
+      "patch": "north_tower_return",
+      "type": "trim",
+      "width": 3.200000000000003,
+      "height": 0.41
+    },
+    {
+      "module": "SolidUpperBand",
+      "type": "blank",
+      "patch": "north_tower_return",
+      "group": "north_tower_return",
+      "position": [
+        -106.11201981266188,
+        59.0,
+        -7.1319177839662515
+      ],
+      "width": 6.400000000000006,
+      "height": 0.8000000000000007
+    },
+    {
+      "module": "Drainpipe",
+      "position": [
+        -109.04516345972623,
+        48.5,
+        -6.502101663430964
+      ],
+      "group": "north_tower_return",
+      "patch": "north_tower_return",
+      "type": "trim",
+      "width": 3.0,
+      "height": 3.44
+    },
+    {
+      "module": "FacadeBlank",
+      "position": [
+        -111.87543714043646,
+        48.5,
+        -18.730431512281093
+      ],
+      "group": "west_tower_step",
+      "patch": "west_tower_step",
+      "type": "blank",
+      "width": 1.8000000000000043,
+      "height": 3.5
+    },
+    {
+      "module": "FacadeBlank",
+      "position": [
+        -111.87543714043646,
+        52.0,
+        -18.730431512281093
+      ],
+      "group": "west_tower_step",
+      "patch": "west_tower_step",
+      "type": "blank",
+      "width": 1.8000000000000043,
+      "height": 3.5
+    },
+    {
+      "module": "FacadeBlank",
+      "position": [
+        -111.87543714043646,
+        55.5,
+        -18.730431512281093
+      ],
+      "group": "west_tower_step",
+      "patch": "west_tower_step",
+      "type": "blank",
+      "width": 1.8000000000000043,
+      "height": 3.5
+    },
+    {
+      "module": "RoofCornice",
+      "position": [
+        -111.87543714043646,
+        59.0,
+        -18.730431512281093
+      ],
+      "group": "west_tower_step",
+      "patch": "west_tower_step",
+      "type": "trim",
+      "width": 1.8000000000000043,
+      "height": 0.41
+    },
+    {
+      "module": "SolidUpperBand",
+      "type": "blank",
+      "patch": "west_tower_step",
+      "group": "west_tower_step",
+      "position": [
+        -111.87543714043646,
+        59.0,
+        -18.730431512281093
+      ],
+      "width": 1.8000000000000043,
+      "height": 0.8000000000000007
     }
   ],
-  "facade_renderers": 7,
-  "facade_triangles": 7764,
-  "colliders_added": 0,
+  "facade_renderers": 24,
+  "facade_triangles": 28880,
+  "wall_triangles": 27918,
+  "roof": {
+    "width": 6,
+    "depth": 13.2,
+    "finished_height": 59.8,
+    "center_world": [
+      -107.50121422709972,
+      59.8,
+      -13.839759380105413
+    ],
+    "right": [
+      0.9777145490214458,
+      -0.0,
+      -0.20993870684509572
+    ],
+    "forward": [
+      0.20993870684509572,
+      -0.0,
+      0.9777145490214458
+    ],
+    "support": {
+      "center": {
+        "x": -107.50121422709972,
+        "y": 59.699999999999996,
+        "z": -13.839759380105413
+      },
+      "size": {
+        "x": 6,
+        "y": 0.2,
+        "z": 13.2
+      },
+      "forward": {
+        "x": 0.20993870684509572,
+        "y": -0.0,
+        "z": 0.9777145490214458
+      }
+    },
+    "floor_void_samples": [
+      {
+        "xz": [
+          -107.50121422709972,
+          -13.839759380105413
+        ],
+        "highest_source_y": 51.16455920016828,
+        "source_mesh": "Island_0_7",
+        "source_triangle": 18544
+      },
+      {
+        "xz": [
+          -105.88708548389928,
+          -12.03848527537449
+        ],
+        "highest_source_y": 50.994777791971444,
+        "source_mesh": "Island_0_7",
+        "source_triangle": 18671
+      },
+      {
+        "xz": [
+          -108.68226940932256,
+          -15.529466057770083
+        ],
+        "highest_source_y": 55.142818841761546,
+        "source_mesh": "Island_0_8",
+        "source_triangle": 600
+      }
+    ],
+    "original_perimeter_y_range": [
+      59.1,
+      59.763
+    ],
+    "retained_original_high_features_y_max": 62.1965065,
+    "boundary_note": "The original broad interior surface is about 51 m high and does not support a roof at 59.8 m. The new closed slab therefore receives one matching static runtime box collider; original scan floors and colliders remain unchanged.",
+    "part_paths": {
+      "StructuralRoofSlab": "Assets/Game/Alcatraz/Resources/Alcatraz/FacadeRebuild/Meshes/Facade_Roof_StructuralRoofSlab.asset",
+      "WeatheredRoofMembrane": "Assets/Game/Alcatraz/Resources/Alcatraz/FacadeRebuild/Meshes/Facade_Roof_WeatheredRoofMembrane.asset",
+      "LowDrainCoping": "Assets/Game/Alcatraz/Resources/Alcatraz/FacadeRebuild/Meshes/Facade_Roof_LowDrainCoping.asset",
+      "MiteredEdgeFlashing": "Assets/Game/Alcatraz/Resources/Alcatraz/FacadeRebuild/Meshes/Facade_Roof_MiteredEdgeFlashing.asset",
+      "RoofLapSeams": "Assets/Game/Alcatraz/Resources/Alcatraz/FacadeRebuild/Meshes/Facade_Roof_RoofLapSeams.asset"
+    },
+    "solid_meshes": [
+      "Assets/Game/Alcatraz/Resources/Alcatraz/FacadeRebuild/Meshes/Facade_Roof_StructuralRoofSlab.asset"
+    ],
+    "membrane_meshes": [
+      "Assets/Game/Alcatraz/Resources/Alcatraz/FacadeRebuild/Meshes/Facade_Roof_WeatheredRoofMembrane.asset"
+    ],
+    "triangles": 962,
+    "original_floor_changed": false,
+    "new_roof_solid": true,
+    "core_to_membrane_gap_metres": 0.004
+  },
+  "native_prefab_colliders": 0,
+  "runtime_roof_box_colliders": 1,
+  "colliders_added": 1,
   "geometry_policy": "Only visual fragments inside surveyed R/Y/depth prisms are replaced, including oblique window ledges. At retaining walls near-horizontal courtyard floors (absolute normalY >= .8) are preserved. All fragments outside the six planes are retained. Original scan asset bytes and MeshColliders remain unchanged; source UVs and normals outside the prisms are interpolated without remapping.",
   "limits": [
-    "Reconstruction covers inspected facade patches, not the whole island.",
+    "Reconstruction covers the inspected attached tower block and retaining wall, not the whole island.",
     "Opaque recessed window panes remain sealed by original wall collision. No new enterable room is implied.",
+    "The closed roof adds one matching static support collider; all original scan colliders and original floors remain unchanged.",
+    "Source side-window projections can differ from the new facade by more than one metre locally; ground access, camera contact and helicopter clearance require Unity verification.",
     "Unity rendering, collision/camera interaction and performance remain unverified."
   ]
 }

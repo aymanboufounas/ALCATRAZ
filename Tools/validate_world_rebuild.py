@@ -138,8 +138,11 @@ class Verification:
 
     def architecture(self, manifest, native):
         self.source_hashes('Architecture kit', manifest['files_sha256'])
-        self.check(manifest['module_count'] == len(manifest['modules']) == 7,
-                   'Architecture kit contains its seven original modules.')
+        expected_modules = {'FacadeWindow', 'FacadeBarredWindow', 'FacadeBoardedWindow', 'FacadeBlank',
+                            'AccessDoor', 'RoofCornice', 'Drainpipe', 'RoofDeck', 'RoofCoping', 'RoofChimney'}
+        self.check(manifest['module_count'] == len(manifest['modules']) == 10
+                   and {m['name'] for m in manifest['modules']} == expected_modules,
+                   'Architecture kit contains its seven facade modules and three explicit roof modules.')
         self.check(native['stored_triangles'] == manifest['triangles_all_modules'] < 15000,
                    'Architecture native module triangle total respects the 15,000-triangle budget.')
         self.check(native['vertices'] == manifest['vertices_all_modules'],
@@ -276,9 +279,17 @@ class Verification:
     def facades(self, manifest, native):
         self.source_hashes('Facade reconstruction', manifest['source_hashes'])
         layout = json.loads((self.root/(BASE+'FacadeRebuild/Layout.json')).read_text())
-        self.check(bool(manifest['patches']) and manifest['patches'] == layout['patches'],
-                   'Facade reconstruction contains exactly the current surveyed layout patches.')
-        self.check(manifest['colliders_added'] == 0, 'Facade visual replacement adds no colliders.')
+        declared = {p['id']: p for p in layout['patches']}
+        baked = {p['id']: p for p in manifest['patches']}
+        self.check(bool(baked) and set(baked) == set(declared)
+                   and all(all(baked[key].get(k) == value for k, value in row.items())
+                           and set(baked[key])-set(row) <= {'blank_bays'} for key, row in declared.items()),
+                   'Facade reconstruction retains every declared layout field and only adds derived blank-bay masks.')
+        self.check(manifest.get('cleanup_volumes', []) == layout.get('cleanup_volumes', []),
+                   'Elevated visual cleanup uses only its explicitly declared source-clipping volumes.')
+        self.check(manifest['native_prefab_colliders'] == 0
+                   and manifest['runtime_roof_box_colliders'] == manifest['colliders_added'] == 1,
+                   'Rebuild adds exactly one runtime roof BoxCollider while all native prefabs remain collider-free.')
         # The interaction gate is at the upper level. XZ clearance is stricter
         # than height-only clearance and protects the complete approach volume.
         gate = np.array([-113.33, 22.5])
@@ -339,11 +350,102 @@ class Verification:
         support = self.native_wall_support(manifest)
         aperture = self.aperture_rays(manifest)
         sightlines = self.oblique_sightlines(manifest)
+        roof = self.roof_support(manifest, runtime_index)
+        fragments = self.outside_fragment_preservation(manifest)
         return {'patches': len(manifest['patches']), 'replaced_projected_area_m2': manifest['replaced_projected_area_m2'],
                 'footprint_area_m2': manifest['footprint_area_m2'],
                 'visual_replacement_chunks': len(rows), 'facade_triangles': manifest['facade_triangles'],
                 'gate_clearance_xz_metres': clearances, 'independent_native_wall_support': support,
-                **aperture, 'oblique_sightlines': sightlines}
+                **aperture, 'oblique_sightlines': sightlines, 'roof_support': roof,
+                'visual_source_fragment_preservation': fragments}
+
+    def outside_fragment_preservation(self, manifest):
+        """Require all untouched original faces and sample clipped outside fragments."""
+        volumes = {p['id']: p for p in manifest['patches']+manifest.get('cleanup_volumes', [])}
+        references = manifest['clipped_source_references_by_volume']
+        self.check(set(references) == set(volumes), 'Every owned facade/cleanup volume records its source triangles.')
+        source_folder = self.root/'Assets/Game/Supplied/Resources/AlcatrazSupplied/Baked/Meshes'
+        sources = {p.stem: str(p.relative_to(self.root)) for p in source_folder.glob('Island_*.asset')}
+        touched = {}
+        for volume_id, records in references.items():
+            volume = volumes[volume_id]
+            for record in records:
+                source = sources[record['source_mesh']]
+                data, indices = self.mesh(source)
+                face_id = record['source_triangle']
+                self.check(0 <= face_id < len(indices) and record['removed_surface_area_m2'] > 0,
+                           'Clipped source reference identifies a real triangle and positive removed area.')
+                face = data[indices[face_id], :3]+SCAN_OFFSET
+                n, r = np.asarray(volume['normal']), np.asarray(volume['right'])
+                depth, lateral = face @ n, face @ r
+                behind = volume.get('depth_behind', manifest['clipping_depth_metres']['behind_plane'])
+                ahead = volume.get('depth_ahead', manifest['clipping_depth_metres']['ahead_of_plane'])
+                self.check(depth.max() >= volume['plane_distance']-behind-1e-6
+                           and depth.min() <= volume['plane_distance']+ahead+1e-6
+                           and lateral.max() >= volume['u_bounds'][0]-1e-6
+                           and lateral.min() <= volume['u_bounds'][1]+1e-6
+                           and face[:, 1].max() >= volume['y_bounds'][0]-1e-6
+                           and face[:, 1].min() <= volume['y_bounds'][1]+1e-6,
+                           'A clipped source face intersects its declared owned volume bounds.')
+                touched.setdefault(source, set()).add(face_id)
+        retained, missing, samples = 0, 0, 0
+        for row in manifest['replacement_scan_chunks']:
+            source = row['source_asset']
+            original, original_indices = self.mesh(source)
+            result, result_indices = self.mesh(row['asset'])
+            result_counts = Counter(map(tuple, result_indices.tolist()))
+            unowned = Counter(tuple(tri) for i, tri in enumerate(original_indices.tolist())
+                              if i not in touched.get(source, set()))
+            self.check(all(result_counts[key] >= count for key, count in unowned.items()),
+                       row['sourceMesh']+' retains every original face outside the explicitly owned source references.')
+            retained += sum(unowned.values())
+            for i, triangle in enumerate(original_indices):
+                if tuple(triangle) not in result_counts:
+                    missing += 1
+                    self.check(i in touched.get(source, set()), 'No original scan face disappears without an owned clipping reference.')
+            native_faces = result[result_indices, :3]+SCAN_OFFSET
+            bounds_low, bounds_high = native_faces.min(1), native_faces.max(1)
+            for face_id in touched.get(source, set()):
+                face = original[original_indices[face_id], :3]+SCAN_OFFSET
+                for bary in ([1/3, 1/3, 1/3], [.90, .05, .05], [.05, .90, .05], [.05, .05, .90]):
+                    point = np.asarray(bary) @ face
+                    owned = False
+                    for volume in volumes.values():
+                        depth, lateral = float(point @ np.asarray(volume['normal'])), float(point @ np.asarray(volume['right']))
+                        behind = volume.get('depth_behind', manifest['clipping_depth_metres']['behind_plane'])
+                        ahead = volume.get('depth_ahead', manifest['clipping_depth_metres']['ahead_of_plane'])
+                        owned |= (volume['plane_distance']-behind-.0001 <= depth <= volume['plane_distance']+ahead+.0001
+                                  and volume['u_bounds'][0]-.0001 <= lateral <= volume['u_bounds'][1]+.0001
+                                  and volume['y_bounds'][0]-.0001 <= point[1] <= volume['y_bounds'][1]+.0001)
+                    if owned:
+                        continue
+                    candidates = native_faces[np.all((bounds_low <= point+.00005) & (bounds_high >= point-.00005), axis=1)]
+                    covered = False
+                    if len(candidates):
+                        a = candidates[:, 0]
+                        e1, e2 = candidates[:, 1]-a, candidates[:, 2]-a
+                        diff = point-a
+                        d00 = np.einsum('ij,ij->i', e1, e1)
+                        d01 = np.einsum('ij,ij->i', e1, e2)
+                        d11 = np.einsum('ij,ij->i', e2, e2)
+                        d20 = np.einsum('ij,ij->i', diff, e1)
+                        d21 = np.einsum('ij,ij->i', diff, e2)
+                        denominator = d00*d11-d01*d01
+                        valid = denominator > 1e-14
+                        denominator = np.where(valid, denominator, 1)
+                        u = (d11*d20-d01*d21)/denominator
+                        v = (d00*d21-d01*d20)/denominator
+                        n = np.cross(e1, e2)
+                        n /= np.maximum(np.linalg.norm(n, axis=1)[:, None], 1e-12)
+                        covered = bool(np.any(valid & (u >= -.0001) & (v >= -.0001) & (u+v <= 1.0001)
+                                              & (np.abs(np.einsum('ij,ij->i', diff, n)) < .00005)))
+                    self.check(covered, 'An original source-face sample outside all facade/cleanup prisms remains rendered.')
+                    samples += 1
+        self.check(missing == manifest['original_source_triangles_clipped'],
+                   'Independently counted replaced original faces match the declared clipping total.')
+        return {'unmodified_original_faces_retained': retained, 'replaced_original_faces': missing,
+                'outside_fragment_samples_checked': samples, 'owned_volumes': len(volumes),
+                'scope': 'Exact original triangle indices for unowned faces plus four barycentric samples per clipped face outside the declared volume union; not an exhaustive image proof.'}
 
     def native_wall_support(self, manifest):
         """Ray-test original wall support in 3-D, independently of the author's rasterizer."""
@@ -374,7 +476,8 @@ class Verification:
             inverse = np.zeros_like(determinant)
             np.divide(1, determinant, out=inverse, where=determinant > 1e-10)
             samples = covered = 0
-            for y in np.arange(patch['y_bounds'][0]+step/2, patch['y_bounds'][1], step):
+            sampled_y = patch.get('support_y_bounds', patch['y_bounds'])
+            for y in np.arange(sampled_y[0]+step/2, sampled_y[1], step):
                 for u_position in np.arange(patch['u_bounds'][0]+step/2, patch['u_bounds'][1], step):
                     origin = normal*(plane+1.5)+right*u_position+[0, y, 0]
                     t_vector = origin-a
@@ -393,21 +496,83 @@ class Verification:
             row = recorded[patch['id']]
             self.check(row['sample_count'] == samples and row['covered_samples'] == covered
                        and math.isclose(row['coverage_fraction'], fraction, abs_tol=1e-10)
-                       and row['minimum_fraction'] == minimum and row['sample_spacing_metres'] == step,
+                       and row['minimum_fraction'] == minimum and row['sample_spacing_metres'] == step
+                       and row.get('sampled_y_bounds', sampled_y) == sampled_y,
                        patch['id']+' recorded native support matches independent ray/triangle intersection.')
             reports.append({'patch': patch['id'], 'samples': samples, 'covered_samples': covered,
                             'coverage_fraction': fraction, 'minimum_fraction': minimum,
                             'scope': 'Original front-facing near-vertical wall triangles within +/-1.5 m of the new plane; this measures background support, not exact visual/collider alignment.'})
         return reports
 
+    def window_instances(self, manifest):
+        """Resolve actual glass-bearing instances, including variable-width bays."""
+        if hasattr(self, '_resolved_windows'):
+            return self._resolved_windows
+        kit = json.loads((self.root/(BASE+'ArchitectureKit/Manifest.json')).read_text())
+        modules = {m['name']: m for m in kit['modules']}
+        patches = {p['id']: p for p in manifest['patches']}
+        docs = native_documents((self.root/(BASE+'FacadeRebuild/FacadeRebuild.prefab')).read_text())
+        mesh_by_game = {}
+        for kind, body in docs.values():
+            if kind == 33:
+                game = re.search(r'm_GameObject: \{fileID: (\d+)\}', body)
+                mesh = re.search(r'm_Mesh: \{fileID: \d+, guid: (\w+)', body)
+                if game and mesh:
+                    mesh_by_game[int(game[1])] = self.guids[mesh[1]]
+        native_glass = []
+        for kind, body in docs.values():
+            if kind != 23:
+                continue
+            material = re.search(r'm_Materials:\s*\n\s*-\s*\{fileID: \d+, guid: (\w+)', body)
+            game = re.search(r'm_GameObject: \{fileID: (\d+)\}', body)
+            if material and game and self.guids[material[1]].name == 'RecessedGlass.mat':
+                data, _ = self.mesh(str(mesh_by_game[int(game[1])].relative_to(self.root)))
+                native_glass.extend(data[:, :3])
+        native_glass = np.asarray(native_glass)
+        self.check(native_glass.ndim == 2 and native_glass.shape[1] == 3,
+                   'Native facade assembly contains rendered recessed-glass geometry.')
+        native_keys = {tuple(p) for p in np.round(native_glass, 4)}
+        windows, expected_vertices = [], 0
+        for index, instance in enumerate(manifest['module_instances']):
+            if instance.get('type') != 'window':
+                continue
+            patch = patches[instance['patch']]
+            module = modules[instance['module']]
+            glass_part = next(p for p in module['parts'] if p['name'] == 'RecessedGlass')
+            data, _ = self.mesh(glass_part['mesh'])
+            lower, upper = data[:, :3].min(0), data[:, :3].max(0)
+            bounds = instance['glass_bounds_local']
+            self.check(np.allclose(bounds['min'], lower, atol=.00001)
+                       and np.allclose(bounds['max'], upper, atol=.00001),
+                       'A window instance records the real native glass bounds.')
+            aperture = instance['aperture_bounds_local']
+            self.check(instance['width'] > 2*max(abs(lower[0]), abs(upper[0]))
+                       and instance['height'] > upper[1]
+                       and aperture['min'][0] < lower[0] < upper[0] < aperture['max'][0]
+                       and aperture['min'][1] < lower[1] < upper[1] < aperture['max'][1],
+                       'Variable-width wall bays keep the fixed native glass inside their real openings.')
+            normal, right = np.asarray(patch['normal']), np.asarray(patch['right'])
+            origin = np.asarray(instance['position'])
+            expected = data[:, 0, None]*(-right)+data[:, 1, None]*[0, 1, 0]+data[:, 2, None]*(-normal)+origin
+            missing = [point for point in expected if tuple(np.round(point, 4)) not in native_keys]
+            self.check(not missing or all(np.linalg.norm(native_glass-point, axis=1).min() < .00005 for point in missing),
+                       'Every declared window pane exists at its actual world position in the native assembly.')
+            self.check(abs(float(origin @ normal)-patch['plane_distance']) < .0001,
+                       'Window instance origin matches its own surveyed facade plane.')
+            expected_vertices += len(data)
+            row = round((origin[1]-patch['bottom_center'][1])/3.5)
+            column = round((np.mean(patch['u_bounds'])+patch['width']*.5-float(origin @ right))
+                           /instance['width']-.5)
+            windows.append({'patch': patch, 'origin': origin, 'lower': lower, 'upper': upper,
+                            'row': int(row), 'column': int(column), 'instance_index': index})
+        self.check(bool(windows) and expected_vertices == len(native_glass),
+                   'Exactly the declared glass-bearing instances account for all native window vertices.')
+        self._resolved_windows = windows
+        return windows
+
     def aperture_rays(self, manifest):
         """Independent 3-D ray/triangle checks, not the author's 2-D projected test."""
-        kit = json.loads((self.root/(BASE+'ArchitectureKit/Manifest.json')).read_text())
-        glass_part = next(p for module in kit['modules'] if module['name'] == 'FacadeWindow'
-                          for p in module['parts'] if p['name'] == 'RecessedGlass')
-        glass, _ = self.mesh(glass_part['mesh'])
-        lower, upper = glass[:, :3].min(0), glass[:, :3].max(0)
-        pane_depth = float(lower[2])
+        windows = self.window_instances(manifest)
         replaced = {row['source_asset']: row['asset'] for row in manifest['replacement_scan_chunks']}
         all_faces = []
         source_folder = self.root/'Assets/Game/Supplied/Resources/AlcatrazSupplied/Baked/Meshes'
@@ -421,8 +586,10 @@ class Verification:
         probes, occluders = 0, 0
         patch_counts = {}
         for patch in manifest['patches']:
-            if patch['role'] == 'retaining':
+            instances = [window for window in windows if window['patch']['id'] == patch['id']]
+            if not instances:
                 continue
+            pane_depth = max(float(window['lower'][2]) for window in instances)
             normal, right = np.asarray(patch['normal']), np.asarray(patch['right'])
             plane = patch['plane_distance']
             front = patch.get('depth_ahead', default_front)
@@ -444,28 +611,27 @@ class Verification:
             inverse = np.zeros_like(determinant)
             np.divide(1, determinant, out=inverse, where=determinant > 1e-10)
             patch_probes = 0
-            columns, rows = round(patch['width']/3), round(patch['height']/3.5)
-            for row in range(rows):
-                for column in range(columns):
-                    bay = np.asarray(patch['bottom_center'])-right*((column-(columns-1)/2)*3)+[0, row*3.5, 0]
-                    for x_fraction in (.2, .5, .8):
-                        for y_fraction in (.2, .5, .8):
-                            x = lower[0]+(upper[0]-lower[0])*x_fraction
-                            y = lower[1]+(upper[1]-lower[1])*y_fraction
-                            origin = bay-right*x+[0, y, 0]+normal*front
-                            t_vector = origin-a
-                            u = np.einsum('ij,ij->i', t_vector, p_vector)*inverse
-                            q_vector = np.cross(t_vector, edge1)
-                            v = (q_vector @ direction)*inverse
-                            distance = np.einsum('ij,ij->i', edge2, q_vector)*inverse
-                            hits = ((determinant > 1e-10) & (u >= -1e-7) & (v >= -1e-7)
-                                    & (u+v <= 1+1e-7) & (distance >= -1e-6)
-                                    & (distance <= front+pane_depth+1e-6))
-                            hit_count = int(hits.sum())
-                            self.check(hit_count == 0, patch['id']+f' bay {row},{column} actual pane ray remains free of old scan wedges.')
-                            occluders += hit_count
-                            probes += 1
-                            patch_probes += 1
+            for window in instances:
+                bay, lower, upper = window['origin'], window['lower'], window['upper']
+                row, column = window['row'], window['column']
+                for x_fraction in (.2, .5, .8):
+                    for y_fraction in (.2, .5, .8):
+                        x = lower[0]+(upper[0]-lower[0])*x_fraction
+                        y = lower[1]+(upper[1]-lower[1])*y_fraction
+                        origin = bay-right*x+[0, y, 0]+normal*front
+                        t_vector = origin-a
+                        u = np.einsum('ij,ij->i', t_vector, p_vector)*inverse
+                        q_vector = np.cross(t_vector, edge1)
+                        v = (q_vector @ direction)*inverse
+                        distance = np.einsum('ij,ij->i', edge2, q_vector)*inverse
+                        hits = ((determinant > 1e-10) & (u >= -1e-7) & (v >= -1e-7)
+                                & (u+v <= 1+1e-7) & (distance >= -1e-6)
+                                & (distance <= front+pane_depth+1e-6))
+                        hit_count = int(hits.sum())
+                        self.check(hit_count == 0, patch['id']+f' bay {row},{column} actual pane ray remains free of old scan wedges.')
+                        occluders += hit_count
+                        probes += 1
+                        patch_probes += 1
             patch_counts[patch['id']] = patch_probes
         self.check(probes > 0, 'Facade aperture verification fired independent rays through real pane bounds.')
         return {'independent_native_aperture_rays': probes, 'old_scan_aperture_occluders': occluders,
@@ -474,11 +640,7 @@ class Verification:
 
     def oblique_sightlines(self, manifest):
         """Report retained foreground separately from aperture failures, up to 4 m."""
-        kit = json.loads((self.root/(BASE+'ArchitectureKit/Manifest.json')).read_text())
-        glass_part = next(p for module in kit['modules'] if module['name'] == 'FacadeWindow'
-                          for p in module['parts'] if p['name'] == 'RecessedGlass')
-        glass, _ = self.mesh(glass_part['mesh'])
-        pane_depth = float(glass[:, 2].min())
+        windows = self.window_instances(manifest)
         replacements = {row['source_asset']: row['asset'] for row in manifest['replacement_scan_chunks']}
         all_faces, labels = [], []
         source_folder = self.root/'Assets/Game/Supplied/Resources/AlcatrazSupplied/Baked/Meshes'
@@ -495,18 +657,19 @@ class Verification:
         rays = local_count = foreground_count = 0
         blocked_rays, by_patch = [], {}
         for patch in manifest['patches']:
-            if patch['role'] == 'retaining':
+            instances = [window for window in windows if window['patch']['id'] == patch['id']]
+            if not instances:
                 continue
             normal, right = np.asarray(patch['normal']), np.asarray(patch['right'])
-            bottom, plane = np.asarray(patch['bottom_center']), patch['plane_distance']
+            plane = patch['plane_distance']
             ahead = patch.get('depth_ahead', manifest['clipping_depth_metres']['ahead_of_plane'])
             behind = patch.get('depth_behind', manifest['clipping_depth_metres']['behind_plane'])
-            rows, columns = round(patch['height']/3.5), round(patch['width']/3)
             by_row = {}
-            for row in range(rows):
+            for row in sorted({window['row'] for window in instances}):
                 counts = {'rays': 0, 'locally_occluded': 0, 'foreground_occluded': 0}
-                for column in range(columns):
-                    bay = bottom-right*((column-(columns-1)/2)*3)+[0, row*3.5, 0]
+                for window in (w for w in instances if w['row'] == row):
+                    bay, column = window['origin'], window['column']
+                    pane_depth = float(window['lower'][2])
                     for x in (-.4, .2, .4):
                         for y in (1.3, 1.97, 2.6):
                             pane = bay-right*x+[0, y, 0]-normal*pane_depth
@@ -566,6 +729,156 @@ class Verification:
                 'scope': 'Native scan geometry only: retained surfaces outside the declared reconstruction prisms are reported, not deleted or treated as local aperture failures.',
                 'limitation': 'Preserved foreground terrain can still obscure upper windows from some views. These rays do not prove full facade visibility or reproduce Unity rendering.'}
 
+    def roof_support(self, manifest, runtime_index):
+        """Measure the native slab/membrane and the one intentional new solid."""
+        roof, support = manifest['roof'], runtime_index['roofSupport']
+        def vector(value):
+            result = np.asarray([value[k] for k in 'xyz'] if isinstance(value, dict) else value, dtype=float)
+            if result.shape != (3,) or not np.isfinite(result).all():
+                raise ValueError('Roof support vectors must contain three finite coordinates')
+            return result
+        center, size, forward = (vector(support[key]) for key in ('center', 'size', 'forward'))
+        up = np.array([0., 1., 0.])
+        self.check(np.all(size > 0) and 1 < size[0] < 50 and 1 < size[2] < 50
+                   and .05 < size[1] < 1 and 5 < center[1] < 120,
+                   'Roof support is a finite, positive and bounded physical box.')
+        self.check(abs(forward[1]) < .000001 and np.isclose(np.linalg.norm(forward), 1, atol=1e-6),
+                   'Roof support forward is a horizontal unit direction.')
+        right = np.cross(up, forward)
+        basis = np.column_stack([right, up, forward])
+        self.check(np.allclose(basis.T @ basis, np.eye(3), atol=1e-6)
+                   and np.isclose(np.linalg.det(basis), 1, atol=1e-6),
+                   'Roof support has orthonormal right/up/forward axes without mirroring.')
+        self.check(roof['original_floor_changed'] is False and roof['new_roof_solid'] is True,
+                   'The new roof solid is explicit and original native floors are retained.')
+        self.check(np.allclose(vector(roof['center_world'])[[0, 2]], center[[0, 2]], atol=.00005)
+                   and np.isclose(roof['width'], size[0], atol=.00005)
+                   and np.isclose(roof['depth'], size[2], atol=.00005),
+                   'Native roof placement and runtime box footprint share measured dimensions.')
+        if 'support' in roof:
+            self.check(all(np.allclose(vector(roof['support'][key]), vector(support[key]), atol=.000001)
+                           for key in ('center', 'size', 'forward')),
+                       'Manifest roof support agrees with the runtime Vector3 metadata.')
+        self.check(np.allclose(vector(roof['forward']), forward, atol=1e-6)
+                   and np.allclose(vector(roof['right']), right, atol=1e-6),
+                   'Authored roof geometry uses the same yaw axes as the runtime box.')
+        top = center[1]+size[1]*.5
+        self.check(np.isclose(top, roof['finished_height'], atol=.00005),
+                   'Runtime roof collider top matches the finished native membrane plane.')
+
+        def faces(paths):
+            values = []
+            self.check(bool(paths) and len(paths) == len(set(paths)), 'Roof part paths are nonempty and unique.')
+            for path in paths:
+                data, indices = self.mesh(path)
+                values.append(data[indices, :3])
+            return np.concatenate(values)
+        core = faces(roof['solid_meshes'])
+        membrane_parts = faces(roof['membrane_meshes'])
+        core_local = (core-center) @ basis
+        low, high = core_local.min(axis=(0, 1)), core_local.max(axis=(0, 1))
+        self.check(np.allclose(low[[0, 2]], -size[[0, 2]]*.5, atol=.00005)
+                   and np.allclose(high[[0, 2]], size[[0, 2]]*.5, atol=.00005),
+                   'Closed native roof core footprint matches the support box, including yaw.')
+        self.check(np.isclose(low[1], -size[1]*.5, atol=.00005)
+                   and -.00005 <= size[1]*.5-high[1] <= .01,
+                   'Roof box bottom matches the slab and its top is within one centimetre of the closed core.')
+        geometric = np.cross(core[:, 1]-core[:, 0], core[:, 2]-core[:, 0])
+        self.check(np.all(np.linalg.norm(geometric, axis=1) > 1e-10),
+                   'Structural roof solid contains no degenerate triangles.')
+        # Weld native positions, independently of UV/normal splits, then require
+        # two opposite directed uses of every physical boundary edge.
+        _, welded = np.unique(np.round(core.reshape(-1, 3), 5), axis=0, return_inverse=True)
+        triangles = welded.reshape(-1, 3)
+        edges = Counter()
+        directed = Counter()
+        for triangle in triangles:
+            for a, b in zip(triangle, np.roll(triangle, -1)):
+                a, b = int(a), int(b)
+                edges[tuple(sorted((a, b)))] += 1
+                directed[(a, b)] += 1
+        closed = bool(edges) and all(count == 2 for count in edges.values())
+        winding = all(directed[(a, b)] == directed[(b, a)] for a, b in edges)
+        self.check(closed and winding, 'Structural roof mesh is a closed consistently wound volume, not an unsupported plane.')
+        centered = core-center
+        signed_volume = float(np.einsum('ij,ij->i', centered[:, 0],
+                                       np.cross(centered[:, 1], centered[:, 2])).sum()/6)
+        box_volume = float(np.prod(size))
+        self.check(.94*box_volume < signed_volume <= box_volume*1.001,
+                   'Measured native roof volume fills the support box within the designed bevel/membrane tolerance.')
+
+        membrane_normal = np.cross(membrane_parts[:, 1]-membrane_parts[:, 0],
+                                   membrane_parts[:, 2]-membrane_parts[:, 0])
+        on_plane = ((membrane_normal[:, 1] > 1e-10)
+                    & (np.abs(membrane_parts[:, :, 1]-top).max(1) < .00005))
+        membrane = membrane_parts[on_plane]
+        self.check(len(membrane) >= 2, 'Roof has a real upward membrane surface at the collider top.')
+        if not len(membrane):
+            raise ValueError('No native roof membrane triangles at the runtime support top')
+        membrane_local = (membrane-center) @ basis
+        membrane_low = membrane_local.min(axis=(0, 1))
+        membrane_high = membrane_local.max(axis=(0, 1))
+        self.check(np.all(membrane_low[[0, 2]] >= -size[[0, 2]]*.5-.00005)
+                   and np.all(membrane_high[[0, 2]] <= size[[0, 2]]*.5+.00005)
+                   and np.all(membrane_high[[0, 2]]-membrane_low[[0, 2]] >= size[[0, 2]]-.05),
+                   'Rendered membrane footprint lies on the support box with only the authored edge inset.')
+        membrane_area = float(np.linalg.norm(np.cross(membrane[:, 1]-membrane[:, 0],
+                                                     membrane[:, 2]-membrane[:, 0]), axis=1).sum()*.5)
+        self.check(.98*size[0]*size[2] <= membrane_area <= size[0]*size[2]*1.001,
+                   'The finished roof surface closes essentially the full rectangular footprint.')
+
+        source_faces = []
+        source_folder = self.root/'Assets/Game/Supplied/Resources/AlcatrazSupplied/Baked/Meshes'
+        for path in sorted(source_folder.glob('Island_*.asset')):
+            data, indices = self.mesh(str(path.relative_to(self.root)))
+            source_faces.append(data[indices, :3]+SCAN_OFFSET)
+        original = np.concatenate(source_faces)
+        def highest_upward(mesh_faces, x, z):
+            a = mesh_faces[:, 0]
+            e1, e2 = mesh_faces[:, 1]-a, mesh_faces[:, 2]-a
+            determinant = e1[:, 0]*e2[:, 2]-e1[:, 2]*e2[:, 0]
+            valid = determinant < -1e-10  # negative XZ determinant is +Y winding
+            denominator = np.where(valid, determinant, 1)
+            u = ((x-a[:, 0])*e2[:, 2]-(z-a[:, 2])*e2[:, 0])/denominator
+            v = (e1[:, 0]*(z-a[:, 2])-e1[:, 2]*(x-a[:, 0]))/denominator
+            valid &= (u >= -1e-7) & (v >= -1e-7) & (u+v <= 1+1e-7)
+            if not valid.any():
+                return None
+            return float((a[:, 1]+u*e1[:, 1]+v*e2[:, 1])[valid].max())
+        samples = roof['floor_void_samples']
+        self.check(bool(samples), 'Roof records known original floor-void samples for independent verification.')
+        reports = []
+        for sample in samples:
+            position = sample.get('position', sample.get('world_position', sample.get('world_xz', sample.get('xz'))))
+            if position is None:
+                raise ValueError('Roof void samples require world position or world_xz coordinates')
+            position = np.asarray(position, dtype=float)
+            x, z = (position[0], position[2]) if len(position) == 3 else position
+            local = (np.array([x, top, z])-center) @ basis
+            source_height = highest_upward(original, x, z)
+            roof_height = highest_upward(membrane, x, z)
+            self.check(np.all(np.abs(local[[0, 2]]) < size[[0, 2]]*.5)
+                       and roof_height is not None and abs(roof_height-top) < .00005,
+                       'The rendered roof and support collider both cover a known source floor void.')
+            self.check(source_height is not None and source_height < top-.01,
+                       'The original scan floor is independently below the new roof at a known void sample.')
+            expected = sample.get('source_height', sample.get('source_floor_y', sample.get('highest_source_y')))
+            if expected is not None:
+                self.check(source_height is not None and abs(source_height-expected) < .0001,
+                           'Recorded original-floor height agrees with the untouched native source triangles.')
+            reports.append({'world_xz': [float(x), float(z)], 'original_highest_upward_y': source_height,
+                            'native_membrane_y': roof_height, 'runtime_box_top_y': float(top),
+                            'original_floor_below_roof_metres': None if source_height is None else float(top-source_height)})
+        self.check(any(np.linalg.norm(np.asarray(r['world_xz'])-center[[0, 2]]) < .05 for r in reports),
+                   'Known floor-void checks include the actual roof center, not only supported edges.')
+        return {'runtime_box_colliders_added': 1, 'native_prefab_colliders_added': 0,
+                'center': center.tolist(), 'size': size.tolist(), 'forward': forward.tolist(),
+                'finished_top_y': float(top), 'native_closed_core_volume_m3': signed_volume,
+                'runtime_box_volume_m3': box_volume, 'core_closed_edge_count': len(edges),
+                'core_to_finished_top_gap_metres': float(size[1]*.5-high[1]),
+                'membrane_area_m2': membrane_area, 'original_floor_void_samples': reports,
+                'scope': 'Native roof geometry and static runtime support metadata; no Unity physics or character landing test.'}
+
     def runtime(self, manifests):
         source = (self.root/'Assets/Game/Alcatraz/Scripts/AlcatrazEnvironmentDetails.cs').read_text()
         for name in ('CoastalVegetation', 'CourtyardSurfaces', 'FacadeRebuild'):
@@ -586,6 +899,25 @@ class Verification:
                    and 'filter.sharedMesh.vertexCount == 0' in source
                    and '!material.shader.isSupported' in source,
                    'World prefab preflight rejects added collision and missing/unsupported render dependencies.')
+        self.check(source.count('AddComponent<BoxCollider>()') == 1
+                   and re.findall(r'AddComponent<(\w*Collider)>\(', source) == ['BoxCollider'],
+                   'The environment service creates exactly one new collider type: the owned roof box.')
+        self.check('Finite(roof.center) && Finite(roof.size) && Finite(roof.forward)' in source
+                   and source.index('!UsableRoof(index.roofSupport)') < source.index('var facade = AddWorldPrefab'),
+                   'Finite bounded roof metadata is preflighted before facade instantiation and mesh replacement.')
+        allocation = source.index('RoofCollider = roof.AddComponent<BoxCollider>()')
+        disabled = source.index('RoofCollider.enabled = false;', allocation)
+        enabled = source.index('RoofCollider.enabled = true;', disabled)
+        synced = source.index('Physics.SyncTransforms()', enabled)
+        self.check(source.index('var facade = AddWorldPrefab') < allocation < disabled < swap < enabled < synced,
+                   'The owned roof box stays disabled until the complete visual mesh set is swapped, then physics is synchronized.')
+        self.check('Quaternion.LookRotation(index.roofSupport.forward, Vector3.up)' in source
+                   and 'RoofCollider.size = index.roofSupport.size' in source
+                   and 'SetPositionAndRotation(index.roofSupport.center' in source,
+                   'Runtime roof position, size and horizontal orientation come directly from the measured support metadata.')
+        teardown = source[source.index('void OnDestroy()'):]
+        self.check('RoofCollider.enabled = false' in teardown,
+                   'Teardown disables the owned new roof solid before discarding the additive world.')
         self.check(not re.search(r'collider\.sharedMesh\s*=(?!=)', source),
                    'Facade runtime does not assign new collision meshes.')
         self.check('foreach (var item in originalMeshes)' in source
@@ -631,7 +963,7 @@ def validate(root, run_author_checks=True):
             verifier.check(False, label+': '+str(error))
     return {'status': 'FAIL' if verifier.errors else ('PASS' if run_author_checks else 'NATIVE_ONLY'),
             'checks': verifier.checks, 'errors': verifier.errors,
-            'scope': 'Sequential deterministic author checks, native buffers, material/resource dependencies, source provenance, court plane contacts, gate clearance and runtime source integration.',
+            'scope': 'Sequential deterministic author checks, native buffers/materials, source provenance and retained fragments, court contacts, actual window-instance rays, closed roof volume/membrane and its one declared runtime support box.',
             'regeneration': regeneration, 'native_assets': native, **summary,
             'vegetation': {'trees': manifests['CoastalVegetation']['trees'],
                            'shrubs': manifests['CoastalVegetation']['shrubs'],
@@ -645,6 +977,7 @@ def validate(root, run_author_checks=True):
             'limitations': ['The rebuilt floor/facade areas and confirmed green patches cover part of the supplied island, not the entire map.',
                             'Source color and elevation masks are conservative placement heuristics, not proof that every surface is natural ground.',
                             'Preserved native terrain outside facade reconstruction prisms can obscure upper windows; the 4 m oblique sightline report records that remaining visibility gap.',
+                            'The new roof BoxCollider is checked as a source/geometry contract; Unity physics, landing and teardown still need Play Mode verification.',
                             'Native source checks do not execute Unity, test alpha overdraw, certify collision/camera behavior or establish reference-game visual parity.']}
 
 

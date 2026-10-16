@@ -17,6 +17,7 @@ namespace Blackstone.Alcatraz
         public int FacadeRenderers { get; private set; }
         public int CourtyardRenderers { get; private set; }
         public int VegetationRenderers { get; private set; }
+        public BoxCollider RoofCollider { get; private set; }
         public string Status { get; private set; }
         readonly List<Material> materials = new List<Material>();
         readonly Dictionary<Renderer, Material[]> originals = new Dictionary<Renderer, Material[]>();
@@ -57,8 +58,29 @@ namespace Blackstone.Alcatraz
         public Mesh OriginalScanMesh(MeshFilter filter)
         { return filter != null && originalMeshes.TryGetValue(filter, out var source) ? source : filter != null ? filter.sharedMesh : null; }
 
-        [System.Serializable] sealed class RebuildIndex { public int facadeRenderers; public VisualReplacement[] replacements; }
+        [System.Serializable] sealed class RebuildIndex
+        {
+            public int facadeRenderers;
+            public VisualReplacement[] replacements;
+            public RoofSupport roofSupport;
+        }
         [System.Serializable] sealed class VisualReplacement { public string sourceMesh, resource; }
+        [System.Serializable] sealed class RoofSupport { public Vector3 center, size, forward; }
+
+        static bool Finite(Vector3 value)
+        {
+            return !float.IsNaN(value.x) && !float.IsNaN(value.y) && !float.IsNaN(value.z)
+                && !float.IsInfinity(value.x) && !float.IsInfinity(value.y) && !float.IsInfinity(value.z);
+        }
+
+        static bool UsableRoof(RoofSupport roof)
+        {
+            return roof != null && Finite(roof.center) && Finite(roof.size) && Finite(roof.forward)
+                && roof.center.y > 5 && roof.center.y < 120
+                && roof.size.x > 1 && roof.size.x < 50 && roof.size.z > 1 && roof.size.z < 50
+                && roof.size.y > .05f && roof.size.y < 1 && Mathf.Abs(roof.forward.y) < .001f
+                && Mathf.Abs(roof.forward.sqrMagnitude - 1) < .001f;
+        }
 
         static bool UsableWorldPrefab(GameObject prefab, int expectedRenderers = 0)
         {
@@ -107,7 +129,8 @@ namespace Blackstone.Alcatraz
             try { index = JsonUtility.FromJson<RebuildIndex>(data.text); }
             catch (System.ArgumentException) { Debug.LogWarning("Facade index unreadable; original visual meshes retained."); return; }
             if (index == null || index.replacements == null || index.replacements.Length == 0
-                || index.facadeRenderers <= 0 || !UsableWorldPrefab(prefab, index.facadeRenderers))
+                || index.facadeRenderers <= 0 || !UsableRoof(index.roofSupport)
+                || !UsableWorldPrefab(prefab, index.facadeRenderers))
             {
                 Debug.LogWarning("Facade prefab incomplete or unsupported; original visual meshes retained.");
                 return;
@@ -134,11 +157,23 @@ namespace Blackstone.Alcatraz
             }
             var facade = AddWorldPrefab("Alcatraz/FacadeRebuild/FacadeRebuild", index.facadeRenderers);
             if (facade == null) return;
+            // The old scan has a roof void. Install the one new solid surface
+            // from the same measured dimensions as the authored roof deck.
+            // Keep it disabled until the complete visual set is in place.
+            var roof = new GameObject("Rebuilt tower solid roof");
+            roof.transform.SetParent(dressing.transform, false);
+            roof.transform.SetPositionAndRotation(index.roofSupport.center,
+                Quaternion.LookRotation(index.roofSupport.forward, Vector3.up));
+            RoofCollider = roof.AddComponent<BoxCollider>();
+            RoofCollider.enabled = false;
+            RoofCollider.size = index.roofSupport.size;
             foreach (var item in pending)
             {
                 originalMeshes.Add(item.Key, item.Key.sharedMesh);
                 item.Key.sharedMesh = item.Value;
             }
+            RoofCollider.enabled = true;
+            Physics.SyncTransforms();
             RebuiltScanChunks = pending.Count;
             FacadeRenderers = facade.GetComponentsInChildren<MeshRenderer>(true).Length;
         }
@@ -256,6 +291,7 @@ namespace Blackstone.Alcatraz
 
         void OnDestroy()
         {
+            if (RoofCollider != null) RoofCollider.enabled = false;
             foreach (var item in originalMeshes) if (item.Key != null) item.Key.sharedMesh = item.Value;
             foreach (var item in originals) if (item.Key != null) item.Key.sharedMaterials = item.Value;
             if (dressing != null) Destroy(dressing);

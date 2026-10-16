@@ -316,6 +316,9 @@ def main():
         {"name": "PrisonWindows", "eye": [-111.83, 55, -33.98], "center": [-108.887, 53.75, -20.293],
          "fov": 50, "shadow_radius": 36,
          "title": "EXPOSED PRISON TOWER / PHYSICAL WINDOW REVEALS, BARS, SILLS AND CORNICES"},
+        {"name": "TowerBlock", "eye": [-96.06, 70.8, -36.75], "center": [-107.50, 54.5, -13.84],
+         "fov": 48, "shadow_radius": 46,
+         "title": "WHOLE TOWER BLOCK / ACTUAL WALLS, CLOSED ROOF, FLASHING AND PRESERVED SOURCE DETAILS"},
         {"name": "CoastalPlanting", "eye": [14, 18, 110], "center": [22, 16.5, 92],
          "fov": 53, "shadow_radius": 36,
          "title": "COASTAL GREEN PATCH / ACTUAL BRANCHED TREE MESHES AND NATIVE CUTOUT FOLIAGE"},
@@ -346,7 +349,7 @@ def main():
                      "physics_or_gpu_performance_verified": False,
                      "known_geometry_limits": [
                          "The two lowest tower windows are partly behind unchanged original foreground geometry; the upper four windows are clear in the documented view.",
-                         "The 6 by 10.5 metre tower skin meets the existing terrain; it is a local exposed facade replacement, not a full building or island rebuild.",
+                         "The documented tower shell and roof are a local building repair; surrounding island structures and terrain remain coarse source geometry.",
                          "Unreconstructed scan wedges, coarse cliffs and sparse planting remain visible; commercial reference quality is not demonstrated.",
                          "The offline coast view does not execute the runtime ocean or sky shaders."],
                      "uploaded_texture_dimensions": {str(path.relative_to(ROOT)): list(texture.size)
@@ -375,13 +378,21 @@ by this study's GLSL shader. The flat background is a clear color, not a sky ass
 
 - [Arrival court before/after](ArrivalCourtBeforeAfter.png)
 - [Exposed prison tower before/after](PrisonWindowsBeforeAfter.png)
+- [Whole tower block before/after](TowerBlockBeforeAfter.png)
 - [Coastal planting before/after](CoastalPlantingBeforeAfter.png)
 - [Arrival court after](ArrivalCourtAfter.png)
 - [Exposed prison tower after](PrisonWindowsAfter.png)
+- [Whole tower block after](TowerBlockAfter.png)
 - [Coastal planting after](CoastalPlantingAfter.png)
 - [Inputs, dimensions and camera/light metadata](Manifest.json)
 
-Only the explicitly surveyed facade patches are replaced. Much of the scanned
+The tower comparison includes the actual surveyed shell, closed roof, coping and
+metal flashing from the current native resources. The whole-block view uses one
+fixed three-quarter camera to show the old scan and repaired structure with the
+same neighboring geometry. The roof is visual source geometry in this renderer;
+the separately authored runtime support collider is not executed here.
+
+Only explicitly surveyed building regions are replaced. Much of the scanned
 island still has coarse silhouettes, inconsistent baked detail and sparse
 vegetation. On the 6 × 10.5 m tower face, the upper four windows are clear while
 the two lowest windows remain partly behind unchanged foreground scan geometry.

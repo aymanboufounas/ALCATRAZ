@@ -26,6 +26,10 @@
     "Assets/Game/Alcatraz/Resources/Alcatraz/ArchitectureKit/Materials/PaintedSteel.mat.meta": "ccbd9ef310bd2a361d5bdd2078b7503652afed0364d6465db0dbddfc7191a6e9",
     "Assets/Game/Alcatraz/Resources/Alcatraz/ArchitectureKit/Materials/RecessedGlass.mat": "627b2f72f8e2f54975962094b1982a57c581824d303dc9a2d0dc8e2a103385a9",
     "Assets/Game/Alcatraz/Resources/Alcatraz/ArchitectureKit/Materials/RecessedGlass.mat.meta": "0dea7940bb55211bd2f80af36ab8633fb7c41976729f98cbee62c2f5773ad93b",
+    "Assets/Game/Alcatraz/Resources/Alcatraz/ArchitectureKit/Materials/RoofFlashing.mat": "d800f26a69ebf621df31c21c58ee152f3a7438652aa235a64fb24b9d301ec646",
+    "Assets/Game/Alcatraz/Resources/Alcatraz/ArchitectureKit/Materials/RoofFlashing.mat.meta": "b52cf3c6c0be237cc4a092a35185a613686f1abb7f6ef680df05b0b7a4d8f5f6",
+    "Assets/Game/Alcatraz/Resources/Alcatraz/ArchitectureKit/Materials/RoofMembrane.mat": "675b127df5d2f3ca18a759474371d696ea631bc9f6f09570ff998e32e99f7ea8",
+    "Assets/Game/Alcatraz/Resources/Alcatraz/ArchitectureKit/Materials/RoofMembrane.mat.meta": "100dbfd15acc94298c48ce9bf5755bae3467637ff3cdf71cd9f20aa64e47d682",
     "Assets/Game/Alcatraz/Resources/Alcatraz/ArchitectureKit/Materials/WeatheredBrick.mat": "8fed6f956c35cdd20ec217885fb131349d0c4486d6dd0eb25f885b2e62293eac",
     "Assets/Game/Alcatraz/Resources/Alcatraz/ArchitectureKit/Materials/WeatheredBrick.mat.meta": "ce7cc4fe2d9bc29beb4674ea2d6bae752641b8d4927cf032fc817219cd735b99",
     "Assets/Game/Alcatraz/Resources/Alcatraz/ArchitectureKit/Meshes.meta": "61eefada62cf3234ba9fc1883021f5109e2c158040f9249975a38b7a9058ad96",
@@ -95,8 +99,28 @@
     "Assets/Game/Alcatraz/Resources/Alcatraz/ArchitectureKit/Meshes/FacadeWindow_SlopedSill.asset.meta": "fd7d88e4c2b94a27a66b417626d3a38ba38078cbbaf2903c52af1c5344968dfa",
     "Assets/Game/Alcatraz/Resources/Alcatraz/ArchitectureKit/Meshes/FacadeWindow_SteelFrame.asset": "c56e1550d9a1ae490bad37c007fd385c2c4d97233ba696a3d5fbdc0183fc66e1",
     "Assets/Game/Alcatraz/Resources/Alcatraz/ArchitectureKit/Meshes/FacadeWindow_SteelFrame.asset.meta": "01d092c0501ca7e88716ded80709e06a9eccb2125e524d262ceeaf0c9130f906",
+    "Assets/Game/Alcatraz/Resources/Alcatraz/ArchitectureKit/Meshes/RoofChimney_CappedMetalFlue.asset": "a8e49bbcb4432eb1a8860c1bff33f64892ab803b12b7bb6e57d0ad84bd19f80b",
+    "Assets/Game/Alcatraz/Resources/Alcatraz/ArchitectureKit/Meshes/RoofChimney_CappedMetalFlue.asset.meta": "4c855036060d0b8ec6bbe5dda22b1f22d0b7a35835175561a36d9a8893205bff",
+    "Assets/Game/Alcatraz/Resources/Alcatraz/ArchitectureKit/Meshes/RoofChimney_MasonryStack.asset": "19a42ae8f687bea64423c8f8ef49a3624ad8c51aa2eb16acc739b0a03c6d61ed",
+    "Assets/Game/Alcatraz/Resources/Alcatraz/ArchitectureKit/Meshes/RoofChimney_MasonryStack.asset.meta": "88ad7e65b01b09417939fb78f4dee144b2b4333a12a74817c74710563dd32bc4",
+    "Assets/Game/Alcatraz/Resources/Alcatraz/ArchitectureKit/Meshes/RoofChimney_SlopedStoneCrown.asset": "c67cd0eaf961d5439331d3d2b76f292ef3aa7538d94da827b0505675b90b03e5",
+    "Assets/Game/Alcatraz/Resources/Alcatraz/ArchitectureKit/Meshes/RoofChimney_SlopedStoneCrown.asset.meta": "1f8a8eeb41e51210c9475da8e6f247369cfb4435de1a558d95274323a8810f81",
+    "Assets/Game/Alcatraz/Resources/Alcatraz/ArchitectureKit/Meshes/RoofCoping_CopingStone.asset": "ea277d1ecc9f7d10d57f7eb94f249d81e6052066c1b8dd20054a823dcfe7e3c7",
+    "Assets/Game/Alcatraz/Resources/Alcatraz/ArchitectureKit/Meshes/RoofCoping_CopingStone.asset.meta": "a4aa9da68a220a3ae98d9c55bf6088d61cc10c4bc6e9f62e6beac4333f5bae15",
+    "Assets/Game/Alcatraz/Resources/Alcatraz/ArchitectureKit/Meshes/RoofCoping_FoldedFlashing.asset": "074c8ffc0d079c124185be7dec587d1d4d583b324e54bb9fdce58f59582ad5a7",
+    "Assets/Game/Alcatraz/Resources/Alcatraz/ArchitectureKit/Meshes/RoofCoping_FoldedFlashing.asset.meta": "f3ab7bcd111f008b498161719819614ea07c10ba327472060767e79b3c0c8c36",
     "Assets/Game/Alcatraz/Resources/Alcatraz/ArchitectureKit/Meshes/RoofCornice_SteppedCoping.asset": "ddf24e7c8e94ff21f65e8805fc57c1035d29f9a44e3d0c674601085b1e90004a",
     "Assets/Game/Alcatraz/Resources/Alcatraz/ArchitectureKit/Meshes/RoofCornice_SteppedCoping.asset.meta": "214c9747c592d957099eff3d87a49cb3cd9eca9e222a4658cce18d730f8f27d4",
+    "Assets/Game/Alcatraz/Resources/Alcatraz/ArchitectureKit/Meshes/RoofDeck_LowDrainCoping.asset": "e6ec623e384cd072a42f6165109109c2e2f4e4ffae943640ef6e929b5045670e",
+    "Assets/Game/Alcatraz/Resources/Alcatraz/ArchitectureKit/Meshes/RoofDeck_LowDrainCoping.asset.meta": "efa286fca955a8040db1a2f317cc6669fd4da3a45df4594337492d6112fb1e93",
+    "Assets/Game/Alcatraz/Resources/Alcatraz/ArchitectureKit/Meshes/RoofDeck_MiteredEdgeFlashing.asset": "55083a1f0401fb248007d4f0ccbd8bdd25530a00e44bfa75c0f350c497bdb5c2",
+    "Assets/Game/Alcatraz/Resources/Alcatraz/ArchitectureKit/Meshes/RoofDeck_MiteredEdgeFlashing.asset.meta": "c355343dd006d26196d3ec665a7f4c0f4e024ebd1fa73d9fb048cdd98f75e645",
+    "Assets/Game/Alcatraz/Resources/Alcatraz/ArchitectureKit/Meshes/RoofDeck_RoofLapSeams.asset": "8fb1226ce3fcf7f5ac3c90e91b51bebf90fec925cb05c5789587d54f507ea314",
+    "Assets/Game/Alcatraz/Resources/Alcatraz/ArchitectureKit/Meshes/RoofDeck_RoofLapSeams.asset.meta": "58869d651ab56d3ba5937557f642f9c3949661c73a1dab9c4c65f7669a880c86",
+    "Assets/Game/Alcatraz/Resources/Alcatraz/ArchitectureKit/Meshes/RoofDeck_StructuralRoofSlab.asset": "0854248f757df1c11c7f8ade5e6c00cb09758e788767287f303c5265bc231bdf",
+    "Assets/Game/Alcatraz/Resources/Alcatraz/ArchitectureKit/Meshes/RoofDeck_StructuralRoofSlab.asset.meta": "d9d257c2af2b5ee01b6b47c4bd1ea52e06cb0eb9c636d4694d79f33da7998c0d",
+    "Assets/Game/Alcatraz/Resources/Alcatraz/ArchitectureKit/Meshes/RoofDeck_WeatheredRoofMembrane.asset": "fe0b0cd0f627e31dd9941680f20f0737d48592f5df9282f15e53b3a70204adf0",
+    "Assets/Game/Alcatraz/Resources/Alcatraz/ArchitectureKit/Meshes/RoofDeck_WeatheredRoofMembrane.asset.meta": "509c0e87dba3aa7de4e8587b2821dc7839c635bac729d9539a72f43ea0271a47",
     "Assets/Game/Alcatraz/Resources/Alcatraz/ArchitectureKit/Prefabs.meta": "c7b21c5bc15ac781ac29ca842a63736106746fe9236558c7612a63ed56684494",
     "Assets/Game/Alcatraz/Resources/Alcatraz/ArchitectureKit/Prefabs/AccessDoor.prefab": "bce46236eb73772ea71836700a6ee70429c8e39493d739290a60e8cc4cfdcbb4",
     "Assets/Game/Alcatraz/Resources/Alcatraz/ArchitectureKit/Prefabs/AccessDoor.prefab.meta": "829f681b3ee69621f850190a358c4ab466cd2f7c000506807850db8ad9b7b9d4",
@@ -110,8 +134,14 @@
     "Assets/Game/Alcatraz/Resources/Alcatraz/ArchitectureKit/Prefabs/FacadeBoardedWindow.prefab.meta": "48c380ab625ffb6306946a5fb431b8dd67b55354063b07c81c07af1ad647bb74",
     "Assets/Game/Alcatraz/Resources/Alcatraz/ArchitectureKit/Prefabs/FacadeWindow.prefab": "85a8960468916869be9440161ef774b0f64c630694433273671956d09a79bc1a",
     "Assets/Game/Alcatraz/Resources/Alcatraz/ArchitectureKit/Prefabs/FacadeWindow.prefab.meta": "4eb6b10785d650a7151fbafa0a10a00567240502d21291f7b9ea6e5be934e558",
+    "Assets/Game/Alcatraz/Resources/Alcatraz/ArchitectureKit/Prefabs/RoofChimney.prefab": "fdc9972378e395fab79a10c05dc6a8ab939fce4f799dd7a311e2044b92a52185",
+    "Assets/Game/Alcatraz/Resources/Alcatraz/ArchitectureKit/Prefabs/RoofChimney.prefab.meta": "5cf0b2054ada81742b47c65584dc1d6af4afa27ca60347361465dee65e6b0f1f",
+    "Assets/Game/Alcatraz/Resources/Alcatraz/ArchitectureKit/Prefabs/RoofCoping.prefab": "01a4cf9da9a305cab64f6e4400d8e3b5a75bb2d38503c2d6658314b844c591a4",
+    "Assets/Game/Alcatraz/Resources/Alcatraz/ArchitectureKit/Prefabs/RoofCoping.prefab.meta": "0472dd6fe380296a1645dede3c9c51b367d5f2d7566816dd88b25446f0c1fefe",
     "Assets/Game/Alcatraz/Resources/Alcatraz/ArchitectureKit/Prefabs/RoofCornice.prefab": "75db53af9f48c5a1db144a3620aedb779fc44bb7d09b28c6e60d1acd7bb90f0b",
-    "Assets/Game/Alcatraz/Resources/Alcatraz/ArchitectureKit/Prefabs/RoofCornice.prefab.meta": "0e5a7866d0c79f61ef8dde84bd836ead46f40a9305ce882740acd03c4974d659"
+    "Assets/Game/Alcatraz/Resources/Alcatraz/ArchitectureKit/Prefabs/RoofCornice.prefab.meta": "0e5a7866d0c79f61ef8dde84bd836ead46f40a9305ce882740acd03c4974d659",
+    "Assets/Game/Alcatraz/Resources/Alcatraz/ArchitectureKit/Prefabs/RoofDeck.prefab": "8b0134139a2cc35ad44fe7266a96bdbc920cea9fc4ab7d554974e589d6a0ee71",
+    "Assets/Game/Alcatraz/Resources/Alcatraz/ArchitectureKit/Prefabs/RoofDeck.prefab.meta": "6a46f97e5382811c8e9ebc10f0afdad692d939c20f827948d1528bfd7ad8d6f1"
   },
   "geometry_policy": {
     "colliders": 0,
@@ -235,6 +265,44 @@
       "roughness": 0.18,
       "surface_map_drives_metallic": false
     },
+    "RoofFlashing": {
+      "base_color": [
+        0.52,
+        0.55,
+        0.54,
+        1
+      ],
+      "emission": false,
+      "maps": {
+        "base": "Assets/Game/Textures/PBR_concrete_floor_worn_001_Base.png",
+        "normal": "Assets/Game/Textures/PBR_concrete_floor_worn_001_Normal.png",
+        "surface": "Assets/Game/Textures/PBR_concrete_floor_worn_001_Surface.png"
+      },
+      "metallic": 0.68,
+      "opaque": true,
+      "path": "Assets/Game/Alcatraz/Resources/Alcatraz/ArchitectureKit/Materials/RoofFlashing.mat",
+      "roughness": 0.38,
+      "surface_map_drives_metallic": false
+    },
+    "RoofMembrane": {
+      "base_color": [
+        0.38,
+        0.4,
+        0.38,
+        1
+      ],
+      "emission": false,
+      "maps": {
+        "base": "Assets/Game/Textures/PBR_brushed_concrete_Base.png",
+        "normal": "Assets/Game/Textures/PBR_brushed_concrete_Normal.png",
+        "surface": "Assets/Game/Textures/PBR_brushed_concrete_Surface.png"
+      },
+      "metallic": 0,
+      "opaque": true,
+      "path": "Assets/Game/Alcatraz/Resources/Alcatraz/ArchitectureKit/Materials/RoofMembrane.mat",
+      "roughness": 0.91,
+      "surface_map_drives_metallic": true
+    },
     "WeatheredBrick": {
       "base_color": [
         0.72,
@@ -255,7 +323,7 @@
       "surface_map_drives_metallic": true
     }
   },
-  "module_count": 7,
+  "module_count": 10,
   "modules": [
     {
       "anchor": [
@@ -711,10 +779,183 @@
       "triangles": 1032,
       "use": "Narrow vertical facade accent; place away from window and door openings",
       "vertices": 3096
+    },
+    {
+      "anchor": [
+        0,
+        0,
+        0
+      ],
+      "bounds_max_m": [
+        3.025,
+        0.13,
+        3.025
+      ],
+      "bounds_min_m": [
+        -3.025,
+        -0.2,
+        -3.025
+      ],
+      "colliders": 0,
+      "name": "RoofDeck",
+      "nominal_width_height_m": [
+        6,
+        0.33
+      ],
+      "notes": "Anchor is roof centre at finished membrane Y0. Roof slab bottomY-.20, membraneY0, coping topY+.13. Place only with matching separately authored support collision.",
+      "parts": [
+        {
+          "material": "Assets/Game/Alcatraz/Resources/Alcatraz/ArchitectureKit/Materials/CoastalConcrete.mat",
+          "mesh": "Assets/Game/Alcatraz/Resources/Alcatraz/ArchitectureKit/Meshes/RoofDeck_StructuralRoofSlab.asset",
+          "name": "StructuralRoofSlab",
+          "triangles": 108,
+          "vertices": 324
+        },
+        {
+          "material": "Assets/Game/Alcatraz/Resources/Alcatraz/ArchitectureKit/Materials/RoofMembrane.mat",
+          "mesh": "Assets/Game/Alcatraz/Resources/Alcatraz/ArchitectureKit/Meshes/RoofDeck_WeatheredRoofMembrane.asset",
+          "name": "WeatheredRoofMembrane",
+          "triangles": 2,
+          "vertices": 6
+        },
+        {
+          "material": "Assets/Game/Alcatraz/Resources/Alcatraz/ArchitectureKit/Materials/LimestoneTrim.mat",
+          "mesh": "Assets/Game/Alcatraz/Resources/Alcatraz/ArchitectureKit/Meshes/RoofDeck_LowDrainCoping.asset",
+          "name": "LowDrainCoping",
+          "triangles": 48,
+          "vertices": 144
+        },
+        {
+          "material": "Assets/Game/Alcatraz/Resources/Alcatraz/ArchitectureKit/Materials/RoofFlashing.mat",
+          "mesh": "Assets/Game/Alcatraz/Resources/Alcatraz/ArchitectureKit/Meshes/RoofDeck_MiteredEdgeFlashing.asset",
+          "name": "MiteredEdgeFlashing",
+          "triangles": 48,
+          "vertices": 144
+        },
+        {
+          "material": "Assets/Game/Alcatraz/Resources/Alcatraz/ArchitectureKit/Materials/RoofMembrane.mat",
+          "mesh": "Assets/Game/Alcatraz/Resources/Alcatraz/ArchitectureKit/Meshes/RoofDeck_RoofLapSeams.asset",
+          "name": "RoofLapSeams",
+          "triangles": 432,
+          "vertices": 1296
+        }
+      ],
+      "prefab": "Assets/Game/Alcatraz/Resources/Alcatraz/ArchitectureKit/Prefabs/RoofDeck.prefab",
+      "resources_path": "Alcatraz/ArchitectureKit/Prefabs/RoofDeck",
+      "triangles": 638,
+      "use": "Closed flat roof visuals with physical coping and metal flashing",
+      "vertices": 1914
+    },
+    {
+      "anchor": [
+        0,
+        0,
+        0
+      ],
+      "bounds_max_m": [
+        1.0,
+        0.13,
+        0.095
+      ],
+      "bounds_min_m": [
+        0.0,
+        0.0,
+        -0.095
+      ],
+      "colliders": 0,
+      "name": "RoofCoping",
+      "nominal_width_height_m": [
+        1,
+        0.13
+      ],
+      "notes": "Start anchor X0, length along +X, bottomY0; width approximately .19m. Construct variable lengths with coping_parts(length) rather than stretching UVs.",
+      "parts": [
+        {
+          "material": "Assets/Game/Alcatraz/Resources/Alcatraz/ArchitectureKit/Materials/LimestoneTrim.mat",
+          "mesh": "Assets/Game/Alcatraz/Resources/Alcatraz/ArchitectureKit/Meshes/RoofCoping_CopingStone.asset",
+          "name": "CopingStone",
+          "triangles": 24,
+          "vertices": 72
+        },
+        {
+          "material": "Assets/Game/Alcatraz/Resources/Alcatraz/ArchitectureKit/Materials/RoofFlashing.mat",
+          "mesh": "Assets/Game/Alcatraz/Resources/Alcatraz/ArchitectureKit/Meshes/RoofCoping_FoldedFlashing.asset",
+          "name": "FoldedFlashing",
+          "triangles": 22,
+          "vertices": 66
+        }
+      ],
+      "prefab": "Assets/Game/Alcatraz/Resources/Alcatraz/ArchitectureKit/Prefabs/RoofCoping.prefab",
+      "resources_path": "Alcatraz/ArchitectureKit/Prefabs/RoofCoping",
+      "triangles": 46,
+      "use": "Metre-length edge trim with folded metal flashing",
+      "vertices": 138
+    },
+    {
+      "anchor": [
+        0,
+        0,
+        0
+      ],
+      "bounds_max_m": [
+        0.3,
+        1.255,
+        0.335
+      ],
+      "bounds_min_m": [
+        -0.3,
+        0.0,
+        -0.335
+      ],
+      "colliders": 0,
+      "name": "RoofChimney",
+      "nominal_width_height_m": [
+        0.6,
+        1.255
+      ],
+      "notes": "Bottom-centre anchor; no world placement. Native surviving chimney details are retained by the tower rebuild.",
+      "parts": [
+        {
+          "material": "Assets/Game/Alcatraz/Resources/Alcatraz/ArchitectureKit/Materials/WeatheredBrick.mat",
+          "mesh": "Assets/Game/Alcatraz/Resources/Alcatraz/ArchitectureKit/Meshes/RoofChimney_MasonryStack.asset",
+          "name": "MasonryStack",
+          "triangles": 108,
+          "vertices": 324
+        },
+        {
+          "material": "Assets/Game/Alcatraz/Resources/Alcatraz/ArchitectureKit/Materials/LimestoneTrim.mat",
+          "mesh": "Assets/Game/Alcatraz/Resources/Alcatraz/ArchitectureKit/Meshes/RoofChimney_SlopedStoneCrown.asset",
+          "name": "SlopedStoneCrown",
+          "triangles": 108,
+          "vertices": 324
+        },
+        {
+          "material": "Assets/Game/Alcatraz/Resources/Alcatraz/ArchitectureKit/Materials/RoofFlashing.mat",
+          "mesh": "Assets/Game/Alcatraz/Resources/Alcatraz/ArchitectureKit/Meshes/RoofChimney_CappedMetalFlue.asset",
+          "name": "CappedMetalFlue",
+          "triangles": 96,
+          "vertices": 288
+        }
+      ],
+      "prefab": "Assets/Game/Alcatraz/Resources/Alcatraz/ArchitectureKit/Prefabs/RoofChimney.prefab",
+      "resources_path": "Alcatraz/ArchitectureKit/Prefabs/RoofChimney",
+      "triangles": 312,
+      "use": "Optional masonry flue for authored prison roofs",
+      "vertices": 936
     }
   ],
+  "roof_api": {
+    "anchor": "Roof centre at finished membraneY0; +X facade right, +Z facade interior, +Y up.",
+    "coping_top_y_m": 0.13,
+    "edge_trim_function": "coping_parts(length): startX0, length+X, bottomY0",
+    "finished_membrane_y_m": 0,
+    "function": "roof_parts(width, depth)",
+    "returns": "List of (part_name, geometry.Mesh, material_name); no files written or colliders created.",
+    "structural_slab_bottom_y_m": -0.2,
+    "support": "Runtime owner must create separately verified support with top exactly at the membrane plane."
+  },
   "schema_version": 1,
-  "triangles_all_modules": 6018,
+  "triangles_all_modules": 7014,
   "unity_runtime_verified": false,
-  "vertices_all_modules": 18054
+  "vertices_all_modules": 21042
 }

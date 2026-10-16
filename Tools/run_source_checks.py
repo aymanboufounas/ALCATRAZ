@@ -62,6 +62,7 @@ PYTHON_VALIDATORS = (
     ("graphics_quality", "validate_graphics_quality.py"),
     ("environment_surface_quality", "validate_environment_quality.py"),
     ("world_rebuild", "validate_world_rebuild.py"),
+    ("restored_texture_detail", "restore_supplied_texture_detail.py", "--check"),
 )
 
 
@@ -71,6 +72,8 @@ def build_checks(root: Path, report_dir: Path, python: str,
     binaries.mkdir(parents=True, exist_ok=True)
     checks = [Check("source_check_runner", ((
         python, str(root / "Tools/Tests/test_source_check_runner.py")),))]
+    checks.append(Check("player_build_audit", ((
+        python, str(root / "Tools/Tests/test_player_build_audit.py")),)))
     for name, sources in MONO_SUITES:
         binary = binaries / (name + ".exe")
         # A successful compiler exit must never reuse an executable from a prior
@@ -82,8 +85,8 @@ def build_checks(root: Path, report_dir: Path, python: str,
             (mcs, "-out:" + str(binary), *paths, test),
             (mono, str(binary)),
         )))
-    for name, filename in PYTHON_VALIDATORS:
-        checks.append(Check(name, ((python, str(root / "Tools" / filename)),)))
+    for name, filename, *arguments in PYTHON_VALIDATORS:
+        checks.append(Check(name, ((python, str(root / "Tools" / filename), *arguments),)))
     return checks
 
 

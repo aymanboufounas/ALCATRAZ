@@ -4,16 +4,26 @@ TextureImporter:
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
+    mipMapMode: 0
     enableMipMap: 1
     sRGBTexture: 1
+  streamingMipmaps: 1
+  streamingMipmapsPriority: 0
+  nPOTScale: 0
   textureType: 0
-  maxTextureSize: 2048
+  textureShape: 1
+  maxTextureSize: 4096
+  textureCompression: 2
   isReadable: 0
   textureSettings:
+    serializedVersion: 2
     filterMode: 1
-    aniso: 4
+    aniso: 8
     wrapU: 0
     wrapV: 0
+    wrapW: 0
+  alphaSource: 1
+  alphaIsTransparency: 0
   userData:
   assetBundleName:
   assetBundleVariant:

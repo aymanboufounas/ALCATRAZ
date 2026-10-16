@@ -37,10 +37,13 @@
       "role": "retaining"
     },
     {
+      "id": "south_tower_face",
+      "group": "south_tower_face",
+      "role": "window",
       "bottom_center": [
-        -108.88680969227735,
+        -108.93569541972842,
         48.5,
-        -20.29267540364696
+        -20.282178468304704
       ],
       "normal": [
         -0.20993870684509572,
@@ -52,28 +55,261 @@
         0.0,
         0.20993870684509572
       ],
-      "width": 6.0,
-      "height": 10.5,
+      "width": 6.400000000000006,
+      "height": 11.3,
+      "window_height": 10.5,
+      "columns": 2,
       "plane_distance": 42.7,
       "u_bounds": [
-        99.2,
-        105.2
+        99.05,
+        105.45
       ],
       "y_bounds": [
         48.5,
-        59.0
+        59.8
       ],
-      "id": "south_tower_face",
-      "group": "south_tower_face",
-      "role": "window",
-      "depth_ahead": 1.0,
+      "support_y_bounds": [
+        48.5,
+        59
+      ],
       "depth_behind": 0.6,
-      "minimum_native_support_fraction": 0.995,
-      "fit_note": "Continuous exposed south tower facade, 6 x 10.5 m, with two columns and three storeys. All 6,300 native support samples on a 0.1 m lattice are covered. Surveyed near-vertical source core depths span 42.236 to 42.912 m; the new plane is 42.7 m. Original collision is preserved; visual and collider surfaces do not match exactly. Camera visibility requires a separate source-render study."
+      "depth_ahead": 1.0,
+      "minimum_native_support_fraction": 0.98,
+      "fit_note": "Exposed south face joins the new side returns. Fixed-size window frames, glass and bars occupy rebuilt variable-width wall bays; a solid upper band meets the new roof."
+    },
+    {
+      "id": "east_tower_return",
+      "group": "east_tower_return",
+      "role": "window",
+      "bottom_center": [
+        -104.39517105932653,
+        48.5,
+        -14.378851988039788
+      ],
+      "normal": [
+        0.9777145490214458,
+        -0.0,
+        -0.20993870684509572
+      ],
+      "right": [
+        -0.20993870684509572,
+        0.0,
+        -0.9777145490214458
+      ],
+      "width": 13.450000000000003,
+      "height": 11.3,
+      "window_height": 10.5,
+      "columns": 4,
+      "plane_distance": -99.05,
+      "u_bounds": [
+        29.25,
+        42.7
+      ],
+      "y_bounds": [
+        48.5,
+        59.8
+      ],
+      "support_y_bounds": [
+        48.5,
+        59
+      ],
+      "depth_behind": 0.85,
+      "depth_ahead": 1.8,
+      "minimum_native_support_fraction": 0.85,
+      "fit_note": "Native east flank has partial boundary gaps into the attached structure. Unsupported pane samples produce solid blank bays. Local original window projections remain collision-authoritative and can exceed one metre of visual offset."
+    },
+    {
+      "id": "north_tower_return",
+      "group": "north_tower_return",
+      "role": "window",
+      "bottom_center": [
+        -106.11201981266188,
+        48.5,
+        -7.1319177839662515
+      ],
+      "normal": [
+        0.20993870684509572,
+        -0.0,
+        0.9777145490214458
+      ],
+      "right": [
+        0.9777145490214458,
+        0.0,
+        -0.20993870684509572
+      ],
+      "width": 6.400000000000006,
+      "height": 11.3,
+      "window_height": 10.5,
+      "columns": 2,
+      "plane_distance": -29.25,
+      "u_bounds": [
+        -105.45,
+        -99.05
+      ],
+      "y_bounds": [
+        48.5,
+        59.8
+      ],
+      "support_y_bounds": [
+        48.5,
+        59
+      ],
+      "depth_behind": 0.75,
+      "depth_ahead": 1.8,
+      "minimum_native_support_fraction": 0.95,
+      "fit_note": "Native north return follows the attached block. High original chimney and ruin features above the owned roof slab are retained."
+    },
+    {
+      "id": "west_tower_step",
+      "group": "west_tower_step",
+      "role": "blank",
+      "bottom_center": [
+        -111.87543714043646,
+        48.5,
+        -18.730431512281093
+      ],
+      "normal": [
+        -0.9777145490214458,
+        0.0,
+        0.20993870684509572
+      ],
+      "right": [
+        0.20993870684509572,
+        0.0,
+        0.9777145490214458
+      ],
+      "width": 1.8000000000000043,
+      "height": 11.3,
+      "window_height": 10.5,
+      "columns": 1,
+      "plane_distance": 105.45,
+      "u_bounds": [
+        -42.7,
+        -40.9
+      ],
+      "y_bounds": [
+        48.5,
+        59.8
+      ],
+      "support_y_bounds": [
+        48.5,
+        59
+      ],
+      "depth_behind": 0.7,
+      "depth_ahead": 1.6,
+      "minimum_native_support_fraction": 0.83,
+      "fit_note": "Short solid return closes the stepped front joint. The rest of the west boundary remains attached to the existing wing; no invented full west wall is added."
     }
   ],
   "limits": [
-    "Reconstruction covers two coherent, surveyed facade sections rather than the entire island.",
-    "The buried west facade was removed after integration previews showed poor visibility. The current south tower face requires integrated preview inspection."
+    "This rebuild treats one exposed attached tower block and the arrival retaining wall, rather than the full island.",
+    "Original foreground geometry and neighboring source buildings remain.",
+    "Local visual/source-collider offsets require Unity walking, camera and helicopter checks; the new roof alone adds one matching support collider."
+  ],
+  "roof": {
+    "width": 6,
+    "depth": 13.2,
+    "finished_height": 59.8,
+    "center_world": [
+      -107.50121422709972,
+      59.8,
+      -13.839759380105413
+    ],
+    "right": [
+      0.9777145490214458,
+      -0.0,
+      -0.20993870684509572
+    ],
+    "forward": [
+      0.20993870684509572,
+      -0.0,
+      0.9777145490214458
+    ],
+    "support": {
+      "center": {
+        "x": -107.50121422709972,
+        "y": 59.699999999999996,
+        "z": -13.839759380105413
+      },
+      "size": {
+        "x": 6,
+        "y": 0.2,
+        "z": 13.2
+      },
+      "forward": {
+        "x": 0.20993870684509572,
+        "y": -0.0,
+        "z": 0.9777145490214458
+      }
+    },
+    "floor_void_samples": [
+      {
+        "xz": [
+          -107.50121422709972,
+          -13.839759380105413
+        ],
+        "highest_source_y": 51.16455920016828,
+        "source_mesh": "Island_0_7",
+        "source_triangle": 18544
+      },
+      {
+        "xz": [
+          -105.88708548389928,
+          -12.03848527537449
+        ],
+        "highest_source_y": 50.994777791971444,
+        "source_mesh": "Island_0_7",
+        "source_triangle": 18671
+      },
+      {
+        "xz": [
+          -108.68226940932256,
+          -15.529466057770083
+        ],
+        "highest_source_y": 55.142818841761546,
+        "source_mesh": "Island_0_8",
+        "source_triangle": 600
+      }
+    ],
+    "original_perimeter_y_range": [
+      59.1,
+      59.763
+    ],
+    "retained_original_high_features_y_max": 62.1965065,
+    "boundary_note": "The original broad interior surface is about 51 m high and does not support a roof at 59.8 m. The new closed slab therefore receives one matching static runtime box collider; original scan floors and colliders remain unchanged."
+  },
+  "cleanup_volumes": [
+    {
+      "id": "elevated_southeast_corner_cleanup",
+      "role": "cleanup",
+      "normal": [
+        -0.20993870684509572,
+        0.0,
+        -0.9777145490214458
+      ],
+      "right": [
+        -0.9777145490214458,
+        0.0,
+        0.20993870684509572
+      ],
+      "plane_distance": 42.7,
+      "u_bounds": [
+        97.25,
+        99.33
+      ],
+      "y_bounds": [
+        52.5,
+        59.8
+      ],
+      "depth_behind": 0.28,
+      "depth_ahead": 1.0,
+      "bottom_center": [
+        -105.06394580560348,
+        52.5,
+        -21.113535747411284
+      ],
+      "purpose": "Remove the surveyed elevated source window wedge diagonally outside both touching facade rectangles. Exact volume U97.25..99.33,D42.42..43.7,Y52.5..59.8; all outside fragments remain.",
+      "collision_note": "Original source colliders remain unchanged. This elevated projection remains physical; helicopter clearance requires Unity verification. Original ground and normal plateau head clearance remain below the owned volume."
+    }
   ]
 }

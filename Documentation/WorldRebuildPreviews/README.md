@@ -17,13 +17,21 @@ by this study's GLSL shader. The flat background is a clear color, not a sky ass
 
 - [Arrival court before/after](ArrivalCourtBeforeAfter.png)
 - [Exposed prison tower before/after](PrisonWindowsBeforeAfter.png)
+- [Whole tower block before/after](TowerBlockBeforeAfter.png)
 - [Coastal planting before/after](CoastalPlantingBeforeAfter.png)
 - [Arrival court after](ArrivalCourtAfter.png)
 - [Exposed prison tower after](PrisonWindowsAfter.png)
+- [Whole tower block after](TowerBlockAfter.png)
 - [Coastal planting after](CoastalPlantingAfter.png)
 - [Inputs, dimensions and camera/light metadata](Manifest.json)
 
-Only the explicitly surveyed facade patches are replaced. Much of the scanned
+The tower comparison includes the actual surveyed shell, closed roof, coping and
+metal flashing from the current native resources. The whole-block view uses one
+fixed three-quarter camera to show the old scan and repaired structure with the
+same neighboring geometry. The roof is visual source geometry in this renderer;
+the separately authored runtime support collider is not executed here.
+
+Only explicitly surveyed building regions are replaced. Much of the scanned
 island still has coarse silhouettes, inconsistent baked detail and sparse
 vegetation. On the 6 × 10.5 m tower face, the upper four windows are clear while
 the two lowest windows remain partly behind unchanged foreground scan geometry.

@@ -4,7 +4,7 @@
 
 [Unity source checks](../.github/workflows/source-checks.yml) is configured for minute **17 of every hour, UTC**, plus pushes, pull requests and manual runs. GitHub schedules run from the default branch and can be delayed. Committing this configuration does not prove a scheduled run has executed; check the repository's Actions tab for actual runs.
 
-The job runs 26 independent checks: 11 executable C# rule suites, 14 source/asset validators and the runner regression suite. A failed check does not hide later failures. JSON results, a Markdown summary and individual logs are uploaded as an Actions artifact with 14-day retention. An incomplete run remains explicitly incomplete. The runner rejects invalid timeouts and removes old test executables before compiling.
+The job runs 28 independent checks: 11 executable C# rule suites, 15 source/asset validators, the runner regression suite and the player-build audit regression suite. A failed check does not hide later failures. JSON results, a Markdown summary and individual logs are uploaded as an Actions artifact with 14-day retention. An incomplete run remains explicitly incomplete. The runner rejects invalid timeouts and removes old test executables before compiling.
 
 This is a checking/reporting workflow. It does not run Unity, inspect rendered gameplay or operate a continuing AI coding agent. New problems need a coding session to investigate and fix them. The chat cannot keep making hourly code changes after the session ends.
 
@@ -49,6 +49,8 @@ Official Unity 6000 source references used for the resource bindings and water A
 ## Build size and verification limits
 
 No 10 GB player build was produced in this cloud environment. Existing source assets remain their original resolution; these code/settings changes do not add enough content to make a 10 GB game. File size does not establish visual quality. A successful Unity player build now writes its actual `BuildReport.totalSize` to **`Builds/Reports/LatestPlayerBuild.json`**; source checkout size and runtime VRAM are separate measurements.
+
+The current requested minimum is **5 GB for the installed player**. The later [player-build verification workflow](PlayerBuildVerification.md) also records exact exported files, their hashes and Unity membership, scene/source provenance and packed contributors. It can qualify an actual export against 5,000,000,000 bytes; no such player has been built here.
 
 Cloud results are recorded in [HourlyChecksAndGraphics.json](../Validation/HourlyChecksAndGraphics.json). Offline rule tests, syntax, source resource bindings and texture dimensions are distinct from Unity API/shader compilation and live rendering.
 

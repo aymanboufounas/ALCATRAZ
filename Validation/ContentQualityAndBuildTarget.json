@@ -1,0 +1,339 @@
+{
+  "recorded_at_utc": "2026-10-16T16:05:10.983815+00:00",
+  "source_baseline_commit": "e2d130c3dabc9730362d709f82d834e0d9a62df3",
+  "source_validation_status": "PASS",
+  "finished_player_target_status": "BLOCKED_NO_UNITY_EXPORT",
+  "requested_minimum_applies_to": "Finished playable Windows game installed files",
+  "requested_installed_bytes": 5000000000,
+  "requested_decimal_gb": 5.0,
+  "requested_gib": 4.656612873077393,
+  "offline_checks": {
+    "passed": 28,
+    "failed": 0,
+    "total": 28,
+    "started_at_utc": "2026-10-16T15:59:20.476638+00:00",
+    "finished_at_utc": "2026-10-16T16:02:04.794997+00:00",
+    "standalone_rule_assertions": 220928,
+    "python_regression_tests": 31,
+    "checks": [
+      {
+        "name": "source_check_runner",
+        "status": "passed",
+        "duration_seconds": 0.616,
+        "log_sha256": "e81343a9cfe90d45a313b7d13c7c2a7c59971b9d5c23406cb5b3628fff65a5f2",
+        "python_regression_tests": 7
+      },
+      {
+        "name": "player_build_audit",
+        "status": "passed",
+        "duration_seconds": 0.215,
+        "log_sha256": "57de2d43642c47d7b0da8f620389d735eb1728c4ce9d3169b0ab569f3ce91ffa",
+        "python_regression_tests": 24
+      },
+      {
+        "name": "HoldemTests",
+        "status": "passed",
+        "duration_seconds": 1.582,
+        "log_sha256": "510cf6c2fd4839d954d9c77469f841b62c489cc9735b6f2764466904433db96d",
+        "standalone_rule_assertions": 160041
+      },
+      {
+        "name": "VehicleControlTests",
+        "status": "passed",
+        "duration_seconds": 0.397,
+        "log_sha256": "d0ad8312add2f28293db3d0c248a5285fda2ebea11ec930ddb7ec71643280b2b",
+        "standalone_rule_assertions": 32
+      },
+      {
+        "name": "CombatTests",
+        "status": "passed",
+        "duration_seconds": 0.447,
+        "log_sha256": "987a9d6756387f450a0702b5d16e302450869e6d14ad4b4cf8d91418a74fd096",
+        "standalone_rule_assertions": 33
+      },
+      {
+        "name": "MenuCheckpointTests",
+        "status": "passed",
+        "duration_seconds": 0.481,
+        "log_sha256": "c46910f8bfb2fa1e9605baeeebf62b004ceba714abdfac82e074ea8d37e475c2",
+        "standalone_rule_assertions": 34
+      },
+      {
+        "name": "CameraFramingTests",
+        "status": "passed",
+        "duration_seconds": 0.397,
+        "log_sha256": "bde7d9ab3197e41d1460da49277cafa2a4a35760671c6f3cc78f7144f4fc8ec7",
+        "standalone_rule_assertions": 34
+      },
+      {
+        "name": "PlayerFailureTests",
+        "status": "passed",
+        "duration_seconds": 0.447,
+        "log_sha256": "bccae565a800e4a609e4a882db0a10c75bd9f81071d1d8b12ac75e287a1d4dc0",
+        "standalone_rule_assertions": 27
+      },
+      {
+        "name": "SwimmingTests",
+        "status": "passed",
+        "duration_seconds": 0.397,
+        "log_sha256": "52ea1336c1390a016e3fb3ab22dc1e5c765ce431ad22f096581eb4f3816ca429",
+        "standalone_rule_assertions": 54
+      },
+      {
+        "name": "MovementResponseTests",
+        "status": "passed",
+        "duration_seconds": 0.479,
+        "log_sha256": "66555ace3d108f091aa238d0719c66ef103e79ef1a55c0c341989c8c1033ce7e",
+        "standalone_rule_assertions": 2304
+      },
+      {
+        "name": "LocomotionAnimationTests",
+        "status": "passed",
+        "duration_seconds": 0.447,
+        "log_sha256": "3c264391f47d9ce20ec4fa9bde1b84fb1232fc03735a1fdca60f5415db085784",
+        "standalone_rule_assertions": 58068
+      },
+      {
+        "name": "FootContactTests",
+        "status": "passed",
+        "duration_seconds": 0.397,
+        "log_sha256": "b688588f1d659070d2cb1a7a2b8953d15361bd17b20fd1a79c8462624ae62e6d",
+        "standalone_rule_assertions": 257
+      },
+      {
+        "name": "GraphicsSettingsTests",
+        "status": "passed",
+        "duration_seconds": 0.447,
+        "log_sha256": "c7d80656c45268cb8a55eca4be947b893b517fbe0a570f5da07669965ee30724",
+        "standalone_rule_assertions": 44
+      },
+      {
+        "name": "csharp_grammar",
+        "status": "passed",
+        "duration_seconds": 0.214,
+        "log_sha256": "e30f4a17e40cd6c8d5908aac0f615623b14555d13e1fb6a0cdcbe4b24803d98a"
+      },
+      {
+        "name": "character_forward",
+        "status": "passed",
+        "duration_seconds": 10.749,
+        "log_sha256": "b52fdddda1ca876d7f21d6eb3ec2a66bbb7bb48f9c63e733e61cc624f361a4ab"
+      },
+      {
+        "name": "locomotion_quality",
+        "status": "passed",
+        "duration_seconds": 7.14,
+        "log_sha256": "a5cd601d23f84a93eccea5449d17352cf1a97a0d9f51f588d64ada2bf5182de2"
+      },
+      {
+        "name": "alcatraz_routes",
+        "status": "passed",
+        "duration_seconds": 11.707,
+        "log_sha256": "cad94196d99f916ac8d4a6de4c5cb6961592600e72e2e2c4b4607d07488bc9e6"
+      },
+      {
+        "name": "scene_startup",
+        "status": "passed",
+        "duration_seconds": 5.028,
+        "log_sha256": "79b5d26f4fb558b4a0e84352d4d062ad8a3354f207171791b951dfca587a876d"
+      },
+      {
+        "name": "native_asset_integrity",
+        "status": "passed",
+        "duration_seconds": 91.747,
+        "log_sha256": "00514558e4f37d77b902d20684c386c2e0c1ad3d4731a6a5c7615a735224960c"
+      },
+      {
+        "name": "supplied_assets",
+        "status": "passed",
+        "duration_seconds": 0.687,
+        "log_sha256": "05c7767dc1cdf991235df1477305499bdff25278629c6c304cdd564b37487cc3"
+      },
+      {
+        "name": "supplied_prison",
+        "status": "passed",
+        "duration_seconds": 4.182,
+        "log_sha256": "b1fe4e1208b570bae3a4160f161e54f917171078b7bfde8d654c7a9f1e9264c7"
+      },
+      {
+        "name": "warehouse",
+        "status": "passed",
+        "duration_seconds": 0.368,
+        "log_sha256": "fe3e5aec26e17fe5855739eeeb556ff06a9d0fa24fa806e124d76b8c980905ef"
+      },
+      {
+        "name": "extra_assets",
+        "status": "passed",
+        "duration_seconds": 0.666,
+        "log_sha256": "f14f17637a213b1578046c8668016c3f7a15c6d3782d3122552f25eff375821c"
+      },
+      {
+        "name": "police_helicopter",
+        "status": "passed",
+        "duration_seconds": 0.064,
+        "log_sha256": "aff97a6f3fd5ab192a06633f5c109d2eb47b4728db48f9698af89733d1fc95fc"
+      },
+      {
+        "name": "graphics_quality",
+        "status": "passed",
+        "duration_seconds": 0.064,
+        "log_sha256": "3c3eabaede7de41b572b3f0e5cfcdb56e4caefd2e02b6b61fe2bda1cccee3f00"
+      },
+      {
+        "name": "environment_surface_quality",
+        "status": "passed",
+        "duration_seconds": 4.634,
+        "log_sha256": "621f4e8581105c2d666f5d2a6eeba0b7daad9a68fa9380b9ff2ba43bdc85ea04"
+      },
+      {
+        "name": "world_rebuild",
+        "status": "passed",
+        "duration_seconds": 20.081,
+        "log_sha256": "8e12ef2c665ca9221f1dd71b43f5a82b853510c1f4272e45f2798f5021a0b7eb"
+      },
+      {
+        "name": "restored_texture_detail",
+        "status": "passed",
+        "duration_seconds": 0.214,
+        "log_sha256": "1746dd57fad55f4515bd90d56bd1bd8ff33dd02edb0dea78e0ff2c2ae4cd7274"
+      }
+    ]
+  },
+  "source_snapshot": {
+    "files": 8021,
+    "scope": [
+      "Assets",
+      "Tools",
+      "Packages",
+      "ProjectSettings",
+      "Documentation/SourceArchives"
+    ],
+    "sha256_of_sorted_path_hash_mapping": "78e41cbd52b04c4f4a19790ee013519f1b53af21649f4070453a0a267fa3f88f",
+    "matched_passing_scratch_inputs_before_and_after": true
+  },
+  "world_native_checks": 16679,
+  "source_quality_changes": {
+    "facade_wall_sections": 5,
+    "wall_face_area_m2": 358.965,
+    "windows": 24,
+    "assembled_wall_and_roof_triangles": 28880,
+    "new_roof_footprint_m2": 79.2,
+    "new_roof_finished_y": 59.8,
+    "runtime_roof_box_colliders_added": 1,
+    "original_scan_inputs_unchanged": 14,
+    "restored_textures": [
+      {
+        "pack": "PokerProps",
+        "archive": "Documentation/SourceArchives/poker-set (1).zip",
+        "archive_sha256": "bdc5f0dee1dd28a0a6d845abdedcc925b7481f056858e1f9cd1015082a42bfd9",
+        "source_member": "textures/playing_cards.png",
+        "source_dimensions": [
+          6500,
+          2904
+        ],
+        "previous_dimensions": [
+          2048,
+          915
+        ],
+        "output": "Assets/Game/Supplied/Resources/AlcatrazExtras/PokerProps/Textures/T1.png",
+        "output_sha256": "573e2df682d5504db3d0d38b4ad6a5daee589166efc7cc872f89f38260dbd689",
+        "texture_payload_added_bytes": 3092743,
+        "texture_guid_preserved": "d25895a0ba442abc7360f914d9c94b39",
+        "byte_exact_original_png": true,
+        "resizing_or_reencoding": false
+      },
+      {
+        "pack": "Workshop",
+        "archive": "Documentation/SourceArchives/alchemists-workshop-stylized-fantasy-scene.zip",
+        "archive_sha256": "d02bc1145249f1f03b8d899211736017f2408cebbc855aeea972e26f3b76bbff",
+        "source_member": "textures/TABLE_TEXTURE_111.png",
+        "source_dimensions": [
+          4096,
+          4096
+        ],
+        "previous_dimensions": [
+          2048,
+          2048
+        ],
+        "output": "Assets/Game/Supplied/Resources/AlcatrazExtras/Workshop/Textures/T2.png",
+        "output_sha256": "6168297d76391bb0e56d59890d4ace13b635eb560bc94e245f0b41b69a1093fe",
+        "texture_payload_added_bytes": 552047,
+        "texture_guid_preserved": "4c0450939cd2c402ecae9b8e30d54c75",
+        "byte_exact_original_png": true,
+        "resizing_or_reencoding": false
+      }
+    ],
+    "texture_payload_added_bytes": 3644790,
+    "original_archives_outside_assets_bytes": 45080192,
+    "protected_texture_pack_native_files_unchanged": 156
+  },
+  "preview_evidence": {
+    "manifest": "Documentation/WorldRebuildPreviews/Manifest.json",
+    "manifest_sha256": "aa6789fd7d73047f4049ffc2be1095eb87b9b07a2572be533a0f16aa5bcd048e",
+    "input_hashes_verified": 349,
+    "png_hashes_verified": 8,
+    "offline_source_render_only": true,
+    "unity_capture": false,
+    "baseline_for_preview": "ff62e7661a05070616f8f8ab35d8377ef4348d76"
+  },
+  "actual_export_availability_check": {
+    "exit_code": 1,
+    "expected_failure_for_missing_build": true,
+    "report": {
+      "passed": false,
+      "build_root": "/workspace/ALCATRAZ/Builds/Windows",
+      "issues": [
+        "Build root must be a real existing export directory."
+      ],
+      "installed_player_bytes": null,
+      "installed_decimal_gb": null,
+      "installed_gib": null,
+      "target_installed_bytes": 5000000000,
+      "target_met": false,
+      "required_minimum_bytes": 5000000000,
+      "runtime_verified": false,
+      "finished_game_verified": false,
+      "scope": "Receipt integrity, exact current file inventory, x64 export structure and optional installed-size threshold only.",
+      "integrity_limit": "An unsigned receipt and digest can both be forged; they are not independent Unity authenticity evidence."
+    }
+  },
+  "installed_player_bytes": null,
+  "minimum_finished_player_size_verified": false,
+  "unity_editor_available": false,
+  "unity_import_verified": false,
+  "unity_api_compilation_verified": false,
+  "unity_shader_compilation_verified": false,
+  "unity_play_mode_verified": false,
+  "unity_rendered_quality_verified": false,
+  "gpu_performance_verified": false,
+  "player_build_produced": false,
+  "runtime_verified": false,
+  "finished_game_verified": false,
+  "build_prerequisites_unavailable": [
+    "Unity 6000.0.62f1 editor",
+    "Usable Unity activation",
+    "Windows Build Support (Mono)"
+  ],
+  "environment_configuration": {
+    "onboarding_draft_saved": true,
+    "requires_publish": true,
+    "custom_network_domains": [
+      "api.polyhaven.com",
+      "dl.polyhaven.org",
+      "polyhaven.com"
+    ],
+    "running_network_changed": false,
+    "polyhaven_api_http_status_in_current_environment": 403
+  },
+  "limitations": [
+    "The rebuilt floor/facade areas and confirmed green patches cover part of the supplied island, not the entire map.",
+    "Source color and elevation masks are conservative placement heuristics, not proof that every surface is natural ground.",
+    "Preserved native terrain outside facade reconstruction prisms can obscure upper windows; the 4 m oblique sightline report records that remaining visibility gap.",
+    "The new roof BoxCollider is checked as a source/geometry contract; Unity physics, landing and teardown still need Play Mode verification.",
+    "Native source checks do not execute Unity, test alpha overdraw, certify collision/camera behavior or establish reference-game visual parity.",
+    "No playable Unity export exists in this environment. Installed size, launch and mission completion remain unverified.",
+    "Source archives are outside Assets and do not count toward player size. No padding, duplication, upscaling or disabling compression was used to reach a size threshold.",
+    "The receipt and verifier measure export integrity and structure, not authenticity, gameplay or reference-game visual parity.",
+    "Full-map reconstruction and target-PC 1440p/4K performance remain future work."
+  ]
+}

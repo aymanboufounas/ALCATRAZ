@@ -1,5 +1,6 @@
 {
   "visual_replacements": [
+    "Island_0_5",
     "Island_0_7",
     "Island_0_8"
   ],
@@ -13,11 +14,11 @@
     32.021843034221774,
     -5.0
   ],
-  "new_facade_draws": 7,
+  "new_facade_draws": 24,
   "new_courtyard_draws": 4,
   "new_vegetation_lod0_draws": 100,
   "before_draws": 67,
-  "after_draws": 178,
+  "after_draws": 195,
   "scope": "Actual native source geometry; offline GLSL material and lighting approximation",
   "baseline": "ff62e7661a05070616f8f8ab35d8377ef4348d76",
   "views": [
@@ -37,7 +38,7 @@
       "shadow_radius": 58,
       "title": "ARRIVAL COURT / ACTUAL REPLACEMENT WALL, PROJECTED PAVING, EXISTING HELIPAD",
       "changed_pixel_fraction_gt_2_255": 0.439234375,
-      "mean_absolute_rgb_change_255": 26.814501302083332
+      "mean_absolute_rgb_change_255": 26.814501627604166
     },
     {
       "name": "PrisonWindows",
@@ -54,8 +55,26 @@
       "fov": 50,
       "shadow_radius": 36,
       "title": "EXPOSED PRISON TOWER / PHYSICAL WINDOW REVEALS, BARS, SILLS AND CORNICES",
-      "changed_pixel_fraction_gt_2_255": 0.2045673828125,
-      "mean_absolute_rgb_change_255": 20.288150065104166
+      "changed_pixel_fraction_gt_2_255": 0.2938115234375,
+      "mean_absolute_rgb_change_255": 29.520351236979167
+    },
+    {
+      "name": "TowerBlock",
+      "eye": [
+        -96.06,
+        70.8,
+        -36.75
+      ],
+      "center": [
+        -107.5,
+        54.5,
+        -13.84
+      ],
+      "fov": 48,
+      "shadow_radius": 46,
+      "title": "WHOLE TOWER BLOCK / ACTUAL WALLS, CLOSED ROOF, FLASHING AND PRESERVED SOURCE DETAILS",
+      "changed_pixel_fraction_gt_2_255": 0.1765078125,
+      "mean_absolute_rgb_change_255": 9.989330729166667
     },
     {
       "name": "CoastalPlanting",
@@ -93,7 +112,7 @@
   "physics_or_gpu_performance_verified": false,
   "known_geometry_limits": [
     "The two lowest tower windows are partly behind unchanged original foreground geometry; the upper four windows are clear in the documented view.",
-    "The 6 by 10.5 metre tower skin meets the existing terrain; it is a local exposed facade replacement, not a full building or island rebuild.",
+    "The documented tower shell and roof are a local building repair; surrounding island structures and terrain remain coarse source geometry.",
     "Unreconstructed scan wedges, coarse cliffs and sparse planting remain visible; commercial reference quality is not demonstrated.",
     "The offline coast view does not execute the runtime ocean or sky shaders."
   ],
@@ -164,20 +183,24 @@
     ]
   },
   "output_sha256": {
-    "ArrivalCourtAfter.png": "96504bfa42df281e0cb2b9c0c0eee6c67030aac1e56161e2acfefadeccfd5f12",
-    "ArrivalCourtBeforeAfter.png": "2c30b227ce642c55bc698d887c56884ca86401fa76ed387397b9d1167179ca44",
+    "ArrivalCourtAfter.png": "8fb19e28211d57a0d62389cb51c5578afb142471a4fdb0d71c1973097c22f233",
+    "ArrivalCourtBeforeAfter.png": "eec8ce69ce71bde642477d047c740fbd9c79362d5eb7e1f6398700a0c9698372",
     "CoastalPlantingAfter.png": "f7f5cc4e3bb08284c0b50be4d3288a1b74d6bdd685b38e86c49f3b5351cef8e6",
     "CoastalPlantingBeforeAfter.png": "357a98a9200b08ece21b17efabbaf68335e968dc44f4d65cf159964326b41fe1",
-    "PrisonWindowsAfter.png": "83ec840a3fee1b698336572890fd8de6b8bdbe4b6ffde1da511254cf927150df",
-    "PrisonWindowsBeforeAfter.png": "6c6e5266a895ee75bdff57224bc3dbb8443816505ac302ce5af315b0bd55cbd4"
+    "PrisonWindowsAfter.png": "5a7c28b8b4208b14d5fb5b8e8e3b2fefd103979a84062ef980e3ab17712bb703",
+    "PrisonWindowsBeforeAfter.png": "02f869a847e0fd3df02cc16d1dc63a2c7fba0a9986376888762951d12b261d91",
+    "TowerBlockAfter.png": "9345245d03fd328619d232ff13b5e73f9062c653dae308d86cf0f3caad299f71",
+    "TowerBlockBeforeAfter.png": "641db80657cdc0d57b627d9fdc978582ba9cc0e3a8927074ee225c2e2c5f8ba3"
   },
   "input_sha256": {
-    "Assets/Game/Alcatraz/Resources/Alcatraz/ArchitectureKit/Manifest.json": "d70004d77eb48c72533cb91b2d2e8173bddd37a87760fa9b031e9ec3a259ac00",
+    "Assets/Game/Alcatraz/Resources/Alcatraz/ArchitectureKit/Manifest.json": "109d81fa6453bd4feb93378637746a334d64e664c928edaf710a5c43c4b5b3ea",
     "Assets/Game/Alcatraz/Resources/Alcatraz/ArchitectureKit/Materials/CoastalConcrete.mat": "9fa15aa436053f95d22199c3ae236a7026367938a8cc3225b6f792ca34a8c021",
     "Assets/Game/Alcatraz/Resources/Alcatraz/ArchitectureKit/Materials/LimestoneTrim.mat": "21ed493c44915f25b72127782298f2987331485af99749288bf1c85e810f1af0",
     "Assets/Game/Alcatraz/Resources/Alcatraz/ArchitectureKit/Materials/OxidizedSteel.mat": "2cd7cc0ad645de3a2bdbb53b73f2c45a828d2fd1603754b526c50812d507fa3f",
     "Assets/Game/Alcatraz/Resources/Alcatraz/ArchitectureKit/Materials/PaintedSteel.mat": "7e6fa4e8ca0b886c78684601906470edff7087b7da807d187be1b52e7f01903a",
     "Assets/Game/Alcatraz/Resources/Alcatraz/ArchitectureKit/Materials/RecessedGlass.mat": "627b2f72f8e2f54975962094b1982a57c581824d303dc9a2d0dc8e2a103385a9",
+    "Assets/Game/Alcatraz/Resources/Alcatraz/ArchitectureKit/Materials/RoofFlashing.mat": "d800f26a69ebf621df31c21c58ee152f3a7438652aa235a64fb24b9d301ec646",
+    "Assets/Game/Alcatraz/Resources/Alcatraz/ArchitectureKit/Materials/RoofMembrane.mat": "675b127df5d2f3ca18a759474371d696ea631bc9f6f09570ff998e32e99f7ea8",
     "Assets/Game/Alcatraz/Resources/Alcatraz/CoastalVegetation/CoastalVegetation.prefab": "4e82a13e3439041de8432ace0cd1407fa93a234d42b88378bf3753deaa577246",
     "Assets/Game/Alcatraz/Resources/Alcatraz/CoastalVegetation/Manifest.json": "9a937c8dd643f8117c850afae1676a46d86742d190f2dd5418300861d900add5",
     "Assets/Game/Alcatraz/Resources/Alcatraz/CoastalVegetation/Materials/Bark.mat": "b50b6a330316c8f9523ffcd84ccb4bc527e9a5168bf7a6fdbc5c1a13a2c6156e",
@@ -439,18 +462,36 @@
     "Assets/Game/Alcatraz/Resources/Alcatraz/EnvironmentDressing/Meshes/Groundcover_5_0.asset": "93c4122c4bdbcd2ca15455fed5d14fab5a87761ead81b5cd4d0db325948a342b",
     "Assets/Game/Alcatraz/Resources/Alcatraz/EnvironmentDressing/Meshes/Groundcover_6_1.asset": "69782412654beb9c68eb3b74d4e652f5745a649d2cf222b6a22eca0d587e331f",
     "Assets/Game/Alcatraz/Resources/Alcatraz/EnvironmentDressing/SuppliedGroundCover.prefab": "553321f57baab4e73ded6c8369f9a338394c48c1c418b125dd16c71ecd6660c1",
-    "Assets/Game/Alcatraz/Resources/Alcatraz/FacadeRebuild/FacadeRebuild.prefab": "0eb78f3037b09c9f1681bf078715e19fda4abdbe0d401e34374aa1d8d788b02f",
-    "Assets/Game/Alcatraz/Resources/Alcatraz/FacadeRebuild/Manifest.json": "7eb242a6e64a9f038f0a677bb8f7003122b1bf2d717020a1c1ec07687ba96a44",
-    "Assets/Game/Alcatraz/Resources/Alcatraz/FacadeRebuild/Meshes/Facade_retaining_east_0.asset": "843e5bed94c21a2cc6ceeac583ec8a4f76b11a03a101cba30f2e38e88c5ff75d",
-    "Assets/Game/Alcatraz/Resources/Alcatraz/FacadeRebuild/Meshes/Facade_retaining_east_1.asset": "7655a1b1e25fa870ea12d5b36e70b18178b794ca65dd22c17cab8fe0a33f7df2",
-    "Assets/Game/Alcatraz/Resources/Alcatraz/FacadeRebuild/Meshes/Facade_south_tower_face_2.asset": "bb9418cae4f87bcc80f55592989d0dbb69ac89e0d7b6e0e371b6262ebd1a6057",
-    "Assets/Game/Alcatraz/Resources/Alcatraz/FacadeRebuild/Meshes/Facade_south_tower_face_3.asset": "80d3bb92badc423f45956cad2030b1778bcbdbc96a36dfbe475b35913a0449f1",
-    "Assets/Game/Alcatraz/Resources/Alcatraz/FacadeRebuild/Meshes/Facade_south_tower_face_4.asset": "356282ab62baf7c3ccfccf16dd2b3b49fac5b843cbe1571f06746fd1ea685b67",
-    "Assets/Game/Alcatraz/Resources/Alcatraz/FacadeRebuild/Meshes/Facade_south_tower_face_5.asset": "6ddde352f89c37bdbf1fa5fbaa6eb354546ec26d5f1f16d1e18ee88e4dca3730",
-    "Assets/Game/Alcatraz/Resources/Alcatraz/FacadeRebuild/Meshes/Facade_south_tower_face_6.asset": "9cf1e3f30cf7251b279ebbed26a444a72738b8444d9602b0e76ce8a6591f72ab",
-    "Assets/Game/Alcatraz/Resources/Alcatraz/FacadeRebuild/Meshes/Visual_Island_0_7.asset": "960149b5cfd5a1750353831ea0a002b048ebe4432a37865554ca78561736dfdd",
-    "Assets/Game/Alcatraz/Resources/Alcatraz/FacadeRebuild/Meshes/Visual_Island_0_8.asset": "1575109055c56d5b268acfb36cdf023abc9efc38bd97bb17756b356d723c3345",
-    "Assets/Game/Alcatraz/Resources/Alcatraz/FacadeRebuild/Runtime.json": "a74c4f5234233f55d7142f2fcb334292cc420d1b0c09ab9c24b248e39b6d096f",
+    "Assets/Game/Alcatraz/Resources/Alcatraz/FacadeRebuild/FacadeRebuild.prefab": "3d4f59f48b596c52b0a81f2101f67064597bbbe7b1fa006a291280273b45ff62",
+    "Assets/Game/Alcatraz/Resources/Alcatraz/FacadeRebuild/Manifest.json": "b2cd57e0e29d49ba58aea2265d077fad27488cba60c27526e0cf0f09a5eb36df",
+    "Assets/Game/Alcatraz/Resources/Alcatraz/FacadeRebuild/Meshes/Facade_Roof_LowDrainCoping.asset": "8717f32d790ebb2129a19b65fb3a90d69d0a34d0d548eebe9680ec2c4b8f52ea",
+    "Assets/Game/Alcatraz/Resources/Alcatraz/FacadeRebuild/Meshes/Facade_Roof_MiteredEdgeFlashing.asset": "feb12b23712b5aebd87398387a1093591b778e74b3a4a5df2ad16fc17660ee1e",
+    "Assets/Game/Alcatraz/Resources/Alcatraz/FacadeRebuild/Meshes/Facade_Roof_RoofLapSeams.asset": "1757548dcab68715cac18c9d7390ab077203977ef54d409aaf36f2bf839bfbe7",
+    "Assets/Game/Alcatraz/Resources/Alcatraz/FacadeRebuild/Meshes/Facade_Roof_StructuralRoofSlab.asset": "e30b4a275a268d662c1ed072419e974106ad0fef01802028967a17fcbb219faa",
+    "Assets/Game/Alcatraz/Resources/Alcatraz/FacadeRebuild/Meshes/Facade_Roof_WeatheredRoofMembrane.asset": "14d9220cd39769a75db8042297b2e0bf08f6c3f59a0b2fa25a2ad6c807ea9ce0",
+    "Assets/Game/Alcatraz/Resources/Alcatraz/FacadeRebuild/Meshes/Facade_east_tower_return_0.asset": "914f6503177f6330519545663259d52c97edf81e3e98cfdb9b6d614809243dfd",
+    "Assets/Game/Alcatraz/Resources/Alcatraz/FacadeRebuild/Meshes/Facade_east_tower_return_1.asset": "ed653685b52408ad64d0400937c46a8a4b7b8bd2fc35683b1aef6ab868e96bfb",
+    "Assets/Game/Alcatraz/Resources/Alcatraz/FacadeRebuild/Meshes/Facade_east_tower_return_2.asset": "e84c9cfa5ea9d5972d88df5ded3ed9c3876e34851b1c08525cefbdacfdda09a2",
+    "Assets/Game/Alcatraz/Resources/Alcatraz/FacadeRebuild/Meshes/Facade_east_tower_return_3.asset": "ad01c537e9d2dee9b2c4dc37b380d000237e50f13754f5643ffdf8e961316426",
+    "Assets/Game/Alcatraz/Resources/Alcatraz/FacadeRebuild/Meshes/Facade_east_tower_return_4.asset": "73adec5e10f2cc0154d33e57e3261d6236c8112d2d46f33d7c00794ce039bec6",
+    "Assets/Game/Alcatraz/Resources/Alcatraz/FacadeRebuild/Meshes/Facade_north_tower_return_5.asset": "b50b8cd5b257f13cd1cfc2394f03f7a110d645c7bbbabf26482d4074b1d56d04",
+    "Assets/Game/Alcatraz/Resources/Alcatraz/FacadeRebuild/Meshes/Facade_north_tower_return_6.asset": "64aac67cd982ff05e15c755f31e34eab97a7345eebe525041f56fb45c0fb2520",
+    "Assets/Game/Alcatraz/Resources/Alcatraz/FacadeRebuild/Meshes/Facade_north_tower_return_7.asset": "f009e165cd7474e2dc608b3a9f9b108d759795f911817e5a7524ad3b7f225953",
+    "Assets/Game/Alcatraz/Resources/Alcatraz/FacadeRebuild/Meshes/Facade_north_tower_return_8.asset": "4342d3e756061632f062b6f5758c7c78a4949e0d199a7f0da32a2981025b00c2",
+    "Assets/Game/Alcatraz/Resources/Alcatraz/FacadeRebuild/Meshes/Facade_north_tower_return_9.asset": "35b66bfc5ba9c1b81a86fccd3f8f138034eccd72a45d5bddb1b90bd741976ff7",
+    "Assets/Game/Alcatraz/Resources/Alcatraz/FacadeRebuild/Meshes/Facade_retaining_east_10.asset": "21cc9c6a9d05cf331674a86ed05b0c861aab6e857b8b607a61723814b1ccc1b9",
+    "Assets/Game/Alcatraz/Resources/Alcatraz/FacadeRebuild/Meshes/Facade_retaining_east_11.asset": "51234ade16763d2a3d269e96a209315177ade718debe5678612949ae94fb0713",
+    "Assets/Game/Alcatraz/Resources/Alcatraz/FacadeRebuild/Meshes/Facade_south_tower_face_12.asset": "967d04df9793bc79ae2a645f1eb9781e990b792d70342d0e59ca696a1269de51",
+    "Assets/Game/Alcatraz/Resources/Alcatraz/FacadeRebuild/Meshes/Facade_south_tower_face_13.asset": "b161e33fa6fee35152cdb7f175131e38db2828f60a324db65ed859be8c77996a",
+    "Assets/Game/Alcatraz/Resources/Alcatraz/FacadeRebuild/Meshes/Facade_south_tower_face_14.asset": "c56d07ba2a6d4d15f076c999aa8eade569cb0d9db22152b8efe0f51a84b303bd",
+    "Assets/Game/Alcatraz/Resources/Alcatraz/FacadeRebuild/Meshes/Facade_south_tower_face_15.asset": "fbd13028d50cbbd1949dda0cbb990143e9598f0a857fa180d7436f31b9b26f37",
+    "Assets/Game/Alcatraz/Resources/Alcatraz/FacadeRebuild/Meshes/Facade_south_tower_face_16.asset": "8f5c6ae5ea54dfafc08946157ae34e5ff9eed3b52cd2cbe0c4a73b39d6934847",
+    "Assets/Game/Alcatraz/Resources/Alcatraz/FacadeRebuild/Meshes/Facade_west_tower_step_17.asset": "ad61060bb48ad893112468edc5fe85cc65abe8768300300f81522bad60514f85",
+    "Assets/Game/Alcatraz/Resources/Alcatraz/FacadeRebuild/Meshes/Facade_west_tower_step_18.asset": "a52869a4c5ba3c2856af61d3b2ade9f5ada17a1bd6b8d118c1f079d06c97bd17",
+    "Assets/Game/Alcatraz/Resources/Alcatraz/FacadeRebuild/Meshes/Visual_Island_0_5.asset": "162dd70ae1c64b5f9884b0ec0c2e41e1a92e15a115d82956fc86e20ad2d98425",
+    "Assets/Game/Alcatraz/Resources/Alcatraz/FacadeRebuild/Meshes/Visual_Island_0_7.asset": "065998856f88f19cd29f721680ca15ba91026741f68d357b0f6b10c5714f721f",
+    "Assets/Game/Alcatraz/Resources/Alcatraz/FacadeRebuild/Meshes/Visual_Island_0_8.asset": "f135307f5df7dea17fa68fffd038624cd9ecff55d7d135e75f81fc4121a7b6fd",
+    "Assets/Game/Alcatraz/Resources/Alcatraz/FacadeRebuild/Runtime.json": "9437a05956601ed82b4375be360639a672f6995fc8363c5bbef864dc83acfa5d",
     "Assets/Game/Alcatraz/Resources/Alcatraz/SurfaceDetails/HelipadConcrete.mat": "d5fb59eb91a60fab37f96c82f3afdb193c94065fa1c52895cfa2490edf81ee5c",
     "Assets/Game/Alcatraz/Resources/Alcatraz/SurfaceDetails/IslandSurface.mat": "e8caf85546071a0f8b6ca33aa76754037dc2ffd67348173ec0d6175ca237359b",
     "Assets/Game/Supplied/Resources/AlcatrazSupplied/Baked/Helicopter.prefab": "224a72e908f2f8a77c4d0fa952b8366dd8f2206398a649c7b9652f4e463db473",
@@ -500,6 +541,6 @@
     "Tools/render_current_previews.py": "317aab4122363dff6a69336cab38a713f3bd39125ad7004a6a0b98cf64b4b035",
     "Tools/render_environment_quality_preview.py": "92ec672029e20ea71a8d6c05ca756d41955aabeccb027eff3b873cff1723642c",
     "Tools/render_supplied_previews.py": "cac47d45dd7570e4ef83d54a04f6a59ecbc3e21eb07aa9df87c3514ea647c1a2",
-    "Tools/render_world_rebuild_preview.py": "69ab9ae1361c6c11653d72233689931c2c60641fe5164fbc33390a46219ce650"
+    "Tools/render_world_rebuild_preview.py": "a5acf5fd94105e721bafca163b3d1982ca778eb26efa0714809302390c6bf309"
   }
 }

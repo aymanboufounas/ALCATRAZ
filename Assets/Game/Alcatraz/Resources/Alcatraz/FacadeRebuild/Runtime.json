@@ -1,6 +1,10 @@
 {
-  "facadeRenderers": 7,
+  "facadeRenderers": 24,
   "replacements": [
+    {
+      "sourceMesh": "Island_0_5",
+      "resource": "Alcatraz/FacadeRebuild/Meshes/Visual_Island_0_5"
+    },
     {
       "sourceMesh": "Island_0_7",
       "resource": "Alcatraz/FacadeRebuild/Meshes/Visual_Island_0_7"
@@ -9,5 +13,22 @@
       "sourceMesh": "Island_0_8",
       "resource": "Alcatraz/FacadeRebuild/Meshes/Visual_Island_0_8"
     }
-  ]
+  ],
+  "roofSupport": {
+    "center": {
+      "x": -107.50121422709972,
+      "y": 59.699999999999996,
+      "z": -13.839759380105413
+    },
+    "size": {
+      "x": 6,
+      "y": 0.2,
+      "z": 13.2
+    },
+    "forward": {
+      "x": 0.20993870684509572,
+      "y": -0.0,
+      "z": 0.9777145490214458
+    }
+  }
 }
