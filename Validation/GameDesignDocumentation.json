@@ -1,0 +1,60 @@
+{
+  "scope": "Documentation integrity only; no game code or runtime assets changed",
+  "verified_at_utc": "2026-10-16T10:08:50.167237+00:00",
+  "repository_baseline": "f97d1e869963c3b9e3324e76bbc46c183c907cb7",
+  "status": "PASS",
+  "counts": {
+    "markdown_files": 7,
+    "local_links_checked": 98,
+    "external_link_syntax_checked": 6,
+    "source_evidence_paths_checked": 48
+  },
+  "requirements": {
+    "total": 36,
+    "unique_ids": 36,
+    "dependencies_acyclic": true,
+    "by_status": {
+      "SOURCE": 21,
+      "PROPOSED": 14,
+      "BLOCKED": 1
+    }
+  },
+  "research": {
+    "reviewed_pinned_sources": 4,
+    "hashes_verified": true,
+    "read_bytes": 32940,
+    "blocked_references_unread": 4
+  },
+  "review_corrections": [
+    "Separated exploration gameplay HUD 1600x900 from menu/storyHUD1920x1080 references.",
+    "Distinguished intentional vehicle passenger/weapon hiding from failed visibility restoration.",
+    "Limited supplied cellhouse/annex/upload route acceptance to scenes with those components."
+  ],
+  "documentation_files": [
+    "Documentation/GameDesign/GameDesignDocument.md",
+    "Documentation/GameDesign/ProductionAndQA.md",
+    "Documentation/GameDesign/README.md",
+    "Documentation/GameDesign/Requirements.csv",
+    "Documentation/GameDesign/Requirements.md",
+    "Documentation/GameDesign/Research.md",
+    "Documentation/GameDesign/ResearchManifest.json",
+    "Documentation/GameDesign/Systems.md",
+    "Documentation/GameDesign/WorldAndMissions.md"
+  ],
+  "previous_offline_result": {
+    "report": "Validation/HourlyChecksAndGraphics.json",
+    "checks_passed": 24,
+    "csharp_assertions": 220928,
+    "rerun_for_this_documentation_change": false
+  },
+  "unity_runtime_verified": false,
+  "game_behavior_changed": false,
+  "external_links_availability_verified": false,
+  "not_performed": [
+    "Unity compilation/import/Play Mode",
+    "GPU performance and audio listening",
+    "A game build or complete gameplay playthrough",
+    "Opening blocked VSQUAD/Unity/Steam pages"
+  ],
+  "errors": []
+}

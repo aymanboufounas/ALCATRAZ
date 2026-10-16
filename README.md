@@ -4,6 +4,10 @@
 
 The playable character is **Elias Vale, a prisoner in orange**. The default exploration scene now uses the **supplied scanned Alcatraz island**, police, animated dog, tactical helmet/vest, Little Bird, coastal house, 10mm pistol and revolver. The supplied exterior now has a connected enterable cellhouse. Chapter 01 retains its separate story scene, original rigged cast and mission progression.
 
+## Design and development plan
+
+The [complete ALCATRAZ design documentation](Documentation/GameDesign/README.md) covers the game concept, current systems, world and missions, proposed escape chapter, art/audio direction, high-end graphics targets, 36 prioritized requirements and verification gates. It distinguishes inspected source from future work and unexecuted Unity checks. [Research references](Documentation/GameDesign/Research.md) record the GDD templates actually read.
+
 ## Open and play
 
 1. Download the repository ZIP and extract it, or clone this repository. In Unity Hub, choose **Add project from disk** and select the folder containing **Assets**, **Packages** and **ProjectSettings**.
@@ -120,11 +124,11 @@ See [Revision 07 notes](Documentation/Revision07_MapCharacters.md) for scope and
 | Prison | Three tiers; 336 B/C cells; abbreviated A/D rows; 512 regular cell chambers plus seven wider isolation rooms. Furnished cells, stairs, catwalks, bridges, skylight geometry, dining hall, showers and visitation. |
 | Landmarks | Recreation yard, lighthouse/keeper, water tower, warden's house, Model/New Industries, power house, storehouse, Building 64, sally port, parade ground and connected dock. Some landmark buildings have simple interiors. |
 | Characters | Five MIT-licensed rigged human models with source 2K textures, two edited 1254-pixel uniform atlases, normal maps and URP materials. Orange inmate, separate guard, Black inmates, jacket/hoodie clothing, heavier/leaner variants and 30 actor bindings. |
-| Movement/camera | Twelve imported clips, measured walk/run blending, starts/stops/turns, contact IK and pose overlays; shoulder camera, aiming, damping and collision queries. |
+| Movement/camera | Imported locomotion clips, measured walk/run blending, starts/stops/turns, contact IK and pose overlays; shoulder camera, aiming, damping and collision queries. |
 | Sound | 44 foundation effects: concrete/metal/wood/grass footsteps, shots, reloads and impacts. Spatial playback, reverb/filtering and the existing 68 English dialogue clips, ambience and score. |
-| Equipment | Original prototype knife/pistol/rifle, aiming, finite ammunition, reloads, recoil, muzzle flash, tracers, melee and three targets. General NPC firearm combat/health is not implemented. |
+| Equipment | Original prototype knife/pistol/rifle, aiming, finite ammunition, reloads, recoil, muzzle flash, tracers, melee and three targets. Exploration weapons and punches damage NPC health; Chapter 01 keeps its separate scripted brawl and quest-controlled equipment. |
 | NPC activities | Ten walking routes, six seated actors and nearby voiced remarks. Poker/conversation tables remain playable in the chapter. |
-| Navigation/save | Hold M for the island map, player/objective markers and separate Alcatraz checkpoints. Falling below the bay returns the player to the last grounded position; swimming is not included. |
+| Navigation/save | Hold M for the island map, player/objective markers and separate Alcatraz checkpoints. Surface swimming, sampled offshore warning/WANTED restart, health and safe checkpoint recovery are implemented in source; live Unity verification remains pending. |
 
 The project is a source prototype with older rigged character assets. It does not reproduce GTA V/RDR2 production quality. Opsive, paid environment/audio packs and commercial-game assets are not bundled. Unity audio is the default; the existing FMOD bridge requires a separately supplied SDK, events and banks.
 

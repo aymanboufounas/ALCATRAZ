@@ -1,0 +1,190 @@
+{
+  "schema_version": 1,
+  "title": "ALCATRAZ game design research manifest",
+  "research_date": "2026-10-16",
+  "user_facing_timezone": "Africa/Casablanca",
+  "repository_baseline": "f97d1e869963c3b9e3324e76bbc46c183c907cb7",
+  "purpose": "Record sources actually reviewed for the design package structure; these sources do not verify game implementation.",
+  "discovery": {
+    "url": "https://github.com/search?q=game+design+document+template&type=repositories",
+    "status": "RESULT_LIST_REVIEWED",
+    "scope": "Public repository search results used to discover alternatives; result snippets are not treated as full source documents.",
+    "search_html_scratch_file": "/tmp/alcatraz-github-gdd-search.html",
+    "search_html_sha256": "ab156ec75bc0eb51bbdd0bc733b67e3abad3e019b7a545428fc6e50baf8651a3",
+    "search_text_scratch_file": "/tmp/alcatraz-github-gdd-search.txt",
+    "search_text_sha256": "0a74877ef4e2e70f9f7d8cc778a4fb302b2e3e6b2890ebff9d3d1e12048f5a59"
+  },
+  "reviewed_sources": [
+    {
+      "id": "gdd-markdown",
+      "repository": "LazyHatGuy/GDDMarkdownTemplate",
+      "commit": "c06d8bd1fc951e6b82132b7147964f3bdf5f07e0",
+      "repository_file": "README.md",
+      "scratch_file": "/tmp/alcatraz-pinned-markdown-readme.md",
+      "adoption": [
+        "Broad game overview and feature scope",
+        "Mechanics and screen flow",
+        "Story, world, character and level coverage",
+        "AI, technical, art, audio, management, risk and test planning"
+      ],
+      "unread_links": [
+        "Repository wiki pages",
+        "Earlier template credited by repository"
+      ],
+      "status": "READ_FULL",
+      "retrieval": "Pinned raw.githubusercontent.com URL, fetched successfully with curl; byte-identical to the previously reviewed source file.",
+      "raw_url": "https://raw.githubusercontent.com/LazyHatGuy/GDDMarkdownTemplate/c06d8bd1fc951e6b82132b7147964f3bdf5f07e0/README.md",
+      "repository_url": "https://github.com/LazyHatGuy/GDDMarkdownTemplate/tree/c06d8bd1fc951e6b82132b7147964f3bdf5f07e0",
+      "sha256": "d7b974b5d5bb803f1ec71b679d1b243260207251bb2234d7ba5abf58c7493262",
+      "bytes": 18334,
+      "read_extent": {
+        "first_line": 1,
+        "last_line": 174,
+        "complete_file": true,
+        "linked_documents_read": false
+      }
+    },
+    {
+      "id": "gdd-beginners",
+      "repository": "kosinaz/game-design-document-template-for-beginners",
+      "commit": "2568e7bdb4c0f208ba011039263240ab8fbfd43c",
+      "repository_file": "docs/Game Design Document.md",
+      "scratch_file": "/tmp/alcatraz-pinned-beginner-document.md",
+      "adoption": [
+        "Concise introduction",
+        "Player-facing description",
+        "Focused feature list"
+      ],
+      "unread_links": [
+        "Acknowledged articles and example game documents"
+      ],
+      "not_adopted": [
+        "Marketing examples",
+        "Claims about commercially successful game names"
+      ],
+      "status": "READ_FULL",
+      "retrieval": "Pinned raw.githubusercontent.com URL, fetched successfully with curl; byte-identical to the previously reviewed source file.",
+      "raw_url": "https://raw.githubusercontent.com/kosinaz/game-design-document-template-for-beginners/2568e7bdb4c0f208ba011039263240ab8fbfd43c/docs/Game%20Design%20Document.md",
+      "repository_url": "https://github.com/kosinaz/game-design-document-template-for-beginners/tree/2568e7bdb4c0f208ba011039263240ab8fbfd43c",
+      "sha256": "425013d6d178d5851980b491fa0982a0e1acf8bd152dd8877dfb4a0de3466dc7",
+      "bytes": 8385,
+      "read_extent": {
+        "first_line": 1,
+        "last_line": 61,
+        "complete_file": true,
+        "linked_documents_read": false
+      }
+    },
+    {
+      "id": "gdd-resources",
+      "repository": "mikewesthad/Game-Design-Document-Resources",
+      "commit": "14039415a6de8beba15a8e29de9bb1a645dd3d63",
+      "repository_file": "README.md",
+      "scratch_file": "/tmp/alcatraz-pinned-resources-readme.md",
+      "adoption": [
+        "Overview plus detailed specification organization informed by the index of short and long formats"
+      ],
+      "unread_links": [
+        "Google Docs templates",
+        "Videos",
+        "Historical game design documents"
+      ],
+      "status": "READ_FULL",
+      "retrieval": "Pinned raw.githubusercontent.com URL, fetched successfully with curl; byte-identical to the previously reviewed source file.",
+      "raw_url": "https://raw.githubusercontent.com/mikewesthad/Game-Design-Document-Resources/14039415a6de8beba15a8e29de9bb1a645dd3d63/README.md",
+      "repository_url": "https://github.com/mikewesthad/Game-Design-Document-Resources/tree/14039415a6de8beba15a8e29de9bb1a645dd3d63",
+      "sha256": "066f0b3ac37904ebb10af665abf49fe1643fb251b718287f98e94a70bddd47fc",
+      "bytes": 2154,
+      "read_extent": {
+        "first_line": 1,
+        "last_line": 28,
+        "complete_file": true,
+        "linked_documents_read": false
+      }
+    },
+    {
+      "id": "gdd-outline",
+      "repository": "saeidzebardast/game-design-document",
+      "commit": "2fc1c4caedafe96881d754fe0ead12b16831374e",
+      "repository_file": "game-design-document-outline.md",
+      "scratch_file": "/tmp/alcatraz-pinned-outline.md",
+      "adoption": [
+        "Explicit rules and progression",
+        "Screen relationships",
+        "World connections, characters and mission paths",
+        "Controls, audio, AI and hardware coverage"
+      ],
+      "unread_links": [
+        "Linked university source document"
+      ],
+      "status": "READ_FULL",
+      "retrieval": "Pinned raw.githubusercontent.com URL, fetched successfully with curl; byte-identical to the previously reviewed source file.",
+      "raw_url": "https://raw.githubusercontent.com/saeidzebardast/game-design-document/2fc1c4caedafe96881d754fe0ead12b16831374e/game-design-document-outline.md",
+      "repository_url": "https://github.com/saeidzebardast/game-design-document/tree/2fc1c4caedafe96881d754fe0ead12b16831374e",
+      "sha256": "3452477795548a1cc3bf93d71f35b13474e60d236c48936ee87b4aeb49df26c3",
+      "bytes": 4067,
+      "read_extent": {
+        "first_line": 1,
+        "last_line": 145,
+        "complete_file": true,
+        "linked_documents_read": false
+      }
+    }
+  ],
+  "reviewed_source_bytes_total": 32940,
+  "unread_references": [
+    {
+      "id": "user-vsquad-article",
+      "url": "https://vsquad.art/blog/articles/how-to-create-a-game-design-document-from-scratch/",
+      "status": "NOT_READ",
+      "reason": "Environment proxy rejected connection with CONNECT 403.",
+      "contents_attributed": false
+    },
+    {
+      "id": "unity-official-follow-up",
+      "domain": "docs.unity3d.com",
+      "status": "NOT_READ",
+      "reason": "Environment proxy rejected connection with CONNECT 403.",
+      "contents_attributed": false,
+      "url": "https://docs.unity3d.com/6000.0/Documentation/Manual/profiler-introduction.html"
+    },
+    {
+      "id": "steamworks-official-follow-up",
+      "domain": "partner.steamgames.com",
+      "status": "NOT_READ",
+      "reason": "Environment proxy rejected connection with CONNECT 403.",
+      "contents_attributed": false,
+      "url": "https://partner.steamgames.com/doc/store/review_process"
+    },
+    {
+      "id": "unity-gdd-guide",
+      "url": "https://unity.com/how-to/how-write-game-design-document",
+      "status": "NOT_READ",
+      "reason": "Environment proxy rejected connection with CONNECT 403.",
+      "contents_attributed": false
+    }
+  ],
+  "use_policy": {
+    "paraphrase_only": true,
+    "template_prose_reproduced": false,
+    "historical_game_documents_copied": false,
+    "linked_historical_game_documents_read": false,
+    "commercial_claims_used_as_evidence": false,
+    "downloaded_template_copies_committed": false,
+    "source_hashes_prove": "Identity of reviewed bytes only; not endorsement, asset permissions or correctness of linked advice."
+  },
+  "package_mapping": {
+    "README.md": "Package entry point and document navigation",
+    "GameDesignDocument.md": "Pitch, audience, pillars, core loop and scope",
+    "Systems.md": "Gameplay rules, controls, NPCs, activities, UI flow and persistence",
+    "WorldAndMissions.md": "Cast, connected spaces, mission progression and current ending",
+    "ProductionAndQA.md": "Technical targets, art/audio production, dependencies, risks and verification gates",
+    "Requirements.csv": "Requirements, implementation status and acceptance evidence",
+    "Requirements.md": "Readable prioritized summary generated from Requirements.csv"
+  },
+  "verification_limits": [
+    "No Unity import, Play Mode, packaged build or GPU performance test was performed by this research task.",
+    "Current implementation facts must be traced to repository source and actual test reports, not these templates.",
+    "Proposal status does not become implemented status by inclusion in a GDD."
+  ]
+}
