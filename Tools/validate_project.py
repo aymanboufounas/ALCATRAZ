@@ -11,7 +11,9 @@ def fail(message):errors.append(message)
 official={
  '933532a4fcc9baf4fa0491de14d08ed7':'URP/Lit shader',
  'bf2edee5c58d82540a51f03df9d42094':'UniversalRenderPipelineAsset script',
- 'de640fe3d0db1804a85f9fc8f5cadab6':'UniversalRendererData script'}
+ 'de640fe3d0db1804a85f9fc8f5cadab6':'UniversalRendererData script',
+ '41439944d30ece34e96484bdb6645b55':'URP PostProcessData asset',
+ 'f62c9c65cf3354c93be831c8bc075510':'URP ScreenSpaceAmbientOcclusion script'}
 assets={}
 for p in (ROOT/'Assets').rglob('*.meta'):
     m=re.search(r'^guid: ([a-f0-9]{32})$',p.read_text(),re.M)

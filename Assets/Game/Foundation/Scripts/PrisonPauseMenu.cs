@@ -26,10 +26,10 @@ namespace Blackstone.Foundation
         bool returnToTitle;
         float nextAutosave;
         GUIStyle small,control,track,thumb;
-        bool displayInitialized,fullscreen;
+        bool displayInitialized,fullscreen,wasOpen;
         int resolution;
-        readonly int[] widths={1280,1920,2560},heights={720,1080,1440};
-        readonly string[] resolutions={"1280 × 720","1920 × 1080","2560 × 1440"};
+        readonly int[] widths=GraphicsRules.Widths,heights=GraphicsRules.Heights;
+        readonly string[] resolutions=GraphicsRules.ResolutionNames;
         PlayerMovement Player=>story!=null?story.player:exploration!=null?exploration.Player:null;
         PlayerInputHandler Input=>story!=null?story.input:exploration!=null?exploration.Input:null;
         FoundationWeapons Weapons=>Player!=null?Player.GetComponent<FoundationWeapons>():null;
@@ -46,10 +46,13 @@ namespace Blackstone.Foundation
         // before the paused controller has completed its first grounded update.
         bool CanLoadCheckpoint=>CheckpointPlayerAvailable&&(story!=null?!story.Busy&&!story.PhoneOpen:ExplorationReady);
         public void Configure(FoundationBootstrap foundation,PrisonStoryDirector director,AlcatrazMap island)
-        {exploration=foundation;story=director;map=island;explorationHUD=foundation!=null?foundation.GetComponent<FoundationHUD>():null;nextAutosave=Time.unscaledTime+30;fullscreen=Screen.fullScreen;resolution=Array.IndexOf(widths,Screen.width);if(resolution<0)resolution=1;displayInitialized=true;}
+        {exploration=foundation;story=director;map=island;explorationHUD=foundation!=null?foundation.GetComponent<FoundationHUD>():null;nextAutosave=Time.unscaledTime+30;fullscreen=Screen.fullScreen;resolution=GraphicsRules.ResolutionIndex(Screen.width,Screen.height);displayInitialized=true;}
         void Update()
         {
-            if(!Open)
+            bool open=Open;
+            if(open&&!wasOpen)displayInitialized=false;
+            wasOpen=open;
+            if(!open)
             {
                 pendingSave=pendingLoad=-1;returnToTitle=false;
                 if(exploration!=null&&Input!=null&&Input.CanControl&&Time.unscaledTime>=nextAutosave)
@@ -94,7 +97,9 @@ namespace Blackstone.Foundation
         }
         void Select(int index)
         {
+            bool enteringSettings=index==6&&section!=6;
             section=index;scroll=Vector2.zero;pendingSave=pendingLoad=-1;message=null;
+            if(enteringSettings)displayInitialized=false;
             if(section==4)Choice(0);
         }
         void Styles()
@@ -239,18 +244,17 @@ namespace Blackstone.Foundation
         {
             if(!displayInitialized)
             {
-                fullscreen=Screen.fullScreen;resolution=Array.IndexOf(widths,Screen.width);if(resolution<0)resolution=1;displayInitialized=true;
+                fullscreen=Screen.fullScreen;resolution=GraphicsRules.ResolutionIndex(Screen.width,Screen.height);displayInitialized=true;
             }
             PrisonMenuTheme.Text(new Rect(665,350,300,35),"Display mode");
             if(PrisonMenuTheme.Button(new Rect(1035,345,350,46),fullscreen?"FULLSCREEN":"WINDOWED"))fullscreen=!fullscreen;
             PrisonMenuTheme.Text(new Rect(665,410,300,35),"Resolution");
-            resolution=GUI.SelectionGrid(new Rect(1035,405,790,48),resolution,resolutions,3,control);
+            resolution=GUI.SelectionGrid(new Rect(1035,405,790,48),resolution,resolutions,resolutions.Length,control);
             PrisonMenuTheme.Text(new Rect(665,470,300,35),"Graphics quality");
-            var storyHUD=story!=null?FindFirstObjectByType<Blackstone.UI.PrisonHUD>():null;
-            string[] qualities=storyHUD!=null?new[]{"LOW","MEDIUM","HIGH","ULTRA"}:QualitySettings.names;
-            int quality=storyHUD!=null?storyHUD.GraphicsPreset:QualitySettings.GetQualityLevel();
+            string[] qualities=FoundationGraphics.Names;
+            int quality=FoundationGraphics.SelectedPreset;
             int selected=GUI.SelectionGrid(new Rect(1035,465,790,46),quality,qualities,Mathf.Min(4,qualities.Length),control);
-            if(selected!=quality){if(storyHUD!=null)storyHUD.SetGraphicsPreset(selected);else QualitySettings.SetQualityLevel(selected,true);}
+            if(selected!=quality)FoundationGraphics.SetPreset(selected);
             var audio=story!=null?null:FoundationAudio.Instance;var bus=story!=null?story.audioBus:FindFirstObjectByType<Blackstone.Audio.PrisonAudio>();
             if(audio!=null)audio.master=Slider("Master volume",audio.master,0,1,530);else if(bus!=null)bus.master=Slider("Master volume",bus.master,0,1,530);
             if(audio!=null)audio.effects=Slider("Sound effects",audio.effects,0,1,580);else if(bus!=null)bus.effects=Slider("Sound effects",bus.effects,0,1,580);
@@ -263,7 +267,8 @@ namespace Blackstone.Foundation
             bool invert=story!=null&&story.cameraRig!=null?story.cameraRig.invertY:exploration!=null&&exploration.CameraRig!=null&&exploration.CameraRig.invertY;
             if(PrisonMenuTheme.Button(new Rect(1040,785,380,40),"Invert camera Y: "+(invert?"ON":"OFF")))
             {if(story!=null&&story.cameraRig!=null)story.cameraRig.invertY=!invert;else if(exploration!=null&&exploration.CameraRig!=null)exploration.CameraRig.invertY=!invert;}
-            GUI.Label(new Rect(1460,790,365,35),"Language: English",small);
+            if(PrisonMenuTheme.Button(new Rect(1460,785,365,40),"VSync: "+(FoundationGraphics.VSync?"ON":"OFF")))
+                FoundationGraphics.SetVSync(!FoundationGraphics.VSync);
             if(PrisonMenuTheme.Button(new Rect(665,835,1160,65),"Apply display & save settings"))
             {Screen.SetResolution(widths[resolution],heights[resolution],fullscreen?FullScreenMode.FullScreenWindow:FullScreenMode.Windowed);PersistSettings();}
         }
@@ -275,8 +280,7 @@ namespace Blackstone.Foundation
             if(bus!=null){PlayerPrefs.SetFloat("Blackstone.Music",bus.music);PlayerPrefs.SetFloat("Blackstone.Dialogue",bus.dialogue);}
             if(story!=null&&story.cameraRig!=null){PlayerPrefs.SetFloat("Blackstone.Sensitivity",story.cameraRig.sensitivity);PlayerPrefs.SetInt("Blackstone.Invert",story.cameraRig.invertY?1:0);}
             else if(exploration!=null&&exploration.CameraRig!=null){PlayerPrefs.SetFloat("Blackstone.Sensitivity",exploration.CameraRig.sensitivity);PlayerPrefs.SetInt("Blackstone.Invert",exploration.CameraRig.invertY?1:0);}
-            var storyHUD=story!=null?FindFirstObjectByType<Blackstone.UI.PrisonHUD>():null;
-            PlayerPrefs.SetInt("Blackstone.Quality",storyHUD!=null?storyHUD.GraphicsPreset:QualitySettings.GetQualityLevel());PlayerPrefs.Save();message="Settings saved.";
+            PlayerPrefs.SetInt("Blackstone.Quality",FoundationGraphics.SelectedPreset);PlayerPrefs.SetInt("Blackstone.VSync",FoundationGraphics.VSync?1:0);PlayerPrefs.Save();message="Settings saved.";
         }
         bool Saved(int index,out string detail)
         {

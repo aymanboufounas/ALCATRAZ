@@ -46,6 +46,7 @@ namespace Blackstone.Foundation.Editor
         }
         public static void EnsureReady()
         {
+            DesertShift.Editor.ProjectTools.EnsureRendering();
             if(!File.Exists(Stamp)||File.ReadAllText(Stamp)!=Revision||AssetDatabase.LoadAssetAtPath<AnimatorController>(Controller)==null)
             {Prepare();return;}
             try{ValidatePrepared();}
@@ -167,6 +168,7 @@ namespace Blackstone.Foundation.Editor
             try
             {
                 DesertShift.Editor.ProjectTools.ConfigureRendering();
+                DesertShift.Editor.ProjectTools.ValidateRendering();
                 foreach(string path in AssetDatabase.GetAllAssetPaths().Where(RocketboxImporter.IsSource))
                 {
                     var importer=AssetImporter.GetAtPath(path) as ModelImporter;

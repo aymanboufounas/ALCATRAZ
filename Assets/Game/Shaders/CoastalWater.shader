@@ -14,6 +14,8 @@ Shader "Blackstone/Coastal Water"
             #pragma fragment frag
             #pragma multi_compile _ _MAIN_LIGHT_SHADOWS _MAIN_LIGHT_SHADOWS_CASCADE
             #pragma multi_compile_fragment _ _SHADOWS_SOFT
+            #pragma multi_compile_fragment _ _REFLECTION_PROBE_BLENDING
+            #pragma multi_compile_fragment _ _REFLECTION_PROBE_BOX_PROJECTION
             #pragma multi_compile_fog
             #include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Core.hlsl"
             #include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Lighting.hlsl"
@@ -42,11 +44,12 @@ Shader "Blackstone/Coastal Water"
                 Light sun=GetMainLight(TransformWorldToShadowCoord(input.positionWS));
                 half fresnel=pow(1-saturate(dot(normal,view)),5);
                 half3 reflectedDirection=reflect(-view,normal);
-                half3 reflection=lerp(half3(.34,.53,.65),half3(.72,.80,.82),
-                                     pow(saturate(1-abs(reflectedDirection.y)),3));
+                float2 screenUV=GetNormalizedScreenSpaceUV(input.positionCS);
+                // Use the active sky/reflection probes, including their HDR
+                // decoding and roughness mip selection, rather than a fixed tint.
+                half3 reflection=GlossyEnvironmentReflection(reflectedDirection,input.positionWS,.16h,1.0h,screenUV);
                 half specular=pow(saturate(dot(normal,normalize(view+sun.direction))),
                                   130)*sun.shadowAttenuation;
-                float2 screenUV=GetNormalizedScreenSpaceUV(input.positionCS);
                 float rawDepth=SampleSceneDepth(screenUV);
                 float sceneEye=LinearEyeDepth(rawDepth,_ZBufferParams);
                 float waterEye=-TransformWorldToView(input.positionWS).z;

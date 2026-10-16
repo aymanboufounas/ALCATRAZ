@@ -17,6 +17,8 @@ Equipment: **1** unarmed, **2** knife, **3** supplied 10mm pistol, **4** service
 
 The [movement and animation quality pass](Documentation/MovementQuality.md) adds licensed running transitions, frame-independent animation events, stronger braking, wall response, stair support, gait phase alignment and calibrated foot contacts. It includes executable rule/source checks and additional Unity verification fixtures; live visual quality still requires Unity testing.
 
+[Hourly checks and high-end graphics](Documentation/HourlyChecksAndGraphics.md) adds scheduled source checks, shared High/Ultra presets, native 1440p/4K choices, rendering resource repair, environment-reflective water and actual player-build size reporting. Scheduled checks report failures; no unattended coding agent is configured. Unity rendering/performance and a 10 GB player build remain unverified.
+
 ## Added in 0.12.1
 
 [Combat fixes](Documentation/CombatFixes.md) connect exploration shooting, knives

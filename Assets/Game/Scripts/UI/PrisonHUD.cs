@@ -1,8 +1,7 @@
 using UnityEngine;
-using UnityEngine.Rendering;
-using UnityEngine.Rendering.Universal;
 using UnityEngine.InputSystem;
 using Blackstone.Story;
+using Blackstone.Foundation;
 
 namespace Blackstone.UI
 {
@@ -21,30 +20,22 @@ namespace Blackstone.UI
         float sensitivity = .105f;
         bool invert;
         float frameTime = .016f;
-        UniversalRenderPipelineAsset runtimePipeline;
-        RenderPipelineAsset originalPipeline;
         Blackstone.Alcatraz.AlcatrazMap island;
         bool Failed=>director!=null&&director.player!=null&&director.player.GetComponent<Blackstone.Foundation.FoundationPlayerVitals>() is Blackstone.Foundation.FoundationPlayerVitals vitals&&vitals.Failed;
         void Start()
         {
+            FoundationGraphics.Ensure(gameObject);
             island=FindFirstObjectByType<Blackstone.Alcatraz.AlcatrazMap>();
             pauseMenu=gameObject.GetComponent<Blackstone.Foundation.PrisonPauseMenu>();if(pauseMenu==null)pauseMenu=gameObject.AddComponent<Blackstone.Foundation.PrisonPauseMenu>();
             pauseMenu.Configure(null,director,island);
-            quality = PlayerPrefs.GetInt("Blackstone.Quality", 2);
+            quality = FoundationGraphics.SelectedPreset;
             sensitivity = PlayerPrefs.GetFloat("Blackstone.Sensitivity", .105f);
             invert = PlayerPrefs.GetInt("Blackstone.Invert", 0) == 1;
-            vsync = PlayerPrefs.GetInt("Blackstone.VSync", 1) == 1;
+            vsync = FoundationGraphics.VSync;
             director.audioBus.master = PlayerPrefs.GetFloat("Blackstone.Master", .8f);
             director.audioBus.effects = PlayerPrefs.GetFloat("Blackstone.Effects", .8f);
             director.audioBus.dialogue = PlayerPrefs.GetFloat("Blackstone.Dialogue", .9f);
             director.audioBus.music = PlayerPrefs.GetFloat("Blackstone.Music", .35f);
-            originalPipeline = GraphicsSettings.defaultRenderPipeline;
-            if (originalPipeline is UniversalRenderPipelineAsset)
-            {
-                runtimePipeline = Instantiate((UniversalRenderPipelineAsset)originalPipeline);
-                GraphicsSettings.defaultRenderPipeline = runtimePipeline;
-                QualitySettings.renderPipeline = runtimePipeline;
-            }
             ApplySettings(false);
             titleSelection=director.CanContinue?0:1;
         }
@@ -79,7 +70,8 @@ namespace Blackstone.UI
             else if(titleSelection==2)
             {
                 sensitivity=director.cameraRig.sensitivity;invert=director.cameraRig.invertY;fullscreen=Screen.fullScreen;
-                resolution=Screen.width==1280?0:Screen.width==2560?2:1;settings=true;
+                resolution=GraphicsRules.ResolutionIndex(Screen.width,Screen.height);
+                quality=FoundationGraphics.SelectedPreset;vsync=FoundationGraphics.VSync;settings=true;
             }
             else Application.Quit();
         }
@@ -283,9 +275,9 @@ namespace Blackstone.UI
             Panel(new Rect(850,225,975,765), new Color(.026f,.037f,.048f,.98f));
             Label(new Rect(886,241,900,55), "SETTINGS", title, amber);
             Label(new Rect(886,314,220,45), "Quality", body);
-            quality = GUI.SelectionGrid(new Rect(1130,314,644,45), quality, new[] {"LOW","MEDIUM","HIGH","ULTRA"}, 4);
+            quality = GUI.SelectionGrid(new Rect(1130,314,644,45), quality, FoundationGraphics.Names, FoundationGraphics.Names.Length);
             Label(new Rect(886,374,220,45), "Resolution", body);
-            resolution = GUI.SelectionGrid(new Rect(1130,374,644,45), resolution, new[] {"1280 × 720","1920 × 1080","2560 × 1440"}, 3);
+            resolution = GUI.SelectionGrid(new Rect(1130,374,644,45), resolution, GraphicsRules.ResolutionNames, GraphicsRules.ResolutionNames.Length);
             fullscreen = GUI.Toggle(new Rect(1130,435,290,36), fullscreen, " Fullscreen");
             vsync = GUI.Toggle(new Rect(1470,435,260,36), vsync, " VSync");
             sensitivity = Slider("Camera sensitivity", sensitivity, .025f,.25f, 486);
@@ -303,28 +295,19 @@ namespace Blackstone.UI
             Label(new Rect(886,y,250,35), label, body);
             return GUI.HorizontalSlider(new Rect(1150,y+15,610,24),value,min,max);
         }
-        public int GraphicsPreset=>quality;
+        public int GraphicsPreset=>FoundationGraphics.SelectedPreset;
         public void SetGraphicsPreset(int preset)
         {
-            quality=preset;sensitivity=director.cameraRig.sensitivity;invert=director.cameraRig.invertY;
-            ApplySettings(false);
+            FoundationGraphics.SetPreset(preset);quality=FoundationGraphics.SelectedPreset;
         }
         void ApplySettings(bool applyDisplay)
         {
             quality = Mathf.Clamp(quality,0,3);
             director.cameraRig.sensitivity = sensitivity; director.cameraRig.invertY = invert;
-            QualitySettings.vSyncCount = vsync ? 1 : 0;
-            QualitySettings.globalTextureMipmapLimit = quality == 0 ? 2 : quality == 1 ? 1 : 0;
-            if (runtimePipeline != null)
-            {
-                runtimePipeline.shadowDistance = new[] {25f,45f,70f,95f}[quality];
-                runtimePipeline.msaaSampleCount = new[] {1,2,2,4}[quality];
-                runtimePipeline.renderScale = new[] {.8f,1f,1f,1f}[quality];
-                runtimePipeline.shadowCascadeCount = quality == 0 ? 1 : quality == 1 ? 2 : 4;
-            }
+            FoundationGraphics.SetPreset(quality);FoundationGraphics.SetVSync(vsync);
             if (applyDisplay)
             {
-                int[] widths = {1280,1920,2560}; int[] heights = {720,1080,1440};
+                int[] widths = GraphicsRules.Widths; int[] heights = GraphicsRules.Heights;
                 Screen.SetResolution(widths[resolution],heights[resolution],fullscreen ? FullScreenMode.FullScreenWindow : FullScreenMode.Windowed);
             }
             PlayerPrefs.SetInt("Blackstone.Quality",quality); PlayerPrefs.SetFloat("Blackstone.Sensitivity",sensitivity);
@@ -343,10 +326,5 @@ namespace Blackstone.UI
             GUI.Label(rect,text,style); style.normal.textColor = old; style.alignment = a;
         }
         static string FormatTime(float seconds) => $"{(int)seconds/60:00}:{(int)seconds%60:00}";
-        void OnDestroy()
-        {
-            if (runtimePipeline != null)
-            { GraphicsSettings.defaultRenderPipeline = originalPipeline; QualitySettings.renderPipeline = originalPipeline; Destroy(runtimePipeline); }
-        }
     }
 }

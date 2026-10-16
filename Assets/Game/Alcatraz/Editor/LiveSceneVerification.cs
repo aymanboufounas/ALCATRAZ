@@ -128,6 +128,7 @@ namespace Blackstone.Alcatraz.Editor
             run("Swimming, shore exits and restricted coast",SwimmingGameplayChecks.Run);
             run("Player health and checkpoint guards",PlayerVitalsChecks.Run);
             run("HUD layout",HudLayoutChecks.Run);
+            run("Graphics presets and pipeline lifecycle",GraphicsGameplayChecks.Run);
             var world=UnityEngine.Object.FindFirstObjectByType<SuppliedIslandWorld>();
             var annex=UnityEngine.Object.FindFirstObjectByType<SuppliedExtrasWorld>();
             if(world!=null&&(annex==null||!annex.Visiting))run("Supplied island travel, equipment and vehicles",SuppliedGameplayChecks.Run);

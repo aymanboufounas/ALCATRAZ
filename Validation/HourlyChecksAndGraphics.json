@@ -1,0 +1,274 @@
+{
+  "scope": "Offline C# rule tests, C# grammar, scene bindings, and source asset validation",
+  "started_at": "2026-10-16T09:29:40.508709+00:00",
+  "finished_at": "2026-10-16T09:32:01.827518+00:00",
+  "status": "passed",
+  "total_checks": 24,
+  "passed_checks": 24,
+  "failed_checks": 0,
+  "checks": [
+    {
+      "name": "source_check_runner",
+      "status": "passed",
+      "duration_seconds": 0.716
+    },
+    {
+      "name": "HoldemTests",
+      "status": "passed",
+      "duration_seconds": 1.733
+    },
+    {
+      "name": "VehicleControlTests",
+      "status": "passed",
+      "duration_seconds": 0.448
+    },
+    {
+      "name": "CombatTests",
+      "status": "passed",
+      "duration_seconds": 0.53
+    },
+    {
+      "name": "MenuCheckpointTests",
+      "status": "passed",
+      "duration_seconds": 0.479
+    },
+    {
+      "name": "CameraFramingTests",
+      "status": "passed",
+      "duration_seconds": 0.497
+    },
+    {
+      "name": "PlayerFailureTests",
+      "status": "passed",
+      "duration_seconds": 0.448
+    },
+    {
+      "name": "SwimmingTests",
+      "status": "passed",
+      "duration_seconds": 0.397
+    },
+    {
+      "name": "MovementResponseTests",
+      "status": "passed",
+      "duration_seconds": 0.397
+    },
+    {
+      "name": "LocomotionAnimationTests",
+      "status": "passed",
+      "duration_seconds": 0.447
+    },
+    {
+      "name": "FootContactTests",
+      "status": "passed",
+      "duration_seconds": 0.397
+    },
+    {
+      "name": "GraphicsSettingsTests",
+      "status": "passed",
+      "duration_seconds": 0.447
+    },
+    {
+      "name": "csharp_grammar",
+      "status": "passed",
+      "duration_seconds": 0.215
+    },
+    {
+      "name": "character_forward",
+      "status": "passed",
+      "duration_seconds": 11.553
+    },
+    {
+      "name": "locomotion_quality",
+      "status": "passed",
+      "duration_seconds": 7.592
+    },
+    {
+      "name": "alcatraz_routes",
+      "status": "passed",
+      "duration_seconds": 12.855
+    },
+    {
+      "name": "scene_startup",
+      "status": "passed",
+      "duration_seconds": 5.181
+    },
+    {
+      "name": "native_asset_integrity",
+      "status": "passed",
+      "duration_seconds": 91.153
+    },
+    {
+      "name": "supplied_assets",
+      "status": "passed",
+      "duration_seconds": 0.568
+    },
+    {
+      "name": "supplied_prison",
+      "status": "passed",
+      "duration_seconds": 4.183
+    },
+    {
+      "name": "warehouse",
+      "status": "passed",
+      "duration_seconds": 0.368
+    },
+    {
+      "name": "extra_assets",
+      "status": "passed",
+      "duration_seconds": 0.566
+    },
+    {
+      "name": "police_helicopter",
+      "status": "passed",
+      "duration_seconds": 0.064
+    },
+    {
+      "name": "graphics_quality",
+      "status": "passed",
+      "duration_seconds": 0.064
+    }
+  ],
+  "executable_csharp_assertions": {
+    "total": 220928,
+    "suites": {
+      "HoldemTests": 160041,
+      "VehicleControlTests": 32,
+      "CombatTests": 33,
+      "MenuCheckpointTests": 34,
+      "CameraFramingTests": 34,
+      "PlayerFailureTests": 27,
+      "SwimmingTests": 54,
+      "MovementResponseTests": 2304,
+      "LocomotionAnimationTests": 58068,
+      "FootContactTests": 257,
+      "GraphicsSettingsTests": 44
+    }
+  },
+  "runner_regression_tests": 7,
+  "source_validators": {
+    "csharp_grammar": {
+      "status": "PASS",
+      "files": 100
+    },
+    "character_forward": {
+      "status": "PASS",
+      "checks": 650
+    },
+    "locomotion_quality": {
+      "status": "PASS",
+      "checks": 123
+    },
+    "alcatraz_routes": {
+      "status": "PASS",
+      "checks": 274
+    },
+    "scene_startup": {
+      "status": "PASS",
+      "checks": 19382
+    },
+    "native_asset_integrity": {
+      "status": "PASS",
+      "counts": {
+        "native_files": 2606,
+        "yaml_documents": 88300,
+        "asset_guids": 3685,
+        "mesh_vertices": 7802887,
+        "mesh_triangles": 3755038,
+        "weighted_meshes": 271,
+        "csharp_files": 100,
+        "animation_clips": 14
+      }
+    },
+    "supplied_assets": {
+      "status": "PASS",
+      "checks": 18449
+    },
+    "supplied_prison": {
+      "status": "PASS",
+      "checks": 59
+    },
+    "warehouse": {
+      "status": "PASS",
+      "checks": 30
+    },
+    "extra_assets": {
+      "status": "PASS",
+      "packs": 29
+    },
+    "police_helicopter": {
+      "status": "PASS",
+      "checks": 17
+    },
+    "graphics_quality": {
+      "status": "PASS",
+      "checks": 34
+    }
+  },
+  "validated_changed_input_sha256": {
+    ".github/workflows/source-checks.yml": "7b8e2b1e3d6fb5ec88a6b7f03579967f691a555f34904de3b806ad4a2a621be1",
+    "Assets/Game/Alcatraz/Editor/AlcatrazBuildSizeReport.cs": "0407709ccc19158be245fddf19a8b9e998e996cefdd3ea6d8120b8c7a1f471df",
+    "Assets/Game/Alcatraz/Editor/AlcatrazBuildSizeReport.cs.meta": "39f1eddcc7f4c28359964ebda75b7b711affca437b9708c8fdff009d241efb84",
+    "Assets/Game/Alcatraz/Editor/LiveSceneVerification.cs": "9f2b5835261096bfc541cebd12eaaaea1a6ea81b53879f5b6b418730160f5ece",
+    "Assets/Game/Alcatraz/Scripts/AlcatrazPresentation.cs": "533ff97516122e6fa2dc1e76367ed1e611ede98d0bfa8034b1506fd76ad37305",
+    "Assets/Game/Foundation/Editor/FoundationPreparation.cs": "007a62b6e56a82621cb2e0a48797d73c807eb61a7475c9ab99eb274258a9aaa4",
+    "Assets/Game/Foundation/Editor/GraphicsGameplayChecks.cs": "71f2249d59224cae0e8490b7df23283423247328f2416d07b12dad38e5ea82b1",
+    "Assets/Game/Foundation/Editor/GraphicsGameplayChecks.cs.meta": "2854030e8c6907cac3e0237705ae725167182309f1ad45cceb4ac522e60ebeea",
+    "Assets/Game/Foundation/Scripts/FoundationBootstrap.cs": "78937c94caa1799e2463c9a16d9886ff8ed5ff049bee0e52442364f6e9247545",
+    "Assets/Game/Foundation/Scripts/FoundationGraphics.cs": "98de78fe4004c0eb73e3878d8cd3c40501e27f1db90521df4434287330f7b639",
+    "Assets/Game/Foundation/Scripts/FoundationGraphics.cs.meta": "a80e63be1609f7d477882ad756fb652147c0fefd2af0c03fc4929366f95d1cae",
+    "Assets/Game/Foundation/Scripts/FoundationHUD.cs": "d33f17b07c8174044d8600d22889d1e5ec1b85ff838c5e127deede2409986c0a",
+    "Assets/Game/Foundation/Scripts/GraphicsRules.cs": "8ec4276dfd444f4a8c274e28fdb04d3384001a431d138419537dcefdfafe4161",
+    "Assets/Game/Foundation/Scripts/GraphicsRules.cs.meta": "d7e2520bfbd39d5b9a75730899a312042c51c1bc9293f4b597274ed7dc201e29",
+    "Assets/Game/Foundation/Scripts/LocomotionAnimationRules.cs": "769f1dacc45298acea30060ead75a997eba92fd0915eb376735a48f095231788",
+    "Assets/Game/Foundation/Scripts/PrisonPauseMenu.cs": "a63c28d599f943b7d93c27cf071e80b0edf78f62ad0808aeb38b327da4eb983b",
+    "Assets/Game/Scripts/UI/PrisonHUD.cs": "e5139ef3eb90659e942fdf0ab09d62b12e2cc3c796d4bc9cc516c73ca9957811",
+    "Assets/Game/Shaders/CoastalWater.shader": "c11469b2e6a6ff5d90defc67ed982d26957fa3a0e5309bb3d65ccd92cd5c9bfc",
+    "Assets/_DesertShift/Editor/ProjectTools.cs": "a93b8664768c9ee7c2127c8f6d81ed25693b103ea7d422a75d662dff5ecead81",
+    "Assets/_DesertShift/Scripts/Utilities/GameBootstrap.cs": "e20ae0cf63ae11bce316c887510f58528aaaaa0e167dda602615bacaa180d332",
+    "Assets/_DesertShift/Settings/DesertShift_Renderer.asset": "bf4ae7baceacc5a00204c09c6932eca32bd85325a7da9d370effef03b451d920",
+    "Assets/_DesertShift/Settings/DesertShift_URP.asset": "f3f1648ab57fcc525cbfafbd8fd14c79a85fc83b8bf283677759fc6a36b7536f",
+    "Tools/Tests/GraphicsSettingsTests.cs": "f17a9eea1e0797ca4c78a6b8f490d7f19d6804ac06234f2d1951f1c11a52e8a9",
+    "Tools/Tests/LocomotionAnimationTests.cs": "7566ba566aa40698bad5a7d516ba73765c5fcd0fd8a611ac225fac928fc23b12",
+    "Tools/Tests/test_source_check_runner.py": "00c8396bac5de2e24ea2205a35eebd08d83a8bd8d6c8f5ebcf32e312d8e549f2",
+    "Tools/run_source_checks.py": "473e75fb767184270682cfa63269d2d46fe96f99efb8d73d691761fd34842c19",
+    "Tools/validate_graphics_quality.py": "0b9c8307a5ec6d8a4b658a19c14f0092e334cbae895285bd7a01af6e83a9c83c",
+    "Tools/validate_project.py": "c1eb9c10246e94db6abf30d7f379f77e59b9652b961d3dd51961e0281e4d01a5"
+  },
+  "hourly_configuration": {
+    "workflow": ".github/workflows/source-checks.yml",
+    "cron_utc": "17 * * * *",
+    "default_branch_verified": "main",
+    "read_only_token": true,
+    "artifact_retention_days": 14,
+    "local_runner_verified": true,
+    "github_workflow_execution_observed": false,
+    "unattended_code_fixes": false
+  },
+  "confirmed_fixes": [
+    "Recent running history expires during sustained walking/jogging; it no longer selects an old sprint-stop animation.",
+    "Reopening pause settings refreshes display staging from the current resolution and fullscreen state.",
+    "Story and exploration share saved graphics choices and restore distinct default/quality pipeline references on teardown.",
+    "Rendering resource validation runs even when character import preparation is cached."
+  ],
+  "target": "High-end PC at 2560x1440 or 3840x2160; hardware performance not measured",
+  "unity_runtime_verified": false,
+  "unity_api_compilation_verified": false,
+  "shader_compilation_verified": false,
+  "rendered_player_visibility_verified": false,
+  "live_physics_verified": false,
+  "gpu_performance_verified": false,
+  "player_build_produced": false,
+  "ten_gb_build_produced": false,
+  "build_size_report": "Successful future Unity builds write Builds/Reports/LatestPlayerBuild.json via BuildReport.totalSize.",
+  "limitations": [
+    "No Unity editor or licensed Unity build environment is available in this cloud environment.",
+    "Source checks do not establish shader/API compilation, successful Unity imports, visible player rendering, visual quality, or complete gameplay correctness.",
+    "The editor must validate/create saved active SSAO before Play or build; this cloud run did not perform that preparation.",
+    "The hourly workflow reports failures and artifacts; it does not operate an ongoing coding agent or apply fixes.",
+    "No 10 GB game build was created; source asset resolution is preserved and download size is not a quality measurement."
+  ],
+  "post_run_normalization": {
+    "file": "Assets/Game/Alcatraz/Editor/AlcatrazBuildSizeReport.cs.meta",
+    "change": "Removed trailing spaces from empty YAML fields. Parsed YAML verified identical to the version used by the 24-check run."
+  }
+}

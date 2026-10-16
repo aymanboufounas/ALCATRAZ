@@ -33,11 +33,52 @@ public static class LocomotionAnimationTests
         Check(!rules.Moving,"Moving latch settles after deceleration at "+fps+" Hz");
     }
 
+    static void RecentGaitTrace(int fps)
+    {
+        float dt=1f/fps;
+        foreach(float settledSpeed in new[]{1.45f,2.15f})
+        {
+            var rules=new LocomotionAnimationRules();
+            Check(rules.Step(5.5f,0,dt,true,false,true,true)==LocomotionSignal.RunStart,"Sprint starts the recent-gait trace");
+            for(int frame=0;frame<fps*30;frame++)
+                Check(rules.Step(settledSpeed,0,dt,true,false,false,true)==LocomotionSignal.None,
+                    "Changing to a sustained lower gait does not emit a stop with movement still held");
+            Check(rules.Step(settledSpeed,0,dt,true,false,false,false)==LocomotionSignal.Stop,
+                "Sprint then 30 seconds of walking/jogging selects a normal stop at "+fps+" Hz");
+            Check(rules.Step(0,0,dt,true,false,false,false)==LocomotionSignal.None,
+                "A lower-gait braking stop is not repeated when speed reaches zero");
+        }
+
+        var immediate=new LocomotionAnimationRules();
+        immediate.Step(5.5f,0,dt,true,false,true,true);
+        Check(immediate.Step(5.5f-12*dt,0,dt,true,false,false,false)==LocomotionSignal.RunStop,
+            "Immediate sprint release retains the run-stop clip during braking at "+fps+" Hz");
+        for(int frame=0;frame<fps;frame++)
+            Check(immediate.Step(Math.Max(0,5.5f-12*(frame+2)*dt),0,dt,true,false,false,false)==LocomotionSignal.None,
+                "A run-stop event stays latched through all of its braking frames");
+
+        var dipped=new LocomotionAnimationRules();
+        dipped.Step(3,0,dt,true,false,true,true);
+        for(int frame=0;frame<Math.Max(1,fps/10);frame++)
+            Check(dipped.Step(2.7f,0,dt,true,false,true,true)==LocomotionSignal.None,
+                "A brief threshold dip emits no extra start/stop event");
+        Check(dipped.Step(2.6f,0,dt,true,false,false,false)==LocomotionSignal.RunStop,
+            "A brief running-speed dip does not flicker to a walking stop at "+fps+" Hz");
+
+        var noise=new LocomotionAnimationRules();
+        noise.Step(3,0,dt,true,false,true,true);
+        for(int frame=0;frame<fps;frame++)
+            Check(noise.Step(frame%2==0?2.79f:2.81f,0,dt,true,false,true,true)==LocomotionSignal.None,
+                "Running-threshold noise does not emit transitions");
+        Check(noise.Step(2.7f,0,dt,true,false,false,false)==LocomotionSignal.RunStop,
+            "Recent running samples survive ordinary threshold noise");
+    }
+
     public static void Main()
     {
         foreach(int fps in new[]{24,30,50,60,72,90,100,120,144,240})
         {
-            WalkTrace(fps,false);WalkTrace(fps,true);
+            WalkTrace(fps,false);WalkTrace(fps,true);RecentGaitTrace(fps);
             foreach(int sign in new[]{-1,1})
             {
                 var turn=new LocomotionAnimationRules();int turns=0;

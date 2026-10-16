@@ -19,6 +19,48 @@ namespace DesertShift.Editor
     {
         const string ScenePath = "Assets/_DesertShift/Scenes/SC_DesertTown.unity";
         const string Settings = "Assets/_DesertShift/Settings/";
+        const string PostProcessDataPath = "Packages/com.unity.render-pipelines.universal/Runtime/Data/PostProcessData.asset";
+        static Type AmbientOcclusionType=>typeof(UniversalRenderPipelineAsset).Assembly.GetType(
+            "UnityEngine.Rendering.Universal.ScreenSpaceAmbientOcclusion");
+        static UnityEngine.Object FindPostProcessData()
+        {
+            var data=AssetDatabase.LoadMainAssetAtPath(PostProcessDataPath);
+            if(data!=null)return data;
+            foreach(string id in AssetDatabase.FindAssets("t:PostProcessData").OrderBy(id=>id))
+            {
+                data=AssetDatabase.LoadMainAssetAtPath(AssetDatabase.GUIDToAssetPath(id));
+                if(data!=null)return data;
+            }
+            throw new InvalidOperationException("URP post-processing resources are missing. Restore the Universal Render Pipeline package before building.");
+        }
+        public static void EnsureRendering()
+        {
+            try{ValidateRendering();}
+            catch(InvalidOperationException){ConfigureRendering();}
+        }
+        public static void ValidateRendering()
+        {
+            var renderer=AssetDatabase.LoadAssetAtPath<UniversalRendererData>(Settings+"DesertShift_Renderer.asset");
+            var pipe=AssetDatabase.LoadAssetAtPath<UniversalRenderPipelineAsset>(Settings+"DesertShift_URP.asset");
+            if(renderer==null||pipe==null)throw new InvalidOperationException("The configured URP pipeline or renderer is missing.");
+            var pipelineSO=new SerializedObject(pipe);
+            var renderers=pipelineSO.FindProperty("m_RendererDataList");
+            var defaultRenderer=pipelineSO.FindProperty("m_DefaultRendererIndex");
+            if(renderers==null||defaultRenderer==null||defaultRenderer.intValue<0||defaultRenderer.intValue>=renderers.arraySize
+                ||renderers.GetArrayElementAtIndex(defaultRenderer.intValue).objectReferenceValue!=renderer)
+                throw new InvalidOperationException("The URP pipeline does not select the prepared renderer.");
+            var rendererSO=new SerializedObject(renderer);
+            var postData=rendererSO.FindProperty("postProcessData");
+            if(postData==null||postData.objectReferenceValue!=FindPostProcessData())
+                throw new InvalidOperationException("The renderer is missing the prepared URP post-processing resources.");
+            Type aoType=AmbientOcclusionType;
+            if(aoType==null)throw new InvalidOperationException("The URP ambient-occlusion renderer feature is unavailable.");
+            if(!renderer.rendererFeatures.Any(feature=>feature!=null&&feature.GetType()==aoType
+                &&feature.isActive&&AssetDatabase.Contains(feature)))
+                throw new InvalidOperationException("The renderer needs a saved, active ambient-occlusion feature.");
+            if(GraphicsSettings.defaultRenderPipeline!=pipe||QualitySettings.renderPipeline!=pipe)
+                throw new InvalidOperationException("The project graphics or current quality level selects another render pipeline.");
+        }
         [MenuItem("Desert Shift/Open Desert Town", priority = 0)]
         public static void OpenScene()
         {
@@ -66,6 +108,7 @@ namespace DesertShift.Editor
         [MenuItem("Desert Shift/Repair Rendering Configuration", priority = 30)]
         public static void ConfigureRendering()
         {
+            if(EditorApplication.isPlaying)throw new InvalidOperationException("Stop Play Mode before repairing rendering assets.");
             // Repairs configuration in place; never touches environment or player geometry.
             var renderer = AssetDatabase.LoadAssetAtPath<UniversalRendererData>(Settings + "DesertShift_Renderer.asset");
             if (renderer == null)
@@ -86,30 +129,26 @@ namespace DesertShift.Editor
             so.ApplyModifiedPropertiesWithoutUndo();
             var rendererSO = new SerializedObject(renderer);
             var postData = rendererSO.FindProperty("postProcessData");
-            if (postData != null && postData.objectReferenceValue == null)
+            if(postData==null)throw new InvalidOperationException("The installed URP renderer has no post-processing resource property.");
+            postData.objectReferenceValue=FindPostProcessData();rendererSO.ApplyModifiedPropertiesWithoutUndo();
+            var aoType=AmbientOcclusionType;
+            if(aoType==null)throw new InvalidOperationException("The installed URP package has no ambient-occlusion renderer feature.");
+            var ao=renderer.rendererFeatures.FirstOrDefault(feature=>feature!=null&&feature.GetType()==aoType);
+            if(ao==null)
             {
-                string[] assets = AssetDatabase.FindAssets("t:PostProcessData");
-                if (assets.Length > 0)
-                    postData.objectReferenceValue = AssetDatabase.LoadMainAssetAtPath(AssetDatabase.GUIDToAssetPath(assets[0]));
-                rendererSO.ApplyModifiedPropertiesWithoutUndo();
+                ao=ScriptableObject.CreateInstance(aoType) as ScriptableRendererFeature;
+                if(ao==null)throw new InvalidOperationException("The URP ambient-occlusion feature could not be created.");
+                ao.name="Desert Contact Occlusion";
+                AssetDatabase.AddObjectToAsset(ao,renderer);renderer.rendererFeatures.Add(ao);
             }
-            var aoType = typeof(UniversalRenderPipelineAsset).Assembly.GetType(
-                "UnityEngine.Rendering.Universal.ScreenSpaceAmbientOcclusion");
-            if (aoType != null && !renderer.rendererFeatures.Exists(f => f != null && f.GetType() == aoType))
-            {
-                var ao = ScriptableObject.CreateInstance(aoType) as ScriptableRendererFeature;
-                if (ao != null)
-                {
-                    ao.name = "Desert Contact Occlusion";
-                    AssetDatabase.AddObjectToAsset(ao, renderer);
-                    renderer.rendererFeatures.Add(ao); ao.Create();
-                }
-            }
+            else if(!AssetDatabase.Contains(ao))AssetDatabase.AddObjectToAsset(ao,renderer);
+            ao.SetActive(true);ao.Create();EditorUtility.SetDirty(ao);
             GraphicsSettings.defaultRenderPipeline = pipe; QualitySettings.renderPipeline = pipe;
             var bootstrap = UnityEngine.Object.FindFirstObjectByType<GameBootstrap>();
             if (bootstrap != null) { bootstrap.renderPipeline = pipe; bootstrap.rendererData = renderer; EditorUtility.SetDirty(bootstrap); }
             renderer.SetDirty(); EditorUtility.SetDirty(pipe); EditorUtility.SetDirty(renderer);
             AssetDatabase.SaveAssets();
+            ValidateRendering();
             Debug.Log("Desert Shift rendering assets repaired in place. Your scene geometry was preserved.");
         }
         [MenuItem("Desert Shift/Rebuild Animation Bindings", priority = 31)]

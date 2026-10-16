@@ -3,63 +3,47 @@ on:
   push:
   pull_request:
   workflow_dispatch:
+  schedule:
+    - cron: '17 * * * *'
 permissions:
   contents: read
+concurrency:
+  group: source-checks-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
 jobs:
   source:
     runs-on: ubuntu-latest
     timeout-minutes: 15
     steps:
       - uses: actions/checkout@v4
+        id: checkout
       - uses: actions/setup-python@v5
+        id: python
         with:
           python-version: '3.12'
           cache: pip
           cache-dependency-path: Tools/requirements.txt
-      - run: pip install -r Tools/requirements.txt
-      - name: Execute gameplay rule tests
+      - name: Install Python validation dependencies
+        run: python -m pip install -r Tools/requirements.txt
+      - name: Install Mono compiler and runtime
+        if: ${{ !cancelled() }}
         run: |
           sudo apt-get update -qq
           sudo apt-get install -y -qq mono-mcs
-          mcs -out:/tmp/HoldemTests.exe Assets/Game/Scripts/Activities/PrisonPokerRules.cs Assets/Game/Scripts/Activities/HoldemGame.cs Assets/Game/Foundation/Scripts/WeaponState.cs Tools/Tests/HoldemTests.cs
-          mono /tmp/HoldemTests.exe
-          mcs -out:/tmp/VehicleControlTests.exe Assets/Game/Foundation/Scripts/VehicleControlRules.cs Tools/Tests/VehicleControlTests.cs
-          mono /tmp/VehicleControlTests.exe
-          mcs -out:/tmp/CombatTests.exe Assets/Game/Foundation/Scripts/WeaponState.cs Assets/Game/Foundation/Scripts/CombatHealth.cs Tools/Tests/CombatTests.cs
-          mono /tmp/CombatTests.exe
-          mcs -out:/tmp/MenuCheckpointTests.exe Assets/Game/Foundation/Scripts/WeaponState.cs Assets/Game/Scripts/Save/CheckpointStorage.cs Tools/Tests/MenuCheckpointTests.cs
-          mono /tmp/MenuCheckpointTests.exe
-          mcs -out:/tmp/CameraFramingTests.exe Assets/Game/Foundation/Scripts/CameraFramingRules.cs Tools/Tests/CameraFramingTests.cs
-          mono /tmp/CameraFramingTests.exe
-          mcs -out:/tmp/PlayerFailureTests.exe Assets/Game/Foundation/Scripts/WeaponState.cs Assets/Game/Foundation/Scripts/CombatHealth.cs Assets/Game/Foundation/Scripts/PlayerFailureRules.cs Tools/Tests/PlayerFailureTests.cs
-          mono /tmp/PlayerFailureTests.exe
-          mcs -out:/tmp/SwimmingTests.exe Assets/Game/Foundation/Scripts/SwimmingRules.cs Tools/Tests/SwimmingTests.cs
-          mono /tmp/SwimmingTests.exe
-          mcs -out:/tmp/MovementResponseTests.exe Assets/Game/Foundation/Scripts/MovementResponseRules.cs Tools/Tests/MovementResponseTests.cs
-          mono /tmp/MovementResponseTests.exe
-          mcs -out:/tmp/LocomotionAnimationTests.exe Assets/Game/Foundation/Scripts/LocomotionAnimationRules.cs Tools/Tests/LocomotionAnimationTests.cs
-          mono /tmp/LocomotionAnimationTests.exe
-          mcs -out:/tmp/FootContactTests.exe Assets/Game/Foundation/Scripts/FootContactRules.cs Tools/Tests/FootContactTests.cs
-          mono /tmp/FootContactTests.exe
-      - name: Check C# grammar
-        run: python Tools/check_csharp_syntax.py
-      - name: Check character forward axis and source gait
-        run: python Tools/validate_character_forward.py
-      - name: Check running transitions, character rigs and gait phase alignment
-        run: python Tools/validate_locomotion_quality.py
-      - name: Check scene bindings and supported routes
-        run: python Tools/validate_alcatraz.py
-      - name: Check enabled-scene player, camera and audio startup bindings
-        run: python Tools/validate_scene_startup.py
-      - name: Check native asset integrity
-        run: python Tools/validate_project.py
-      - name: Check supplied asset dependencies and island floor samples
-        run: python Tools/validate_supplied_assets.py
-      - name: Check connected prison interior and supported routes
-        run: python Tools/validate_supplied_prison.py
-      - name: Check warehouse door floor support and barrel assets
-        run: python Tools/validate_warehouse.py
-      - name: Check all native extras and their runtime registration
-        run: python Tools/validate_extra_assets.py
-      - name: Check police source detail and helicopter glass
-        run: python Tools/validate_police_helicopter.py
+      - name: Run all offline checks and collect individual results
+        if: ${{ !cancelled() && steps.checkout.outcome == 'success' && steps.python.outcome == 'success' }}
+        run: python Tools/run_source_checks.py --report-dir /tmp/alcatraz-checks
+      - name: Publish check summary
+        if: always()
+        run: |
+          if [ -f /tmp/alcatraz-checks/summary.md ]; then
+            cat /tmp/alcatraz-checks/summary.md >> "$GITHUB_STEP_SUMMARY"
+          fi
+      - name: Upload check reports and logs
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: source-checks-${{ github.run_id }}-${{ github.run_attempt }}
+          path: /tmp/alcatraz-checks
+          if-no-files-found: warn
+          retention-days: 14

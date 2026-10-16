@@ -15,29 +15,11 @@ namespace DesertShift.Core
         public PlayerInputHandler playerInput;
         public bool prisonNight;
         Light flashlight;
-        ScriptableRendererFeature ambientOcclusion;
         void Awake()
         {
             Application.targetFrameRate = prisonNight ? 60 : 90; QualitySettings.vSyncCount = 1;
-            // URP's SSAO feature is an internal type in some 17.x package revisions.
-            // Resolve the official implementation without linking against a private API.
-            if (rendererData != null)
-            {
-                bool present = rendererData.rendererFeatures.Exists(f => f != null &&
-                    f.GetType().Name == "ScreenSpaceAmbientOcclusion");
-                var featureType = typeof(UniversalRenderPipelineAsset).Assembly.GetType(
-                    "UnityEngine.Rendering.Universal.ScreenSpaceAmbientOcclusion");
-                if (!present && featureType != null)
-                {
-                    ambientOcclusion = ScriptableObject.CreateInstance(featureType) as ScriptableRendererFeature;
-                    if (ambientOcclusion != null)
-                    {
-                        ambientOcclusion.name = "Desert Contact Occlusion";
-                        rendererData.rendererFeatures.Add(ambientOcclusion);
-                        rendererData.SetDirty();
-                    }
-                }
-            }
+            // Renderer features and their resources are prepared in the editor
+            // and validated before builds; runtime never mutates shared assets.
             if (renderPipeline != null)
             {
                 GraphicsSettings.defaultRenderPipeline = renderPipeline;
@@ -84,11 +66,6 @@ namespace DesertShift.Core
         }
         void OnDestroy()
         {
-            if (ambientOcclusion != null)
-            {
-                if (rendererData != null) { rendererData.rendererFeatures.Remove(ambientOcclusion); rendererData.SetDirty(); }
-                Destroy(ambientOcclusion);
-            }
             Time.timeScale = 1; Cursor.lockState = CursorLockMode.None; Cursor.visible = true;
         }
     }

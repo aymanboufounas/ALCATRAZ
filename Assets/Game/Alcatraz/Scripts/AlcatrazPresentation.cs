@@ -13,9 +13,13 @@ namespace Blackstone.Alcatraz
         {
             var sky = Resources.Load<Material>("Alcatraz/MarineSky");
             if (sky != null) RenderSettings.skybox = sky;
+            RenderSettings.defaultReflectionMode = DefaultReflectionMode.Skybox;
+            RenderSettings.ambientMode = AmbientMode.Custom;
+            // Schedule one environment refresh for the newly assigned sky.
+            // Explicit ambient SH below keeps unbaked interiors readable.
+            DynamicGI.UpdateEnvironment();
             // These scenes have no baked lightmaps or light probes. Set their SH
             // environment explicitly rather than depending on a stale lighting cache.
-            RenderSettings.ambientMode = AmbientMode.Custom;
             RenderSettings.ambientSkyColor = new Color(.57f, .68f, .76f);
             RenderSettings.ambientEquatorColor = new Color(.45f, .49f, .46f);
             RenderSettings.ambientGroundColor = new Color(.26f, .28f, .25f);

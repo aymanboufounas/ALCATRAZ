@@ -11,14 +11,15 @@ namespace Blackstone.Foundation
         public const float MovingThreshold=.2f;
         public const float StoppedThreshold=.08f;
         public const float RunningThreshold=2.8f;
+        public const float RunningHistorySeconds=.35f;
         public const float TurnThreshold=40;
         public const float TurnCooldown=.65f;
         public bool Moving { get; private set; }
-        float accumulatedYaw,turnWait,peakSpeed;
+        float accumulatedYaw,turnWait,recentRun;
         bool stopping;
 
         public void Reset()
-        {Moving=stopping=false;accumulatedYaw=turnWait=peakSpeed=0;}
+        {Moving=stopping=false;accumulatedYaw=turnWait=recentRun=0;}
 
         public LocomotionSignal Step(float sourceSpeed,float deltaYaw,float deltaTime,bool active,bool reverse,bool wantsSprint,bool moveRequested)
         {
@@ -31,23 +32,28 @@ namespace Blackstone.Foundation
             else if(Moving&&sourceSpeed<=StoppedThreshold)Moving=false;
             if(Moving)
             {
-                peakSpeed=Math.Max(peakSpeed,sourceSpeed);accumulatedYaw=0;
+                // Remember a brief speed dip, but not a sprint from minutes ago.
+                // Freeze this choice once braking begins so the selected stop
+                // variant cannot change while the controller slows to zero.
+                if(sourceSpeed>=RunningThreshold)recentRun=RunningHistorySeconds;
+                else if(moveRequested)recentRun=Math.Max(0,recentRun-deltaTime);
+                accumulatedYaw=0;
                 if(moveRequested&&(!wasMoving||stopping))
                 {
-                    if(stopping)peakSpeed=sourceSpeed;
+                    if(stopping)recentRun=sourceSpeed>=RunningThreshold?RunningHistorySeconds:0;
                     stopping=false;
                     if(!reverse)return wantsSprint?LocomotionSignal.RunStart:LocomotionSignal.Start;
                 }
                 if(!moveRequested&&!stopping)
                 {
                     stopping=true;
-                    return reverse?LocomotionSignal.None:peakSpeed>=RunningThreshold?LocomotionSignal.RunStop:LocomotionSignal.Stop;
+                    return reverse?LocomotionSignal.None:recentRun>0?LocomotionSignal.RunStop:LocomotionSignal.Stop;
                 }
                 return LocomotionSignal.None;
             }
             if(wasMoving)
             {
-                bool running=peakSpeed>=RunningThreshold;peakSpeed=0;accumulatedYaw=0;
+                bool running=recentRun>0;recentRun=0;accumulatedYaw=0;
                 bool alreadyStopping=stopping;stopping=false;
                 return moveRequested||alreadyStopping||reverse?LocomotionSignal.None:running?LocomotionSignal.RunStop:LocomotionSignal.Stop;
             }
